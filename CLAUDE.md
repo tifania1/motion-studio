@@ -190,7 +190,7 @@ python tools/update.py [--check|--rollback]             # GitHub 저장소에서
 
 ## 고치기와 배포
 
-- 프로그램 코드의 원본은 GitHub 비공개 저장소 `tifania1/motion-studio`(main)입니다. 저장소에는 `.gitignore` 의 허용 목록에 있는 프로그램 파일
+- 프로그램 코드의 원본은 GitHub 공개 저장소 `tifania1/motion-studio`(main)입니다(첫 화면은 README.md, 그림은 docs/media). 저장소에는 `.gitignore` 의 허용 목록에 있는 프로그램 파일
   (.claude app docs engine fonts installer presets styles templates tools vendor, 맨 위 md·cmd·requirements·update.json)만 들어가고,
   brands·videos·out·dist·API 키는 올리지 않습니다.
 - 앱이 켜질 때 `tools/update.py` 가 저장소의 새 버전을 받아 적용합니다(`update.json` 의 repo). 임시 폴더에서 파이썬 문법을 먼저 보고, 바뀔 파일을 백업
