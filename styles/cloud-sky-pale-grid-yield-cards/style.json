@@ -1,0 +1,126 @@
+{
+  "id": "cloud-sky-pale-grid-yield-cards",
+  "name": "구름 하늘과 옅은 격자 카드",
+  "group": "제품 UI",
+  "template": "uidemo",
+  "summary": "흐린 구름 하늘 위로 폰 한 대가 떠 있고, 그 뒤를 흰 문구가 크게 흘러 지나가요. 옅은 회색 격자 판으로 넘어가면 흰 카드 옆 차트가 차오르고 체크 목록이 한 줄씩 쌓이는 담백한 금융 앱 런칭이에요",
+  "tags": [
+    "제품 UI",
+    "금융",
+    "구름 하늘",
+    "격자",
+    "차트",
+    "런칭"
+  ],
+  "hand": false,
+  "source": {
+    "site": "keyframe.gallery",
+    "ref": "mux:rfZOI6aHrhgn02uyHW025C01ZGuzKo19Tb7iTQI3gD00xTk",
+    "at": "0–52.5초",
+    "note": "구름 속 젖빛 유리 카드에서 뒤섞이다 맞춰지는 큰 숫자, 기호 사이로 글자가 맞춰지며 들어오는 낱말, 구름 하늘 위 폰 뒤로 크게 흘러가는 흰 문구, 옅은 회색 판의 흰 카드와 초록 막대·선 그래프, 같은 카드에서 낱말 색만 초록·빨강·보라로 바뀌는 리듬, 양옆 격자 판 사이 2×2 타일, 색 아이콘 체크 목록, 둥근 틀 속 하늘이 화면 가득 열리는 마무리"
+  },
+  "palette": [
+    "#E6E5E2",
+    "#161616",
+    "#9CBEDD",
+    "#2FB344",
+    "#3A8EE6",
+    "#E0445E"
+  ],
+  "colors": {
+    "bg": "#E6E5E2",
+    "onBg": "#161616",
+    "onBgMuted": "rgba(22,22,22,.58)",
+    "paper": "#F5F5F3",
+    "ink": "#161616",
+    "accent": "#2FB344",
+    "accentInk": "#0F1A0F",
+    "pattern": "rgba(22,22,22,.08)",
+    "glow": "rgba(47,179,68,.28)"
+  },
+  "type": {
+    "display": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "heading": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "body": [
+      "Geist",
+      "Noto Sans KR"
+    ]
+  },
+  "fonts": [
+    {
+      "family": "Geist",
+      "weight": "100 900",
+      "file": "fonts/Geist-Variable.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 500,
+      "file": "fonts/NotoSansKR-Medium.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 700,
+      "file": "fonts/NotoSansKR-Bold.woff2"
+    }
+  ],
+  "shape": {
+    "radius": "calc(var(--u) * 1.6)"
+  },
+  "motion": {
+    "pace": "보통",
+    "bpm": 90,
+    "ease": "power3.out",
+    "stagger": 1,
+    "transitions": [
+      "cut",
+      "blur",
+      "push"
+    ]
+  },
+  "scenes": {
+    "bg": "grid",
+    "align": "center",
+    "card": "shadow",
+    "marker": "color",
+    "weight": 500,
+    "tracking": -0.02,
+    "case": "none",
+    "rough": false,
+    "title": "scramble",
+    "frame": "card",
+    "deco": [
+      "marks"
+    ],
+    "number": "scramble",
+    "scale": 1,
+    "schemes": [
+      "dark",
+      "paper"
+    ]
+  },
+  "signature": [
+    "흐린 구름 하늘 위 젖빛 유리 카드 속 큰 숫자가 반쯤 뭉개진 기호로 뒤섞이다 한 자리씩 맞춰지고, 카드가 구름 속으로 작아지며 흐려져요. 이어 옅은 회색 판에 낱말이 기호 사이로 글자를 맞춰 가며 들어와요",
+    "구름 하늘 가운데 폰 한 대가 살짝 기운 채 떠 있고, 그 뒤로 흰 문구 두 개가 화면보다 크게 서로 반대 방향으로 천천히 흘러 지나가요. 카메라는 폰 화면 쪽으로 조금씩 다가가요",
+    "옅은 회색 판의 흰 카드 옆 차트 판에서 가는 초록 막대가 왼쪽부터 곡선처럼 차오르거나 선 그래프가 그려져요. 같은 카드 자리에서는 낱말 색만 초록·빨강·보라로 갈리고, 체크 목록은 작은 색 아이콘과 함께 한 줄씩 쌓이다 위로 밀려 올라가요"
+  ],
+  "fits": [
+    "금융·투자 앱 런칭",
+    "기능 여러 개를 차분히 훑을 때",
+    "출시·대기 해제 알림",
+    "수익률·금리 같은 숫자 소개",
+    "앱 내려받기 안내"
+  ],
+  "avoid": [
+    "강한 원색 바탕",
+    "손그림 선",
+    "빠른 컷 몽타주",
+    "굵고 빽빽한 제목",
+    "한 화면에 강조색 여러 개"
+  ]
+}

@@ -1,0 +1,619 @@
+<title>/*@TITLE@*/</title>
+<style>
+/*@FONTFACES@*/
+/*@BRAND_CSS@*/
+/*@ENGINE_CSS@*/
+
+/* ===== product 템플릿: 제품·서비스 소개 (한 줄) =====
+   영상 전체가 선 하나로 이어져요. 엉킨 낙서 선(문제) → 팽팽하게 펴짐 → 제품 창을 감싸 테두리가 됨(해결)
+   → 창에서 기능 카드가 튀어나와 옆에 줄 섬(커서가 그 자리를 누름) → 창이 풀려 다시 한 줄, 단계 점을 잇는 길(쓰는 흐름)
+   → 숫자를 감싸는 고리(효과, 선택) → 버튼 테두리(도입 문의). 선은 매 프레임 점 560개로 계산해요. */
+#pd { position: absolute; inset: 0; background: var(--bg); overflow: hidden; }
+#pd .dots { position: absolute; inset: -6%; background-image: radial-gradient(circle, var(--pattern) 0 calc(var(--u) * .3), transparent calc(var(--u) * .34)); background-size: calc(var(--u) * 4.6) calc(var(--u) * 4.6); }
+.abs { position: absolute; left: 0; top: 0; }
+#lsv { position: absolute; left: 0; top: 0; overflow: visible; z-index: 3; pointer-events: none; }
+#line { fill: none; stroke: var(--accent); stroke-linecap: round; stroke-linejoin: round; }
+#lsv .con { stroke: var(--on-bg); stroke-linecap: round; fill: none; }
+#lsv .anc { fill: var(--on-bg); }
+
+/* 1) 문제 */
+#ptitle { z-index: 6; }
+#ptitle h1 { font: 900 calc(var(--u) * 9)/1.16 var(--font-heading); color: var(--on-bg); letter-spacing: -.04em; margin: 0; word-break: keep-all; }
+#ptitle h1 .ln { display: block; overflow: hidden; padding-bottom: .08em; margin-bottom: -.08em; }
+#ptitle h1 .ln span { display: inline-block; white-space: pre; }
+#ptitle.measure h1 .ln { overflow: visible; }
+.tag { z-index: 5; display: flex; align-items: center; gap: calc(var(--u) * 1.3); background: var(--on-bg); color: var(--bg); padding: calc(var(--u) * 1.4) calc(var(--u) * 2.6) calc(var(--u) * 1.5) calc(var(--u) * 1.5); border-radius: 999px; box-shadow: 0 calc(var(--u) * .6) calc(var(--u) * 1.8) rgba(0,0,0,.18); }
+.tag i { flex: none; width: calc(var(--u) * 4.2); height: calc(var(--u) * 4.2); border-radius: 50%; background: var(--accent); color: var(--accent-ink); display: grid; place-items: center; font: 900 calc(var(--u) * 2.8)/1 "Archivo", var(--font-display); font-style: normal; }
+.tag span { display: block; font: 800 calc(var(--u) * 3.6)/1.15 var(--font-body); white-space: nowrap; letter-spacing: -.01em; }
+
+/* 2) 제품 창 */
+#win { z-index: 2; background: var(--paper); color: var(--ink); border-radius: calc(var(--u) * 2.4); overflow: hidden; }
+#win .wbar { position: absolute; left: 0; right: 0; top: 0; display: flex; align-items: center; padding: 0 calc(var(--u) * 2.4); box-sizing: border-box; border-bottom: 1px solid color-mix(in srgb, var(--ink) 12%, transparent); }
+#win .wbar i { flex: none; width: calc(var(--u) * 1.5); height: calc(var(--u) * 1.5); border-radius: 50%; box-shadow: inset 0 0 0 calc(var(--u) * .28) color-mix(in srgb, var(--ink) 45%, transparent); margin-right: calc(var(--u) * .9); }
+#win .wname { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); max-width: 56%; padding: calc(var(--u) * .7) calc(var(--u) * 2.6); border-radius: 999px; background: color-mix(in srgb, var(--ink) 8%, transparent); font: 800 calc(var(--u) * 2.3)/1.1 var(--font-body); color: color-mix(in srgb, var(--ink) 80%, transparent); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; box-sizing: border-box; }
+#win .wbody { position: absolute; left: 0; right: 0; bottom: 0; overflow: hidden; }
+#win .screen { position: absolute; inset: 0; }
+#win .screen img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 0%; display: block; }
+#win .focus { position: absolute; left: 0; top: 0; border: calc(var(--u) * .55) solid var(--accent); border-radius: calc(var(--u) * 1.4); box-shadow: 0 0 0 3000px color-mix(in srgb, var(--paper) 58%, transparent); box-sizing: border-box; visibility: hidden; }
+#win .hero { position: absolute; inset: 0; background: var(--paper); display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; gap: calc(var(--u) * 2.2); padding: 0 calc(var(--u) * 4); }
+#win .pn { overflow: hidden; padding-bottom: .1em; margin-bottom: -.1em; font: 900 calc(var(--u) * 8)/1.1 var(--font-heading); letter-spacing: -.04em; white-space: nowrap; text-align: center; }
+#win .pn span { display: inline-block; }
+#win .pt { font: 700 calc(var(--u) * 3.6)/1.4 var(--font-body); color: color-mix(in srgb, var(--ink) 74%, transparent); white-space: pre-line; word-break: keep-all; }
+/* 사진이 없을 때: 선으로 그린 화면 */
+.wf { position: absolute; inset: 0; --b: color-mix(in srgb, var(--ink) 13%, transparent); --b2: color-mix(in srgb, var(--ink) 26%, transparent); }
+.wf > div { position: absolute; border-radius: calc(var(--u) * 1); }
+.wf .side { left: 0; top: 0; bottom: 0; width: 19%; background: color-mix(in srgb, var(--ink) 5%, transparent); border-right: 1px solid var(--b); border-radius: 0; padding: 4% 2.4%; box-sizing: border-box; display: flex; flex-direction: column; gap: 9%; }
+.wf .side .lg { width: 38%; aspect-ratio: 1; border-radius: 26%; background: var(--accent); }
+.wf .side b { display: block; height: calc(var(--u) * 1.1); border-radius: 99px; background: var(--b2); }
+.wf .side b:nth-child(3) { background: color-mix(in srgb, var(--accent) 70%, transparent); width: 80%; }
+.wf .side b:nth-child(4) { width: 64%; } .wf .side b:nth-child(5) { width: 72%; } .wf .side b:nth-child(6) { width: 56%; }
+.wf .head { left: 22%; right: 3%; top: 4%; height: 9%; display: flex; align-items: center; gap: 3%; }
+.wf .head .t { width: 22%; height: 46%; border-radius: 99px; background: var(--b2); }
+.wf .head .s { flex: 1; height: 80%; border-radius: 99px; box-shadow: inset 0 0 0 calc(var(--u) * .22) var(--b2); }
+.wf .head .bt { width: 14%; height: 86%; border-radius: 99px; background: var(--accent); }
+.wf .chart { left: 22%; top: 18%; width: 46%; height: 45%; box-shadow: inset 0 0 0 calc(var(--u) * .22) var(--b); padding: 3% 3.2%; box-sizing: border-box; }
+.wf .chart .t { display: block; width: 34%; height: calc(var(--u) * 1); border-radius: 99px; background: var(--b2); }
+.wf .chart .bars { position: absolute; left: 6%; right: 6%; bottom: 10%; height: 62%; display: flex; align-items: flex-end; gap: 6%; }
+.wf .chart .bars i { flex: 1; border-radius: calc(var(--u) * .5) calc(var(--u) * .5) 0 0; background: var(--b2); transform-origin: 50% 100%; }
+.wf .chart .bars i:last-child { background: var(--accent); }
+.wf .stat { left: 71%; right: 3%; height: 20.5%; box-shadow: inset 0 0 0 calc(var(--u) * .22) var(--b); padding: 3% 3%; box-sizing: border-box; }
+.wf .stat.a { top: 18%; } .wf .stat.b { top: 42.5%; }
+.wf .stat .t { display: block; width: 50%; height: calc(var(--u) * .9); border-radius: 99px; background: var(--b2); }
+.wf .stat .n { display: block; width: 66%; height: calc(var(--u) * 2.6); border-radius: calc(var(--u) * .5); background: color-mix(in srgb, var(--ink) 34%, transparent); margin-top: 9%; }
+.wf .list { left: 22%; right: 3%; top: 67%; bottom: 5%; display: flex; flex-direction: column; justify-content: space-between; }
+.wf .list .r { flex: 1; display: flex; align-items: center; gap: 2.4%; border-bottom: 1px solid var(--b); }
+.wf .list .r:last-child { border-bottom: 0; }
+.wf .list .r i { width: calc(var(--u) * 1.6); height: calc(var(--u) * 1.6); border-radius: 50%; box-shadow: inset 0 0 0 calc(var(--u) * .25) var(--b2); flex: none; }
+.wf .list .r:first-child i { background: var(--accent); box-shadow: none; }
+.wf .list .r span { height: calc(var(--u) * 1); border-radius: 99px; background: var(--b2); width: 46%; }
+.wf .list .r em { margin-left: auto; width: 12%; height: calc(var(--u) * 1.8); border-radius: 99px; background: var(--b); }
+
+/* 3) 기능 카드 */
+.card { z-index: 4; background: var(--paper); color: var(--ink); border-radius: calc(var(--u) * 2.2); display: flex; align-items: center; gap: calc(var(--u) * 2.4); padding: 0 calc(var(--u) * 2.8); box-sizing: border-box; box-shadow: 0 calc(var(--u) * .8) calc(var(--u) * 2.6) rgba(0,0,0,.2); }
+.card .ic { flex: none; width: calc(var(--u) * 7.4); height: calc(var(--u) * 7.4); border-radius: calc(var(--u) * 1.9); background: var(--accent); color: var(--accent-ink); display: grid; place-items: center; }
+.card .ic svg { width: 58%; height: 58%; fill: none; stroke: currentColor; stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round; overflow: visible; }
+.card .tx { flex: 1; min-width: 0; }
+.card .tx b { display: block; font: 900 calc(var(--u) * 4.2)/1.2 var(--font-heading); letter-spacing: -.03em; white-space: nowrap; }
+.card .tx span { display: block; font: 700 calc(var(--u) * 3)/1.34 var(--font-body); color: color-mix(in srgb, var(--ink) 72%, transparent); margin-top: calc(var(--u) * .7); word-break: keep-all; }
+.card .hl { position: absolute; inset: 0; border-radius: inherit; box-shadow: inset 0 0 0 calc(var(--u) * .5) var(--accent); pointer-events: none; }
+
+/* 4) 쓰는 흐름 */
+#ftitle { z-index: 6; }
+#ftitle h2 { font: 900 calc(var(--u) * 7)/1.18 var(--font-heading); color: var(--on-bg); letter-spacing: -.035em; margin: 0; white-space: pre-line; word-break: keep-all; }
+.node { z-index: 5; width: calc(var(--u) * 7.4); height: calc(var(--u) * 7.4); border-radius: 50%; background: var(--bg); box-shadow: inset 0 0 0 calc(var(--u) * .62) var(--accent); overflow: hidden; display: grid; place-items: center; }
+.node .fl { position: absolute; inset: 0; border-radius: 50%; background: var(--accent); }
+.node b { position: relative; font: 900 calc(var(--u) * 3.4)/1 "Archivo", var(--font-display); font-stretch: 90%; color: var(--on-bg-muted); }
+.slabel { z-index: 6; font: 800 calc(var(--u) * 5.2)/1.2 var(--font-body); color: var(--on-bg); white-space: nowrap; letter-spacing: -.02em; }
+.slabel.c { text-align: center; white-space: pre-line; word-break: keep-all; }
+#fdot { z-index: 4; width: calc(var(--u) * 2.6); height: calc(var(--u) * 2.6); border-radius: 50%; background: var(--on-bg); box-shadow: 0 0 0 calc(var(--u) * .7) var(--bg); }
+
+/* 5) 효과 숫자 */
+#rnum { z-index: 6; display: flex; align-items: baseline; justify-content: center; white-space: nowrap; color: var(--on-bg); }
+#rnum .v { font: 900 calc(var(--u) * 20)/1 "Archivo", var(--font-display); font-stretch: 78%; letter-spacing: -.03em; font-variant-numeric: tabular-nums; }
+#rnum .un { font: 900 calc(var(--u) * 8)/1 var(--font-heading); color: var(--accent); margin-left: .08em; }
+#rlabel { z-index: 6; text-align: center; font: 800 calc(var(--u) * 5)/1.3 var(--font-body); color: var(--on-bg); white-space: pre-line; word-break: keep-all; letter-spacing: -.02em; }
+#rsrc { z-index: 6; text-align: center; font: 600 calc(var(--u) * 2.1)/1.35 var(--font-body); color: var(--on-bg-muted); white-space: pre-line; word-break: keep-all; }
+
+/* 6) 마무리 */
+#clogo { z-index: 6; display: flex; align-items: baseline; justify-content: center; gap: calc(var(--u) * 1.4); white-space: nowrap; }
+#clogo img { height: calc(var(--u) * 8); width: auto; }
+#clogo .lt { font: 900 calc(var(--u) * 5.4)/1 var(--font-display); color: var(--accent); }
+#clogo .ls { font: 700 calc(var(--u) * 2.2)/1 var(--font-display); letter-spacing: .3em; color: var(--on-bg); }
+#chead { z-index: 6; text-align: center; }
+#chead h2 { font: 900 calc(var(--u) * 7)/1.18 var(--font-heading); color: var(--on-bg); letter-spacing: -.035em; margin: 0; white-space: pre-line; word-break: keep-all; }
+#btn { z-index: 2; display: flex; align-items: center; justify-content: center; gap: calc(var(--u) * 1.8); height: calc(var(--u) * 11); padding: 0 calc(var(--u) * 6.4); box-sizing: border-box; border-radius: 999px; white-space: nowrap; }
+#btn .bf { position: absolute; inset: 0; border-radius: inherit; background: var(--accent); }
+#btn .bt { position: relative; display: flex; align-items: center; gap: calc(var(--u) * 1.8); color: var(--accent-ink); font: 900 calc(var(--u) * 4.8)/1 var(--font-body); }
+#btn svg { width: 1em; height: 1em; fill: currentColor; }
+#csub { z-index: 6; text-align: center; font: 800 calc(var(--u) * 3.6)/1.3 var(--font-body); color: var(--on-bg); white-space: nowrap; }
+#note { z-index: 6; text-align: center; font: 600 calc(var(--u) * 1.9)/1.3 var(--font-body); color: var(--on-bg-muted); white-space: pre-line; }
+</style>
+
+<div id="viewport"><div id="stage"><div id="cam"></div></div></div>
+
+<script>/*@GSAP@*/</script>
+<script>/*@DATA@*/</script>
+<script>/*@ENGINE_JS@*/</script>
+<script>
+(function () {
+  const S = Studio, M = S.M, C = S.content, B = S.brand, e = S.esc;
+  const cam = S.$('#cam');
+  const ARROW = '<svg viewBox="0 0 24 24"><path d="M5 11h10.2l-4.6-4.6L12 5l7 7-7 7-1.4-1.4 4.6-4.6H5z"/></svg>';
+  // 선 아이콘 (24×24, 선 굵기는 CSS). 이름에 없는 값이면 동그라미 아이콘
+  const ICONS = {
+    chart: '<path d="M4 20V11M10 20V5M16 20v-6M2.5 20.5h19"/>',
+    bolt: '<path d="M13.2 2.5 4.8 13.6h6.4L10 21.5l8.6-11.4h-6.5z"/>',
+    shield: '<path d="M12 2.8 4.6 5.9v5.6c0 4.5 3.1 7.9 7.4 9.7 4.3-1.8 7.4-5.2 7.4-9.7V5.9z"/><path d="m8.7 12.1 2.3 2.3 4.4-4.7"/>',
+    link: '<path d="M10.2 13.8a4.3 4.3 0 0 0 6.1 0l3-3a4.3 4.3 0 0 0-6.1-6.1l-1.3 1.3"/><path d="M13.8 10.2a4.3 4.3 0 0 0-6.1 0l-3 3a4.3 4.3 0 0 0 6.1 6.1l1.3-1.3"/>',
+    users: '<circle cx="9" cy="8" r="3.4"/><path d="M2.6 20c.6-3.6 3.1-5.6 6.4-5.6s5.8 2 6.4 5.6"/><path d="M15.6 4.9a3.3 3.3 0 0 1 0 6.2M18 14.7c2 .7 3.1 2.4 3.4 5.3"/>',
+    bell: '<path d="M6 16.6V11a6 6 0 0 1 12 0v5.6l1.6 2.1H4.4z"/><path d="M10 21.4h4"/>',
+    clock: '<circle cx="12" cy="12" r="8.6"/><path d="M12 7.4V12l3.2 2.1"/>',
+    doc: '<path d="M6 2.8h8.2l4.6 4.6v14H6z"/><path d="M14 2.8v4.8h4.8M9 12.2h6.4M9 16.2h6.4"/>',
+    chat: '<path d="M3.8 4.6h16.4v11.2H9.6L5 19.8v-4H3.8z"/><path d="M7.8 9h8.4M7.8 12h5.4"/>',
+    spark: '<path d="M11 3.2c.6 4.4 2.3 6.1 6.7 6.7-4.4.6-6.1 2.3-6.7 6.7-.6-4.4-2.3-6.1-6.7-6.7 4.4-.6 6.1-2.3 6.7-6.7z"/><path d="M18.6 14.6c.3 2 1 2.7 3 3-2 .3-2.7 1-3 3-.3-2-1-2.7-3-3 2-.3 2.7-1 3-3z"/>',
+  };
+  const iconSvg = k => `<svg viewBox="0 0 24 24">${ICONS[k] || '<circle cx="12" cy="12" r="8.4"/><circle cx="12" cy="12" r="2.6"/>'}</svg>`;
+  const str = v => (v == null ? '' : String(v));
+  const prob = C.problem || {}, prod = C.product || {}, flow = C.flow || {}, res = C.result || {}, cta = C.cta || {};
+  const pains = (prob.pains || []).map(str).filter(x => x.trim()).slice(0, 3);
+  const feats = (C.features || []).filter(f => f && (str(f.title).trim() || str(f.desc).trim())).slice(0, 4);
+  const steps = (flow.steps || []).map(str).filter(x => x.trim()).slice(0, 4);
+  const hasRes = str(res.number).trim() !== '';
+  const photo = S.img(prod.photo);
+  const logoImg = B.logo && S.img(B.logo);
+  const wf = `<div class="wf"><div class="side"><i class="lg"></i><b></b><b></b><b></b><b></b><b></b></div>
+    <div class="head"><span class="t"></span><span class="s"></span><span class="bt"></span></div>
+    <div class="chart"><span class="t"></span><div class="bars">${'<i></i>'.repeat(7)}</div></div>
+    <div class="stat a"><span class="t"></span><span class="n"></span></div><div class="stat b"><span class="t"></span><span class="n"></span></div>
+    <div class="list">${'<div class="r"><i></i><span></span><em></em></div>'.repeat(3)}</div></div>`;
+  const titleLines = str(prob.title).split('\n');
+
+  cam.appendChild(S.h(`<div id="pd"><div class="dots"></div>
+    <div id="win" class="abs"><div class="wbar"><i></i><i></i><i></i>${str(prod.name).trim() ? `<span class="wname">${e(prod.name)}</span>` : ''}</div>
+      <div class="wbody"><div class="screen">${photo ? `<img src="${photo}" alt="">` : wf}</div><div class="focus"></div>
+        <div class="hero">${str(prod.name).trim() ? `<div class="pn"><span>${e(prod.name)}</span></div>` : ''}${str(prod.tagline).trim() ? `<div class="pt">${e(prod.tagline)}</div>` : ''}</div></div></div>
+    <div id="btn" class="abs"><i class="bf"></i><span class="bt"><span>${e(cta.button || '')}</span>${ARROW}</span></div>
+    <svg id="lsv"><g id="cons"></g><path id="line"/></svg>
+    <div id="ptitle" class="abs"><h1>${titleLines.map(l => `<span class="ln"><span>${e(l)}</span></span>`).join('')}</h1></div>
+    ${pains.map(p => `<div class="tag abs"><i>!</i><span>${e(p)}</span></div>`).join('')}
+    ${feats.map(f => `<div class="card abs"><div class="ic">${iconSvg(f.icon)}</div><div class="tx">${str(f.title).trim() ? `<b>${e(f.title)}</b>` : ''}${str(f.desc).trim() ? `<span>${e(f.desc)}</span>` : ''}</div><i class="hl"></i></div>`).join('')}
+    <div id="ftitle" class="abs">${str(flow.title).trim() ? `<h2>${e(flow.title)}</h2>` : ''}</div>
+    ${steps.map((s, j) => `<div class="node abs"><i class="fl"></i><b>${j + 1}</b></div><div class="slabel abs">${e(s)}</div>`).join('')}
+    <div id="fdot" class="abs"></div>
+    <div id="rnum" class="abs"><span class="v"></span>${str(res.unit).trim() ? `<span class="un">${e(res.unit)}</span>` : ''}</div>
+    <div id="rlabel" class="abs">${e(res.label || '')}</div>
+    <div id="rsrc" class="abs">${e(res.source || '')}</div>
+    <div id="clogo" class="abs">${logoImg ? `<img src="${logoImg}" alt="">` : ''}${B.logoText ? `<span class="lt">${e(B.logoText)}</span>` : ''}${B.logoSub ? `<span class="ls">${e(B.logoSub)}</span>` : ''}</div>
+    <div id="chead" class="abs">${str(cta.headline).trim() ? `<h2>${e(cta.headline)}</h2>` : ''}</div>
+    <div id="csub" class="abs">${e(cta.sub || '')}</div>
+    <div id="note" class="abs">${e(C.note || '')}</div>
+  </div>`));
+
+  S.start(S => {
+    const W = S.W, H = S.H, u = Math.min(W, H) / 100, sf = S.safe;
+    const sx = sf.left, sy = sf.top, sw = W - sf.left - sf.right, sh = H - sf.top - sf.bottom;
+    const cx = sx + sw / 2, cy = sy + sh / 2;
+    const wide = sw / sh > 1.3;
+    const gap = 2.4 * u;
+    const nF = feats.length, nS = steps.length;
+    const lerp = M.lerp, clamp = M.clamp, prog = M.prog, E = M.ease;
+    const svg = S.$('#lsv'); svg.setAttribute('width', W); svg.setAttribute('height', H); svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
+    const path = S.$('#line'), consG = S.$('#cons');
+    const NS = 'http://www.w3.org/2000/svg';
+    const mk = (tag, a, parent) => { const el = document.createElementNS(NS, tag); for (const k in a) el.setAttribute(k, a[k]); parent.appendChild(el); return el; };
+
+    /* ---------- 배치: 제품 창(A: 처음 놓이는 자리, B: 기능 장면 자리)과 카드 칸 ---------- */
+    let A, Bw, slots;
+    const CH = 19 * u;
+    if (wide) {
+      const ww = sw * (nF ? .56 : .66), wh = ww / 1.6;
+      Bw = { x: nF ? sx + ww / 2 : cx, y: cy, w: ww, h: wh };
+      const ks = nF ? Math.min(1.14, sw * .64 / ww, sh * .78 / wh) : 1;
+      A = { x: cx, y: cy, w: ww * ks, h: wh * ks };
+      const colX = sx + sw * .6, colW = sw * .4;
+      const ch = Math.min(CH, (sh - (nF - 1) * gap) / Math.max(1, nF));
+      const tot = nF * ch + (nF - 1) * gap;
+      slots = feats.map((_, i) => ({ x: colX + colW / 2, y: cy - tot / 2 + ch / 2 + i * (ch + gap), w: colW, h: ch }));
+    } else {
+      const rows = nF ? (nF <= 2 ? 1 : 2) : 0;
+      const cardsH = rows ? rows * CH + (rows - 1) * gap : 0, gapWC = rows ? 3.5 * u : 0;
+      const wh = Math.min(sw / 1.45, sh - cardsH - gapWC), ww = sw;
+      const top = sy + (sh - (wh + gapWC + cardsH)) / 2;
+      Bw = { x: cx, y: top + wh / 2, w: ww, h: wh };
+      A = { x: cx, y: cy, w: ww, h: wh };
+      const ct = top + wh + gapWC, cw2 = (sw - gap) / 2;
+      slots = feats.map((_, i) => {
+        const full = nF === 1 || (nF === 3 && i === 2), r = Math.floor(i / 2), c = i % 2, y = ct + r * (CH + gap) + CH / 2;
+        return full ? { x: cx, y, w: sw, h: CH } : { x: sx + cw2 / 2 + c * (cw2 + gap), y, w: cw2, h: CH };
+      });
+    }
+    // 창 DOM 은 A 크기로 짜고 크기 변화는 scale 로
+    const win = S.$('#win'), W0 = A.w, H0 = A.h, barH = 6 * u, bodyH = H0 - barH, R0 = 2.4 * u;
+    win.style.width = W0 + 'px'; win.style.height = H0 + 'px';
+    S.$('.wbar', win).style.height = barH + 'px';
+    const wbody = S.$('.wbody', win); wbody.style.top = barH + 'px';
+    const hero = S.$('.hero', win), pnSpan = S.$('.pn span', win), pt = S.$('.pt', win);
+    if (pnSpan) { pnSpan.parentElement.style.width = W0 * .86 + 'px'; S.fit(pnSpan.parentElement, { max: (wide ? 7.4 : 8.4) * u }); }
+    if (pt) { pt.style.width = W0 * .82 + 'px'; S.fit(pt, { max: 3.8 * u, maxLines: 2, maxHeight: bodyH * .34 }); }
+    const rad = R => R0 * R.w / W0;
+    const per = (w, h, r) => 2 * (w - 2 * r) + 2 * (h - 2 * r) + 2 * Math.PI * r;
+    const perR = R => per(R.w, R.h, rad(R));
+    const PA = perR(A), PB = perR(Bw);
+    const lerpR = (a, b, k) => ({ x: lerp(a.x, b.x, k), y: lerp(a.y, b.y, k), w: lerp(a.w, b.w, k), h: lerp(a.h, b.h, k) });
+    // 창 안 자리(0~1) → 화면 좌표
+    const spotXY = (f, R) => { const s = R.w / W0, lx = f[0] * W0, ly = barH + f[1] * bodyH; return [R.x + (lx - W0 / 2) * s, R.y + (ly - H0 / 2) * s]; };
+    const DEF_SPOTS = [[.45, .4], [.6, .82], [.84, .4], [.1, .36]];
+    const spots = feats.map((f, i) => { const sp = Array.isArray(f.spot) && f.spot.length >= 2 && isFinite(+f.spot[0]) && isFinite(+f.spot[1]) ? [clamp(+f.spot[0]), clamp(+f.spot[1])] : DEF_SPOTS[i % 4]; return sp; });
+
+    /* ---------- 1) 문제: 제목, 엉킨 선, 불편 태그 ---------- */
+    const ptitle = S.$('#ptitle'), h1 = S.$('h1', ptitle);
+    let tBox;
+    ptitle.classList.add('measure');   // 줄 마스크(overflow hidden)를 잠시 풀어야 넘침을 잴 수 있음
+    if (wide) {
+      ptitle.style.width = sw * .45 + 'px';
+      S.fit(h1, { max: 8.4 * u, maxLines: Math.max(3, titleLines.length) });
+      M.place(ptitle, sx, cy, { ax: 0, ay: .5 });
+      tBox = { x: sx + sw * .74, y: cy, w: sw * .32, h: sh * .56 };
+    } else {
+      ptitle.style.width = sw + 'px';
+      S.fit(h1, { max: 9.4 * u, maxLines: Math.max(3, titleLines.length) });
+      M.place(ptitle, sx, sy + u, { ax: 0, ay: 0 });
+      const top = sy + u + ptitle.offsetHeight + 4 * u, bot = sy + sh - u;
+      tBox = { x: cx, y: (top + bot) / 2, w: Math.min(sw * .66, 64 * u), h: Math.min((bot - top) * .7, 50 * u) };
+    }
+    ptitle.classList.remove('measure');
+    const titleLn = S.$$('.ln span', h1);
+    const titleBottom = wide ? 0 : sy + u + ptitle.offsetHeight;
+    const N = 560, Q = Array.from({ length: N }, (_, i) => i / (N - 1) - .5);
+    // 엉킨 선: 시드가 있는 난수로 고정. 천천히 떠도는 중심 + 고리를 그리며 지나가는 펜
+    const rnd = M.rng(+C.seed || 23), ph = Array.from({ length: 9 }, () => rnd() * Math.PI * 2);
+    const TG = new Float64Array(2 * N);
+    {
+      let x0 = 1e9, x1 = -1e9, y0 = 1e9, y1 = -1e9;
+      for (let i = 0; i < N; i++) {
+        const v = i / (N - 1), a = v * Math.PI * 2;
+        const wx = .55 * Math.sin(a * 1.1 + ph[0]) + .32 * Math.sin(a * 2.3 + ph[1]) + .12 * Math.sin(a * 4.3 + ph[6]);
+        const wy = .5 * Math.cos(a * 1.3 + ph[2]) + .34 * Math.sin(a * 2.7 + ph[3]) + .12 * Math.cos(a * 3.9 + ph[7]);
+        const lr = .3 + .13 * Math.sin(a * 3.1 + ph[4]), la = v * 11 * Math.PI * 2 + ph[5];
+        const x = wx + lr * Math.cos(la), y = wy + lr * Math.sin(la) * (.8 + .2 * Math.sin(a * 1.7 + ph[8]));
+        TG[2 * i] = x; TG[2 * i + 1] = y;
+        x0 = Math.min(x0, x); x1 = Math.max(x1, x); y0 = Math.min(y0, y); y1 = Math.max(y1, y);
+      }
+      for (let i = 0; i < N; i++) {
+        TG[2 * i] = tBox.x + ((TG[2 * i] - x0) / (x1 - x0) - .5) * tBox.w;
+        TG[2 * i + 1] = tBox.y + ((TG[2 * i + 1] - y0) / (y1 - y0) - .5) * tBox.h;
+      }
+    }
+    // 불편 태그: 엉킨 선 둘레 세 자리. 가장 가까운 선 위 점에 짧은 줄로 이어 붙임
+    const tags = S.$$('.tag');
+    const TAGMAX = wide ? sw * .3 : sw * .52;
+    const tagSlots = [[-.78, -.72], [.86, -.04], [-.5, .84]];
+    const tagInfo = tags.map((tg, j) => {
+      const sp = S.$('span', tg);
+      sp.style.width = TAGMAX - 9 * u + 'px'; S.fit(sp, { max: 3.6 * u }); sp.style.width = 'auto';
+      const tw = tg.offsetWidth, th = tg.offsetHeight;
+      const sl = tagSlots[j % 3];
+      let x = tBox.x + sl[0] * tBox.w / 2, y = tBox.y + sl[1] * tBox.h / 2;
+      // 기울기·튀어나올 때 커짐·화면 떠다님만큼 여유를 두고 세이프존 안에
+      const mg = 2.6 * u;
+      x = clamp(x, sx + tw / 2 + mg, sx + sw - tw / 2 - mg);
+      y = clamp(y, Math.max(sy, titleBottom + 2 * u) + th / 2 + mg, sy + sh - th / 2 - mg);
+      // 이을 점: 태그에서 상자 가운데 쪽으로 45% 들어간 곳에 가장 가까운 선 위 점
+      const gx = lerp(x, tBox.x, .45), gy = lerp(y, tBox.y, .45);
+      let best = 0, bd = 1e18;
+      for (let i = 20; i < N - 20; i += 2) { const d = (TG[2 * i] - gx) ** 2 + (TG[2 * i + 1] - gy) ** 2; if (d < bd) { bd = d; best = i; } }
+      const con = mk('line', { class: 'con', 'stroke-width': (u * .32).toFixed(2), opacity: .55 }, consG);
+      const anc = mk('circle', { class: 'anc', r: (u * .75).toFixed(2) }, consG);
+      return { el: tg, x, y, ai: best, con, anc, rot: [-4, 3, -2][j % 3], dir: j % 2 ? 1 : -1 };
+    });
+
+    /* ---------- 2) 해결 ---------- */
+    const wname = S.$('.wname', win);
+    const bars = S.$$('.wf .chart .bars i', win);
+    const focus = S.$('.focus', win);
+    const fW = W0 * .36, fH = bodyH * .4;
+    focus.style.width = fW + 'px'; focus.style.height = fH + 'px';
+    const focusPos = spots.map(f => [clamp(f[0] * W0, fW / 2 + 1.2 * u, W0 - fW / 2 - 1.2 * u), clamp(f[1] * bodyH, fH / 2 + 1.2 * u, bodyH - fH / 2 - 1.2 * u)]);
+
+    /* ---------- 3) 기능 카드 ---------- */
+    const cards = S.$$('.card');
+    cards.forEach((cd, i) => {
+      const sl = slots[i];
+      cd.style.width = sl.w + 'px'; cd.style.height = sl.h + 'px';
+      const b = S.$('.tx b', cd), sp = S.$('.tx span', cd);
+      if (b) S.fit(b, { max: 4.2 * u });
+      if (sp) S.fit(sp, { max: 3 * u, maxLines: 2, keepLines: false, maxHeight: sl.h - (b ? b.offsetHeight : 0) - 4 * u });
+    });
+
+    /* ---------- 4) 쓰는 흐름 ---------- */
+    const ftitle = S.$('#ftitle'), fh2 = S.$('h2', ftitle);
+    const nodes = S.$$('.node'), labels = S.$$('.slabel'), fdot = S.$('#fdot');
+    const railTh = wide ? 0 : -Math.PI / 2;
+    let RAIL, nodeXY = [];
+    if (wide) {
+      const ry = sy + sh * .58;
+      const span = nS > 1 ? sw * .8 : 0;
+      nodeXY = steps.map((_, j) => [nS > 1 ? sx + sw * .1 + j * span / (nS - 1) : cx, ry]);
+      const lw = nS > 1 ? span / (nS - 1) * .94 : sw * .6;
+      labels.forEach(l => { l.classList.add('c'); l.style.width = lw + 'px'; S.fit(l, { max: 4.6 * u, maxLines: 2 }); });
+      ftitle.style.width = sw * .8 + 'px'; ftitle.style.textAlign = 'center';
+      if (fh2) S.fit(fh2, { max: 7 * u, maxLines: 2 });
+      M.place(ftitle, cx, ry - 13 * u, { ax: .5, ay: 1 });
+      RAIL = { x: cx, y: ry };
+    } else {
+      const rx = sx + 4.2 * u, lx = rx + 7 * u;
+      ftitle.style.width = sx + sw - lx + 'px';
+      if (fh2) S.fit(fh2, { max: 7.4 * u, maxLines: 2 });
+      M.place(ftitle, lx, sy + 1.5 * u, { ax: 0, ay: 0 });
+      const top = sy + 1.5 * u + ftitle.offsetHeight + 9 * u, bot = sy + sh - 5 * u;
+      const sp = nS > 1 ? Math.min(19 * u, (bot - top) / (nS - 1)) : 0;
+      const y0 = (top + bot) / 2 - sp * (nS - 1) / 2;
+      nodeXY = steps.map((_, j) => [rx, y0 + j * sp]);
+      labels.forEach(l => { l.style.width = sx + sw - lx + 'px'; S.fit(l, { max: 6 * u }); l.style.width = 'auto'; });
+      RAIL = { x: rx, y: cy };
+    }
+    const LR = Math.max(PB, 2.3 * Math.max(W, H));
+
+    /* ---------- 5) 효과 숫자 ---------- */
+    const rnum = S.$('#rnum'), rv = S.$('.v', rnum), rlabel = S.$('#rlabel'), rsrc = S.$('#rsrc');
+    const RR = Math.min(sw, sh) * (wide ? .25 : .24);
+    const RC = { x: cx, y: sy + sh * (wide ? .4 : .42) };
+    const rawNum = str(res.number).replace(/,/g, '').trim();
+    const numeric = /^-?\d+(\.\d+)?$/.test(rawNum), dec = numeric ? (rawNum.split('.')[1] || '').length : 0;
+    const fmtN = v => numeric ? v.toLocaleString('ko-KR', { minimumFractionDigits: dec, maximumFractionDigits: dec }) : str(res.number);
+    rv.textContent = fmtN(numeric ? +rawNum : 0);
+    rnum.style.width = RR * 1.56 + 'px';
+    { // 숫자+단위가 고리 안에 들어가게 함께 줄임
+      const un = S.$('.un', rnum); let fs = RR * .78;
+      const setFs = v => { rv.style.fontSize = v + 'px'; if (un) un.style.fontSize = v * .4 + 'px'; };
+      setFs(fs); rnum.style.width = 'auto';
+      while (rnum.offsetWidth > RR * 1.56 && fs > 10) { fs *= .95; setFs(fs); }
+    }
+    rlabel.style.width = sw * (wide ? .7 : .92) + 'px'; S.fit(rlabel, { max: 5 * u, maxLines: 2 });
+    rsrc.style.width = sw * (wide ? .7 : .92) + 'px'; S.fit(rsrc, { max: 2.1 * u, maxLines: 2 });
+    M.place(rnum, RC.x, RC.y, { ax: .5, ay: .5 });
+
+    /* ---------- 6) 마무리 ---------- */
+    const clogo = S.$('#clogo'), chead = S.$('#chead'), ch2 = S.$('h2', chead), btn = S.$('#btn'), bf = S.$('.bf', btn), bt = S.$('.bt', btn), csub = S.$('#csub'), note = S.$('#note');
+    chead.style.width = sw * (wide ? .7 : 1) + 'px';
+    if (ch2) S.fit(ch2, { max: (wide ? 6.6 : 7.2) * u, maxLines: 3 });
+    { const t2 = S.$('span', bt); t2.style.display = 'block'; t2.style.whiteSpace = 'nowrap'; t2.style.maxWidth = sw * .7 + 'px'; t2.style.overflow = 'hidden'; S.fit(t2, { max: 4.8 * u }); }
+    csub.style.width = sw + 'px'; S.fit(csub, { max: 3.6 * u });
+    note.style.width = sw + 'px';
+    const PW = Math.min(sw * .9, btn.offsetWidth), PH = btn.offsetHeight;
+    btn.style.width = PW + 'px';
+    const noteH = C.note ? note.offsetHeight + 1.5 * u : 0;
+    const parts = [[clogo, (B.logoText || logoImg) ? clogo.offsetHeight : 0, 3.4 * u], [chead, ch2 ? chead.offsetHeight : 0, 4.6 * u], [btn, PH, 3.2 * u], [csub, cta.sub ? csub.offsetHeight : 0, 0]];
+    const totalH = parts.reduce((s, p) => s + p[1] + (p[1] ? p[2] : 0), 0);
+    let yy = sy + (sh - noteH - totalH) / 2;
+    const ctaY = {};
+    parts.forEach(([el, h, g]) => { ctaY[el.id] = yy + h / 2; if (h) yy += h + g; });
+    const PILL = { x: cx, y: ctaY.btn, w: PW, h: PH };
+    M.place(note, cx, sy + sh, { ax: .5, ay: 1, o: 0 });
+
+    /* ---------- 시간표 (120BPM, 한 박 0.5초) ---------- */
+    const T_SOL = 3.0;                     // 선이 펴지기 시작
+    const T_WRAP = T_SOL + .75, D_WRAP = .9; // 창을 감쌈
+    const T_FILL = T_SOL + 1.45, T_NAME = T_SOL + 1.6;
+    const T_FEAT = T_SOL + 2.5;            // 창이 옆으로, 화면이 보임
+    const TF0 = T_FEAT + 1.0, FSTEP = 1.5;
+    const TF = feats.map((_, i) => TF0 + i * FSTEP);
+    const T_FLOW = nF ? TF[nF - 1] + 1.0 : T_FEAT + 1.0;
+    const T_UN = T_FLOW + .1, D_UN = .6, T_RAIL = T_FLOW + .55;
+    const TS0 = T_FLOW + 1.5, SSTEP = .5;
+    const TS = steps.map((_, j) => TS0 + j * SSTEP);
+    const T_RES = nS ? TS[nS - 1] + 1.0 : T_FLOW + 1.0;
+    const T_CTA = hasRes ? T_RES + 2.5 : T_RES;
+    const END = T_CTA + 3.0;
+    S.setDuration(END);
+
+    /* ---------- 선 계산 ----------
+       상태 = 접점(x, y)·방향 th·감을 모양(둥근 사각형 w, h, r)·선 길이 L·감긴 길이 sw.
+       선의 각 점은 접점에서 양쪽으로 a = Q·L 만큼 떨어져 있고, |a| ≤ sw 이면 모양 둘레 위, 넘으면 마지막 접선으로 곧게 뻗음.
+       sw = 0 이면 곧은 선, sw = L/2 = 둘레/2 이면 다 감긴 모양(테두리). */
+    function rrLocal(w, h, r, s, o) {
+      r = Math.max(0, Math.min(r, w / 2, h / 2));
+      const s1 = w / 2 - r, arc = Math.PI * r / 2, s2 = h - 2 * r;
+      if (s <= s1) { o[0] = s; o[1] = 0; o[2] = 1; o[3] = 0; return; }
+      s -= s1;
+      if (s <= arc) { const q = r ? s / r : 0; o[0] = s1 + r * Math.sin(q); o[1] = r - r * Math.cos(q); o[2] = Math.cos(q); o[3] = Math.sin(q); return; }
+      s -= arc;
+      if (s <= s2) { o[0] = w / 2; o[1] = r + s; o[2] = 0; o[3] = 1; return; }
+      s -= s2;
+      if (s <= arc) { const q = r ? s / r : 0; o[0] = w / 2 - r + r * Math.cos(q); o[1] = h - r + r * Math.sin(q); o[2] = -Math.sin(q); o[3] = Math.cos(q); return; }
+      s -= arc;
+      o[0] = s1 - s; o[1] = h; o[2] = -1; o[3] = 0;
+    }
+    const tmp = [0, 0, 0, 0];
+    function wrapInto(out, st) {
+      const tx = Math.cos(st.th), ty = Math.sin(st.th), nx = -ty, ny = tx;
+      for (let i = 0; i < N; i++) {
+        const a = Q[i] * st.L, sg = a < 0 ? -1 : 1, aa = Math.abs(a), s = Math.min(aa, st.sw);
+        rrLocal(st.w, st.h, st.r, s, tmp);
+        const ex = aa - s, al = (tmp[0] + tmp[2] * ex) * sg, inn = tmp[1] + tmp[3] * ex;
+        out[2 * i] = st.x + al * tx + inn * nx;
+        out[2 * i + 1] = st.y + al * ty + inn * ny;
+      }
+    }
+    // 창 모양 상태 (접점 = 위 가운데)
+    const winSt = (R, sw_, L) => ({ x: R.x, y: R.y - R.h / 2, th: 0, w: R.w, h: R.h, r: rad(R), L: L ?? perR(R), sw: sw_ });
+    // 고리·버튼은 흐름 선의 방향(railTh)에 맞춘 접점에서 감음: 세로 화면은 왼쪽, 가로 화면은 위
+    const ringSt = () => wide ? { x: RC.x, y: RC.y - RR, th: 0, w: 2 * RR, h: 2 * RR, r: RR } : { x: RC.x - RR, y: RC.y, th: railTh, w: 2 * RR, h: 2 * RR, r: RR };
+    const pillSt = (s = 1) => { const w = PILL.w * s, h = PILL.h * s; return wide ? { x: PILL.x, y: PILL.y - h / 2, th: 0, w, h, r: h / 2 } : { x: PILL.x - w / 2, y: PILL.y, th: railTh, w: h, h: w, r: h / 2 }; };
+    const PRING = 2 * Math.PI * RR;
+    const lerpSt = (a, b, k, keys = ['x', 'y', 'th', 'w', 'h', 'r', 'L', 'sw']) => { const o = Object.assign({}, a); for (const kk of keys) o[kk] = lerp(a[kk], b[kk], k); return o; };
+
+    // 감기 진행(0→1) → 감긴 길이. 곧은 변에서는 선이 같은 줄 위를 미끄러질 뿐 모양이 안 바뀌므로,
+    // 시간은 모서리 두 번(다리가 경첩처럼 내려왔다가 안으로 접힘)에 거의 다 씀
+    function swMap(w, h, r, k) {
+      r = Math.max(0, Math.min(r, w / 2, h / 2));
+      const s1 = w / 2 - r, arc = Math.PI * r / 2, s2 = h - 2 * r, ws = s2 > 1 ? .16 : 0;
+      let q = E.inOutCubic(clamp(k)) * (2 + ws);
+      if (q <= 1) return s1 + arc * q;
+      q -= 1;
+      if (q <= ws) return s1 + arc + s2 * q / ws;
+      return s1 + arc + s2 + arc * Math.min(1, q - ws);
+    }
+    const swWin = (R, k) => swMap(R.w, R.h, rad(R), k);
+    const swWrapA = t => swWin(A, prog(t, T_WRAP, D_WRAP));
+    function lineState(t) {
+      if (t < T_FEAT) return winSt(A, swWrapA(t), PA);
+      if (t < T_FLOW) { const R = lerpR(A, Bw, M.spring(t - T_FEAT, { f: 1.3, z: .95 })), P = perR(R); return winSt(R, P / 2, P); }
+      // 창이 풀려 곧은 선
+      let st = winSt(Bw, swWin(Bw, 1 - prog(t, T_UN, D_UN)), PB);
+      if (nS) { const k = M.spring(t - T_RAIL, { f: 1.8, z: .95 }); st = Object.assign(st, { x: lerp(st.x, RAIL.x, k), y: lerp(st.y, RAIL.y, k), th: lerp(0, railTh, k), L: lerp(PB, LR, k) }); }
+      if (t < T_RES) return st;
+      const base = st;
+      if (hasRes) {
+        const g = ringSt(), km = M.spring(t - (T_RES + .1), { f: 1.6, z: .95 }), kw = prog(t, T_RES + .3, .85);
+        st = Object.assign({}, g, { x: lerp(base.x, g.x, km), y: lerp(base.y, g.y, km), th: lerp(base.th, g.th, km), L: lerp(base.L, PRING, E.inOutCubic(kw)), sw: swMap(g.w, g.h, g.r, kw) });
+        if (t < T_CTA) return st;
+        const breath = 1 + .012 * (1 - Math.cos((t - T_CTA - 1.4) * 5.2)) * clamp((t - T_CTA - 1.4) * 2);   // 버튼이 아주 살짝 숨 쉼
+        const p = pillSt(breath), kp = M.spring(t - (T_CTA + .15), { f: 1.6, z: .92 });
+        const o = lerpSt(st, p, kp, ['x', 'y', 'th', 'w', 'h', 'r']);
+        o.L = per(o.w, o.h, o.r); o.sw = o.L / 2;
+        return o;
+      }
+      const breath = 1 + .012 * (1 - Math.cos((t - T_CTA - 1.6) * 5.2)) * clamp((t - T_CTA - 1.6) * 2);
+      const p = pillSt(breath), PP = per(p.w, p.h, p.r);
+      const km = M.spring(t - (T_CTA + .1), { f: 1.6, z: .95 }), kw = prog(t, T_CTA + .3, .85);
+      return Object.assign({}, p, { x: lerp(base.x, p.x, km), y: lerp(base.y, p.y, km), th: lerp(base.th, p.th, km), L: lerp(base.L, PP, E.inOutCubic(kw)), sw: swMap(p.w, p.h, p.r, kw) });
+    }
+
+    const PT = new Float64Array(2 * N), WP = new Float64Array(2 * N);
+    const cOnBg = S.cssVar('--on-bg'), cAcc = S.cssVar('--accent');
+    const hex = c => /^#([0-9a-f]{3}|[0-9a-f]{6})$/i.test(c);
+    const lineColor = k => hex(cOnBg) && hex(cAcc) ? M.color(cOnBg, cAcc, k) : (k < .5 ? cOnBg : cAcc);
+    const kStr = i => clamp(M.spring(t_ - T_SOL - .24 * (1 - Math.abs(2 * Q[i])), { f: 1.5, z: .92 }), 0, 1.02);
+    let t_ = 0;
+
+    // 커서
+    const cur = M.Cursor(S.$('#pd'), { size: 1.45 });
+    const curStart = [Bw.x + Bw.w * .42, Bw.y + Bw.h * .75];
+    const curPts = [[T_FEAT + .6, ...curStart]];
+    spots.forEach((f, i) => { const p = spotXY(f, Bw); curPts.push([TF[i] - .06, p[0] + u * .4, p[1] + u * .4, i ? .5 : .62]); });
+    const curClicks = TF.slice();
+
+    const root = S.$('#pd');
+    S.ambient(t => {
+      t_ = t;
+      M.drift(root, t, .8);
+      /* ----- 선 ----- */
+      const st = lineState(t);
+      wrapInto(WP, st);
+      const strDone = t > T_SOL + 1.4;
+      if (strDone) PT.set(WP);
+      else {
+        const jit = (1 - clamp((t - T_SOL) * 3)) * .35 * u;
+        for (let i = 0; i < N; i++) {
+          const k = t < T_SOL ? 0 : kStr(i);
+          const jx = TG[2 * i] + Math.sin(t * 2.3 + i * .37) * jit, jy = TG[2 * i + 1] + Math.cos(t * 1.9 + i * .29) * jit;
+          PT[2 * i] = lerp(jx, WP[2 * i], k); PT[2 * i + 1] = lerp(jy, WP[2 * i + 1], k);
+        }
+      }
+      let d = 'M' + PT[0].toFixed(1) + ' ' + PT[1].toFixed(1);
+      for (let i = 1; i < N; i++) d += 'L' + PT[2 * i].toFixed(1) + ' ' + PT[2 * i + 1].toFixed(1);
+      path.setAttribute('d', d);
+      // 처음엔 펜으로 그리듯 나타남
+      const dk = E.inOutCubic(prog(t, .15, 1.45));
+      if (dk < 1) {
+        let len = 0; for (let i = 1; i < N; i++) len += Math.hypot(PT[2 * i] - PT[2 * i - 2], PT[2 * i + 1] - PT[2 * i - 1]);
+        path.style.strokeDasharray = `${len.toFixed(1)} ${len.toFixed(1)}`; path.style.strokeDashoffset = (len * (1 - dk)).toFixed(1);
+        path.style.visibility = dk > .001 ? 'inherit' : 'hidden';
+      } else { path.style.strokeDasharray = 'none'; path.style.strokeDashoffset = '0'; path.style.visibility = 'inherit'; }
+      path.style.stroke = lineColor(prog(t, T_SOL, .5));
+      path.setAttribute('stroke-width', (u * M.anim([[0, .62], [T_SOL, .8, { d: .5 }], [T_RES + .2, hasRes ? 1.05 : .8, { d: .6 }], [T_CTA + .2, .8, { d: .5 }]], t)).toFixed(2));
+
+      /* ----- 1) 문제 ----- */
+      const tOut = E.inCubic(prog(t, T_SOL - .1, .35));
+      titleLn.forEach((l, i) => M.rise(l, t < T_SOL - .1 ? clamp(M.spring(t - (.3 + i * .14), 'snappy'), 0, 1.03) : 1 + tOut));
+      M.show(ptitle, t < T_SOL + .4); ptitle.style.opacity = (1 - tOut).toFixed(3);
+      tagInfo.forEach((g, j) => {
+        const t0 = 1.0 + j * .5, pk = M.spring(t - t0, 'pop');
+        const ax = PT[2 * g.ai], ay = PT[2 * g.ai + 1];
+        let x = g.x, y = g.y, rot = g.rot + (1 - Math.min(1, pk)) * 10 * g.dir, o = t >= t0 ? 1 : 0, s = Math.min(1.1, pk);
+        if (t >= T_SOL) { const dt = t - T_SOL - j * .05; if (dt > 0) { y += -5 * u * dt * 6 + .5 * 9000 * dt * dt * (u / 10.8); x += g.dir * 20 * u * dt; rot += g.dir * 160 * dt; o = 1 - prog(dt, .25, .3); } }
+        M.place(g.el, x, y, { rot, o, s });
+        const conOn = t >= t0 + .05 && t < T_SOL;
+        g.con.style.visibility = g.anc.style.visibility = conOn ? 'visible' : 'hidden';
+        if (conOn) {
+          const ck = clamp(pk);
+          g.con.setAttribute('x1', ax.toFixed(1)); g.con.setAttribute('y1', ay.toFixed(1));
+          g.con.setAttribute('x2', lerp(ax, x, ck).toFixed(1)); g.con.setAttribute('y2', lerp(ay, y, ck).toFixed(1));
+          g.anc.setAttribute('cx', ax.toFixed(1)); g.anc.setAttribute('cy', ay.toFixed(1));
+        }
+      });
+
+      /* ----- 2) 제품 창 ----- */
+      const R = t < T_FEAT ? A : lerpR(A, Bw, M.spring(t - T_FEAT, { f: 1.3, z: .95 }));
+      const winOut = 1 - prog(t, T_FLOW + .05, .3);
+      // 선이 창을 감싸 내려가는 만큼 속이 위에서부터 채워짐
+      const fillK = E.inOutCubic(prog(t, T_WRAP + .12, D_WRAP));
+      M.place(win, R.x, R.y, { s: R.w / W0, o: (fillK > 0 ? 1 : 0) * winOut });
+      win.style.clipPath = fillK < 1 ? `inset(0 0 ${((1 - fillK) * 100).toFixed(2)}% 0)` : '';
+      if (wname) wname.style.opacity = E.outCubic(prog(t, T_FILL + .2, .4)).toFixed(3);
+      const pnEl = S.$('.pn span', win);
+      if (pnEl) M.rise(pnEl, clamp(M.spring(t - T_NAME, 'snappy'), 0, 1.03));
+      if (pt) { const k = M.spring(t - (T_NAME + .25), 'snappy'); pt.style.opacity = clamp(k * 1.4).toFixed(3); pt.style.transform = `translateY(${((1 - clamp(k)) * u * 2.4).toFixed(2)}px)`; }
+      const hk = E.inOutCubic(prog(t, T_FEAT + .5, .45));
+      hero.style.opacity = '1'; hero.style.visibility = hk >= 1 ? 'hidden' : 'inherit';
+      hero.style.transform = `translateY(${(-hk * 101).toFixed(2)}%)`;   // 막이 위로 걷히며 화면이 보임
+      bars.forEach((b, j) => { b.style.transform = `scaleY(${clamp(M.spring(t - (T_FEAT + .7 + j * .06), 'snappy'), 0, 1.05).toFixed(4)})`; });
+
+      /* ----- 3) 기능: 커서가 누르면 카드가 튀어나와 옆에 줄 섬 ----- */
+      if (nF) {
+        const fo = t < TF0 - .3 ? 0 : t < T_FLOW ? E.outCubic(prog(t, TF0 - .3, .3)) : 0;
+        let fx = focusPos[0][0], fy = focusPos[0][1];
+        for (let i = 1; i < nF; i++) { const k = M.spring(t - (TF[i] - .32), { f: 2.2, z: .9 }); fx = lerp(fx, focusPos[i][0], k); fy = lerp(fy, focusPos[i][1], k); }
+        const fs = 1 + .12 * (1 - clamp(M.spring(t - (TF0 - .3), 'snappy')));
+        M.place(focus, fx, fy, { s: fs, o: fo });
+        const c = M.cursorAt(curPts, curClicks, t);
+        const co = t < T_FEAT + .6 ? 0 : t < T_FLOW - .2 ? E.outCubic(prog(t, T_FEAT + .6, .25)) : 1 - prog(t, T_FLOW - .2, .25);
+        cur.set(c.x, c.y, { down: c.down, ring: c.ring, o: co });
+        cards.forEach((cd, i) => {
+          const sl = slots[i], t0 = TF[i] + .04, k = M.spring(t - t0, { f: 2.1, z: .82 });
+          const sp = spotXY(spots[i], Bw);
+          let x = lerp(sp[0], sl.x, k), y = lerp(sp[1], sl.y, k), s = lerp(.22, 1, k), o = t >= t0 ? clamp(k * 3) : 0, rot = (1 - clamp(k)) * -6;
+          if (t >= T_FLOW) { const q = E.inCubic(prog(t, T_FLOW + i * .05, .36)); x = lerp(sl.x, Bw.x, q * .5); y = lerp(sl.y, Bw.y, q * .5); s = 1 - .4 * q; o = 1 - q; }
+          M.place(cd, x, y, { s, o, rot });
+          const on = t >= TF[i] && (i === nF - 1 || t < TF[i + 1]);
+          S.$('.hl', cd).style.opacity = (on ? clamp((t - TF[i]) * 5) : i < nF - 1 && t >= TF[i + 1] ? 1 - clamp((t - TF[i + 1]) * 5) : 0).toFixed(3);
+        });
+      } else { M.show(focus, false); cur.set(0, 0, { o: 0 }); }
+
+      /* ----- 4) 쓰는 흐름: 점이 지나가며 단계가 켜짐 ----- */
+      const flowOut = 1 - prog(t, T_RES, .3);
+      if (nS) {
+        const tk = M.spring(t - (T_FLOW + 1.0), 'snappy');
+        if (wide) M.place(ftitle, cx, nodeXY[0][1] - 13 * u + (1 - clamp(tk)) * u * 4, { ax: .5, ay: 1, o: t > T_FLOW + 1.0 ? clamp(tk * 1.5) * flowOut : 0 });
+        else M.place(ftitle, sx + 11.2 * u, sy + 1.5 * u + (1 - clamp(tk)) * u * 4, { ax: 0, ay: 0, o: t > T_FLOW + 1.0 ? clamp(tk * 1.5) * flowOut : 0 });
+        nodes.forEach((nd, j) => {
+          const [x, y] = nodeXY[j], t0 = T_FLOW + 1.0 + j * .08, k = M.spring(t - t0, 'pop');
+          const lit = M.spring(t - TS[j], { f: 2.6, z: .7 });
+          M.place(nd, x, y, { s: (t >= t0 ? Math.min(1.1, k) : 0) * (1 + .12 * Math.sin(Math.PI * clamp((t - TS[j]) / .35))), o: (t >= t0 ? 1 : 0) * flowOut });
+          S.$('.fl', nd).style.transform = `scale(${(t >= TS[j] ? clamp(lit, 0, 1.06) : 0).toFixed(4)})`;
+          S.$('b', nd).style.color = t >= TS[j] + .06 ? 'var(--accent-ink)' : '';
+          const lb = labels[j], lo = t < t0 + .1 ? 0 : t < TS[j] ? .3 : .3 + .7 * clamp((t - TS[j]) * 4);
+          if (wide) M.place(lb, x, y + 6.4 * u, { ax: .5, ay: 0, o: lo * flowOut });
+          else M.place(lb, x + 7 * u - (1 - (t >= TS[j] ? E.outCubic(clamp((t - TS[j]) * 3)) : 0)) * u * 1.4, y, { ax: 0, ay: .5, o: lo * flowOut });
+        });
+        // 지나가는 점
+        let px = wide ? nodeXY[0][0] - 12 * u : nodeXY[0][0], py = wide ? nodeXY[0][1] : nodeXY[0][1] - 12 * u;
+        nodeXY.forEach((p, j) => { const dd = j ? .38 : .42, k = E.inOutCubic(prog(t, TS[j] - dd, dd)); px = lerp(px, p[0], k); py = lerp(py, p[1], k); });
+        const dOn = t >= TS[0] - .45 && t < T_RES + .3;
+        M.place(fdot, px, py, { o: dOn ? Math.min(clamp((t - TS[0] + .45) * 6), flowOut) : 0 });
+      } else { M.show(ftitle, false); M.show(fdot, false); }
+
+      /* ----- 5) 효과 숫자 ----- */
+      if (hasRes) {
+        const rOut = 1 - prog(t, T_CTA, .3);
+        const nk = M.spring(t - (T_RES + .95), { f: 2, z: .85 });
+        const vk = E.outCubic(prog(t, T_RES + .95, .85));
+        if (numeric) rv.textContent = fmtN(+rawNum * vk);
+        M.place(rnum, RC.x, RC.y, { s: .85 + .15 * clamp(nk), o: t >= T_RES + .95 ? clamp(nk * 2) * rOut : 0 });
+        const lk = M.spring(t - (T_RES + 1.2), 'snappy');
+        const ly = RC.y + RR + 4.4 * u;
+        M.place(rlabel, RC.x, ly + (1 - clamp(lk)) * u * 3, { ax: .5, ay: 0, o: t >= T_RES + 1.2 ? clamp(lk * 1.5) * rOut : 0 });
+        M.place(rsrc, RC.x, ly + rlabel.offsetHeight + 2 * u, { ax: .5, ay: 0, o: t >= T_RES + 1.4 && res.source ? E.outCubic(prog(t, T_RES + 1.4, .4)) * rOut : 0 });
+      } else { M.show(rnum, false); M.show(rlabel, false); M.show(rsrc, false); }
+
+      /* ----- 6) 마무리: 선이 버튼 테두리가 되고 속이 채워짐 ----- */
+      const tP = T_CTA + (hasRes ? .55 : 1.0);
+      const st2 = t >= T_CTA ? lineState(t) : null;
+      const bfK = E.outCubic(prog(t, tP, .3));
+      if (st2) {
+        const s2 = wide ? st2.w / PILL.w : st2.h / PILL.w;
+        M.place(btn, PILL.x, PILL.y, { s: s2, o: bfK > 0 ? 1 : 0 });
+      } else M.show(btn, false);
+      bf.style.opacity = bfK.toFixed(3);
+      const tk2 = M.spring(t - (tP + .1), 'snappy');
+      bt.style.opacity = clamp(tk2 * 1.6).toFixed(3); bt.style.transform = `translateY(${((1 - clamp(tk2)) * u * 2).toFixed(2)}px)`;
+      const lgk = M.spring(t - (T_CTA + .3), 'snappy'), hdk = M.spring(t - (T_CTA + .6), 'snappy'), sbk = M.spring(t - (tP + .3), 'snappy');
+      M.place(clogo, cx, ctaY.clogo + (1 - clamp(lgk)) * u * 4, { o: t >= T_CTA + .3 ? clamp(lgk * 1.5) : 0 });
+      M.place(chead, cx, ctaY.chead + (1 - clamp(hdk)) * u * 4, { o: t >= T_CTA + .6 ? clamp(hdk * 1.5) : 0 });
+      M.place(csub, cx, ctaY.csub + (1 - clamp(sbk)) * u * 3, { o: t >= tP + .3 ? clamp(sbk * 1.5) : 0 });
+      note.style.opacity = E.outCubic(prog(t, tP + .5, .5)).toFixed(3); note.style.visibility = t >= tP + .5 && C.note ? 'inherit' : 'hidden';
+    });
+  });
+})();
+</script>

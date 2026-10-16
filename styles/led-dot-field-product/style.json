@@ -1,0 +1,108 @@
+{
+  "id": "led-dot-field-product",
+  "name": "LED 점판 위 제품",
+  "group": "레트로·픽셀",
+  "template": "terminal",
+  "summary": "흐릿한 청록·황토 물결 그라디언트를 가는 대시 격자가 덮은 전광판 바탕 위에 제품 하나가 천천히 떠 있는 장면",
+  "tags": [
+    "제품",
+    "전광판",
+    "도트",
+    "테크",
+    "청록"
+  ],
+  "hand": false,
+  "source": {
+    "site": "keyframe.gallery",
+    "ref": "mux:RCAV8OVI8qZ15zaiV4XGqA7QOPfji2U00HrhA5EPngIg",
+    "at": "2.6–10.2초",
+    "note": "물결 등고선 그라디언트를 가로 대시 격자로 덮은 전광판 바탕, 제품 컷아웃이 천천히 기울며 떠 있고 유리 알약 상태 꼬리표가 붙음, 흰 정사각 블록이 번지며 들어오고 나감"
+  },
+  "palette": [
+    "#2F5F7F",
+    "#6FA3C4",
+    "#C9A65A",
+    "#E9EEF0",
+    "#1D2B33"
+  ],
+  "colors": {
+    "bg": "#2F5F7F",
+    "onBg": "#F3F6F7",
+    "onBgMuted": "rgba(243,246,247,.72)",
+    "paper": "#E9EEF0",
+    "ink": "#1D2B33",
+    "accent": "#E2B04A",
+    "accentInk": "#1D2B33",
+    "pattern": "rgba(255,255,255,.38)",
+    "glow": "rgba(226,176,74,.35)"
+  },
+  "type": {
+    "display": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "heading": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "body": [
+      "Geist",
+      "Noto Sans KR"
+    ]
+  },
+  "fonts": [
+    {
+      "family": "Geist",
+      "weight": "100 900",
+      "file": "fonts/Geist-Variable.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 500,
+      "file": "fonts/NotoSansKR-Medium.woff2"
+    }
+  ],
+  "look": {
+    "scanlines": 0.12,
+    "vignette": 0.18
+  },
+  "shape": {
+    "radius": "calc(var(--u) * 3)"
+  },
+  "motion": {
+    "pace": "보통",
+    "bpm": 120,
+    "ease": "power2.inOut",
+    "stagger": 1,
+    "transitions": [
+      "cut",
+      "fade"
+    ]
+  },
+  "scenes": {
+    "bg": "dots",
+    "align": "center",
+    "card": "glass",
+    "marker": "color",
+    "weight": 500,
+    "tracking": 0.02,
+    "case": "upper",
+    "rough": false
+  },
+  "signature": [
+    "흐린 파랑·청록·황토 그라디언트가 등고선 물결처럼 천천히 흐르고, 그 위를 짧은 가로 대시 격자가 덮어 밝은 곳은 대시가 굵게, 어두운 곳은 가늘게 보임",
+    "가운데 제품 컷아웃 하나가 3초에 걸쳐 아주 조금(±6도) 돌거나 기울며 떠 있고, 옆에 반투명 유리 알약 꼬리표(대문자 짧은 상태 문구)가 따라붙음",
+    "흰 정사각 블록 무리가 한쪽 가장자리부터 번져 장면을 갉아먹으며 다음 장면으로 넘어감"
+  ],
+  "fits": [
+    "하드웨어·기기 제품",
+    "전화·알림·연결 서비스",
+    "테크 브랜드",
+    "제품 하나 집중 소개"
+  ],
+  "avoid": [
+    "글이 많은 장면",
+    "여러 제품 한꺼번에",
+    "파스텔 바탕"
+  ]
+}

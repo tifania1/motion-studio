@@ -1,0 +1,135 @@
+{
+  "id": "symbol-medium-morph-cursor-trim",
+  "name": "한 기호, 여러 재료",
+  "group": "시네마틱",
+  "template": "brandmark",
+  "summary": "화면 가운데 육각 기호는 자리를 지키고 몸만 연필 스케치, 코드, 빛 윤곽, 빗금, 그라디언트, 사물 사진으로 박자마다 갈아입어요. 프롬프트 한 줄과 커서 손질을 거쳐 검은 화면 위 작은 마크로 맺히는 브랜드 공개예요",
+  "tags": [
+    "브랜드 공개",
+    "로고",
+    "기호",
+    "재료 바꾸기",
+    "커서",
+    "프롬프트",
+    "검정과 밝은 회색"
+  ],
+  "hand": false,
+  "source": {
+    "site": "keyframe.gallery",
+    "ref": "mux:DUq8LYQCR7N31rfO584DaymosDAXLJKuXIPWeJxktnU",
+    "at": "0–30초",
+    "note": "가운데 기호 하나를 고정한 채 재료만 박마다 바꾸는 릴레이(종이 위 연필, 코드 글자, 어둠 속 빛 윤곽, 점선 구성 격자, 꼭짓점 앵커, 파란 빗금, 보라 그라디언트). 색 슬라이더와 선택 상자, 큰 글씨 프롬프트와 파란 보내기 버튼, 컵·액자 포스터 사진에 입힌 결과, 자리표시 낱말이 로고타입이 되고 커서가 글자를 지워 기호만 남기는 엔딩"
+  },
+  "palette": [
+    "#121212",
+    "#ECECEA",
+    "#2F5FE6",
+    "#8A5CF0",
+    "#E46A8E",
+    "#8CC9D2"
+  ],
+  "colors": {
+    "bg": "#121212",
+    "onBg": "#F1F1EF",
+    "onBgMuted": "rgba(241,241,239,.6)",
+    "paper": "#ECECEA",
+    "ink": "#161616",
+    "accent": "#2F5FE6",
+    "accentInk": "#FFFFFF",
+    "pattern": "rgba(255,255,255,.07)",
+    "glow": "rgba(138,92,240,.4)"
+  },
+  "type": {
+    "display": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "heading": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "body": [
+      "Geist",
+      "Noto Sans KR"
+    ]
+  },
+  "fonts": [
+    {
+      "family": "Geist",
+      "weight": "100 900",
+      "file": "fonts/Geist-Variable.woff2"
+    },
+    {
+      "family": "Geist Mono",
+      "weight": "100 900",
+      "file": "fonts/GeistMono-Variable.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 500,
+      "file": "fonts/NotoSansKR-Medium.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 700,
+      "file": "fonts/NotoSansKR-Bold.woff2"
+    }
+  ],
+  "shape": {
+    "radius": "calc(var(--u) * 1.4)"
+  },
+  "motion": {
+    "pace": "보통",
+    "bpm": 100,
+    "ease": "power3.out",
+    "stagger": 0.8,
+    "transitions": [
+      "cut",
+      "blur",
+      "fade"
+    ]
+  },
+  "scenes": {
+    "bg": "grid",
+    "align": "center",
+    "card": "shadow",
+    "marker": "color",
+    "weight": 500,
+    "tracking": -0.02,
+    "case": "none",
+    "rough": false,
+    "title": "type",
+    "frame": "none",
+    "deco": [
+      "cursor",
+      "handles"
+    ],
+    "number": "count",
+    "scale": 1,
+    "schemes": [
+      "dark",
+      "paper",
+      "dark",
+      "paper"
+    ]
+  },
+  "signature": [
+    "기호는 가운데 같은 자리·같은 크기로 고정하고, 한두 박(0.6~1.2초)마다 재료만 갈아입음: 회색 종이 사진 위 연필 스케치 → 코드 글자 위 파란 윤곽 → 검은 화면에서 희미하게 빛나는 윤곽 → 밝은 회색 점선 구성 격자 위 가는 먹선 → 꼭짓점 앵커가 달린 파란 빗금 채움 → 보라 그라디언트. 바뀌는 순간 2~3프레임 흐림",
+    "밝은 회색 판에 프롬프트 한 줄이 큰 글씨로 파란 막대 커서와 함께 쳐지고, 문장이 왼쪽으로 밀리며 들어온 파란 둥근 보내기 버튼을 커서가 눌러 톡 줄였다 놓으면, 결과 기호가 컵·액자 포스터 같은 사물 사진 위에 1초씩 입혀져 지나감",
+    "엔딩: 검은 화면에서 기호와 로고타입을 파란 선택 상자로 감싸고, 커서가 낱말 끝에서 반 박마다 한 글자씩 지워 기호만 남긴 뒤 상자가 꺼지고, 아래에 아주 작은 고정폭 낱말 하나가 쳐지며 멈춤"
+  ],
+  "fits": [
+    "로고·브랜드 공개",
+    "디자인·생성 도구 소개",
+    "리브랜딩 발표",
+    "마크 변형·활용 쇼케이스",
+    "만드는 과정을 보여 주는 티저"
+  ],
+  "avoid": [
+    "기호가 화면을 돌아다니거나 여러 개 겹치는 구성",
+    "굵은 큰 제목 남발",
+    "파랑 말고 다른 UI 강조색",
+    "손그림 선 떨림",
+    "질감을 화면 전체에 깔기"
+  ]
+}

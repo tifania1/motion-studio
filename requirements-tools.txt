@@ -1,0 +1,3 @@
+# tools/cutout.py (배경 지우기)를 쓸 때만 필요
+rembg[cpu]>=2.0.50
+opencv-python-headless>=4.9

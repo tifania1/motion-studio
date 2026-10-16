@@ -1,0 +1,385 @@
+<title>/*@TITLE@*/</title>
+<style>
+/*@FONTFACES@*/
+/*@BRAND_CSS@*/
+/*@ENGINE_CSS@*/
+img:not([src]), img[src=""] { visibility: hidden !important; }
+
+/* ===== uimorph: 도형 하나가 끊기지 않고 UI 상태를 차례로 바꾸는 루프 (1:1, 120BPM 7마디) =====
+   흑백 + 따뜻한 회색 바탕. 모든 스타일은 render(t) 가 시간으로 계산합니다(CSS transition 없음). */
+:root { --canvas: #E7E3DC; --k: #111111; --w: #FFFFFF; --g1: #8C8880; --g2: #CFCAC2; --g3: #3A3A3A; }
+#stage { background: var(--canvas); }
+#world { position: absolute; left: 0; top: 0; width: 1080px; height: 1080px; }
+.ui { font-family: "Geist", var(--font-body), sans-serif; font-feature-settings: "tnum" 1; }
+#shape { position: absolute; overflow: hidden; background: var(--k); }
+.ly { position: absolute; left: 0; top: 0; width: 100%; height: 100%; visibility: hidden; }
+.ctr { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); }
+.lab { color: var(--w); font: 600 34px/1 "Geist", var(--font-body), sans-serif; letter-spacing: -.01em; white-space: nowrap; }
+svg.ic { display: block; overflow: visible; }
+/* 플레이어 */
+#pl-art { position: absolute; left: 32px; top: 32px; width: 120px; height: 120px; border-radius: 24px; overflow: hidden; background: #2a2a2a; }
+#pl-art img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(1) contrast(1.08); }
+#pl-title { position: absolute; left: 176px; top: 46px; color: var(--w); font: 600 34px/1.1 "Geist", var(--font-body), sans-serif; white-space: nowrap; }
+#pl-artist { position: absolute; left: 176px; top: 98px; color: #9A9893; font: 500 24px/1.1 "Geist", var(--font-body), sans-serif; white-space: nowrap; }
+#pl-track { position: absolute; left: 32px; top: 192px; width: 496px; height: 8px; border-radius: 4px; background: var(--g3); }
+#pl-fill { position: absolute; left: 0; top: 0; height: 100%; border-radius: 4px; background: var(--w); }
+#pl-knob { position: absolute; top: 50%; width: 22px; height: 22px; margin: -11px 0 0 -11px; border-radius: 50%; background: var(--w); }
+.pl-time { position: absolute; top: 216px; color: #9A9893; font: 500 18px/1 "Geist", sans-serif; }
+#pl-play { position: absolute; left: 244px; top: 250px; width: 72px; height: 72px; border-radius: 50%; background: var(--w); }
+#pl-prev, #pl-next { position: absolute; top: 270px; }
+/* 슬라이더 */
+#sl-fill { position: absolute; left: 0; top: 0; height: 100%; background: var(--w); }
+#sl-ic { position: absolute; left: 22px; top: 50%; margin-top: -18px; }
+/* 토글 */
+#tg-knob { position: absolute; top: 12px; height: 100px; border-radius: 50px; background: var(--w); box-shadow: 0 2px 6px rgba(0,0,0,.18); }
+/* 탭 */
+#tabs { position: absolute; left: 0; top: 0; width: 520px; height: 104px; transform-origin: 50% 50%; }
+#tb-ind { position: absolute; top: 8px; height: 88px; border-radius: 44px; background: var(--k); }
+.tb { position: absolute; top: 0; width: 168px; height: 104px; display: grid; place-items: center; font: 600 32px/1 "Geist", var(--font-body), sans-serif; }
+/* 차트 */
+#ch-label { position: absolute; left: 34px; top: 34px; color: var(--g1); font: 500 22px/1 "Geist", var(--font-body), sans-serif; white-space: nowrap; }
+#ch-num { position: absolute; left: 32px; top: 66px; color: var(--k); font: 700 52px/1 "Geist", var(--font-body), sans-serif; letter-spacing: -.02em; white-space: nowrap; }
+#ch-svg { position: absolute; left: 0; top: 0; }
+/* 팔레트 */
+#pa-row { position: absolute; left: 0; top: 0; width: 620px; height: 96px; }
+#pa-q { position: absolute; left: 76px; top: 30px; font: 500 34px/1 "Geist", var(--font-body), sans-serif; color: var(--k); white-space: pre; }
+#pa-ph { position: absolute; left: 76px; top: 30px; font: 500 34px/1 "Geist", var(--font-body), sans-serif; color: #A7A39C; white-space: nowrap; }
+#pa-caret { position: absolute; top: 26px; width: 3px; height: 42px; background: var(--k); border-radius: 2px; }
+.kc { position: absolute; top: 26px; height: 44px; padding: 0 12px; border-radius: 10px; border: 2px solid #D9D5CE; color: var(--g1); font: 600 22px/40px "Geist", sans-serif; box-sizing: border-box; white-space: nowrap; }
+#pa-line { position: absolute; left: 0; top: 96px; width: 620px; height: 2px; background: #EEEBE6; }
+.pi { position: absolute; left: 12px; width: 596px; height: 68px; border-radius: 18px; display: flex; align-items: center; gap: 18px; padding: 0 20px; box-sizing: border-box; font: 500 30px/1 "Geist", var(--font-body), sans-serif; color: var(--k); white-space: nowrap; overflow: hidden; }
+.pi i { flex: none; width: 34px; height: 34px; border-radius: 10px; background: #EEEBE6; }
+.pi.on { background: var(--k); color: var(--w); }
+.pi.on i { background: #3A3A3A; }
+/* 토스트 */
+#to-ic { position: absolute; left: 24px; top: 24px; width: 48px; height: 48px; border-radius: 50%; background: var(--w); }
+#to-tx { position: absolute; left: 90px; top: 31px; color: var(--w); font: 600 30px/1 "Geist", var(--font-body), sans-serif; white-space: nowrap; }
+#to-bar { position: absolute; left: 0; bottom: 0; height: 4px; background: rgba(255,255,255,.35); }
+/* 아일랜드 */
+#is-art { position: absolute; left: 18px; top: 18px; width: 60px; height: 60px; border-radius: 50%; overflow: hidden; background: #333; }
+#is-art img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(1); }
+#is-tx { position: absolute; left: 94px; top: 32px; color: var(--w); font: 600 30px/1 "Geist", var(--font-body), sans-serif; white-space: nowrap; }
+.wv { position: absolute; top: 50%; width: 6px; border-radius: 3px; background: var(--w); }
+/* 바깥 요소 */
+#tip { position: absolute; padding: 12px 18px 14px; border-radius: 16px; background: var(--k); color: var(--w); font: 600 26px/1 "Geist", sans-serif; white-space: nowrap; transform-origin: 50% 100%; visibility: hidden; }
+#tip::after { content: ""; position: absolute; left: 50%; bottom: -9px; margin-left: -9px; border: 9px solid transparent; border-bottom: 0; border-top-color: var(--k); }
+#guide { position: absolute; width: 2px; background: rgba(17,17,17,.18); visibility: hidden; }
+#note { position: absolute; left: 0; right: 0; bottom: 26px; text-align: center; color: rgba(17,17,17,.38); font: 500 17px/1 var(--font-body), sans-serif; letter-spacing: .02em; z-index: 70; }
+</style>
+
+<div id="viewport"><div id="stage"><div id="cam"><div id="world" class="ui"></div></div></div></div>
+
+<script>/*@GSAP@*/</script>
+<script>/*@DATA@*/</script>
+<script>/*@ENGINE_JS@*/</script>
+<script>
+(function () {
+  const S = Studio, C = S.content, M = S.M, e = S.esc;
+  const world = S.$('#world');
+  const T = Object.assign({ title: '아침의 첫 잔', artist: '하루한잔 라디오', art: '' }, C.track || {});
+  const PAL = Object.assign({ placeholder: '원두 검색', steps: ['케', '케냐', '케냐 키'], items: ['케냐 AA', '케냐 키암부', '콜롬비아 수프리모', '에티오피아 예가체프'] }, C.palette || {});
+  const CH = Object.assign({ label: '이번 주 주문', number: '128잔', values: [38, 52, 46, 61, 74, 69, 88], tip: '+24%', tipIndex: 4 }, C.chart || {});
+  const tabs = C.tabs || ['일', '주', '월'];
+  const artSrc = T.art ? S.img(T.art) : '';
+
+  /* ---------- 아이콘 (24 격자, 같은 굵기 2.2) ---------- */
+  const IC = {
+    check: '<path d="M5 12.5l4.2 4.2L19 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>',
+    speaker: '<path d="M4 9.5h3.2L12 5.6v12.8l-4.8-3.9H4z" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/><path d="M15.6 9a4.2 4.2 0 0 1 0 6M18.4 6.4a8 8 0 0 1 0 11.2" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>',
+    search: '<circle cx="10.5" cy="10.5" r="6.2" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="M15.2 15.2L20 20" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>',
+    prev: '<path d="M18 5.5v13L8.5 12zM6 5.5v13" fill="currentColor" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/>',
+    next: '<path d="M6 5.5v13L15.5 12zM18 5.5v13" fill="currentColor" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/>',
+  };
+  const svgIc = (name, size, color) => `<svg class="ic" viewBox="0 0 24 24" width="${size}" height="${size}" style="color:${color}">${IC[name]}</svg>`;
+
+  /* ---------- 화면 구성 ---------- */
+  world.innerHTML = `
+  <div id="shape">
+    <div class="ly" id="L-btn"><div class="ctr lab" id="btn-tx">${e(C.button || '주문하기')}</div></div>
+    <div class="ly" id="L-spin"><svg class="ctr ic" width="44" height="44" viewBox="0 0 44 44"><circle id="spin-arc" cx="22" cy="22" r="18" fill="none" stroke="#fff" stroke-width="4.4" stroke-linecap="round"/></svg></div>
+    <div class="ly" id="L-check"><svg class="ctr ic" width="46" height="46" viewBox="0 0 24 24" style="color:#fff"><path id="chk" d="M5 12.5l4.2 4.2L19 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" pathLength="1" stroke-dasharray="1 1"/></svg></div>
+    <div class="ly" id="L-island"><div id="is-art">${artSrc ? `<img src="${artSrc}" alt="">` : ''}</div><div id="is-tx">${e(C.island || '로스팅 중')}</div>
+      ${[0, 1, 2, 3].map(i => `<i class="wv" id="wv${i}" style="left:${262 + i * 14}px"></i>`).join('')}</div>
+    <div class="ly" id="L-player">
+      <div id="pl-art">${artSrc ? `<img src="${artSrc}" alt="">` : ''}</div>
+      <div id="pl-title">${e(T.title)}</div><div id="pl-artist">${e(T.artist)}</div>
+      <div id="pl-track"><div id="pl-fill"></div><div id="pl-knob"></div></div>
+      <div class="pl-time" id="pl-t0" style="left:32px">0:00</div><div class="pl-time" id="pl-t1" style="right:32px">-3:24</div>
+      <div id="pl-prev" style="left:166px">${svgIc('prev', 32, '#fff')}</div>
+      <div id="pl-play"><svg class="ctr ic" width="30" height="30" viewBox="0 0 1 1"><path id="pp-a" fill="#111"/><path id="pp-b" fill="#111"/></svg></div>
+      <div id="pl-next" style="left:362px">${svgIc('next', 32, '#fff')}</div>
+    </div>
+    <div class="ly" id="L-slider"><div id="sl-fill"></div><div id="sl-ic">${svgIc('speaker', 36, '#111')}</div></div>
+    <div class="ly" id="L-toggle"><div id="tg-knob"></div></div>
+    <div class="ly" id="L-tabs"><div id="tabs"><div id="tb-ind"></div>${tabs.map((x, i) => `<div class="tb" id="tb${i}" style="left:${8 + i * 168}px">${e(x)}</div>`).join('')}</div></div>
+    <div class="ly" id="L-chart"><div id="ch-label">${e(CH.label)}</div><div id="ch-num">${e(CH.number)}</div>
+      <svg id="ch-svg" width="640" height="470" viewBox="0 0 640 470"></svg></div>
+    <div class="ly" id="L-palette"><div id="pa-row">
+        <div style="position:absolute;left:24px;top:28px">${svgIc('search', 40, '#111')}</div>
+        <div id="pa-ph">${e(PAL.placeholder)}</div><div id="pa-q"></div><div id="pa-caret"></div>
+        <div class="kc" id="pa-k" style="right:22px">⌘K</div></div>
+      <div id="pa-line"></div>
+      ${PAL.items.map((x, i) => `<div class="pi" id="pi${i}"><i></i><span>${e(x)}</span></div>`).join('')}</div>
+    <div class="ly" id="L-toast"><div id="to-ic"><svg class="ctr ic" width="30" height="30" viewBox="0 0 24 24" style="color:#111"><path id="to-chk" d="M5 12.5l4.2 4.2L19 7" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" pathLength="1" stroke-dasharray="1 1"/></svg></div>
+      <div id="to-tx">${e(C.toast || '케냐 키암부를 담았어요')}</div><div id="to-bar"></div></div>
+  </div>
+  <div id="guide"></div><div id="tip">${e(CH.tip)}</div>`;
+  if (C.note !== false) S.$('#cam').appendChild(S.h(`<div id="note">${e(C.note || S.brand.description || '')}</div>`));
+  const $ = id => document.getElementById(id);
+  const shape = $('shape');
+  const cursor = M.Cursor(world, { size: 1 });
+
+  /* ---------- 차트 그리기 (한 번) ---------- */
+  const vals = CH.values, n = vals.length, X0 = 56, X1 = 600, Y0 = 410, Y1 = 190;
+  const vmax = Math.max(...vals) * 1.08, vmin = Math.min(...vals) * .7;
+  const pts = vals.map((v, i) => [X0 + (X1 - X0) * i / (n - 1), Y0 - (Y0 - Y1) * (v - vmin) / (vmax - vmin)]);
+  let d = `M${pts[0][0]} ${pts[0][1]}`;
+  for (let i = 0; i < n - 1; i++) {   // 단조 3차 곡선 비슷하게: 이웃 기울기 평균으로 제어점
+    const p0 = pts[Math.max(0, i - 1)], p1 = pts[i], p2 = pts[i + 1], p3 = pts[Math.min(n - 1, i + 2)];
+    const c1 = [p1[0] + (p2[0] - p0[0]) / 6, p1[1] + (p2[1] - p0[1]) / 6], c2 = [p2[0] - (p3[0] - p1[0]) / 6, p2[1] - (p3[1] - p1[1]) / 6];
+    d += `C${c1[0].toFixed(1)} ${c1[1].toFixed(1)} ${c2[0].toFixed(1)} ${c2[1].toFixed(1)} ${p2[0]} ${p2[1]}`;
+  }
+  $('ch-svg').innerHTML = [0, 1, 2, 3].map(i => `<line class="grid" x1="${X0}" x2="${X1}" y1="${Y1 + (Y0 - Y1) * i / 3}" y2="${Y1 + (Y0 - Y1) * i / 3}" stroke="#ECE9E3" stroke-width="2" pathLength="1" stroke-dasharray="1 1"/>`).join('')
+    + `<path id="ch-area" d="${d} L${X1} ${Y0} L${X0} ${Y0} Z" fill="rgba(17,17,17,.06)"/>`
+    + `<path id="ch-line" d="${d}" fill="none" stroke="#111" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" pathLength="1" stroke-dasharray="1 1"/>`
+    + pts.map((p, i) => `<circle class="dot" id="dot${i}" cx="${p[0]}" cy="${p[1]}" r="9" fill="#fff" stroke="#111" stroke-width="4"/>`).join('');
+
+  /* ---------- 타임라인 (120BPM, 1박 = 0.5초, 28박 = 14초) ---------- */
+  const b = M.beat, DUR = b(28);
+  const Wd = 1080, CX = 540, CY = 540;
+  const BLK = [17, 17, 17], WHT = [255, 255, 255], GRY = [172, 166, 156];
+
+  // 도형: [폭, 높이, 반경, 가운데 y]
+  const PAL_TOP = 410;
+  const palH = k => 96 + (k ? 10 + k * 72 + 14 : 0);
+  const SHAPE = [
+    [0, [360, 104, 52, CY]],
+    [b(2), [104, 104, 52, CY]],                    // 로더
+    [b(5), [330, 96, 48, CY]],                     // 아일랜드
+    [b(6), [560, 340, 56, CY]],                    // 플레이어
+    [b(10), [560, 110, 55, CY]],                   // 볼륨 슬라이더
+    [b(13), [220, 124, 62, CY]],                   // 토글
+    [b(15), [520, 104, 52, CY]],                   // 탭
+    [b(18), [640, 470, 44, CY]],                   // 차트
+    [b(20), [620, palH(0), 30, PAL_TOP + palH(0) / 2]],                // ⌘K
+    [b(20.5), [620, palH(4), 30, PAL_TOP + palH(4) / 2]],             // 목록 펼침
+    [b(21), [620, palH(2), 30, PAL_TOP + palH(2) / 2]],               // "케" → 2개
+    [b(22), [620, palH(1), 30, PAL_TOP + palH(1) / 2]],               // "케냐 키" → 1개
+    [b(24), [460, 96, 48, CY]],                    // 토스트
+    [b(26), [360, 104, 52, CY]],                   // 다시 버튼
+  ];
+  const BG = [[0, BLK], [b(13), GRY, { d: .2, e: 'outCubic' }], [b(14), BLK, { d: .22, e: 'outCubic' }], [b(15), WHT, { d: .24, e: 'outCubic' }], [b(24), BLK, { d: .2, e: 'outCubic' }]];
+  // 카메라: [cx, cy, 확대]
+  const CAM = [
+    [0, [CX, CY, 1.85]], [b(2), [CX, CY, 3.4]], [b(5), [CX, CY, 2.1]], [b(6), [CX, CY, 1.24]],
+    [b(8) - .2, [CX + 10, CY + 18, 1.38]], [b(10), [CX + 40, CY, 1.26]], [b(12), [CX, CY, 1.28]], [b(13), [CX, CY, 2.6]], [b(15), [CX, CY, 1.45]],
+    [b(18), [CX, CY, 1.14]], [b(20), [CX, PAL_TOP + 120, 1.22]], [b(24), [CX, CY, 1.6]], [b(26), [CX, CY, 1.85]],
+  ];
+  // 커서: [도착 시각, x, y, (이동 시간)]
+  const P0 = [612, 572];
+  const PL = { x: CX - 280, y: CY - 170 };              // 플레이어 왼쪽 위
+  const trackX = p => PL.x + 32 + 496 * p, trackY = PL.y + 196;
+  const SL = { x: CX - 280, y: CY - 55 }, slX = v => SL.x + 84 + 436 * v;
+  const TB = { x: CX - 260 }, tabX = i => TB.x + 8 + 168 * i + 84;
+  const chartTL = { x: CX - 320, y: CY - 235 };
+  const tipPt = [chartTL.x + pts[CH.tipIndex][0], chartTL.y + pts[CH.tipIndex][1]];
+  const CUR = [
+    [0, ...P0], [b(.85), 556, 548, .38],
+    [b(2.7), 650, 650, .4],
+    [b(6.9), 548, PL.y + 290, .5],                       // 재생 버튼
+    [b(7.9), trackX(.3) + 4, trackY + 6, .38],            // 진행 막대 손잡이
+    [b(8.1), trackX(.3) + 4, trackY + 6, .05], [b(8.9), trackX(.78) + 4, trackY + 6, .4],   // 끌기
+    [b(9.4), trackX(.78) + 40, trackY + 70, .3],
+    [b(10.8), slX(.55) + 6, CY + 8, .36],                 // 볼륨 끝
+    [b(11.05), slX(.55) + 6, CY + 8, .05], [b(11.95), slX(1) + 150, CY + 8, .44],   // 최대를 넘겨 끌기
+    [b(12.6), 700, 640, .32],
+    [b(13.85), 548, 552, .34],                            // 토글
+    [b(15.85), tabX(1) + 8, 552, .34], [b(16.85), tabX(2) + 8, 552, .32],   // 탭
+    [b(17.6), 760, 700, .3],
+    [b(18.95), tipPt[0] + 8, tipPt[1] + 10, .42],         // 차트 점 위에 올리기
+    [b(20.2), 820, 760, .36],                             // 타자 칠 동안 비켜 둠
+    [b(25.2), 760, 680, .5],
+    [b(27.8), ...P0, .62],
+  ];
+  const CLICKS = [b(1), b(7), [b(8), .48], [b(11), .5], b(14), b(16), b(17)];
+  // 스위치·탭 끝점: [왼쪽, 오른쪽]
+  const KNOB = [[0, [12, 112]], [b(14), [108, 208], null]];
+  const TAB = [[0, [8, 176]], [b(16), [176, 344], null], [b(17), [344, 512], null]];
+
+  /* 드래그: 누르고 있는 동안은 커서 위치로 값을 직접 계산, 놓으면 그 자리에서 스프링으로 */
+  function volume(t, cx) {
+    if (t < b(11)) return { v: .55, st: 0 };
+    const x = cx - (SL.x + 84), v = M.clamp(x / 436);
+    const over = Math.max(0, x - 436), st = 74 * (1 - Math.exp(-over / 95));
+    if (t < b(12)) return { v, st };
+    const cAt = M.cursorAt(CUR, [], b(12)).x - (SL.x + 84);
+    const st0 = 74 * (1 - Math.exp(-Math.max(0, cAt - 436) / 95));
+    return { v: 1, st: st0 * (1 - M.spring(t - b(12), { f: 3.4, z: .72 })) };
+  }
+
+  // 레이어 보이기: 들어오기 tin~tin+d, 나가기 tout~tout+d. M.swap 에 줄 값
+  const sw = (t, tin, tout, d = .12) => t < tin ? -1 : t < tin + d ? -(1 - (t - tin) / d) : t < tout ? 0 : t < tout + d ? (t - tout) / d : 1;
+  const L = id => $(id);
+  const LAY = {
+    'L-btn': [[-1, b(2) - .1], [b(26) + .1, 99]],
+    'L-spin': [[b(2) + .08, b(4) - .02]],
+    'L-check': [[b(4) - .02, b(5) - .06]],
+    'L-island': [[b(5) + .1, b(6) - .08]],
+    'L-player': [[b(6) + .1, b(10) - .1]],
+    'L-slider': [[b(10) + .06, b(13) - .08]],
+    'L-toggle': [[b(13) + .02, b(15) + .2]],
+    'L-tabs': [[b(15) + .02, b(20) - .1]],
+    'L-chart': [[b(18) + .14, b(20) - .1]],
+    'L-palette': [[b(20) + .08, b(24) - .08]],
+    'L-toast': [[b(24) + .1, b(26) - .08]],
+  };
+  const ppQuad = (k) => { // 재생(삼각형) ↔ 정지(막대 둘) 모프
+    const A0 = [[0, 0], [.5, .25], [.5, .75], [0, 1]], A1 = [[.06, 0], [.38, 0], [.38, 1], [.06, 1]];
+    const B0 = [[.5, .25], [1, .5], [1, .5], [.5, .75]], B1 = [[.62, 0], [.94, 0], [.94, 1], [.62, 1]];
+    const f = (P, Q) => 'M' + P.map((p, i) => `${(M.lerp(p[0], Q[i][0], k) * .92 + .08 * (1 - k)).toFixed(4)} ${M.lerp(p[1], Q[i][1], k).toFixed(4)}`).join('L') + 'Z';
+    return [f(A0, A1), f(B0, B1)];
+  };
+
+  function render(t) {
+    t = ((t % DUR) + DUR) % DUR;
+    // 커서
+    const c = M.cursorAt(CUR, CLICKS, t);
+    // 카메라
+    const cam = M.anim(CAM, t, 'soft');
+    M.camera(world, cam[0], cam[1], cam[2]);
+    cursor.set(c.x, c.y, { down: c.down, ring: c.ring, s: 1.45 / Math.pow(cam[2], .55) });
+
+    // 도형
+    let [w, h, r, y] = M.anim(SHAPE, t, 'snappy');
+    let x = CX;
+    const vol = volume(t, c.x);
+    w += vol.st; h -= vol.st * .14; x += vol.st / 2;
+    const press = t < b(3) ? c.down : 0;
+    const pop = t > b(4) && t < b(5) ? Math.sin(Math.PI * M.clamp((t - b(4)) / .3)) * .06 : 0;
+    const bg = M.anim(BG, t);
+    const white = bg[0] > 200;
+    M.box(shape, { x, y, w, h, r, bg: `rgb(${bg.map(Math.round).join(',')})`, s: 1 - .045 * press + pop });
+    shape.style.boxShadow = white ? '0 18px 40px rgba(40,34,26,.13), 0 2px 6px rgba(40,34,26,.08)' : '0 14px 30px rgba(17,17,17,.16)';
+
+    for (const [id, spans] of Object.entries(LAY)) {
+      let k = 1;
+      for (const [a, z] of spans) { const s = sw(t, a, z); if (Math.abs(s) < Math.abs(k)) k = s; }
+      M.swap(L(id), k);
+    }
+    // 버튼 글자: 마우스 올림 = 살짝 밝아짐
+    const hover = M.anim([[0, 1], [b(2), 0, { d: .15 }], [b(27.1), 1, { d: .3 }]], t);
+    if (t < b(3) || t > b(26)) shape.style.background = M.color(BLK, [44, 44, 46], hover * .6);
+
+    // 로더
+    if (t > b(2) && t < b(4.2)) {
+      const arc = $('spin-arc'), len = 2 * Math.PI * 18;
+      const beatPulse = M.spring(t - b(3), 'pop') - M.spring(t - b(3) - .25, 'smooth');
+      const part = t < b(4) ? .22 + .16 * beatPulse : M.lerp(.38, 1, M.ease.outCubic(M.prog(t, b(4) - .1, .1)));
+      arc.setAttribute('stroke-dasharray', `${(len * part).toFixed(2)} ${len}`);
+      arc.style.transformOrigin = '22px 22px';
+      arc.style.transform = `rotate(${(t * 420) % 360}deg)`;
+    }
+    // 체크
+    $('chk').setAttribute('stroke-dashoffset', (1 - M.ease.outCubic(M.prog(t, b(4), .28))).toFixed(4));
+    // 아일랜드 파형: 박마다 키가 바뀜
+    for (let i = 0; i < 4; i++) {
+      const ph = t * 7 + i * 1.7, beatK = Math.exp(-((t % M.beatLen) / .16));
+      const hh = 10 + 18 * Math.abs(Math.sin(ph)) * (.55 + .45 * beatK);
+      const wv = $('wv' + i); wv.style.height = hh.toFixed(1) + 'px'; wv.style.marginTop = (-hh / 2).toFixed(1) + 'px';
+    }
+    // 플레이어
+    const ppk = M.spring(t - b(7), 'snappy');
+    const [pa, pb] = ppQuad(M.clamp(ppk, 0, 1.03));
+    $('pp-a').setAttribute('d', pa); $('pp-b').setAttribute('d', pb);
+    $('pl-play').style.transform = `scale(${(1 - .08 * (t > b(6.8) && t < b(7.6) ? c.down : 0)).toFixed(3)})`;
+    const sv = t < b(8) ? .3 : t < b(9) ? M.clamp((c.x - 4 - (PL.x + 32)) / 496) : .78;
+    const playing = t > b(7) ? (t - b(7)) * .004 : 0;
+    const prog = Math.min(1, sv + playing);
+    $('pl-fill').style.width = (prog * 100).toFixed(2) + '%';
+    $('pl-knob').style.left = (prog * 100).toFixed(2) + '%';
+    const held = t > b(8) - .02 && t < b(9) + .05;
+    $('pl-knob').style.transform = `scale(${(1 + .45 * (held ? 1 : 0) * M.spring(t - b(8), 'snappy') - .45 * M.spring(t - b(9), 'snappy') * (held ? 0 : 0)).toFixed(3)})`;
+    const totalS = 204, curS = Math.round(prog * totalS);
+    $('pl-t0').textContent = `${Math.floor(curS / 60)}:${String(curS % 60).padStart(2, '0')}`;
+    $('pl-t1').textContent = `-${Math.floor((totalS - curS) / 60)}:${String((totalS - curS) % 60).padStart(2, '0')}`;
+    // 볼륨
+    const vv = t < b(11) ? .55 : vol.v;
+    $('sl-fill').style.width = (84 + 436 * vv + (vv >= 1 ? 40 + vol.st : 0)).toFixed(1) + 'px';
+    // 토글: 왼쪽·오른쪽 끝이 다른 스프링 → 앞이 먼저 늘어남
+    const kn = [M.anim([[0, 12], [b(14), 108, 'trail']], t), M.anim([[0, 112], [b(14), 208, 'lead']], t)];
+    const knob = $('tg-knob');
+    knob.style.left = kn[0].toFixed(2) + 'px'; knob.style.width = (kn[1] - kn[0]).toFixed(2) + 'px';
+    // 토글 → 탭: 손잡이가 탭 표시로. 탭 표시 끝점도 두 스프링
+    const ti = [M.anim([[0, 8], [b(16), 176, 'trail'], [b(17), 344, 'trail']], t), M.anim([[0, 176], [b(16), 344, 'lead'], [b(17), 512, 'lead']], t)];
+    const ind = $('tb-ind');
+    ind.style.left = ti[0].toFixed(2) + 'px'; ind.style.width = (ti[1] - ti[0]).toFixed(2) + 'px';
+    ind.style.background = M.color(WHT, BLK, M.prog(t, b(15), .2));
+    const act = t < b(16) + .08 ? 0 : t < b(17) + .08 ? 1 : 2;
+    tabs.forEach((_, i) => { $('tb' + i).style.color = i === act ? '#fff' : '#111'; });
+    // 탭 묶음 위치: 처음엔 가운데, 차트가 열리면 오른쪽 위로 작게
+    const tk = M.spring(t - b(18), 'snappy');
+    const tabsEl = $('tabs');
+    // 탭 묶음의 왼쪽 위 기준: 도형 크기가 바뀌므로 도형 가운데에 맞춤
+    const bx = (w - 520) / 2, by = (h - 104) / 2;
+    const tbx = M.lerp(bx, 640 - 24 - 520 * .7 / 2 - 260 + (w - 640) / 2, tk), tby = M.lerp(by, 58 - 52, tk);
+    tabsEl.style.transform = `translate(${tbx.toFixed(2)}px, ${tby.toFixed(2)}px) scale(${M.lerp(1, .7, tk).toFixed(4)})`;
+    // 차트: 격자 → 선 → 점 → 툴팁
+    S.$$('#ch-svg .grid').forEach((g, i) => g.setAttribute('stroke-dashoffset', (1 - M.ease.outCubic(M.prog(t, b(18) + .1 + i * .04, .35))).toFixed(4)));
+    const lk = M.ease.inOutCubic(M.prog(t, b(18) + .22, .55));
+    $('ch-line').setAttribute('stroke-dashoffset', (1 - lk).toFixed(4));
+    $('ch-area').style.opacity = (M.prog(t, b(18) + .5, .3) * 1).toFixed(3);
+    pts.forEach((p, i) => { const s = M.spring(t - (b(18) + .25 + .55 * i / (n - 1)), 'pop'); $('dot' + i).setAttribute('r', (Math.max(0, s) * 9 * (i === CH.tipIndex && t > b(19) && t < b(20) ? 1.35 : 1)).toFixed(2)); });
+    $('ch-svg').style.transform = `translate(${((w - 640) / 2).toFixed(1)}px, ${((h - 470) / 2).toFixed(1)}px)`;
+    $('ch-label').style.transform = $('ch-num').style.transform = `translate(${((w - 640) / 2).toFixed(1)}px, ${((h - 470) / 2).toFixed(1)}px)`;
+    const tipK = t > b(19) && t < b(20) + .1 ? M.spring(t - b(19) - .05, 'pop') * (1 - M.prog(t, b(20) - .08, .12)) : 0;
+    const tip = $('tip'), guide = $('guide');
+    if (tipK > .001) {
+      tip.style.visibility = guide.style.visibility = 'inherit';
+      tip.style.left = (tipPt[0] - tip.offsetWidth / 2).toFixed(1) + 'px';
+      tip.style.top = (tipPt[1] - 26 - tip.offsetHeight).toFixed(1) + 'px';
+      tip.style.transform = `scale(${M.clamp(tipK, 0, 1.2).toFixed(3)})`;
+      guide.style.left = (tipPt[0] - 1) + 'px'; guide.style.top = (chartTL.y + 190) + 'px';
+      guide.style.height = (220 * M.clamp(tipK)).toFixed(1) + 'px';
+    } else tip.style.visibility = guide.style.visibility = 'hidden';
+    // ⌘K 팔레트
+    const q = M.at([[0, ''], [b(21), PAL.steps[0]], [b(21.5), PAL.steps[1]], [b(22), PAL.steps[2]]], t);
+    $('pa-q').textContent = q;
+    $('pa-ph').style.visibility = q ? 'hidden' : 'inherit';
+    const caretX = 76 + ($('pa-q').offsetWidth || 0) + (q ? 4 : -2);
+    const caret = $('pa-caret');
+    caret.style.left = caretX + 'px';
+    caret.style.opacity = (t > b(23) ? 0 : (Math.floor(t / .26) % 2 === 0 || (t > b(21) - .1 && t < b(22.6)) ? 1 : 0)).toString();
+    // ⌘K 키는 열릴 때 한 번 눌리고, 엔터 때는 ↵ 키로 바뀌어 눌림
+    const pk = $('pa-k'), entering = t > b(23) - .06 && t < b(24);
+    pk.textContent = entering ? '↵' : '⌘K';
+    pk.style.background = entering ? '#111' : 'transparent'; pk.style.color = entering ? '#fff' : ''; pk.style.borderColor = entering ? '#111' : '';
+    const kp = entering ? (M.spring(t - b(23) + .06, 'pop') - M.spring(t - b(23) - .1, 'smooth')) : (M.spring(t - b(20), 'pop') - M.spring(t - b(20) - .18, 'smooth'));
+    pk.style.transform = `scale(${(1 + .14 * kp).toFixed(3)})`;
+    let yy = 96 + 10;
+    PAL.items.forEach((_, i) => {
+      const el = $('pi' + i);
+      // 목록은 b(20.5)에 펼쳐지고, 글자를 칠 때마다 안 맞는 줄이 접힘
+      const hk = M.anim([[0, 0], [b(20.5), 1], [b(21), PAL.items[i].includes(PAL.steps[0]) ? 1 : 0], [b(21.5), PAL.items[i].includes(PAL.steps[1]) ? 1 : 0], [b(22), PAL.items[i].includes(PAL.steps[2]) ? 1 : 0]], t, 'snappy');
+      const vis = M.clamp(hk);
+      el.style.top = yy.toFixed(1) + 'px';
+      el.style.height = (68 * vis).toFixed(1) + 'px';
+      el.style.opacity = (M.clamp(vis * 1.6 - .4)).toFixed(3);
+      el.style.visibility = vis < .02 ? 'hidden' : 'inherit';
+      yy += 72 * vis;
+      const sel = t >= b(22) + .06 && PAL.items[i].includes(PAL.steps[2]);
+      el.classList.toggle('on', sel);
+      el.style.transform = sel ? `scale(${(1 - .025 * (M.prog(t, b(23) - .04, .04) - M.spring(t - b(23) - .04, 'snappy'))).toFixed(4)})` : 'none';
+    });
+    // 토스트
+    $('to-chk').setAttribute('stroke-dashoffset', (1 - M.ease.outCubic(M.prog(t, b(24) + .2, .3))).toFixed(4));
+    $('to-ic').style.transform = `scale(${M.clamp(M.spring(t - b(24) - .1, 'pop'), 0, 1.3).toFixed(3)})`;
+    $('to-bar').style.width = (100 * (1 - M.prog(t, b(24.5), b(1.4)))).toFixed(2) + '%';
+  }
+
+  if (C.poster == null) C.poster = b(6.6);   // 미리보기 첫 화면
+  S.start(S => {
+    S.setDuration(DUR);
+    S.ambient(render);
+  });
+})();
+</script>

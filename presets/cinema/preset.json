@@ -1,0 +1,62 @@
+{
+  "id": "cinema",
+  "order": 110,
+  "group": "look",
+  "style": "hyperspace-stat-reel",
+  "name": "시네마틱",
+  "summary": "영화 예고편처럼 레터박스 속에서 사진이 천천히 다가오고, 장 번호가 붙은 자막이 한 장씩 넘어가요. 숫자는 초공간 빛줄기 속에서 다가오고, 끝엔 빛을 받는 로고.",
+  "look": "레터박스 · 장 번호 자막 · 빛 번짐 · 초공간 숫자",
+  "template": "cinema",
+  "formats": [
+    "tall",
+    "portrait",
+    "square",
+    "wide"
+  ],
+  "seconds": 23.5,
+  "photos": {
+    "need": 2,
+    "hint": "장면처럼 쓰는 가로 사진 2~4장 (사람·공간·제품이 담긴 분위기 있는 컷). 없으면 동심원·별밭·안개 바탕으로 만들어져요"
+  },
+  "ask": [
+    "한 줄 훅(제목)과 그중 강조할 낱말",
+    "작은 꼬리표 (새 기능, 2026 브랜드 필름 같은 것)",
+    "장마다 보여 줄 짧은 문장 2~5개 (하나에 18자 안쪽)",
+    "보여 줄 숫자 하나와 그 출처·기준 시점",
+    "마지막 한 줄과 버튼 문구, 사이트나 계정"
+  ],
+  "brief": "예) 회의록을 알아서 정리해 주는 새 기능 예고편. 훅: 회의록은 이제 알아서 정리돼요. 장: 말하면 바로 받아 적고 / 할 일만 골라 정리하고 / 팀 채널로 바로 보내요. 숫자: 하루 40분 아낌(시범 사용 팀 기준). 마지막: 다음 회의부터 바로 써 보세요, 무료로 시작, example.com",
+  "check": [
+    "숫자의 출처와 기준 시점 (source 칸이 화면에 각주로 나와요)",
+    "사진을 써도 되는지(직접 찍은 사진·CC0·CC BY 출처 표시), 실제 제품·장소가 아니면 '참고 사진' 표시",
+    "'최초·1위·유일·최고' 같은 말은 근거가 있을 때만",
+    "9:16 에서 장 자막이 세이프존 아래쪽 안에 들어왔는지"
+  ],
+  "music": {
+    "mood": "cinematic",
+    "bpm": 120,
+    "prompt": "cinematic trailer underscore, low sustained strings and warm piano notes, soft sub pulses on every chapter, slow build with a rising swell and a deep boom on the number, gentle resolved ending, 120 bpm",
+    "sections": [
+      [
+        0,
+        5,
+        "near silence, a single low drone and soft piano note as the title forms"
+      ],
+      [
+        5,
+        14,
+        "chapter pulses: a soft hit on each chapter card, light shimmer on the light leaks"
+      ],
+      [
+        14,
+        18.5,
+        "rising swell with ticking pulse, deep boom as the number lands"
+      ],
+      [
+        18.5,
+        23.5,
+        "fade to black, warm sustained chord as the logo is lit, quiet tail"
+      ]
+    ]
+  }
+}

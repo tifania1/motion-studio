@@ -1,0 +1,114 @@
+{
+  "id": "holo-flicker-serif",
+  "name": "홀로그램 잔상",
+  "group": "그라디언트·빛",
+  "template": "glow",
+  "summary": "흐릿한 무지개 형체가 반 박마다 바뀌는 뒤로 세리프 한 줄이 고정된, 그레인 짙은 꿈결 같은 장면",
+  "tags": [
+    "무지개",
+    "잔상",
+    "그레인",
+    "세리프",
+    "꿈결"
+  ],
+  "hand": false,
+  "source": {
+    "site": "keyframe.gallery",
+    "ref": "mux:oGxZ1SQkTFuWWDXt5qC01kKA002Bnzf02uP2jZOlziw5mw",
+    "at": "9.6–14.2초",
+    "note": "가운데 세리프 문구는 고정하고 뒤 그림만 반 박마다 교체, 심하게 흐린 형체에 빨강·청록 색 어긋남과 굵은 그레인, 거대한 첫 글자가 밀려들며 무지개 번짐이 바탕을 물들임, 끝에 어절마다 다른 색으로 남는 문구"
+  },
+  "palette": [
+    "#35303D",
+    "#FF5FA2",
+    "#5EE3D0",
+    "#F6C35B",
+    "#8C7CF0",
+    "#FAF6F2"
+  ],
+  "colors": {
+    "bg": "#35303D",
+    "onBg": "#FAF6F2",
+    "onBgMuted": "rgba(250,246,242,.7)",
+    "paper": "#F3EEF6",
+    "ink": "#1B1020",
+    "accent": "#FF5FA2",
+    "accentInk": "#1B1020",
+    "pattern": "rgba(255,255,255,.07)",
+    "glow": "rgba(94,227,208,.35)"
+  },
+  "type": {
+    "display": [
+      "Noto Serif KR"
+    ],
+    "heading": [
+      "Noto Serif KR"
+    ],
+    "body": [
+      "Geist",
+      "Noto Sans KR"
+    ]
+  },
+  "fonts": [
+    {
+      "family": "Noto Serif KR",
+      "weight": 900,
+      "file": "fonts/NotoSerifKR-Black.woff2"
+    },
+    {
+      "family": "Geist",
+      "weight": "100 900",
+      "file": "fonts/Geist-Variable.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 500,
+      "file": "fonts/NotoSansKR-Medium.woff2"
+    }
+  ],
+  "look": {
+    "grain": 0.16,
+    "grainFps": 12,
+    "vignette": 0.22
+  },
+  "shape": {
+    "radius": "calc(var(--u) * 1)"
+  },
+  "motion": {
+    "pace": "빠름",
+    "bpm": 128,
+    "ease": "power2.out",
+    "stagger": 0.8,
+    "transitions": [
+      "cut",
+      "fade"
+    ]
+  },
+  "scenes": {
+    "bg": "mesh",
+    "align": "center",
+    "card": "glass",
+    "marker": "color",
+    "weight": 900,
+    "tracking": -0.01,
+    "case": "none",
+    "rough": false
+  },
+  "signature": [
+    "세리프 문구 한 줄은 가운데 고정, 뒤 그림만 반 박마다 컷으로 바뀜. 꽃·나비·얼굴 같은 형체가 심하게 흐리고 빨강·청록이 어긋난 채 굵은 그레인이 덮음",
+    "거대한 세리프 첫 글자가 오른쪽에서 밀려 들어오는 동안 흐릿한 무지개 번짐이 왼쪽부터 바탕을 물들임",
+    "마지막에 그림이 빠지면 같은 문구가 밝은 바탕에 남고, 어절마다 다른 색(파랑·분홍·청록·자주)으로 물든 채 멈춤"
+  ],
+  "fits": [
+    "이미지·AI 생성 서비스",
+    "음악·공연 티저",
+    "뷰티·패션 무드",
+    "새 시즌 컬렉션"
+  ],
+  "avoid": [
+    "또렷한 제품 사진",
+    "UI 화면",
+    "긴 문장",
+    "느린 페이드로만 잇기"
+  ]
+}

@@ -1,0 +1,120 @@
+{
+  "id": "pale-phone-toast-swell-relay",
+  "name": "옅은 폰 알림 부풀기",
+  "group": "제품 UI",
+  "template": "uidemo",
+  "summary": "아주 옅은 회색 위에 윤곽만 남은 폰 한 대가 있고, 그 위쪽에 뜬 파랑 테두리 알림 카드 하나가 카메라 앞까지 부풀었다 돌아가요. 이어 회색 알림이 같은 자리에서 한 박마다 조용히 갈려요",
+  "tags": [
+    "제품 UI",
+    "알림",
+    "폰",
+    "조용함",
+    "옅은 회색",
+    "확대"
+  ],
+  "hand": false,
+  "source": {
+    "site": "keyframe.gallery",
+    "ref": "mux:02CklMRF7009T7fOqJX02v5d4beXDEYMAOgIvSFCpW4cMQ",
+    "at": "0–8.2초",
+    "note": "바탕과 거의 같은 색의 폰 윤곽 위에 하늘 회색 알림 카드가 흐림에서 맺히는 등장, 아바타가 화면 절반을 채울 때까지 다가갔다 빠지는 카메라와 모서리에서 도는 파란 로딩 호, 이후 회색 알림이 같은 자리에서 한 박마다 너비를 바꿔 가며 갈리는 리듬, 마지막 카드에만 붙는 버튼 줄"
+  },
+  "palette": [
+    "#EBEBEB",
+    "#F2F2F2",
+    "#E1E8EF",
+    "#3D9BE0",
+    "#D6157A",
+    "#9E9E9E"
+  ],
+  "colors": {
+    "bg": "#EBEBEB",
+    "onBg": "#1C1C1E",
+    "onBgMuted": "rgba(28,28,30,.6)",
+    "paper": "#E1E8EF",
+    "ink": "#1C1C1E",
+    "accent": "#3D9BE0",
+    "accentInk": "#0B1A2A",
+    "pattern": "rgba(28,28,30,.05)",
+    "glow": "rgba(61,155,224,.5)"
+  },
+  "type": {
+    "display": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "heading": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "body": [
+      "Geist",
+      "Noto Sans KR"
+    ]
+  },
+  "fonts": [
+    {
+      "family": "Geist",
+      "weight": "100 900",
+      "file": "fonts/Geist-Variable.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 500,
+      "file": "fonts/NotoSansKR-Medium.woff2"
+    }
+  ],
+  "shape": {
+    "radius": "calc(var(--u) * 1.6)"
+  },
+  "motion": {
+    "pace": "느림",
+    "bpm": 68,
+    "ease": "power3.out",
+    "stagger": 1,
+    "transitions": [
+      "blur",
+      "fade"
+    ]
+  },
+  "scenes": {
+    "bg": "solid",
+    "align": "center",
+    "card": "outline",
+    "marker": "underline",
+    "weight": 500,
+    "tracking": -0.01,
+    "case": "none",
+    "rough": false,
+    "title": "blur",
+    "frame": "phone",
+    "number": "count",
+    "scale": 0.85,
+    "schemes": [
+      "dark",
+      "paper",
+      "dark"
+    ]
+  },
+  "signature": [
+    "바탕과 거의 같은 회색 폰(테두리 없이 부드러운 그림자와 위쪽 알약 홈만) 위쪽 3분의 1 지점에 하늘 회색 칠과 1px 파랑 테두리를 두른 알림 카드 하나가 0.94배·흐림에서 0.5초 만에 맺힘",
+    "카메라가 그 카드의 아바타를 중심으로 0.9초에 4배까지 다가가 한 박 머묾. 이때 카드 왼쪽 위 모서리 안쪽에서 파란 4분의 1 호가 돌고, 아바타 아래 작은 자홍 하트 점이 톡 튀어나온 뒤 다시 0.9초에 1배로 빠짐",
+    "빠진 뒤엔 회색 칠 알림이 같은 자리에서 한 박(약 0.9초)마다 갈림. 새 카드는 0.92배·흐림으로 맺히고 앞 카드는 0.96배로 줄며 흐려지고, 카드 너비는 내용에 맞춰 매번 달라짐. 마지막 카드에만 아래 버튼 줄이 붙어 키가 커짐"
+  ],
+  "fits": [
+    "알림·메시지 기능 소개",
+    "앱 업데이트에서 작은 UI 개선 보여 주기",
+    "소셜·커뮤니티 앱",
+    "상태 표시·토스트 디자인 공개",
+    "짧은 기능 한 가지 티저"
+  ],
+  "avoid": [
+    "진한 색 바탕",
+    "빠른 컷과 밀어내기",
+    "화면에 카드 여러 장 동시에",
+    "큰 굵은 제목과 굵은 큰 숫자",
+    "그레인·종이 같은 질감",
+    "넓게 칠한 자홍(하트 점 하나 크기까지만)",
+    "강조색 여러 개(파랑 테두리·호가 주, 자홍은 작은 점만)"
+  ]
+}

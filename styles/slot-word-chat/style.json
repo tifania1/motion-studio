@@ -1,0 +1,106 @@
+{
+  "id": "slot-word-chat",
+  "name": "한 단어 갈아끼우기",
+  "group": "타이포",
+  "template": "typeslam",
+  "summary": "아주 옅은 회색에 채팅 말풍선과 한 줄 문장. 문장 속 한 단어 자리만 색을 바꿔 가며 갈아끼워요",
+  "tags": [
+    "타이포",
+    "채팅",
+    "미니멀",
+    "AI",
+    "기능 나열"
+  ],
+  "hand": false,
+  "source": {
+    "site": "keyframe.gallery",
+    "ref": "mux:kbTDqPZBR7PiapMnfgmpDUWJh373pM2aeLmos9sp1xU",
+    "at": "0–11초",
+    "note": "남색 사용자 말풍선과 '작업 중' 반짝이 글자, 게시물 카드가 0.2초 간격으로 오른쪽 아래로 겹쳐 쌓이는 부채꼴, 어절을 하나씩 세운 문장에서 동사 자리만 파랑→주황→초록으로 바꾸기, 둥근 점 로고가 줄며 옆에 이름이 붙는 마무리. 같은 계열 영상(mux:ZDy4g3Ef7lNCX02VeRCknEXqGmV014sEND5btaiaMVaZM 18–21초)의 어절을 뒤에서부터 하나씩 지우기도 함께 참고"
+  },
+  "palette": [
+    "#EBEBEB",
+    "#111111",
+    "#1F4E7E",
+    "#2C8BE8",
+    "#F06A1D",
+    "#22C36A"
+  ],
+  "colors": {
+    "bg": "#EBEBEB",
+    "onBg": "#111111",
+    "onBgMuted": "rgba(17,17,17,.5)",
+    "paper": "#FFFFFF",
+    "ink": "#111111",
+    "accent": "#1F4E7E",
+    "accentInk": "#FFFFFF",
+    "pattern": "rgba(17,17,17,.05)",
+    "glow": "rgba(44,139,232,.18)"
+  },
+  "type": {
+    "display": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "heading": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "body": [
+      "Geist",
+      "Noto Sans KR"
+    ]
+  },
+  "fonts": [
+    {
+      "family": "Geist",
+      "weight": "100 900",
+      "file": "fonts/Geist-Variable.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 500,
+      "file": "fonts/NotoSansKR-Medium.woff2"
+    }
+  ],
+  "look": {},
+  "shape": {
+    "radius": "calc(var(--u) * 2.2)"
+  },
+  "motion": {
+    "pace": "빠름",
+    "bpm": 120,
+    "ease": "power3.out",
+    "stagger": 0.8,
+    "transitions": [
+      "cut"
+    ]
+  },
+  "scenes": {
+    "bg": "solid",
+    "align": "center",
+    "card": "flat",
+    "marker": "color",
+    "weight": 500,
+    "tracking": -0.01,
+    "case": "none",
+    "rough": false
+  },
+  "signature": [
+    "단어 자리 갈아끼우기: '○○가 이제 [찾아요]' 의 대괄호 자리만 0.6초마다 바뀜. 앞 단어는 0.08초에 사라지고, 새 단어는 양옆 공백 없이 붙어 나타났다가 0.25초 동안 공백이 스프링으로 벌어지며 문장 전체가 다시 가운데로 맞춰짐. 단어마다 색이 다름(파랑·주황·초록)",
+    "카드 부채꼴: 같은 크기 카드가 0.2초 간격으로 오른쪽 아래(가로 4%, 세로 3%)로 겹쳐 쌓임. 들어올 때 scale .96→1, 맨 위 카드 그림자가 가장 진함",
+    "작업 중 표시: 작은 아이콘 옆 회색 글자 위로 밝은 띠가 왼쪽에서 오른쪽으로 계속 지나감(1.2초 주기, S.ambient 로 background-position)"
+  ],
+  "fits": [
+    "AI·챗봇 기능 소개",
+    "할 수 있는 일 여러 개 나열",
+    "짧은 티저(10~15초)",
+    "앱 업데이트 공지"
+  ],
+  "avoid": [
+    "굵은 장식 글꼴",
+    "복잡한 배경 무늬",
+    "사진 콜라주",
+    "느린 페이드"
+  ]
+}

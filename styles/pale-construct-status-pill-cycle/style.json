@@ -1,0 +1,136 @@
+{
+  "id": "pale-construct-status-pill-cycle",
+  "name": "설계선 상태 알약",
+  "group": "제품 UI",
+  "template": "uidemo",
+  "summary": "옅은 회색 위에서 낱말 하나가 머리카락 같은 설계선으로 풀려요. 선이 모여 알약 하나가 되고, 그 알약이 한자리에서 대기, 실행 중, 검토, 완료로 색과 아이콘을 바꾼 뒤 표 속 한 칸으로 물러나는 조용한 기능 소개",
+  "tags": [
+    "제품 UI",
+    "상태",
+    "설계선",
+    "미니멀",
+    "조용함",
+    "옅은 회색"
+  ],
+  "hand": false,
+  "source": {
+    "site": "keyframe.gallery",
+    "ref": "mux:g02Fzb7ehFlOIckIw3XdELLc7QGtx00DvzqIDbsOYWJkA",
+    "at": "2–29.7초",
+    "note": "옅은 회색 위 낱말 하나가 흐려지며 가는 격자와 원, 치수 숫자가 든 설계선으로 바뀌는 전환. 선이 모여 알약 윤곽이 되고 칠이 차오르는 등장. 알약 하나가 제자리에서 회색 빈 원, 도는 고리, 연파랑, 초록 체크로 3초마다 상태를 바꾸는 리듬. 머리글이 뜨고 알약이 표 한 칸으로 줄어든 뒤 카메라가 대시보드 밖으로 천천히 물러나는 마무리"
+  },
+  "palette": [
+    "#ECECEC",
+    "#3A3F47",
+    "#DEDEDE",
+    "#D4E3F3",
+    "#2E5A88",
+    "#3E8E4F"
+  ],
+  "colors": {
+    "bg": "#ECECEC",
+    "onBg": "#3A3F47",
+    "onBgMuted": "rgba(58,63,71,.62)",
+    "paper": "#FAFAFA",
+    "ink": "#23272E",
+    "accent": "#D4E3F3",
+    "accentInk": "#2E5A88",
+    "pattern": "rgba(58,63,71,.08)",
+    "glow": "rgba(79,127,176,.18)"
+  },
+  "type": {
+    "display": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "heading": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "body": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "mono": [
+      "Geist Mono",
+      "Noto Sans KR"
+    ]
+  },
+  "fonts": [
+    {
+      "family": "Geist",
+      "weight": "100 900",
+      "file": "fonts/Geist-Variable.woff2"
+    },
+    {
+      "family": "Geist Mono",
+      "weight": "100 900",
+      "file": "fonts/GeistMono-Variable.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 500,
+      "file": "fonts/NotoSansKR-Medium.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 700,
+      "file": "fonts/NotoSansKR-Bold.woff2"
+    }
+  ],
+  "shape": {
+    "radius": "calc(var(--u) * 1.2)"
+  },
+  "motion": {
+    "pace": "느림",
+    "bpm": 80,
+    "ease": "power3.inOut",
+    "stagger": 1.3,
+    "transitions": [
+      "fade",
+      "blur",
+      "fade"
+    ]
+  },
+  "scenes": {
+    "bg": "lines",
+    "align": "center",
+    "card": "flat",
+    "marker": "color",
+    "weight": 600,
+    "tracking": -0.02,
+    "case": "none",
+    "rough": false,
+    "title": "fade",
+    "frame": "none",
+    "deco": [
+      "marks",
+      "rings"
+    ],
+    "number": "count",
+    "scale": 1,
+    "schemes": [
+      "dark",
+      "paper"
+    ]
+  },
+  "signature": [
+    "가운데 낱말 하나가 2초쯤 머문 뒤 옅어지고, 같은 자리에 머리카락 같은 회색 설계선(가로세로 격자, 큰 원과 타원, 작은 고정폭 치수 숫자)이 하나씩 그어지며 비스듬히 기운 도면처럼 천천히 미끄러짐. 선들이 가운데로 모여 둥근 알약 윤곽이 되고, 윤곽 안으로 옅은 칠이 차오름",
+    "알약 하나가 화면 한가운데에서 약 3초마다 상태를 바꿈: 회색 빈 원과 '대기' → 도는 고리와 '실행 중' → 연파랑 칠과 파란 글자의 '검토 대기' → 연초록 칠과 체크 원의 '완료'. 알약 너비는 새 글 길이에 맞춰 부드럽게 늘고 줄며, 칠과 글자색은 0.6초에 번지듯 바뀜",
+    "완료된 알약 위로 작은 열 머리글이 옅게 뜨면 알약이 표의 한 칸 크기로 줄고, 둘레로 표와 대시보드가 맺힘. 카메라는 바짝 붙은 화면에서 4초에 걸쳐 물러나 대시보드가 옅은 그림자를 가진 떠 있는 카드가 됨"
+  ],
+  "fits": [
+    "작업 흐름·자동화 도구 소개",
+    "상태 표시·진행 추적 기능 공개",
+    "개발·데이터 도구의 한 기능 짚기",
+    "차분한 B2B 제품 런칭"
+  ],
+  "avoid": [
+    "빠른 컷",
+    "진한 색면 바탕",
+    "그레인·종이 같은 질감",
+    "한 화면에 요소 여러 개 동시에",
+    "굵고 큰 글자 쇼",
+    "강조색을 넓게 칠하기"
+  ]
+}

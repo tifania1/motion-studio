@@ -1,0 +1,58 @@
+{
+  "id": "glow",
+  "order": 108,
+  "group": "look",
+  "style": "ember-orb-dark",
+  "name": "빛과 그라디언트",
+  "summary": "어둠 속 빛 구슬이 숨 쉬다 화면 가득 열리고, 흐린 색 덩어리 위로 유리 알약이 떠올라요. 숫자는 빛 고리 안에서, 마지막엔 빛이 도는 버튼으로 끝나요.",
+  "look": "숨 쉬는 빛 구슬 · 흐린 오로라 · 유리 알약 · 빛 고리",
+  "template": "glow",
+  "formats": [
+    "tall",
+    "portrait",
+    "square",
+    "wide"
+  ],
+  "seconds": 21.5,
+  "photos": {
+    "need": 0,
+    "hint": "사진 없이 돼요. 넣으면(1~4장) 둥근 빛 창 안에서 하나씩 번지며 나타나요. 가운데에 주인공이 있는 사진이 잘 어울려요"
+  },
+  "ask": [
+    "작은 꼬리표 (예: 새 기능, 출시 예정)",
+    "첫 문장(훅) 24자 안쪽과 그 안에서 빛나게 할 어절",
+    "장점·기능 2~5개 (하나에 18자 안쪽)",
+    "보여 줄 숫자 하나와 그 출처·기준 (없으면 숫자 장면이 빠져요)",
+    "마지막 한마디와 버튼 문구, 주소나 계정"
+  ],
+  "brief": "예) 회의를 녹음하면 회의록과 할 일을 알아서 정리해 주는 AI 서비스. 말하면 바로 받아 적고, 할 일만 골라 정리하고, 팀 채널로 보내 줘요. 시범 사용 팀은 하루 40분을 아꼈어요(예시 수치). 버튼은 '무료로 시작', 주소 example.com",
+  "check": [
+    "숫자의 출처와 기준 시점 (number.source 에 적고, 지어낸 숫자는 넣지 않기)",
+    "highlight 가 title 안에 그대로 있는 어절인지",
+    "'최초·1위·유일·최고' 같은 말은 근거 자료가 있을 때만",
+    "버튼 문구와 주소가 실제로 쓰는 것인지",
+    "밝은 바탕 브랜드면 색 덩어리 위 글이 잘 읽히는지 (9:16 에서 한 번 더)"
+  ],
+  "music": {
+    "mood": "custom",
+    "bpm": 90,
+    "prompt": "airy ambient electronic, soft evolving synth pads, gentle pulsing sub, glassy plucks and shimmering bell tones, slow and luminous, calm AI product teaser",
+    "sections": [
+      [
+        0,
+        3.5,
+        "near silence, a single warm pad swells as the light orb wakes, soft shimmer on each ring"
+      ],
+      [
+        3.5,
+        13.5,
+        "pads open wide with a slow pulse, a light glassy pluck on every new line, a deeper swell under the number"
+      ],
+      [
+        13.5,
+        21.5,
+        "brighter shimmer as the photos bloom, then a calm resolved chord that breathes out under the button"
+      ]
+    ]
+  }
+}

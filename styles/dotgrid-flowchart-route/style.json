@@ -1,0 +1,128 @@
+{
+  "id": "dotgrid-flowchart-route",
+  "name": "점 격자 순서도",
+  "group": "다이어그램·데이터",
+  "template": "dataflow",
+  "summary": "점 격자 화이트보드 위 굵은 회색 상자·마름모 순서도. 카메라가 연결선을 따라 옮겨 다니고, 갈래는 빨강·초록 둥근 꺾임 선으로 나뉘며, 상자 위로 반응이 터져요",
+  "tags": [
+    "다이어그램",
+    "순서도",
+    "화이트보드",
+    "선택 안내",
+    "협업",
+    "단계"
+  ],
+  "hand": false,
+  "source": {
+    "site": "keyframe.gallery",
+    "ref": "mux:R52501EGZ6997oCAg8st4aa1S6LduPBvabn002fIVpQVk, mux:HXM9KssXvohW7ItpWTCZ5FkAMpkum1tBm6qy02b01HgNg",
+    "at": "77번 12.9–31.6초, 494번 6.6–12초",
+    "note": "점 격자 판 위 굵은 회색 테두리 상자·마름모와 둥근 꺾임 연결선(빨강 '아니요', 초록 '예', 회색 기본), 판 전체를 한 번 보여 준 뒤 카메라가 선을 따라 상자에서 상자로 옮겨 다니는 투어, 상자 글을 선택해 고쳐 치기, 반응 고르기 원판과 상자 모서리에서 뿜어 오르는 반응, 이름표 커서가 댓글 말풍선으로 바뀌는 장면. 494번에서는 옅은 색 칩 → 가는 화살표 → 회색 갈림 칩 → 화살표 → 결과 칩으로 이어지는 가로 경로가 길어질수록 가운데로 다시 맞춰지고, 경로마다 칩 색만 바뀌는 방식"
+  },
+  "palette": [
+    "#E7E7E7",
+    "#1C1C1C",
+    "#D63E28",
+    "#2FA04C",
+    "#2F7BEA",
+    "#6B6B6B"
+  ],
+  "colors": {
+    "bg": "#E7E7E7",
+    "onBg": "#1C1C1C",
+    "onBgMuted": "rgba(28,28,28,.6)",
+    "paper": "#F2F2F2",
+    "ink": "#1C1C1C",
+    "accent": "#D63E28",
+    "accentInk": "#FFFFFF",
+    "pattern": "rgba(28,28,28,.2)",
+    "glow": "rgba(214,62,40,.18)"
+  },
+  "type": {
+    "display": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "heading": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "body": [
+      "Geist",
+      "Noto Sans KR"
+    ]
+  },
+  "fonts": [
+    {
+      "family": "Geist",
+      "weight": "100 900",
+      "file": "fonts/Geist-Variable.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 500,
+      "file": "fonts/NotoSansKR-Medium.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 700,
+      "file": "fonts/NotoSansKR-Bold.woff2"
+    }
+  ],
+  "look": {},
+  "shape": {
+    "radius": "calc(var(--u) * 0.9)"
+  },
+  "motion": {
+    "pace": "보통",
+    "bpm": 100,
+    "ease": "power2.inOut",
+    "stagger": 1,
+    "transitions": [
+      "push",
+      "zoom",
+      "cut"
+    ]
+  },
+  "scenes": {
+    "bg": "dots",
+    "align": "center",
+    "card": "outline",
+    "marker": "underline",
+    "weight": 500,
+    "tracking": -0.01,
+    "case": "none",
+    "rough": false,
+    "title": "type",
+    "frame": "card",
+    "deco": [
+      "cursor",
+      "bubbles"
+    ],
+    "number": "count",
+    "scale": 0.95,
+    "schemes": [
+      "dark",
+      "paper"
+    ]
+  },
+  "signature": [
+    "선 따라 카메라 투어: 순서도 판을 화면의 2.5배로 두고, 먼저 전체를 한 번 보여 준 뒤 카메라가 상자 → 연결선 → 마름모 → 갈래 끝 상자 순으로 선을 따라 미끄러지듯 옮겨 다님(한 칸 0.8초, power2.inOut, 멈출 때마다 1박). 마름모·상자에서 나온 굵은 선은 둥근 꺾임으로 위(빨강, '아니요')·아래(초록, '예')로 갈라지고 끝에 화살촉과 작은 꼬리표",
+    "상자 글 고치기와 반응: 커서가 상자를 누르면 파란 선택 테두리와 손잡이 점 넷, 위에 검은 도구 막대가 뜨고, 글이 파란 선택으로 덮였다가 새 말로 타자됨. 이어서 상자 모서리에서 반응 스티커가 위로 뿜어져 커졌다 옅어지고(0.8초), 이름표 단 커서가 와서 이름표가 파란 말풍선 댓글로 늘어남",
+    "가로 경로 칩: 옅은 색 칩(할 일) → 가는 검은 화살표가 왼쪽부터 그어짐(0.3초) → 회색 칩(갈림) → 화살표 → 같은 색 칩(결과). 줄이 길어질 때마다 전체가 가운데로 다시 맞춰지고, 다음 경로는 같은 자리에서 흐림으로 바뀌며 칩 색만 주황 → 파랑 → 초록으로 바뀜"
+  ],
+  "fits": [
+    "선택 안내(나에게 맞는 상품 찾기)",
+    "이용 흐름·신청 단계 설명",
+    "AI·자동화 기능 소개",
+    "팀 협업·기획 도구",
+    "문제 해결 과정 보여 주기"
+  ],
+  "avoid": [
+    "사진을 꽉 채운 장면",
+    "그라디언트·빛 효과",
+    "선 떨림·손그림 질감",
+    "세리프 큰 제목",
+    "상자 열 개 넘는 빽빽한 판을 한 화면에 오래"
+  ]
+}

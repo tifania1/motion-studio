@@ -1,0 +1,113 @@
+{
+  "id": "lavender-prop-headline",
+  "name": "소품이 끼어드는 헤드라인",
+  "group": "3D·사물",
+  "template": "stage",
+  "summary": "아래가 라벤더로 번지는 밝은 바탕. 헤드라인 어절이 물결치듯 내려앉고, 낱말 사이로 작은 3D 소품이 비집고 들어가요. 끝은 소품 격자로 물러나기",
+  "tags": [
+    "3D 소품",
+    "헤드라인",
+    "소상공인",
+    "AI",
+    "친근함"
+  ],
+  "hand": false,
+  "source": {
+    "site": "keyframe.gallery",
+    "ref": "mux:KErjYyyJwjyWH2nCmI2ie00MppObbEBfuCjEZ9dNaO2k",
+    "at": "2–29초",
+    "note": "어절이 서로 다른 높이에서 들어와 기준선으로 맞춰지는 물결 등장, 낱말 사이가 벌어지며 작은 3D 소품이 튀어나와 끼어드는 장면, 지난 말풍선이 흐려지며 위로 밀리는 채팅, 숫자가 오르며 커지는 대시보드 카드, 앱 아이콘이 깊이를 달리하며 원을 그리는 궤도, 마지막 문장이 화면보다 크게 시작해 작아지며 둘레에 소품 격자가 바깥으로 퍼지는 마무리"
+  },
+  "palette": [
+    "#E9E9EC",
+    "#BCC4DB",
+    "#C0CCE4",
+    "#2563D9",
+    "#121212",
+    "#F2C66B"
+  ],
+  "colors": {
+    "bg": "#E9E9EC",
+    "onBg": "#121212",
+    "onBgMuted": "rgba(18,18,18,.55)",
+    "paper": "#FFFFFF",
+    "ink": "#121212",
+    "accent": "#2563D9",
+    "accentInk": "#FFFFFF",
+    "pattern": "rgba(80,100,200,.06)",
+    "glow": "rgba(150,165,225,.55)"
+  },
+  "type": {
+    "display": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "heading": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "body": [
+      "Geist",
+      "Noto Sans KR"
+    ]
+  },
+  "fonts": [
+    {
+      "family": "Geist",
+      "weight": "100 900",
+      "file": "fonts/Geist-Variable.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 500,
+      "file": "fonts/NotoSansKR-Medium.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 700,
+      "file": "fonts/NotoSansKR-Bold.woff2"
+    }
+  ],
+  "look": {},
+  "shape": {
+    "radius": "calc(var(--u) * 3.2)"
+  },
+  "motion": {
+    "pace": "보통",
+    "bpm": 108,
+    "ease": "back.out(1.2)",
+    "stagger": 1,
+    "transitions": [
+      "zoom",
+      "fade",
+      "cut"
+    ]
+  },
+  "scenes": {
+    "bg": "mesh",
+    "align": "center",
+    "card": "flat",
+    "marker": "color",
+    "weight": 600,
+    "tracking": -0.02,
+    "case": "none",
+    "rough": false
+  },
+  "signature": [
+    "물결 등장: 어절을 0.1초 간격으로, 저마다 다른 높이(±1.5u, 시드 난수)에서 나타나 0.4초 동안 기준선으로 'snappy' 정렬. 가운데 정렬이라 어절이 더해질 때마다 줄 전체가 다시 가운데를 찾음",
+    "소품 끼어들기: 정해 둔 낱말 사이 공백이 0.25초에 소품 폭만큼 벌어지고, 그 자리에 3D 소품 사진이 scale 0→1, 회전 −12°→0 으로 'pop'. 소품끼리 0.12초 간격",
+    "소품 격자로 물러나기: 마지막 문장이 scale 4 → 1 로 0.35초에 빠르게 줄어들며 둘레에 소품이 가까운 링부터 0.1초 간격으로 튀어나와 화면 끝까지 격자를 채움. 이어 1 → 0.8 로 천천히 더 물러남"
+  ],
+  "fits": [
+    "소상공인·자영업 대상 서비스",
+    "AI 비서·도우미 앱",
+    "친근한 브랜드 소개",
+    "앱 출시"
+  ],
+  "avoid": [
+    "어두운 바탕",
+    "날카로운 대문자 그로테스크",
+    "거친 질감",
+    "사진을 꽉 채운 장면"
+  ]
+}

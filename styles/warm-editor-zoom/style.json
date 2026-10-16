@@ -1,0 +1,109 @@
+{
+  "id": "warm-editor-zoom",
+  "name": "편집기 줌 투어",
+  "group": "제품 UI",
+  "template": "uidemo",
+  "summary": "따뜻한 회색 바탕 위 앱 창. 카메라가 편집 중인 곳으로 바짝 다가가 툴바·색 견본·선택 상자를 보여 주고, 장면은 가로로 휙 넘겨요",
+  "tags": [
+    "제품 UI",
+    "화면 녹화",
+    "편집기",
+    "SaaS",
+    "데모"
+  ],
+  "hand": false,
+  "source": {
+    "site": "keyframe.gallery",
+    "ref": "mux:fx00J8025luennP7L4ouE5U1uwKEZzJB8uTbnEynOwjew",
+    "at": "17–84초",
+    "note": "앱 창 전체에서 편집 영역으로 확대해 들어가는 카메라, 글 상자 선택 → 구절 드래그 선택 → 지우고 다시 쓰기, 떠 있는 서식 툴바와 색 견본 팝오버, 손 커서 클릭, 선택 상자 손잡이, @멘션 댓글 상자, 여러 크기 결과물이 나란히 밀려 들어오는 장면, 장면 사이 가로 모션 블러로 넘기기"
+  },
+  "palette": [
+    "#E7E6E1",
+    "#FFFFFF",
+    "#1C1B19",
+    "#3E63DD",
+    "#212727",
+    "#48A8B4"
+  ],
+  "colors": {
+    "bg": "#E7E6E1",
+    "onBg": "#1C1B19",
+    "onBgMuted": "rgba(28,27,25,.6)",
+    "paper": "#FFFFFF",
+    "ink": "#1C1B19",
+    "accent": "#3E63DD",
+    "accentInk": "#FFFFFF",
+    "pattern": "rgba(28,27,25,.05)",
+    "glow": "rgba(62,99,221,.18)"
+  },
+  "type": {
+    "heading": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "body": [
+      "Geist",
+      "Noto Sans KR"
+    ]
+  },
+  "fonts": [
+    {
+      "family": "Geist",
+      "weight": "100 900",
+      "file": "fonts/Geist-Variable.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 500,
+      "file": "fonts/NotoSansKR-Medium.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 700,
+      "file": "fonts/NotoSansKR-Bold.woff2"
+    }
+  ],
+  "look": {},
+  "shape": {
+    "radius": "calc(var(--u) * 1.4)"
+  },
+  "motion": {
+    "pace": "보통",
+    "bpm": 110,
+    "ease": "power4.inOut",
+    "stagger": 0.8,
+    "transitions": [
+      "zoom",
+      "push",
+      "cut"
+    ]
+  },
+  "scenes": {
+    "bg": "solid",
+    "align": "left",
+    "card": "shadow",
+    "marker": "highlight",
+    "weight": 600,
+    "tracking": -0.02,
+    "case": "none",
+    "rough": false
+  },
+  "signature": [
+    "카메라 다가가기: 앱 창 전체(zoom 1)에서 편집 중인 글 상자(zoom 2.6~3.2)로 0.8초 만에 확대·이동(M.camera + M.anim 'soft'). 확대한 채 커서가 일하는 동안 카메라가 아주 느리게 계속 따라감",
+    "글 고치기 묶음: 글 상자 선택(얇은 파란 테두리 + 네 모서리 손잡이) → 바꿀 구절 드래그 선택(파란 하이라이트) → 지우고 다시 타자 → 위에 떠 있는 서식 툴바, 색 견본 팝오버에서 손 커서 클릭으로 색이 바뀜",
+    "장면 넘기기: 가로로 휙 밀며(push 0.35초) 지나가는 동안 가로 흐림(12px 안팎)을 걸어 화면 녹화를 빨리 넘기는 느낌"
+  ],
+  "fits": [
+    "앱·웹 서비스 기능 소개",
+    "편집·디자인 도구 시연",
+    "B2B 제품 데모",
+    "튜토리얼 광고"
+  ],
+  "avoid": [
+    "화면을 꽉 채운 사진",
+    "강한 그라디언트",
+    "손그림 질감",
+    "3D 물체"
+  ]
+}

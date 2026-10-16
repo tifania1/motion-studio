@@ -1,0 +1,638 @@
+<title>/*@TITLE@*/</title>
+<style>
+/*@FONTFACES@*/
+/*@BRAND_CSS@*/
+/*@ENGINE_CSS@*/
+
+/* ===== timeline 템플릿: 연혁·마일스톤 (연도 자) =====
+   기념 숫자가 윤곽선에서 차오름 → 눈금이 촘촘한 긴 자(줄자)가 풀려 나오고, 자가 읽는 선 아래로 미끄러지며
+   큰 연도 숫자가 주행거리계처럼 굴러 이정표마다 멈춤 → 점이 찍히고 카드가 자에서 펼쳐짐
+   → 마지막엔 자 전체가 한눈에 보이게 물러나며 '지금' 문장·기념 숫자·로고.
+   세로 화면(9:16·4:5)은 자가 왼쪽에 세로로, 가로·정사각(16:9·1:1)은 아래에 가로로 놓여요.
+   자 눈금은 이정표 사이 햇수만큼 나뉘어서, 오래 걸린 구간일수록 눈금이 촘촘해요. */
+#tl { position: absolute; inset: 0; background: var(--bg); overflow: hidden; }
+.abs { position: absolute; left: 0; top: 0; }
+/* 배경: 자와 나란한 흐린 눈금 줄 (멀리 있는 자처럼 천천히 흐름) */
+#lanes i { position: absolute; display: block; }
+[data-format="tall"] #lanes i, [data-format="portrait"] #lanes i { top: 0; height: 100%; width: calc(var(--u) * 1.4); background-image: repeating-linear-gradient(180deg, var(--pattern) 0 2px, transparent 2px var(--gap)); }
+[data-format="square"] #lanes i, [data-format="wide"] #lanes i { left: 0; width: 100%; height: calc(var(--u) * 1.4); background-image: repeating-linear-gradient(90deg, var(--pattern) 0 2px, transparent 2px var(--gap)); }
+#lanes b { position: absolute; display: block; background: var(--pattern); }
+/* 자 (화면 좌표 SVG. 눈금은 축 방향으로만 늘고 줄어서 선 굵기는 그대로) */
+#ruler { position: absolute; left: 0; top: 0; overflow: visible; }
+#ruler .band { fill: url(#rfade); }
+#ruler .bandSh { fill: var(--on-bg); opacity: .12; }
+#ruler .fadeA { stop-color: var(--accent); stop-opacity: 1; }
+#ruler .fadeB { stop-color: var(--accent); stop-opacity: 0; }
+#ruler .tk { stroke: var(--accent-ink); fill: none; stroke-linecap: butt; }
+#ruler .mk { stroke: var(--accent-ink); stroke-dasharray: 3 4; }
+#ruler .hook { fill: var(--on-bg); }
+#ruler text.yl { fill: var(--accent-ink); font: 800 calc(var(--u) * 2.3)/1 "Archivo", var(--font-display); font-stretch: 78%; letter-spacing: .02em; }
+#ruler .dot { fill: var(--accent-ink); }
+#ruler .hol { fill: none; stroke: var(--accent-ink); }
+#ruler .rip { fill: none; stroke: var(--accent-ink); }
+/* 읽는 선과 주행거리계 */
+#rline { background: color-mix(in srgb, var(--on-bg) 38%, transparent); }
+#ptr { width: 0; height: 0; }
+#ptr svg { position: absolute; overflow: visible; }
+#ptr path { fill: var(--on-bg); }
+#hudc { white-space: nowrap; }
+#hudc .cap { display: flex; gap: calc(var(--u) * 1.6); align-items: baseline; font: 800 calc(var(--u) * 2.3)/1 "Archivo", var(--font-display); font-stretch: 118%; letter-spacing: .26em; color: var(--on-bg-muted); margin-bottom: calc(var(--u) * 1.2); }
+#hudc .cap b { color: var(--accent); font-weight: 900; letter-spacing: .12em; }
+#cnt { display: flex; font: 900 calc(var(--u) * 16)/1 "Archivo", var(--font-display); font-stretch: 72%; letter-spacing: -.01em; color: var(--on-bg); font-variant-numeric: tabular-nums; }
+#cnt .d { display: block; height: 1.04em; overflow: hidden; -webkit-mask-image: linear-gradient(180deg, transparent 0, #000 13%, #000 87%, transparent 100%); mask-image: linear-gradient(180deg, transparent 0, #000 13%, #000 87%, transparent 100%); }
+#cnt .col { display: flex; flex-direction: column; }
+#cnt .col i { font-style: normal; display: block; height: 1.04em; line-height: 1.04em; text-align: center; }
+/* 카드: 자 쪽 변을 경첩 삼아 펼쳐짐 */
+.cw { perspective: calc(var(--u) * 260); }
+.cw .flap { position: relative; transform-style: preserve-3d; }
+[data-format="tall"] .cw .flap, [data-format="portrait"] .cw .flap { transform-origin: 0 50%; }
+[data-format="square"] .cw .flap, [data-format="wide"] .cw .flap { transform-origin: 50% 100%; }
+.cw .conn { position: absolute; background: var(--accent); }
+.card { position: relative; display: flex; background: var(--paper); color: var(--ink); border-radius: calc(var(--u) * 2.2); overflow: hidden; box-shadow: 0 calc(var(--u) * 1.2) calc(var(--u) * 3.4) rgba(0, 0, 0, .2); box-sizing: border-box; }
+.card.st { flex-direction: column; }
+.card.sd { flex-direction: row; align-items: stretch; }
+.card .ph { flex: none; position: relative; overflow: hidden; background: color-mix(in srgb, var(--ink) 12%, var(--paper)); }
+.card .ph img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.card .tx { flex: 1; min-width: 0; padding: calc(var(--u) * 4.4) calc(var(--u) * 4.8) calc(var(--u) * 4.8); display: flex; flex-direction: column; justify-content: center; gap: calc(var(--u) * 1.6); box-sizing: border-box; }
+.card .chip { align-self: flex-start; background: var(--accent); color: var(--accent-ink); font: 900 calc(var(--u) * 2.8)/1 "Archivo", var(--font-display); font-stretch: 85%; letter-spacing: .04em; padding: calc(var(--u) * .9) calc(var(--u) * 1.8) calc(var(--u) * 1); border-radius: 999px; white-space: nowrap; }
+.card .mk2 { overflow: hidden; padding-bottom: .08em; margin-bottom: -.08em; }
+.card .mk2 > * { display: block; }
+.card .mk2 > .chip { display: inline-block; }
+.card h3 { font: 900 calc(var(--u) * 6.6)/1.16 var(--font-heading); letter-spacing: -.035em; white-space: pre-line; word-break: keep-all; margin: 0; }
+.card p { font: 700 calc(var(--u) * 3.6)/1.42 var(--font-body); opacity: .78; white-space: pre-line; word-break: keep-all; margin: 0; }
+.card .shade { position: absolute; inset: 0; background: #000; opacity: 0; pointer-events: none; }
+/* 마지막 전체 보기의 이정표 이름표 */
+.tag { white-space: nowrap; display: flex; align-items: baseline; gap: calc(var(--u) * 1.6); }
+.tag b { font: 900 calc(var(--u) * 3.2)/1.15 "Archivo", var(--font-display); font-stretch: 82%; color: var(--accent); flex: none; }
+.tag span { font: 800 calc(var(--u) * 3.2)/1.25 var(--font-body); color: var(--on-bg); overflow: hidden; text-overflow: clip; }
+[data-format="square"] .tag, [data-format="wide"] .tag { flex-direction: column; align-items: center; gap: calc(var(--u) * .5); text-align: center; }
+/* 기념 숫자 (윤곽선에서 차오름) */
+.bdg { display: flex; align-items: flex-end; gap: calc(var(--u) * 1.6); white-space: nowrap; }
+.bdg .num { position: relative; font: 900 calc(var(--u) * 40)/.8 "Archivo", var(--font-display); font-stretch: 72%; letter-spacing: -.02em; padding-top: .04em; }
+.bdg .ol { display: block; color: transparent; -webkit-text-stroke: calc(var(--u) * .42) var(--on-bg); }
+.bdg .fl { position: absolute; left: 0; top: 0; color: var(--accent); padding-top: .04em; }
+.bdg .lv { position: absolute; left: -.08em; right: -.08em; height: calc(var(--u) * .45); background: var(--accent); }
+.bdg .sc { position: absolute; top: 0; overflow: visible; }
+.bdg .sc path { stroke: var(--on-bg); fill: none; }
+.bdg .un { font: 900 calc(var(--u) * 6.4)/1 var(--font-heading); color: var(--on-bg); letter-spacing: -.03em; padding-bottom: .06em; }
+#intro .lb { font: 900 calc(var(--u) * 2.9)/1 "Archivo", var(--font-display); font-stretch: 125%; letter-spacing: .32em; color: var(--accent); white-space: nowrap; }
+#intro h1 { font: 900 calc(var(--u) * 9.4)/1.12 var(--font-heading); letter-spacing: -.04em; color: var(--on-bg); white-space: pre-line; word-break: keep-all; margin: 0; }
+#intro h1 .ln, #endT h2 .ln { display: block; overflow: hidden; padding-bottom: .07em; margin-bottom: -.07em; }
+#intro h1 .ln span, #endT h2 .ln span { display: inline-block; }
+/* 마무리 */
+#endT h2 { font: 900 calc(var(--u) * 7.4)/1.14 var(--font-heading); letter-spacing: -.035em; color: var(--on-bg); white-space: pre-line; word-break: keep-all; margin: 0; }
+#endT p { font: 700 calc(var(--u) * 3.5)/1.4 var(--font-body); color: var(--on-bg-muted); margin: calc(var(--u) * 1.8) 0 0; white-space: pre-line; word-break: keep-all; }
+#endF { display: flex; align-items: center; gap: calc(var(--u) * 3.6); }
+#endF .sep { width: 2px; align-self: stretch; background: color-mix(in srgb, var(--on-bg) 22%, transparent); }
+#endF .lgc { display: flex; flex-direction: column; gap: calc(var(--u) * 1.1); min-width: 0; }
+.logo { display: flex; align-items: baseline; gap: calc(var(--u) * 1.4); white-space: nowrap; }
+.logo img { height: calc(var(--u) * 8); width: auto; }
+.logo .lt { font: 900 calc(var(--u) * 5.4)/1 var(--font-display); color: var(--on-bg); }
+.logo .ls { font: 700 calc(var(--u) * 2.1)/1 var(--font-display); color: var(--accent); letter-spacing: .3em; }
+.hdl { font: 700 calc(var(--u) * 3)/1.3 var(--font-body); color: var(--on-bg-muted); white-space: nowrap; }
+#note { font: 600 calc(var(--u) * 1.9)/1.3 var(--font-body); color: var(--on-bg-muted); white-space: nowrap; opacity: .85; }
+#fine { font: 500 calc(var(--u) * 1.6)/1.25 var(--font-body); color: var(--on-bg-muted); white-space: pre-line; text-align: right; opacity: .8; }
+</style>
+
+<div id="viewport"><div id="stage"><div id="cam"></div></div></div>
+
+<script>/*@GSAP@*/</script>
+<script>/*@DATA@*/</script>
+<script>/*@ENGINE_JS@*/</script>
+<script>
+(function () {
+  const S = Studio, M = S.M, C = S.content, B = S.brand, e = S.esc;
+  const cam = S.$('#cam');
+  const NS = 'http://www.w3.org/2000/svg';
+  const MAXN = 7;
+  // 이정표: {year, title, text, photo} 객체 또는 [연도, 제목, 한 줄, 사진 키] 배열 둘 다 받음
+  const norm = m => Array.isArray(m) ? { year: m[0], title: m[1], text: m[2], photo: m[3] }
+    : m && typeof m === 'object' ? m : { title: m == null ? '' : String(m) };
+  const ms = (Array.isArray(C.milestones) ? C.milestones : []).map(norm).filter(m => m.year != null && String(m.year).trim() || m.title).slice(0, MAXN);
+  const n = ms.length;
+  const now = C.now && typeof C.now === 'object' ? C.now : { title: typeof C.now === 'string' ? C.now : '' };
+  const cta = C.cta || {};
+  const logoImg = B.logo && S.img(B.logo);
+  const badge = C.badge == null ? '' : String(C.badge).trim();
+  const unit = C.badgeUnit == null ? '' : String(C.badgeUnit).trim();
+  const V = S.is('tall', 'portrait');          // 세로 자
+  const WIDE = S.is('wide');
+  // 연도: 카운터는 처음 나오는 숫자 묶음만 ("2019.06" → 2019). 숫자가 없는 칸은 앞 칸 연도를 이어 씀
+  const rawY = ms.map(m => m.year == null ? '' : String(m.year).trim());
+  const numY = rawY.map(r => { const k = r.match(/\d+/); return k ? parseInt(k[0].slice(0, 6), 10) : null; });
+  const hasNum = numY.some(x => x != null);
+  let Y;
+  if (hasNum) { let last = numY.find(x => x != null); Y = numY.map(x => x == null ? last : (last = x)); }
+  else Y = ms.map((_, i) => i);
+  const LEAD_Y = 2;                           // 첫 이정표 앞에 보이는 햇수 (자 머리)
+  const knotY = n ? [Y[0] - LEAD_Y, ...Y, Y[n - 1] + LEAD_Y] : [0, 1];
+  const digits = hasNum ? Math.min(6, Math.max(1, ...knotY.map(y => String(Math.abs(Math.floor(y))).length))) : 0;
+  const lines = s => String(s || '').split('\n').map(l => `<span class="ln"><span>${e(l)}</span></span>`).join('');
+  const col = `<span class="d"><span class="col">${[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0].map(k => `<i>${k}</i>`).join('')}</span></span>`;
+  const badgeHtml = id => badge ? `<div class="bdg abs" id="${id}"><div class="num"><span class="ol">${e(badge)}</span><span class="fl">${e(badge)}</span><i class="lv"></i><svg class="sc"><path/></svg></div>${unit ? `<div class="un">${e(unit)}</div>` : ''}</div>` : '';
+  const logoHtml = `<div class="logo">${logoImg ? `<img src="${logoImg}" alt="">` : ''}${!logoImg && B.logoText ? `<span class="lt">${e(B.logoText)}</span>` : ''}${!logoImg && B.logoSub ? `<span class="ls">${e(B.logoSub)}</span>` : ''}</div>`;
+  const cards = ms.map((m, i) => {
+    const ph = m.photo ? S.img(m.photo) : '';
+    const chip = rawY[i] && rawY[i] !== String(numY[i]) ? rawY[i] : (!hasNum ? rawY[i] : '');
+    return `<div class="cw abs" data-i="${i}"><i class="conn"></i><div class="flap"><div class="card ${ph ? 'hp' : 'np'}">
+      ${ph ? `<div class="ph"><img src="${ph}" alt=""></div>` : ''}
+      <div class="tx">${chip ? `<div class="mk2"><span class="chip">${e(chip)}</span></div>` : ''}
+        ${m.title ? `<div class="mk2"><h3>${e(m.title)}</h3></div>` : ''}
+        ${m.text ? `<div class="mk2"><p>${e(m.text)}</p></div>` : ''}</div>
+      <i class="shade"></i></div></div></div>`;
+  }).join('');
+  const tags = ms.map((m, i) => `<div class="tag abs" data-i="${i}">${rawY[i] ? `<b>${e(rawY[i])}</b>` : ''}${m.title ? `<span>${e(String(m.title).replace(/\n/g, ' '))}</span>` : ''}</div>`).join('');
+
+  cam.appendChild(S.h(`<div id="tl">
+    <div id="lanes"><i></i><i></i><i></i></div>
+    <svg id="ruler"><defs><clipPath id="rclip" clipPathUnits="userSpaceOnUse"><rect id="rclipR"/></clipPath>
+      <linearGradient id="rfade" gradientUnits="userSpaceOnUse"><stop class="fadeA" offset="0"/><stop class="fadeB" offset="1"/></linearGradient></defs>
+      <g clip-path="url(#rclip)"><g id="rax"><rect class="bandSh"/><rect class="band"/><g id="rtk"></g><g id="rmk"></g><path class="hook"/></g>
+      <g id="rlb"></g><g id="rdt"></g></g></svg>
+    <i id="rline" class="abs"></i>
+    <div id="ptr" class="abs"><svg><path/></svg></div>
+    <div id="hudc" class="abs">${C.label || n ? `<div class="cap">${C.label ? `<span>${e(C.label)}</span>` : ''}${n ? `<b id="idx"></b>` : ''}</div>` : ''}${digits ? `<div id="cnt">${Array.from({ length: digits }, () => col).join('')}</div>` : ''}</div>
+    ${cards}${tags}
+    <div id="intro" class="abs">${C.label ? `<div class="lb">${e(C.label)}</div>` : ''}${badgeHtml('bdgA')}${C.title ? `<h1>${lines(C.title)}</h1>` : ''}</div>
+    ${badgeHtml('bdgB')}
+    <div id="endT" class="abs">${now.title ? `<h2>${lines(now.title)}</h2>` : ''}${now.sub ? `<p>${e(now.sub)}</p>` : ''}</div>
+    <div id="endF" class="abs"><div class="lgc">${logoHtml}${cta.sub ? `<div class="hdl">${e(cta.sub)}</div>` : ''}</div></div>
+    ${C.note ? `<div id="note" class="abs">${e(C.note)}</div>` : ''}
+    ${C.credit ? `<div id="fine" class="abs">${e(C.credit)}</div>` : ''}
+  </div>`));
+
+  S.start(S => {
+    const W = S.W, H = S.H, u = Math.min(W, H) / 100, sf = S.safe;
+    const sx = sf.left, sy = sf.top, sw = W - sf.left - sf.right, sh = H - sf.top - sf.bottom;
+    const root = S.$('#tl');
+    const fine = S.$('#fine');
+    if (fine) fine.style.maxWidth = sw * .6 + 'px';
+    const fineH = fine ? fine.offsetHeight + u * 1.4 : 0;
+
+    /* ---------- 시간표 (120BPM, 1박 0.5초) ---------- */
+    const T0 = 2.5;                                          // 첫 이동
+    const STEP = n <= 3 ? 3 : n <= 5 ? 2.5 : 2;              // 이정표 하나에 쓰는 시간
+    const tm = i => T0 + i * STEP;                           // i번째로 이동 시작
+    const tDot = i => tm(i) + .5;                            // 점이 찍힘 (한 박 뒤)
+    const Te = T0 + Math.max(n, 1) * STEP;                   // 전체 보기 시작
+    const END = Te + 3.5;
+    S.setDuration(END);
+
+    /* ---------- 자의 기본 배치 (따라가는 동안) ---------- */
+    const L = {};
+    const capEl = S.$('#hudc .cap'), cnt = S.$('#cnt'), hudc = S.$('#hudc');
+    // 카운터 위 꼬리표: 폭을 정하고 길면 글자를 줄임 (01/05 자리는 남김)
+    const fitCap = w => {
+      hudc.style.width = w + 'px';
+      const sp = S.$('#hudc .cap span'), ib = S.$('#idx');
+      if (!sp) return;
+      let iw = 0; if (ib) { ib.textContent = '00/00'; iw = ib.offsetWidth + 2 * u; ib.textContent = ''; }
+      Object.assign(sp.style, { display: 'block', overflow: 'hidden', whiteSpace: 'nowrap', maxWidth: Math.max(10 * u, w - iw) + 'px' });
+      S.fit(sp, { max: 2.3 * u, min: 1.3 * u });
+    };
+    if (V) {
+      L.T = 9.6 * u;                                         // 자 두께
+      L.cross = sx + 4.4 * u;                                // 자 가운데 (자 몸통은 왼쪽 가장자리 밖으로 조금 나가고, 숫자는 안쪽)
+      L.D = H * .66;                                          // 이정표 사이 거리
+      if (cnt) cnt.style.fontSize = (S.is('tall') ? 18 : 19) * u + 'px';
+      L.cardX = L.cross + L.T / 2 + 5 * u;
+      fitCap(sx + sw - L.cardX);
+      L.read = sy + u * .5 + hudc.offsetHeight + 2.6 * u;      // 읽는 선 (가로)
+      L.reg = { x: L.cardX, y: L.read + 2.6 * u, w: sx + sw - L.cardX, h: sy + sh - fineH - (L.read + 2.6 * u) };
+    } else {
+      L.T = 8 * u;
+      L.cross = sy + sh - 3 * u;                             // 자 가운데 (아래 가장자리 쪽)
+      L.D = W * (WIDE ? .62 : .78);
+      if (cnt) cnt.style.fontSize = (WIDE ? 32 : 15) * u + 'px';
+      const bandIn = L.cross - L.T / 2;
+      if (WIDE) {
+        L.read = sx + sw * .44;
+        fitCap(L.read - 4 * u - sx);
+        if (cnt) cnt.style.justifyContent = 'flex-end';
+        L.reg = { x: L.read + 2.4 * u, y: sy + u + fineH, w: sx + sw - L.read - 2.4 * u, h: bandIn - 4.5 * u - (sy + u + fineH) };
+      } else {
+        L.read = sx + 5 * u;
+        fitCap(sx + sw - L.read - 2.4 * u);
+        const top = sy + fineH + hudc.offsetHeight + 3.2 * u;
+        L.reg = { x: L.read + 2.4 * u, y: Math.max(top, sy + fineH), w: sx + sw - L.read - 2.4 * u, h: bandIn - 4.5 * u - Math.max(top, sy + fineH) };
+      }
+    }
+    // 자 위 좌표 s (따라가는 동안 1px = 1px). 머리(LEAD) → 이정표들 → 꼬리
+    const LEAD = L.D * .5;
+    const sAt = i => LEAD + i * L.D;
+    const sEnd = n ? sAt(n - 1) + LEAD : LEAD * 2;
+    const knotS = n ? [0, ...ms.map((_, i) => sAt(i)), sEnd] : [0, sEnd];
+    // s → 연도 (구간마다 직선)
+    const yearAt = s => {
+      let k = 0; while (k < knotS.length - 2 && s > knotS[k + 1]) k++;
+      const s0 = knotS[k], s1 = knotS[k + 1];
+      return knotY[k] + (knotY[k + 1] - knotY[k]) * (s - s0) / ((s1 - s0) || 1);
+    };
+
+    /* ---------- 눈금 만들기 (구간마다 햇수만큼 나눔) ---------- */
+    const rtk = S.$('#rtk'), rlb = S.$('#rlb'), rdt = S.$('#rdt'), rmk = S.$('#rmk');
+    const mk = (tag, a, p) => { const el = document.createElementNS(NS, tag); for (const k in a) el.setAttribute(k, a[k]); p.appendChild(el); return el; };
+    const tickGroups = [];                                    // {el, sp(px), len}
+    const labels = [];                                        // {el, s, sp}
+    const pick = (list, ok) => list.find(ok) ?? list[list.length - 1];
+    const STEPS = [1, 2, 5, 10, 20, 50, 100, 200, 500, 1000];
+    for (let k = 0; k < knotS.length - 1; k++) {
+      const s0 = knotS[k], s1 = knotS[k + 1], y0 = knotY[k], y1 = knotY[k + 1];
+      const N = Math.abs(y1 - y0), len = s1 - s0;
+      const add = (pos, sp, lvl) => { if (!pos.length) return; let d = ''; for (const s of pos) d += `M${s.toFixed(1)} 0V-1`; const el = mk('path', { class: 'tk', d, 'vector-effect': 'non-scaling-stroke' }, rtk); tickGroups.push({ el, sp, lvl }); };
+      const at = y => s0 + (y - y0) / (y1 - y0) * len;
+      const first = k === 0;
+      if (!hasNum || N === 0) {                              // 같은 해 · 숫자 없음: 12칸으로 나눔
+        const pos = []; for (let j = first ? 0 : 1; j < 12; j++) pos.push(s0 + len * j / 12);
+        add(pos, len / 12, 0);
+        continue;
+      }
+      const p = len / N;                                     // 1년의 길이(px)
+      const ys = Math.min(y0, y1), ye = Math.max(y0, y1);
+      const k1 = pick(STEPS, m => p * m >= 1.3 * u);         // 해 눈금 간격
+      const mj = pick(STEPS, m => m >= k1 && p * m >= 9 * u);   // 큰 눈금 + 숫자
+      const q = k1 === 1 ? pick([12, 4, 2, 1], d => p / d >= 1.3 * u) : 1;   // 한 해를 나누는 잔 눈금
+      const sub = [], yr = [], maj = [];
+      for (let y = Math.ceil(ys / k1) * k1; y <= ye; y += k1) {
+        const s = at(y);
+        if (!first && Math.abs(s - s0) < .5) continue;      // 앞 구간 끝과 겹침
+        if (y % mj === 0) { maj.push(s); labels.push({ s, sp: p * mj, text: String(y) }); } else yr.push(s);
+      }
+      if (q > 1) for (let y = ys; y < ye; y++) for (let j = 1; j < q; j++) sub.push(at(y + j / q));
+      add(sub, p / q, 0); add(yr, p * k1, 1); add(maj, p * mj, 2);
+    }
+    const LEN = [.18, .3, .42];                                // 눈금 길이 (자 두께 대비)
+    const WID = [.16, .24, .32];                              // 눈금 굵기 (u)
+    tickGroups.forEach(g => g.el.setAttribute('stroke-width', (WID[g.lvl] * u).toFixed(2)));
+    labels.forEach(l => { l.el = mk('text', { class: 'yl' }, rlb); l.el.textContent = l.text; });
+    const marks = ms.map((_, i) => mk('line', { class: 'mk', 'vector-effect': 'non-scaling-stroke', 'stroke-width': (.3 * u).toFixed(2) }, rmk));
+    const hol = ms.map(() => mk('circle', { class: 'hol' }, rdt));
+    const rip = ms.map(() => mk('circle', { class: 'rip' }, rdt));
+    const dot = ms.map(() => mk('circle', { class: 'dot' }, rdt));
+    const svg = S.$('#ruler'); svg.setAttribute('width', W); svg.setAttribute('height', H); svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
+    const rax = S.$('#rax'), band = S.$('#ruler .band'), bandSh = S.$('#ruler .bandSh'), hook = S.$('#ruler .hook'), clipR = S.$('#rclipR');
+    const grad = S.$('#rfade'); grad.setAttribute('x1', sEnd - LEAD * .8); grad.setAttribute('x2', sEnd); grad.setAttribute('y1', 0); grad.setAttribute('y2', 0);
+    [band, bandSh].forEach(r => { r.setAttribute('x', 0); r.setAttribute('width', sEnd); });
+
+    /* ---------- 배경 줄 ---------- */
+    const lanes = S.$$('#lanes i');
+    const LANE = [{ at: .44, f: .22, gap: 2.6 }, { at: .72, f: .38, gap: 3.4 }, { at: .95, f: .55, gap: 4.4 }];
+    lanes.forEach((l, i) => { l.style.setProperty('--gap', LANE[i].gap * u + 'px'); if (V) l.style.left = (W * LANE[i].at) + 'px'; else l.style.top = (H * (LANE[i].at - .3)) + 'px'; });
+
+    /* ---------- 카드 크기 ---------- */
+    const cws = S.$$('.cw'), flaps = cws.map(c => S.$('.flap', c)), cardEls = cws.map(c => S.$('.card', c));
+    const R = L.reg;
+    const side = !V;                                          // 가로 화면은 사진이 왼쪽, 세로 화면은 위
+    cardEls.forEach((card, i) => {
+      const hp = card.classList.contains('hp');
+      card.classList.add(side && hp ? 'sd' : 'st');
+      const cwid = hp || V ? R.w : Math.min(R.w, Math.max(R.w * .66, 70 * u));
+      card.style.width = cwid + 'px';
+      const ph = S.$('.ph', card), tx = S.$('.tx', card);
+      const h3 = S.$('h3', card), p = S.$('p', card);
+      if (side && hp) {
+        const pw = Math.min(cwid * (WIDE ? .46 : .42), R.h * .66);
+        ph.style.width = pw + 'px'; ph.style.height = Math.min(R.h, pw * (WIDE ? 1.3 : 1.18)) + 'px';
+      }
+      const tw = side && hp ? cwid - ph.offsetWidth : cwid;
+      tx.style.width = tw + 'px';
+      const pad = 9.6 * u;
+      if (h3) { h3.style.width = (tw - pad) + 'px'; S.fit(h3, { max: (V ? 6.6 : WIDE ? 6.4 : 5.6) * u, maxLines: 2, keepMin: .8 }); }
+      if (p) { p.style.width = (tw - pad) + 'px'; S.fit(p, { max: (V ? 3.6 : 3.4) * u, maxLines: 2, keepLines: false }); }
+      if (hp && !side) {
+        // 세로: 사진 높이 = 남은 자리 (너무 낮거나 높지 않게)
+        ph.style.height = '0px';
+        const txH = card.offsetHeight;
+        ph.style.height = M.clamp(R.h - txH, cwid * .3, cwid * .56) + 'px';
+      }
+      // 그래도 넘치면 통째로 줄임
+      const k = Math.min(1, R.h / card.offsetHeight);
+      if (k < 1) { card.style.transformOrigin = V ? '0 0' : '0 100%'; card.style.transform = `scale(${k.toFixed(4)})`; }
+      card._h = card.offsetHeight * k; card._w = cwid * k;
+    });
+    const conns = cws.map(c => S.$('.conn', c));
+    // 연결선: 자에서 카드까지
+    conns.forEach(c => {
+      if (V) { c.style.left = -(L.cardX - (L.cross + L.T / 2)) + 'px'; c.style.width = (L.cardX - (L.cross + L.T / 2)) + 'px'; c.style.top = -(2.6 * u) - .3 * u + 'px'; c.style.height = .6 * u + 'px'; }
+      else { c.style.left = -(2.4 * u) - .3 * u + 'px'; c.style.width = .6 * u + 'px'; c.style.bottom = -4.5 * u + 'px'; c.style.height = 4.5 * u + 'px'; }
+    });
+
+    /* ---------- 처음: 기념 숫자 + 제목 ---------- */
+    const intro = S.$('#intro'), bdgA = S.$('#bdgA'), h1 = S.$('#intro h1'), lb = S.$('#intro .lb');
+    const setupBadge = (bd, size) => {
+      if (!bd) return;
+      const num = S.$('.num', bd); num.style.fontSize = size + 'px';
+      const sc = S.$('.sc', bd), gh = num.offsetHeight;
+      // 숫자 왼쪽의 작은 눈금자 (차오르는 높이를 잼)
+      const sw2 = 2.6 * u; sc.setAttribute('width', sw2); sc.setAttribute('height', gh); sc.style.left = -(sw2 + 1.4 * u) + 'px';
+      let d = ''; for (let j = 0; j <= 20; j++) { const y = gh * (1 - j / 20); const l = j % 10 === 0 ? sw2 : j % 5 === 0 ? sw2 * .7 : sw2 * .4; d += `M${(sw2 - l).toFixed(1)} ${y.toFixed(1)}H${sw2}`; }
+      S.$('path', sc).setAttribute('d', d); S.$('path', sc).setAttribute('stroke-width', (.3 * u).toFixed(2));
+      bd._num = num; bd._fl = S.$('.fl', bd); bd._lv = S.$('.lv', bd); bd._sc = sc; bd._un = S.$('.un', bd);
+    };
+    intro.style.left = '0'; intro.style.top = '0'; intro.style.width = W + 'px'; intro.style.height = H + 'px';
+    [lb, bdgA, h1].forEach(el => { if (el) { el.style.position = 'absolute'; el.style.left = '0'; el.style.top = '0'; } });
+    const IX = sx + (badge ? 4.4 * u : 0);                    // 숫자 왼쪽 눈금자 자리
+    if (V) {
+      setupBadge(bdgA, Math.min((S.is('tall') ? 50 : 44) * u, (sw - 6 * u) * .78 / Math.max(1, badge.length * .5 + .1)));
+      if (h1) { h1.style.width = (sx + sw - IX) + 'px'; S.fit(h1, { max: (badge ? 8.6 : 13) * u, maxLines: 3 }); }
+    } else if (WIDE) {
+      setupBadge(bdgA, Math.min(46 * u, sw * .44 / Math.max(1, badge.length * .5 + .2)));
+      if (h1) { h1.style.width = (badge ? sx + sw - (IX + (bdgA ? bdgA.offsetWidth : 0) + 6 * u) : sw * .8) + 'px'; S.fit(h1, { max: (badge ? 10 : 15) * u, maxLines: 3 }); }
+    } else {
+      setupBadge(bdgA, Math.min(38 * u, (sw - 6 * u) * .7 / Math.max(1, badge.length * .5 + .1)));
+      if (h1) { h1.style.width = (sx + sw - IX) + 'px'; S.fit(h1, { max: (badge ? 7.8 : 12.5) * u, maxLines: 3 }); }
+    }
+    // 처음 장면 배치 (세로·정사각: 위에서 아래로 쌓음 / 가로: 숫자 왼쪽, 글 오른쪽)
+    const gap = 3 * u;
+    if (lb) { lb.style.width = (WIDE && badge ? sx + sw - (IX + (bdgA ? bdgA.offsetWidth : 0) + 6 * u) : sx + sw - IX) + 'px'; lb.style.overflow = 'hidden'; S.fit(lb, { max: 2.9 * u, min: 1.2 * u }); }
+    const lbH = lb ? lb.offsetHeight + gap * 1.2 : 0;
+    const bH = bdgA ? bdgA.offsetHeight : 0, bW = bdgA ? bdgA.offsetWidth : 0;
+    const hH = h1 ? h1.offsetHeight : 0;
+    let introPos;
+    if (WIDE && badge) {
+      const tot = Math.max(bH, lbH + hH);
+      const y0 = sy + (sh - tot) / 2 - u * 2;
+      introPos = { lb: [IX + bW + 6 * u, y0 + (tot - lbH - hH) / 2], bd: [IX, y0 + (tot - bH) / 2], h1: [IX + bW + 6 * u, y0 + (tot - lbH - hH) / 2 + lbH] };
+    } else {
+      const tot = lbH + bH + (bH ? gap * 1.4 : 0) + hH;
+      const y0 = sy + (sh - fineH - tot) / 2 - u * 2;
+      introPos = { lb: [IX, y0], bd: [IX, y0 + lbH], h1: [IX, y0 + lbH + bH + (bH ? gap * 1.4 : 0)] };
+    }
+    const h1Lines = S.$$('#intro h1 .ln span');
+
+    /* ---------- 마무리 배치 ---------- */
+    const endT = S.$('#endT'), endF = S.$('#endF'), bdgB = S.$('#bdgB'), note = S.$('#note'), h2 = S.$('#endT h2');
+    const tagEls = S.$$('.tag');
+    const h2Lines = S.$$('#endT h2 .ln span');
+    const E = {};
+    // 아랫줄은 제목보다 눈에 띄지 않게 (제목의 62% 이하, 두 줄까지)
+    const fitSub = () => { const ep = S.$('#endT p'); if (!ep) return; const hs = h2 ? parseFloat(getComputedStyle(h2).fontSize) : 7 * u; S.fit(ep, { max: Math.min(3.5 * u, hs * .62), min: 1.8 * u, maxLines: 2, keepLines: false }); };
+    if (V) {
+      endT.style.width = sw + 'px';
+      if (h2) S.fit(h2, { max: (S.is('tall') ? 7 : 7.6) * u, maxLines: 3 });
+      fitSub();
+      setupBadge(bdgB, Math.min(17 * u, sw * .42 / Math.max(1, badge.length * .5 + .4)));
+      if (bdgB) bdgB._un && (bdgB._un.style.fontSize = 4.4 * u + 'px');
+      endF.style.maxWidth = sw - (bdgB ? bdgB.offsetWidth + 8 * u : 0) + 'px';
+      const noteH = note ? note.offsetHeight + u : 0;
+      const footH = Math.max(bdgB ? bdgB.offsetHeight : 0, endF.offsetHeight);
+      E.T = [sx, sy + u * .5];
+      E.footY = sy + sh - fineH - noteH - footH;                     // 아래 줄 위쪽
+      E.bd = [sx + 4.4 * u, E.footY + (footH - (bdgB ? bdgB.offsetHeight : 0)) / 2];
+      E.F = [bdgB ? sx + 4.4 * u + bdgB.offsetWidth + 5 * u : sx, E.footY + (footH - endF.offsetHeight) / 2];
+      E.note = [sx, sy + sh - fineH - noteH + u * .4];
+      E.a = sy + u * .5 + endT.offsetHeight + 4 * u; E.b = E.footY - 3.6 * u;
+      E.cross = sx + 1.6 * u; E.T2 = 2.4 * u;
+    } else {
+      setupBadge(bdgB, Math.min((WIDE ? 22 : 15) * u, sw * .3 / Math.max(1, badge.length * .5 + .4)));
+      if (bdgB) bdgB._un && (bdgB._un.style.fontSize = (WIDE ? 5 : 4.2) * u + 'px');
+      // 기념 숫자가 너무 넓으면(긴 단위) 문장 자리를 위해 줄임
+      if (bdgB && bdgB.offsetWidth > sw * .36) {
+        const k = sw * .36 / bdgB.offsetWidth;
+        setupBadge(bdgB, parseFloat(bdgB._num.style.fontSize) * k);
+        if (bdgB._un) bdgB._un.style.fontSize = (WIDE ? 5 : 4.2) * u * Math.max(.7, k) + 'px';
+      }
+      const bw = bdgB ? bdgB.offsetWidth + 6 * u : 0;
+      endT.style.width = (sw - bw) + 'px';
+      if (h2) S.fit(h2, { max: (WIDE ? 6.6 : 6.2) * u, maxLines: 3 });
+      fitSub();
+      const topH = Math.max(endT.offsetHeight, bdgB ? bdgB.offsetHeight : 0);
+      E.T = [sx, sy + fineH + (topH - endT.offsetHeight) / 2];
+      E.bd = [sx + sw - (bdgB ? bdgB.offsetWidth : 0), sy + fineH + (topH - (bdgB ? bdgB.offsetHeight : 0)) / 2];
+      const footH = endF.offsetHeight;
+      E.F = [sx, sy + sh - footH];
+      E.note = [sx + sw, sy + sh - (note ? note.offsetHeight : 0)];
+      const top = sy + fineH + topH, bot = sy + sh - footH;
+      E.cross = (top + bot) / 2 + u; E.T2 = 2.2 * u;
+      E.a = sx + 3 * u; E.b = sx + sw - 3 * u;
+    }
+    // 이름표 크기: 이정표 사이 간격에 맞춤
+    const zo = (E.b - E.a) / sEnd;
+    const pitch = L.D * zo;
+    tagEls.forEach((tg, i) => {
+      if (V) {
+        const fs = Math.min(3.4 * u, pitch * .46);
+        S.$$('b, span', tg).forEach(x => { x.style.fontSize = fs + 'px'; });
+        const maxW = sx + sw - (E.cross + E.T2 / 2 + 3 * u);
+        if (tg.offsetWidth > maxW) { const k = maxW / tg.offsetWidth; S.$$('b, span', tg).forEach(x => { x.style.fontSize = Math.max(fs * k, 1.8 * u) + 'px'; }); tg.style.maxWidth = maxW + 'px'; }
+      } else {
+        // 가로 자: 이름표가 위아래로 번갈아 놓이니 폭은 이정표 두 칸까지. 길면 두 줄로 접고, 그래도 넘치면 줄임
+        const maxW = Math.min(pitch * 1.86 - 2 * u, sw * .4);
+        const fs = WIDE ? 3.2 * u : 3 * u;
+        S.$$('b, span', tg).forEach(x => { x.style.fontSize = fs + 'px'; });
+        const sp = S.$('span', tg);
+        if (tg.offsetWidth > maxW) {
+          tg.style.width = maxW + 'px';
+          if (sp) { Object.assign(sp.style, { whiteSpace: 'normal', wordBreak: 'keep-all', display: 'block', width: '100%' }); S.fit(sp, { max: fs, min: 1.5 * u, maxLines: 2, keepLines: false }); }
+          const b = S.$('b', tg); if (b) S.fit(b, { max: fs, min: 1.5 * u });
+        }
+      }
+    });
+    const tagH = Math.max(0, ...tagEls.map(t => t.offsetHeight));
+    if (!V) {
+      // 이름표가 위아래로 번갈아 놓일 자리가 모자라면 자를 가운데로
+      const top = E.T[1] + Math.max(endT.offsetHeight, bdgB ? bdgB.offsetHeight : 0), bot = E.F[1];
+      E.cross = M.clamp(E.cross, top + tagH + 4 * u + E.T2 / 2, bot - tagH - 4 * u - E.T2 / 2);
+    }
+    if (fine) M.place(fine, sx + sw, V ? sy + sh : sy, { ax: 1, ay: V ? 1 : 0 });
+    const idx = S.$('#idx');
+    const ptr = S.$('#ptr'), ptrP = S.$('#ptr path'), ptrSvg = S.$('#ptr svg');
+    const pt = 2.2 * u;
+    ptrSvg.setAttribute('width', pt * 2); ptrSvg.setAttribute('height', pt * 2);
+    ptrSvg.style.left = -pt + 'px'; ptrSvg.style.top = -pt + 'px';
+    ptrP.setAttribute('d', V ? `M${pt * .2} ${pt}L${pt * 1.8} ${pt * .2}V${pt * 1.8}Z` : `M${pt} ${pt * 1.8}L${pt * .2} ${pt * .2}H${pt * 1.8}Z`);
+    const rline = S.$('#rline');
+    const cols = cnt ? S.$$('.col', cnt).reverse() : [];      // 0 = 끝자리
+    const digEls = cnt ? S.$$('.d', cnt).reverse() : [];
+    if (cnt) S.$$('.d', cnt).forEach(d => { d.style.width = d.offsetWidth + 'px'; });
+    // 카운터·이름표 자리
+    if (V) M.place(hudc, L.cardX, L.read - 2.4 * u, { ax: 0, ay: 1 });
+    else if (WIDE) M.place(hudc, L.read - 4 * u, L.cross - L.T / 2 - 4.5 * u, { ax: 1, ay: 1 });
+    else M.place(hudc, L.read + 2.4 * u, sy + fineH, { ax: 0, ay: 0 });
+    if (!V && WIDE && capEl) capEl.style.justifyContent = 'flex-end';
+
+    // 이동 스프링: 빠르게 미끄러지다 거의 넘치지 않고 멈춤
+    const SPM = { f: 1.25, z: .84 };
+    const sKeys = [[0, 0]];
+    ms.forEach((_, i) => sKeys.push([tm(i), sAt(i), SPM]));
+    // 주행거리계 바퀴: 끝자리는 계속 돌고, 윗자리는 아랫자리가 9→0 으로 넘어갈 때만 돎
+    const wheel = (v, k) => {
+      if (k === 0) return ((v % 10) + 10) % 10;
+      const b = 10 ** k, q = Math.floor(v / b), r = v - q * b;
+      return ((q % 10) + 10) % 10 + Math.max(0, r - (b - 1));
+    };
+    const Pf = V ? L.read : L.read;                            // 따라가는 동안 이정표가 서는 화면 위치
+    const Po = (E.a + E.b) / 2, Co = sEnd / 2;
+    const camK = t => t < Te ? 0 : M.spring(t - Te, { f: .7, z: 1 });
+
+    S.ambient(t => {
+      M.drift(root, t, .6);
+      const sF = M.anim(sKeys, t);
+      const ko = camK(t);
+      const z = Math.exp(Math.log(zo) * ko);
+      const Cc = M.lerp(sF, Co, ko), P = M.lerp(Pf, Po, ko);
+      const map = s => P + (s - Cc) * z;
+      const T = M.lerp(L.T, E.T2, ko);
+      const cross = M.lerp(L.cross, E.cross, ko);
+      const tkLen = M.lerp(1, .9, ko) * T;
+      // 자 그리기: 축 방향으로만 늘고 줆
+      const e0 = P - Cc * z;
+      rax.setAttribute('transform', V ? `matrix(0 ${z.toFixed(5)} 1 0 ${cross.toFixed(2)} ${e0.toFixed(2)})` : `matrix(${z.toFixed(5)} 0 0 -1 ${e0.toFixed(2)} ${cross.toFixed(2)})`);
+      band.setAttribute('y', (-T / 2).toFixed(2)); band.setAttribute('height', T.toFixed(2));
+      bandSh.setAttribute('y', (-T / 2 - (V ? -u * .9 : u * .9)).toFixed(2)); bandSh.setAttribute('height', T.toFixed(2));
+      rtk.setAttribute('transform', `translate(0 ${(T / 2).toFixed(2)})`);
+      tickGroups.forEach(g => {
+        const scr = g.sp * z;
+        const o = M.clamp((scr - 5) / 7);
+        g.el.style.opacity = o.toFixed(3);
+        g.el.style.visibility = o > .01 ? 'inherit' : 'hidden';
+        g.el.setAttribute('transform', `scale(1 ${(tkLen * LEN[g.lvl]).toFixed(2)})`);
+      });
+      marks.forEach((m, i) => { m.setAttribute('x1', sAt(i)); m.setAttribute('x2', sAt(i)); m.setAttribute('y1', (-T / 2).toFixed(2)); m.setAttribute('y2', (T / 2).toFixed(2)); m.style.opacity = (.55 * (1 - ko)).toFixed(3); });
+      const hk = 1.6 * u;
+      hook.setAttribute('d', `M${(-hk / z).toFixed(2)} ${(-T / 2 - hk * .6).toFixed(2)}H0V${(T / 2 + hk * .6).toFixed(2)}H${(-hk / z).toFixed(2)}Z`);
+      // 숫자: 자 안쪽 바깥 가장자리 쪽
+      const la = M.clamp(1 - ko * 3);
+      labels.forEach(l => {
+        const o = M.clamp((l.sp * z - 6.5 * u) / (2 * u)) * la;
+        const m = map(l.s);
+        const off = V ? m < -50 || m > H + 50 : m < -100 || m > W + 100;
+        if (o <= .01 || off) { l.el.style.visibility = 'hidden'; return; }
+        l.el.style.visibility = 'inherit'; l.el.style.opacity = o.toFixed(3);
+        if (V) { l.el.setAttribute('x', (cross - T / 2 + 1.1 * u).toFixed(1)); l.el.setAttribute('y', (m + .8 * u).toFixed(1)); }
+        else { l.el.setAttribute('x', (m + .6 * u).toFixed(1)); l.el.setAttribute('y', (cross + T / 2 - 1.3 * u).toFixed(1)); }
+      });
+      // 처음에 자가 풀려 나옴
+      const un = M.ease.outQuart(M.prog(t, 2.0, .6));
+      const hookStart = map(0) - 2.4 * u;
+      if (V) { clipR.setAttribute('x', -W); clipR.setAttribute('width', W * 3); clipR.setAttribute('y', hookStart); clipR.setAttribute('height', Math.max(0, (H - hookStart + u * 10) * un + (t > 3 ? H * 40 : 0))); }
+      else { clipR.setAttribute('y', -H); clipR.setAttribute('height', H * 3); clipR.setAttribute('x', hookStart); clipR.setAttribute('width', Math.max(0, (W - hookStart + u * 10) * un + (t > 3 ? W * 40 : 0))); }
+      svg.style.visibility = un > 0 ? 'inherit' : 'hidden';
+      // 배경 줄: 멀리 있는 자처럼 천천히
+      lanes.forEach((l, i) => { const off = (-Cc * z * LANE[i].f).toFixed(1); if (V) l.style.backgroundPosition = `0 ${off}px`; else l.style.backgroundPosition = `${off}px 0`; l.style.opacity = M.clamp((t - .2) * 2).toFixed(3); });
+
+      // 점: 아직 안 간 곳은 빈 동그라미, 지나면 꽉 찬 점
+      ms.forEach((_, i) => {
+        const m = map(sAt(i));
+        const [cx, cy] = V ? [cross, m] : [m, cross];
+        const td = tDot(i), on = t >= td;
+        const rr = M.lerp(1.9 * u, 1.05 * u, ko);
+        hol[i].setAttribute('cx', cx.toFixed(1)); hol[i].setAttribute('cy', cy.toFixed(1)); hol[i].setAttribute('r', (rr * .8).toFixed(2));
+        hol[i].setAttribute('stroke-width', (.35 * u).toFixed(2));
+        hol[i].style.visibility = on ? 'hidden' : 'inherit';
+        const pk = on ? M.spring(t - td, 'pop') : 0;
+        dot[i].setAttribute('cx', cx.toFixed(1)); dot[i].setAttribute('cy', cy.toFixed(1)); dot[i].setAttribute('r', Math.max(0, rr * pk).toFixed(2));
+        dot[i].style.visibility = on ? 'inherit' : 'hidden';
+        const rk = M.prog(t, td, .55);
+        rip[i].setAttribute('cx', cx.toFixed(1)); rip[i].setAttribute('cy', cy.toFixed(1)); rip[i].setAttribute('r', (rr * (1 + 2.6 * M.ease.outCubic(rk))).toFixed(2));
+        rip[i].setAttribute('stroke-width', (.4 * u * (1 - rk)).toFixed(2));
+        rip[i].style.visibility = rk > 0 && rk < 1 ? 'inherit' : 'hidden';
+        rip[i].style.opacity = (1 - rk).toFixed(3);
+      });
+
+      // 읽는 선과 카운터 (처음 2.1초에 들어오고, 전체 보기에서 빠짐)
+      const hin = M.spring(t - 2.1, 'snappy'), hout = M.clamp(1 - M.prog(t, Te, .4) * 1);
+      const ho = M.clamp(hin) * hout;
+      if (V) {
+        const x0 = L.cross + L.T / 2, len = (sx + sw - x0) * M.ease.outCubic(M.prog(t, 2.2, .5));
+        M.place(rline, x0, Pf, { ax: 0, ay: .5, o: ho });
+        rline.style.width = len + 'px'; rline.style.height = '2px';
+        M.place(ptr, x0 + .2 * u, Pf, { o: ho });
+      } else {
+        const y0 = L.cross - L.T / 2, len = (y0 - sy) * M.ease.outCubic(M.prog(t, 2.2, .5));
+        M.place(rline, Pf, y0, { ax: .5, ay: 1, o: ho });
+        rline.style.height = len + 'px'; rline.style.width = '2px';
+        M.place(ptr, Pf, y0 - .2 * u, { o: ho });
+      }
+      hudc.style.opacity = ho.toFixed(3);
+      hudc.style.visibility = ho > .001 ? 'inherit' : 'hidden';
+      if (cnt) {
+        const v = yearAt(sF);
+        cols.forEach((c, k) => {
+          // 처음 들어올 때 자리마다 조금씩 늦게 올라옴
+          const rk = M.clamp(M.spring(t - (2.1 + (digits - 1 - k) * .06), 'snappy'), 0, 1.1);
+          c.style.transform = `translateY(${(-wheel(v, k) * 1.04).toFixed(4)}em)`;
+          const lead0 = k > 0 && Math.floor(Math.abs(v) / 10 ** k) === 0;
+          digEls[k].style.opacity = lead0 ? '0' : M.clamp(rk * 1.4).toFixed(3);
+          digEls[k].style.transform = `translateY(${((1 - rk) * .32).toFixed(4)}em)`;
+        });
+      }
+      if (idx) {
+        const cur = ms.reduce((a, _, i) => t >= tDot(i) - .25 ? i : a, -1);
+        const txt = cur < 0 ? '' : `${String(cur + 1).padStart(2, '0')}/${String(n).padStart(2, '0')}`;
+        if (idx.textContent !== txt) idx.textContent = txt;
+      }
+
+      // 카드: 점이 찍히면 자 쪽 변을 경첩 삼아 펼쳐지고, 다음으로 떠날 때 접힘
+      cws.forEach((cw, i) => {
+        const tOpen = tDot(i) + .05, tClose = (i < n - 1 ? tm(i + 1) : Te) - .2;
+        const op = M.spring(t - tOpen, { f: 1.5, z: .74 });
+        const cl = M.ease.inCubic(M.prog(t, tClose, .32));
+        const ang = t < tOpen ? 90 : 90 * (1 - op) + 90 * cl;
+        const vis = t >= tOpen && cl < 1 && ang < 89.5;
+        const m = map(sAt(i));
+        if (V) M.place(cw, L.cardX, m + 2.6 * u, { ax: 0, ay: 0, o: vis ? 1 : 0 });
+        else M.place(cw, m + 2.4 * u, L.cross - L.T / 2 - 4.5 * u, { ax: 0, ay: 1, o: vis ? 1 : 0 });
+        if (!vis) return;
+        flaps[i].style.transform = V ? `rotateY(${ang.toFixed(2)}deg)` : `rotateX(${ang.toFixed(2)}deg)`;
+        const card = cardEls[i];
+        S.$('.shade', card).style.opacity = (Math.sin(Math.min(90, Math.abs(ang)) * Math.PI / 180) * .4).toFixed(3);
+        const ck = M.ease.outCubic(M.prog(t, tDot(i) - .05, .25)) * (1 - M.ease.inCubic(M.prog(t, tClose, .2)));
+        conns[i].style.transform = V ? `scaleX(${ck.toFixed(3)})` : `scaleY(${ck.toFixed(3)})`;
+        conns[i].style.transformOrigin = V ? '0 50%' : '50% 100%';
+        S.$$('.mk2 > *', card).forEach((x, j) => M.rise(x, M.clamp(M.spring(t - (tOpen + .22 + j * .09), 'snappy'), 0, 1.05)));
+        const img = S.$('.ph img', card);
+        if (img) img.style.transform = `scale(${(1.1 - .08 * M.ease.outCubic(M.prog(t, tOpen, STEP))).toFixed(4)})`;
+      });
+
+      // 처음 장면
+      const xo = M.ease.inOutCubic(M.prog(t, 1.85, .36));
+      const ix = V || !WIDE ? 0 : -xo * 10 * u, iy = V || !WIDE ? -xo * 10 * u : 0;
+      intro.style.opacity = (1 - xo).toFixed(3);
+      intro.style.visibility = xo < .999 ? 'inherit' : 'hidden';
+      if (lb) M.place(lb, introPos.lb[0] + ix, introPos.lb[1] + iy, { ax: 0, ay: 0, o: M.clamp((t - .15) * 3) });
+      if (bdgA) {
+        M.place(bdgA, introPos.bd[0] + ix, introPos.bd[1] + iy, { ax: 0, ay: 0, o: M.clamp((t - .2) * 4) });
+        fillBadge(bdgA, t, .45, 1.1);
+      }
+      if (h1) M.place(h1, introPos.h1[0] + ix, introPos.h1[1] + iy, { ax: 0, ay: 0 });
+      h1Lines.forEach((l, i) => M.rise(l, M.clamp(M.spring(t - ((badge ? 1.05 : .4) + i * .16), 'snappy'), 0, 1.04)));
+
+      // 마무리: 지금 문장, 기념 숫자, 로고
+      const t2 = Te;
+      tagEls.forEach((tg, i) => {
+        const tk = M.spring(t - (t2 + .35 + i * .08), 'snappy');
+        const m = map(sAt(i));
+        if (t < t2 + .35 + i * .08) { M.show(tg, false); return; }
+        if (V) M.place(tg, E.cross + E.T2 / 2 + 3 * u + (1 - tk) * 3 * u, m, { ax: 0, ay: .5, o: M.clamp(tk * 1.5) });
+        else {
+          const up = i % 2 === 0, tw2 = tg.offsetWidth;
+          const xx = M.clamp(m, sx + tw2 / 2, sx + sw - tw2 / 2);
+          M.place(tg, xx, up ? cross - E.T2 / 2 - 2.6 * u + (1 - tk) * 2 * u : cross + E.T2 / 2 + 2.6 * u - (1 - tk) * 2 * u, { ax: .5, ay: up ? 1 : 0, o: M.clamp(tk * 1.5) });
+        }
+      });
+      const eo = t >= t2 + .6;
+      M.place(endT, E.T[0], E.T[1], { ax: 0, ay: 0, o: eo ? 1 : 0 });
+      h2Lines.forEach((l, i) => M.rise(l, M.clamp(M.spring(t - (t2 + .6 + i * .14), 'snappy'), 0, 1.04)));
+      const ep = S.$('#endT p'); if (ep) { const k = M.spring(t - (t2 + 1.05), 'snappy'); ep.style.opacity = M.clamp(k * 1.4).toFixed(3); ep.style.transform = `translateY(${((1 - k) * 2 * u).toFixed(1)}px)`; }
+      if (bdgB) { M.place(bdgB, E.bd[0], E.bd[1], { ax: 0, ay: 0, o: M.clamp((t - (t2 + .8)) * 4) }); fillBadge(bdgB, t, t2 + .9, .9); }
+      const fk = M.spring(t - (t2 + 1.3), 'snappy');
+      M.place(endF, E.F[0], E.F[1] + (1 - fk) * 3 * u, { ax: 0, ay: 0, o: t > t2 + 1.3 ? M.clamp(fk * 1.6) : 0 });
+      if (note) M.place(note, E.note[0], E.note[1], { ax: V ? 0 : 1, ay: 0, o: M.clamp((t - (t2 + 1.6)) * 3) });
+    });
+
+    // 기념 숫자가 아래에서부터 차오름: 윤곽선 → 꽉 찬 색, 수면 선과 눈금자
+    function fillBadge(bd, t, t0, d) {
+      const k = M.ease.inOutCubic(M.prog(t, t0, d));
+      const top = (1 - k) * 100;
+      bd._fl.style.clipPath = `inset(${top.toFixed(2)}% -10% -10% -10%)`;
+      bd._fl.style.visibility = k > 0 ? 'inherit' : 'hidden';
+      const gh = bd._num.offsetHeight;
+      bd._lv.style.top = (gh * (1 - k) - u * .22).toFixed(1) + 'px';
+      bd._lv.style.opacity = (k <= 0 ? 0 : k < 1 ? 1 : 1 - M.prog(t, t0 + d, .25)).toFixed(3);
+      bd._sc.style.opacity = (M.clamp((t - t0 + .2) * 4) * (1 - M.prog(t, t0 + d + .1, .4))).toFixed(3);
+      if (bd._un) { const uk = M.spring(t - (t0 + d * .75), 'snappy'); bd._un.style.opacity = M.clamp(uk * 1.5).toFixed(3); bd._un.style.transform = `translateY(${((1 - uk) * 2.4 * u).toFixed(1)}px)`; }
+    }
+  });
+})();
+</script>

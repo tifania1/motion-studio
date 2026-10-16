@@ -1,0 +1,48 @@
+{
+  "id": "typeslam",
+  "order": 101,
+  "group": "look",
+  "style": "glitch-block-grotesk",
+  "name": "타이포 쇼",
+  "summary": "글자만으로 몰아치는 키네틱 타이포예요. 제목 어절이 박마다 화면을 꽉 채운 채 잘려 부딪혀 들어오고, 장점마다 반대로 흐르는 거대 글자 띠·떨어져 쌓이는 압축 글자·잘린 초대형 한 단어가 번갈아 나와요. 화면보다 큰 숫자와 굵게 쌓이는 끝 문구, 마지막 박의 색 반전으로 끝나요.",
+  "look": "화면을 꽉 채운 큰 글자 · 잘림 · 블록 쓸기 · 색 반전",
+  "template": "typeslam",
+  "formats": [
+    "tall",
+    "portrait",
+    "square",
+    "wide"
+  ],
+  "seconds": 17.5,
+  "photos": {
+    "need": 0,
+    "hint": "없어도 돼요(글자만으로 끝까지 가요). 넣으면 1~4장이 박 사이 0.25초씩 화면 가득 번쩍이고, 강조 어절의 큰 글자 속을 사진이 채워요. 색이 또렷하고 가운데에 주인공이 있는 사진이 좋아요"
+  },
+  "ask": [
+    "작은 꼬리표 한마디 (14자 안쪽, 예: 새 기능)",
+    "첫 문장(24자 안쪽, 두 줄)과 그중 강조색 블록으로 뒤집을 어절. 어절이 짧을수록(2~4자) 화면을 크게 채워요",
+    "장점·기능·순서 2~5개 (하나에 18자 안쪽, 어절 3~4개가 가장 잘 쌓여요)",
+    "숫자 하나와 앞말·단위·한 줄 설명, 그리고 근거(출처·기준) — 없으면 숫자 장면을 빼요",
+    "넣을 사진이 있는지 (0~4장)",
+    "마지막 한마디(두 줄), 버튼 문구, 주소나 계정"
+  ],
+  "brief": "예) 회의록을 자동으로 정리해 주는 서비스의 새 기능 소개. 말하면 받아 적고, 할 일만 골라 정리하고, 팀 채널로 보내 줌. 시범 사용 팀 기준 하루 40분을 아낌. 마지막은 '무료로 시작' 버튼과 example.com",
+  "check": [
+    "숫자 옆 출처(source)가 실제 근거와 기준 시점을 말하는지 (화면에 아주 작게 나와요)",
+    "'최초·1위·유일·최고·100%' 같은 말은 근거가 있을 때만",
+    "강조 어절(highlight)이 첫 문장 안에 띄어쓰기까지 그대로 있는지",
+    "어절이 화면 밖으로 잘려도 무슨 말인지 읽히는지 (긴 어절은 9:16 에서 많이 작아져요)",
+    "사진을 넣었다면 쓸 수 있는 사진인지(직접 찍은 사진·CC0·CC BY)와 출처 표시",
+    "주소·계정(cta.sub)이 지금 쓰는 것인지"
+  ],
+  "music": {
+    "mood": "custom",
+    "bpm": 120,
+    "prompt": "punchy minimal electronic, hard kick on every beat, tight clap on 2 and 4, glitchy stutter edits and short white-noise risers, bold confident product launch energy, 120 BPM",
+    "sections": [
+      [0, 4.5, "four hard kicks as each word slams in, then one big hit when the sentence locks"],
+      [4.5, 13.5, "driving four-on-the-floor groove with a stutter fill at every scene change"],
+      [13.5, 17.5, "short breakdown then a final punch on the last beat as the colors flip"]
+    ]
+  }
+}

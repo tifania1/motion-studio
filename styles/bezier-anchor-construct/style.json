@@ -1,0 +1,142 @@
+{
+  "id": "bezier-anchor-construct",
+  "name": "앵커와 핸들로 짓는 마크",
+  "group": "그래픽·도형",
+  "template": "brandmark",
+  "summary": "옅은 회색 위에 흩어진 앵커 점이 글자 자리로 모여 외곽선이 되고, 어두운 화면에서 파란 앵커와 핸들이 달린 큰 곡선을 훑은 뒤 보라 가이드선 속에서 마크가 한 칸씩 지어져 단색으로 채워지는 제작 과정 필름",
+  "tags": [
+    "벡터",
+    "베지어",
+    "가이드선",
+    "로고 공개",
+    "제작 과정",
+    "차분함"
+  ],
+  "hand": false,
+  "source": {
+    "site": "keyframe.gallery",
+    "ref": "mux:WiPdgf7A4jtsSzu9gYdNztJcugw4jlM8ER13g2twWJM",
+    "at": "0–23.7초",
+    "note": "흩어진 앵커 사각점이 모여 글자 외곽선이 되는 오프닝, 어두운 화면에서 파란 앵커·핸들이 달린 곡선을 따라 미끄러지는 확대 카메라, 보라 가이드선 위에서 외곽선 글자가 한 자씩 흰색으로 채워지는 순간, 직사각형 경로를 모서리 끌기로 늘려 마크를 짓고 분홍 보조 격자·원이 얹혔다 걷히며 단색 마크로 맺히는 끝"
+  },
+  "palette": [
+    "#E6E6E6",
+    "#262626",
+    "#8C8C8C",
+    "#FFFFFF",
+    "#5A7BE0"
+  ],
+  "colors": {
+    "bg": "#E6E6E6",
+    "onBg": "#2B2B2B",
+    "onBgMuted": "rgba(43,43,43,.62)",
+    "paper": "#262626",
+    "ink": "#EDEDED",
+    "accent": "#5A7BE0",
+    "accentInk": "#111111",
+    "pattern": "rgba(176,77,176,.22)",
+    "glow": "rgba(90,123,224,.3)"
+  },
+  "type": {
+    "display": [
+      "Archivo",
+      "Noto Sans KR"
+    ],
+    "heading": [
+      "Archivo",
+      "Noto Sans KR"
+    ],
+    "body": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "mono": [
+      "Geist Mono"
+    ]
+  },
+  "fonts": [
+    {
+      "family": "Archivo",
+      "weight": "100 900",
+      "stretch": "62% 125%",
+      "file": "fonts/Archivo-Variable.woff2"
+    },
+    {
+      "family": "Geist",
+      "weight": "100 900",
+      "file": "fonts/Geist-Variable.woff2"
+    },
+    {
+      "family": "Geist Mono",
+      "weight": "100 900",
+      "file": "fonts/GeistMono-Variable.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 700,
+      "file": "fonts/NotoSansKR-Bold.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 900,
+      "file": "fonts/NotoSansKR-Black.woff2"
+    }
+  ],
+  "shape": {
+    "radius": "calc(var(--u) * 0.2)"
+  },
+  "motion": {
+    "pace": "보통",
+    "bpm": 96,
+    "ease": "power3.inOut",
+    "stagger": 1,
+    "transitions": [
+      "cut",
+      "fade",
+      "cut"
+    ]
+  },
+  "scenes": {
+    "bg": "lines",
+    "align": "center",
+    "card": "outline",
+    "marker": "underline",
+    "weight": 700,
+    "tracking": 0.02,
+    "case": "upper",
+    "rough": false,
+    "title": "fade",
+    "frame": "none",
+    "deco": [
+      "handles",
+      "marks"
+    ],
+    "number": "count",
+    "scale": 1.1,
+    "schemes": [
+      "paper",
+      "dark",
+      "paper"
+    ]
+  },
+  "signature": [
+    "옅은 회색 바탕에 작은 속 빈 사각 앵커 점들이 흐릿하게 흩어져 있다가 1.5초에 걸쳐 글자 자리로 모이고, 점 사이로 짧은 곡선과 핸들 막대가 하나씩 이어지며 낱말 외곽선이 됨",
+    "어두운 화면에서 카메라가 화면보다 큰 곡선 하나를 따라 천천히 미끄러짐. 곡선 위엔 파란 앵커 점과 끝에 작은 점이 달린 핸들 막대. 이어 크게 빠지면 보라 가이드선 위 외곽선 낱말이 보이고, 글자가 순서 없이 한 자씩 흰색으로 채워짐",
+    "밝은 화면에서 직사각형 경로의 사각 앵커를 끌어 변을 늘리고 꺾어 마크의 뼈대를 짓고, 곡선 고리를 더한 뒤 분홍 보조 격자선과 원이 겹쳐 얹혔다 걷히면 짙은 단색 마크 하나만 남음"
+  ],
+  "fits": [
+    "로고·리브랜딩 공개",
+    "디자인 스튜디오 작업 소개",
+    "디자인·편집 도구 소개",
+    "브랜드 가이드 오프닝",
+    "꼼꼼함을 보여 주는 B2B 브랜드"
+  ],
+  "avoid": [
+    "그라디언트와 빛 번짐",
+    "종이·그레인 질감",
+    "빠른 컷 몽타주",
+    "손그림 선",
+    "강조색을 넓게 칠하기",
+    "글이 긴 장면"
+  ]
+}

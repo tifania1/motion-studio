@@ -1,0 +1,119 @@
+{
+  "id": "ascii-ring-tunnel",
+  "name": "동심원 터널",
+  "group": "다이어그램·데이터",
+  "template": "dataflow",
+  "summary": "초록 농담으로 칠한 동심원 조각 사이를 카메라가 빠져나가고, 문자 가루가 고리처럼 흩날리는 목표 달성 장면",
+  "tags": [
+    "데이터",
+    "성과",
+    "달성",
+    "초록",
+    "줌"
+  ],
+  "hand": false,
+  "source": {
+    "site": "keyframe.gallery",
+    "ref": "mux:SVPLntRKAY102JlPN7QdsnYwpqtabExkelFj01400XPO5g",
+    "at": "33.2–42.4초",
+    "note": "성공 카드 둘레로 + * ; : 문자 가루가 고리처럼 터짐, 동심원 도넛 차트가 가운데부터 자라 화면을 채우고 카메라가 고리 사이로 물러남, 체크 꼬리표가 고리에 내려앉음, 점이 그린 선이 부풀어 마크가 되는 엔딩"
+  },
+  "palette": [
+    "#A8D3A4",
+    "#7FB97C",
+    "#5E9E5D",
+    "#F3F5F1",
+    "#D9F04A",
+    "#123D1C"
+  ],
+  "colors": {
+    "bg": "#A8D3A4",
+    "onBg": "#123D1C",
+    "onBgMuted": "rgba(18,61,28,.7)",
+    "paper": "#F3F5F1",
+    "ink": "#1E2A20",
+    "accent": "#1A6B2C",
+    "accentInk": "#FFFFFF",
+    "pattern": "rgba(18,61,28,.18)",
+    "glow": "rgba(217,240,74,.5)"
+  },
+  "type": {
+    "display": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "heading": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "body": [
+      "Geist",
+      "Noto Sans KR"
+    ]
+  },
+  "fonts": [
+    {
+      "family": "Geist",
+      "weight": "100 900",
+      "file": "fonts/Geist-Variable.woff2"
+    },
+    {
+      "family": "Geist Mono",
+      "weight": "100 900",
+      "file": "fonts/GeistMono-Variable.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 500,
+      "file": "fonts/NotoSansKR-Medium.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 700,
+      "file": "fonts/NotoSansKR-Bold.woff2"
+    }
+  ],
+  "look": {
+    "grain": 0.05
+  },
+  "shape": {
+    "radius": "calc(var(--u) * 4)"
+  },
+  "motion": {
+    "pace": "빠름",
+    "bpm": 120,
+    "ease": "expo.inOut",
+    "stagger": 0.6,
+    "transitions": [
+      "iris",
+      "zoom",
+      "cut"
+    ]
+  },
+  "scenes": {
+    "bg": "solid",
+    "align": "center",
+    "card": "flat",
+    "marker": "color",
+    "weight": 500,
+    "tracking": -0.01,
+    "case": "none",
+    "rough": false
+  },
+  "signature": [
+    "초록 성공 카드가 뜨는 순간 둘레로 + * ; : , 같은 문자 가루가 고리 모양으로 튀어 나가고, 그 자리에서 동심원 도넛 차트가 가운데부터 한 겹씩 자라 화면을 채움",
+    "카메라가 고리 사이로 빠져나가듯 물러나는 동안 체크 표시 알약 꼬리표가 고리마다 하나씩 내려앉고, 연두 공이 거친 점무늬 꼬리를 끌며 고리를 따라 돎",
+    "가운데 구멍이 열려 빈 밝은 화면이 되고, 검은 점이 구불구불 선을 그은 뒤 그 획이 부풀어 로고 마크로 채워짐"
+  ],
+  "fits": [
+    "목표 달성·성과 발표",
+    "분기·연간 결산",
+    "누적 숫자 축하",
+    "앱 영상의 마무리 장면"
+  ],
+  "avoid": [
+    "여러 색 섞기(초록 한 가지 농담으로)",
+    "정확한 수치를 읽어야 하는 그래프",
+    "어두운 바탕"
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "name": "세일 (가격표)",
+  "description": "강조색 판 위로 비스듬한 띠가 흐르고, 할인율이 슬롯처럼 굴러 꽂히고, 가격표에 줄이 그어지며 새 가격이 떨어지는 15초 안팎 영상.",
+  "fonts": [
+    { "family": "Archivo", "weight": "100 900", "stretch": "62% 125%", "file": "fonts/Archivo-Variable.woff2" }
+  ]
+}

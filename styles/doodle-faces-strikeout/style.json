@@ -1,0 +1,132 @@
+{
+  "id": "doodle-faces-strikeout",
+  "name": "낙서 얼굴과 지우는 말",
+  "group": "손그림",
+  "template": "sketchbook",
+  "summary": "옅은 회색 위 굵은 고딕 문장 줄마다 펜으로 그린 얼굴 낙서가 붙고, 줄 끝 칩이 체크에서 X 로 뒤집히거나 취소선으로 지워지며 말이 바뀌어요",
+  "tags": [
+    "손그림",
+    "낙서",
+    "얼굴",
+    "체크리스트",
+    "협업",
+    "재소개"
+  ],
+  "hand": true,
+  "source": {
+    "site": "keyframe.gallery",
+    "ref": "mux:aGYHpWNR1F9RzyvuWr1WBmphfZgVNFgkwXUjw101v1PQ",
+    "at": "0–17초, 29–40초, 63–86초",
+    "note": "깜빡이는 커서로 시작해 문장을 치고, 말줄임 점이 커지며 알약 칩으로 늘어나는 이음, 같은 문장 틀이 줄마다 쌓이며 줄 옆에 잉크 선 얼굴 낙서(먹으로 칠한 머리 + 가는 선 얼굴 + 점묘)가 번갈아 붙는 구도, 칩 상태가 뒤집히는 방식(위 화살표→아래, 초록 체크→빨간 X, 메모 글에 취소선), 한 줄 선으로 그린 동그라미 속 얼굴이 표정을 바꾸는 '생각 중' 표시, 반응 숫자가 굴러 올라가는 칩, 체크 목록이 한 칸씩 체크되며 지워지는 마무리"
+  },
+  "palette": [
+    "#EBEBEB",
+    "#111111",
+    "#2F74D0",
+    "#C94A4A",
+    "#4FA05A",
+    "#F1E2A0"
+  ],
+  "colors": {
+    "bg": "#EBEBEB",
+    "onBg": "#111111",
+    "onBgMuted": "rgba(17,17,17,.6)",
+    "paper": "#FFFFFF",
+    "ink": "#111111",
+    "accent": "#2F74D0",
+    "accentInk": "#FFFFFF",
+    "pattern": "rgba(17,17,17,.06)",
+    "glow": "rgba(59,130,214,.22)"
+  },
+  "type": {
+    "display": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "heading": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "body": [
+      "Geist",
+      "Noto Sans KR"
+    ]
+  },
+  "fonts": [
+    {
+      "family": "Geist",
+      "weight": "100 900",
+      "file": "fonts/Geist-Variable.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 500,
+      "file": "fonts/NotoSansKR-Medium.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 700,
+      "file": "fonts/NotoSansKR-Bold.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 900,
+      "file": "fonts/NotoSansKR-Black.woff2"
+    }
+  ],
+  "look": {},
+  "shape": {
+    "radius": "calc(var(--u) * 1.4)"
+  },
+  "motion": {
+    "pace": "보통",
+    "bpm": 100,
+    "ease": "back.out(1.3)",
+    "stagger": 1,
+    "transitions": [
+      "push",
+      "cut"
+    ]
+  },
+  "scenes": {
+    "bg": "solid",
+    "align": "center",
+    "card": "shadow",
+    "marker": "highlight",
+    "weight": 700,
+    "tracking": -0.02,
+    "case": "none",
+    "rough": false,
+    "title": "type",
+    "frame": "none",
+    "deco": [
+      "doodles",
+      "cursor"
+    ],
+    "number": "odometer",
+    "scale": 1,
+    "schemes": [
+      "dark",
+      "paper"
+    ]
+  },
+  "signature": [
+    "줄마다 낙서 얼굴: 같은 틀의 문장 줄이 위에서부터 하나씩 쌓이고(0.3초 rise), 줄의 왼쪽이나 오른쪽(줄마다 번갈아)에 펜으로 그린 얼굴이 0.25초에 톡 커지며 붙음. 머리카락은 먹으로 꽉 칠하고 얼굴은 가는 선, 볼·피부에 점묘 약간. 얼굴 높이는 글자 높이의 1.6배, 한 화면에 셋까지",
+    "칩이 뒤집혀 말이 바뀜: 줄 끝 칩(파란 알약 + 화살표, 초록 체크 상자, 위에 노란 띠가 있는 메모 카드)이 들어오고 0.5초 뒤 상태가 바뀜. 화살표가 0.25초에 위→아래로 뒤집히고, 초록 체크가 빨간 X 로 바뀌며 칩 바탕도 연분홍으로, 메모 글에 회색 취소선이 왼쪽부터 0.3초에 그어짐",
+    "말줄임 점이 칩이 됨: 깜빡이는 굵은 세로 커서로 시작해 짧은 문장을 치고, 끝의 말줄임표가 오른쪽으로 길게 늘어나며 점이 점점 커지다 큰 점들이 알약으로 늘어나 칩 자리를 잡음. 마무리는 체크 목록이 한 칸씩(0.2초 간격) 체크되며 글에 취소선이 그어지고, 마지막 빈 칸을 커서가 눌러 체크"
+  ],
+  "fits": [
+    "서비스 재소개·리브랜딩",
+    "해야 할 일을 덜어 주는 도구",
+    "팀 협업·업무 도구",
+    "체크리스트·꿀팁 마무리",
+    "고객 여러 명의 목소리를 모은 장면"
+  ],
+  "avoid": [
+    "대조 구문으로 쓴 문구",
+    "세리프·손글씨 글꼴",
+    "그라디언트 바탕",
+    "한 화면에 얼굴 셋 넘게",
+    "얼굴에 색 칠하기"
+  ]
+}

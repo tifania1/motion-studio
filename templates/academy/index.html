@@ -1,0 +1,220 @@
+<title>/*@TITLE@*/</title>
+<style>
+/*@FONTFACES@*/
+/*@BRAND_CSS@*/
+/*@ENGINE_CSS@*/
+
+/* ===== academy 템플릿: 수강생 모집 =====
+   모눈 노트 한 장을 위에서 아래로 넘겨 보는 영상. 손으로 그린 동그라미·밑줄, 테이프 붙인 사진,
+   칸이 채워지는 시간표, 하나씩 체크되는 커리큘럼, 남은 자리, 마지막은 포스트잇. */
+#ac { position: absolute; inset: 0; background: #FBFBF7; overflow: hidden; }
+#page { position: absolute; left: 0; top: 0; width: 100%; background-color: #FBFBF7;
+  background-image: linear-gradient(rgba(70, 130, 200, .16) 1px, transparent 1px), linear-gradient(90deg, rgba(70, 130, 200, .16) 1px, transparent 1px);
+  background-size: calc(var(--u) * 5) calc(var(--u) * 5); }
+#page .margin { position: absolute; top: 0; bottom: 0; width: 2px; background: rgba(220, 70, 70, .5); }
+#page .hole { position: absolute; width: calc(var(--u) * 3.6); height: calc(var(--u) * 3.6); border-radius: 50%; background: #e6e3da; box-shadow: inset 0 calc(var(--u) * .4) calc(var(--u) * .6) rgba(0,0,0,.15); }
+.abs { position: absolute; left: 0; top: 0; }
+.ink { color: #23262b; }
+.hd { font: 800 calc(var(--u) * 3.4)/1.2 var(--font-body); color: #23262b; opacity: .75; white-space: nowrap; }
+.hd b { display: inline-block; background: var(--accent); color: var(--accent-ink); padding: calc(var(--u) * .8) calc(var(--u) * 1.8); border-radius: calc(var(--u) * .6); margin-right: calc(var(--u) * 1.4); font-weight: 900; }
+.hook { font: 900 calc(var(--u) * 12)/1.25 var(--font-heading); color: #23262b; letter-spacing: -.04em; white-space: pre-line; word-break: keep-all; margin: 0; }
+.hook .ln { display: block; }
+svg.draw { position: absolute; left: 0; top: 0; overflow: visible; pointer-events: none; }
+svg.draw path, svg.draw ellipse { fill: none; stroke: var(--accent); stroke-linecap: round; stroke-linejoin: round; }
+.pola { background: #fff; padding: calc(var(--u) * 2.4) calc(var(--u) * 2.4) calc(var(--u) * 9); box-shadow: 0 calc(var(--u) * 1) calc(var(--u) * 3) rgba(0,0,0,.18); box-sizing: border-box; }
+.pola .im { width: 100%; aspect-ratio: 4 / 3.2; overflow: hidden; background: #ddd; }
+.pola .im img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.pola .cap { position: absolute; left: 0; right: 0; bottom: calc(var(--u) * 2.6); text-align: center; font: 700 calc(var(--u) * 3.6)/1.2 var(--font-body); color: #444; }
+.tape { position: absolute; width: calc(var(--u) * 16); height: calc(var(--u) * 5); background: rgba(250, 226, 160, .75); }
+.tt { font: 900 calc(var(--u) * 6)/1.2 var(--font-heading); color: #23262b; letter-spacing: -.03em; white-space: nowrap; }
+.tt small { font: 700 calc(var(--u) * 3.2)/1 var(--font-body); opacity: .6; margin-left: calc(var(--u) * 1.6); letter-spacing: 0; }
+.grid { display: grid; gap: calc(var(--u) * 1.2); margin-top: calc(var(--u) * 2.6); }
+.grid .dh { font: 800 calc(var(--u) * 3.4)/1 var(--font-body); color: #23262b; text-align: center; padding-bottom: calc(var(--u) * 1); }
+.grid .cell { position: relative; height: calc(var(--u) * 12); border: 2px solid rgba(35, 38, 43, .2); border-radius: calc(var(--u) * 1.2); overflow: hidden; background: rgba(255,255,255,.6); }
+.grid .cell .fill { position: absolute; inset: 0; background: var(--accent); transform-origin: 50% 100%; display: grid; place-items: center; font: 900 calc(var(--u) * 3.4)/1.1 "Archivo", var(--font-body); color: var(--accent-ink); text-align: center; }
+.note { font: 700 calc(var(--u) * 3.6)/1.4 var(--font-body); color: #23262b; opacity: .8; margin-top: calc(var(--u) * 2.4); white-space: pre-line; }
+.chk { list-style: none; margin: calc(var(--u) * 3) 0 0; padding: 0; display: flex; flex-direction: column; gap: calc(var(--u) * 2.8); }
+.chk li { display: flex; align-items: center; gap: calc(var(--u) * 3); font: 800 calc(var(--u) * 5.4)/1.25 var(--font-body); color: #23262b; word-break: keep-all; }
+.chk li .bx { position: relative; flex: none; width: calc(var(--u) * 6.4); height: calc(var(--u) * 6.4); border: calc(var(--u) * .55) solid #23262b; border-radius: calc(var(--u) * 1.2); }
+.chk li .bx svg { position: absolute; left: -20%; top: -40%; width: 150%; height: 150%; overflow: visible; }
+.chk li .bx path { fill: none; stroke: var(--accent); stroke-width: 7; stroke-linecap: round; stroke-linejoin: round; }
+.seats { display: grid; justify-content: start; gap: calc(var(--u) * 1.8); margin-top: calc(var(--u) * 3); }
+.seat { width: calc(var(--u) * 9.6); height: calc(var(--u) * 9.6); border-radius: calc(var(--u) * 2.2) calc(var(--u) * 2.2) calc(var(--u) * 1) calc(var(--u) * 1); background: #23262b; position: relative; }
+.seat::after { content: ""; position: absolute; left: 12%; right: 12%; bottom: -18%; height: 22%; border-radius: 0 0 calc(var(--u) * 1) calc(var(--u) * 1); background: inherit; opacity: .8; }
+.seat.free { background: transparent; border: calc(var(--u) * .6) dashed var(--accent); box-sizing: border-box; }
+.seat.free::after { display: none; }
+.left { display: flex; align-items: baseline; gap: calc(var(--u) * 2); margin-top: calc(var(--u) * 4); }
+.left .lb { font: 900 calc(var(--u) * 6)/1 var(--font-heading); color: #23262b; letter-spacing: -.03em; }
+.left .n { position: relative; font: 900 calc(var(--u) * 16)/1 "Archivo", var(--font-display); color: var(--accent); font-stretch: 85%; }
+.left .of { font: 700 calc(var(--u) * 3.6)/1 var(--font-body); color: #23262b; opacity: .6; }
+.sticky { background: #FFE36E; box-shadow: 0 calc(var(--u) * 2) calc(var(--u) * 4) rgba(0,0,0,.18); padding: calc(var(--u) * 6) calc(var(--u) * 5.4); box-sizing: border-box; text-align: center; }
+.sticky .st { font: 900 calc(var(--u) * 8)/1.15 var(--font-heading); color: #23262b; letter-spacing: -.03em; white-space: nowrap; }
+.sticky .sh { font: 800 calc(var(--u) * 4.6)/1.35 var(--font-body); color: #23262b; margin-top: calc(var(--u) * 2.4); white-space: pre-line; word-break: keep-all; }
+.sticky .btn { display: inline-flex; align-items: center; gap: calc(var(--u) * 2); margin-top: calc(var(--u) * 4); background: #23262b; color: #fff; font: 900 calc(var(--u) * 4.6)/1 var(--font-body); padding: calc(var(--u) * 2.8) calc(var(--u) * 4.6) calc(var(--u) * 3.1); border-radius: 999px; white-space: nowrap; }
+.sticky .btn svg { width: 1em; height: 1em; fill: currentColor; }
+.logo { display: flex; align-items: baseline; gap: calc(var(--u) * 1.6); justify-content: center; }
+.logo img { height: calc(var(--u) * 8); width: auto; }
+.logo .lt { font: 900 calc(var(--u) * 6)/1 var(--font-display); color: #23262b; white-space: nowrap; }
+.logo .ls { font: 700 calc(var(--u) * 2.4)/1 var(--font-display); color: #23262b; letter-spacing: .3em; white-space: nowrap; opacity: .7; }
+.handle { font: 700 calc(var(--u) * 3.3)/1.3 var(--font-body); color: #23262b; opacity: .65; text-align: center; margin-top: calc(var(--u) * 1.4); }
+.credit { font: 500 calc(var(--u) * 1.7)/1.2 var(--font-body); color: #666; white-space: nowrap; }
+</style>
+
+<div id="viewport"><div id="stage"><div id="cam"></div></div></div>
+
+<script>/*@GSAP@*/</script>
+<script>/*@DATA@*/</script>
+<script>/*@ENGINE_JS@*/</script>
+<script>
+(function () {
+  const S = Studio, M = S.M, C = S.content, B = S.brand, e = S.esc;
+  const cam = S.$('#cam');
+  const ARROW = '<svg viewBox="0 0 24 24"><path d="M5 11h10.2l-4.6-4.6L12 5l7 7-7 7-1.4-1.4 4.6-4.6H5z"/></svg>';
+  const sch = C.schedule || {}, cur = C.curriculum || {}, seats = C.seats || null, cta = C.cta || {};
+  const days = (sch.days || ['월', '화', '수', '목', '금', '토']).slice(0, 7);
+  const slots = sch.slots || [];
+  const photo = S.img(C.photo || (C.photos || [])[0]);
+  const logoImg = B.logo && S.img(B.logo);
+  const hookLines = String(C.hook || '').split('\n');
+  const total = seats ? Math.min(24, +seats.total || 12) : 0, left = seats ? Math.min(total, +seats.left || 0) : 0;
+  cam.appendChild(S.h(`<div id="ac"><div id="page"><div class="margin"></div>
+    ${C.header ? `<div class="hd abs" id="hd">${C.tag ? `<b>${e(C.tag)}</b>` : ''}${e(C.header)}</div>` : ''}
+    <h1 class="hook abs" id="hook">${hookLines.map(l => `<span class="ln"><span class="tx">${e(l)}</span></span>`).join('')}</h1>
+    <svg class="draw" id="hookDraw"><ellipse/><path/></svg>
+    <div class="pola abs" id="pola"><i class="tape" style="left:50%;top:calc(var(--u) * -2.6);margin-left:calc(var(--u) * -8);transform:rotate(-3deg)"></i><div class="im">${photo ? `<img src="${photo}" alt="">` : ''}</div>${C.photoCaption ? `<div class="cap">${e(C.photoCaption)}</div>` : ''}</div>
+    <div class="abs" id="sched"><div class="tt">${e(sch.title || '')}</div>
+      <div class="grid" style="grid-template-columns: repeat(${days.length}, 1fr)">${days.map(d => `<div class="dh">${e(d)}</div>`).join('')}${days.map((d, i) => { const sl = slots.find(s => +s[0] === i); return `<div class="cell">${sl ? `<div class="fill">${e(sl[1] || '')}</div>` : ''}</div>`; }).join('')}</div>
+      ${sch.note ? `<div class="note">${e(sch.note)}</div>` : ''}</div>
+    <div class="abs" id="curr"><div class="tt">${e(cur.title || '')}</div>
+      <ul class="chk">${(cur.items || []).slice(0, 5).map(x => `<li><span class="bx"><svg viewBox="0 0 40 40"><path d="M7 21 L16 30 L36 6"/></svg></span><span>${e(x)}</span></li>`).join('')}</ul></div>
+    ${seats ? `<div class="abs" id="seatBox"><div class="tt">${e(seats.title || '정원')}<small>${e(seats.sub || '')}</small></div>
+      <div class="seats" style="grid-template-columns: repeat(${total > 12 ? 8 : 6}, auto)">${Array.from({ length: total }, (_, i) => `<div class="seat ${i >= total - left ? 'free' : ''}"></div>`).join('')}</div>
+      <div class="left"><span class="lb">${e(seats.label || '남은 자리')}</span><span class="n">${left}</span><span class="of">/ ${total}${e(seats.unit || '자리')}</span></div>
+      <svg class="draw" id="seatDraw"><ellipse/></svg></div>` : ''}
+    <div class="sticky abs" id="sticky"><i class="tape" style="left:50%;top:calc(var(--u) * -2.6);margin-left:calc(var(--u) * -8);transform:rotate(4deg)"></i>
+      ${C.start ? `<div class="st">${e(C.start)}</div>` : ''}${cta.headline ? `<div class="sh">${e(cta.headline)}</div>` : ''}${cta.button ? `<div class="btn"><span>${e(cta.button)}</span>${ARROW}</div>` : ''}</div>
+    <div class="abs" id="sign"><div class="logo">${logoImg ? `<img src="${logoImg}" alt="">` : ''}${B.logoText ? `<span class="lt">${e(B.logoText)}</span>` : ''}${B.logoSub ? `<span class="ls">${e(B.logoSub)}</span>` : ''}</div>${cta.sub ? `<div class="handle">${e(cta.sub)}</div>` : ''}</div>
+    ${C.credit ? `<div class="credit abs" id="credit">${e(C.credit)}</div>` : ''}
+  </div></div>`));
+
+  S.start(S => {
+    const W = S.W, H = S.H, u = Math.min(W, H) / 100, sf = S.safe;
+    const sx = sf.left, sy = sf.top, sw = W - sf.left - sf.right, sh = H - sf.top - sf.bottom;
+    const wide = S.is('wide');
+    const page = S.$('#page');
+    const N = 5;                    // 쪽 수 (화면 단위)
+    page.style.height = H * N + 'px';
+    const mx = sx + u * 2;          // 빨간 여백선
+    S.$('.margin', page).style.left = mx + 'px';
+    for (let i = 0; i < N * 4; i++) { const h = S.h('<i class="hole"></i>'); h.style.left = (mx - u * 6.4) + 'px'; h.style.top = (H * i / 4 + H * .12) + 'px'; page.appendChild(h); }
+    const L = mx + u * 4, R = sx + sw, CW = R - L;          // 쓰는 칸
+    const yOf = i => H * i;                                 // i번째 화면의 위쪽
+    const mid = i => yOf(i) + sy + sh / 2;
+
+    // ---- 0: 첫 문장 ----
+    const hd = S.$('#hd'), hook = S.$('#hook');
+    hook.style.width = CW + 'px';
+    S.fit(hook, { max: (wide ? 10 : 12) * u, maxLines: Math.max(2, hookLines.length + 1) });
+    const hookY = mid(0) - hook.offsetHeight / 2 + u * 3;
+    hook.style.left = L + 'px'; hook.style.top = hookY + 'px';
+    if (hd) { hd.style.left = L + 'px'; hd.style.top = (hookY - u * 9) + 'px'; }
+    const hookSpans = S.$$('.ln', hook);
+    // 동그라미 칠 낱말 위치
+    const hookDraw = S.$('#hookDraw'), hEl = S.$('ellipse', hookDraw), hPath = S.$('path', hookDraw);
+    hookDraw.setAttribute('width', W); hookDraw.setAttribute('height', H * N);
+    let ring = null;
+    if (C.circle) {
+      for (const sp of hookSpans) {
+        const i = sp.textContent.indexOf(C.circle);
+        if (i < 0) continue;
+        const tn = S.$('.tx', sp).firstChild; const range = document.createRange(); range.setStart(tn, i); range.setEnd(tn, i + C.circle.length);
+        const r = range.getBoundingClientRect(), pr = page.getBoundingClientRect(), k = page.offsetWidth / pr.width;
+        ring = { x: (r.left - pr.left) * k, y: (r.top - pr.top) * k, w: r.width * k, h: r.height * k };
+        break;
+      }
+    }
+    if (ring) { hEl.setAttribute('cx', ring.x + ring.w / 2); hEl.setAttribute('cy', ring.y + ring.h / 2); hEl.setAttribute('rx', ring.w / 2 + u * 3); hEl.setAttribute('ry', ring.h / 2 + u * .6); hEl.setAttribute('transform', `rotate(-4 ${ring.x + ring.w / 2} ${ring.y + ring.h / 2})`); hEl.setAttribute('stroke-width', u * .9); }
+    else hEl.remove();
+    const lastSp = hookSpans[hookSpans.length - 1];
+    const ux = L - u, uy = hookY + lastSp.offsetTop + lastSp.offsetHeight + u * .6, uw = Math.min(CW, S.$('.tx', lastSp).offsetWidth + u * 2);
+    let d = `M ${ux} ${uy}`; for (let i = 1; i <= 8; i++) d += ` L ${ux + uw * i / 8} ${uy + (i % 2 ? -u * 1.4 : u * .4)}`;
+    hPath.setAttribute('d', d); hPath.setAttribute('stroke-width', u * .7);
+
+    // ---- 1: 사진 + 시간표 ----
+    const pola = S.$('#pola'), sched = S.$('#sched');
+    const pw = wide ? CW * .4 : Math.min(CW * .62, sh * .42);
+    pola.style.width = pw + 'px';
+    sched.style.width = (wide ? CW * .52 : CW) + 'px';
+    const polaH = pola.offsetHeight, schedH = sched.offsetHeight;
+    const P1 = wide ? { px: L + CW * .2, py: mid(1), sx: L + CW * .46, sy: mid(1) - schedH / 2 }
+      : { px: L + CW / 2, py: yOf(1) + sy + polaH / 2 + u * 3, sx: L, sy: yOf(1) + sy + polaH + u * 9 };
+    // 사진이 없으면 시간표를 가운데로
+    if (!photo && !C.photoCaption) { P1.sx = L; P1.sy = mid(1) - schedH / 2; sched.style.width = CW + 'px'; }
+    sched.style.left = P1.sx + 'px'; sched.style.top = P1.sy + 'px';
+    const fills = S.$$('#sched .fill');
+    // ---- 2: 커리큘럼 ----
+    const curr = S.$('#curr'); curr.style.width = CW + 'px';
+    curr.style.left = L + 'px'; curr.style.top = (mid(2) - curr.offsetHeight / 2) + 'px';
+    const checks = S.$$('#curr .chk path'), lis = S.$$('#curr .chk li');
+    // ---- 3: 남은 자리 ----
+    const seatBox = S.$('#seatBox'), seatEls = S.$$('.seat');
+    let seatRing = null;
+    if (seatBox) {
+      seatBox.style.width = CW + 'px'; seatBox.style.left = L + 'px'; seatBox.style.top = (mid(3) - seatBox.offsetHeight / 2) + 'px';
+      const n = S.$('.left .n', seatBox), sd = S.$('#seatDraw'); sd.setAttribute('width', CW); sd.setAttribute('height', seatBox.offsetHeight);
+      seatRing = S.$('ellipse', sd);
+      const nx = n.offsetLeft + n.offsetWidth / 2, ny = n.offsetTop + n.offsetHeight / 2;
+      seatRing.setAttribute('cx', nx); seatRing.setAttribute('cy', ny); seatRing.setAttribute('rx', n.offsetWidth / 2 + u * 2); seatRing.setAttribute('ry', n.offsetHeight / 2 + u * .2); seatRing.setAttribute('stroke-width', u * .8); seatRing.setAttribute('transform', `rotate(-8 ${nx} ${ny})`);
+    }
+    // ---- 4: 포스트잇 ----
+    const sticky = S.$('#sticky'), sign = S.$('#sign');
+    const stW = Math.min(CW, (wide ? 70 : 80) * u);
+    sticky.style.width = stW + 'px';
+    const stH = sticky.offsetHeight;
+    const S4 = { x: L + CW / 2, y: (wide ? mid(4) - u * 6 : yOf(4) + sy + sh * .44) };
+    sign.style.width = CW + 'px'; sign.style.left = L + 'px'; sign.style.top = (S4.y + stH / 2 + u * 6) + 'px';
+    const credit = S.$('#credit');
+    if (credit && pola) { credit.style.left = (P1.px - pw / 2) + 'px'; credit.style.top = (P1.py + polaH / 2 + u * 1) + 'px'; }
+
+    const TT = [0, 3.4, 7.8, seatBox ? 11.4 : null, null];
+    TT[4] = (seatBox ? 14.6 : 11.4);
+    const END = TT[4] + 3.6;
+    S.setDuration(END);
+    const camKeys = [[0, 0]]; [1, 2, 3, 4].forEach(i => { if (TT[i] != null) camKeys.push([TT[i] - .5, yOf(i), { f: 1.25, z: .92 }]); });
+
+    const root = S.$('#ac');
+    S.ambient(t => {
+      M.drift(root, t);
+      const cy = M.anim(camKeys, t);
+      page.style.transform = `translateY(${(-cy).toFixed(2)}px)`;
+      // 0
+      if (hd) M.place(hd, 0, 0, { ax: 0, ay: 0, o: M.clamp((t - .1) * 3) });
+      hookSpans.forEach((sp, i) => { const k = M.ease.inOutSine(M.prog(t, .25 + i * .65, .7)); sp.style.clipPath = `inset(-10% ${((1 - k) * 100).toFixed(2)}% -10% 0)`; });
+      if (hEl.isConnected) M.draw(hEl, M.ease.inOutCubic(M.prog(t, .4 + hookSpans.length * .65, .6)));
+      M.draw(hPath, M.ease.inOutCubic(M.prog(t, .6 + hookSpans.length * .65, .5)));
+      // 1
+      const pk = M.spring(t - (TT[1] - .1), { f: 2, z: .7 });
+      M.place(pola, P1.px, P1.py - (1 - pk) * u * 30, { rot: -4 + (1 - pk) * 16, o: M.clamp((t - (TT[1] - .1)) * 6) });
+      sched.style.opacity = M.clamp((t - TT[1] - .2) * 3).toFixed(3);
+      fills.forEach((f, i) => { const k = M.spring(t - (TT[1] + .7 + i * .35), 'snappy'); f.style.transform = `scaleY(${M.clamp(k, 0, 1.06).toFixed(4)})`; f.style.visibility = k > .001 ? 'inherit' : 'hidden'; });
+      // 2
+      lis.forEach((li, i) => { const k = M.spring(t - (TT[2] + .1 + i * .18), 'snappy'); li.style.transform = `translateX(${((1 - k) * -u * 6).toFixed(1)}px)`; li.style.opacity = M.clamp(k * 2).toFixed(3); });
+      checks.forEach((c, i) => M.draw(c, M.ease.outCubic(M.prog(t, TT[2] + 1.0 + i * .5, .3))));
+      // 3
+      if (seatBox) {
+        seatEls.forEach((s, i) => { const k = M.spring(t - (TT[3] + .1 + i * .05), 'pop'); s.style.transform = `scale(${k.toFixed(4)})`; });
+        const lk = M.spring(t - (TT[3] + 1.0), 'snappy');
+        const lf = S.$('.left', seatBox); lf.style.opacity = M.clamp(lk * 2).toFixed(3); lf.style.transform = `translateY(${((1 - lk) * u * 5).toFixed(1)}px)`;
+        M.draw(seatRing, M.ease.inOutCubic(M.prog(t, TT[3] + 1.6, .5)));
+        S.$$('.seat.free').forEach((s, i) => { s.style.opacity = t > TT[3] + 2 ? (.55 + .45 * Math.abs(Math.sin((t - TT[3]) * 3 + i))).toFixed(3) : ''; });
+      }
+      // 4
+      const sk = M.spring(t - (TT[4] + .05), { f: 2.2, z: .6 });
+      M.place(sticky, S4.x, S4.y - (1 - sk) * u * 20, { s: .7 + .3 * sk, rot: 3 + (1 - sk) * -14, o: t > TT[4] ? 1 : 0 });
+      sign.style.opacity = M.clamp((t - TT[4] - .8) * 2).toFixed(3);
+      const btn = S.$('.btn', sticky);
+      if (btn) btn.style.transform = t > TT[4] + 1.4 ? `scale(${(1 + .035 * Math.sin((t - TT[4]) * 6)).toFixed(4)})` : '';
+    });
+  });
+})();
+</script>

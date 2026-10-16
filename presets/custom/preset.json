@@ -1,0 +1,21 @@
+{
+  "id": "custom",
+  "order": 0,
+  "group": "free",
+  "name": "장면 쌓기",
+  "summary": "표지·문장·사진·숫자·목록·단계·비교·인용·그래프·사진 여러 장·로고 장면을 원하는 순서로 쌓아 만들어요. 무엇을 알릴지 적으면 Claude가 장면 구성과 문구까지 짜 줘요.",
+  "look": "내가 고르는 장면 · 순서대로",
+  "template": "scenes",
+  "formats": ["tall", "portrait", "square", "wide"],
+  "seconds": 20,
+  "photos": { "need": 0, "hint": "사진 장면을 넣을 때만 필요해요" },
+  "ask": ["무엇을 알리는 영상인지", "보는 사람이 마지막에 할 행동", "꼭 넣을 숫자·순서·비교 (있으면)", "쓸 사진 (있으면)"],
+  "brief": "예) 우리 회사 AI 교육 과정 소개. 4주 과정, 수강생 120명, 신청 → 상담 → 수업 순서, 마지막에 홈페이지에서 신청하게.",
+  "check": ["숫자와 사실 정보의 출처", "인용은 실제로 한 말인지", "사진 출처 표시"],
+  "music": {
+    "mood": "minimal",
+    "bpm": 120,
+    "prompt": "clean modern minimal electronic, light percussion, warm synth chords, confident and friendly",
+    "sections": [[0, 3, "short intro"], [3, 17, "steady groove"], [17, 20, "clean resolve"]]
+  }
+}

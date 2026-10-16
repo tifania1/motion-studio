@@ -1,0 +1,789 @@
+<title>/*@TITLE@*/</title>
+<style>
+/*@FONTFACES@*/
+/*@BRAND_CSS@*/
+/*@ENGINE_CSS@*/
+
+/* ===== news 템플릿: 소식 발표 (뉴스 속보 화면 + 로고 락업) =====
+   브랜드 색 띠(스트랩)가 사선으로 날아와 꼬리표·날짜·회사 이름을 보여 주고 빠져나가면 방송 화면 틀이 깔림.
+   하단 자막 바에 헤드라인이 타자로 들어오고, 맨 아래 티커가 계속 흐름. 가운데 화면에는 소식 종류(type)마다 다른 소품
+   (협약 × 맞물림 · 금액 굴리기 · 메달 선 그리기 · 인증 도장 · 제품 카드) → 핵심 사실 표 → 인용 → 띠가 한 번 더 쓸고 지나가며 로고 락업.
+   실제 방송사 로고·이름·디자인은 쓰지 않고 브랜드 색으로 만든 일반적인 뉴스 문법만 씀. */
+#nw { position: absolute; inset: 0; background: var(--bg); overflow: hidden; }
+.abs { position: absolute; left: 0; top: 0; }
+#nw-bgl { position: absolute; inset: -6%; }
+#nw-bgl .beam { position: absolute; top: -30%; height: 160%; background: color-mix(in srgb, var(--on-bg) 4%, transparent); transform: skewX(-16deg); }
+#nw-bgl .dots { position: absolute; inset: 0; background-image: radial-gradient(circle, var(--pattern) 0 calc(var(--u) * .2), transparent calc(var(--u) * .24)); background-size: calc(var(--u) * 3) calc(var(--u) * 3); }
+
+/* 로고 락업 (--ls: 글자 크기, u 단위) */
+.lock { display: flex; align-items: center; gap: calc(var(--u) * var(--ls) * .42); color: var(--on-bg); --ls: 3.2; white-space: nowrap; }
+.lock img { height: calc(var(--u) * var(--ls) * 1.5); width: auto; }
+.lock .lw { display: flex; flex-direction: column; align-items: flex-start; }
+.lock b { font: 900 calc(var(--u) * var(--ls))/1 var(--font-display); letter-spacing: .01em; }
+.lock small { font: 700 calc(var(--u) * var(--ls) * .38)/1 var(--font-display); letter-spacing: .3em; color: var(--on-bg-muted); margin-top: calc(var(--u) * var(--ls) * .24); }
+.lock.center .lw { align-items: center; }
+
+/* 위 줄: 회사 버그(로고) · 날짜 상자 */
+#nw-date { display: flex; align-items: stretch; font: 800 calc(var(--u) * 2.5)/1 "Archivo", var(--font-body); font-stretch: 100%; color: var(--on-bg); white-space: nowrap; }
+#nw-date i { width: calc(var(--u) * 1); background: var(--accent); }
+#nw-date span { padding: calc(var(--u) * 1.1) calc(var(--u) * 1.5); box-shadow: inset 0 0 0 2px color-mix(in srgb, var(--on-bg) 28%, transparent); letter-spacing: .06em; }
+
+/* 가운데 화면(패널) */
+#nw-panel .pbg { position: absolute; inset: 0; border-radius: calc(var(--u) * 1.4); background: color-mix(in srgb, var(--on-bg) 6%, var(--bg)); box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--on-bg) 14%, transparent); }
+#nw-panel .ptab { position: absolute; left: calc(var(--u) * 2.4); top: 0; display: flex; align-items: center; gap: calc(var(--u) * 1.1); background: var(--on-bg); color: var(--bg); font: 900 calc(var(--u) * 2.3)/1 var(--font-body); padding: calc(var(--u) * 1) calc(var(--u) * 1.6); white-space: nowrap; transform: translateY(-50%); z-index: 3; }
+#nw-panel .ptab i { width: calc(var(--u) * 1.1); height: calc(var(--u) * 1.1); background: var(--accent); }
+#nw-panel .pin { position: absolute; overflow: hidden; }
+#nw-panel .pnote { position: absolute; right: calc(var(--u) * 2); bottom: calc(var(--u) * .7); font: 600 calc(var(--u) * 1.6)/1.2 var(--font-body); color: var(--on-bg-muted); white-space: nowrap; }
+.psc { position: absolute; left: 0; top: 0; }
+.pwipe { position: absolute; top: 0; bottom: 0; left: 0; z-index: 4; pointer-events: none; }
+.pwipe i { position: absolute; top: 0; bottom: 0; }
+.pwipe .w1 { width: calc(var(--u) * 2.2); background: var(--accent); }
+.pwipe .w2 { width: calc(var(--u) * .6); background: var(--on-bg); }
+
+/* 하단 자막 바 */
+.l3 { white-space: nowrap; box-sizing: border-box; }
+#nw-badge { background: var(--accent); color: var(--accent-ink); font: 900 calc(var(--u) * 3)/1 var(--font-heading); display: flex; align-items: center; letter-spacing: .02em; }
+#nw-hbar { background: var(--paper); color: var(--ink); }
+#nw-hl { font: 900 calc(var(--u) * 5)/1.24 var(--font-heading); letter-spacing: -.025em; white-space: pre-line; word-break: keep-all; }
+#nw-caret { position: absolute; left: 0; top: 0; width: calc(var(--u) * .5); background: var(--accent); }
+#nw-sbar { background: color-mix(in srgb, var(--on-bg) 11%, var(--bg)); color: var(--on-bg); font: 700 calc(var(--u) * 2.8)/1.3 var(--font-body); overflow: hidden; }
+
+/* 티커 */
+#nw-tk { background: var(--on-bg); color: var(--bg); overflow: hidden; }
+#nw-tk .tkh { position: absolute; left: 0; top: 0; bottom: 0; display: flex; align-items: center; background: var(--accent); color: var(--accent-ink); font: 900 calc(var(--u) * 2.6)/1 var(--font-display); letter-spacing: .04em; white-space: nowrap; box-sizing: border-box; z-index: 2; }
+#nw-tk .tkc { position: absolute; top: 0; bottom: 0; overflow: hidden; -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 calc(var(--u) * 2.4), #000 calc(100% - var(--u) * 3.6), transparent 100%); mask-image: linear-gradient(90deg, transparent 0, #000 calc(var(--u) * 2.4), #000 calc(100% - var(--u) * 3.6), transparent 100%); }
+#nw-tk .tkr { position: absolute; left: 0; top: 0; bottom: 0; display: flex; align-items: center; white-space: nowrap; font: 800 calc(var(--u) * 2.7)/1 var(--font-body); }
+#nw-tk .tkr i { display: inline-block; flex: none; width: calc(var(--u) * 1); height: calc(var(--u) * 1); background: var(--accent); margin: 0 calc(var(--u) * 2.6); transform: rotate(45deg); }
+
+/* 범퍼 띠(스트랩) */
+.strap { position: absolute; left: 0; top: 0; z-index: 30; }
+.strap .sk { position: relative; transform: skewX(-16deg); transform-origin: 0 50%; overflow: hidden; }
+.strap .ct { position: absolute; top: 0; bottom: 0; display: flex; align-items: center; gap: calc(var(--u) * 2); transform: skewX(16deg); white-space: nowrap; }
+.strap.s-a .sk { background: var(--accent); }
+.strap.s-k .sk { background: var(--accent); color: var(--accent-ink); }
+.strap.s-k .ct { font: 900 calc(var(--u) * 13)/1 "Archivo", var(--font-display); font-stretch: 78%; letter-spacing: -.01em; }
+.strap.s-p .sk { background: var(--paper); color: var(--ink); }
+.strap.s-p .ct { font: 900 calc(var(--u) * 3.4)/1 var(--font-heading); }
+.strap.s-p .ct em { font-style: normal; background: var(--accent); color: var(--accent-ink); padding: calc(var(--u) * .9) calc(var(--u) * 1.4); }
+.strap.s-p .ct b { font: 800 calc(var(--u) * 3.4)/1 "Archivo", var(--font-body); letter-spacing: .08em; }
+.strap.s-c .sk { background: color-mix(in srgb, var(--on-bg) 14%, var(--bg)); color: var(--on-bg); }
+.strap.s-c .ct { font: 900 calc(var(--u) * 3)/1 var(--font-display); letter-spacing: .12em; }
+.strap.s-b .sk { background: var(--on-bg); }
+
+/* 소품: mou */
+.mou-x svg { width: 100%; height: 100%; overflow: visible; }
+.mou-x path { fill: none; stroke: var(--accent); stroke-linecap: square; }
+.side { display: flex; flex-direction: column; align-items: center; gap: calc(var(--u) * 1.6); text-align: center; }
+.plate { background: #fff; border-radius: calc(var(--u) * 1.2); display: grid; place-items: center; overflow: hidden; box-shadow: 0 0 0 1px color-mix(in srgb, var(--on-bg) 14%, transparent); }
+.plate img { max-width: 86%; max-height: 80%; width: auto; height: auto; object-fit: contain; }
+.pname { font: 900 calc(var(--u) * 6)/1.15 var(--font-heading); color: var(--on-bg); letter-spacing: -.03em; white-space: pre-line; word-break: keep-all; }
+.rule { height: calc(var(--u) * .5); background: var(--accent); }
+.cap { font: 900 calc(var(--u) * 4.4)/1.22 var(--font-heading); color: var(--on-bg); letter-spacing: -.025em; text-align: center; white-space: pre-line; word-break: keep-all; }
+.capby { font: 700 calc(var(--u) * 2.8)/1.3 var(--font-body); color: var(--on-bg-muted); text-align: center; white-space: nowrap; }
+
+/* 소품: invest */
+.inv-num { display: flex; align-items: baseline; color: var(--on-bg); white-space: nowrap; }
+.odo { display: inline-flex; font: 900 1em/1 "Archivo", var(--font-display); font-stretch: 82%; letter-spacing: -.02em; font-variant-numeric: tabular-nums; }
+.odo .d { display: inline-block; height: 1em; overflow: hidden; }
+.odo .d .col { display: flex; flex-direction: column; }
+.odo .d .col i { font-style: normal; height: 1em; display: block; text-align: center; }
+.odo .s { display: inline-block; }
+.inv-un { font: 900 .3em/1 var(--font-heading); color: var(--accent); margin-left: .25em; letter-spacing: -.02em; }
+.brk { width: calc(var(--u) * 4); height: calc(var(--u) * 4); border-color: var(--accent); border-style: solid; border-width: 0; box-sizing: border-box; }
+.pill { background: var(--accent); color: var(--accent-ink); font: 900 calc(var(--u) * 3.6)/1 var(--font-heading); padding: calc(var(--u) * 1.4) calc(var(--u) * 2.6); border-radius: 999px; white-space: nowrap; }
+
+/* 소품: award */
+.medal svg { width: 100%; height: 100%; overflow: visible; }
+.medal .ln { fill: none; stroke: var(--accent); stroke-linecap: round; stroke-linejoin: round; }
+.medal .fillc { fill: color-mix(in srgb, var(--accent) 14%, color-mix(in srgb, var(--on-bg) 6%, var(--bg))); }
+.medal .star { fill: var(--accent); }
+.medal text { fill: var(--accent); font: 800 13px "Archivo", var(--font-body); letter-spacing: .12em; }
+.atext { display: flex; flex-direction: column; gap: calc(var(--u) * 1.6); }
+.atext .cap, .atext .capby { text-align: inherit; }
+
+/* 소품: cert */
+.doc { background: var(--paper); color: var(--ink); border-radius: calc(var(--u) * .8); box-shadow: 0 calc(var(--u) * 1.2) calc(var(--u) * 3) rgba(0,0,0,.18); box-sizing: border-box; padding: calc(var(--u) * 4) calc(var(--u) * 4.4); display: flex; flex-direction: column; align-items: flex-start; }
+.doc::before { content: ""; position: absolute; inset: calc(var(--u) * 1.2); border: 1px solid color-mix(in srgb, var(--ink) 25%, transparent); border-radius: calc(var(--u) * .4); pointer-events: none; }
+.doc .dh { font: 800 calc(var(--u) * 2)/1 "Archivo", var(--font-body); font-stretch: 125%; letter-spacing: .4em; opacity: .7; }
+.doc .dn { font: 900 calc(var(--u) * 5)/1.2 var(--font-heading); letter-spacing: -.03em; margin-top: calc(var(--u) * 2.4); white-space: pre-line; word-break: keep-all; }
+.doc .db { font: 700 calc(var(--u) * 2.6)/1.3 var(--font-body); opacity: .75; margin-top: calc(var(--u) * 1.4); }
+.doc .dl { margin-top: auto; display: flex; flex-direction: column; gap: calc(var(--u) * 1.2); width: 46%; }
+.doc .dl i { height: calc(var(--u) * .5); background: color-mix(in srgb, var(--ink) 16%, transparent); border-radius: 99px; }
+.doc .dl i + i { width: 66%; }
+.seal svg { width: 100%; height: 100%; overflow: visible; }
+.seal .ros { fill: color-mix(in srgb, var(--accent) 16%, var(--paper)); stroke: var(--accent); stroke-width: 2.5; }
+.seal .rg { fill: none; stroke: var(--accent); }
+.seal .ck { fill: none; stroke: var(--accent); stroke-width: 10; stroke-linecap: round; stroke-linejoin: round; }
+.seal text { fill: var(--accent); font: 800 13px "Archivo", var(--font-body); }
+
+/* 소품: launch */
+.lc-wrap { perspective: 1400px; }
+.lcard { position: relative; background: var(--paper); color: var(--ink); border-radius: calc(var(--u) * 2); overflow: hidden; display: flex; box-shadow: 0 calc(var(--u) * 2) calc(var(--u) * 4) rgba(0,0,0,.22); transform-origin: 50% 100%; }
+.lcard.col { flex-direction: column; }
+.lcard .cimg { flex: none; overflow: hidden; background: color-mix(in srgb, var(--ink) 10%, var(--paper)); }
+.lcard .cimg img { width: 100%; height: 100%; object-fit: cover; }
+.lcard .ctx { flex: 1; min-width: 0; min-height: 0; display: flex; flex-direction: column; justify-content: center; gap: calc(var(--u) * 1.4); padding: calc(var(--u) * 3.6); box-sizing: border-box; }
+.lcard .cn { font: 900 calc(var(--u) * 6.4)/1.12 var(--font-heading); letter-spacing: -.035em; white-space: pre-line; word-break: keep-all; }
+.lcard .cs { font: 700 calc(var(--u) * 3)/1.35 var(--font-body); opacity: .78; white-space: pre-line; word-break: keep-all; }
+.lcard.np { background: var(--accent); color: var(--accent-ink); }
+.lcard.np .ctx { align-items: center; text-align: center; }
+.newtag { font: 900 calc(var(--u) * 3.6)/1 "Archivo", var(--font-display); font-stretch: 112%; letter-spacing: .14em; padding: calc(var(--u) * 1.4) calc(var(--u) * 2) calc(var(--u) * 1.4) calc(var(--u) * 2.3); background: var(--accent); color: var(--accent-ink); border-radius: calc(var(--u) * .6); white-space: nowrap; z-index: 2; }
+.newtag.inv { background: var(--on-bg); color: var(--bg); }
+
+/* 핵심 사실 표 */
+.facts { --k: 1; }
+.fr { position: relative; display: flex; align-items: baseline; gap: calc(var(--u) * 3 * var(--k)); padding: calc(var(--u) * 1.9 * var(--k)) 0; }
+.fr .fk { flex: none; font: 900 calc(var(--u) * 3 * var(--k))/1.3 var(--font-body); color: var(--accent); letter-spacing: .04em; white-space: nowrap; }
+.fr .fv { flex: 1; min-width: 0; font: 900 calc(var(--u) * 4.4 * var(--k))/1.28 var(--font-heading); color: var(--on-bg); letter-spacing: -.02em; white-space: pre-line; word-break: keep-all; }
+.fr .fl { position: absolute; left: 0; right: 0; bottom: 0; height: 2px; background: color-mix(in srgb, var(--on-bg) 18%, transparent); transform-origin: 0 50%; }
+.fr:first-child::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: calc(var(--u) * .5); background: var(--on-bg); transform-origin: 0 50%; transform: scaleX(var(--top, 1)); }
+
+/* 인용 */
+.qm { font: 900 calc(var(--u) * 22)/.7 "Archivo", var(--font-display); color: var(--accent); height: .5em; }
+.qt { font: 900 calc(var(--u) * 5.4)/1.3 var(--font-heading); color: var(--on-bg); letter-spacing: -.03em; white-space: pre-line; word-break: keep-all; }
+.qt .wd { white-space: pre; }
+.qb { display: flex; align-items: center; gap: calc(var(--u) * 1.6); font: 700 calc(var(--u) * 2.9)/1.3 var(--font-body); color: var(--on-bg-muted); white-space: nowrap; }
+.qb i { width: calc(var(--u) * 5); height: 2px; background: var(--accent); flex: none; }
+
+/* 마무리 락업 */
+#nw-out { display: flex; flex-direction: column; align-items: center; text-align: center; }
+#nw-out .rule { width: calc(var(--u) * 14); margin: calc(var(--u) * 3.6) 0 calc(var(--u) * 3); }
+#nw-out .plan { font: 900 calc(var(--u) * 5.4)/1.25 var(--font-heading); color: var(--on-bg); letter-spacing: -.03em; white-space: pre-line; word-break: keep-all; }
+#nw-out .hd { font: 700 calc(var(--u) * 3)/1.3 var(--font-body); color: var(--on-bg-muted); margin-top: calc(var(--u) * 2.2); white-space: nowrap; }
+#nw-onote { font: 600 calc(var(--u) * 1.8)/1.2 var(--font-body); color: var(--on-bg-muted); white-space: nowrap; }
+</style>
+
+<div id="viewport"><div id="stage"><div id="cam"></div></div></div>
+
+<script>/*@GSAP@*/</script>
+<script>/*@DATA@*/</script>
+<script>/*@ENGINE_JS@*/</script>
+<script>
+(function () {
+  const S = Studio, M = S.M, C = S.content, B = S.brand, e = S.esc;
+  const cam = S.$('#cam');
+  const str = v => (v == null ? '' : String(v)).trim();
+  const TYPES = { mou: '업무협약', invest: '투자 유치', award: '수상', cert: '인증 획득', launch: '신규 출시' };
+  const partner = C.partner || {}, amount = C.amount || {}, award = C.award || {}, launch = C.launch || {}, quote = C.quote || {}, cta = C.cta || {};
+  // 소식 종류: 정해져 있지 않으면 채워진 칸으로 짐작
+  let type = str(C.type).toLowerCase();
+  if (!TYPES[type]) type = str(amount.value) ? 'invest' : (str(partner.name) || S.img(partner.photo)) ? 'mou' : str(launch.name) ? 'launch' : str(award.name) ? 'award' : 'launch';
+  const company = str(B.logoText) || str(B.name);
+  const logoImg = B.logo && S.img(B.logo);
+  const lockup = (ls, cls = '') => `<div class="lock ${cls}" style="--ls:${ls}">${logoImg ? `<img src="${logoImg}" alt="">` : ''}${(B.logoText || B.logoSub || !logoImg) ? `<div class="lw">${(B.logoText || !logoImg) ? `<b>${e(B.logoText || B.name || '')}</b>` : ''}${B.logoSub ? `<small>${e(B.logoSub)}</small>` : ''}</div>` : ''}</div>`;
+  // badge: 칸이 없으면 '소식', 일부러 비워 두면 딱지 없이
+  const kind = str(C.kind) || 'NEWS', badge = C.badge === undefined ? '소식' : str(C.badge), date = str(C.date);
+  const topic = str(C.topic) || TYPES[type];
+  const facts = (C.facts || []).filter(r => Array.isArray(r) && (str(r[0]) || str(r[1]))).slice(0, 4);
+  const qText = str(quote.text), hasQuote = !!qText;
+  let ticker = (C.ticker || []).map(str).filter(Boolean).slice(0, 6);
+  if (!ticker.length) ticker = [str(C.headline).replace(/\s*\n\s*/g, ' '), str(C.sub), str(C.plan)].filter(Boolean);
+  const yearM = date.match(/(19|20)\d\d/);
+
+  // ---- 소품 HTML ----
+  let propHtml = '';
+  if (type === 'mou') {
+    const pPhoto = S.img(partner.photo);
+    propHtml = `<div class="side abs" id="mou-us">${lockup(6.4, 'center')}</div>
+      <div class="mou-x abs" id="mou-x"><svg viewBox="0 0 100 100"><path d="M18 18 L82 82"/><path d="M82 18 L18 82"/></svg></div>
+      <div class="side abs" id="mou-them">${pPhoto ? `<div class="plate"><img src="${pPhoto}" alt=""></div>` : ''}${str(partner.name) ? `<div class="pname">${e(partner.name)}</div>` : ''}</div>
+      <i class="rule abs" id="p-rule"></i>
+      ${str(partner.deal) ? `<div class="cap abs" id="p-cap">${e(partner.deal)}</div>` : ''}`;
+  } else if (type === 'invest') {
+    const v = str(amount.value);
+    const odo = [...v].map(ch => /\d/.test(ch) ? `<span class="d"><span class="col">${Array.from({ length: 30 }, (_, k) => `<i>${k % 10}</i>`).join('')}</span></span>` : `<span class="s">${e(ch)}</span>`).join('');
+    propHtml = `<div class="inv-num abs" id="inv-num"><span class="odo">${odo}</span>${str(amount.unit) ? `<span class="inv-un">${e(amount.unit)}</span>` : ''}</div>
+      ${[0, 1, 2, 3].map(i => `<i class="brk abs" data-i="${i}"></i>`).join('')}
+      ${str(amount.round) ? `<div class="pill abs" id="inv-round">${e(amount.round)}</div>` : ''}
+      ${str(amount.by) ? `<div class="capby abs" id="p-by">${e(amount.by)}</div>` : ''}`;
+  } else if (type === 'award') {
+    propHtml = `<div class="medal abs" id="medal"><svg viewBox="0 0 200 250">
+        <path class="ln rib" d="M84 146 L62 236 L74 227 L86 240 L106 156"/><path class="ln rib" d="M116 146 L138 236 L126 227 L114 240 L94 156"/>
+        <circle class="fillc" cx="100" cy="92" r="68"/>
+        <circle class="ln oc" cx="100" cy="92" r="68" stroke-width="5"/><circle class="ln ic" cx="100" cy="92" r="54" stroke-width="2"/>
+        <path class="star" d="${(() => { let d = ''; for (let k = 0; k < 10; k++) { const a = -Math.PI / 2 + k * Math.PI / 5, r = k % 2 ? 11 : 26; d += (k ? 'L' : 'M') + (100 + r * Math.cos(a)).toFixed(2) + ' ' + (88 + r * Math.sin(a)).toFixed(2); } return d + 'Z'; })()}"/>
+        ${yearM ? `<text x="100" y="132" text-anchor="middle">${e(yearM[0])}</text>` : ''}
+      </svg></div>
+      <div class="atext abs" id="atext">${str(award.name) ? `<div class="cap">${e(award.name)}</div>` : ''}${str(award.by) ? `<div class="capby">${e(award.by)}</div>` : ''}</div>`;
+  } else if (type === 'cert') {
+    // 둘레 톱니(로제트) 모양
+    let ros = '';
+    for (let k = 0; k < 72; k++) { const a = k * Math.PI / 36, r = k % 2 ? 92 : 98; ros += (k ? 'L' : 'M') + (100 + r * Math.cos(a)).toFixed(2) + ' ' + (100 + r * Math.sin(a)).toFixed(2); }
+    const ring = (str(award.by) ? str(award.by) + ' · ' : '') + 'CERTIFIED · ';
+    propHtml = `<div class="doc abs" id="doc"><div class="dh">CERTIFICATE</div>${str(award.name) ? `<div class="dn">${e(award.name)}</div>` : ''}${str(award.by) ? `<div class="db">${e(award.by)}</div>` : ''}<div class="dl"><i></i><i></i></div></div>
+      <div class="seal abs" id="seal"><svg viewBox="0 0 200 200"><path class="ros" d="${ros}Z"/><circle class="rg" cx="100" cy="100" r="80" stroke-width="3"/><circle class="rg" cx="100" cy="100" r="57" stroke-width="2"/>
+        <defs><path id="nw-ringp" d="M100 100 m-68.5 0 a68.5 68.5 0 1 1 137 0 a68.5 68.5 0 1 1 -137 0"/></defs>
+        <text id="nw-ringt"><textPath href="#nw-ringp">${e(ring.repeat(4))}</textPath></text>
+        <path class="ck" d="M72 101 L92 121 L130 80"/></svg></div>`;
+  } else {
+    const lPhoto = S.img(launch.photo);
+    propHtml = `<div class="lc-wrap abs" id="lc-wrap"><div class="lcard ${lPhoto ? '' : 'np'}" id="lcard">${lPhoto ? `<div class="cimg"><img src="${lPhoto}" alt=""></div>` : ''}
+        <div class="ctx"><div class="cn">${e(str(launch.name) || company)}</div>${str(launch.sub) ? `<div class="cs">${e(launch.sub)}</div>` : ''}</div></div>
+        <div class="newtag abs ${lPhoto ? '' : 'inv'}" id="newtag">NEW</div></div>`;
+  }
+
+  cam.appendChild(S.h(`<div id="nw">
+    <div id="nw-bgl"><i class="beam"></i><i class="beam"></i><i class="beam"></i><div class="dots"></div></div>
+    <div id="nw-frame">
+      <div class="abs" id="nw-bug">${lockup(3)}</div>
+      ${date ? `<div class="abs" id="nw-date"><i></i><span>${e(date)}</span></div>` : ''}
+      <div class="abs" id="nw-panel"><div class="pbg"></div>
+        <div class="pin" id="nw-pin">
+          <div class="psc" id="sc-prop">${propHtml}</div>
+          ${facts.length ? `<div class="psc" id="sc-facts"><div class="facts abs" id="facts">${facts.map(r => `<div class="fr"><div class="fk">${e(r[0] || '')}</div><div class="fv">${e(r[1] || '')}</div><i class="fl"></i></div>`).join('')}</div></div>` : ''}
+          ${hasQuote ? `<div class="psc" id="sc-quote"><div class="abs" id="quote"><div class="qm">“</div><div class="qt">${e(qText)}</div>${str(quote.by) ? `<div class="qb"><i></i><span>${e(quote.by)}</span></div>` : ''}</div></div>` : ''}
+          <div class="pwipe" id="nw-wipe"><i class="w2"></i><i class="w1"></i></div>
+        </div>
+        ${topic ? `<div class="ptab"><i></i>${e(topic)}</div>` : ''}
+        ${str(C.note) ? `<div class="pnote">${e(C.note)}</div>` : ''}
+      </div>
+      ${badge ? `<div class="abs l3" id="nw-badge">${e(badge)}</div>` : ''}
+      <div class="abs l3" id="nw-hbar"><div id="nw-hl">${e(str(C.headline))}</div><i id="nw-caret"></i></div>
+      ${str(C.sub) ? `<div class="abs l3" id="nw-sbar">${e(C.sub)}</div>` : ''}
+      <div class="abs" id="nw-tk"><div class="tkh">${e(company)}</div><div class="tkc"><div class="tkr"></div></div></div>
+    </div>
+    <div class="strap s-a"><div class="sk"></div></div>
+    <div class="strap s-k"><div class="sk"><div class="ct">${e(kind)}</div></div></div>
+    <div class="strap s-p"><div class="sk"><div class="ct">${badge ? `<em>${e(badge)}</em>` : ''}${date ? `<b>${e(date)}</b>` : ''}</div></div></div>
+    <div class="strap s-c"><div class="sk"><div class="ct">${e(company)}</div></div></div>
+    <div class="strap s-b"><div class="sk"></div></div>
+    <div class="abs" id="nw-out">${lockup(7.2, 'center')}<i class="rule"></i>${str(C.plan) ? `<div class="plan">${e(C.plan)}</div>` : ''}${str(cta.sub) ? `<div class="hd">${e(cta.sub)}</div>` : ''}</div>
+    ${str(C.note) ? `<div class="abs" id="nw-onote">${e(C.note)}</div>` : ''}
+  </div>`));
+
+  S.start(S => {
+    const W = S.W, H = S.H, u = Math.min(W, H) / 100, sf = S.safe;
+    const sx = sf.left, sy = sf.top, sw = W - sf.left - sf.right, sh = H - sf.top - sf.bottom;
+    const cx = sx + sw / 2, cy = sy + sh / 2;
+    const wide = S.is('wide');
+    const $ = s => S.$(s);
+    const size = (el, w, h) => { if (w != null) el.style.width = w + 'px'; if (h != null) el.style.height = h + 'px'; };
+    // 글자·그림이 실제로 차지하는 폭 (블록 요소의 빈 오른쪽은 빼고)
+    const usedW = el => {
+      const r = document.createRange(); r.selectNodeContents(el);
+      const rects = [...r.getClientRects()].filter(q => q.width > 0);
+      const b = el.getBoundingClientRect(), sc = b.width / (el.offsetWidth || 1) || 1;
+      return rects.length ? (Math.max(...rects.map(q => q.right)) - Math.min(...rects.map(q => q.left))) / sc : 0;
+    };
+
+    /* ---------- 시간표 (120BPM, 0.5초 단위) ---------- */
+    const T_OUTS = 2.0, T_FRAME = 2.2, T_TYPE = 2.8, T_PROP = 3.0;
+    const T_FACTS = 7.5;
+    const factsDur = facts.length ? 1 + facts.length * .5 + 1 : 0;               // 줄마다 0.5초 + 읽을 시간
+    const T_QUOTE = facts.length ? T_FACTS + factsDur : T_FACTS;
+    const quoteDur = hasQuote ? Math.min(4, Math.max(3, Math.round((2.2 + [...qText].length * .035) * 2) / 2)) : 0;
+    const T_OUT = T_QUOTE + quoteDur + (facts.length || hasQuote ? 0 : .5);
+    const END = T_OUT + 3.5;
+    S.setDuration(END);
+
+    /* ---------- 위 줄 ---------- */
+    const bug = $('#nw-bug'), dbox = $('#nw-date');
+    const topH = 5.4 * u;
+    {
+      const bw = bug.offsetWidth, bh = bug.offsetHeight, lim = sw * (dbox ? .58 : .9);
+      const k = Math.min(1, lim / bw, topH / bh);
+      bug._k = k;
+    }
+
+    /* ---------- 티커 ---------- */
+    const tk = $('#nw-tk'), tkh = $('#nw-tk .tkh'), tkc = $('#nw-tk .tkc'), tkr = $('#nw-tk .tkr');
+    const tkH = 5.6 * u, tkY = sy + sh - tkH;
+    size(tk, W, tkH);
+    tkh.style.paddingLeft = (sx + 1.6 * u) + 'px'; tkh.style.paddingRight = (2.2 * u) + 'px';
+    if (!company) tkh.style.display = 'none';
+    const tkhW = company ? Math.min(tkh.offsetWidth, sx + sw * .4) : sx;
+    if (company) { tkh.style.width = tkhW + 'px'; tkh.style.overflow = 'hidden'; }
+    const tkcX = tkhW + 1.6 * u, tkcW = sx + sw - tkcX;
+    tkc.style.left = tkcX + 'px'; tkc.style.width = tkcW + 'px';
+    const cycle = ticker.map(x => `<span>${e(x)}</span><i></i>`).join('');
+    tkr.innerHTML = cycle;
+    const cycW = Math.max(1, tkr.scrollWidth);
+    const TK_V = 15 * u, TK_T0 = 3.2;
+    const need = tkcW + TK_V * Math.max(0, T_OUT + 1 - TK_T0);
+    tkr.innerHTML = cycle.repeat(Math.max(1, Math.ceil(need / cycW) + 1));
+
+    /* ---------- 하단 자막 바 ---------- */
+    const badgeEl = $('#nw-badge'), hbar = $('#nw-hbar'), hl = $('#nw-hl'), caret = $('#nw-caret'), sbar = $('#nw-sbar');
+    const padX = 2.2 * u, padY = 1.7 * u;
+    const textX = sx + padX;            // 글자가 시작하는 x (왼쪽 띠는 화면 끝까지)
+    if (badgeEl) badgeEl.style.padding = `0 ${2 * u}px 0 ${textX}px`;
+    hbar.style.padding = `${padY}px ${padX}px ${padY * 1.1}px ${padX}px`;
+    let badgeW, badgeH, hbarX, hbarW, hbarH, l3H, sbarH = 0, l3Top;
+    if (!wide) {
+      badgeH = badgeEl ? 5 * u : 0;
+      if (badgeEl) size(badgeEl, null, badgeH);
+      badgeW = badgeEl ? badgeEl.offsetWidth : 0;
+      hbarX = sx; hbarW = sw;
+      hl.style.width = (hbarW - padX * 2) + 'px';
+      S.fit(hl, { max: 5 * u, maxLines: 2, keepMin: .7 });
+    } else {
+      hbarX = 0; hbarW = 0;
+      hl.style.width = (sw * .74 - padX * 2) + 'px';
+      S.fit(hl, { max: 4.8 * u, maxLines: 2, keepMin: .7 });
+    }
+    // 실제 글자 폭에 맞춰 바 길이를 정함 (타자 중에 바가 늘어나지 않게 처음부터 다 잰 길이)
+    {
+      const r = document.createRange(); r.selectNodeContents(hl);
+      const rects = [...r.getClientRects()]; const scale = hl.getBoundingClientRect().width / hl.offsetWidth || 1;
+      const used = rects.length ? (Math.max(...rects.map(q => q.right)) - hl.getBoundingClientRect().left) / scale : hl.offsetWidth;
+      hl.style.width = Math.ceil(Math.min(hl.offsetWidth, used + 2)) + 'px';
+    }
+    if (!wide) {
+      hbarW = hl.offsetWidth + padX * 2;
+      // 띠는 왼쪽 화면 끝부터: 왼쪽 여백만큼 padding 을 더함
+      hbar.style.paddingLeft = (padX + sx) + 'px';
+      hbarX = 0; hbarW += sx;
+    }
+    const hasHL = !!str(C.headline);
+    if (!hasHL) hbar.style.display = 'none';
+    hbarH = hasHL ? hbar.offsetHeight : 0;
+    if (wide) {
+      badgeH = !badgeEl ? 0 : hasHL ? hbarH : 5 * u;
+      if (badgeEl) { size(badgeEl, null, badgeH); badgeW = badgeEl.offsetWidth; hbarX = badgeW; hbarW = hl.offsetWidth + padX * 2; }
+      else { badgeW = 0; hbarX = 0; hbar.style.paddingLeft = (sx + padX) + 'px'; hbarW = sx + hl.offsetWidth + padX * 2; }
+    }
+    const subX = wide && badgeEl ? hbarX + padX : sx + padX;      // 아랫줄 글자가 시작하는 x
+    size(hbar, hbarW, hbarH);
+    if (sbar) {
+      sbar.style.padding = `${1.1 * u}px ${padX}px ${1.2 * u}px ${subX}px`;
+      const maxW = (wide ? sw * .74 : sw) - padX * 2;
+      sbar.style.maxWidth = 'none';
+      const inner = document.createElement('span'); inner.textContent = sbar.textContent; sbar.textContent = ''; sbar.appendChild(inner);
+      inner.style.display = 'inline-block'; inner.style.whiteSpace = 'nowrap';
+      let fs = 2.8 * u; while (inner.offsetWidth > maxW && fs > 1.9 * u) { fs *= .95; sbar.style.fontSize = fs + 'px'; }
+      if (inner.offsetWidth > maxW) { inner.style.width = maxW + 'px'; inner.style.overflow = 'hidden'; inner.style.textOverflow = 'ellipsis'; }
+      sbarH = sbar.offsetHeight;
+      size(sbar, subX + Math.min(inner.offsetWidth, maxW) + padX, sbarH);
+    }
+    l3H = (wide ? Math.max(hbarH, badgeH) : badgeH + hbarH) + sbarH;
+    l3Top = tkY - 2.2 * u - l3H;
+    const badgeY = l3Top, hbarY = wide ? l3Top : l3Top + badgeH, sbarY = hbarY + (wide ? Math.max(hbarH, badgeH) : hbarH);
+    const hbarL = wide ? hbarX : 0;
+    // 타자: 글자마다 span, 위치는 미리 재 둠 (줄바꿈이 흔들리지 않게)
+    // 낱말은 줄이 바뀌지 않게 묶고(keep-all 과 같게), 그 안에서 글자마다 span
+    const chs = [];
+    {
+      const text = hl.textContent; hl.textContent = '';
+      text.split('\n').forEach((line, li) => {
+        if (li) hl.appendChild(document.createElement('br'));
+        line.split(/(\s+)/).forEach(part => {
+          if (!part) return;
+          if (/^\s+$/.test(part)) { const sp = document.createElement('span'); sp.textContent = part; hl.appendChild(sp); chs.push(sp); return; }
+          const w = document.createElement('span'); w.style.whiteSpace = 'nowrap';
+          for (const c of part) { const s1 = document.createElement('span'); s1.textContent = c; w.appendChild(s1); chs.push(s1); }
+          hl.appendChild(w);
+        });
+      });
+    }
+    const caretH = parseFloat(getComputedStyle(hl).fontSize) * 1.05;
+    caret.style.height = caretH + 'px';
+    const chPos = chs.map(c => [c.offsetLeft + c.offsetWidth, c.offsetTop + (c.offsetHeight - caretH) / 2]);
+    const firstPos = chs.length ? [chs[0].offsetLeft, chs[0].offsetTop + (chs[0].offsetHeight - caretH) / 2] : [padX, padY];
+    const TYPE_CPS = Math.max(14, Math.min(26, chs.length / 1.2));
+
+    /* ---------- 가운데 화면 ---------- */
+    const panel = $('#nw-panel'), pin = $('#nw-pin');
+    const panelY = sy + topH + 3.2 * u, panelB = l3Top - 3 * u;
+    const PW = sw, PH = Math.max(20 * u, panelB - panelY);
+    size(panel, PW, PH);
+    const pad = 2.6 * u;
+    const pw = PW - pad * 2, ph = PH - pad * 2 - (C.note ? 1.2 * u : 0);
+    pin.style.left = pad + 'px'; pin.style.top = pad + 'px'; size(pin, pw, ph);
+    S.$$('.psc', pin).forEach(s => size(s, pw, ph));
+    const row = pw / ph >= 1.45;     // 가로로 넓은 화면이면 소품과 글을 옆으로 나란히
+    // 화면(패널)이 9:16 기준보다 크면 글자·소품도 조금 키움
+    const psW = pw / (84 * u), psH = ph / (40 * u);
+    const ps = M.clamp(Math.min(psW, psH), .85, 1.4);
+    const psT = M.clamp(Math.min(psW * 1.15, psH), 1, 1.3);      // 표·인용 (줄이 바뀌어도 되는 글)
+
+    /* ---------- 소품 배치 ---------- */
+    let propRender = () => {};
+    const T0 = T_PROP;
+    if (type === 'mou') {
+      const us = $('#mou-us'), them = $('#mou-them'), xm = $('#mou-x'), rule = $('#p-rule'), cap = $('#p-cap');
+      const xs = Math.min(11 * u * ps, pw * .12), gap = 4.4 * u * ps;
+      const sideW = (pw - xs - gap * 2) / 2;
+      size(xm, xs, xs);
+      S.$$('path', xm).forEach(p => p.setAttribute('stroke-width', 9));
+      const capH = cap ? (cap.style.width = (pw * .9) + 'px', S.fit(cap, { max: (row ? 4.4 : 4.8) * u * Math.min(ps, 1.2), maxLines: 2, keepMin: .8 }), cap.offsetHeight) : 0;
+      const lockY = cap ? (ph - capH - 6 * u) / 2 : ph / 2;
+      // 우리 로고: 옆 칸 안에 들어오게 줄임
+      size(us, sideW); size(them, sideW);
+      const lk = S.$('.lock', us);
+      const maxH = Math.min(ph - capH - 10 * u, 26 * u * ps);
+      const kUs = Math.min(ps, sideW * .92 / lk.offsetWidth, maxH / lk.offsetHeight);
+      lk.style.setProperty('--ls', (6.4 * kUs).toFixed(3));
+      const plate = S.$('.plate', them), pname = S.$('.pname', them);
+      if (plate) { const pH = Math.min(maxH * (pname ? .55 : .9), sideW * .62); size(plate, Math.min(sideW * .92, pH * 1.7), pH); }
+      if (pname) { pname.style.width = sideW + 'px'; S.fit(pname, { max: (plate ? 4.2 : 6) * u * ps, maxLines: plate ? 1 : 2, keepMin: .6 }); }
+      // 양쪽을 × 에 바짝 붙임 (넓은 화면에서도 'A × B' 한 덩어리로)
+      const usW = Math.min(sideW, lk.offsetWidth), themW = Math.min(sideW, Math.max(plate ? plate.offsetWidth : 0, pname ? usedW(pname) : 0, 1));
+      size(us, usW); size(them, themW);
+      if (pname) pname.style.width = themW + 'px';
+      const solo = !plate && !pname;                 // 상대 이름·로고가 없으면 우리 로고만 가운데
+      if (solo) { xm.style.display = 'none'; them.style.display = 'none'; }
+      const usX = solo ? pw / 2 : pw / 2 - xs / 2 - gap - usW / 2, themX = pw / 2 + xs / 2 + gap + themW / 2;
+      const ruleW = solo ? usW : Math.min(pw * .6, usW + themW + xs + gap * 2);
+      size(rule, ruleW);
+      const x1 = S.$$('path', xm)[0], x2 = S.$$('path', xm)[1];
+      propRender = t => {
+        const k = M.spring(t - (T0 + .15), { f: 1.9, z: .86 });
+        // 맞물리는 순간 양쪽이 살짝 안으로 밀렸다가 돌아옴
+        const lock = M.anim([[0, 0], [T0 + .95, 1, { f: 4, z: .55 }], [T0 + 1.05, 0, { f: 2.6, z: .8 }]], t);
+        const push = lock * 1.6 * u;
+        M.place(us, usX - (1 - k) * pw * .75 + (solo ? 0 : push), lockY, { o: t > T0 + .15 ? 1 : 0, rot: (1 - k) * -4 });
+        M.place(them, themX + (1 - k) * pw * .75 - push, lockY, { o: t > T0 + .15 ? 1 : 0, rot: (1 - k) * 4 });
+        const xk = M.ease.outCubic(M.prog(t, T0 + .8, .28)), xk2 = M.ease.outCubic(M.prog(t, T0 + .92, .28));
+        M.draw(x1, xk); M.draw(x2, xk2);
+        M.place(xm, pw / 2, lockY, { s: 1 + .25 * (1 - M.spring(t - (T0 + .8), 'pop')), rot: (1 - M.ease.outCubic(M.prog(t, T0 + .8, .5))) * -45, o: t > T0 + .8 ? 1 : 0 });
+        const rk = M.ease.inOutCubic(M.prog(t, T0 + 1.3, .5));
+        M.place(rule, pw / 2, lockY + Math.max(us.offsetHeight, them.offsetHeight) / 2 + 3 * u, { sx: rk, o: rk > 0 ? 1 : 0 });
+        if (cap) { const ck = M.spring(t - (T0 + 1.5), 'snappy'); M.place(cap, pw / 2, ph - capH / 2 - 1.5 * u + (1 - ck) * 3 * u, { o: t > T0 + 1.5 ? M.clamp(ck * 1.6) : 0 }); }
+      };
+    } else if (type === 'invest') {
+      const num = $('#inv-num'), round = $('#inv-round'), by = $('#p-by'), brks = S.$$('.brk', pin);
+      const below = (round ? 9 * u : 0) + (by ? 5 * u : 0);
+      num.style.fontSize = (30 * u) + 'px';
+      const kN = Math.min(1, pw * .78 / num.offsetWidth, (ph - below - 5 * u) * .92 / num.offsetHeight);
+      num.style.fontSize = (30 * u * kN) + 'px';
+      const nW = num.offsetWidth, nH = num.offsetHeight;
+      const numY = (ph - below) / 2 + 1 * u;
+      const digs = S.$$('.odo .d .col', num), raw = str(amount.value).replace(/[^\d]/g, '');
+      const bm = 2.6 * u, bw = 4 * u, th = .7 * u;
+      brks.forEach((b, i) => { b.style.borderTopWidth = i < 2 ? th + 'px' : 0; b.style.borderBottomWidth = i >= 2 ? th + 'px' : 0; b.style.borderLeftWidth = i % 2 === 0 ? th + 'px' : 0; b.style.borderRightWidth = i % 2 ? th + 'px' : 0; size(b, bw, bw); });
+      const nY0 = numY - nH / 2;
+      propRender = t => {
+        M.place(num, pw / 2, numY, { o: M.clamp((t - T0) * 5) });
+        digs.forEach((col, j) => {
+          const d = +raw[j] || 0, loops = 2;
+          const k = M.ease.outQuart(M.prog(t, T0 + .1, 1.1 + j * .16));
+          col.style.transform = `translateY(${(-(loops * 10 + d) * k).toFixed(3)}em)`;
+        });
+        const land = T0 + 1.2 + digs.length * .16;
+        const bk = M.spring(t - land, { f: 3, z: .7 });
+        brks.forEach((b, i) => {
+          const sxn = i % 2 ? 1 : -1, syn = i < 2 ? -1 : 1, off = (1 - bk) * 5 * u;
+          M.place(b, pw / 2 + sxn * (nW / 2 + bm + off), nY0 + nH / 2 + syn * (nH / 2 + bm * .6 + off), { ax: sxn < 0 ? 0 : 1, ay: syn < 0 ? 0 : 1, o: t > land ? M.clamp(bk * 2) : 0 });
+        });
+        if (round) M.place(round, pw / 2, nY0 + nH + bm + 5 * u, { s: M.spring(t - (land + .3), 'pop'), o: t > land + .3 ? 1 : 0 });
+        if (by) { const k2 = M.spring(t - (land + .6), 'snappy'); M.place(by, pw / 2, nY0 + nH + bm + (round ? 11.5 : 5) * u + (1 - k2) * 2 * u, { o: t > land + .6 ? M.clamp(k2 * 1.6) : 0 }); }
+      };
+    } else if (type === 'award') {
+      const medal = $('#medal'), at = $('#atext');
+      const capEl = S.$('.cap', at), byEl = S.$('.capby', at);
+      let mH, mW, mx, my, tx, ty, tw;
+      if (row) {
+        mH = Math.min(ph * .92, pw * .4 * 1.25); mW = mH * .8;
+        tw = Math.min(pw - mW - 8 * u, 70 * u);
+        at.style.width = tw + 'px'; at.style.textAlign = 'left';
+        if (capEl) S.fit(capEl, { max: 5.4 * u * ps, maxLines: 3, keepMin: .86 });
+        if (byEl) S.fit(byEl, { max: 3 * u });
+        tw = Math.min(tw, Math.max(capEl ? usedW(capEl) : 0, byEl ? usedW(byEl) : 0) + 2 || tw);
+        at.style.width = tw + 'px';
+        const total = mW + 6 * u + tw;
+        mx = pw / 2 - total / 2 + mW / 2; my = ph / 2;
+        tx = mx + mW / 2 + 6 * u; ty = ph / 2;
+      } else {
+        at.style.width = pw * .9 + 'px'; at.style.textAlign = 'center'; at.style.alignItems = 'center';
+        if (capEl) S.fit(capEl, { max: 5.4 * u * ps, maxLines: 2, keepMin: .86 });
+        if (byEl) S.fit(byEl, { max: 3 * u });
+        const tH = at.offsetHeight;
+        mH = Math.min(ph - tH - 6 * u, pw * .6 * 1.25); mW = mH * .8;
+        const total = mH + 4 * u + tH;
+        mx = pw / 2; my = (ph - total) / 2 + mH / 2;
+        tx = pw / 2; ty = my + mH / 2 + 4 * u + tH / 2;
+      }
+      size(medal, mW, mH);
+      const oc = S.$('.oc', medal), ic = S.$('.ic', medal), ribs = S.$$('.rib', medal), star = S.$('.star', medal), fillc = S.$('.fillc', medal), yr = S.$('text', medal);
+      ribs.forEach(r => r.setAttribute('stroke-width', 4));
+      propRender = t => {
+        M.place(medal, mx, my - mH * .5, { ay: 0, o: t > T0 ? 1 : 0, rot: t > T0 + 1.6 ? 3 * Math.sin((t - T0 - 1.6) * 2.2) * Math.exp(-(t - T0 - 1.6) * .9) : 0 });
+        M.draw(oc, M.ease.inOutCubic(M.prog(t, T0 + .1, .6)));
+        fillc.style.opacity = M.prog(t, T0 + .55, .3).toFixed(3);
+        M.draw(ic, M.ease.inOutCubic(M.prog(t, T0 + .5, .45)));
+        ribs.forEach((r, i) => M.draw(r, M.ease.outCubic(M.prog(t, T0 + .75 + i * .1, .45))));
+        const sk = M.spring(t - (T0 + 1.1), 'pop');
+        star.style.transformOrigin = '100px 88px'; star.style.transformBox = 'view-box';
+        star.style.transform = `scale(${sk.toFixed(4)}) rotate(${((1 - Math.min(1, sk)) * -72).toFixed(2)}deg)`;
+        star.style.visibility = t > T0 + 1.1 ? 'inherit' : 'hidden';
+        if (yr) yr.style.opacity = M.prog(t, T0 + 1.3, .3).toFixed(3);
+        const ak = M.spring(t - (T0 + 1.4), 'snappy');
+        M.place(at, tx + (row ? (1 - ak) * 4 * u : 0), ty + (row ? 0 : (1 - ak) * 3 * u), { ax: row ? 0 : .5, o: t > T0 + 1.4 ? M.clamp(ak * 1.6) : 0 });
+      };
+    } else if (type === 'cert') {
+      const doc = $('#doc'), seal = $('#seal'), ck = S.$('.ck', seal), ringT = $('#nw-ringt');
+      const dW = Math.min(pw * (row ? .64 : .86), ph * .88 * 1.42), dH = Math.min(ph * .88, dW / 1.42);
+      size(doc, dW, dH);
+      const sS = Math.min(dH * .62, 34 * u);
+      // 도장이 찍히는 오른쪽 아래를 비워 둠
+      const dn = S.$('.dn', doc); if (dn) { dn.style.width = (dW - 8.8 * u - sS * .22) + 'px'; S.fit(dn, { max: Math.min(5.6 * u * ps, dH * .16), maxLines: 2, maxHeight: dH * .42, keepMin: .86 }); }
+      const db = S.$('.db', doc); if (db) { db.style.width = (dW - 8.8 * u - sS * .62) + 'px'; db.style.whiteSpace = 'nowrap'; db.style.overflow = 'hidden'; S.fit(db, { max: 2.6 * u }); }
+      size(seal, sS, sS);
+      // 둘레 글자가 한 바퀴에 꼭 맞게
+      const tp = S.$('textPath', ringT), circ = 2 * Math.PI * 68.5;
+      const one = (str(award.by) ? str(award.by) + ' · ' : '') + 'CERTIFIED · ';
+      tp.textContent = one; let len = ringT.getComputedTextLength() || 1;
+      const reps = Math.max(1, Math.floor(circ / len));
+      tp.textContent = one.repeat(reps); len = ringT.getComputedTextLength() || 1;
+      const fsz = Math.min(15, 13 * circ / len * .97);
+      ringT.style.fontSize = fsz + 'px'; len = ringT.getComputedTextLength() || 1;
+      ringT.setAttribute('textLength', (circ * .985).toFixed(1)); ringT.setAttribute('lengthAdjust', 'spacing');
+      const dx = pw / 2 - (row ? 4 * u : 0), dy = ph / 2;
+      const sxp = dx + dW / 2 - sS * .38, syp = dy + dH / 2 - sS * .4;
+      const TS = T0 + 1.2;
+      propRender = t => {
+        const dk = M.spring(t - (T0 + .05), { f: 1.7, z: .85 });
+        const hit = M.anim([[0, 0], [TS + .26, 1, { f: 5, z: .5 }], [TS + .36, 0, { f: 2.4, z: .85 }]], t);
+        M.place(doc, dx, dy + (1 - dk) * ph * .7, { rot: -1.5 + (1 - dk) * 6, s: 1 - hit * .018, o: t > T0 ? 1 : 0 });
+        const k = M.prog(t, TS, .26);
+        M.place(seal, sxp, syp, { s: 2.3 - 1.3 * M.ease.inQuart(k), rot: -34 + 22 * k, o: t >= TS ? M.clamp(k * 3) : 0 });
+        M.draw(ck, M.ease.outCubic(M.prog(t, TS + .45, .35)));
+        const sh0 = t >= TS + .26 && t < TS + .5 ? (1 - M.prog(t, TS + .26, .24)) * .7 * u : 0;
+        panel.style.translate = sh0 ? `${(Math.sin(t * 95) * sh0).toFixed(2)}px ${(Math.cos(t * 77) * sh0).toFixed(2)}px` : '';
+      };
+    } else {
+      const wrap = $('#lc-wrap'), card = $('#lcard'), tag = $('#newtag'), img = S.$('.cimg', card), ctx = S.$('.ctx', card);
+      const cn = S.$('.cn', card), cs = S.$('.cs', card);
+      let cW, cH;
+      if (img) {
+        if (row) { cH = ph * .86; cW = Math.min(pw * .86, cH * 2.1); card.classList.remove('col'); size(img, cH * .95, cH); }
+        else { cW = Math.min(pw * .78, ph * .64); cH = Math.min(ph * .9, cW * 1.32); card.classList.add('col'); size(img, cW, cH * .6); }
+      } else { cW = Math.min(pw * .8, (row ? ph * 1.9 : ph * .9)); cH = Math.min(ph * .8, cW * (row ? .52 : .9)); card.classList.add('col'); }
+      size(card, cW, cH); size(wrap, cW, cH);
+      const tW = ctx.clientWidth - 7.2 * u, tH = ctx.clientHeight - 7.2 * u;
+      if (cn) { cn.style.width = tW + 'px'; S.fit(cn, { max: (img ? 6 : 8) * u, maxLines: 2, maxHeight: tH * (cs ? .62 : .95) }); }
+      if (cs) { cs.style.width = tW + 'px'; S.fit(cs, { max: 3 * u, maxLines: 2, maxHeight: tH * .36 }); }
+      propRender = t => {
+        const k = M.spring(t - (T0 + .1), { f: 1.8, z: .74 });
+        M.place(wrap, pw / 2, ph / 2 + (1 - k) * ph * .55, { s: .72 + .28 * k, o: t > T0 + .1 ? 1 : 0 });
+        card.style.transform = `rotateX(${((1 - Math.min(1, k)) * 70).toFixed(2)}deg)`;
+        const tk2 = M.prog(t, T0 + 1.05, .24);
+        M.place(tag, cW - 2 * u, 2.4 * u, { ax: 1, ay: 0, s: 1.9 - .9 * M.ease.inQuart(tk2), rot: 22 - 14 * tk2, o: t >= T0 + 1.05 ? M.clamp(tk2 * 3) : 0 });
+        // 착지 뒤 아주 살짝 떠 있음
+        if (t > T0 + 1.6) wrap.style.translate = `0 ${(Math.sin((t - T0 - 1.6) * 2.2) * .5 * u).toFixed(2)}px`; else wrap.style.translate = '';
+      };
+    }
+
+    /* ---------- 핵심 사실 표 ---------- */
+    const factsEl = $('#facts');
+    let factsRender = () => {};
+    if (factsEl) {
+      const fW = Math.min(pw * .9, wide ? 130 * u : pw);
+      factsEl.style.width = fW + 'px';
+      const rows = S.$$('.fr', factsEl);
+      // 이름 칸 너비를 맞춤
+      const keyW = Math.max(...rows.map(r => S.$('.fk', r).offsetWidth));
+      rows.forEach(r => { S.$('.fk', r).style.width = keyW + 'px'; });
+      let kf = psT; factsEl.style.setProperty('--k', kf.toFixed(3));
+      const fit = () => rows.forEach(r => { const v = S.$('.fv', r); v.style.fontSize = ''; S.fit(v, { max: 4.4 * u * kf, maxLines: 2, keepMin: .75 }); });
+      fit();
+      while (factsEl.offsetHeight > ph * .92 && kf > .55) { kf *= .92; factsEl.style.setProperty('--k', kf.toFixed(3)); fit(); }
+      const fH = factsEl.offsetHeight;
+      factsEl.style.left = (pw - fW) / 2 + 'px'; factsEl.style.top = (ph - fH) / 2 + 'px';
+      const fks = rows.map(r => S.$('.fk', r)), fvs = rows.map(r => S.$('.fv', r)), fls = rows.map(r => S.$('.fl', r));
+      factsRender = t => {
+        factsEl.style.setProperty('--top', M.ease.inOutCubic(M.prog(t, T_FACTS + .1, .5)).toFixed(4));
+        rows.forEach((r, i) => {
+          const ti = T_FACTS + .5 + i * .5;
+          const kk = M.spring(t - ti, 'snappy');
+          fks[i].style.opacity = M.clamp(kk * 2).toFixed(3);
+          fks[i].style.transform = `translateX(${((1 - kk) * -3 * u).toFixed(2)}px)`;
+          const vk = M.ease.outCubic(M.prog(t, ti + .08, .45));
+          fvs[i].style.clipPath = `inset(-10% ${((1 - vk) * 100).toFixed(2)}% -10% 0)`;
+          fls[i].style.transform = `scaleX(${M.ease.inOutCubic(M.prog(t, ti, .5)).toFixed(4)})`;
+        });
+      };
+    }
+
+    /* ---------- 인용 ---------- */
+    const qEl = $('#quote');
+    let quoteRender = () => {};
+    if (qEl) {
+      const qW = Math.min(pw * .86, wide ? 120 * u : pw);
+      qEl.style.width = qW + 'px';
+      const qt = S.$('.qt', qEl), qb = S.$('.qb', qEl), qm = S.$('.qm', qEl);
+      const qmH = qm.offsetHeight;
+      S.fit(qt, { max: 5.4 * u * psT, maxLines: 4, maxHeight: ph - qmH - (qb ? 9 * u : 3 * u), keepMin: .7 });
+      const words = S.words(qt).map(w => { const m = document.createElement('span'); m.className = 'mask'; w.parentNode.insertBefore(m, w); m.appendChild(w); return w; });
+      if (qb) qb.style.marginTop = (2.6 * u) + 'px';
+      // 글 폭에 맞춰 상자를 줄이고 가운데에 둠
+      {
+        const used = usedW(qt) || qW;
+        const need = Math.max(used + 2, qb ? usedW(qb) + 2 : 0);
+        if (need < qW) { qt.style.width = Math.ceil(used + 2) + 'px'; qEl.style.width = Math.ceil(need) + 'px'; }
+      }
+      const qH = qEl.offsetHeight;
+      qEl.style.left = (pw - qEl.offsetWidth) / 2 + 'px'; qEl.style.top = Math.max(0, (ph - qH) / 2) + 'px';
+      const wStep = Math.min(.09, 1.2 / Math.max(1, words.length));
+      quoteRender = t => {
+        const t0 = T_QUOTE;
+        const mk = M.spring(t - (t0 + .1), 'pop');
+        qm.style.transform = `translateY(${((1 - Math.min(1, mk)) * 4 * u).toFixed(2)}px) scale(${(.6 + .4 * mk).toFixed(4)})`;
+        qm.style.transformOrigin = '0 0';
+        qm.style.opacity = M.clamp(mk * 2).toFixed(3);
+        words.forEach((w, i) => M.rise(w, M.clamp(M.spring(t - (t0 + .35 + i * wStep), 'snappy'), 0, 1.03)));
+        if (qb) { const bk = M.spring(t - (t0 + .55 + words.length * wStep), 'snappy'); qb.style.opacity = M.clamp(bk * 1.6).toFixed(3); qb.style.transform = `translateX(${((1 - bk) * 3 * u).toFixed(2)}px)`; }
+      };
+    }
+
+    /* ---------- 화면 장면 바꾸기 (패널 안에서 강조색 막대가 지나가며) ---------- */
+    const scenes = [['#sc-prop', T_PROP - .6], ['#sc-facts', T_FACTS], ['#sc-quote', T_QUOTE]].filter(([s]) => $(s)).map(([s, t]) => ({ el: $(s), t }));
+    const wipe = $('#nw-wipe'), w1 = S.$('.w1', wipe), w2 = S.$('.w2', wipe);
+    const WD = .5;
+    const wipeTimes = scenes.slice(1).map(s => s.t);
+
+    /* ---------- 범퍼 띠 ---------- */
+    const straps = S.$$('.strap').map(el => ({ el, sk: S.$('.sk', el), ct: S.$('.ct', el) }));
+    const kindCt = straps[1].ct;
+    // 꼬리표 큰 글자는 화면 폭에 맞게
+    {
+      kindCt.style.position = 'static';
+      const maxW = sw * (wide ? .72 : .9);
+      let fs = (wide ? 15 : 13) * u; kindCt.style.fontSize = fs + 'px';
+      while (kindCt.offsetWidth > maxW && fs > 4 * u) { fs *= .95; kindCt.style.fontSize = fs + 'px'; }
+      kindCt.style.position = '';
+    }
+    const ctW = el => { el.style.position = 'static'; const w = el.offsetWidth; el.style.position = ''; return w; };
+    const kFs = parseFloat(kindCt.style.fontSize);
+    const sDefs = [
+      { h: 1.3 * u, off: 2 * u, w: sx + sw * .5 },
+      { h: kFs * 1.08, off: 0 },
+      { h: 7 * u, off: 4.5 * u },
+      { h: 6 * u, off: 9 * u },
+      { h: .8 * u, off: 13 * u, w: sx + sw * .62 },
+    ];
+    const gapS = 1.1 * u;
+    const totalS = sDefs.reduce((a, d) => a + d.h, 0) + gapS * (sDefs.length - 1);
+    let yy = cy - totalS / 2 - (wide ? 0 : 2 * u);
+    straps.forEach((s, i) => {
+      const d = sDefs[i];
+      const skew = Math.tan(16 * Math.PI / 180) * d.h;
+      const tw = s.ct ? ctW(s.ct) : 0;
+      const L = -6 * u;                                  // 왼쪽은 화면 밖까지
+      const textX = sx + d.off;
+      const w = d.w || (textX - L + tw + 3.4 * u + skew);
+      size(s.sk, w, d.h);
+      if (s.ct) s.ct.style.left = (textX - L) + 'px';
+      s.x = L; s.y = yy; s.w = w; s.h = d.h;
+      yy += d.h + gapS;
+    });
+    const DIR = [1, -.3];
+    const FAR = W * 1.45;
+    function strapPos(i, t) {
+      // 1차: 0초에 들어와 2초에 빠짐 / 2차(마무리): T_OUT+0.1 에 들어와 T_OUT+0.5 에 빠짐
+      const passes = [[.0, T_OUTS, { f: 2.1, z: .86 }], [T_OUT + .1, T_OUT + .5, { f: 3.4, z: .9 }]];
+      const st = .07 * i, so = .05 * i;    // 위 띠부터 들어오고 위 띠부터 빠짐 (서로 겹쳐 지나가지 않게)
+      for (const [tin, tout, sp] of passes) {
+        if (t < tin + st - .001 || t >= tout + so + .5) continue;
+        const kin = M.spring(t - (tin + st), sp);
+        const kout = M.ease.inCubic(M.prog(t, tout + so, .42));
+        const d = -(1 - kin) * FAR + kout * FAR;
+        return { d, o: 1, txt: (1 - kin) * 10 * u };
+      }
+      return null;
+    }
+
+    /* ---------- 마무리 ---------- */
+    const out = $('#nw-out'), onote = $('#nw-onote');
+    out.style.width = (wide ? sw * .7 : sw * .94) + 'px';     // 끝에서 4.5% 커져도 세이프존 안
+    {
+      const lk = S.$('.lock', out);
+      const kL = Math.min(1, sw * .8 / lk.offsetWidth);
+      lk.style.setProperty('--ls', (7.2 * kL).toFixed(3));
+      const pl = S.$('.plan', out); if (pl) S.fit(pl, { max: 5.4 * u, maxLines: 2 });
+      const hd = S.$('.hd', out); if (hd) { hd.style.maxWidth = '100%'; hd.style.overflow = 'hidden'; S.fit(hd, { max: 3 * u }); }
+    }
+    const outLock = S.$('.lock', out), outRule = S.$('.rule', out), outPlan = S.$('.plan', out), outHd = S.$('.hd', out);
+    if (onote) { onote.style.maxWidth = sw + 'px'; onote.style.overflow = 'hidden'; }
+
+    /* ---------- 배경 ---------- */
+    const bgl = $('#nw-bgl'), beams = S.$$('.beam', bgl);
+    const beamDef = [[.08, 22], [.46, 9], [.7, 30]];
+    beams.forEach((b, i) => { b.style.width = beamDef[i][1] * u + 'px'; });
+    const frame = $('#nw-frame');
+
+    S.ambient(t => {
+      M.drift(bgl, t, 1.4);
+      beams.forEach((b, i) => { b.style.left = ((beamDef[i][0] * W) + Math.sin(t * .35 + i * 2) * 3 * u + t * (i + 1) * .8 * u) + 'px'; });
+
+      /* 범퍼 띠 */
+      straps.forEach((s, i) => {
+        const p = strapPos(i, t);
+        if (!p) { M.show(s.el, false); return; }
+        M.place(s.el, s.x + DIR[0] * p.d, s.y + DIR[1] * p.d, { ax: 0, ay: 0, o: p.o });
+        if (s.ct) s.ct.style.translate = `${(p.txt * (i === 1 ? 1.6 : 1)).toFixed(1)}px 0`;
+      });
+      // 큰 꼬리표 글자: 머무는 동안 자간이 아주 천천히 좁아짐
+      kindCt.style.letterSpacing = (.03 - .04 * M.ease.outCubic(M.prog(t, .3, 1.8))).toFixed(4) + 'em';
+
+      /* 틀 전체: 마무리에서 빠짐 */
+      const outK = M.prog(t, T_OUT, .45);
+      M.show(frame, t >= T_FRAME - .2 && t < T_OUT + .6);
+
+      // 위 줄
+      const bk = M.spring(t - (T_FRAME + .2), 'snappy'), bo = 1 - M.ease.inCubic(outK);
+      M.place(bug, sx, sy + (1 - bk) * -3 * u + (topH - bug.offsetHeight * bug._k) / 2, { ax: 0, ay: 0, s: bug._k, o: t > T_FRAME + .2 ? M.clamp(bk * 1.6) * bo : 0 });
+      if (dbox) { const dk = M.spring(t - (T_FRAME + .3), 'snappy'); M.place(dbox, sx + sw, sy + (1 - dk) * -3 * u + (topH - dbox.offsetHeight) / 2, { ax: 1, ay: 0, o: t > T_FRAME + .3 ? M.clamp(dk * 1.6) * bo : 0 }); }
+
+      // 패널: 띠가 빠지는 방향으로 왼쪽부터 드러남, 마무리에선 가운데 선으로 접힘
+      const pk = M.ease.inOutCubic(M.prog(t, T_FRAME - .1, .6));
+      const ck = M.ease.inCubic(outK);
+      M.place(panel, sx, panelY, { ax: 0, ay: 0 });
+      panel.style.clipPath = `inset(${(-4 * u + ck * (PH / 2 + 4 * u)).toFixed(1)}px ${((1 - pk) * 100).toFixed(2)}% ${(-2 * u + ck * (PH / 2 + 2 * u)).toFixed(1)}px 0)`;
+      M.show(panel, t >= T_FRAME - .1 && ck < .999);
+
+      // 패널 안 장면들
+      scenes.forEach((s, i) => {
+        const tin = s.t, tnext = scenes[i + 1] ? scenes[i + 1].t : Infinity;
+        const vis = t >= tin - WD / 2 && t < tnext + WD / 2;
+        M.show(s.el, vis);
+        if (!vis) return;
+        const a = i ? M.ease.inOutCubic(M.prog(t, tin - WD / 2, WD)) : 1;      // 들어옴
+        const b = M.ease.inOutCubic(M.prog(t, tnext - WD / 2, WD));            // 나감
+        s.el.style.clipPath = `inset(-5% ${((1 - a) * 100).toFixed(2)}% -5% ${(b * 100).toFixed(2)}%)`;
+      });
+      let wk = -1;
+      for (const wt of wipeTimes) if (t >= wt - WD / 2 && t < wt + WD / 2) wk = M.ease.inOutCubic(M.prog(t, wt - WD / 2, WD));
+      if (wk >= 0) { M.show(wipe, true); const x = wk * pw; w1.style.left = (x - 1.1 * u) + 'px'; w2.style.left = (x - 3.2 * u) + 'px'; } else M.show(wipe, false);
+
+      propRender(t);
+      factsRender(t);
+      quoteRender(t);
+
+      // 하단 자막 바
+      const ox = -M.ease.inCubic(M.prog(t, T_OUT, .42)) * W;
+      const ba = M.spring(t - (T_FRAME + .1), { f: 2.4, z: .9 });
+      if (badgeEl) M.place(badgeEl, (1 - ba) * -badgeW + ox, badgeY, { ax: 0, ay: 0, o: t > T_FRAME + .1 ? 1 : 0 });
+      const hk = M.ease.outCubic(M.prog(t, T_FRAME + .3, .45));
+      M.place(hbar, hbarL + ox * 1.05, hbarY, { ax: 0, ay: 0, o: t > T_FRAME + .3 ? 1 : 0 });
+      hbar.style.clipPath = `inset(0 ${((1 - hk) * 100).toFixed(2)}% 0 0)`;
+      const n = Math.min(chs.length, Math.floor(Math.max(0, t - T_TYPE) * TYPE_CPS));
+      chs.forEach((c, i) => { c.style.visibility = i < n ? 'inherit' : 'hidden'; });
+      const typing = t >= T_TYPE - .2 && n < chs.length;
+      const blink = !typing && t < T_TYPE + chs.length / TYPE_CPS + 2 && Math.sin((t - T_TYPE) * Math.PI * 4) > 0;
+      const p = n > 0 ? chPos[n - 1] : firstPos;
+      caret.style.transform = `translate(${(p[0] + .25 * u).toFixed(1)}px, ${p[1].toFixed(1)}px)`;
+      caret.style.visibility = (typing || blink) && t >= T_TYPE - .2 ? 'inherit' : 'hidden';
+      if (sbar) { const sk2 = M.spring(t - (T_TYPE + .6), { f: 2.4, z: .9 }); M.place(sbar, (1 - sk2) * -W * .6 + ox * 1.1, sbarY, { ax: 0, ay: 0, o: t > T_TYPE + .6 ? 1 : 0 }); }
+
+      // 티커
+      const tkk = M.spring(t - (T_FRAME + .2), { f: 2.2, z: .9 });
+      M.place(tk, 0, tkY + (1 - tkk) * (tkH + 3 * u) + M.ease.inCubic(outK) * (tkH + 4 * u), { ax: 0, ay: 0, o: t > T_FRAME + .2 ? 1 - M.ease.inCubic(outK) : 0 });
+      tkr.style.transform = `translateX(${(tkcW - Math.max(0, t - TK_T0) * TK_V).toFixed(1)}px)`;
+
+      /* 마무리 락업 */
+      const T_L = T_OUT + .9;     // 띠가 빠지는 끝자락에 겹쳐 들어옴 (빈 화면이 생기지 않게)
+      const lk = M.spring(t - T_L, { f: 2.2, z: .82 });
+      M.show(out, t >= T_L);
+      // 끝까지 화면이 멈추지 않게 아주 천천히 다가옴
+      M.place(out, cx, cy - (onote ? 1.5 * u : 0), { o: t >= T_L ? 1 : 0, s: 1 + .045 * M.ease.inOutSine(M.prog(t, T_L, END - T_L)) });
+      outLock.style.opacity = M.clamp(lk * 1.8).toFixed(3);
+      outLock.style.transform = `scale(${(.86 + .14 * lk).toFixed(4)})`;
+      outRule.style.transform = `scaleX(${M.ease.inOutCubic(M.prog(t, T_L + .3, .5)).toFixed(4)})`;
+      if (outPlan) { const k3 = M.spring(t - (T_L + .5), 'snappy'); outPlan.style.opacity = M.clamp(k3 * 1.6).toFixed(3); outPlan.style.transform = `translateY(${((1 - k3) * 3 * u).toFixed(2)}px)`; }
+      if (outHd) { const k4 = M.spring(t - (T_L + .8), 'snappy'); outHd.style.opacity = M.clamp(k4 * 1.6).toFixed(3); }
+      if (onote) M.place(onote, cx, sy + sh - 1 * u, { ay: 1, o: t >= T_L + 1 ? M.clamp((t - T_L - 1) * 3) : 0 });
+    });
+  });
+})();
+</script>

@@ -1,0 +1,7 @@
+{
+  "name": "매장 오픈",
+  "description": "철제 셔터 안내문 → 셔터가 올라가며 가게 사진 → 매달린 간판이 OPEN으로 뒤집힘 → 지도에 핀과 길 → 영수증에 오픈 혜택 → 날짜. 17초.",
+  "fonts": [
+    { "family": "Archivo", "weight": "100 900", "stretch": "62% 125%", "file": "fonts/Archivo-Variable.woff2" }
+  ]
+}

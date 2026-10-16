@@ -1,0 +1,129 @@
+{
+  "id": "ribbed-lavender-mint-band",
+  "name": "라벤더 결면과 민트 줄 띠",
+  "group": "그래픽·도형",
+  "template": "brandmark",
+  "summary": "숯빛 판 위로 가는 줄결이 새겨진 라벤더 곡면이 천천히 쓸고 지나가고, 화면보다 큰 도넛·막대·숫자 조각과 UI 카드가 컷으로 이어져요. 옅은 민트 판 위아래에는 민트에서 라벤더로 번지는 세로 줄 띠가 물결처럼 일렁이는 데이터 브랜드 필름",
+  "tags": [
+    "그래픽",
+    "라벤더",
+    "민트",
+    "데이터",
+    "줄무늬",
+    "브랜드 필름"
+  ],
+  "hand": false,
+  "source": {
+    "site": "keyframe.gallery",
+    "ref": "mux:01f00vY3Tnqus018oPpEzK1GrKnYvJtOX9IoxK0001GBYWCQ",
+    "at": "0–9초, 19–30초, 34–51초",
+    "note": "숯빛 바탕을 비스듬히 가르는 라벤더 줄결 곡면과 그 가장자리의 민트 빛, 가운데 작은 흰 글이 어절씩 붙는 오프닝. 화면 밖으로 잘린 거대한 도넛 조각, 솟는 라벤더 막대, 라벤더 기둥 속 큰 숫자와 민트 그라디언트 발치. 옅은 민트 판 위아래를 채우는 세로 줄 띠와 가운데 큰 숯빛 낱말, 줄 띠 무늬를 품은 카드와 사진 카드가 떠 있는 판"
+  },
+  "palette": [
+    "#262723",
+    "#B07FE8",
+    "#7FE6B2",
+    "#D4E3DC",
+    "#EBEBE9",
+    "#B9BAA4"
+  ],
+  "colors": {
+    "bg": "#262723",
+    "onBg": "#EEEEEB",
+    "onBgMuted": "rgba(238,238,235,.6)",
+    "paper": "#D4E3DC",
+    "ink": "#1F201D",
+    "accent": "#B07FE8",
+    "accentInk": "#1F201D",
+    "pattern": "rgba(176,127,232,.18)",
+    "glow": "rgba(127,230,178,.35)"
+  },
+  "type": {
+    "display": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "heading": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "body": [
+      "Geist",
+      "Noto Sans KR"
+    ]
+  },
+  "fonts": [
+    {
+      "family": "Geist",
+      "weight": "100 900",
+      "file": "fonts/Geist-Variable.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 500,
+      "file": "fonts/NotoSansKR-Medium.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 700,
+      "file": "fonts/NotoSansKR-Bold.woff2"
+    }
+  ],
+  "shape": {
+    "radius": "calc(var(--u) * 1.2)"
+  },
+  "motion": {
+    "pace": "보통",
+    "bpm": 108,
+    "ease": "power3.out",
+    "stagger": 1,
+    "transitions": [
+      "cut",
+      "wipe",
+      "blocks"
+    ]
+  },
+  "scenes": {
+    "bg": "lines",
+    "align": "center",
+    "card": "flat",
+    "marker": "color",
+    "weight": 500,
+    "tracking": -0.03,
+    "case": "none",
+    "rough": false,
+    "title": "rise",
+    "frame": "none",
+    "deco": [
+      "handles",
+      "marks"
+    ],
+    "number": "count",
+    "scale": 1.25,
+    "schemes": [
+      "dark",
+      "paper",
+      "accent",
+      "paper"
+    ]
+  },
+  "signature": [
+    "숯빛 판 귀퉁이에서 가는 평행 줄결이 새겨진 라벤더 곡면이 4~6초에 걸쳐 비스듬히 쓸어 들어오고, 곡면 가장자리에는 민트 빛 테두리가 번져요. 가까운 쪽은 흐릿하고 먼 쪽은 선명해서 깊이가 생기고, 화면 가운데에는 작은 흰 글이 어절마다 하나씩 붙어요",
+    "옅은 민트 판 위아래 가장자리를 머리카락처럼 가는 세로 줄 수백 개가 채우고, 줄마다 민트에서 라벤더로 번지며 길이가 소리 물결처럼 오르내려요. 가운데에는 숯빛 큰 낱말 한 줄만 두고, 같은 줄 띠 무늬가 카드 속이나 사진 아래 테두리로도 옮겨 붙어요",
+    "데이터는 화면보다 크게 잘라서 보여 줘요. 거대한 도넛의 라벤더 조각이 호를 그리며 차오르고, 숯빛 판에서 라벤더 막대가 박자마다 솟고, 라벤더 기둥 속 큰 숫자 아래로 민트 그라디언트가 차올라요"
+  ],
+  "fits": [
+    "데이터·분석 도구 브랜드 필름",
+    "마케팅 플랫폼 소개",
+    "성과 숫자 발표",
+    "기능 묶음을 차분하게 훑을 때",
+    "리브랜딩 공개"
+  ],
+  "avoid": [
+    "손그림 선과 종이 질감",
+    "강조색 여러 개(라벤더 하나와 민트 빛만)",
+    "통통 튀는 스프링",
+    "굵은 블랙 제목",
+    "한 화면에 문장 여러 줄"
+  ]
+}

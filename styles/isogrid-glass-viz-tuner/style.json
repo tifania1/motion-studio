@@ -1,0 +1,138 @@
+{
+  "id": "isogrid-glass-viz-tuner",
+  "name": "등각 유리판 시각화 조율",
+  "group": "다이어그램·데이터",
+  "template": "dataflow",
+  "summary": "어두운 등각 격자 판 위로 카메라가 미끄러지고, 가운데 유리판 둘레 칸마다 청록 시각화 조각이 하나씩 켜져요. 고정폭 명령어가 빛 블록에 덮이며 쳐지고, 가는 선 다발 리본은 슬라이더를 밀 때마다 초록에서 파랑, 보라로 색을 갈아입는 개발 도구 소개",
+  "tags": [
+    "다이어그램",
+    "등각",
+    "유리",
+    "청록 빛",
+    "코드",
+    "슬라이더",
+    "개발자"
+  ],
+  "hand": false,
+  "source": {
+    "site": "keyframe.gallery",
+    "ref": "mux:e01dwruozgBiAoP6kskkp6OEzC5FWN2tUKk57GJUEErk",
+    "at": "0–43.4초",
+    "note": "어두운 등각 격자 판과 가운데 유리판, 둘레 칸마다 켜지는 청록 시각화 조각(물결선·점 행렬·점선 고리·알약 막대), 유리판을 지나며 갈라지는 무지개 빛줄기, 큰 고정폭 명령어 타이핑과 그 뒤를 쓸고 가는 청록 블록, 슬라이더 값을 바꾸면 가는 선 리본의 색이 바뀌고 색 코드가 맞춰지는 장면, 가는 선으로 나뉜 조각 판 엔딩"
+  },
+  "palette": [
+    "#111213",
+    "#3FE3E0",
+    "#1FD5F9",
+    "#2C4BF2",
+    "#8B4DFF",
+    "#E8ECEC"
+  ],
+  "colors": {
+    "bg": "#111213",
+    "onBg": "#E8ECEC",
+    "onBgMuted": "rgba(232,236,236,.56)",
+    "paper": "#1B1F22",
+    "ink": "#E6EBEB",
+    "accent": "#3FE3E0",
+    "accentInk": "#061716",
+    "pattern": "rgba(255,255,255,.07)",
+    "glow": "rgba(63,227,224,.4)"
+  },
+  "type": {
+    "display": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "heading": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "body": [
+      "Geist Mono",
+      "Noto Sans KR"
+    ]
+  },
+  "fonts": [
+    {
+      "family": "Geist",
+      "weight": "100 900",
+      "file": "fonts/Geist-Variable.woff2"
+    },
+    {
+      "family": "Geist Mono",
+      "weight": "100 900",
+      "file": "fonts/GeistMono-Variable.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 500,
+      "file": "fonts/NotoSansKR-Medium.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 700,
+      "file": "fonts/NotoSansKR-Bold.woff2"
+    }
+  ],
+  "look": {
+    "grain": 0.05,
+    "vignette": 0.35
+  },
+  "shape": {
+    "radius": "calc(var(--u) * 1.2)"
+  },
+  "motion": {
+    "pace": "보통",
+    "bpm": 100,
+    "ease": "power3.inOut",
+    "stagger": 1,
+    "transitions": [
+      "blur",
+      "cut",
+      "fade"
+    ]
+  },
+  "scenes": {
+    "bg": "grid",
+    "align": "center",
+    "card": "glass",
+    "marker": "highlight",
+    "weight": 500,
+    "tracking": -0.01,
+    "case": "none",
+    "rough": false,
+    "title": "type",
+    "frame": "none",
+    "deco": [
+      "rings",
+      "dots"
+    ],
+    "number": "scramble",
+    "scale": 1,
+    "schemes": [
+      "dark",
+      "paper",
+      "dark"
+    ]
+  },
+  "signature": [
+    "어두운 등각 격자 판 위를 카메라가 비스듬히 천천히 미끄러짐. 가운데 유리판 아래로 흰 빛이 은은하게 새고, 둘레 칸마다 청록 시각화 조각(물결선, 점 행렬, 점선 고리 스피너, 알약 막대)이 한 박 간격으로 하나씩 켜짐. 마지막에 카메라가 유리판 속으로 파고들면 화면이 청록 빛으로 가득 참",
+    "검은 화면에 큰 고정폭 명령어가 쳐지고, 청록 칠 블록이 막 쳐진 글자를 뒤따라 덮으며 빛을 번지게 함. 줄이 길어지면 글 전체가 왼쪽으로 밀려나고, 이어서 흐린 코드 몇 줄이 낱말만 청록으로 켜지며 내려앉음",
+    "가는 선 수십 가닥이 꼬인 빛 리본이 화면 가장자리에서 휘어 들어오고, 옆의 작은 슬라이더 손잡이가 움직일 때마다 리본 색이 초록 → 청록 → 파랑 → 보라로 바뀜. 위의 색 코드나 파라미터 값은 무작위 글자에서 새 값으로 맞춰짐"
+  ],
+  "fits": [
+    "개발자 도구·라이브러리 소개",
+    "UI 컴포넌트 묶음 런칭",
+    "음성·실시간 기술 시각화",
+    "설치 명령어 안내",
+    "파라미터를 조절하는 기능 시연"
+  ],
+  "avoid": [
+    "밝은 바탕",
+    "손그림 선과 종이 질감",
+    "굵고 큰 제목을 꽉 채우기",
+    "청록 말고 다른 강조색을 동시에 여러 개",
+    "빠른 컷 몽타주"
+  ]
+}

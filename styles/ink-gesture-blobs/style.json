@@ -1,0 +1,125 @@
+{
+  "id": "ink-gesture-blobs",
+  "name": "한 줄 잉크 손짓과 흰 방울",
+  "group": "손그림",
+  "template": "sketchbook",
+  "summary": "따뜻한 베이지 바탕에 굵은 먹선 한 줄이 그어지며 손짓 그림이 되고, 손끝에서 흰 방울이 톡 생겨 떠다니다 터져요. 문장은 어절마다 옅은 회색에서 먹색으로 차올라요",
+  "tags": [
+    "손그림",
+    "잉크",
+    "한 줄 그림",
+    "따뜻함",
+    "세리프",
+    "도입"
+  ],
+  "hand": true,
+  "source": {
+    "site": "keyframe.gallery",
+    "ref": "mux:TFUcyLdEvvHX756oXM3FQ3BY60094RGEd4X9kBzEj4Bo",
+    "at": "0–6.6초, 70.6–77.4초",
+    "note": "굵기가 고른 먹선 하나가 끊김 없이 그어져 손 제스처 기호가 되는 그리기, 손끝에서 각진 흰 방울이 생겨 커지는 순간, 방울이 물방울로 터지며 선이 그은 순서 반대로 거둬지는 퇴장, 흰 방울이 흩어져 떠다니는 바탕 위에서 세리프 문장이 어절마다 회색에서 검정으로 차오르는 등장, 방울 하나가 커져 화면을 덮고 다음 화면의 창으로 모양을 바꾸는 이음"
+  },
+  "palette": [
+    "#D2CABE",
+    "#141414",
+    "#ECEAE5",
+    "#B5573F",
+    "#8C857A"
+  ],
+  "colors": {
+    "bg": "#D2CABE",
+    "onBg": "#141414",
+    "onBgMuted": "rgba(20,20,20,.62)",
+    "paper": "#ECEAE5",
+    "ink": "#141414",
+    "accent": "#B5573F",
+    "accentInk": "#FFFFFF",
+    "pattern": "rgba(20,20,20,.07)",
+    "glow": "rgba(236,234,229,.6)"
+  },
+  "type": {
+    "display": [
+      "Gowun Batang"
+    ],
+    "heading": [
+      "Gowun Batang"
+    ],
+    "body": [
+      "Noto Sans KR"
+    ]
+  },
+  "fonts": [
+    {
+      "family": "Gowun Batang",
+      "weight": 400,
+      "file": "fonts/GowunBatang-Regular.woff2"
+    },
+    {
+      "family": "Gowun Batang",
+      "weight": 700,
+      "file": "fonts/GowunBatang-Bold.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 500,
+      "file": "fonts/NotoSansKR-Medium.woff2"
+    }
+  ],
+  "look": {
+    "grain": 0.03
+  },
+  "shape": {
+    "radius": "calc(var(--u) * 1.6)",
+    "stroke": "hand"
+  },
+  "motion": {
+    "pace": "느림",
+    "bpm": 80,
+    "ease": "power2.out",
+    "stagger": 1.4,
+    "transitions": [
+      "iris",
+      "fade"
+    ]
+  },
+  "scenes": {
+    "bg": "solid",
+    "align": "center",
+    "card": "paper",
+    "marker": "color",
+    "weight": 400,
+    "tracking": -0.01,
+    "case": "none",
+    "rough": true,
+    "title": "fade",
+    "frame": "none",
+    "deco": [
+      "shapes"
+    ],
+    "number": "count",
+    "scale": 1,
+    "schemes": [
+      "dark",
+      "paper"
+    ]
+  },
+  "signature": [
+    "한 줄 잉크 손짓: 굵기가 고른 먹선(짧은 변의 1.1%, 끝 둥글게) 하나가 1.5초 동안 끊김 없이 그어지며 간단한 손 기호(무언가를 집거나 가리키는 손)가 됨. 그리는 동안 그림 전체가 아주 천천히 오른쪽으로 2% 흘러감. 나갈 때는 획을 되감듯 끝에서 시작점 쪽으로 0.5초에 거둬짐(방울이 터지는 순간과 같이)",
+    "손끝의 흰 방울: 다 그려진 손끝에서 각진(10~12각) 흰 방울이 점에서 0.4초에 커지고, 1초쯤 머물다 일그러지며 작은 물방울 4~6개로 터져 위로 흩어지며 사라짐. 그 뒤 화면 곳곳에 크기가 다른 흰 방울 3~4개가 톡톡 생겨 천천히 떠다니고 모양이 조금씩 바뀜",
+    "방울이 다음 화면이 됨: 가운데 세리프 문장이 어절마다(0.25초 간격) 옅은 회색에서 먹색으로 차오르며 들어오고, 다 읽히면 방울 하나가 문장 위로 커지며 화면을 덮은 뒤 그 모양이 둥근 사각형 창으로 바뀌어 밝은 종이색 다음 장면이 됨"
+  ],
+  "fits": [
+    "따뜻한 브랜드의 첫 장면·엔딩",
+    "AI·도구 소개의 도입",
+    "감성 문장 한 줄",
+    "강의·교육 인트로",
+    "보여 주기 전에 궁금하게 만드는 티저"
+  ],
+  "avoid": [
+    "굵은 고딕",
+    "선명한 원색",
+    "글이 빽빽한 장면",
+    "빠른 컷",
+    "선이 계속 꿈틀대는 떨림(boil)"
+  ]
+}

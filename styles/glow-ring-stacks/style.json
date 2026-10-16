@@ -1,0 +1,125 @@
+{
+  "id": "glow-ring-stacks",
+  "name": "빛 고리 동전 쌓기",
+  "group": "3D·사물",
+  "template": "stage",
+  "summary": "짙은 청회색 바탕에 속이 어둡고 테두리가 빛나는 도넛 고리들. 가운데서 물결처럼 퍼지고, 동전처럼 겹겹이 쌓여 막대그래프가 되고, 원을 그리며 모였다 흩어지는 사이로 작은 글 한 줄",
+  "tags": [
+    "3D",
+    "고리",
+    "다크",
+    "금융·데이터",
+    "빛"
+  ],
+  "hand": false,
+  "source": {
+    "site": "keyframe.gallery",
+    "ref": "mux:t02VC6exUnSKV9datbvHa9UuAQrGoIfiSN6XY4oM3mQc",
+    "at": "2.4–8.5초, 10.5–19초, 21.5–24초",
+    "note": "로고가 살짝 작아졌다 가운데서 빛 고리가 0.1초 간격으로 태어나 바깥으로 퍼지고 큰 고리 셋으로 가라앉는 물결, 고리 셋이 눈사람처럼 위아래로 겹쳐 오르는 장면, 크기·색이 다른 고리가 흩어져 떠다니는 장면, 바닥에 놓인 고리 줄이 동전처럼 겹겹이 쌓여 막대그래프가 되었다 흩어지는 장면, 고리 여덟 개가 원을 그리며 양옆 낱말을 밀어내다 커지는 장면, 고리 하나가 화면 가장자리를 돌며 색이 바뀌고 가운데 낱말 색도 따라 바뀌는 장면"
+  },
+  "palette": [
+    "#1D232B",
+    "#E8F1F5",
+    "#3FC6E8",
+    "#2253E8",
+    "#9BF0C9",
+    "#B07BE0"
+  ],
+  "colors": {
+    "bg": "#1D232B",
+    "onBg": "#E8F1F5",
+    "onBgMuted": "rgba(232,241,245,.6)",
+    "paper": "#1A3F9E",
+    "ink": "#EEF6FA",
+    "accent": "#3FC6E8",
+    "accentInk": "#0B1420",
+    "pattern": "rgba(120,200,255,.06)",
+    "glow": "rgba(63,198,232,.45)"
+  },
+  "type": {
+    "display": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "heading": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "body": [
+      "Geist",
+      "Noto Sans KR"
+    ]
+  },
+  "fonts": [
+    {
+      "family": "Geist",
+      "weight": "100 900",
+      "file": "fonts/Geist-Variable.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 500,
+      "file": "fonts/NotoSansKR-Medium.woff2"
+    }
+  ],
+  "look": {
+    "vignette": 0.2
+  },
+  "shape": {
+    "radius": "calc(var(--u) * 3)"
+  },
+  "motion": {
+    "pace": "보통",
+    "bpm": 100,
+    "ease": "expo.out",
+    "stagger": 1,
+    "transitions": [
+      "iris",
+      "zoom",
+      "cut"
+    ]
+  },
+  "scenes": {
+    "bg": "solid",
+    "align": "center",
+    "card": "flat",
+    "marker": "color",
+    "weight": 400,
+    "tracking": -0.01,
+    "case": "none",
+    "rough": false,
+    "title": "blur",
+    "frame": "none",
+    "deco": [
+      "rings",
+      "orb"
+    ],
+    "number": "count",
+    "scale": 0.9,
+    "schemes": [
+      "dark",
+      "paper",
+      "dark"
+    ]
+  },
+  "signature": [
+    "고리 물결: 가운데 점에서 속이 어둡고 테두리가 하늘·민트로 빛나는 고리가 0.1초 간격으로 하나씩 태어나 expo.out 으로 바깥까지 퍼져 화면을 덮고, 1초 뒤 크게 겹친 고리 셋으로 느리게 가라앉음. 그 한가운데 작은 글 한 줄",
+    "동전 쌓기 막대그래프: 바닥에 고리 9개가 한 줄로 놓이고, 0.12초 간격으로 같은 고리가 위로 겹겹이 쌓여(한 겹 0.9u) 높이가 다른 막대가 됨. 막대마다 고리 색이 다르고(파랑·하늘·민트·보라) 꼭대기 고리만 정면을 봄. 끝나면 쌓인 고리가 흩어져 떠다님",
+    "고리 원진과 도는 고리: 고리 여덟 개가 원을 그리며 모여 천천히 돌고 양옆 낱말을 밀어내다 커지며 화면 밖으로 나가고, 가운데 고리 하나가 커져 낱말을 품음. 다른 장면에선 고리 하나가 화면 가장자리를 시계 방향으로 돌며 초록→노랑→주황→분홍으로 바뀌고 가운데 낱말 색도 같이 물듦"
+  ],
+  "fits": [
+    "금융·결제·지갑 앱",
+    "데이터·실시간 대시보드 서비스",
+    "포인트·리워드 안내",
+    "음악·오디오 서비스",
+    "밤 분위기 런칭 티저"
+  ],
+  "avoid": [
+    "밝은 바탕",
+    "굵고 큰 제목",
+    "사진",
+    "손그림",
+    "고리 말고 다른 3D 사물 섞기"
+  ]
+}

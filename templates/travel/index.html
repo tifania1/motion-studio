@@ -1,0 +1,198 @@
+<title>/*@TITLE@*/</title>
+<style>
+/*@FONTFACES@*/
+/*@BRAND_CSS@*/
+/*@ENGINE_CSS@*/
+
+/* ===== travel 템플릿: 여행 하이라이트 (지도 + 폴라로이드) =====
+   종이 지도 위로 점선 길이 그려지고, 비행기가 따라가다 들르는 곳마다 핀이 꽂히고 폴라로이드가 떨어짐.
+   마지막엔 지도 전체가 보이게 물러나며 제목과 함께 끝. */
+#tv { position: absolute; inset: 0; background: #EDE4D3; overflow: hidden; }
+#world { position: absolute; left: 0; top: 0; transform-origin: 0 0; }
+#world svg.map { position: absolute; left: 0; top: 0; overflow: visible; }
+.water { fill: none; stroke: #B7D2D8; stroke-linecap: round; }
+.park { fill: #D3DEBC; }
+.road { fill: none; stroke: #F8F3E9; stroke-linecap: round; }
+.contour { fill: none; stroke: rgba(120, 100, 70, .14); stroke-dasharray: 2 10; stroke-linecap: round; }
+.route { fill: none; stroke: var(--accent); stroke-linecap: round; }
+.abs { position: absolute; left: 0; top: 0; }
+.pin { width: calc(var(--u) * 7); height: calc(var(--u) * 9); }
+.pin svg { width: 100%; height: 100%; overflow: visible; }
+.plabel { background: var(--ink); color: var(--paper); font: 800 calc(var(--u) * 3.4)/1 var(--font-body); padding: calc(var(--u) * 1.5) calc(var(--u) * 2.4); border-radius: 999px; white-space: nowrap; }
+.plabel b { color: var(--accent); margin-right: calc(var(--u) * 1); font: 900 calc(var(--u) * 3.4)/1 "Archivo", var(--font-display); }
+.pola { background: #fff; padding: calc(var(--u) * 2) calc(var(--u) * 2) calc(var(--u) * 7.6); box-shadow: 0 calc(var(--u) * 1.2) calc(var(--u) * 3) rgba(60, 40, 20, .22); box-sizing: border-box; }
+.pola .im { width: 100%; aspect-ratio: 1; overflow: hidden; background: #ccc; }
+.pola .im img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.pola .cap { position: absolute; left: calc(var(--u) * 2); right: calc(var(--u) * 2); bottom: calc(var(--u) * 2.2); text-align: center; font: 700 calc(var(--u) * 3.4)/1.2 var(--font-body); color: #3a3530; white-space: nowrap; overflow: hidden; }
+.pola .tape { position: absolute; left: 50%; top: calc(var(--u) * -2.2); width: calc(var(--u) * 13); height: calc(var(--u) * 4.4); margin-left: calc(var(--u) * -6.5); background: rgba(250, 226, 160, .78); transform: rotate(-4deg); }
+.stamp { width: calc(var(--u) * 34); height: calc(var(--u) * 34); border-radius: 50%; border: calc(var(--u) * 1) solid var(--accent); color: var(--accent); display: grid; place-items: center; text-align: center; box-sizing: border-box; }
+.stamp::before { content: ""; position: absolute; inset: calc(var(--u) * 1.6); border: calc(var(--u) * .4) dashed var(--accent); border-radius: 50%; }
+.stamp .sw { font: 900 calc(var(--u) * 6)/1 "Archivo", var(--font-display); font-stretch: 112%; letter-spacing: .08em; }
+.stamp .sd { font: 800 calc(var(--u) * 2.6)/1.2 var(--font-body); letter-spacing: .1em; margin-top: calc(var(--u) * 1.2); }
+#plane { width: calc(var(--u) * 7); height: calc(var(--u) * 7); }
+#plane svg { width: 100%; height: 100%; }
+#title { text-align: center; }
+#title h1 { display: inline-block; font: 900 calc(var(--u) * 10)/1.1 var(--font-heading); color: var(--ink); background: var(--paper); padding: calc(var(--u) * 2) calc(var(--u) * 4) calc(var(--u) * 2.4); border-radius: calc(var(--u) * 1.6); letter-spacing: -.04em; margin: 0; white-space: pre-line; box-shadow: 0 calc(var(--u) * 1) 0 rgba(0,0,0,.12); }
+#title p { font: 800 calc(var(--u) * 3.8)/1.3 var(--font-body); color: var(--ink); margin: calc(var(--u) * 2) 0 0; }
+#scrim { position: absolute; background: rgba(237, 228, 211, .66); }
+.ctabox { display: flex; flex-direction: column; align-items: center; gap: calc(var(--u) * 2.6); text-align: center; }
+.chead { font: 900 calc(var(--u) * 7)/1.18 var(--font-heading); color: var(--ink); letter-spacing: -.035em; white-space: pre-line; word-break: keep-all; margin: 0; }
+.btn { display: inline-flex; align-items: center; gap: calc(var(--u) * 2); background: var(--accent); color: var(--accent-ink); font: 900 calc(var(--u) * 4.6)/1 var(--font-body); padding: calc(var(--u) * 2.8) calc(var(--u) * 5) calc(var(--u) * 3.1); border-radius: 999px; white-space: nowrap; box-shadow: 0 calc(var(--u) * .8) 0 rgba(0,0,0,.18); }
+.btn svg { width: 1em; height: 1em; fill: currentColor; }
+.handle { font: 700 calc(var(--u) * 3.2)/1.3 var(--font-body); color: var(--ink); opacity: .75; }
+.credit { font: 500 calc(var(--u) * 1.6)/1.25 var(--font-body); color: rgba(60, 50, 40, .7); white-space: pre-line; text-align: right; }
+</style>
+
+<div id="viewport"><div id="stage"><div id="cam"></div></div></div>
+
+<script>/*@GSAP@*/</script>
+<script>/*@DATA@*/</script>
+<script>/*@ENGINE_JS@*/</script>
+<script>
+(function () {
+  const S = Studio, M = S.M, C = S.content, B = S.brand, e = S.esc;
+  const cam = S.$('#cam');
+  const ARROW = '<svg viewBox="0 0 24 24"><path d="M5 11h10.2l-4.6-4.6L12 5l7 7-7 7-1.4-1.4 4.6-4.6H5z"/></svg>';
+  const stops = (C.stops || []).slice(0, 6);
+  const cta = C.cta || {};
+  const PIN = '<svg viewBox="0 0 40 50"><path d="M20 49 C20 49 3 30 3 18 A17 17 0 1 1 37 18 C37 30 20 49 20 49 Z" fill="var(--accent)" stroke="var(--ink)" stroke-width="2.4"/><circle cx="20" cy="18" r="6.5" fill="#fff"/></svg>';
+  const PLANE = '<svg viewBox="0 0 24 24"><path d="M21 16v-2l-8-5V3.5a1.5 1.5 0 0 0-3 0V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5z" fill="var(--ink)" stroke="#fff" stroke-width=".8"/></svg>';
+  cam.appendChild(S.h(`<div id="tv">
+    <div id="world"><svg class="map" id="map"></svg><div id="scrim"></div>
+      ${stops.map((s, i) => `<div class="pola abs" data-i="${i}"><i class="tape"></i><div class="im">${S.img(s[1]) ? `<img src="${S.img(s[1])}" alt="">` : ''}</div>${s[2] ? `<div class="cap">${e(s[2])}</div>` : ''}</div>
+        <div class="pin abs" data-i="${i}">${PIN}</div><div class="plabel abs" data-i="${i}"><b>${String(i + 1).padStart(2, '0')}</b>${e(s[0] || '')}</div>`).join('')}
+      <div id="plane" class="abs">${PLANE}</div>
+    </div>
+    <div class="stamp abs" id="stamp"><div><div class="sw">${e(C.stamp || '')}</div>${C.stampSub ? `<div class="sd">${e(C.stampSub)}</div>` : ''}</div></div>
+    <div id="title" class="abs"><h1>${e(C.title || '')}</h1>${C.sub ? `<p>${e(C.sub)}</p>` : ''}</div>
+    <div id="ctabox" class="abs ctabox">
+      ${cta.headline ? `<h2 class="chead">${e(cta.headline)}</h2>` : ''}
+      ${cta.button ? `<div class="btn"><span>${e(cta.button)}</span>${ARROW}</div>` : ''}
+      ${cta.sub ? `<div class="handle">${e(cta.sub)}</div>` : ''}
+    </div>
+    ${C.credit ? `<div class="credit abs" id="credit">${e(C.credit)}</div>` : ''}
+  </div>`));
+
+  S.start(S => {
+    const W = S.W, H = S.H, u = Math.min(W, H) / 100, sf = S.safe;
+    const sx = sf.left, sy = sf.top, sw = W - sf.left - sf.right, sh = H - sf.top - sf.bottom;
+    const wide = S.is('wide');
+    const n = Math.max(1, stops.length);
+    // 화면 기준 가운데(세이프존 가운데)와 실제 화면 가운데의 차이 → 카메라가 세이프존 가운데를 보게
+    const offX = W / 2 - (sx + sw / 2), offY = H / 2 - (sy + sh / 2);
+    // 들를 곳 좌표 (세로 화면은 아래로, 가로 화면은 오른쪽으로 진행)
+    const pw = Math.min(sw * (wide ? .3 : .5), (wide ? 50 : 54) * u);
+    const P = stops.map((_, i) => wide
+      ? { x: W * .7 + i * W * .62, y: H * .5 + (i % 2 ? -1 : 1) * H * .14, side: i % 2 ? 1 : -1 }
+      : { x: W * .5 + (i % 2 ? 1 : -1) * sw * .26, y: H * .8 + i * H * (S.is('tall') ? .5 : .62), side: i % 2 ? -1 : 1 });
+    const start = wide ? { x: W * .1, y: H * .5 } : { x: W * .5 - sw * .3, y: H * .2 };
+    const xs = P.map(p => p.x).concat(start.x), ys = P.map(p => p.y).concat(start.y);
+    const minX = Math.min(...xs) - W * .7, maxX = Math.max(...xs) + W * .7, minY = Math.min(...ys) - H * .6, maxY = Math.max(...ys) + H * .6;
+    const WW = maxX, WH = maxY;
+    const world = S.$('#world'); world.style.width = WW + 'px'; world.style.height = WH + 'px';
+    Object.assign(S.$('#scrim').style, { left: minX - W + 'px', top: minY - H + 'px', width: WW - minX + 2 * W + 'px', height: WH - minY + 2 * H + 'px' });
+    // ---- 지도 그리기 ----
+    const NS = 'http://www.w3.org/2000/svg', svg = S.$('#map');
+    svg.setAttribute('width', WW); svg.setAttribute('height', WH); svg.setAttribute('viewBox', `0 0 ${WW} ${WH}`);
+    const mk = (tag, a, parent = svg) => { const el = document.createElementNS(NS, tag); for (const k in a) el.setAttribute(k, a[k]); parent.appendChild(el); return el; };
+    const rnd = M.rng(11);
+    const blob = (cx, cy, r) => { const k = 8, pts = Array.from({ length: k }, (_, i) => { const a = i / k * Math.PI * 2, rr = r * (.7 + rnd() * .5); return [cx + Math.cos(a) * rr, cy + Math.sin(a) * rr]; }); let d = `M ${(pts[0][0] + pts[k - 1][0]) / 2} ${(pts[0][1] + pts[k - 1][1]) / 2}`; for (let i = 0; i < k; i++) { const p = pts[i], q = pts[(i + 1) % k]; d += ` Q ${p[0]} ${p[1]} ${(p[0] + q[0]) / 2} ${(p[1] + q[1]) / 2}`; } return d + ' Z'; };
+    for (let i = 0; i < 9; i++) mk('path', { class: 'contour', d: blob(minX + rnd() * (WW - minX), minY + rnd() * (WH - minY), W * (.2 + rnd() * .3)), 'stroke-width': u * .5 });
+    for (let i = 0; i < 6; i++) mk('path', { class: 'park', d: blob(minX + rnd() * (WW - minX), minY + rnd() * (WH - minY), W * (.06 + rnd() * .08)) });
+    const rv = wide ? `M ${minX} ${WH * .85} C ${WW * .3} ${WH * .6}, ${WW * .5} ${WH * 1.1}, ${WW} ${WH * .75}` : `M ${WW * .9} ${minY} C ${WW * .6} ${WH * .3}, ${WW * 1.1} ${WH * .55}, ${WW * .75} ${WH}`;
+    mk('path', { class: 'water', d: rv, 'stroke-width': 11 * u });
+    for (let i = 0; i < 16; i++) { const vert = i % 2; const c = vert ? minX + rnd() * (WW - minX) : minY + rnd() * (WH - minY); const sk = (rnd() - .5) * W * .4; mk('path', { class: 'road', d: vert ? `M ${c} ${minY} L ${c + sk} ${WH}` : `M ${minX} ${c} L ${WW} ${c + sk}`, 'stroke-width': (i % 5 ? 1.6 : 3.2) * u }); }
+    // 길: 지나는 점들을 부드러운 곡선으로
+    const pts = [start, ...P];
+    let d = `M ${pts[0].x} ${pts[0].y}`;
+    for (let i = 0; i < pts.length - 1; i++) {
+      const p0 = pts[Math.max(0, i - 1)], p1 = pts[i], p2 = pts[i + 1], p3 = pts[Math.min(pts.length - 1, i + 2)];
+      d += ` C ${p1.x + (p2.x - p0.x) / 6} ${p1.y + (p2.y - p0.y) / 6}, ${p2.x - (p3.x - p1.x) / 6} ${p2.y - (p3.y - p1.y) / 6}, ${p2.x} ${p2.y}`;
+    }
+    const defs = mk('defs', {}), mask = mk('mask', { id: 'rm', maskUnits: 'userSpaceOnUse', x: minX, y: minY, width: WW - minX, height: WH - minY }, defs);
+    const mpath = mk('path', { d, fill: 'none', stroke: '#fff', 'stroke-width': 5 * u, 'stroke-linecap': 'round' }, mask);
+    const route = mk('path', { class: 'route', d, mask: 'url(#rm)', 'stroke-width': 1.6 * u });
+    route.style.strokeDasharray = `${(u * .1).toFixed(2)} ${(u * 2.6).toFixed(2)}`;
+    const RL = route.getTotalLength();
+    const Ls = P.map(p => { let best = 0, bd = 1e18; for (let k = 0; k <= 400; k++) { const q = route.getPointAtLength(RL * k / 400), dd = (q.x - p.x) ** 2 + (q.y - p.y) ** 2; if (dd < bd) { bd = dd; best = RL * k / 400; } } return best; });
+    // ---- 핀·이름표·폴라로이드 배치 ----
+    const pins = S.$$('.pin', world), labels = S.$$('.plabel', world), polas = S.$$('.pola', world);
+    polas.forEach(p => { p.style.width = pw + 'px'; });
+    const polaH = polas[0] ? polas[0].offsetHeight : 0;
+    // 폴라로이드가 번호표를 가리지 않게 번호표 폭의 절반만큼 더 띄움
+    const gap = i => labels[i].offsetWidth / 2 + u * 2;
+    labels.forEach(l => { l.style.zIndex = 30; });
+    const layout = P.map((p, i) => wide
+      ? { py: p.y - polaH * .02, pxo: p.x + (i % 2 ? -1 : 1) * Math.max(pw * .7, pw * .5 + gap(i)), rot: i % 2 ? 5 : -5 }
+      : { pxo: p.x + p.side * (pw * .5 + Math.max(sw * .08, gap(i))), py: p.y - polaH * .1, rot: i % 2 ? -5 : 5 });
+    const plane = S.$('#plane'), stamp = S.$('#stamp'), scrim = S.$('#scrim'), title = S.$('#title'), ctab = S.$('#ctabox');
+    title.style.width = sw + 'px';
+    S.fit(S.$('h1', title), { max: (wide ? 8 : 10) * u, maxLines: 2 });
+    ctab.style.width = sw + 'px';
+    const credit = S.$('#credit'); if (credit) M.place(credit, sx + sw, sy + sh, { ax: 1, ay: 1 });
+    // 마지막 부채꼴 자리: 제목 아래와 버튼 위 사이
+    // 출처가 있으면 마무리 묶음을 그 위로 올림 (안내 줄과 겹치지 않게)
+    const ctaB = sy + sh - u * 2 - (credit ? credit.offsetHeight + u * 1.5 : 0);
+    const gTop = sy + u * 2 + title.offsetHeight + u * 3, gBot = ctaB - ctab.offsetHeight - u * 3;
+    const FAN = { y: (gTop + gBot) / 2, s: Math.min(wide ? .62 : .56, Math.max(.2, (gBot - gTop) * .86 / Math.max(1, polaH))) };
+    // ---- 시간표 ----
+    const T0 = 2.4, MOVE = 1.0, HOLD = 1.9, STEP = MOVE + HOLD;
+    const arrive = P.map((_, i) => T0 + i * STEP + MOVE);
+    const T4 = T0 + n * STEP, END = T4 + 3.8;
+    S.setDuration(END);
+    // 카메라 키 (세이프존 가운데를 봄)
+    const camAt = (x, y) => [x + offX, y + offY];
+    const focus = i => { const L = layout[i]; return camAt((P[i].x + L.pxo) / 2, P[i].y); };
+    const fitZoom = Math.min(sw / (Math.max(...xs) - Math.min(...xs) + pw * 2.2), sh / (Math.max(...ys) - Math.min(...ys) + polaH * 1.8), 1);
+    const overview = camAt((Math.max(...xs) + Math.min(...xs)) / 2, (Math.max(...ys) + Math.min(...ys)) / 2 + (wide ? 0 : -polaH * .1));
+    const camKeys = [[0, [...camAt(start.x + (wide ? W * .25 : 0), start.y + (wide ? 0 : H * .25)), 1.0]]];
+    P.forEach((p, i) => camKeys.push([T0 + i * STEP - .1, [...focus(i), 1], { f: .95, z: .95 }]));
+    camKeys.push([T4, [...overview, fitZoom * .92], { f: .8, z: 1 }]);
+
+    const root = S.$('#tv');
+    S.ambient(t => {
+      M.drift(root, t);
+      const c = M.anim(camKeys, t);
+      M.camera(world, c[0], c[1], c[2]);
+      // 길과 비행기
+      let L = 0;
+      P.forEach((p, i) => { const k = M.ease.inOutCubic(M.prog(t, T0 + i * STEP, MOVE)); L += ((i ? Ls[i] - Ls[i - 1] : Ls[0])) * k; });
+      M.draw(mpath, L / RL);
+      route.style.visibility = L > 0 ? 'inherit' : 'hidden';
+      const q = route.getPointAtLength(L), q2 = route.getPointAtLength(Math.min(RL, L + 2));
+      const ang = Math.atan2(q2.y - q.y, q2.x - q.x) * 180 / Math.PI + 90;
+      M.place(plane, q.x, q.y, { rot: ang, o: t > T0 - .2 && t < T4 + .2 ? 1 : 0, s: 1 / Math.max(.5, c[2]) * .9 });
+      // 들른 곳
+      P.forEach((p, i) => {
+        const ta = arrive[i];
+        const pk = M.spring(t - ta, { f: 2.6, z: .5 });
+        const hideK = 1 - M.prog(t, T4, .5);
+        M.place(pins[i], p.x, p.y - (1 - pk) * u * 30, { ax: .5, ay: 1, o: t > ta ? hideK : 0 });
+        const lk = M.spring(t - (ta + .25), 'pop');
+        M.place(labels[i], p.x, p.y + u * 2, { ax: .5, ay: 0, s: lk, o: t > ta + .25 ? hideK : 0 });
+        const L2 = layout[i];
+        const dk = M.spring(t - (ta + .3), { f: 2.2, z: .7 });
+        // 마지막: 폴라로이드가 화면 가운데로 모여 부채꼴로 펼쳐짐 (카메라 좌표를 거꾸로 계산)
+        const fk = M.spring(t - (T4 + .15 + i * .08), { f: 1.6, z: .82 });
+        const fx = sx + sw / 2 + (i - (n - 1) / 2) * pw * FAN.s * (wide ? 1.1 : .78), fy = FAN.y + Math.abs(i - (n - 1) / 2) * u * 2.4;
+        const wx = (fx - W / 2) / c[2] + c[0], wy = (fy - H / 2) / c[2] + c[1];
+        const fs = FAN.s / c[2];
+        M.place(polas[i], M.lerp(L2.pxo, wx, fk), M.lerp(L2.py, wy, fk), { rot: M.lerp(L2.rot + (1 - dk) * 14, (i - (n - 1) / 2) * 7, fk), s: M.lerp(1.35 - .35 * dk, fs, fk), o: t > ta + .3 ? M.clamp(dk * 3) : 0 });
+        polas[i].style.zIndex = 10 + i;
+      });
+      // 처음: 도장 + 제목
+      const sk = M.prog(t, .35, .3), sOut = M.prog(t, T0 - .4, .4);
+      M.place(stamp, sx + sw / 2, sy + sh * .42, { s: 2.2 - 1.2 * M.ease.inQuart(sk), rot: -14 + 6 * sk, o: sk > 0 ? Math.min(M.clamp(sk * 3), 1 - sOut) : 0 });
+      const intro = M.inout(t, .9, T0 - .3, 'snappy', .3);
+      const outro = M.spring(t - (T4 + .5), 'snappy');
+      const tk = t < T4 ? (intro <= 1 ? M.clamp(intro) : 2 - intro) : M.clamp(outro);
+      M.place(title, sx + sw / 2, t < T4 ? sy + sh * .74 : sy + u * 2, { ax: .5, ay: t < T4 ? .5 : 0, o: tk });
+      scrim.style.opacity = (.0 + M.ease.outCubic(M.prog(t, T4 + .3, .8))).toFixed(3); scrim.style.visibility = t > T4 + .3 ? 'inherit' : 'hidden';
+      const ck = M.spring(t - (T4 + .9), 'snappy');
+      M.place(ctab, sx + sw / 2, ctaB + (1 - ck) * u * 8, { ax: .5, ay: 1, o: t > T4 + .9 ? M.clamp(ck * 1.6) : 0 });
+      const btn = S.$('.btn', ctab);
+      if (btn) btn.style.transform = t > T4 + 1.7 ? `scale(${(1 + .035 * Math.sin((t - T4) * 6)).toFixed(4)})` : '';
+    });
+  });
+})();
+</script>

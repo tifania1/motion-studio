@@ -1,0 +1,7 @@
+{
+  "name": "수강생 모집 (노트)",
+  "description": "모눈 노트 한 장을 아래로 넘겨 보는 영상. 손으로 그린 동그라미, 테이프 붙인 사진, 칸이 채워지는 시간표, 하나씩 체크되는 커리큘럼, 남은 자리, 포스트잇 마무리. 18초.",
+  "fonts": [
+    { "family": "Archivo", "weight": "100 900", "stretch": "62% 125%", "file": "fonts/Archivo-Variable.woff2" }
+  ]
+}

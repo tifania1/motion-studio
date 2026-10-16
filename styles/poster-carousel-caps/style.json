@@ -1,0 +1,126 @@
+{
+  "id": "poster-carousel-caps",
+  "name": "포스터 판 넘기기",
+  "group": "타이포",
+  "template": "typeslam",
+  "summary": "밝은 회색 작업판 위에 원색 포스터들이 한 줄로 서 있고, 박자마다 옆으로 한 칸씩 넘어가요. 판마다 굵은 대문자 글자가 다른 방식으로 들어와요",
+  "tags": [
+    "타이포",
+    "포스터",
+    "행사",
+    "팝업",
+    "원색"
+  ],
+  "hand": false,
+  "source": {
+    "site": "keyframe.gallery",
+    "ref": "mux:tlBwwkgNxuBrKkXZvRrIIO3012fq00MO02FZmqrrr0201HVk",
+    "at": "1.6–12.6초",
+    "note": "작업판 위 포스터 판이 가로로 줄지어 한 칸씩 미끄러지는 리듬, 가운데 판만 보라 선택선과 모서리 손잡이, 판마다 다른 글자 등장(넓은 자간에서 한 글자씩 떨어짐, 뒤집힌 글자가 돌아옴, 글자마다 흐림에서 선명, 가로로 잘린 글자가 맞춰짐), 꽉 찬 굵은 대문자와 좁은 줄 간격, 검은 화면 끝 장면과 보라 알약 버튼"
+  },
+  "palette": [
+    "#E3E3E5",
+    "#E1361F",
+    "#5DF04A",
+    "#4FA6EE",
+    "#121212",
+    "#8B6CF0"
+  ],
+  "colors": {
+    "bg": "#E3E3E5",
+    "onBg": "#141414",
+    "onBgMuted": "rgba(20,20,20,.62)",
+    "paper": "#121212",
+    "ink": "#F3F3F1",
+    "accent": "#E1361F",
+    "accentInk": "#111111",
+    "pattern": "rgba(20,20,20,.06)",
+    "glow": "rgba(139,108,240,.35)"
+  },
+  "type": {
+    "display": [
+      "Archivo",
+      "Noto Sans KR"
+    ],
+    "heading": [
+      "Archivo",
+      "Noto Sans KR"
+    ],
+    "body": [
+      "Archivo",
+      "Noto Sans KR"
+    ]
+  },
+  "fonts": [
+    {
+      "family": "Archivo",
+      "weight": "100 900",
+      "stretch": "62% 125%",
+      "file": "fonts/Archivo-Variable.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 900,
+      "file": "fonts/NotoSansKR-Black.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 500,
+      "file": "fonts/NotoSansKR-Medium.woff2"
+    }
+  ],
+  "look": {},
+  "shape": {
+    "radius": "calc(var(--u) * 0.4)"
+  },
+  "motion": {
+    "pace": "빠름",
+    "bpm": 120,
+    "ease": "expo.out",
+    "stagger": 0.7,
+    "transitions": [
+      "push",
+      "cut"
+    ]
+  },
+  "scenes": {
+    "bg": "solid",
+    "align": "center",
+    "card": "flat",
+    "marker": "color",
+    "weight": 900,
+    "tracking": -0.03,
+    "case": "upper",
+    "rough": false,
+    "title": "mask",
+    "frame": "poster",
+    "deco": [
+      "handles",
+      "cursor"
+    ],
+    "number": "count",
+    "scale": 1.3,
+    "schemes": [
+      "accent",
+      "paper",
+      "dark"
+    ]
+  },
+  "signature": [
+    "밝은 회색 작업판 위 포스터 판이 가로로 줄지어 있고(판 사이 간격은 판 폭의 1/3, 양옆 판이 화면 가장자리에 반쯤 보임), 두 박마다 줄 전체가 왼쪽으로 한 칸 0.45초에 미끄러짐. 가운데 판만 1px 보라 선택선과 네 모서리 작은 흰 손잡이, 위에 작은 회색 이름표",
+    "판마다 바탕색이 바뀌고(하늘·빨강·국방·형광 연두·검정·베이지), 굵은 대문자가 판을 꽉 채움(줄 간격 0.88). 글자 등장이 판마다 다름: 넓은 자간에서 한 글자씩 떨어지며 좁혀짐 / 위아래 뒤집힌 글자가 돌아옴 / 글자마다 흐림에서 선명 / 가로로 잘린 조각이 어긋났다 맞춰짐",
+    "마지막엔 작업판이 사라지고 검은 화면에 굵은 흰 두 줄이 마스크 아래에서 올라온 뒤, 짧은 한 마디 → 보라 알약 버튼이 톡 커지고 커서가 와서 누름"
+  ],
+  "fits": [
+    "행사·팝업 스토어 안내",
+    "신상품·컬렉션 여러 개 소개",
+    "이번 주 일정·라인업",
+    "포스터 여러 장을 쓰는 캠페인"
+  ],
+  "avoid": [
+    "세리프 글꼴",
+    "가는 글씨",
+    "판 하나에 글 네 줄 넘게",
+    "부드러운 그라디언트 바탕"
+  ]
+}

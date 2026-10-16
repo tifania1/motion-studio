@@ -1,0 +1,139 @@
+{
+  "id": "crt-glow-focus",
+  "name": "브라운관 초점 글로우",
+  "group": "시네마틱",
+  "template": "cinema",
+  "summary": "주사선 낀 어두운 브라운관에 비스듬히 누운 코드가 흐르고, 세리프 한 줄이 흐림에서 초록·분홍 번짐으로 맺혔다 흰 빛으로 가라앉는 밤 화면",
+  "tags": [
+    "시네마틱",
+    "브라운관",
+    "세리프",
+    "개발자",
+    "빛 번짐"
+  ],
+  "hand": false,
+  "source": {
+    "site": "keyframe.gallery",
+    "ref": "mux:DInRCGe1dD2bTXtkjC68bDiaOqX98zPGw8DYLEBgfHw",
+    "at": "0–11.5초, 11.7–24.4초",
+    "note": "비스듬히 누운 코드 화면과 얕은 초점, 지운 줄 빨간 띠·더한 줄 초록 띠, 빛나는 버튼, 주사선과 색 어긋남, 세리프 문장이 흐림에서 초록·분홍 번짐으로 맺혔다 흰 빛으로 가라앉는 초점 당기기, 작은 부제가 반짝이며 쳐지는 장면, 브라운관을 끄듯 글이 오므라져 점이 되는 엔딩"
+  },
+  "palette": [
+    "#1C1D1D",
+    "#ECE9E4",
+    "#E2366B",
+    "#4FD08A",
+    "#7C6CF2",
+    "#F2B84B"
+  ],
+  "colors": {
+    "bg": "#1C1D1D",
+    "onBg": "#ECE9E4",
+    "onBgMuted": "rgba(236,233,228,.6)",
+    "paper": "#262828",
+    "ink": "#ECE9E4",
+    "accent": "#7C6CF2",
+    "accentInk": "#FFFFFF",
+    "pattern": "rgba(236,233,228,.06)",
+    "glow": "rgba(236,233,228,.35)"
+  },
+  "type": {
+    "display": [
+      "Instrument Serif",
+      "Gowun Batang"
+    ],
+    "heading": [
+      "Instrument Serif",
+      "Gowun Batang"
+    ],
+    "body": [
+      "Geist",
+      "Noto Sans KR"
+    ]
+  },
+  "fonts": [
+    {
+      "family": "Instrument Serif",
+      "weight": 400,
+      "file": "fonts/InstrumentSerif-Regular.woff2"
+    },
+    {
+      "family": "Gowun Batang",
+      "weight": 400,
+      "file": "fonts/GowunBatang-Regular.woff2"
+    },
+    {
+      "family": "Geist",
+      "weight": "100 900",
+      "file": "fonts/Geist-Variable.woff2"
+    },
+    {
+      "family": "Geist Mono",
+      "weight": "100 900",
+      "file": "fonts/GeistMono-Variable.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 500,
+      "file": "fonts/NotoSansKR-Medium.woff2"
+    }
+  ],
+  "look": {
+    "scanlines": 0.35,
+    "rgbSplit": {
+      "amount": 1.2,
+      "jitter": 0.25,
+      "fps": 12
+    },
+    "grain": 0.08,
+    "vignette": 0.5
+  },
+  "shape": {
+    "radius": "calc(var(--u) * 1)"
+  },
+  "motion": {
+    "pace": "느림",
+    "bpm": 84,
+    "ease": "sine.inOut",
+    "stagger": 1,
+    "transitions": [
+      "blur",
+      "fade"
+    ]
+  },
+  "scenes": {
+    "bg": "solid",
+    "align": "center",
+    "card": "outline",
+    "marker": "color",
+    "weight": 400,
+    "tracking": -0.01,
+    "case": "none",
+    "rough": false,
+    "title": "blur",
+    "frame": "terminal",
+    "deco": [],
+    "number": "count",
+    "scale": 1.1,
+    "schemes": [
+      "dark"
+    ]
+  },
+  "signature": [
+    "초점 당기기: 세리프 한 줄이 크게 흐린 덩어리(블러 2.5u)에서 1초에 걸쳐 맺히고, 맺히는 동안 글자 위쪽은 초록·아래쪽은 분홍으로 번졌다가 0.6초 뒤 흰 빛(옅은 글로우)으로 가라앉음. 나갈 때는 다시 흐려지며 사라짐",
+    "비스듬히 누운 코드 화면(앞으로 25° 눕고 옆으로 18° 돎) 위를 카메라가 천천히 미끄러지고, 초점이 맞는 줄 근처만 선명하고 위아래는 흐림. 지운 줄은 빨간 띠, 더한 줄은 초록 띠가 줄 번호부터 옆으로 칠해짐",
+    "끝: 글이 흐려지며 가로로 오므라져 둥근 점 하나가 되고(브라운관을 끌 때처럼), 점이 마크로 맺히는 순간 주사선·번짐이 걷히며 깨끗한 검은 화면에 이름이 뜸"
+  ],
+  "fits": [
+    "개발자 도구·기술 서비스 발표",
+    "신기능 예고",
+    "밤 분위기 한 줄 메시지",
+    "레트로 감성 브랜드 티저"
+  ],
+  "avoid": [
+    "밝은 바탕",
+    "빠른 컷 연타",
+    "굵은 고딕 큰 제목",
+    "원색 그라디언트"
+  ]
+}

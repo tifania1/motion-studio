@@ -1,0 +1,264 @@
+<title>/*@TITLE@*/</title>
+<style>
+/*@FONTFACES@*/
+/*@BRAND_CSS@*/
+/*@ENGINE_CSS@*/
+
+/* ===== opening 템플릿: 매장 오픈 =====
+   철제 셔터에 붙은 안내문 → 셔터가 말려 올라가며 가게 사진 → 매달린 간판이 CLOSED에서 OPEN으로 뒤집힘
+   → 지도에 핀이 꽂히고 길이 그려짐 → 영수증이 인쇄되며 오픈 혜택 → 날짜와 함께 끝. */
+#op { position: absolute; inset: 0; background: var(--bg); overflow: hidden; }
+.abs { position: absolute; left: 0; top: 0; }
+.full { position: absolute; inset: 0; }
+#store img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+#store .shade { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,.25), rgba(0,0,0,0) 30%, rgba(0,0,0,.15) 55%, rgba(0,0,0,.78)); }
+#store .empty { position: absolute; inset: 0; background: repeating-linear-gradient(135deg, var(--bg) 0 calc(var(--u) * 6), var(--accent) calc(var(--u) * 6) calc(var(--u) * 6.4)); opacity: .5; }
+#shutter { position: absolute; left: 0; top: 0; width: 100%; overflow: hidden; background: #8e949b;
+  background-image: repeating-linear-gradient(180deg, #a9afb6 0, #c3c8ce calc(var(--u) * 1.1), #9aa0a7 calc(var(--u) * 2.4), #7c828a calc(var(--u) * 3.1), #8e949b calc(var(--u) * 3.6)); }
+#shutter .bar { position: absolute; left: 0; right: 0; bottom: 0; height: calc(var(--u) * 5); background: linear-gradient(180deg, #5d636a, #3f444a); }
+#shutter .bar i { position: absolute; left: 50%; top: 30%; width: calc(var(--u) * 14); height: calc(var(--u) * 1.6); margin-left: calc(var(--u) * -7); border-radius: 99px; background: #2b2f34; }
+.notice { background: var(--paper); color: var(--ink); padding: calc(var(--u) * 5) calc(var(--u) * 6); text-align: center; box-shadow: 0 calc(var(--u) * 1) calc(var(--u) * 3) rgba(0,0,0,.3); }
+.notice .tape { position: absolute; width: calc(var(--u) * 16); height: calc(var(--u) * 5); background: rgba(255, 238, 190, .78); top: calc(var(--u) * -2.2); }
+.notice .tape.l { left: calc(var(--u) * -3); transform: rotate(-24deg); }
+.notice .tape.r { right: calc(var(--u) * -3); transform: rotate(22deg); }
+.notice .soon { font: 900 calc(var(--u) * 8)/1 "Archivo", var(--font-display); font-stretch: 112%; letter-spacing: .02em; white-space: nowrap; }
+.notice .dt { font: 900 calc(var(--u) * 20)/.9 "Archivo", var(--font-display); font-stretch: 75%; color: var(--accent); white-space: nowrap; letter-spacing: -.02em; }
+.notice .ds { font: 800 calc(var(--u) * 4.2)/1.2 var(--font-body); margin-top: calc(var(--u) * 1.6); white-space: nowrap; }
+.notice .face { backface-visibility: hidden; }
+.notice .back { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; transform: rotateY(180deg); backface-visibility: hidden; }
+#sign { width: 1px; height: 1px; perspective: 900px; }
+#sign .str { position: absolute; top: 0; width: 2px; background: rgba(255,255,255,.85); }
+#sign .board { position: absolute; left: 0; transform-style: preserve-3d; }
+#sign .board > div { position: absolute; inset: 0; display: grid; place-items: center; border-radius: calc(var(--u) * 2); font: 900 calc(var(--u) * 7.2)/1 "Archivo", var(--font-display); font-stretch: 108%; letter-spacing: .05em; backface-visibility: hidden; border: calc(var(--u) * .8) solid #fff; box-sizing: border-box; }
+#sign .closed { background: #2a2a2e; color: #fff; }
+#sign .open { background: var(--accent); color: var(--accent-ink); transform: rotateY(180deg); }
+#headl { color: #fff; }
+#headl h1 { font: 900 calc(var(--u) * 10)/1.14 var(--font-heading); letter-spacing: -.04em; white-space: pre-line; word-break: keep-all; margin: 0; text-shadow: 0 calc(var(--u) * .4) calc(var(--u) * 2) rgba(0,0,0,.4); }
+#headl p { font: 700 calc(var(--u) * 4.2)/1.4 var(--font-body); margin: calc(var(--u) * 2) 0 0; opacity: .92; white-space: pre-line; }
+#map { position: absolute; inset: 0; background: #EFE9DD; overflow: hidden; }
+#map svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+#map .road { fill: none; stroke: #fff; stroke-linecap: round; }
+#map .road.edge { stroke: #D9D1C1; }
+#map .river { fill: none; stroke: #BFD6DA; stroke-linecap: round; }
+#map .route { fill: none; stroke: var(--accent); stroke-linecap: round; stroke-dasharray: 2 18; }
+#pin { width: calc(var(--u) * 12); height: calc(var(--u) * 15); }
+#pin svg { width: 100%; height: 100%; overflow: visible; }
+#pinShadow { width: calc(var(--u) * 7); height: calc(var(--u) * 2); border-radius: 50%; background: rgba(0,0,0,.22); }
+.pulse { width: calc(var(--u) * 10); height: calc(var(--u) * 10); border-radius: 50%; border: calc(var(--u) * .6) solid var(--accent); box-sizing: border-box; }
+#station { display: flex; align-items: center; gap: calc(var(--u) * 1.4); background: #fff; padding: calc(var(--u) * 1.4) calc(var(--u) * 2.4); border-radius: 999px; font: 800 calc(var(--u) * 3.2)/1 var(--font-body); color: #333; box-shadow: 0 calc(var(--u) * .5) calc(var(--u) * 1.5) rgba(0,0,0,.15); white-space: nowrap; }
+#station b { width: calc(var(--u) * 3.2); height: calc(var(--u) * 3.2); border-radius: 50%; background: #2f6fd6; display: inline-block; }
+#addr { background: #fff; color: var(--ink); border-radius: calc(var(--u) * 2.4); padding: calc(var(--u) * 3.6) calc(var(--u) * 4.4); box-shadow: 0 calc(var(--u) * 1) calc(var(--u) * 3.4) rgba(0,0,0,.18); text-align: left; }
+#addr .pl { font: 900 calc(var(--u) * 5.4)/1.15 var(--font-heading); letter-spacing: -.03em; white-space: nowrap; }
+#addr .ad { font: 600 calc(var(--u) * 3.3)/1.35 var(--font-body); opacity: .75; margin-top: calc(var(--u) * 1); white-space: nowrap; }
+#addr .hi { display: inline-block; margin-top: calc(var(--u) * 2); font: 800 calc(var(--u) * 3.2)/1 var(--font-body); background: var(--accent); color: var(--accent-ink); padding: calc(var(--u) * 1.3) calc(var(--u) * 2.2); border-radius: 999px; white-space: nowrap; }
+#perks { position: absolute; inset: 0; background: var(--bg); overflow: hidden; background-image: radial-gradient(circle, var(--pattern) 0 calc(var(--u) * .4), transparent calc(var(--u) * .45)); background-size: calc(var(--u) * 4) calc(var(--u) * 4); }
+#slot { background: linear-gradient(180deg, #3a3a40, #1d1d20); border-radius: calc(var(--u) * 3) calc(var(--u) * 3) calc(var(--u) * 1.4) calc(var(--u) * 1.4); box-shadow: 0 calc(var(--u) * 1.4) calc(var(--u) * 3) rgba(0,0,0,.35); }
+#slot::before { content: ""; position: absolute; left: calc(var(--u) * 3); right: calc(var(--u) * 3); top: calc(var(--u) * 1.6); height: calc(var(--u) * 1.2); border-radius: 99px; background: #050506; }
+#slot::after { content: ""; position: absolute; right: calc(var(--u) * 4); bottom: calc(var(--u) * 2.4); width: calc(var(--u) * 2); height: calc(var(--u) * 2); border-radius: 50%; background: #5bd36b; }
+#rcpt { overflow: hidden; }
+#rcpt .paper { background: #fbfbf8; color: #222; padding: calc(var(--u) * 5) calc(var(--u) * 5.4) calc(var(--u) * 6); font-family: var(--font-body); box-sizing: border-box; position: relative; }
+#rcpt .paper::after { content: ""; position: absolute; left: 0; right: 0; top: calc(var(--u) * -1.6); height: calc(var(--u) * 3.2); background: radial-gradient(circle at 50% 100%, #fbfbf8 calc(var(--u) * 1.6), transparent calc(var(--u) * 1.7)) 0 0 / calc(var(--u) * 3.2) 100% repeat-x; }
+#rcpt { overflow: visible; }
+#rcpt .clip { overflow: hidden; position: absolute; left: 0; right: 0; bottom: 0; padding-top: calc(var(--u) * 2); }
+#rcpt .rh { text-align: center; font: 900 calc(var(--u) * 7.4)/1.1 var(--font-heading); letter-spacing: -.03em; }
+#rcpt .rs { text-align: center; font: 700 calc(var(--u) * 3)/1.2 var(--font-body); opacity: .6; margin-top: calc(var(--u) * 1.2); letter-spacing: .1em; }
+#rcpt .hr { border-top: calc(var(--u) * .4) dashed #bbb; margin: calc(var(--u) * 3.4) 0; }
+#rcpt .ri { display: flex; gap: calc(var(--u) * 2.4); align-items: baseline; font: 800 calc(var(--u) * 5.4)/1.3 var(--font-body); margin: calc(var(--u) * 2) 0; word-break: keep-all; }
+#rcpt .ri b { flex: none; color: var(--accent); font: 900 calc(var(--u) * 5.4)/1.3 "Archivo", var(--font-display); }
+#rcpt .rt { display: flex; justify-content: space-between; font: 800 calc(var(--u) * 4)/1.3 var(--font-body); gap: calc(var(--u) * 3); }
+#rcpt .bars { height: calc(var(--u) * 8); margin-top: calc(var(--u) * 3.4); background: repeating-linear-gradient(90deg, #222 0 3px, transparent 3px 6px, #222 6px 7px, transparent 7px 11px, #222 11px 15px, transparent 15px 17px); }
+#final { position: absolute; inset: 0; background: var(--accent); }
+.ctabox { display: flex; flex-direction: column; align-items: center; gap: calc(var(--u) * 3.2); text-align: center; color: var(--accent-ink); }
+.ctabox .big { font: 900 calc(var(--u) * 26)/.85 "Archivo", var(--font-display); font-stretch: 75%; letter-spacing: -.02em; white-space: nowrap; }
+.ctabox .opn { font: 900 calc(var(--u) * 9)/1 "Archivo", var(--font-display); font-stretch: 125%; letter-spacing: .12em; padding-left: .12em; white-space: nowrap; }
+.logo { display: flex; align-items: baseline; gap: calc(var(--u) * 1.6); }
+.logo img { height: calc(var(--u) * 9); width: auto; }
+.logo .lt { font: 900 calc(var(--u) * 6.4)/1 var(--font-display); white-space: nowrap; }
+.logo .ls { font: 700 calc(var(--u) * 2.4)/1 var(--font-display); letter-spacing: .3em; white-space: nowrap; }
+.chead { font: 900 calc(var(--u) * 6.4)/1.2 var(--font-heading); letter-spacing: -.03em; white-space: pre-line; word-break: keep-all; margin: 0; }
+.btn { display: inline-flex; align-items: center; gap: calc(var(--u) * 2); background: var(--accent-ink); color: var(--accent); font: 900 calc(var(--u) * 4.6)/1 var(--font-body); padding: calc(var(--u) * 2.8) calc(var(--u) * 5) calc(var(--u) * 3.1); border-radius: 999px; white-space: nowrap; }
+.btn svg { width: 1em; height: 1em; fill: currentColor; }
+.handle { font: 700 calc(var(--u) * 3.2)/1.3 var(--font-body); opacity: .8; white-space: pre-line; }
+.credit { font: 500 calc(var(--u) * 1.7)/1.2 var(--font-body); color: #fff; opacity: .8; text-shadow: 0 1px 3px rgba(0,0,0,.6); white-space: nowrap; }
+</style>
+
+<div id="viewport"><div id="stage"><div id="cam"></div></div></div>
+
+<script>/*@GSAP@*/</script>
+<script>/*@DATA@*/</script>
+<script>/*@ENGINE_JS@*/</script>
+<script>
+(function () {
+  const S = Studio, M = S.M, C = S.content, B = S.brand, e = S.esc;
+  const cam = S.$('#cam');
+  const ARROW = '<svg viewBox="0 0 24 24"><path d="M5 11h10.2l-4.6-4.6L12 5l7 7-7 7-1.4-1.4 4.6-4.6H5z"/></svg>';
+  const cta = C.cta || {}, map = C.map || {}, perks = C.perks || {};
+  const sign = C.sign || ['CLOSED', 'OPEN'];
+  const photo = S.img((C.photos || [])[0]);
+  const logoImg = B.logo && S.img(B.logo);
+
+  cam.appendChild(S.h(`<div id="op">
+    <div id="store" class="full">${photo ? `<img src="${photo}" alt="">` : '<div class="empty"></div>'}<div class="shade"></div>
+      <div id="sign" class="abs"><i class="str"></i><i class="str"></i><div class="board"><div class="closed">${e(sign[0])}</div><div class="open">${e(sign[1])}</div></div></div>
+      <div id="headl" class="abs"><h1>${e(C.headline || '')}</h1>${C.sub ? `<p>${e(C.sub)}</p>` : ''}</div>
+      ${C.credit ? `<div class="credit abs" id="credit">${e(C.credit)}</div>` : ''}
+    </div>
+    <div id="map"><svg id="mapsvg"></svg>
+      <div id="station" class="abs"><b></b>${e(map.from || '')}</div>
+      <div class="pulse abs"></div><div class="pulse abs"></div>
+      <div id="pinShadow" class="abs"></div>
+      <div id="pin" class="abs"><svg viewBox="0 0 40 50"><path d="M20 49 C20 49 3 30 3 18 A17 17 0 1 1 37 18 C37 30 20 49 20 49 Z" fill="var(--accent)" stroke="var(--ink)" stroke-width="2.4"/><circle cx="20" cy="18" r="6.5" fill="#fff"/></svg></div>
+      <div id="addr" class="abs"><div class="pl">${e(map.place || '')}</div>${map.address ? `<div class="ad">${e(map.address)}</div>` : ''}${map.hint ? `<div class="hi">${e(map.hint)}</div>` : ''}</div>
+    </div>
+    <div id="perks">
+      <div id="slot" class="abs"></div>
+      <div id="rcpt" class="abs"><div class="clip"><div class="paper">
+        <div class="rh">${e(perks.title || '')}</div><div class="rs">${e(perks.sub || C.date || '')}</div>
+        <div class="hr"></div>
+        ${(perks.items || []).map((x, i) => `<div class="ri"><b>${String(i + 1).padStart(2, '0')}</b><span>${e(x)}</span></div>`).join('')}
+        ${C.time ? `<div class="hr"></div><div class="rt"><span>${e(C.timeLabel || '영업시간')}</span><span>${e(C.time)}</span></div>` : ''}
+        <div class="bars"></div>
+      </div></div></div>
+    </div>
+    <div id="final">
+      <div id="ctabox" class="abs ctabox">
+        <div class="big">${e(C.date || '')}</div><div class="opn">${e(C.openWord || 'OPEN')}</div>
+        <div class="logo">${logoImg ? `<img src="${logoImg}" alt="">` : ''}${B.logoText ? `<span class="lt">${e(B.logoText)}</span>` : ''}${B.logoSub ? `<span class="ls">${e(B.logoSub)}</span>` : ''}</div>
+        ${cta.headline ? `<h2 class="chead">${e(cta.headline)}</h2>` : ''}
+        ${cta.button ? `<div class="btn"><span>${e(cta.button)}</span>${ARROW}</div>` : ''}
+        ${cta.sub ? `<div class="handle">${e(cta.sub)}</div>` : ''}
+      </div>
+    </div>
+    <div id="shutter"><div class="bar"><i></i></div>
+      <div class="notice abs" id="notice"><i class="tape l"></i><i class="tape r"></i>
+        <div class="face"><div class="soon">${e(C.soon || 'COMING SOON')}</div>${C.soonSub ? `<div class="ds">${e(C.soonSub)}</div>` : ''}</div>
+        <div class="back"><div class="dt">${e(C.date || '')}</div>${C.dateText ? `<div class="ds">${e(C.dateText)}</div>` : ''}</div>
+      </div>
+    </div>
+  </div>`));
+
+  S.start(S => {
+    const W = S.W, H = S.H, u = Math.min(W, H) / 100, sf = S.safe;
+    const sx = sf.left, sy = sf.top, sw = W - sf.left - sf.right, sh = H - sf.top - sf.bottom;
+    const cx = sx + sw / 2, cy = sy + sh / 2;
+    const wide = S.is('wide');
+    const T1 = 3.0, T2 = 7.0, T3 = 10.6, T4 = 14.0, END = 17.5;
+    S.setDuration(END);
+
+    // ---- 셔터와 안내문 ----
+    const shutter = S.$('#shutter'), notice = S.$('#notice');
+    shutter.style.height = H + 'px';
+    notice.style.transformStyle = 'preserve-3d';
+    // ---- 간판 ----
+    const sign = S.$('#sign'), board = S.$('.board', sign), strs = S.$$('.str', sign);
+    const bw = (wide ? 30 : 38) * u, bh = bw * .42;
+    board.style.width = bw + 'px'; board.style.height = bh + 'px';
+    const signY = sy + sh * (wide ? .22 : .2), strLen = signY + u * 2;
+    board.style.left = -bw / 2 + 'px'; board.style.top = '0px';
+    strs.forEach((s, i) => { s.style.left = (i ? bw * .32 : -bw * .32) + 'px'; s.style.top = -strLen + 'px'; s.style.height = strLen + u * 1 + 'px'; });
+    const headl = S.$('#headl');
+    headl.style.width = (wide ? sw * .55 : sw) + 'px';
+    S.fit(S.$('h1', headl), { max: (wide ? 9 : 10) * u, maxLines: 3 });
+    const credit = S.$('#credit'); if (credit) M.place(credit, sx + sw, sy, { ax: 1, ay: 0 });
+
+    // ---- 지도 ----
+    const NS = 'http://www.w3.org/2000/svg', svg = S.$('#mapsvg');
+    svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
+    const rnd = M.rng(7);
+    const mk = (tag, attrs, parent = svg) => { const el = document.createElementNS(NS, tag); for (const k in attrs) el.setAttribute(k, attrs[k]); parent.appendChild(el); return el; };
+    const PIN = { x: wide ? sx + sw * .38 : cx, y: wide ? cy + u * 4 : sy + sh * .42 };
+    mk('path', { class: 'river', d: `M ${-W * .1} ${H * .78} C ${W * .3} ${H * .66}, ${W * .55} ${H * .95}, ${W * 1.1} ${H * .7}`, 'stroke-width': 9 * u });
+    const roads = [];
+    for (let i = 0; i < 7; i++) { const y = H * (.08 + i * .14) + (rnd() - .5) * u * 8; roads.push([[-50, y], [W + 50, y + (rnd() - .5) * u * 14], (i % 3 ? 2.2 : 4) * u]); }
+    for (let i = 0; i < 6; i++) { const x = W * (.06 + i * .18) + (rnd() - .5) * u * 8; roads.push([[x, -50], [x + (rnd() - .5) * u * 16, H + 50], (i % 2 ? 2.2 : 3.6) * u]); }
+    roads.push([[-50, H * .1], [W + 50, H * .62], 5 * u]);
+    const roadEls = roads.map(([a, b, w]) => { mk('path', { class: 'road edge', d: `M ${a[0]} ${a[1]} L ${b[0]} ${b[1]}`, 'stroke-width': w + u * .8 }); return mk('path', { class: 'road', d: `M ${a[0]} ${a[1]} L ${b[0]} ${b[1]}`, 'stroke-width': w }); });
+    const ST = { x: wide ? sx + sw * .1 : sx + sw * .12, y: wide ? sy + sh * .2 : sy + sh * .12 };
+    const rd = `M ${ST.x} ${ST.y} L ${ST.x} ${PIN.y - u * 14} L ${PIN.x - u * 10} ${PIN.y - u * 14} Q ${PIN.x} ${PIN.y - u * 14} ${PIN.x} ${PIN.y - u * 4}`;
+    const defs = mk('defs', {}), maskEl = mk('mask', { id: 'routeMask', maskUnits: 'userSpaceOnUse', x: 0, y: 0, width: W, height: H }, defs);
+    const maskPath = mk('path', { d: rd, fill: 'none', stroke: '#fff', 'stroke-width': 4 * u, 'stroke-linecap': 'round' }, maskEl);
+    const route = mk('path', { class: 'route', d: rd, 'stroke-width': 1.8 * u, mask: 'url(#routeMask)' });
+    route.style.strokeDasharray = `${(u * .1).toFixed(2)} ${(u * 2.4).toFixed(2)}`;
+    const station = S.$('#station'), pin = S.$('#pin'), pshadow = S.$('#pinShadow'), pulses = S.$$('#map .pulse'), addr = S.$('#addr');
+    const mapEl = S.$('#map');
+
+    // ---- 영수증 ----
+    const slot = S.$('#slot'), rcpt = S.$('#rcpt'), paper = S.$('.paper', rcpt);
+    const rw = Math.min(sw * .86, (wide ? 70 : 84) * u);
+    rcpt.style.width = paper.style.width = rw + 'px';
+    const rh = paper.offsetHeight + u * 2;
+    slot.style.width = rw + u * 10 + 'px'; slot.style.height = u * 9 + 'px';
+    const slotY = sy + sh - u * 3;
+    const perksEl = S.$('#perks');
+    const fin = S.$('#final'), ctab = S.$('#ctabox');
+    ctab.style.width = sw + 'px';
+    S.fit(S.$('.big', ctab), { max: (wide ? 22 : 26) * u, maxLines: 1 });
+    const chd = S.$('.chead', ctab); if (chd) S.fit(chd, { max: 6.4 * u, maxLines: 2 });
+    const store = S.$('#store'), storeImg = S.$('#store img');
+
+    const root = S.$('#op');
+    S.ambient(t => {
+      M.drift(root, t);
+      // 1) 셔터: 안내문이 붙어 있다가 뒤집혀 날짜가 되고, 셔터가 말려 올라감
+      const up = M.spring(t - T1, { f: 1.5, z: .9 });
+      M.show(shutter, up < .999);
+      shutter.style.transform = `translateY(${(-up * H * 1.02).toFixed(1)}px)`;
+      const nk = M.spring(t - .2, 'pop');
+      const flip = 180 * M.ease.inOutCubic(M.prog(t, 1.3, .6));
+      notice.style.transform = `translate(${(cx).toFixed(1)}px, ${(sy + sh * .42).toFixed(1)}px) translate(-50%, -50%) rotate(${(-3 + (1 - nk) * 20).toFixed(2)}deg) rotateY(${flip.toFixed(2)}deg) scale(${nk.toFixed(4)})`;
+      S.$('.face', notice).style.visibility = flip < 90 ? 'inherit' : 'hidden';
+      // 2) 가게 사진 + 간판 뒤집기
+      M.show(store, t < T2 + .8);
+      if (storeImg) storeImg.style.transform = `scale(${(1.14 - .1 * M.prog(t, T1, T2 - T1 + 1)).toFixed(4)})`;
+      const sk = M.spring(t - (T1 + .35), { f: 1.4, z: .55 });
+      const sflip = 180 * M.ease.inOutCubic(M.prog(t, T1 + 1.4, .7));
+      const swingA = M.swing(t, T1 + 2.1, 7, 1, .2);
+      sign.style.transform = `translate(${cx.toFixed(1)}px, ${(signY - (1 - sk) * (signY + bh)).toFixed(1)}px) rotate(${(t < T1 + 2.1 ? (1 - sk) * 6 : swingA).toFixed(2)}deg)`;
+      sign.style.visibility = t > T1 + .3 ? 'inherit' : 'hidden';
+      board.style.transform = `rotateY(${sflip.toFixed(2)}deg)`;
+      S.$('.closed', board).style.visibility = sflip < 90 ? 'inherit' : 'hidden';
+      S.$('.open', board).style.visibility = sflip >= 90 ? 'inherit' : 'hidden';
+      const hk = M.inout(t, T1 + 2.2, T2 - .2, 'snappy');
+      M.place(headl, wide ? sx : sx, sy + sh - u * 2 + (hk < 1 ? (1 - hk) * u * 8 : 0), { ax: 0, ay: 1, o: hk <= 1 ? M.clamp(hk * 1.5) : 2 - hk });
+      // 3) 지도: 위에서 덮이듯 내려오고, 길이 그려지고 핀이 꽂힘
+      const mk2 = M.ease.inOutCubic(M.prog(t, T2 - .4, .7));
+      M.show(mapEl, t >= T2 - .4 && t < T3 + .8);
+      mapEl.style.clipPath = `circle(${(mk2 * Math.hypot(W, H)).toFixed(1)}px at ${PIN.x.toFixed(1)}px ${PIN.y.toFixed(1)}px)`;
+      roadEls.forEach((r, i) => M.draw(r, M.ease.outCubic(M.prog(t, T2 - .3 + i * .03, .8))));
+      const rk = M.ease.inOutCubic(M.prog(t, T2 + .5, 1.2));
+      M.draw(maskPath, rk);
+      route.style.visibility = rk > 0 ? 'inherit' : 'hidden';
+      M.place(station, ST.x, ST.y, { s: M.spring(t - (T2 + .2), 'pop'), o: t > T2 + .2 ? 1 : 0, ax: .12 });
+      const dropK = M.spring(t - (T2 + 1.5), { f: 2.6, z: .5 });
+      M.place(pin, PIN.x, PIN.y - (1 - dropK) * H * .5, { ax: .5, ay: 1, o: t > T2 + 1.5 ? 1 : 0, sy: t > T2 + 1.5 ? 1 + .12 * Math.max(0, 1 - dropK) * 0 : 1 });
+      M.place(pshadow, PIN.x, PIN.y, { s: M.clamp(dropK) * .9 + .1, o: t > T2 + 1.5 ? M.clamp(dropK) : 0 });
+      pulses.forEach((p, i) => { const ph = ((t - T2 - 1.9 - i * .7) % 1.4 + 1.4) % 1.4 / 1.4; const on = t > T2 + 1.9 + i * .7; M.place(p, PIN.x, PIN.y, { s: .3 + ph * 2.4, o: on ? (1 - ph) * .8 : 0 }); });
+      const ak = M.inout(t, T2 + 2.0, null, 'snappy');
+      const AD = wide ? { x: PIN.x + u * 10, y: PIN.y - u * 8, ax: 0, ay: .5 } : { x: PIN.x, y: PIN.y + u * 5, ax: .5, ay: 0 };
+      M.place(addr, AD.x, AD.y + (1 - Math.min(1, ak)) * u * 5, { ax: AD.ax, ay: AD.ay, o: M.clamp(ak * 2) });
+      // 4) 영수증 인쇄
+      M.show(perksEl, t >= T3 - .2 && t < T4 + .9);
+      const pk = M.ease.inOutCubic(M.prog(t, T3 - .2, .5));
+      perksEl.style.clipPath = `inset(0 0 ${((1 - pk) * 100).toFixed(2)}% 0)`;
+      // 지지직 끊어 나오는 인쇄: 계단 + 스프링
+      const prn = M.clamp((t - (T3 + .3)) / 2.2);
+      const steps = 7, stepK = Math.floor(prn * steps) / steps + M.ease.outCubic((prn * steps) % 1) / steps;
+      const shown = rh * Math.min(1, stepK);
+      const clipEl = S.$('.clip', rcpt);
+      clipEl.style.height = shown + 'px';
+      rcpt.style.height = '0px';
+      M.place(rcpt, cx, slotY - u * 2, { ax: .5, ay: 0, o: t > T3 + .3 ? 1 : 0 });
+      M.place(slot, cx, slotY - u * 3, { ay: 0 });
+      // 5) 마지막: 강조색 판이 아래에서 올라옴
+      const fk = M.ease.inOutCubic(M.prog(t, T4 - .3, .6));
+      M.show(fin, t >= T4 - .3);
+      fin.style.clipPath = `inset(${((1 - fk) * 100).toFixed(2)}% 0 0 0)`;
+      const ck = M.spring(t - (T4 + .2), 'snappy');
+      M.place(ctab, cx, cy + (1 - ck) * u * 10, { o: t >= T4 + .2 ? M.clamp(ck * 1.6) : 0 });
+      const big = S.$('.big', ctab); big.style.transform = `scale(${(1 + .25 * (1 - M.spring(t - (T4 + .2), 'pop'))).toFixed(4)})`;
+      const btn = S.$('.btn', ctab);
+      if (btn) btn.style.transform = t > T4 + 1.2 ? `scale(${(1 + .035 * Math.sin((t - T4) * 6)).toFixed(4)})` : '';
+    });
+  });
+})();
+</script>

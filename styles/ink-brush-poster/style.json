@@ -1,0 +1,110 @@
+{
+  "id": "ink-brush-poster",
+  "name": "먹 붓글씨",
+  "group": "손그림",
+  "template": "sketchbook",
+  "summary": "한지 위 굵은 붓글씨 한 줄과 빨간 낙관. 큰 여백, 붓 획이 쓸며 드러나고 강조는 붓으로 그린 동그라미",
+  "tags": [
+    "손그림",
+    "붓글씨",
+    "한지",
+    "전통",
+    "명절"
+  ],
+  "hand": true,
+  "source": {
+    "site": "직접 정리",
+    "ref": "",
+    "at": "",
+    "note": "갤러리 영상에서 배운 게 아니고 손그림 모션에서 널리 쓰는 기법으로 정리했어요. 캘리그래피·서예 포스터 영상의 여백 비율, 붓 획이 한 방향으로 쓸며 드러나는 속도, 낙관을 찍는 마무리를 기준으로 잡았어요."
+  },
+  "palette": [
+    "#EFE6D2",
+    "#161412",
+    "#C2352B",
+    "#7A6A55",
+    "#D9C9A8"
+  ],
+  "colors": {
+    "bg": "#EFE6D2",
+    "onBg": "#161412",
+    "onBgMuted": "rgba(22,20,18,.66)",
+    "paper": "#F8F2E4",
+    "ink": "#161412",
+    "accent": "#C2352B",
+    "accentInk": "#FFF8EE",
+    "pattern": "rgba(22,20,18,.06)",
+    "glow": "rgba(194,53,43,.16)"
+  },
+  "type": {
+    "display": [
+      "Nanum Brush"
+    ],
+    "heading": [
+      "Nanum Brush"
+    ]
+  },
+  "fonts": [
+    {
+      "family": "Nanum Brush",
+      "weight": 400,
+      "file": "fonts/NanumBrushScript-Regular.woff2"
+    }
+  ],
+  "look": {
+    "paper": "cream",
+    "paperTone": 0.5,
+    "fiber": 0.6,
+    "grain": 0.08,
+    "boil": {
+      "amount": 0.5,
+      "fps": 6
+    }
+  },
+  "shape": {
+    "radius": "calc(var(--u) * .4)",
+    "stroke": "hand"
+  },
+  "motion": {
+    "pace": "느림",
+    "bpm": 80,
+    "ease": "power3.out",
+    "stagger": 1.6,
+    "transitions": [
+      "wipe",
+      "fade"
+    ]
+  },
+  "scenes": {
+    "bg": "none",
+    "align": "center",
+    "card": "paper",
+    "marker": "circle",
+    "weight": 400,
+    "tracking": 0,
+    "case": "none",
+    "rough": true,
+    "schemes": [
+      "dark",
+      "paper"
+    ]
+  },
+  "signature": [
+    "큰 붓글씨 한 줄이 왼쪽에서 오른쪽으로 붓이 쓸고 가듯 0.8초에 드러남(가림막이 획 방향으로 걷힘)",
+    "강조할 말 둘레에 붓으로 그린 동그라미(원상)가 한 바퀴 조금 넘게 그어지고 끝이 살짝 벌어짐",
+    "마지막에 빨간 낙관(네모 도장)이 살짝 커졌다 '쿵' 하고 찍히며 브랜드 이름이 남음"
+  ],
+  "fits": [
+    "명절·시즌 인사",
+    "전통 음식·차·한식",
+    "개업·축하",
+    "브랜드 철학 한 줄",
+    "공연·전시"
+  ],
+  "avoid": [
+    "글이 많은 장면",
+    "작은 글씨 목록",
+    "네온·형광색",
+    "빠른 컷"
+  ]
+}

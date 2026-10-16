@@ -1,0 +1,130 @@
+{
+  "id": "dust-handle-ribbon-monitor",
+  "name": "점 가루 핸들 리본 모니터",
+  "group": "제품 UI",
+  "template": "uidemo",
+  "summary": "옅은 회색 위 초록 점 가루가 작은 네모 점판으로 가라앉고, 초록 선택 핸들 상자 속에서 가는 선다발 리본이 물결치다 웹페이지 장식이 돼요. 카메라가 뒤로 빠지면 그 화면은 회색 스튜디오 속 모니터예요",
+  "tags": [
+    "제품 UI",
+    "입자",
+    "선택 핸들",
+    "선다발",
+    "모니터",
+    "초록"
+  ],
+  "hand": false,
+  "source": {
+    "site": "keyframe.gallery",
+    "ref": "mux:uf14c011thkLYjge7nngmY7gb4x1EoeWvWAU69yr00Rmg",
+    "at": "0–10.0초",
+    "note": "옅은 회색 바탕에 흩날리던 초록·회색 점 가루가 듬성한 네모 점판으로 가라앉고, 점 하나가 초록으로 켜져 네 귀퉁이 선택 핸들 상자로 벌어지는 흐름. 상자 안에서 초록→연두 가는 선다발 리본이 꼬이며 물결치고, 리본이 웹페이지 첫 화면의 장식으로 자리 잡은 뒤 카메라가 빠져 회색 스튜디오 속 모니터가 드러나는 공개. 모니터 화면이 컷으로 몇 장 바뀌고 흰 화면 가운데 마크로 끝맺음"
+  },
+  "palette": [
+    "#EDEDEC",
+    "#1A1C1B",
+    "#34A853",
+    "#C3E24A",
+    "#8A8C8B",
+    "#FFFFFF"
+  ],
+  "colors": {
+    "bg": "#EDEDEC",
+    "onBg": "#1A1C1B",
+    "onBgMuted": "rgba(26,28,27,.6)",
+    "paper": "#FFFFFF",
+    "ink": "#1A1C1B",
+    "accent": "#34A853",
+    "accentInk": "#0B1A10",
+    "pattern": "rgba(26,28,27,.08)",
+    "glow": "rgba(195,226,74,.32)"
+  },
+  "type": {
+    "display": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "heading": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "body": [
+      "Geist",
+      "Noto Sans KR"
+    ]
+  },
+  "fonts": [
+    {
+      "family": "Geist",
+      "weight": "100 900",
+      "file": "fonts/Geist-Variable.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 500,
+      "file": "fonts/NotoSansKR-Medium.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 700,
+      "file": "fonts/NotoSansKR-Bold.woff2"
+    }
+  ],
+  "look": {
+    "grain": 0.04,
+    "vignette": 0.18
+  },
+  "shape": {
+    "radius": "calc(var(--u) * 0.8)"
+  },
+  "motion": {
+    "pace": "보통",
+    "bpm": 96,
+    "ease": "power3.inOut",
+    "stagger": 0.8,
+    "transitions": [
+      "blur",
+      "push",
+      "cut"
+    ]
+  },
+  "scenes": {
+    "bg": "dots",
+    "align": "left",
+    "card": "shadow",
+    "marker": "color",
+    "weight": 600,
+    "tracking": -0.02,
+    "case": "none",
+    "rough": false,
+    "title": "blur",
+    "frame": "browser",
+    "deco": [
+      "handles",
+      "dots"
+    ],
+    "number": "count",
+    "scale": 1,
+    "schemes": [
+      "dark",
+      "paper"
+    ]
+  },
+  "signature": [
+    "옅은 회색 화면 가득 흩날리던 초록·회색 점 가루가 0.8초 만에 듬성한 격자 자리로 가라앉아 작은 회색 네모 점판이 되고, 그중 하나가 초록으로 톡 켜짐",
+    "켜진 점 둘레로 초록 네모 넷이 튀어나와 선택 상자의 네 귀퉁이 핸들이 되고, 핸들에서 화면 끝까지 가는 안내선이 뻗음. 상자가 바깥으로 늘어나는 동안 안에서 초록→연두 가는 선 40여 가닥이 꼬인 리본처럼 천천히 물결침",
+    "리본이 웹페이지 첫 화면 오른쪽 위 장식으로 자리 잡은 뒤 카메라가 뒤로 빠지며 그 화면이 회색 스튜디오 속 검은 테 모니터였음이 드러나고, 모니터 화면만 박자마다 컷으로 바뀌다 흰 화면 가운데 마크로 끝남"
+  ],
+  "fits": [
+    "개발 도구·문서 서비스 공개",
+    "웹사이트 개편 소개",
+    "B2B 제품 런칭",
+    "AI·데이터 플랫폼 티저"
+  ],
+  "avoid": [
+    "어두운 바탕 위주",
+    "손그림 선",
+    "원색 여러 개(초록 한 계열만)",
+    "빠른 글리치 컷",
+    "굵고 큰 포스터 글자"
+  ]
+}

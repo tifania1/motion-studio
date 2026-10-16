@@ -1,0 +1,56 @@
+{
+  "id": "company-intro",
+  "order": 13,
+  "name": "회사 소개",
+  "summary": "설계도처럼 격자와 치수선이 깔리고 회사 이름이 선으로 그려진 뒤, 미션·하는 일·숫자·함께하는 곳을 지나 명함 한 장이 뒤집히며 연락처로 끝나요.",
+  "look": "설계도 격자 · 치수선 · 뒤집히는 명함",
+  "template": "company",
+  "formats": [
+    "tall",
+    "portrait",
+    "square",
+    "wide"
+  ],
+  "seconds": 19,
+  "photos": {
+    "need": 0,
+    "hint": "사진 없이 돼요. 고객사 로고 이미지는 공개해도 된다고 허락받은 것만 넣어요"
+  },
+  "ask": [
+    "회사 이름과 명함에 넣을 한 줄 슬로건",
+    "미션 한 문장과 그중 강조할 구절",
+    "하는 일 2~4개 (이름과 한 줄 설명)",
+    "숫자 2~4개와 그 출처·기준 시점 (설립 연도, 구성원 수, 고객사 수 등)",
+    "함께하는 고객·파트너 이름 (공개 허락을 받은 곳만)",
+    "웹사이트·이메일·전화·주소 중 넣을 것"
+  ],
+  "brief": "예) 제조 현장 데이터로 불량을 미리 알려 주는 회사. 미션: 공장의 작은 신호를 읽어 불량이 생기기 전에 알려 드려요. 하는 일: 설비 데이터 모으기, 불량 미리 알리기, 현장 교육. 2019년 설립, 구성원 48명, 연결한 설비 1,200대(2026년 9월 사내 집계). 웹 lumenta.example, 메일 hello@lumenta.example",
+  "check": [
+    "숫자마다 출처와 기준 시점 (설립 연도는 등기·사업자등록, 인원·고객 수는 언제 기준인지)",
+    "고객사·파트너 이름과 로고를 영상에 써도 된다는 허락 (서면으로)",
+    "웹사이트·이메일·전화·주소가 지금 쓰는 것인지",
+    "'최초·1위·유일·최고' 같은 말은 근거 자료가 있을 때만"
+  ],
+  "music": {
+    "mood": "keynote",
+    "bpm": 120,
+    "prompt": "confident modern corporate electronic, clean felt piano motif, light pulsing synths, crisp steady drums, trustworthy and forward-looking company profile",
+    "sections": [
+      [
+        0,
+        2.5,
+        "sparse piano and ticking pulse, drawing lines"
+      ],
+      [
+        2.5,
+        15,
+        "steady building groove, small accent on every new block and number"
+      ],
+      [
+        15,
+        19,
+        "warm resolved ending with a soft final hit as the card flips"
+      ]
+    ]
+  }
+}

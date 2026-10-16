@@ -1,0 +1,127 @@
+{
+  "id": "sage-recolor-window-cycle",
+  "name": "세이지 색 갈아입기 창",
+  "group": "제품 UI",
+  "template": "uidemo",
+  "summary": "옅은 세이지 바탕에 올리브 문장이 한 토막씩 이어지고, 그 사이 앱 창과 색 편집 패널이 번갈아 커지며 박자마다 창의 색, 글꼴, 군더더기가 바뀌는 차분한 기능 소개",
+  "tags": [
+    "제품 UI",
+    "색 바꾸기",
+    "세이지",
+    "올리브",
+    "기능 소개",
+    "커서"
+  ],
+  "hand": false,
+  "source": {
+    "site": "keyframe.gallery",
+    "ref": "mux:6XUba8scsCft00MTHH7vuinj00x00NCdtDigMHQeySTdb00",
+    "at": "0–27.7초",
+    "note": "올리브 판 위 가운데 글자가 늘어나는 말랑한 낱말 오프닝, 세이지 바탕에서 굵은 첫 낱말 뒤로 한 낱말씩 붙는 문장, 무지개 테두리 색 판의 점 둘을 끌면 화면 전체 바탕이 갈리는 장면, 앱 창이 비스듬히 다가오며 박자마다 색을 갈아입는 연속, 옆 패널을 커서로 눌러 글꼴이 바뀌는 확대, 팝업 카드 더미를 한 번에 지우면 흐림으로 녹아 사라지는 마무리"
+  },
+  "palette": [
+    "#DFE7D6",
+    "#62784A",
+    "#4A6236",
+    "#5E9BB5",
+    "#C8338E",
+    "#4E4A72"
+  ],
+  "colors": {
+    "bg": "#DFE7D6",
+    "onBg": "#4A6236",
+    "onBgMuted": "rgba(74,98,54,.66)",
+    "paper": "#F7F5EC",
+    "ink": "#262B22",
+    "accent": "#62784A",
+    "accentInk": "#FFFFFF",
+    "pattern": "rgba(74,98,54,.08)",
+    "glow": "rgba(94,155,181,.3)"
+  },
+  "type": {
+    "display": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "heading": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "body": [
+      "Geist",
+      "Noto Sans KR"
+    ]
+  },
+  "fonts": [
+    {
+      "family": "Geist",
+      "weight": "100 900",
+      "file": "fonts/Geist-Variable.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 500,
+      "file": "fonts/NotoSansKR-Medium.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 700,
+      "file": "fonts/NotoSansKR-Bold.woff2"
+    }
+  ],
+  "shape": {
+    "radius": "calc(var(--u) * 1.6)"
+  },
+  "motion": {
+    "pace": "보통",
+    "bpm": 104,
+    "ease": "power3.out",
+    "stagger": 1,
+    "transitions": [
+      "cut",
+      "push",
+      "blur"
+    ]
+  },
+  "scenes": {
+    "bg": "solid",
+    "align": "center",
+    "card": "shadow",
+    "marker": "color",
+    "weight": 700,
+    "tracking": -0.01,
+    "case": "none",
+    "rough": false,
+    "title": "pop",
+    "frame": "window",
+    "deco": [
+      "cursor"
+    ],
+    "number": "count",
+    "scale": 1,
+    "schemes": [
+      "dark",
+      "dark",
+      "accent",
+      "dark"
+    ]
+  },
+  "signature": [
+    "세이지 바탕 가운데 올리브 문장이 토막으로 이어짐: 굵은 첫 낱말 뒤로 보통 굵기 낱말이 한 박에 하나씩 붙고, 장면이 바뀔 때마다 끝 토막만 '○○ 색.' → '○○ 글꼴' → '○○ 지우기.'처럼 갈리며 갈린 낱말 하나만 시연 색(하늘·자홍)으로 칠해짐",
+    "흰 패널 속 무지개 테두리 색 판에서 흰 테를 두른 점 둘이 끌려가면, 놓는 순간 화면 전체 바탕이 그 색으로 컷되고(팥색 → 남보라), 이어지는 앱 창은 카메라가 비스듬히 다가가는 동안 한 박마다 남색 → 보라 → 자홍 → 숯빛으로 통째 색을 갈아입음",
+    "앱 창 옆에 세로 패널이 붙고 커서가 패널의 칸 하나를 누르면 창의 글꼴·모양이 그 자리에서 바뀌며 카메라가 창 안으로 바짝 들어감. 겹겹 팝업 카드 더미는 커서가 아래 버튼을 누르면 위로 번지는 흐림 속에 녹아 사라지고 그 자리에 문장이 남음"
+  ],
+  "fits": [
+    "브라우저 확장·꾸미기 도구 소개",
+    "테마·색 설정 기능 런칭",
+    "웹페이지 편집 기능 안내",
+    "개인화 기능을 낱말 셋으로 훑을 때"
+  ],
+  "avoid": [
+    "그레인·종이 질감",
+    "손그림 선",
+    "네온 빛 번짐",
+    "글리치처럼 빠른 깜빡임",
+    "한 화면에 문장 여러 줄"
+  ]
+}

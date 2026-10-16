@@ -1,0 +1,149 @@
+{
+  "id": "scanline-incident-log-rain",
+  "name": "주사선 장애 로그",
+  "group": "시네마틱",
+  "template": "cinema",
+  "summary": "주사선이 낀 어두운 로그 화면을 파란 검사 띠가 한 줄씩 훑고, 오류가 잡히면 화면이 붉게 물들며 유리 알림이 떠요. 넓은 대문자 제목은 TV 잡음 위에서 쳐지고, 끝에는 초록 코드 조각이 비처럼 흩어지는 장애 모니터링 필름",
+  "tags": [
+    "시네마틱",
+    "로그",
+    "주사선",
+    "글리치",
+    "개발 도구",
+    "모니터링"
+  ],
+  "hand": false,
+  "source": {
+    "site": "keyframe.gallery",
+    "ref": "mux:hWRiUJETOMJkkejvjlpl3m6dDYTPl4f00GxtDGcgmKwA",
+    "at": "0–23.6초",
+    "note": "살짝 기운 로그 화면 위를 지나가는 파란 검사 띠와 반투명 검사 알약, 낱말을 덮는 붉은 상자, TV 잡음 위에서 한 글자씩 쳐지는 넓은 대문자 제목, 기호에서 맞춰지는 낱말, 붉게 물든 오류 로그 위 유리 통화 알림과 붉은 괄호 속 소리 파형, 초록 코드 비와 파란 코드 위 흰 문구, 마스크로 열리는 마무리"
+  },
+  "palette": [
+    "#0F1012",
+    "#E4E6E8",
+    "#4DA8E8",
+    "#E5483D",
+    "#3DD66B",
+    "#F2B33D"
+  ],
+  "colors": {
+    "bg": "#0F1012",
+    "onBg": "#E4E6E8",
+    "onBgMuted": "rgba(228,230,232,.6)",
+    "paper": "#2B1814",
+    "ink": "#F2DDD3",
+    "accent": "#E5483D",
+    "accentInk": "#0E0505",
+    "pattern": "rgba(255,255,255,.06)",
+    "glow": "rgba(77,168,232,.35)"
+  },
+  "type": {
+    "display": [
+      "Archivo",
+      "Noto Sans KR"
+    ],
+    "heading": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "body": [
+      "Geist Mono",
+      "Noto Sans KR"
+    ]
+  },
+  "fonts": [
+    {
+      "family": "Archivo",
+      "weight": "100 900",
+      "stretch": "62% 125%",
+      "file": "fonts/Archivo-Variable.woff2"
+    },
+    {
+      "family": "Geist",
+      "weight": "100 900",
+      "file": "fonts/Geist-Variable.woff2"
+    },
+    {
+      "family": "Geist Mono",
+      "weight": "100 900",
+      "file": "fonts/GeistMono-Variable.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 500,
+      "file": "fonts/NotoSansKR-Medium.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 700,
+      "file": "fonts/NotoSansKR-Bold.woff2"
+    }
+  ],
+  "look": {
+    "scanlines": 0.3,
+    "grain": 0.1,
+    "grainFps": 12,
+    "vignette": 0.4,
+    "rgbSplit": {
+      "amount": 1.2,
+      "jitter": 0.6,
+      "fps": 12
+    }
+  },
+  "shape": {
+    "radius": "calc(var(--u) * 2.4)"
+  },
+  "motion": {
+    "pace": "빠름",
+    "bpm": 120,
+    "ease": "power3.out",
+    "stagger": 0.6,
+    "transitions": [
+      "cut",
+      "blocks",
+      "blur"
+    ]
+  },
+  "scenes": {
+    "bg": "lines",
+    "align": "center",
+    "card": "outline",
+    "marker": "highlight",
+    "weight": 700,
+    "tracking": 0.08,
+    "case": "upper",
+    "rough": false,
+    "title": "scramble",
+    "frame": "none",
+    "deco": [
+      "marks"
+    ],
+    "number": "scramble",
+    "scale": 1.1,
+    "schemes": [
+      "dark",
+      "paper",
+      "dark"
+    ]
+  },
+  "signature": [
+    "살짝 기울어 천천히 흐르는 고정폭 로그 화면 위로 파란 반투명 띠가 한 줄씩 내려가며 훑고, 가운데에 회전 표시가 달린 반투명 '검사 중' 알약이 떠 있어요. 띠가 지난 줄의 낱말 하나에 붉은 테두리 상자가 덮여요",
+    "TV 잡음과 가로 노이즈 줄이 지나가는 회색 화면에서 넓은 대문자 제목이 한 글자씩 쳐지고, 다음 낱말은 무작위 기호 10자에서 0.6초 만에 제 글자로 맞춰져요",
+    "오류가 잡히면 로그 화면이 붉은 주황으로 물들고 오류 줄마다 붉은 띠가 깔려요. 한가운데 어두운 유리 알약 알림(빨강·초록 둥근 버튼)이 톡 뜨고, 이어 붉은 괄호 상자 속 소리 파형이 떨려요. 마무리는 초록 코드 조각이 흩날리는 어둠 위 흰 두 낱말"
+  ],
+  "fits": [
+    "개발·모니터링 도구 런칭",
+    "보안·장애 대응 서비스",
+    "AI 코딩 도우미 소개",
+    "협업 발표 티저",
+    "기술 블로그 예고편"
+  ],
+  "avoid": [
+    "밝은 바탕",
+    "손그림·종이 질감",
+    "둥글고 귀여운 일러스트",
+    "느린 페이드만 쓰기",
+    "강조색을 한 화면에 셋 이상 섞기"
+  ]
+}

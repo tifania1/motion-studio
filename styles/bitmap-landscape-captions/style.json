@@ -1,0 +1,135 @@
+{
+  "id": "bitmap-landscape-captions",
+  "name": "비트맵 풍경과 자막",
+  "group": "제품 UI",
+  "template": "uidemo",
+  "summary": "파란 하늘과 디더링한 붉은 바위 산 위에 흰 알약 입력창이 타자되고, 아래엔 자막 띠가 따라가며, 주황 판 위 흰 꼬리표 낱말과 오려낸 사물이 박자에 갈리는 UI 런칭",
+  "tags": [
+    "제품 UI",
+    "디더",
+    "자막",
+    "주황",
+    "개발자"
+  ],
+  "hand": false,
+  "source": {
+    "site": "keyframe.gallery",
+    "ref": "mux:9krlB01PTRi7cgFblLBAkLDxAK1jY1qjSpFGpwqj01dSM",
+    "at": "0–3.2초, 8.0–15.0초, 18.2–28.6초",
+    "note": "색 수를 줄여 디더링한 하늘·바위 산 사진 위 흰 알약 입력창과 고정폭 타자, 장면이 바뀌어도 아래에 남는 짙은 자막 상자, 연두 형광 강조와 초록 모서리 표시, 버튼 글이 뒤섞였다 새 말로 맞춰지는 장면, 얇은 흰 격자선 깔린 주황 판에 흰 꼬리표 낱말이 계단처럼 박히고 낱말 사이 디더링한 사물 컷아웃이 갈아끼워지는 장면"
+  },
+  "palette": [
+    "#CF4015",
+    "#2DA9E8",
+    "#151313",
+    "#F4F1EC",
+    "#C6F04A",
+    "#3B241A"
+  ],
+  "colors": {
+    "bg": "#CF4015",
+    "onBg": "#FFF8F0",
+    "onBgMuted": "rgba(255,248,240,.78)",
+    "paper": "#F4F1EC",
+    "ink": "#151313",
+    "accent": "#C6F04A",
+    "accentInk": "#151313",
+    "pattern": "rgba(255,248,240,.32)",
+    "glow": "rgba(198,240,74,.35)"
+  },
+  "type": {
+    "display": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "heading": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "body": [
+      "Geist",
+      "Noto Sans KR"
+    ]
+  },
+  "fonts": [
+    {
+      "family": "Geist",
+      "weight": "100 900",
+      "file": "fonts/Geist-Variable.woff2"
+    },
+    {
+      "family": "Geist Mono",
+      "weight": "100 900",
+      "file": "fonts/GeistMono-Variable.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 500,
+      "file": "fonts/NotoSansKR-Medium.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 700,
+      "file": "fonts/NotoSansKR-Bold.woff2"
+    }
+  ],
+  "look": {
+    "dither": 0.18,
+    "ditherSize": 0.5,
+    "grain": 0.05
+  },
+  "shape": {
+    "radius": "calc(var(--u) * .4)"
+  },
+  "motion": {
+    "pace": "빠름",
+    "bpm": 116,
+    "ease": "power3.out",
+    "stagger": 0.9,
+    "transitions": [
+      "cut",
+      "cut",
+      "zoom"
+    ]
+  },
+  "scenes": {
+    "bg": "grid",
+    "align": "left",
+    "card": "flat",
+    "marker": "highlight",
+    "weight": 500,
+    "tracking": -0.02,
+    "case": "none",
+    "rough": false,
+    "title": "type",
+    "frame": "browser",
+    "deco": [
+      "cursor",
+      "marks"
+    ],
+    "number": "scramble",
+    "scale": 1,
+    "schemes": [
+      "dark",
+      "paper",
+      "dark"
+    ]
+  },
+  "signature": [
+    "비트맵 풍경: 파란 하늘과 검정·주황 점으로 디더링한 바위 산 사진(색 서너 개로 줄임) 한가운데 흰 둥근 알약 입력창이 나타나고, 고정폭 글씨로 명령이 초당 18자 안팎으로 타자됨. 타자 도중 알약이 0.15초에 1.6배로 확 다가옴",
+    "자막 띠: 화면 아래 세이프존 안쪽에 반투명 검정 둥근 상자 자막(주황 위에서는 짙은 갈색으로 비침)이 문장 단위로 바뀌며 끝까지 따라감. 위 장면이 컷으로 바뀌어도 자막 상자는 제자리",
+    "주황 판 꼬리표: 얇은 흰 격자선이 깔린 주황 바탕 위로 흰 직사각형 꼬리표에 든 검은 낱말이 0.6~1초마다 다른 자리에 컷으로 박히고(두 낱말이면 계단처럼 어긋남), 끝에는 문장 두 줄 사이에 디더링한 사물 컷아웃이 0.3~0.5초마다 갈아끼워짐"
+  ],
+  "fits": [
+    "개발자 도구·API 소개",
+    "AI 에이전트·자동화 서비스",
+    "웹 서비스 기능 출시",
+    "스타트업 런칭"
+  ],
+  "avoid": [
+    "부드러운 그라디언트",
+    "손글씨",
+    "세리프",
+    "사진을 깨끗한 원본 그대로 쓰기"
+  ]
+}

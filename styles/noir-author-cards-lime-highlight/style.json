@@ -1,0 +1,128 @@
+{
+  "id": "noir-author-cards-lime-highlight",
+  "name": "이름표 카드와 연두 형광펜",
+  "group": "제품 UI",
+  "template": "uidemo",
+  "summary": "점 격자가 옅게 깔린 검은 바탕에 어두운 둥근 카드가 하나씩 떠요. 카드 위 작은 이름표 아래로 문장이 흐린 회색으로 써진 뒤 핵심 낱말에 연두 형광펜이 칠해지고, 그 아래 가는 선과 연두 점으로 그린 작은 도식이 이어지는 협업 리서치 UI 필름",
+  "tags": [
+    "제품 UI",
+    "어두움",
+    "커서",
+    "노드",
+    "리서치",
+    "연두",
+    "협업"
+  ],
+  "hand": false,
+  "source": {
+    "site": "keyframe.gallery",
+    "ref": "mux:d02QaQ7v1MAetozk5ZCIjeUtEI572uBGNmWF9Src00Q34",
+    "at": "2.0–31.4초",
+    "note": "어두운 카드 위 작은 이름표와 복사 아이콘, 흐린 회색으로 써졌다 밝아지는 문장과 낱말마다 붙는 연두 형광 상자, 카드 아래 연두 점·가는 곡선·연보라 반짝이로 그린 작은 도식, 카드 여러 장이 곡선으로 더하기 노드에 모여 입력 카드로 들어가는 노드 캔버스, 이름표 단 연두 커서의 입력과 전송, 위로 흐르는 긴 문서, 검은 바탕 위 연보라 문장 한 줄 마무리"
+  },
+  "palette": [
+    "#111211",
+    "#232423",
+    "#B8E06A",
+    "#C9B8F0",
+    "#4A1C28",
+    "#ECECEA"
+  ],
+  "colors": {
+    "bg": "#111211",
+    "onBg": "#ECECEA",
+    "onBgMuted": "rgba(236,236,234,.55)",
+    "paper": "#232423",
+    "ink": "#E6E6E3",
+    "accent": "#B8E06A",
+    "accentInk": "#17200C",
+    "pattern": "rgba(255,255,255,.07)",
+    "glow": "rgba(184,224,106,.28)"
+  },
+  "type": {
+    "display": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "heading": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "body": [
+      "Geist",
+      "Noto Sans KR"
+    ]
+  },
+  "fonts": [
+    {
+      "family": "Geist",
+      "weight": "100 900",
+      "file": "fonts/Geist-Variable.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 500,
+      "file": "fonts/NotoSansKR-Medium.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 700,
+      "file": "fonts/NotoSansKR-Bold.woff2"
+    }
+  ],
+  "shape": {
+    "radius": "calc(var(--u) * 2)"
+  },
+  "motion": {
+    "pace": "보통",
+    "bpm": 96,
+    "ease": "power3.out",
+    "stagger": 1,
+    "transitions": [
+      "cut",
+      "push",
+      "fade"
+    ]
+  },
+  "scenes": {
+    "bg": "dots",
+    "align": "center",
+    "card": "flat",
+    "marker": "highlight",
+    "weight": 400,
+    "tracking": -0.01,
+    "case": "none",
+    "rough": false,
+    "title": "type",
+    "frame": "card",
+    "deco": [
+      "cursor"
+    ],
+    "number": "count",
+    "scale": 0.9,
+    "schemes": [
+      "dark",
+      "paper",
+      "dark"
+    ]
+  },
+  "signature": [
+    "어두운 둥근 카드 왼쪽 위에 작은 회색 이름표, 오른쪽 위에 복사 아이콘. 문장이 흐린 회색(35%)으로 어절씩 써지고 다 써지면 흰빛으로 밝아지며, 핵심 낱말 2~3개에 옅은 연두 형광 상자가 왼쪽부터 0.25초에 하나씩 칠해짐",
+    "형광펜이 끝나면 카드 아래 빈자리에 작은 도식이 그려짐: 연두 점 두 개에서 가는 회색 곡선이 뻗어 한 점으로 모이거나, 연두 가는 선이 교차하고 연보라 반짝이가 톡톡 돋거나, 아래에서 검붉은 덩어리가 차오르며 연두 점이 떠다님. 카드는 위로 밀려 나가고 이름표가 다른 다음 카드가 들어옴",
+    "카메라가 물러나면 왼쪽 카드 여러 장에서 가는 곡선이 더하기 노드로 모여 큰 입력 카드에 닿고, 연두 화살표에 짙은 초록 알약 이름표를 단 커서가 다가와 프롬프트가 쳐진 뒤 흰 동그라미 전송 버튼을 누름. 끝은 점 격자 검은 바탕에 연보라 문장 한 줄, 그 끝 아래에 같은 커서가 멈춰 있음"
+  ],
+  "fits": [
+    "AI 리서치·글쓰기 도구",
+    "협업 노트·캔버스 앱",
+    "노드 기반 작업 흐름 소개",
+    "출처·근거를 강조하는 기능 런칭",
+    "팀원 여럿의 생각을 모으는 이야기"
+  ],
+  "avoid": [
+    "밝은 바탕",
+    "굵은 제목과 큰 글자 쇼",
+    "연두 바탕을 넓게 칠하기",
+    "빠른 컷 몽타주",
+    "그라디언트 빛 번짐과 유리 질감"
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "name": "데이터 흐름",
+  "description": "옅은 점 격자 위 점 하나가 켜지고 동심원이 퍼진 뒤 그 옆에 제목이 들어와요. 그 점에서 가는 선이 뻗어 항목마다 노드와 이름표가 생기고 카메라가 선을 따라 옮겨 다니며, 모든 선이 한 점으로 모여 원형 게이지 안에서 숫자가 맞춰지고 흐름 끝 노드가 버튼이 된 뒤 전체 지도로 물러나요.",
+  "fonts": [
+    { "family": "Geist", "weight": "100 900", "file": "fonts/Geist-Variable.woff2" },
+    { "family": "Geist Mono", "weight": "100 900", "file": "fonts/GeistMono-Variable.woff2" }
+  ]
+}

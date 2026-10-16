@@ -1,0 +1,151 @@
+{
+  "id": "serif-specimen-construct",
+  "name": "활자 견본 조립",
+  "group": "그래픽·도형",
+  "template": "brandmark",
+  "summary": "미색 바탕에서 화면보다 큰 세리프 글자 윤곽을 앵커와 핸들이 짚고 지나가요. 짙은 판 위 활자 견본 타일은 박자마다 글자를 갈아 끼우고, 낱말 메아리가 탑처럼 쌓인 뒤 작은 마크와 세리프 로고타입이 작도선 속에서 맺히는 브랜드 공개",
+  "tags": [
+    "세리프",
+    "활자 견본",
+    "브랜드 공개",
+    "작도",
+    "차분함",
+    "미색"
+  ],
+  "hand": false,
+  "source": {
+    "site": "keyframe.gallery",
+    "ref": "mux:GWtZYGWOkgd7S5p3Z9SRMPsok6BKSZ402z4RvRGNSRAs",
+    "at": "0–35.9초",
+    "note": "화면 밖으로 잘린 거대한 세리프 글자 윤곽에 붙는 네모 앵커와 동그라미 핸들(0–3초), 짙은 판 위 연세이지 둥근 타일에 글리프를 하나씩 담아 박자마다 갈아 끼우는 활자 견본판(3–5초), 로고타입 네 귀퉁이 선택 상자(6초), 눌린 듯한 둥근 버튼과 대문자 알약(8–11초), 크기가 점점 줄며 위로 쌓이는 낱말 메아리 탑(11.9–12.6초), 큰 동심 호와 작도 격자 속 작은 마크(13.9–20초), 점선 타원과 흐린 안개(21–24초), 화면을 넘는 로고를 옆으로 훑고 구름결 바탕 위 가운데로 맺는 마무리(25.9–31.9초), 검정에서 어두운 갈색으로 넘어가는 크레딧(32.8초~)"
+  },
+  "palette": [
+    "#DCDBD3",
+    "#2B2B2A",
+    "#353533",
+    "#CBCFBF",
+    "#E8E5DC",
+    "#2A211C"
+  ],
+  "colors": {
+    "bg": "#DCDBD3",
+    "onBg": "#2B2B2A",
+    "onBgMuted": "rgba(43,43,42,.62)",
+    "paper": "#CBCFBF",
+    "ink": "#2B2B2A",
+    "accent": "#353533",
+    "accentInk": "#DCDBD3",
+    "pattern": "rgba(43,43,42,.09)",
+    "glow": "rgba(250,247,238,.55)"
+  },
+  "type": {
+    "display": [
+      "Instrument Serif",
+      "Gowun Batang"
+    ],
+    "heading": [
+      "Instrument Serif",
+      "Gowun Batang"
+    ],
+    "body": [
+      "Geist",
+      "Noto Sans KR"
+    ]
+  },
+  "fonts": [
+    {
+      "family": "Instrument Serif",
+      "weight": 400,
+      "file": "fonts/InstrumentSerif-Regular.woff2"
+    },
+    {
+      "family": "Instrument Serif",
+      "weight": 400,
+      "style": "italic",
+      "file": "fonts/InstrumentSerif-Italic.woff2"
+    },
+    {
+      "family": "Gowun Batang",
+      "weight": 400,
+      "file": "fonts/GowunBatang-Regular.woff2"
+    },
+    {
+      "family": "Gowun Batang",
+      "weight": 700,
+      "file": "fonts/GowunBatang-Bold.woff2"
+    },
+    {
+      "family": "Geist",
+      "weight": "100 900",
+      "file": "fonts/Geist-Variable.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 500,
+      "file": "fonts/NotoSansKR-Medium.woff2"
+    }
+  ],
+  "look": {
+    "grain": 0.06,
+    "grainFps": 12,
+    "vignette": 0.18
+  },
+  "shape": {
+    "radius": "calc(var(--u) * 1)"
+  },
+  "motion": {
+    "pace": "느림",
+    "bpm": 84,
+    "ease": "power3.inOut",
+    "stagger": 1.1,
+    "transitions": [
+      "cut",
+      "fade",
+      "push"
+    ]
+  },
+  "scenes": {
+    "bg": "grid",
+    "align": "center",
+    "card": "flat",
+    "marker": "underline",
+    "weight": 400,
+    "tracking": -0.01,
+    "case": "upper",
+    "rough": false,
+    "title": "mask",
+    "frame": "none",
+    "deco": [
+      "handles",
+      "marks",
+      "rings"
+    ],
+    "number": "odometer",
+    "scale": 1.25,
+    "schemes": [
+      "dark",
+      "accent",
+      "dark",
+      "paper"
+    ]
+  },
+  "signature": [
+    "화면 밖으로 잘린 거대한 세리프 글자 한 자의 윤곽을 따라 네모 앵커와 동그라미 핸들이 가는 선으로 이어진 채 하나씩 켜지고, 글자 판은 아주 천천히 옆으로 흘러요. 구석엔 작은 로고타입 한 줄만 조용히 놓여요",
+    "짙은 숯빛 판 위에 크기가 다른 연세이지 둥근 타일이 격자로 맞물리고, 칸마다 글리프(대문자·소문자·&·;·→·×)가 하나씩 들어 있어요. 반 박마다 몇 칸만 컷으로 다른 글자로 바뀌고, 가운데 큰 칸에 로고타입이 머물러요",
+    "짧은 낱말을 위로 갈수록 작게 열 번 넘게 겹쳐 쌓아 메아리 탑을 세운 뒤, 큰 동심 호와 작도 격자가 그려지며 작은 마크 하나로 줄어들고, 마지막엔 구름결 안개 바탕 위 가운데에서 마크와 세리프 로고타입이 함께 맺혀요"
+  ],
+  "fits": [
+    "브랜드 공개·리브랜딩",
+    "출판·잡지·문화 재단 소개",
+    "활자·디자인 스튜디오 쇼릴",
+    "웹사이트 인트로",
+    "차분한 캠페인 티저"
+  ],
+  "avoid": [
+    "형광·원색 강조",
+    "빠른 컷 연속",
+    "굵은 고딕 제목",
+    "반짝이는 그라디언트·네온",
+    "한 화면에 긴 문장"
+  ]
+}

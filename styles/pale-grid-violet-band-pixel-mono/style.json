@@ -1,0 +1,141 @@
+{
+  "id": "pale-grid-violet-band-pixel-mono",
+  "name": "격자 색띠와 픽셀 고정폭",
+  "group": "그래픽·도형",
+  "template": "brandmark",
+  "summary": "옅은 회색 격자 칸을 따라 보라·자홍·연두·하늘 색띠가 미끄러져 들어와 굵은 둥근 고딕 문장을 품어요. 숯빛 판에서는 블록 커서가 고정폭 대문자 이름을 치고, 5×5 픽셀 칸이 한 칸씩 물드는 브랜드 설명 필름",
+  "tags": [
+    "도형",
+    "격자",
+    "색 블록",
+    "픽셀",
+    "고정폭",
+    "브랜드 설명"
+  ],
+  "hand": false,
+  "source": {
+    "site": "keyframe.gallery",
+    "ref": "mux:gEoEbWmiF1Tp00a9EUWl801zvdOMOZK01FFJh01DES1jK01o",
+    "at": "0–62.1초",
+    "note": "옅은 격자 칸에 맞춰 움직이는 원색 띠와 옅은 색 칸, 보라 띠 안에 드러나는 흰 둥근 고딕 문장, 작은 회색 고정폭 낱말 아래로 갈리는 진홍 굵은 낱말, 숯빛 판의 블록 커서 타이핑과 픽셀 아이콘, 한 색 농담으로 물드는 5×5 픽셀 칸, 얇은 줄 위 큰 숫자, 작은 네모로 짠 점 아이콘의 행진"
+  },
+  "palette": [
+    "#EDEDED",
+    "#6A3AE8",
+    "#E040D8",
+    "#4FD93A",
+    "#3FA9EE",
+    "#1C2128"
+  ],
+  "colors": {
+    "bg": "#EDEDED",
+    "onBg": "#1C2128",
+    "onBgMuted": "rgba(28,33,40,.62)",
+    "paper": "#1C2128",
+    "ink": "#ECEDEF",
+    "accent": "#6A3AE8",
+    "accentInk": "#FFFFFF",
+    "pattern": "rgba(28,33,40,.07)",
+    "glow": "rgba(106,58,232,.3)"
+  },
+  "type": {
+    "display": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "heading": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "body": [
+      "Geist Mono",
+      "Noto Sans KR"
+    ]
+  },
+  "fonts": [
+    {
+      "family": "Geist",
+      "weight": "100 900",
+      "file": "fonts/Geist-Variable.woff2"
+    },
+    {
+      "family": "Geist Mono",
+      "weight": "100 900",
+      "file": "fonts/GeistMono-Variable.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 500,
+      "file": "fonts/NotoSansKR-Medium.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 700,
+      "file": "fonts/NotoSansKR-Bold.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 900,
+      "file": "fonts/NotoSansKR-Black.woff2"
+    }
+  ],
+  "shape": {
+    "radius": "0px"
+  },
+  "motion": {
+    "pace": "보통",
+    "bpm": 108,
+    "ease": "power3.inOut",
+    "stagger": 0.8,
+    "transitions": [
+      "wipe",
+      "cut",
+      "push"
+    ]
+  },
+  "scenes": {
+    "bg": "grid",
+    "align": "center",
+    "card": "flat",
+    "marker": "color",
+    "weight": 700,
+    "tracking": -0.03,
+    "case": "upper",
+    "rough": false,
+    "title": "mask",
+    "frame": "none",
+    "deco": [
+      "dots"
+    ],
+    "number": "count",
+    "scale": 1.2,
+    "schemes": [
+      "dark",
+      "dark",
+      "accent",
+      "paper",
+      "dark",
+      "accent"
+    ]
+  },
+  "signature": [
+    "옅은 회색 격자 위에서 자홍·연두·하늘 원색 띠와 옅은 색 칸이 격자 선에 딱 맞춰 0.5초에 미끄러져 들어오고, 왼쪽에서 보라 띠가 여러 칸을 덮으며 뻗어 그 안에 흰 둥근 고딕 문장이 줄마다 올라와요. 나갈 땐 띠들이 같은 칸 선을 따라 거꾸로 접혀 빈 격자만 남아요",
+    "숯빛 판 왼쪽에 작은 블록 커서가 박자에 맞춰 깜빡이다 고정폭 대문자 이름을 넓은 자간으로 치고, 오른쪽 끝에는 같은 색 5×5 픽셀 아이콘이 한 칸씩 켜져요. 이름이 바뀔 때마다 커서와 아이콘 색이 자홍 → 하늘 → 보라로 갈려요",
+    "옅은 회색 가운데 5×5 픽셀 칸이 한 색의 농담(진하게·중간·옅게·빈칸)으로 무작위 순서대로 물들었다가 다른 색으로 통째로 갈리고, 끝내 빈 칸 윤곽만 남아요. 작은 네모 점으로 짠 십자·화살·집 모양 아이콘은 가로로 줄지어 박자마다 모양을 바꿔요"
+  ],
+  "fits": [
+    "개발자 도구·보안 서비스 브랜드 설명",
+    "제품 라인업 하나씩 훑기",
+    "성과 숫자 보여 주기",
+    "회사 소개·채용 영상",
+    "1분 안팎 브랜드 필름"
+  ],
+  "avoid": [
+    "둥근 모서리 카드와 그림자",
+    "그라디언트와 빛 번짐",
+    "종이·그레인 같은 질감",
+    "세리프와 손글씨",
+    "사진과 3D 소품",
+    "격자 칸을 벗어난 비스듬한 배치"
+  ]
+}

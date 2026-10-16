@@ -1,0 +1,51 @@
+{
+  "id": "travel",
+  "order": 11,
+  "name": "여행 하이라이트",
+  "summary": "종이 지도 위로 길이 그려지고 비행기가 따라가다, 들르는 곳마다 핀과 폴라로이드. 끝엔 사진이 부채꼴로 모여요.",
+  "look": "종이 지도 · 점선 길 · 폴라로이드",
+  "template": "travel",
+  "formats": [
+    "tall",
+    "portrait",
+    "square",
+    "wide"
+  ],
+  "seconds": 17.8,
+  "photos": {
+    "need": 4,
+    "hint": "들른 곳마다 한 장 (네 곳 안팎)"
+  },
+  "ask": [
+    "도시와 일정",
+    "들른 곳 이름과 한 일 (순서대로)",
+    "이어 볼 곳 (채널, 블로그)"
+  ],
+  "brief": "예) 방콕 3박 4일. 왕궁 → 짜뚜짝 시장 → 카오산 로드 → 짜오프라야 강. 전체 여행기는 채널에서.",
+  "check": [
+    "장소 이름 맞춤법과 순서",
+    "사진 출처"
+  ],
+  "music": {
+    "mood": "travel",
+    "bpm": 120,
+    "prompt": "upbeat tropical house, marimba, claps, sunny guitar, adventurous travel montage",
+    "sections": [
+      [
+        0,
+        2.4,
+        "airy intro with a rising swell"
+      ],
+      [
+        2.4,
+        14,
+        "the drop: bright travel groove"
+      ],
+      [
+        14,
+        17.8,
+        "warm ending with a final hit"
+      ]
+    ]
+  }
+}

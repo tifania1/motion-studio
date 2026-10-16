@@ -1,0 +1,9 @@
+{
+  "name": "시네마틱",
+  "description": "영화 예고편처럼 위아래 레터박스와 필름 그레인. 검은 화면에 꼬리표가 떴다 사라지고 사진이 천천히 다가오며 제목이 맺힌 뒤, 장 번호가 붙은 자막 장면들(사이마다 블랙 컷과 빛 번짐) → 초공간 빛줄기 속 큰 숫자 → 페이드 투 블랙, 빛을 받는 로고와 엔딩 크레딧. 예시 기준 23.5초.",
+  "fonts": [
+    { "family": "Instrument Serif", "weight": 400, "file": "fonts/InstrumentSerif-Regular.woff2" },
+    { "family": "Instrument Serif", "weight": 400, "style": "italic", "file": "fonts/InstrumentSerif-Italic.woff2" },
+    { "family": "Geist Mono", "weight": "100 900", "file": "fonts/GeistMono-Variable.woff2" }
+  ]
+}

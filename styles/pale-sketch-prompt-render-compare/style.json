@@ -1,0 +1,126 @@
+{
+  "id": "pale-sketch-prompt-render-compare",
+  "name": "스케치에서 결과로, 나란히 견주기",
+  "group": "제품 UI",
+  "template": "uidemo",
+  "summary": "옅은 회색 판에 손 스케치 카드가 놓이고, 흰 입력 카드에 부탁이 쳐지며 핵심 문장만 파랗게 물들어요. 결과 카드는 비스듬히 돌아 들어와 파란 빛 테두리를 켜고, 끝에는 두 결과를 나란히 두고 조건을 박자마다 바꿔 견주는 차분한 비교 데모",
+  "tags": [
+    "제품 UI",
+    "비교",
+    "프롬프트",
+    "결과물",
+    "차분함",
+    "파랑"
+  ],
+  "hand": false,
+  "source": {
+    "site": "keyframe.gallery",
+    "ref": "mux:01CU019Ip5qHgqu9gULDQFNPu1ksQcLCrZckwOVpx6BHg",
+    "at": "0–26.3초",
+    "note": "옅은 회색 판 가운데 파란 그라디언트 가는 제목과 빛 번진 알약 칩, 둥근 카드에 담긴 연필 스케치, 흰 입력 카드에 회색 문장이 쳐지다 요구 대목만 파랑으로 물드는 강조, 결과 카드가 3D로 비스듬히 돌아 들어와 평평해지며 빛 테두리가 켜지는 등장, 두 카드를 나란히 두고 1초마다 배경 조건을 함께 바꾸는 비교, 파랑·초록 점 물결 위에서 흐린 주소 글씨가 맺히는 마무리"
+  },
+  "palette": [
+    "#EDEDEC",
+    "#1F1F1F",
+    "#3462D9",
+    "#8FB0F2",
+    "#FFFFFF",
+    "#3FA35A"
+  ],
+  "colors": {
+    "bg": "#EDEDEC",
+    "onBg": "#1F1F1F",
+    "onBgMuted": "rgba(31,31,31,.56)",
+    "paper": "#FFFFFF",
+    "ink": "#202124",
+    "accent": "#3462D9",
+    "accentInk": "#FFFFFF",
+    "pattern": "rgba(31,31,31,.06)",
+    "glow": "rgba(110,155,240,.45)"
+  },
+  "type": {
+    "display": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "heading": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "body": [
+      "Geist",
+      "Noto Sans KR"
+    ]
+  },
+  "fonts": [
+    {
+      "family": "Geist",
+      "weight": "100 900",
+      "file": "fonts/Geist-Variable.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 500,
+      "file": "fonts/NotoSansKR-Medium.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 700,
+      "file": "fonts/NotoSansKR-Bold.woff2"
+    }
+  ],
+  "shape": {
+    "radius": "calc(var(--u) * 2)"
+  },
+  "motion": {
+    "pace": "보통",
+    "bpm": 96,
+    "ease": "power3.out",
+    "stagger": 1,
+    "transitions": [
+      "fade",
+      "blur",
+      "cut"
+    ]
+  },
+  "scenes": {
+    "bg": "solid",
+    "align": "center",
+    "card": "shadow",
+    "marker": "color",
+    "weight": 500,
+    "tracking": -0.01,
+    "case": "none",
+    "rough": false,
+    "title": "blur",
+    "frame": "card",
+    "deco": [
+      "dots"
+    ],
+    "number": "count",
+    "scale": 1,
+    "schemes": [
+      "dark",
+      "paper",
+      "dark"
+    ]
+  },
+  "signature": [
+    "흰 입력 카드 왼쪽 위에 작은 스케치 썸네일을 두고, 회색 부탁 문장이 초당 40자쯤으로 쳐져요. 요구가 담긴 가운데 대목만 쳐지는 순간 회색에서 파랑(#3462D9)으로 물들고, 나머지 문장은 회색 그대로 남아요",
+    "결과 카드가 옆으로 35도쯤 돌아 누운 채 0.9초에 들어와 정면으로 펴지고, 펴지는 순간 테두리에 파란 빛 번짐이 켜져요. 반 박 뒤 카드 아래에 빛 두른 흰 알약 이름표가 떠오르고, 카드는 천천히 조금 더 커져요",
+    "두 결과 카드를 나란히 두고 왼쪽은 그림자만, 오른쪽은 파란 빛 테두리와 알약 이름표를 달아요. 1초마다 두 카드의 조건(밤·노을·분홍·하늘 바탕색)이 함께 0.3초에 바뀌어 같은 상황에서 차이가 보이게 해요"
+  ],
+  "fits": [
+    "새 모델·새 버전 비교",
+    "입력에서 결과까지 보여 주는 기능 소개",
+    "만들기·생성 도구 데모",
+    "전후 비교가 핵심인 업데이트 공지"
+  ],
+  "avoid": [
+    "어두운 바탕",
+    "빠른 컷 몽타주",
+    "굵고 큰 제목",
+    "강조색 여러 개(파랑 하나, 마무리 점에만 초록)",
+    "거친 질감·그레인"
+  ]
+}

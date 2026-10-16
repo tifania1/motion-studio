@@ -1,0 +1,158 @@
+{
+  "id": "navy-anchor-ledger-serif",
+  "name": "남색 앵커 장부 세리프",
+  "group": "그래픽·도형",
+  "template": "brandmark",
+  "summary": "남색 판과 옅은 회색 판을 오가요. 가는 파란 격자 위에서 흰 앵커 점이 큰 글자를 지어 올리고, 차분한 세리프 문장과 머리카락 같은 선 도표가 칸마다 놓이는 금융 브랜드 설명 필름",
+  "tags": [
+    "도형",
+    "격자",
+    "앵커 점",
+    "세리프",
+    "금융",
+    "남색"
+  ],
+  "hand": false,
+  "source": {
+    "site": "keyframe.gallery",
+    "ref": "mux:moytRyantyfuG3VDmpTimhSITzbg2WZVYITvVZEWE02Q",
+    "at": "0–43.8초",
+    "note": "남색 격자 위 앵커 점 하나에서 반투명 띠가 내려와 큰 글자 획이 되고 점 박힌 윤곽이 채워지는 오프닝, 옅은 회색 격자 칸에 세리프 제목과 파란 이탤릭 한 줄, 가운데 남색 정사각형이 세 장으로 엇갈려 펼쳐졌다 접히는 박자, 남색·파랑 반반 판, 3×3 칸 선 도표로 파고드는 카메라, 호를 따라 늘어선 아이콘 원과 큰 파란 숫자"
+  },
+  "palette": [
+    "#E9ECEF",
+    "#14243B",
+    "#1F6FD6",
+    "#B9C4D0",
+    "#8FB4E6"
+  ],
+  "colors": {
+    "bg": "#E9ECEF",
+    "onBg": "#14243B",
+    "onBgMuted": "rgba(20,36,59,.62)",
+    "paper": "#14243B",
+    "ink": "#E9ECEF",
+    "accent": "#1F6FD6",
+    "accentInk": "#FFFFFF",
+    "pattern": "rgba(31,111,214,.16)",
+    "glow": "rgba(31,111,214,.22)"
+  },
+  "type": {
+    "display": [
+      "Instrument Serif",
+      "Gowun Batang"
+    ],
+    "heading": [
+      "Instrument Serif",
+      "Gowun Batang"
+    ],
+    "body": [
+      "Geist",
+      "Noto Sans KR"
+    ]
+  },
+  "fonts": [
+    {
+      "family": "Instrument Serif",
+      "weight": 400,
+      "file": "fonts/InstrumentSerif-Regular.woff2"
+    },
+    {
+      "family": "Instrument Serif",
+      "weight": 400,
+      "style": "italic",
+      "file": "fonts/InstrumentSerif-Italic.woff2"
+    },
+    {
+      "family": "Gowun Batang",
+      "weight": 400,
+      "file": "fonts/GowunBatang-Regular.woff2"
+    },
+    {
+      "family": "Gowun Batang",
+      "weight": 700,
+      "file": "fonts/GowunBatang-Bold.woff2"
+    },
+    {
+      "family": "Archivo",
+      "weight": "100 900",
+      "stretch": "62% 125%",
+      "file": "fonts/Archivo-Variable.woff2"
+    },
+    {
+      "family": "Geist",
+      "weight": "100 900",
+      "file": "fonts/Geist-Variable.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 500,
+      "file": "fonts/NotoSansKR-Medium.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 900,
+      "file": "fonts/NotoSansKR-Black.woff2"
+    }
+  ],
+  "shape": {
+    "radius": "calc(var(--u) * 0.2)"
+  },
+  "motion": {
+    "pace": "보통",
+    "bpm": 96,
+    "ease": "power3.inOut",
+    "stagger": 1,
+    "transitions": [
+      "wipe",
+      "cut",
+      "fade"
+    ]
+  },
+  "scenes": {
+    "bg": "grid",
+    "align": "center",
+    "card": "outline",
+    "marker": "color",
+    "weight": 400,
+    "tracking": -0.01,
+    "case": "upper",
+    "rough": false,
+    "title": "mask",
+    "frame": "none",
+    "deco": [
+      "marks",
+      "dots"
+    ],
+    "number": "count",
+    "scale": 1,
+    "schemes": [
+      "paper",
+      "dark",
+      "dark",
+      "accent",
+      "dark",
+      "paper"
+    ]
+  },
+  "signature": [
+    "남색 판의 가는 파란 격자 교차점에 흰 네모 앵커 점 하나가 켜지고 세로 선이 떨어져요. 위쪽에 앵커 점이 줄지어 생기면 거기서 반투명 하늘빛 띠가 비스듬히 내려와 큰 글자 획이 되고, 이어 흰 점이 박힌 글자 윤곽이 연회색으로 채워지며 아래에 작은 세리프 한 줄이 놓여요",
+    "옅은 회색 격자 한가운데 남색 정사각형 하나가 박자에 맞춰 연회색·파랑·남색 세 장으로 대각선을 따라 엇갈려 펼쳐졌다가 다시 한 장으로 접혀요",
+    "3×3 칸마다 머리카락 같은 선 도표(엇갈린 선과 마디, 남색 막대와 망점 막대, 원 고리, 내려가는 곡선, 계단 선)가 한꺼번에 그려지고, 카메라가 한 칸으로 파고들어 그 도표가 화면을 채운 뒤 다음 칸으로 넘어가요"
+  ],
+  "fits": [
+    "금융·투자 브랜드 소개",
+    "펀드·자산 운용 설명",
+    "신뢰가 중요한 B2B 서비스",
+    "연례 보고·성과 숫자",
+    "브랜드 리뉴얼 공개"
+  ],
+  "avoid": [
+    "손그림 선과 떨림",
+    "크게 둥근 모서리",
+    "강조색 여러 개(파랑 하나만)",
+    "빠른 컷 몽타주",
+    "그레인·종이 질감",
+    "굵은 세리프 제목"
+  ]
+}

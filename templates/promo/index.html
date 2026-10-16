@@ -1,0 +1,248 @@
+<title>/*@TITLE@*/</title>
+<style>
+/*@FONTFACES@*/
+/*@BRAND_CSS@*/
+/*@ENGINE_CSS@*/
+
+/* ===== promo 템플릿: 훅 → 사진 장면들 → 장점 → 숫자 → CTA =====
+   모든 크기는 --u (짧은 변의 1%) 기준이라 9:16, 4:5, 1:1, 16:9 에서 같은 비율로 보입니다. */
+.pat { position: absolute; inset: -10%; pointer-events: none; }
+.pat.dots { background-image: radial-gradient(circle, var(--pattern) 0 calc(var(--u) * .45), transparent calc(var(--u) * .5)); background-size: calc(var(--u) * 6) calc(var(--u) * 6); }
+.pat.grid { background-image: linear-gradient(var(--pattern) 1px, transparent 1px), linear-gradient(90deg, var(--pattern) 1px, transparent 1px); background-size: calc(var(--u) * 8) calc(var(--u) * 8); }
+.pat.rays { left: 50%; top: 50%; width: 300%; height: 300%; margin: -150% 0 0 -150%; inset: auto; background: repeating-conic-gradient(from 0deg, var(--pattern) 0 6deg, transparent 6deg 15deg); }
+.glow { position: absolute; width: 120%; aspect-ratio: 1; left: -10%; top: 30%; border-radius: 50%; background: radial-gradient(closest-side, var(--glow), transparent); pointer-events: none; }
+
+.kicker { display: inline-flex; align-items: center; gap: calc(var(--u) * 1.4); align-self: flex-start; background: var(--accent); color: var(--accent-ink); font: 800 calc(var(--u) * 3.6)/1 var(--font-body); padding: calc(var(--u) * 1.6) calc(var(--u) * 3) calc(var(--u) * 1.9); border-radius: 999px; white-space: nowrap; letter-spacing: -.01em; }
+.kicker i { width: calc(var(--u) * 1.2); height: calc(var(--u) * 1.2); background: currentColor; border-radius: 50%; }
+.headline { font: 900 calc(var(--u) * 12)/1.16 var(--font-heading); color: var(--on-bg); letter-spacing: -.035em; white-space: pre-line; word-break: keep-all; margin: 0; width: 100%; }
+.sub { font: 600 calc(var(--u) * 4.2)/1.4 var(--font-body); color: var(--on-bg-muted); margin: 0; word-break: keep-all; white-space: pre-line; }
+
+/* hook */
+#sc-hook .safe { display: flex; flex-direction: column; justify-content: center; gap: calc(var(--u) * 4); }
+#sc-hook .mascot { position: absolute; z-index: 3; }
+.mascot img { width: 100%; height: auto; }
+
+/* visual (사진) */
+.vis .ph { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.vis .shade { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,.35) 0%, rgba(0,0,0,0) 28%, rgba(0,0,0,0) 45%, rgba(0,0,0,.72) 100%); }
+.vis .safe { display: flex; flex-direction: column; justify-content: flex-end; gap: calc(var(--u) * 2.4); }
+.vis .idx { align-self: flex-start; font: 900 calc(var(--u) * 3.4)/1 var(--font-display); color: var(--accent-ink); background: var(--accent); padding: calc(var(--u) * 1.4) calc(var(--u) * 2.2); border-radius: calc(var(--u) * 1.2); letter-spacing: .04em; }
+.vis .cap { font: 900 calc(var(--u) * 9)/1.14 var(--font-heading); color: #fff; letter-spacing: -.03em; margin: 0; white-space: pre-line; word-break: keep-all; text-shadow: 0 calc(var(--u) * .4) calc(var(--u) * 2) rgba(0,0,0,.35); width: 100%; }
+.vis .csub { font: 600 calc(var(--u) * 4)/1.35 var(--font-body); color: rgba(255,255,255,.9); margin: 0; white-space: pre-line; word-break: keep-all; }
+.vis .credit { position: absolute; right: calc(var(--safe-r) + var(--u) * 1); top: calc(var(--safe-t) + var(--u) * 1); font: 500 calc(var(--u) * 1.6)/1 var(--font-body); color: rgba(255,255,255,.85); text-shadow: 0 1px 3px rgba(0,0,0,.7); }
+
+/* benefits */
+#sc-benefits { background: var(--paper); }
+#sc-benefits .safe { display: flex; flex-direction: column; justify-content: center; gap: calc(var(--u) * 5); }
+#sc-benefits h2 { font: 900 calc(var(--u) * 9)/1.1 var(--font-heading); color: var(--ink); margin: 0; letter-spacing: -.03em; white-space: pre-line; word-break: keep-all; width: 100%; }
+.items { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: calc(var(--u) * 3.2); }
+.items li { display: flex; align-items: center; gap: calc(var(--u) * 3); font: 700 calc(var(--u) * 5.2)/1.25 var(--font-body); color: var(--ink); word-break: keep-all; }
+.items li b { flex: none; width: calc(var(--u) * 8.4); height: calc(var(--u) * 8.4); border-radius: 50%; background: var(--accent); display: grid; place-items: center; }
+.items li b svg { width: 56%; height: 56%; fill: none; stroke: var(--accent-ink); stroke-width: 3.2; stroke-linecap: round; stroke-linejoin: round; }
+.items li span { min-width: 0; }
+
+/* proof (숫자) */
+#sc-proof .safe { display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; gap: calc(var(--u) * 2); }
+.big { font: 900 calc(var(--u) * 30)/.9 var(--font-display); color: var(--accent); letter-spacing: -.04em; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.big small { font-size: .32em; letter-spacing: 0; margin-left: .08em; color: var(--on-bg); }
+.plabel { font: 800 calc(var(--u) * 5.4)/1.3 var(--font-body); color: var(--on-bg); white-space: pre-line; word-break: keep-all; }
+
+/* cta */
+#sc-cta .safe { display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; gap: calc(var(--u) * 4.2); }
+.logo { display: flex; flex-direction: column; align-items: center; gap: calc(var(--u) * 1.4); }
+.logo img { height: calc(var(--u) * 14); width: auto; }
+.logo .lt { font: 900 calc(var(--u) * 13)/.9 var(--font-display); color: var(--accent); letter-spacing: .02em; white-space: nowrap; }
+.logo .ls { font: 700 calc(var(--u) * 3.2)/1 var(--font-display); color: var(--on-bg); letter-spacing: .3em; padding-left: .3em; white-space: nowrap; }
+#sc-cta .headline { text-align: center; font-size: calc(var(--u) * 8.5); }
+.btn { display: inline-flex; align-items: center; gap: calc(var(--u) * 2); background: var(--accent); color: var(--accent-ink); font: 900 calc(var(--u) * 5)/1 var(--font-body); padding: calc(var(--u) * 3) calc(var(--u) * 5.4) calc(var(--u) * 3.3); border-radius: 999px; box-shadow: 0 calc(var(--u) * 1) 0 rgba(0,0,0,.22); white-space: nowrap; }
+.btn svg { width: 1em; height: 1em; fill: currentColor; }
+.handle { font: 700 calc(var(--u) * 3.6)/1.3 var(--font-body); color: var(--on-bg-muted); white-space: pre-line; }
+#sc-cta .mascot { position: absolute; z-index: 3; }
+
+/* ---- 비율별 배치 ---- */
+/* 9:16 은 마스코트를 글 아래 빈자리에 둠 (위치·크기는 아래 스크립트의 mascotBelow 가 계산) */
+[data-format="tall"] #sc-hook.has-mascot .safe { justify-content: flex-start; padding-top: 4%; }
+[data-format="tall"] #sc-cta.has-mascot .safe { justify-content: flex-start; padding-top: 2%; }
+.mascot.below { left: 0; right: 0; display: flex; align-items: flex-start; }
+.mascot.below img { height: 100%; width: auto; }
+[data-format="portrait"] #sc-hook .mascot { width: 32%; right: 2%; bottom: 0; }
+[data-format="portrait"] #sc-hook.has-mascot .safe { right: 36%; }
+[data-format="portrait"] #sc-cta .mascot, [data-format="square"] #sc-cta .mascot { display: none; }
+[data-format="square"] #sc-hook .mascot { width: 30%; right: 2%; bottom: 0; }
+[data-format="square"] #sc-hook.has-mascot .safe { right: 34%; }
+[data-format="wide"] #sc-hook .mascot { height: 92%; right: 6%; bottom: 0; }
+[data-format="wide"] #sc-hook .mascot img { height: 100%; width: auto; }
+[data-format="wide"] #sc-hook.has-mascot .safe { right: 42%; }
+[data-format="wide"] .vis .safe { right: 40%; }
+[data-format="wide"] #sc-benefits .safe { right: 30%; }
+[data-format="wide"] #sc-cta .mascot { height: 70%; left: 5%; bottom: 0; }
+[data-format="wide"] #sc-cta .mascot img { height: 100%; width: auto; }
+</style>
+
+<div id="viewport"><div id="stage"><div id="cam"></div></div></div>
+
+<script>/*@GSAP@*/</script>
+<script>/*@DATA@*/</script>
+<script>/*@ENGINE_JS@*/</script>
+<script>
+(function () {
+  const S = Studio, C = S.content, B = S.brand, e = S.esc;
+  const cam = S.$('#cam');
+  const CHECK = '<svg viewBox="0 0 24 24"><path d="M5 12.5l4.2 4.2L19 7"/></svg>';
+  const ARROW = '<svg viewBox="0 0 24 24"><path d="M5 11h10.2l-4.6-4.6L12 5l7 7-7 7-1.4-1.4 4.6-4.6H5z"/></svg>';
+  const pattern = B.pattern || 'dots';
+  const mascotKey = C.mascot === false ? null : (C.mascot || B.mascot);
+
+  /* ---------- DOM ---------- */
+  const scenes = [];
+  const add = (html) => { const el = S.h(html); cam.appendChild(el); scenes.push(el); return el; };
+
+  const hook = C.hook || {};
+  const hookMascot = !!(mascotKey && S.img(mascotKey));
+  add(`<section class="scene${hookMascot ? ' has-mascot' : ''}" id="sc-hook">
+    <div class="pat ${e(pattern)}"></div><div class="glow"></div>
+    <div class="safe">
+      ${hook.kicker ? `<div class="kicker"><i></i><span>${e(hook.kicker)}</span></div>` : ''}
+      <h1 class="headline">${e(hook.headline || '')}</h1>
+      ${hook.sub ? `<p class="sub">${e(hook.sub)}</p>` : ''}
+    </div>
+    ${mascotKey && S.img(mascotKey) ? `<div class="mascot"><img src="${S.img(mascotKey)}" alt=""></div>` : ''}
+  </section>`);
+
+  (C.visuals || []).forEach((v, i) => {
+    const pos = v.focus ? `${v.focus[0] * 100}% ${v.focus[1] * 100}%` : '50% 50%';
+    add(`<section class="scene vis" data-i="${i}">
+      <img class="ph" src="${S.img(v.image)}" alt="" style="object-position:${pos}">
+      <div class="shade"></div>
+      <div class="safe">
+        <div class="idx">${e(v.badge || String(i + 1).padStart(2, '0'))}</div>
+        <h2 class="cap">${e(v.title || '')}</h2>
+        ${v.sub ? `<p class="csub">${e(v.sub)}</p>` : ''}
+      </div>
+      ${v.credit ? `<div class="credit">${e(v.credit)}</div>` : ''}
+    </section>`);
+  });
+
+  if (C.benefits && (C.benefits.items || []).length) {
+    add(`<section class="scene" id="sc-benefits"><div class="safe">
+      <h2>${e(C.benefits.title || '')}</h2>
+      <ul class="items">${C.benefits.items.map(t => `<li><b>${CHECK}</b><span>${e(t)}</span></li>`).join('')}</ul>
+    </div></section>`);
+  }
+
+  if (C.proof && C.proof.number != null) {
+    add(`<section class="scene" id="sc-proof"><div class="pat ${e(pattern)}"></div><div class="safe">
+      <div class="big"><span class="num">${e(C.proof.number)}</span><small>${e(C.proof.suffix || '')}</small></div>
+      <div class="plabel">${e(C.proof.label || '')}</div>
+    </div></section>`);
+  }
+
+  const cta = C.cta || {};
+  const logoImg = B.logo && S.img(B.logo);
+  const ctaMascot = !!(mascotKey && S.img(mascotKey) && C.ctaMascot !== false);
+  add(`<section class="scene${ctaMascot ? ' has-mascot' : ''}" id="sc-cta"><div class="pat ${e(pattern)}"></div><div class="glow"></div><div class="safe">
+    <div class="logo">${logoImg ? `<img src="${logoImg}" alt="">` : ''}${B.logoText ? `<div class="lt">${e(B.logoText)}</div>` : ''}${B.logoSub ? `<div class="ls">${e(B.logoSub)}</div>` : ''}</div>
+    ${cta.headline ? `<h2 class="headline">${e(cta.headline)}</h2>` : ''}
+    ${cta.button ? `<div class="btn"><span>${e(cta.button)}</span>${ARROW}</div>` : ''}
+    ${cta.sub ? `<div class="handle">${e(cta.sub)}</div>` : ''}
+  </div>
+  ${ctaMascot ? `<div class="mascot"><img src="${S.img(mascotKey)}" alt=""></div>` : ''}
+  </section>`);
+
+  /* ---------- 타임라인 ---------- */
+  S.start(S => {
+    const tl = S.tl;
+    const maxH = { tall: 13, portrait: 11.5, square: 10.5, wide: 12 }[S.key];
+    const u = Math.min(S.W, S.H) / 100;
+    // 글자 크기 맞추기
+    S.$$('.headline').forEach(el => S.fit(el, { max: maxH * u, maxLines: 4 }));
+    S.$$('.vis .cap').forEach(el => S.fit(el, { max: 9 * u, maxLines: 3 }));
+    const bh = S.$('#sc-benefits h2'); if (bh) S.fit(bh, { max: 9 * u, maxLines: 2 });
+    const big = S.$('.big'); if (big) S.fit(big, { max: 30 * u });
+
+    // 9:16 마스코트: 글 블록 바로 아래부터 화면 아래쪽(하단 UI 영역 일부까지)을 채우는 크기로 배치
+    const mascotBelow = (sc, align) => {
+      const mas = S.$('.mascot', sc), safe = S.$('.safe', sc);
+      if (!mas || !safe || !S.is('tall')) return;
+      const last = safe.lastElementChild;
+      const top = safe.offsetTop + last.offsetTop + last.offsetHeight + 3 * u;
+      const bottom = S.H - S.safe.bottom * .25;
+      const hgt = Math.min(.42 * S.H, Math.max(bottom - top, 18 * u));
+      mas.classList.add('below');
+      Object.assign(mas.style, { top: top + 'px', height: hgt + 'px',
+        justifyContent: align === 'center' ? 'center' : 'flex-end', paddingRight: align === 'center' ? '0' : S.safe.right + 'px' });
+    };
+    mascotBelow(S.$('#sc-hook'), 'right');
+    mascotBelow(S.$('#sc-cta'), 'center');
+
+    const D = Object.assign({ hook: 3, visual: 2.6, benefits: 3.2, proof: 2.4, cta: 3.4 }, C.durations || {});
+    let t = 0;
+    const order = scenes.map(sc => sc.id === 'sc-hook' ? 'hook' : sc.classList.contains('vis') ? 'visual' : sc.id.replace('sc-', ''));
+    const starts = [];
+    order.forEach((k, i) => { starts.push(t); t += D[k]; });
+    S.setDuration(t);
+    tl.set(scenes[0], { autoAlpha: 1 }, 0);
+
+    // 장면 전환
+    const trans = C.transitions || {};
+    for (let i = 1; i < scenes.length; i++) {
+      const k = order[i], prev = order[i - 1];
+      const kind = trans[k] || (k === 'visual' && prev === 'visual' ? 'push' : k === 'visual' ? 'wipe' : k === 'cta' ? 'iris' : k === 'proof' ? 'zoom' : 'wipe');
+      if (kind === 'blades' || kind === 'flood') S.tr[kind](starts[i], scenes[i - 1], scenes[i]);
+      else if (kind === 'iris') S.tr.iris(starts[i], scenes[i - 1], scenes[i]);
+      else if (kind === 'push') S.tr.push(starts[i], scenes[i - 1], scenes[i]);
+      else if (kind === 'zoom') S.tr.zoom(starts[i], scenes[i - 1], scenes[i]);
+      else if (kind === 'fade') S.tr.fade(starts[i], scenes[i - 1], scenes[i]);
+      else if (kind === 'cut') S.tr.cut(starts[i], scenes[i - 1], scenes[i]);
+      else S.tr.wipe(starts[i], scenes[i - 1], scenes[i]);
+    }
+
+    scenes.forEach((sc, i) => {
+      const T0 = starts[i], k = order[i];
+      const pat = S.$('.pat', sc);
+      if (pat) S.ambient(tt => { pat.style.transform = pattern === 'rays' ? `rotate(${tt * 6}deg)` : `translate(${(tt * 18) % (6 * u)}px, ${(tt * 18) % (6 * u)}px)`; });
+
+      if (k === 'hook') {
+        const kick = S.$('.kicker', sc), hl = S.$('.headline', sc), sub = S.$('.sub', sc), mas = S.$('.mascot', sc);
+        const mark = S.mark(hl, hook.highlight);
+        if (kick) S.fx.pop(kick, T0 + .1);
+        const parts = mark ? [hl] : S.words(hl);
+        if (mark) S.fx.rise(hl, T0 + .25, { y: 80 }); else S.fx.rise(parts, T0 + .25, { y: 90, stagger: .07, rot: 4 });
+        S.fx.marker(mark, T0 + .9);
+        if (sub) S.fx.rise(sub, T0 + .9, { y: 30, ease: 'power3.out' });
+        if (mas) { S.fx.rise(mas, T0 + .45, { y: 400, ease: 'back.out(1.4)', d: .6 }); S.fx.bob(S.$('img', mas), 6 * u / 10, .7); }
+        S.fx.shake(T0 + .55, 6);
+      }
+      if (k === 'visual') {
+        const v = (C.visuals || [])[+sc.dataset.i] || {};
+        S.fx.kenburns(S.$('.ph', sc), T0 - .5, D.visual + 1, { from: 1.18, to: 1.03, x0: v.pan === 'left' ? 3 : -3, x1: v.pan === 'left' ? -3 : 3 });
+        S.fx.pop(S.$('.idx', sc), T0 + .15);
+        S.fx.rise(S.words(S.$('.cap', sc)), T0 + .25, { y: 70, stagger: .06 });
+        const cs = S.$('.csub', sc); if (cs) S.fx.reveal(cs, T0 + .7);
+        const cr = S.$('.credit', sc); if (cr) S.fx.fade(cr, T0 + .6);
+      }
+      if (k === 'benefits') {
+        S.fx.rise(S.$('h2', sc), T0 + .1, { y: 50 });
+        const lis = S.$$('li', sc);
+        S.fx.slide(lis, T0 + .5, { dir: 'left', dist: 160, stagger: .28 });
+        S.fx.pop(lis.map(li => li.querySelector('b')), T0 + .6, { stagger: .28 });
+      }
+      if (k === 'proof') {
+        const num = S.$('.num', sc), raw = String(C.proof.number).replace(/[^\d.]/g, '');
+        S.fx.pop(S.$('.big', sc), T0 - .2, { from: .6 });
+        if (raw && C.proof.count !== false) S.fx.counter(num, T0 - .15, 1.2, C.proof.from ?? 0, parseFloat(raw), { format: v => C.proof.decimals ? v.toFixed(C.proof.decimals) : C.proof.plain ? String(Math.round(v)) : Math.round(v).toLocaleString('ko-KR') });
+        S.fx.rise(S.$('.plabel', sc), T0 + .6, { y: 30 });
+        S.fx.shake(T0 + 1.2, 8);
+      }
+      if (k === 'cta') {
+        const logo = S.$('.logo', sc), hl = S.$('.headline', sc), btn = S.$('.btn', sc), hd = S.$('.handle', sc), mas = S.$('.mascot', sc);
+        S.fx.pop(logo, T0 + .1, { from: .5 });
+        if (hl) S.fx.rise(S.words(hl), T0 + .45, { stagger: .05 });
+        if (btn) { S.fx.pop(btn, T0 + .9); S.ambient(tt => { if (tt > T0 + 1.4) btn.style.scale = (1 + .035 * Math.sin((tt - T0) * 6)).toFixed(4); }); }
+        if (hd) S.fx.fade(hd, T0 + 1.2);
+        if (mas) { S.fx.rise(mas, T0 + .3, { y: 300, d: .6 }); S.fx.bob(S.$('img', mas), 5 * u / 10, .8, 1.3); }
+      }
+    });
+  });
+})();
+</script>

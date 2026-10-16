@@ -1,0 +1,129 @@
+{
+  "id": "noir-alert-pileup-light-slit",
+  "name": "어둠 속 알림 더미와 빛 틈",
+  "group": "제품 UI",
+  "template": "uidemo",
+  "summary": "새까만 화면에서 빛나는 버튼 하나를 누르면 어두운 유리 알림 카드가 하나씩 불어나 불꽃 그래프 대시보드 더미로 번져요. 세로 빛 틈이 한 번 지나가면 회색 문장 한 줄이 어절마다 하얗게 밝아지며 끝나요",
+  "tags": [
+    "제품 UI",
+    "어두움",
+    "알림",
+    "개발 도구",
+    "긴장감",
+    "빛줄기"
+  ],
+  "hand": false,
+  "source": {
+    "site": "keyframe.gallery",
+    "ref": "mux:h2aM02UjjKoF2J4XyuZ02JycOl7ksNHcMc4tqTjpIDArI",
+    "at": "0–26.2초",
+    "note": "흐린 코드 위에 하얗게 빛나는 버튼을 커서가 누르면 회색 '진행 중' 알약으로 바뀌는 오프닝, 가운데 앱 아이콘의 색이 바뀔 때마다 둘레에 어두운 유리 알림 카드가 하나씩 붙는 리듬, 카드 더미가 불꽃 그래프·터미널·표 창이 겹친 대시보드로 번지는 혼란, 세로 빛 틈 전환, 검은 화면의 작은 문장이 어절마다 회색에서 흰색으로 밝아지는 엔딩"
+  },
+  "palette": [
+    "#0E0E0F",
+    "#1E1F21",
+    "#ECECEA",
+    "#F26A1F",
+    "#F5C542",
+    "#9CC8FF"
+  ],
+  "colors": {
+    "bg": "#0E0E0F",
+    "onBg": "#ECECEA",
+    "onBgMuted": "rgba(236,236,234,.5)",
+    "paper": "#1E1F21",
+    "ink": "#ECECEA",
+    "accent": "#F26A1F",
+    "accentInk": "#140804",
+    "pattern": "rgba(255,255,255,.05)",
+    "glow": "rgba(156,200,255,.45)"
+  },
+  "type": {
+    "display": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "heading": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "body": [
+      "Geist",
+      "Noto Sans KR"
+    ]
+  },
+  "fonts": [
+    {
+      "family": "Geist",
+      "weight": "100 900",
+      "file": "fonts/Geist-Variable.woff2"
+    },
+    {
+      "family": "Geist Mono",
+      "weight": "100 900",
+      "file": "fonts/GeistMono-Variable.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 500,
+      "file": "fonts/NotoSansKR-Medium.woff2"
+    }
+  ],
+  "look": {
+    "grain": 0.05,
+    "vignette": 0.28
+  },
+  "shape": {
+    "radius": "calc(var(--u) * 1.2)"
+  },
+  "motion": {
+    "pace": "보통",
+    "bpm": 96,
+    "ease": "power3.out",
+    "stagger": 1,
+    "transitions": [
+      "fade",
+      "cut",
+      "blur"
+    ]
+  },
+  "scenes": {
+    "bg": "solid",
+    "align": "center",
+    "card": "glass",
+    "marker": "color",
+    "weight": 400,
+    "tracking": -0.01,
+    "case": "none",
+    "rough": false,
+    "title": "fade",
+    "frame": "window",
+    "deco": [
+      "cursor",
+      "streaks"
+    ],
+    "number": "count",
+    "scale": 0.9,
+    "schemes": [
+      "dark"
+    ]
+  },
+  "signature": [
+    "흐린 코드가 깔린 검은 화면 가운데 하얗게 빛나는 알약 버튼 하나. 커서가 와서 누르면 버튼이 살짝 눌렸다가 빛이 꺼지며 회색 '진행 중…' 알약으로 바뀌고, 뒤 코드가 어둠 속으로 가라앉음",
+    "가운데 작은 앱 아이콘의 색이 한 박마다 바뀌고(청록 → 보라 → 빨강), 그때마다 둘레 빈자리에 어두운 유리 알림 카드(아이콘·굵은 제목·옅은 한 줄)가 0.3초에 톡 붙어 점점 화면을 메움. 오래된 카드는 반쯤 흐려짐",
+    "카드 더미가 불꽃 그래프·터미널·표 창이 겹겹이 쌓인 대시보드로 번져 혼란이 꽉 찬 순간, 세로 빛 틈이 화면을 가르며 지나가고 검은 화면에 작은 문장 한 줄이 어절마다 회색에서 흰색으로 밝아짐"
+  ],
+  "fits": [
+    "개발·운영 도구 소개",
+    "모니터링·장애 대응 서비스",
+    "문제 상황을 먼저 보여 주는 제품 영상",
+    "어두운 분위기의 B2B 런칭"
+  ],
+  "avoid": [
+    "밝은 바탕",
+    "큰 굵은 제목",
+    "강조색을 넓게 칠하기(불꽃 그래프와 경고에만)",
+    "통통 튀는 등장",
+    "손그림 선"
+  ]
+}

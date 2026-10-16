@@ -1,0 +1,128 @@
+{
+  "id": "retro-search-story",
+  "name": "옛 검색창 이야기",
+  "group": "레트로·픽셀",
+  "template": "terminal",
+  "summary": "2000년대 웹 검색 화면에서 검색어를 하나씩 쳐 나가며 이야기를 들려줘요. 자동완성 목록, 파란 밑줄 링크, 초록 주소, 회색 버튼, 넓게 봤다가 컷으로 바짝 붙는 화면",
+  "tags": [
+    "레트로",
+    "웹",
+    "검색",
+    "이야기",
+    "감성"
+  ],
+  "hand": false,
+  "source": {
+    "site": "keyframe.gallery",
+    "ref": "mux:jLaAKYt9KMYzIO01NPoiXIG02tbnKC00wciMRAAox13NV8",
+    "at": "0–8.4초, 12.5–19.8초, 47.6–51.8초",
+    "note": "화면보다 크게 당긴 입력칸 모서리와 깜빡이는 커서로 시작해 컷으로 전체 화면으로 물러나는 첫 장면, 글자마다 바뀌는 자동완성 목록(친 부분은 보통, 이어지는 말은 굵게), 버튼 클릭 → 결과 화면 컷 → 결과 줄에 바짝 붙는 컷, 파란 밑줄 제목·검정 요약·초록 주소의 결과 묶음, 검색어 순서만으로 흐르는 이야기와 회색 화면의 작은 한 마디 끝맺음"
+  },
+  "palette": [
+    "#F1F1F1",
+    "#1A0DAB",
+    "#228822",
+    "#4D90FE",
+    "#DD4B39",
+    "#EEB211"
+  ],
+  "colors": {
+    "bg": "#F1F1F1",
+    "onBg": "#222222",
+    "onBgMuted": "rgba(34,34,34,.62)",
+    "paper": "#FFFFFF",
+    "ink": "#222222",
+    "accent": "#1A0DAB",
+    "accentInk": "#FFFFFF",
+    "pattern": "rgba(0,0,0,.05)",
+    "glow": "rgba(77,144,254,.5)"
+  },
+  "type": {
+    "display": [
+      "Archivo",
+      "Noto Sans KR"
+    ],
+    "heading": [
+      "Archivo",
+      "Noto Sans KR"
+    ],
+    "body": [
+      "Archivo",
+      "Noto Sans KR"
+    ]
+  },
+  "fonts": [
+    {
+      "family": "Archivo",
+      "weight": "100 900",
+      "stretch": "62% 125%",
+      "file": "fonts/Archivo-Variable.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 500,
+      "file": "fonts/NotoSansKR-Medium.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 700,
+      "file": "fonts/NotoSansKR-Bold.woff2"
+    }
+  ],
+  "look": {
+    "grain": 0.05,
+    "vignette": 0.12
+  },
+  "shape": {
+    "radius": "calc(var(--u) * 0.2)"
+  },
+  "motion": {
+    "pace": "보통",
+    "bpm": 96,
+    "ease": "power2.out",
+    "stagger": 1,
+    "transitions": [
+      "cut",
+      "zoom",
+      "fade"
+    ]
+  },
+  "scenes": {
+    "bg": "solid",
+    "align": "left",
+    "card": "outline",
+    "marker": "underline",
+    "weight": 400,
+    "tracking": 0,
+    "case": "none",
+    "rough": false,
+    "title": "type",
+    "frame": "browser",
+    "deco": [
+      "cursor"
+    ],
+    "number": "count",
+    "scale": 0.85,
+    "schemes": [
+      "paper",
+      "dark"
+    ]
+  },
+  "signature": [
+    "화면보다 4배쯤 크게 당긴 입력칸 왼쪽 모서리(흐린 파란 테두리 빛)에서 세로 커서가 두어 번 깜빡이고, 컷으로 전체 화면(가운데 큰 이름, 얇은 입력칸, 회색 버튼 둘)으로 물러남",
+    "검색어가 초당 8~10자로 쳐지고, 한 글자마다 입력칸 아래 자동완성 목록이 통째로 바뀜(친 부분은 보통 굵기, 이어지는 말은 굵게). 커서가 목록 한 줄에 닿으면 연파랑 줄 강조 → 버튼 클릭 → 결과 화면으로 컷",
+    "결과 화면은 파란 밑줄 제목 + 검정 요약 두 줄 + 초록 주소 묶음이 서너 개. 곧바로 결과 한 줄에 2.5배로 바짝 붙는 컷이 오고 손가락 커서가 링크를 누름. 검색어 순서만으로 이야기가 흐르고, 끝은 회색 화면에 작은 회색 한 마디가 페이드로 떴다 사라짐"
+  ],
+  "fits": [
+    "브랜드 감성 이야기",
+    "추억·향수를 건드리는 광고",
+    "고객 여정 보여 주기",
+    "검색·질문으로 푸는 정보 광고"
+  ],
+  "avoid": [
+    "요즘 둥근 UI",
+    "그라디언트와 유리 질감",
+    "큰 굵은 제목",
+    "빠른 장면 연타"
+  ]
+}

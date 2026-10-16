@@ -1,0 +1,128 @@
+{
+  "id": "param-panel-photo-ring",
+  "name": "설정 패널 사진 고리",
+  "group": "제품 UI",
+  "template": "uidemo",
+  "summary": "푸른 회색 바탕에 흰 설정 패널이 하나 떠 있어요. 커서가 슬라이더와 토글을 건드릴 때마다 패널 뒤 결과물이 면 그래프, 파란 테두리 사진 벽, 어둠 속에서 도는 3D 사진 고리로 다시 펼쳐지는 도구 시연 필름이에요",
+  "tags": [
+    "제품 UI",
+    "커서",
+    "슬라이더",
+    "사진",
+    "3D",
+    "생성 도구"
+  ],
+  "hand": false,
+  "source": {
+    "site": "keyframe.gallery",
+    "ref": "mux:rlPNb5pQeouh8z00Ag37N01o5cYW01Y8Pny3i2M4rT1RZI",
+    "at": "1–51초",
+    "note": "물결 무늬 바탕 위 입력 카드에 문장을 치고 보내면 카드가 이름 막대로 줄었다가 설정 패널로 펼쳐지는 흐름을 배웠어요. 막 쳐진 글자만 파랑으로 보였다가 검정으로 가라앉아요. 같은 자리에 있는 패널에서 슬라이더·토글·드롭다운 값을 바꾸면 뒤 결과물(면 그래프 색과 산 모양, 사진 격자 크기)이 그 박에 다시 그려져요. 파란 1px 테두리 사진 카드 수백 장이 보라빛 어둠 속에서 3D 고리로 말리고, 깊이 있게 흩뿌려진 사이로 카메라가 지나가요. 선택 손잡이로 이미지를 고르고, 포스터 시안이 여러 장 생성돼요. 끝은 숯빛 화면에 파랑·흰색 두 색 문장이에요"
+  },
+  "palette": [
+    "#A8AFBB",
+    "#F4F4F5",
+    "#3C9BE8",
+    "#1A1622",
+    "#C8366E",
+    "#D4EE3E"
+  ],
+  "colors": {
+    "bg": "#A8AFBB",
+    "onBg": "#161718",
+    "onBgMuted": "rgba(22,23,24,.72)",
+    "paper": "#F4F4F5",
+    "ink": "#1C1C1E",
+    "accent": "#3C9BE8",
+    "accentInk": "#0A1626",
+    "pattern": "rgba(22,23,24,.08)",
+    "glow": "rgba(60,155,232,.35)"
+  },
+  "type": {
+    "display": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "heading": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "body": [
+      "Geist",
+      "Noto Sans KR"
+    ]
+  },
+  "fonts": [
+    {
+      "family": "Geist",
+      "weight": "100 900",
+      "file": "fonts/Geist-Variable.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 500,
+      "file": "fonts/NotoSansKR-Medium.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 700,
+      "file": "fonts/NotoSansKR-Bold.woff2"
+    }
+  ],
+  "shape": {
+    "radius": "calc(var(--u) * 1.6)"
+  },
+  "motion": {
+    "pace": "보통",
+    "bpm": 100,
+    "ease": "power3.out",
+    "stagger": 0.8,
+    "transitions": [
+      "cut",
+      "push",
+      "blur"
+    ]
+  },
+  "scenes": {
+    "bg": "solid",
+    "align": "center",
+    "card": "shadow",
+    "marker": "color",
+    "weight": 500,
+    "tracking": -0.02,
+    "case": "none",
+    "rough": false,
+    "title": "type",
+    "frame": "card",
+    "deco": [
+      "cursor",
+      "handles"
+    ],
+    "number": "odometer",
+    "scale": 1,
+    "schemes": [
+      "dark",
+      "paper",
+      "dark"
+    ]
+  },
+  "signature": [
+    "흐린 하늘빛·미색 물결 무늬 위 흰 입력 카드에 문장이 쳐지고, 커서가 파란 동그라미 버튼을 누르면 카드가 0.4초 만에 가로로 줄어 이름 막대가 돼요. 이름 글자는 막 들어온 몇 자만 파랑으로 보였다가 검정으로 가라앉고, 막대가 아래로 0.5초에 펼쳐져 설정 패널이 돼요",
+    "패널은 같은 자리에 둔 채 커서가 슬라이더를 밀거나 토글·드롭다운을 바꿔요. 그 박에 패널 뒤 결과물이 화면 가득 다시 그려져요. 면 그래프는 꼭짓점이 새 값으로 미끄러지며 자홍에서 초록으로 색을 갈아입고, 사진 격자는 칸 크기가 다시 맞춰져요",
+    "파란 1px 테두리 사진 카드 수백 장이 회색 격자에서 떠올라 보라빛 어둠 속 3D 고리로 말려 천천히 돌아요. 이어 깊이가 제각각인 흩뿌림으로 풀리고, 카메라가 그 사이로 밀고 들어가면 먼 카드는 흐려지고 가까운 카드는 방향 흐림을 끌어요"
+  ],
+  "fits": [
+    "플러그인·생성 도구 소개",
+    "디자인·편집 기능 시연",
+    "설정 하나로 결과가 바뀌는 기능",
+    "사진·자료를 한꺼번에 정리하는 서비스",
+    "개발자 도구 런칭"
+  ],
+  "avoid": [
+    "손그림 선과 종이 질감",
+    "강조색 여러 개(조작은 파랑 하나)",
+    "패널 자리가 장면마다 흔들리는 연출",
+    "글이 긴 큰 제목",
+    "느린 페이드만으로 잇기"
+  ]
+}

@@ -1,0 +1,137 @@
+{
+  "id": "pale-prompt-goo-param-nodes",
+  "name": "옅은 회색 덩어리 빚기",
+  "group": "제품 UI",
+  "template": "uidemo",
+  "summary": "옅은 회색 위 검은 점 가루가 흩어지면 프롬프트 창에 부탁이 쳐지고, 말랑한 그라디언트 덩어리가 슬라이더를 따라 꿈틀대며 색을 갈아입어요. 끝에는 노드 카드가 곡선으로 이어지고 자두·라임 덩어리 무늬가 화면을 덮는 제작 도구 데모",
+  "tags": [
+    "제품 UI",
+    "프롬프트",
+    "슬라이더",
+    "메타볼",
+    "노드 그래프",
+    "제작 도구"
+  ],
+  "hand": false,
+  "source": {
+    "site": "keyframe.gallery",
+    "ref": "mux:C01mg501Vl8f1xhocFOq024vkkHVwPYGJ2WZCBQHEja3as",
+    "at": "3.9–36초",
+    "note": "옅은 회색 위 검은 점 가루 구름이 소용돌이치다 흩어지는 오프닝, 빈 프롬프트 창에 문장이 쳐지며 지시 낱말만 보라로 물드는 타이핑, 프롬프트에 바짝 붙어 분홍 보내기 화살표를 누르는 커서, 파라미터 패널 슬라이더를 끌 때마다 꿈틀대며 자두·주황에서 라임으로 바뀌는 메타볼 덩어리, 초록 줄 강조가 깔린 코드 창과 설명 말풍선, 곡선으로 이어지는 노드 카드, 자두·라임 덩어리 무늬가 화면을 덮는 엔딩"
+  },
+  "palette": [
+    "#E9E9E8",
+    "#1F1F22",
+    "#5F55D6",
+    "#B6E33A",
+    "#E2557A",
+    "#3A1E4A"
+  ],
+  "colors": {
+    "bg": "#E9E9E8",
+    "onBg": "#1F1F22",
+    "onBgMuted": "rgba(31,31,34,.56)",
+    "paper": "#F6F6F5",
+    "ink": "#1F1F22",
+    "accent": "#5F55D6",
+    "accentInk": "#FFFFFF",
+    "pattern": "rgba(31,31,34,.06)",
+    "glow": "rgba(226,85,122,.3)"
+  },
+  "type": {
+    "display": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "heading": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "body": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "mono": [
+      "Geist Mono",
+      "Noto Sans KR"
+    ]
+  },
+  "fonts": [
+    {
+      "family": "Geist",
+      "weight": "100 900",
+      "file": "fonts/Geist-Variable.woff2"
+    },
+    {
+      "family": "Geist Mono",
+      "weight": "100 900",
+      "file": "fonts/GeistMono-Variable.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 500,
+      "file": "fonts/NotoSansKR-Medium.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 700,
+      "file": "fonts/NotoSansKR-Bold.woff2"
+    }
+  ],
+  "shape": {
+    "radius": "calc(var(--u) * 1.6)"
+  },
+  "motion": {
+    "pace": "보통",
+    "bpm": 110,
+    "ease": "power3.out",
+    "stagger": 0.9,
+    "transitions": [
+      "cut",
+      "blur",
+      "fade"
+    ]
+  },
+  "scenes": {
+    "bg": "solid",
+    "align": "center",
+    "card": "shadow",
+    "marker": "color",
+    "weight": 500,
+    "tracking": -0.02,
+    "case": "none",
+    "rough": false,
+    "title": "type",
+    "frame": "window",
+    "deco": [
+      "cursor",
+      "dots"
+    ],
+    "number": "count",
+    "scale": 1,
+    "schemes": [
+      "dark",
+      "paper",
+      "dark"
+    ]
+  },
+  "signature": [
+    "옅은 회색 바탕에서 크기가 제각각인 검은 점 가루 구름이 천천히 소용돌이치다 바깥으로 흩어지고, 빈자리에 그림자가 옅은 빈 프롬프트 창 하나만 남음",
+    "카메라가 프롬프트 창에 바짝 붙은 채 문장이 쳐지고, 만들 것을 가리키는 낱말만 보라로 물듦. 큰 검은 커서가 분홍 보내기 화살표를 누르면 캔버스에 자두·주황 그라디언트의 말랑한 덩어리가 솟아남",
+    "파라미터 패널의 보라 슬라이더를 커서가 끌 때마다 옆 덩어리가 실시간으로 늘었다 줄며 꿈틀대고, 무지개 색 띠 위 손잡이가 옮겨 가면 덩어리가 라임빛으로 갈아입음"
+  ],
+  "fits": [
+    "생성·제작 도구 시연",
+    "크리에이티브 코딩·셰이더 도구",
+    "노드 기반 워크플로 소개",
+    "AI 기능 런칭",
+    "설정 하나로 결과가 바뀌는 기능 설명"
+  ],
+  "avoid": [
+    "어두운 바탕을 길게 쓰기(엔딩 한 장만)",
+    "굵고 큰 제목",
+    "손그림 선과 종이 질감",
+    "빠른 컷 몽타주",
+    "강조색 여러 개를 한 화면에(보라 하나, 결과물 덩어리만 색을 씀)"
+  ]
+}

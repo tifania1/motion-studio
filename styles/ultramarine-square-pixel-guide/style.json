@@ -1,0 +1,137 @@
+{
+  "id": "ultramarine-square-pixel-guide",
+  "name": "울트라마린 정사각 씨앗",
+  "group": "그래픽·도형",
+  "template": "brandmark",
+  "summary": "옅은 회색 위 파란 정사각형 하나가 씨앗이 돼요. 격자로 불어나고, 둥근 픽셀 칸으로 쪼개져 원과 글자를 짓고, 블록 커서가 되어 글을 친 뒤 화면을 파랗게 덮는 담백한 브랜드 가이드 필름",
+  "tags": [
+    "도형",
+    "정사각형",
+    "픽셀",
+    "활자 견본",
+    "브랜드 가이드",
+    "파랑"
+  ],
+  "hand": false,
+  "source": {
+    "site": "keyframe.gallery",
+    "ref": "mux:D3aKmM02CApuC7p00F00jDpCMAj00C0201zIpLi4APeq7LVto",
+    "at": "1.3–30초, 52–62.4초",
+    "note": "회색 바탕 한가운데 파란 정사각형 하나가 같은 크기 격자로 복제되고 둥근 픽셀 칸으로 쪼개져 원·픽셀 글자로 다시 짜이는 흐름, 정사각형이 블록 커서가 되어 글을 치다 화면 전체를 파랗게 덮는 와이프, 연보라 활자 견본 속 한 글자씩 짙은 파랑으로 켜지는 리듬, 굵기 목록이 한 줄씩 쌓이는 장면, 끝에 작은 문장 → 로고타입 → 정사각형 하나로 돌아오는 수미상관"
+  },
+  "palette": [
+    "#EBEBEA",
+    "#1E14E6",
+    "#141414",
+    "#A9A5F3",
+    "#E9A3C9",
+    "#1C1C1E"
+  ],
+  "colors": {
+    "bg": "#EBEBEA",
+    "onBg": "#141414",
+    "onBgMuted": "rgba(20,20,20,.62)",
+    "paper": "#1C1C1E",
+    "ink": "#EBEBEA",
+    "accent": "#1E14E6",
+    "accentInk": "#FFFFFF",
+    "pattern": "rgba(30,20,230,.10)",
+    "glow": "rgba(30,20,230,.3)"
+  },
+  "type": {
+    "display": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "heading": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "body": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "mono": [
+      "Geist Mono",
+      "Noto Sans KR"
+    ]
+  },
+  "fonts": [
+    {
+      "family": "Geist",
+      "weight": "100 900",
+      "file": "fonts/Geist-Variable.woff2"
+    },
+    {
+      "family": "Geist Mono",
+      "weight": "100 900",
+      "file": "fonts/GeistMono-Variable.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 500,
+      "file": "fonts/NotoSansKR-Medium.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 700,
+      "file": "fonts/NotoSansKR-Bold.woff2"
+    }
+  ],
+  "shape": {
+    "radius": "calc(var(--u) * 0.4)"
+  },
+  "motion": {
+    "pace": "보통",
+    "bpm": 110,
+    "ease": "power3.inOut",
+    "stagger": 0.8,
+    "transitions": [
+      "cut",
+      "blocks",
+      "wipe"
+    ]
+  },
+  "scenes": {
+    "bg": "solid",
+    "align": "center",
+    "card": "flat",
+    "marker": "color",
+    "weight": 500,
+    "tracking": -0.02,
+    "case": "none",
+    "rough": false,
+    "title": "type",
+    "frame": "none",
+    "deco": [
+      "dots"
+    ],
+    "number": "scramble",
+    "scale": 1.2,
+    "schemes": [
+      "dark",
+      "accent",
+      "dark",
+      "paper"
+    ]
+  },
+  "signature": [
+    "옅은 회색 한가운데 파란 정사각형 하나가 한동안 가만히 있다가, 박자에 맞춰 같은 크기 사각형이 가운데서 미끄러져 나와 5×3 격자로 화면을 채워요. 이어 작은 둥근 사각 칸으로 쪼개져 칸이 하나씩 켜지고 꺼지며 픽셀 원이나 픽셀 글자로 다시 짜여요",
+    "파란 정사각형이 글 끝에 붙은 블록 커서가 되어 한 자씩 글자를 밀어내며 쳐요. 문구가 다 쳐지면 그 사각형이 0.6초 만에 커져 화면 전체를 파랗게 덮고, 파란 판 위에서 다음 장면이 시작돼요",
+    "활자 견본: 연보라로 깔린 Aa Bb 줄 사이를 반 박마다 한 글자씩 짙은 파랑 굵은 글자로 켜며 지나가요. 굵기 목록은 가는 것부터 굵은 것까지 한 줄씩 쌓이고, 마지막엔 글자들이 제각각 기울며 통통 튀어 흩어져요"
+  ],
+  "fits": [
+    "브랜드 리뉴얼·아이덴티티 공개",
+    "디자인 시스템·가이드 소개",
+    "개발자 플랫폼 런칭",
+    "새 서체·아이콘 세트 소개",
+    "차분한 기업 소개 영상"
+  ],
+  "avoid": [
+    "그라디언트와 빛 번짐",
+    "종이·그레인 같은 거친 질감",
+    "강조색 여러 개(파랑 하나에 연보라·분홍은 아주 잠깐만)",
+    "기울어진 3D 카메라",
+    "원본 마크를 그대로 옮기기(자기 브랜드의 기본 도형 하나를 씨앗으로)"
+  ]
+}

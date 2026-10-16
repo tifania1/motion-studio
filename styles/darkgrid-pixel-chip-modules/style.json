@@ -1,0 +1,137 @@
+{
+  "id": "darkgrid-pixel-chip-modules",
+  "name": "어두운 격자 원색 칩 모듈",
+  "group": "그래픽·도형",
+  "template": "brandmark",
+  "summary": "숯빛 격자 위에서 원색 네모 칩이 한 칸씩 톡톡 켜져 무늬를 이루고, 고정폭 꼬리표가 노드 줄로 이어져요. 사이사이 마젠타·노랑·연두 색면으로 컷 넘어가며 카드 판이 펼쳐지는 모듈형 도식 필름",
+  "tags": [
+    "도형",
+    "격자",
+    "픽셀 칩",
+    "고정폭",
+    "노드",
+    "원색",
+    "어두움"
+  ],
+  "hand": false,
+  "source": {
+    "site": "keyframe.gallery",
+    "ref": "mux:snsQdz3x3eN7jIvNORXv7j4od86yaa2jHRAYgWx2NVA",
+    "at": "0–30.4초",
+    "note": "어두운 격자 위 큰 산세리프 낱말 둘레로 원색 칩이 흩어져 켜지는 오프닝, 화면보다 큰 낱말을 가로지르는 색 띠 글(고정폭 대문자) 다발, 마젠타·연두·노랑 색면 위 어두운 세로 카드 판, 세로로 흐르는 아이콘 칩 줄 중 한 칸이 색 막대로 늘어나며 '연결됨' 꼬리표가 붙는 노드, 원색 네모가 체크 무늬·사선으로 한 칸씩 켜졌다 점 하나로 줄어드는 리듬, 와이어 정사각형 꼭짓점에서 가운데로 모이는 선, 색 꼬리표·칩·외곽선 막대가 줄지어 놓이는 범례"
+  },
+  "palette": [
+    "#1F1F1F",
+    "#EDEDEA",
+    "#DD55E8",
+    "#E6CC1A",
+    "#7FE83A",
+    "#E8541A",
+    "#4BB8E8"
+  ],
+  "colors": {
+    "bg": "#1F1F1F",
+    "onBg": "#EDEDEA",
+    "onBgMuted": "rgba(237,237,234,.58)",
+    "paper": "#E6CC1A",
+    "ink": "#1A1A1A",
+    "accent": "#DD55E8",
+    "accentInk": "#1A1A1A",
+    "pattern": "rgba(255,255,255,.07)",
+    "glow": "rgba(221,85,232,.3)"
+  },
+  "type": {
+    "display": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "heading": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "body": [
+      "Geist Mono",
+      "Noto Sans KR"
+    ]
+  },
+  "fonts": [
+    {
+      "family": "Geist",
+      "weight": "100 900",
+      "file": "fonts/Geist-Variable.woff2"
+    },
+    {
+      "family": "Geist Mono",
+      "weight": "100 900",
+      "file": "fonts/GeistMono-Variable.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 500,
+      "file": "fonts/NotoSansKR-Medium.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 700,
+      "file": "fonts/NotoSansKR-Bold.woff2"
+    }
+  ],
+  "shape": {
+    "radius": "calc(var(--u) * 0.2)"
+  },
+  "motion": {
+    "pace": "빠름",
+    "bpm": 120,
+    "ease": "expo.out",
+    "stagger": 0.6,
+    "transitions": [
+      "cut",
+      "wipe",
+      "cut",
+      "push"
+    ]
+  },
+  "scenes": {
+    "bg": "grid",
+    "align": "center",
+    "card": "outline",
+    "marker": "color",
+    "weight": 500,
+    "tracking": -0.03,
+    "case": "upper",
+    "rough": false,
+    "title": "scramble",
+    "frame": "none",
+    "deco": [
+      "ticker",
+      "marks"
+    ],
+    "number": "scramble",
+    "scale": 1.3,
+    "schemes": [
+      "dark",
+      "accent",
+      "dark",
+      "paper"
+    ]
+  },
+  "signature": [
+    "원색 네모 칩(마젠타·노랑·연두·주황·하늘)이 격자 칸에 맞춰 반 박마다 한 칸씩 계단처럼 켜져 체크 무늬·사선·십자를 만들고, 다 켜지면 한 칸만 남기고 점 하나로 줄어들어 다음 장면의 씨앗이 됨",
+    "화면보다 크게 잘린 산세리프 낱말 위를 고정폭 대문자 띠 글 다발(색마다 한 줄, 서로 어긋나게)이 가로질러 흐르고, 다음 박에 컷으로 마젠타·노랑·연두 색면 장면으로 넘어가 어두운 세로 카드가 나란히 섬",
+    "아이콘 칩이 세로 한 줄로 흘러 올라가다 가운데 칸이 멈추면 왼쪽에서 가는 연결선이 닿고, 그 칸이 원색 막대로 0.3초에 늘어나며 위에 연두 고정폭 꼬리표가 붙음. 끝은 색 꼬리표·칩·외곽선 막대가 한 줄씩 놓이는 범례"
+  ],
+  "fits": [
+    "개발 도구·데이터 플랫폼 소개",
+    "기능 묶음·제품군 정리",
+    "연동·연결 기능 설명",
+    "기술 행사 오프닝",
+    "숫자 하나를 내세우는 성능 자랑"
+  ],
+  "avoid": [
+    "흐릿한 그라디언트 덩어리",
+    "둥근 모서리와 부드러운 그림자",
+    "손그림 선",
+    "느린 서서히 전환",
+    "한 화면에 긴 문단"
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "name": "도형으로 짜는 브랜드",
+  "description": "스위스 그래픽처럼 12칸 격자 위에서 원·사각·사분원·삼각 도형이 선택 상자와 베지어 핸들을 달고 모양을 바꾸며 마크로 짜 맞춰지고, 장점 칸은 박마다 색면이 갈리며, 사분원 조각이 도는 큰 원 안에서 숫자가 오르고, 사진은 원·아치 마스크 타일로 끼워진 뒤 타일이 모여 로고 락업이 돼요. 장점 3개·사진 2장 기준 21초.",
+  "fonts": [
+    { "family": "Archivo", "weight": "100 900", "stretch": "62% 125%", "file": "fonts/Archivo-Variable.woff2" },
+    { "family": "Geist Mono", "weight": "100 900", "file": "fonts/GeistMono-Variable.woff2" }
+  ]
+}

@@ -1,0 +1,140 @@
+{
+  "id": "manga-panel-bubbles",
+  "name": "만화 칸과 말풍선",
+  "group": "손그림",
+  "template": "sketchbook",
+  "summary": "굵은 먹선 칸이 차례로 화면을 나누고, 말풍선이 하나둘 불어나 화면을 덮고, 강조할 땐 집중선이 떨리는 흑백 만화에 청록 한 색",
+  "tags": [
+    "손그림",
+    "만화",
+    "말풍선",
+    "흑백",
+    "경쾌함",
+    "청록"
+  ],
+  "hand": true,
+  "source": {
+    "site": "keyframe.gallery",
+    "ref": "mux:fA34fN3erXB5hsMNntqoD3EmIrZFcXb6KaZJHUBlh00Q",
+    "at": "6.6–15.6초, 17.8–18.8초, 25.3–28.2초",
+    "note": "검은 스크린톤 바탕 가운데 좁은 대문자 제목 한 줄 위로 흰 타원 말풍선이 하나, 둘, 넷씩 불어나 1.5초 만에 화면을 덮는 장면, 흰 바탕을 굵은 먹선 칸으로 나누고 칸 모서리에 네모 꼬리표를 붙인 색 견본 판, 기울어진 칸 가장자리에 사선 집중선을 넣은 UI 화면, 매 프레임 조금씩 바뀌며 떨리는 방사형 집중선, 크기가 다른 빈 칸이 흰 바탕 곳곳에 하나씩 툭툭 생기는 마무리. 캐릭터는 따라 그리지 않고 칸·말풍선·집중선·톤의 원리만 정리"
+  },
+  "palette": [
+    "#EBEBE9",
+    "#111111",
+    "#6CC6BA",
+    "#ABDBCF",
+    "#3E8178",
+    "#C3C3C1"
+  ],
+  "colors": {
+    "bg": "#EBEBE9",
+    "onBg": "#111111",
+    "onBgMuted": "rgba(17,17,17,.66)",
+    "paper": "#121212",
+    "ink": "#F1F1EE",
+    "accent": "#6CC6BA",
+    "accentInk": "#111111",
+    "pattern": "rgba(17,17,17,.12)",
+    "glow": "rgba(108,198,186,.25)"
+  },
+  "type": {
+    "display": [
+      "Archivo",
+      "Noto Sans KR"
+    ],
+    "heading": [
+      "Archivo",
+      "Noto Sans KR"
+    ],
+    "body": [
+      "Gaegu"
+    ]
+  },
+  "fonts": [
+    {
+      "family": "Archivo",
+      "weight": "100 900",
+      "stretch": "62% 125%",
+      "file": "fonts/Archivo-Variable.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 900,
+      "file": "fonts/NotoSansKR-Black.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 700,
+      "file": "fonts/NotoSansKR-Bold.woff2"
+    },
+    {
+      "family": "Gaegu",
+      "weight": 700,
+      "file": "fonts/Gaegu-Bold.woff2"
+    }
+  ],
+  "look": {
+    "halftone": 0.08,
+    "halftoneSize": 0.9,
+    "grain": 0.04
+  },
+  "shape": {
+    "radius": "0px",
+    "stroke": "hand"
+  },
+  "motion": {
+    "pace": "빠름",
+    "bpm": 124,
+    "ease": "back.out(1.6)",
+    "stagger": 0.6,
+    "transitions": [
+      "cut",
+      "push",
+      "zoom"
+    ]
+  },
+  "scenes": {
+    "bg": "dots",
+    "align": "center",
+    "card": "outline",
+    "marker": "highlight",
+    "weight": 900,
+    "tracking": 0,
+    "case": "upper",
+    "rough": true,
+    "title": "stamp",
+    "frame": "panel",
+    "deco": [
+      "speedlines",
+      "bubbles"
+    ],
+    "number": "count",
+    "scale": 1.15,
+    "schemes": [
+      "paper",
+      "dark",
+      "dark",
+      "accent"
+    ]
+  },
+  "signature": [
+    "말풍선 불어남: 검은 스크린톤 바탕 가운데 좁은 대문자 제목 한 줄 위로 굵은 먹선 테두리의 흰 타원 말풍선(손글씨 대사)이 0.12초에 1.1배로 튀었다 0.2초에 자리 잡음. 처음엔 하나, 다음 박엔 둘, 그다음 넷·여덟씩 늘어 1.5초 만에 화면을 하얗게 덮고, 그 흰 화면이 다음 장면 바탕이 됨",
+    "칸 나누기: 흰 바탕에 굵은 먹선 네모 칸이 왼쪽부터 한 박에 하나씩 생기며 화면을 나누고(칸 사이 흰 틈 1.5u), 칸 모서리에 작은 네모 꼬리표가 붙음. 칸 하나는 청록으로 칠하고 그 아래 칸은 같은 청록을 옅게. 판 전체가 오른쪽에서 밀려 들어오다 멈춤",
+    "집중선: 강조 순간 화면 가장자리에서 가운데로 모이는 검은 쐐기 선 40~60개가 초당 12번 길이·자리를 조금씩 바꾸며 떨리고, 가운데엔 큰 글이나 사진이 들어옴. UI 화면은 기울어진 칸 안에 넣고 칸 한쪽 바깥에 사선 집중선을 둠"
+  ],
+  "fits": [
+    "앱·게임 출시",
+    "새 기능 '드디어' 공개",
+    "웹툰·캐릭터 브랜드",
+    "이벤트 당첨 발표",
+    "실제 이용자 반응 소개"
+  ],
+  "avoid": [
+    "부드러운 그라디언트",
+    "흐림·유리 질감",
+    "색 여러 개",
+    "느린 서서히 전환",
+    "캐릭터를 그대로 따라 그리기"
+  ]
+}

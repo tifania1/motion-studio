@@ -1,0 +1,153 @@
+{
+  "id": "riso-torn-editorial",
+  "name": "찢은 종이 편집 콜라주",
+  "group": "콜라주·사진",
+  "template": "collage",
+  "summary": "회색 종이 위에 찢긴 색종이·오림 도형·흑백 망점 사진이 박마다 툭툭 붙고, 화면을 넘치는 큰 세리프 낱말은 글자가 몇 번 갈아 끼워지다 제 이름으로 멈추는 잡지풍 콜라주",
+  "tags": [
+    "콜라주",
+    "편집 디자인",
+    "세리프",
+    "원색",
+    "찢은 종이"
+  ],
+  "hand": false,
+  "source": {
+    "site": "keyframe.gallery",
+    "ref": "mux:01Yo1cDQxiqCI4ZVK2jScHhlZjU4c01yW8ZKHlFYMrufo",
+    "at": "0.5–6초, 14–21초, 30–37초, 39–45.5초",
+    "note": "큰 세리프 낱말의 글자가 하나씩 다른 글자로 갈아 끼워지다 멈추는 조판, 색으로 들어왔다 먹색으로 가라앉는 작은 대문자 꼬리표, 낱말 뒤 연보라 띠가 글자 폭을 따라 늘고 주는 움직임, 찢긴 가장자리 색판·빗금 오각형·반원·별표가 박마다 붙는 리듬, 원근 복도 안에 들어간 낱말, 띄어 있던 글자가 모여 낱말이 되는 등장, 동전 돌듯 납작해지는 타원, 흑백 망점 사진 컷아웃, 아주 작은 본문 단과 가는 기준선·십자 표시, 원색 바탕을 컷으로 갈아 치우며 로고 글자가 모이는 마무리"
+  },
+  "palette": [
+    "#E3E1DC",
+    "#1C1C22",
+    "#2F64E0",
+    "#E2572B",
+    "#E9A928",
+    "#DDB8EE"
+  ],
+  "colors": {
+    "bg": "#E3E1DC",
+    "onBg": "#1C1C22",
+    "onBgMuted": "rgba(28,28,34,.64)",
+    "paper": "#DDB8EE",
+    "ink": "#1C1C22",
+    "accent": "#2F64E0",
+    "accentInk": "#FFFFFF",
+    "pattern": "rgba(28,28,34,.12)",
+    "glow": "rgba(226,87,43,.25)"
+  },
+  "type": {
+    "display": [
+      "Instrument Serif",
+      "Noto Serif KR"
+    ],
+    "heading": [
+      "Archivo",
+      "Noto Sans KR"
+    ],
+    "body": [
+      "Archivo",
+      "Noto Sans KR"
+    ]
+  },
+  "fonts": [
+    {
+      "family": "Instrument Serif",
+      "weight": 400,
+      "file": "fonts/InstrumentSerif-Regular.woff2"
+    },
+    {
+      "family": "Instrument Serif",
+      "weight": 400,
+      "style": "italic",
+      "file": "fonts/InstrumentSerif-Italic.woff2"
+    },
+    {
+      "family": "Noto Serif KR",
+      "weight": 900,
+      "file": "fonts/NotoSerifKR-Black.woff2"
+    },
+    {
+      "family": "Archivo",
+      "weight": "100 900",
+      "stretch": "62% 125%",
+      "file": "fonts/Archivo-Variable.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 500,
+      "file": "fonts/NotoSansKR-Medium.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 900,
+      "file": "fonts/NotoSansKR-Black.woff2"
+    }
+  ],
+  "look": {
+    "paper": "cool",
+    "paperTone": 0.25,
+    "fiber": 0.3,
+    "grain": 0.14
+  },
+  "shape": {
+    "radius": "0px"
+  },
+  "motion": {
+    "pace": "빠름",
+    "bpm": 124,
+    "ease": "expo.out",
+    "stagger": 0.6,
+    "transitions": [
+      "cut",
+      "wipe",
+      "cut",
+      "blocks"
+    ]
+  },
+  "scenes": {
+    "bg": "lines",
+    "align": "left",
+    "card": "flat",
+    "marker": "color",
+    "weight": 400,
+    "tracking": -0.03,
+    "case": "upper",
+    "rough": false,
+    "title": "scramble",
+    "frame": "none",
+    "deco": [
+      "shapes",
+      "marks",
+      "stickers"
+    ],
+    "number": "odometer",
+    "scale": 1.35,
+    "schemes": [
+      "dark",
+      "accent",
+      "paper",
+      "dark"
+    ]
+  },
+  "signature": [
+    "글자 갈아 끼우기: 화면을 넘칠 만큼 큰 세리프 낱말에서 글자 하나하나가 0.1~0.2초마다 따로 다른 글자로 바뀌다가(박자에 맞춰 대여섯 번) 제 낱말로 멈춤. 막 바뀐 글자는 노랑으로 들어왔다 다음 박에 먹색. 낱말 뒤 연보라 사각 띠가 바뀌는 글자 폭을 따라 늘었다 줄었다 함",
+    "박마다 붙는 오림 조각: 찢긴 가장자리 파랑 판, 빗금 친 노랑 오각형, 반원, 가는 별표, 흑백 망점 사진 컷아웃이 한 박에 하나씩 미끄러지거나 툭 놓이며 붙음(expo.out 0.2초). 화면 전체는 그동안 아주 천천히 밀리고, 1~2초마다 하드 컷으로 다른 배치·다른 원색 바탕",
+    "띄어 있던 글자가 모임: 'C o lo' 처럼 벌어진 글자들이 0.4초에 모여 낱말이 되고, 옆의 큰 타원은 동전이 돌듯 가로로 납작해졌다 펴지며 색이 바뀜"
+  ],
+  "fits": [
+    "패션·편집숍·잡지",
+    "전시·페스티벌·공연",
+    "디자인 스튜디오·포트폴리오",
+    "브랜드 리뉴얼",
+    "로컬 문화 공간"
+  ],
+  "avoid": [
+    "부드러운 그라디언트",
+    "유리 질감",
+    "둥근 UI 카드",
+    "느린 페이드",
+    "가운데 정렬 짧은 문장만 반복"
+  ]
+}

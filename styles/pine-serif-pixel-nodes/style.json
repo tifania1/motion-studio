@@ -1,0 +1,138 @@
+{
+  "id": "pine-serif-pixel-nodes",
+  "name": "솔빛 세리프 픽셀 노드",
+  "group": "다이어그램·데이터",
+  "template": "dataflow",
+  "summary": "짙은 솔빛 초록 판과 옅은 회색 판을 오가며 작은 세리프 한 줄이 떠요. 회색 위에서는 픽셀 노이즈가 번졌다 걷히고, 작은 네모 점들이 머리카락 같은 선으로 이어지다 이름 표로 정렬돼요",
+  "tags": [
+    "데이터",
+    "세리프",
+    "픽셀 노이즈",
+    "네트워크",
+    "차분함",
+    "초록"
+  ],
+  "hand": false,
+  "source": {
+    "site": "keyframe.gallery",
+    "ref": "mux:ADk2uj01QEzDOIpCRux2gtA00RHO8ftysIxVZ5n475Kvs",
+    "at": "3.6–57.6초",
+    "note": "짙은 초록 바탕의 작은 세리프 타이틀, 회색 픽셀 블록 노이즈 속에서 맺히는 낱말, 흩어진 네모 점이 가는 선으로 한 점에 모이는 관계도, 이름이 열을 늘려 가며 표가 되는 정렬, 초록 형광 칩과 인용 번호가 붙는 문서 화면, 위아래 두 줄 점 사이로 엇갈려 그어지는 선, 흩어진 짧은 막대가 고리로 모여 초록 판의 로고타입으로 넘어가는 마무리"
+  },
+  "palette": [
+    "#EDEDEC",
+    "#26332E",
+    "#1E2B26",
+    "#3FAE6B",
+    "#A9D9BC",
+    "#C9CBC8"
+  ],
+  "colors": {
+    "bg": "#EDEDEC",
+    "onBg": "#1E2B26",
+    "onBgMuted": "rgba(30,43,38,.55)",
+    "paper": "#26332E",
+    "ink": "#EEF0EC",
+    "accent": "#3FAE6B",
+    "accentInk": "#0E1F15",
+    "pattern": "rgba(30,43,38,.1)",
+    "glow": "rgba(63,174,107,.25)"
+  },
+  "type": {
+    "display": [
+      "Instrument Serif",
+      "Gowun Batang"
+    ],
+    "heading": [
+      "Instrument Serif",
+      "Gowun Batang"
+    ],
+    "body": [
+      "Geist",
+      "Noto Sans KR"
+    ]
+  },
+  "fonts": [
+    {
+      "family": "Instrument Serif",
+      "weight": 400,
+      "file": "fonts/InstrumentSerif-Regular.woff2"
+    },
+    {
+      "family": "Gowun Batang",
+      "weight": 400,
+      "file": "fonts/GowunBatang-Regular.woff2"
+    },
+    {
+      "family": "Gowun Batang",
+      "weight": 700,
+      "file": "fonts/GowunBatang-Bold.woff2"
+    },
+    {
+      "family": "Geist",
+      "weight": "100 900",
+      "file": "fonts/Geist-Variable.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 500,
+      "file": "fonts/NotoSansKR-Medium.woff2"
+    }
+  ],
+  "shape": {
+    "radius": "calc(var(--u) * 0.8)"
+  },
+  "motion": {
+    "pace": "느림",
+    "bpm": 80,
+    "ease": "power2.inOut",
+    "stagger": 1.4,
+    "transitions": [
+      "fade",
+      "cut",
+      "blur"
+    ]
+  },
+  "scenes": {
+    "bg": "none",
+    "align": "center",
+    "card": "flat",
+    "marker": "highlight",
+    "weight": 400,
+    "tracking": -0.01,
+    "case": "none",
+    "rough": false,
+    "title": "blur",
+    "frame": "none",
+    "deco": [
+      "dots"
+    ],
+    "number": "count",
+    "scale": 0.9,
+    "schemes": [
+      "paper",
+      "dark",
+      "dark",
+      "paper"
+    ]
+  },
+  "signature": [
+    "옅은 회색 판 위로 작은 회색 네모 블록이 가로로 뭉쳐 번지고(군데군데 먹색·올리브 블록), 그 한가운데 세리프 낱말 하나가 흐림에서 맺혀요. 한 박 머문 뒤 블록이 무리 지어 꺼지며 빈 판만 남아요",
+    "흩어진 작은 네모 점(회색·짙은 초록·밝은 초록)에 세리프 이름이 붙고, 머리카락 같은 선이 한 점으로 차례차례 그어져 관계도가 돼요. 이어서 이름들이 왼쪽 열로 내려앉고 회사·분야·도시 열이 오른쪽으로 하나씩 늘어 표가 돼요",
+    "위아래 두 줄로 늘어선 네모 점 사이로 가는 선이 엇갈려 그어졌다 옅어지고, 가운데 작은 글 한 줄이 쳐져요. 마지막에는 흩어진 짧은 막대들이 돌며 고리로 모이고, 판이 짙은 초록으로 바뀌며 세리프 한 줄로 닫혀요"
+  ],
+  "fits": [
+    "데이터·리서치 도구 소개",
+    "금융·투자 분석 서비스",
+    "AI 지식 검색",
+    "차분한 브랜드 필름",
+    "관계·네트워크 설명"
+  ],
+  "avoid": [
+    "굵은 제목",
+    "원색 여러 개(초록 한 계열만)",
+    "빠른 컷 몽타주",
+    "그라디언트·빛 번짐",
+    "둥글고 통통한 소품"
+  ]
+}

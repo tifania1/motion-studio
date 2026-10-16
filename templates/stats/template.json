@@ -1,0 +1,7 @@
+{
+  "name": "숫자로 보는 성과 (대시보드)",
+  "description": "카드가 놓인 대시보드를 카메라가 한 장씩 날아가 확대하고, 숫자가 주행거리계처럼 굴러 맞춰지며 막대·고리·선 그래프가 그려지는 영상. 카드 4장 기준 17초.",
+  "fonts": [
+    { "family": "Archivo", "weight": "100 900", "stretch": "62% 125%", "file": "fonts/Archivo-Variable.woff2" }
+  ]
+}

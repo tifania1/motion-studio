@@ -1,0 +1,780 @@
+<title>/*@TITLE@*/</title>
+<style>
+/*@FONTFACES@*/
+/*@BRAND_CSS@*/
+/*@ENGINE_CSS@*/
+
+/* ===== terminal 템플릿: 레트로 터미널 (결 템플릿) =====
+   옛 컴퓨터 바탕화면에 점선 사각형이 커지며 터미널 창이 열림 → 프롬프트 > 뒤에 첫 문장(title)이 타자로 쳐지고 엔터, [ OK ] 줄에 꼬리표(kicker)
+   → `check` 를 치면 장점(points)마다 [■■■□□] 진행 막대가 차고 ✓ 줄이 찍히며 화면이 위로 흐름
+   → `stat` 을 치면 화면이 통째로 바뀌어 점 전광판에 숫자가 켜짐(S.fx.num 이 바꾼 글자를 갈무리 픽셀 글꼴로 점 하나하나 켬), # source: 주석 줄
+   → `view` 를 치면 디더링한 사진 창이 겹쳐 열리며 위에서 아래로 한 줄씩 그려짐 (사진이 없으면 `cat logo.txt` 로 아스키 아트 로고 상자)
+   → `clear` 뒤 큰 픽셀 글(cta.headline)과 깜빡이는 프롬프트 버튼 `> 버튼_` 이 눌림, 아래에 sub·로고·note.
+   창 위에는 tmux 같은 탭 줄(지금 장면이 뒤집힘)과 시계. 9:16·4:5 는 창 아래 칸에 글자 없는 막대 시각화기, 16:9 는 옆 상태판(굴러가는 메뉴·계기·시각화기).
+   바탕은 브랜드 bg 를 따라요: 어두운 브랜드는 검은 터미널, 밝은 브랜드는 밝은 종이 터미널. */
+#term { position: absolute; inset: 0; overflow: hidden; background: var(--bg); color: var(--on-bg);
+  --tm: "Galmuri11", "Geist Mono", monospace;          /* 터미널 글 (한글까지 픽셀) */
+  --tl: "Silkscreen", "Galmuri11", monospace;          /* 영문 픽셀 꼬리표 */
+  --tn: "Geist Mono", "Galmuri11", monospace;          /* 작은 고정폭 */
+  --tb: "Galmuri11", var(--font-display);              /* 큰 글: 스타일 글꼴이 들어오면 .sf 로 바뀜 */
+  --line: color-mix(in srgb, var(--on-bg) 22%, transparent); }
+#term.sf { --tb: var(--font-display); }
+#term .abs { position: absolute; left: 0; top: 0; }
+
+/* 바탕화면: 2×2 체크 디더 */
+#desk { position: absolute; inset: 0; background-color: color-mix(in srgb, var(--bg) 86%, var(--on-bg) 14%);
+  background-image: conic-gradient(var(--pattern) 25%, transparent 0 50%, var(--pattern) 0 75%, transparent 0);
+  background-size: calc(var(--u) * .9) calc(var(--u) * .9); }
+.zr { position: absolute; left: 0; top: 0; box-sizing: border-box; border: calc(var(--u) * .32) dashed var(--on-bg); visibility: hidden; pointer-events: none; }
+
+/* 창 */
+#win { position: absolute; box-sizing: border-box; background: var(--bg); border: var(--bw) solid var(--on-bg);
+  box-shadow: calc(var(--u) * 1.3) calc(var(--u) * 1.3) 0 0 var(--accent); visibility: hidden; }
+#win > * { position: absolute; }
+#tbar { background: var(--on-bg); color: var(--bg); overflow: hidden; }
+#tbar .st { position: absolute; left: calc(var(--u) * 1.4); right: calc(var(--u) * 1.4); top: 26%; bottom: 26%;
+  background: repeating-linear-gradient(180deg, var(--bg) 0 calc(var(--u) * .22), transparent calc(var(--u) * .22) calc(var(--u) * .55)); opacity: .6; }
+#tbar .tt { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); background: var(--on-bg); padding: 0 calc(var(--u) * 1.4);
+  font: 400 calc(var(--u) * 2.3)/1 var(--tm); white-space: nowrap; letter-spacing: .02em; }
+#tbar .bx { position: absolute; top: 50%; width: calc(var(--u) * 2.5); height: calc(var(--u) * 2.5); margin-top: calc(var(--u) * -1.25); box-sizing: border-box;
+  border: calc(var(--u) * .3) solid var(--bg); background: var(--on-bg); box-shadow: 0 0 0 calc(var(--u) * .6) var(--on-bg); }
+#tbar .bx.l { left: calc(var(--u) * 2.2); }
+#tbar .bx.r { right: calc(var(--u) * 2.2); }
+#tbar .bx.r::after { content: ""; position: absolute; left: 0; top: 0; width: 55%; height: 55%; border-right: calc(var(--u) * .3) solid var(--bg); border-bottom: calc(var(--u) * .3) solid var(--bg); }
+#tabs { overflow: hidden; display: flex; align-items: center; gap: calc(var(--u) * 1.1); padding: 0 calc(var(--u) * 1.6); box-sizing: border-box; white-space: nowrap;
+  background: color-mix(in srgb, var(--on-bg) 7%, var(--bg)); border-bottom: calc(var(--u) * .25) solid var(--line);
+  font: 400 calc(var(--u) * 1.9)/1 var(--tl); color: var(--on-bg-muted); }
+#tabs .ses { color: var(--on-bg); }
+#tabs .tab { padding: calc(var(--u) * .55) calc(var(--u) * .7) calc(var(--u) * .45); }
+#tabs .tab.on { background: var(--accent); color: var(--accent-ink); }
+#tabs.cmp .tab:not(.on) .tw { display: none; }
+#tabs .clk { margin-left: auto; color: var(--on-bg); }
+#main { overflow: hidden; }
+#scan { position: absolute; inset: 0; pointer-events: none; z-index: 5;
+  background: repeating-linear-gradient(0deg, color-mix(in srgb, var(--on-bg) 5%, transparent) 0 calc(var(--u) * .16), transparent calc(var(--u) * .16) calc(var(--u) * .5)); }
+.dv { background: var(--on-bg); }
+
+/* 버퍼 (흐르는 줄) */
+#buf { position: absolute; left: 0; top: 0; }
+.ln { position: relative; font: 400 var(--fs-s)/1.4 var(--tm); color: var(--on-bg); white-space: pre; visibility: hidden; }
+.dim { color: var(--on-bg-muted); }
+.ps { color: var(--accent); }
+.done > .ps { color: var(--on-bg-muted); }
+.cur { display: inline-block; width: .55em; height: 1em; vertical-align: -.16em; margin-left: .1em; background: var(--accent); visibility: hidden; }
+.boot { margin-bottom: .05em; }
+.boot .okw, .boot .sw { color: var(--accent); }
+.boot .okw { visibility: hidden; }
+.hookl { display: flex; align-items: flex-start; white-space: normal; margin: .5em 0 .3em; }
+.hookl .ps { flex: none; font-family: var(--tm); line-height: 1.2; }
+.big { font-family: var(--tb); font-weight: 400; line-height: 1.2; white-space: pre-line; word-break: keep-all; color: var(--on-bg); }
+#term.sf .big { font-weight: var(--bwt, 400); }
+.big .caret { width: .5em; height: .9em; vertical-align: -.08em; margin-left: .06em; margin-right: -.56em; background: var(--accent); }   /* 줄 폭에 끼지 않게 */
+.big .hl { background: var(--accent); color: var(--accent-ink);
+  box-shadow: 0 0 0 .05em var(--accent), calc(.05em + var(--u) * .35) calc(.04em + var(--u) * .3) 0 0 var(--on-bg); }
+.big .hlsp { display: inline-block; white-space: pre; background: var(--accent);
+  box-shadow: 0 0 0 .05em var(--accent), calc(.05em + var(--u) * .35) calc(.04em + var(--u) * .3) 0 0 var(--on-bg); }
+#term.mk-c .big .hl, #term.mk-c .big .hlsp { background: none; box-shadow: none; color: var(--accent); }
+#term.mk-u .big .hl, #term.mk-u .big .hlsp { background: none; box-shadow: inset 0 -.12em 0 0 var(--accent); }
+.okl { font-size: var(--fs-k); margin-bottom: .55em; }
+.okl .okb b { color: var(--accent); font-weight: 400; }
+.okl .kk { display: inline-block; vertical-align: bottom; overflow: hidden; }
+#term.up .okl .kk { text-transform: uppercase; }
+.cmdl { font-size: var(--fs-c); margin-bottom: .3em; }
+.barl { font-size: var(--fs-s); }
+.barl .cf { color: var(--accent); }
+.barl .ce { color: var(--on-bg-muted); opacity: .7; }
+.barl .pc { display: inline-block; width: 2.6em; text-align: right; }
+.ptl { display: flex; align-items: baseline; white-space: normal; font-size: var(--fs-p); line-height: 1.25; margin: .05em 0 .5em; }
+.ptl .ck { flex: none; width: .78em; height: .67em; margin-right: .38em; fill: var(--accent); }
+.ptl .tx { word-break: keep-all; min-width: 0; }
+
+/* 사진 창 (디더링, 위에서 아래로 그려짐) */
+.vwl { white-space: normal; margin-bottom: .3em; }
+.pw { position: absolute; left: 0; top: 0; box-sizing: border-box; background: var(--bg); border: calc(var(--u) * .35) solid var(--on-bg);
+  box-shadow: calc(var(--u) * .9) calc(var(--u) * .9) 0 0 color-mix(in srgb, var(--on-bg) 40%, transparent); visibility: hidden; }
+.pw .pwt { position: absolute; left: 0; right: 0; top: 0; display: flex; align-items: center; justify-content: space-between; box-sizing: border-box;
+  padding: 0 calc(var(--u) * 1); background: var(--on-bg); color: var(--bg); font: 400 calc(var(--u) * 1.9)/1 var(--tl); white-space: nowrap; }
+.pw .pc2 { position: absolute; left: 0; right: 0; bottom: 0; overflow: hidden; }
+.pw canvas { position: absolute; left: 0; top: 0; width: 100%; height: 100%; image-rendering: pixelated; }
+.pw .sl { position: absolute; left: 0; right: 0; top: 0; height: calc(var(--u) * .45); background: var(--accent); visibility: hidden; }
+.pw.empty .pc2 { background: repeating-linear-gradient(45deg, color-mix(in srgb, var(--on-bg) 16%, transparent) 0 2px, transparent 2px calc(var(--u) * 1.2)); }
+.pw .pk { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); font: 400 calc(var(--u) * 2.4)/1 var(--tm); color: var(--on-bg-muted); background: var(--bg); padding: .3em .5em; }
+
+/* 아스키 아트 상자 */
+.asl { white-space: normal; }
+.art { font-family: "Galmuri11", monospace; line-height: 1; color: var(--on-bg-muted); white-space: pre; }
+.art .r { display: block; height: 1em; visibility: hidden; }
+.art .a { color: var(--accent); }
+.art .s { color: var(--on-bg-muted); opacity: .55; }
+.asl .cap { font-size: var(--fs-s); margin-top: .5em; visibility: hidden; }
+
+/* 화면 전체를 쓰는 장면 (숫자 전광판 · 마지막) */
+.scr { position: absolute; inset: 0; visibility: hidden; }
+#s2 > * { left: 0; top: 0; }
+#s2 .pre, #s2 .lbl { position: absolute; font: 400 var(--fs-p)/1.25 var(--tm); color: var(--on-bg); word-break: keep-all; white-space: pre-line; visibility: hidden; }
+#led { position: absolute; }
+#s2 .src { position: absolute; font: 400 calc(var(--fs-s) * .86)/1.35 var(--tm); color: var(--on-bg-muted); white-space: pre-wrap; word-break: keep-all; visibility: hidden; }
+#numsrc { position: absolute; left: -9999px; top: 0; visibility: hidden; white-space: nowrap; }
+#s4 .cta { position: absolute; }
+#s4 .cta > * { visibility: hidden; }
+#s4 .hd { margin-bottom: calc(var(--u) * 4); }
+.btn { position: relative; display: inline-flex; align-items: center; gap: .35em; max-width: 100%; box-sizing: border-box; white-space: nowrap;
+  background: var(--accent); color: var(--accent-ink); border: calc(var(--u) * .4) solid var(--on-bg); padding: .5em .75em .45em;
+  box-shadow: calc(var(--u) * 1) calc(var(--u) * 1) 0 0 var(--on-bg); font: 400 var(--fs-btn)/1.1 var(--tm); }
+.btn .bt { overflow: hidden; }
+.btn .cur { background: var(--accent-ink); margin-left: 0; }
+.btn.inv { background: var(--on-bg); color: var(--bg); }
+.btn.inv .cur { background: var(--bg); }
+.idle { font: 400 var(--fs-btn)/1.1 var(--tm); }
+#s4 .sub { margin-top: calc(var(--u) * 2.6); font: 400 var(--fs-k)/1.3 var(--tm); color: var(--on-bg-muted); white-space: nowrap; overflow: hidden; }
+#s4 .lgw { margin-top: calc(var(--u) * 3.4); }
+#s4 .rule { display: block; height: 0; border-top: calc(var(--u) * .3) dashed var(--line); margin-bottom: calc(var(--u) * 2.6); }
+#s4 .lg { display: flex; align-items: center; gap: calc(var(--u) * 1.8); white-space: nowrap; }
+#s4 .lg img { height: var(--lgh); width: auto; image-rendering: auto; }
+#s4 .lg .lt { font: 900 calc(var(--lgh) * .72)/1 var(--font-display); color: var(--on-bg); }
+#s4 .lg .ls { font: 400 calc(var(--u) * 2)/1 var(--tl); color: var(--accent); letter-spacing: .12em; }
+#s4 .nt { margin-top: calc(var(--u) * 2.4); font: 400 calc(var(--fs-s) * .82)/1.35 var(--tm); color: var(--on-bg-muted); white-space: pre-wrap; word-break: keep-all; }
+
+/* 옆 상태판 (16:9) · 시각화기 (9:16·4:5) */
+#side { overflow: hidden; }
+#side .shd { position: absolute; left: 0; right: 0; top: 0; display: flex; justify-content: space-between; align-items: center; box-sizing: border-box;
+  padding: 0 calc(var(--u) * 1.4); background: var(--on-bg); color: var(--bg); font: 400 calc(var(--u) * 1.9)/1 var(--tl); white-space: nowrap; }
+#side .shd span:last-child { opacity: .7; }
+.menu { position: absolute; overflow: hidden; }
+.menu .mbox { position: absolute; left: 0; right: 0; background: var(--on-bg); }
+.menu .mi { position: absolute; left: 0; right: 0; top: 0; display: flex; align-items: center; box-sizing: border-box; padding: 0 calc(var(--u) * 1.6);
+  font: 400 calc(var(--u) * 2.9)/1 var(--tl); color: var(--on-bg); white-space: nowrap; }
+.menu .mi.on { color: var(--bg); }
+.mts { position: absolute; }
+.mt { display: flex; align-items: center; gap: calc(var(--u) * 1); font: 400 calc(var(--u) * 2.2)/1 var(--tl); color: var(--on-bg-muted); white-space: nowrap; height: calc(var(--u) * 4.2); }
+.mt .mn { width: 3.4em; color: var(--on-bg); }
+.mt .mb { font-family: var(--tm); font-size: calc(var(--u) * 2.2); }
+.mt .mf { color: var(--accent); }
+.mt .mv { margin-left: auto; color: var(--on-bg); }
+.viz { position: absolute; }
+.vb { position: absolute; bottom: 0;
+  background: linear-gradient(to bottom, var(--accent) 0 var(--vch), transparent var(--vch)) 0 0 / 100% var(--vcp) no-repeat,
+    repeating-linear-gradient(to top, color-mix(in srgb, var(--on-bg) 52%, transparent) 0 var(--vch), transparent var(--vch) var(--vcp)); }
+#imgs { display: none; }
+</style>
+
+<div id="viewport"><div id="stage"><div id="cam"></div></div></div>
+
+<script>/*@GSAP@*/</script>
+<script>/*@DATA@*/</script>
+<script>/*@ENGINE_JS@*/</script>
+<script>
+(function () {
+  const S = Studio, M = S.M, e = S.esc;
+  const st = S.story();
+  const sty = S.sty();
+  const REND = !!window.__RENDER;
+  const TALL = S.is('tall'), WIDE = S.is('wide'), PORT = S.is('portrait'), SQ = S.is('square');
+  const pts = st.points, num = st.number, cta = st.cta;
+  // 사진: MP4 는 실제로 들어 있는 사진만, 미리보기는 빈 자리(photo1 같은 키)까지 빗금 창으로
+  const shots = REND ? st.photos.slice() : st.photoSlots.map(k => ({ key: k, src: S.img(k) }));
+  const hasPh = shots.length > 0;
+  const slug = (st.logo.text || 'studio').toLowerCase().replace(/\s+/g, '-').slice(0, 16);
+  const fname = i => String(i + 1).padStart(2, '0') + '.bmp';
+  const BLANK = '　';   // 전각 빈칸: 갈무리 글꼴에서 █ 와 같은 1em 폭 (아스키 아트 빈 칸)
+  const RAMP = ['　', '░', '▒', '▓', '█'];
+  const CHECK = '<svg class="ck" viewBox="0 0 7 6" shape-rendering="crispEdges" aria-hidden="true"><path d="M6 0h1v1H6zM5 1h2v1H5zM0 2h1v1H0zM4 2h2v1H4zM0 3h2v1H0zM3 3h2v1H3zM1 4h3v1H1zM2 5h1v1H2z"/></svg>';
+
+  // 장면(탭) 순서와 장면마다 치는 명령
+  const scn = [{ id: 'hook', name: 'main' }], cmds = [];
+  if (pts.length) { scn.push({ id: 'pts', name: 'check' }); cmds.push({ id: 'pts', text: 'check' }); }
+  if (num) { scn.push({ id: 'num', name: 'stat' }); cmds.push({ id: 'num', text: 'stat' }); }
+  if (hasPh) { scn.push({ id: 'ph', name: 'view' }); cmds.push({ id: 'ph', text: 'view ' + (shots.length <= 2 ? shots.map((_, i) => fname(i)).join(' ') : '*.bmp') }); }
+  else { scn.push({ id: 'asc', name: 'cat' }); cmds.push({ id: 'asc', text: 'cat logo.txt' }); }
+  scn.push({ id: 'cta', name: 'start' }); cmds.push({ id: 'cta', text: 'clear' });
+
+  // 흐르는 버퍼: 부팅 두 줄 → 훅 → [ OK ] → (명령 → 출력) …
+  // 부팅 기록 (꾸밈 줄: 사실 주장 없이 브랜드 이름·강조색만)
+  const acHex = /^#[0-9a-f]{3,8}$/i.test(S.cssVar('--accent')) ? S.cssVar('--accent').toUpperCase() : '';
+  const boots = [`boot ${e(slug)} ...`, 'load font ......', `load color <span class="sw">■</span> ${e(acHex)}`].slice(0, TALL || PORT ? 3 : 2);
+  if (!TALL && !PORT) boots[1] = `load color <span class="sw">■</span> ${e(acHex)}`;
+  let buf = boots.map(b => `<div class="ln dim boot">${b}<span class="okw"> ok</span></div>`).join('') + `<div class="ln dim boot">READY.</div>`
+    + `<div class="ln hookl"><span class="ps">&gt;</span><div class="big" id="ttl">${e(st.title)}</div></div>`
+    + `<div class="ln okl"><span class="okb">[ <b>OK</b> ]</span>${st.kicker ? ` <span class="kk">${e(st.kicker)}</span>` : ''}</div>`;
+  cmds.forEach((c, i) => {
+    buf += `<div class="ln cmdl" data-i="${i}"><span class="ps">&gt;</span> <span class="ty"></span><span class="cur"></span></div>`;
+    if (c.id === 'pts') pts.forEach((p, j) => {
+      buf += `<div class="ln barl" data-j="${j}"><span class="dim">[</span><span class="cf"></span><span class="ce"></span><span class="dim">]</span> <span class="pc"></span> <span class="dim">${j + 1}/${pts.length}</span></div>`
+        + `<div class="ln ptl" data-j="${j}">${CHECK}<span class="tx">${e(p)}</span></div>`;
+    });
+    if (c.id === 'ph') buf += `<div class="ln vwl">${shots.map((p, j) => `<div class="pw${p.src ? '' : ' empty'}"><div class="pwt"><span>${fname(j)}</span><span class="pp"></span></div><div class="pc2">${p.src ? '' : `<span class="pk">${e(p.key)}</span>`}<i class="sl"></i></div></div>`).join('')}${shots.map(() => '<i class="zr"></i><i class="zr"></i><i class="zr"></i>').join('')}</div>`;
+    if (c.id === 'asc') buf += `<div class="ln asl"><div class="art"></div>${st.logo.sub ? `<div class="cap dim"># ${e(st.logo.sub)}</div>` : ''}</div>`;
+  });
+
+  const s2 = num ? `<div id="s2" class="scr">${num.prefix ? `<div class="pre">${e(num.prefix)}</div>` : ''}<canvas id="led"></canvas>`
+    + `${num.label ? `<div class="lbl">${e(num.label)}</div>` : ''}${num.source ? `<div class="src"># source: ${e(num.source)}</div>` : ''}<span id="numsrc"></span></div>` : '';
+  const lgHtml = (st.logo.img ? `<img src="${st.logo.img}" alt="">` : (st.logo.text ? `<span class="lt">${e(st.logo.text)}</span>` : '')) + (st.logo.sub ? `<span class="ls">${e(st.logo.sub)}</span>` : '');
+  const s4 = `<div id="s4" class="scr"><div class="cta">${cta.headline ? `<div class="big hd">${e(cta.headline)}</div>` : ''}`
+    + (cta.button ? `<div class="btn"><span class="bp">&gt;</span><span class="bt">${e(cta.button)}</span><span class="cur"></span></div>` : `<div class="idle"><span class="ps">&gt;</span><span class="cur"></span></div>`)
+    + `${cta.sub ? `<div class="sub">→ ${e(cta.sub)}</div>` : ''}${lgHtml ? `<div class="lgw"><i class="rule"></i><div class="lg">${lgHtml}</div></div>` : ''}${st.note ? `<div class="nt"># ${e(st.note)}</div>` : ''}</div></div>`;
+  let side = '';
+  if (WIDE) side = `<div id="side"><div class="shd"><span>STATUS</span><span>${e(slug)}</span></div>`
+    + `<div class="menu"><i class="mbox"></i>${scn.map(s => `<div class="mi">${e(s.name)}</div>`).join('')}</div>`
+    + `<div class="mts">${['CPU', 'MEM', 'NET'].map(n => `<div class="mt"><span class="mn">${n}</span><span class="mb"><span class="mf"></span><span class="ce dim"></span></span><span class="mv"></span></div>`).join('')}`
+    + `<div class="mt"><span class="mn">TIME</span><span class="mv tclk"></span></div></div><div class="viz"></div></div>`;
+  else if (TALL || PORT) side = `<div id="side"><div class="viz"></div></div>`;
+  const tabs = `<div id="tabs"><span class="ses">[${e(slug)}]</span>${scn.map((s, i) => `<span class="tab"><span class="tn">${i}</span><span class="tw">:${e(s.name)}</span></span>`).join('')}<span class="clk"></span></div>`;
+  const imgs = shots.filter(p => p.src).map(p => `<img src="${p.src}" alt="">`).join('') + (!hasPh && st.logo.img ? `<img id="lgimg" src="${st.logo.img}" alt="">` : '');
+
+  S.$('#cam').appendChild(S.h(`<div id="term"><div id="desk"></div><i class="zr bz"></i><i class="zr bz"></i><i class="zr bz"></i>
+    <div id="win"><div id="tbar"><i class="st"></i><i class="bx l"></i><span class="tt">~/${e(slug)} — zsh</span><i class="bx r"></i></div>${tabs}
+      <div id="main"><div id="buf">${buf}</div>${s2}${s4}<i id="scan"></i></div>${side ? '<i class="dv"></i>' + side : ''}</div>
+    <div id="imgs">${imgs}</div></div>`));
+
+  S.start(async S => {
+    try { await document.fonts.load('12px "Galmuri11"', '가0█'); } catch (er) { /* 글꼴이 없으면 대체 글꼴 */ }
+    const W = S.W, H = S.H, u = Math.min(W, H) / 100, sf = S.safe;
+    const sx = sf.left, sy = sf.top, sw = W - sf.left - sf.right, sh = H - sf.top - sf.bottom;
+    const root = S.$('#term');
+    const px = v => Math.round(v * 100) / 100 + 'px';
+    const box = (el, r) => { if (!el) return; el.style.left = px(r.x); el.style.top = px(r.y); el.style.width = px(r.w); el.style.height = px(r.h); };
+    // 스타일 글꼴이 들어온 영상이면 큰 글(훅·마지막 문장)은 그 글꼴로, 아니면 갈무리 픽셀 글꼴
+    if (S.cssVar('--font-display') !== S.cssVar('--font-display-brand')) { root.classList.add('sf'); if (sty.weight) root.style.setProperty('--bwt', sty.weight); }
+    if (sty.marker === 'color') root.classList.add('mk-c');
+    if (sty.marker === 'underline') root.classList.add('mk-u');
+    if (sty.case === 'upper') root.classList.add('up');
+    if (S.look && S.look.scanlines) S.$('#scan').remove();   // 스타일 질감에 주사선이 있으면 겹치지 않게
+    const EZ = gsap.parseEase(S.ease('expo.out')) || M.ease.outExpo;   // 창이 열리는 이징은 스타일을 따름
+    const SG = S.stg(.06) / .06;                                       // 간격 배수
+
+    /* ---------- 창 배치 ---------- */
+    const bw = Math.max(3, Math.round(.4 * u));
+    const tbh = Math.round((TALL ? 5.4 : 4.6) * u), tabh = Math.round((TALL ? 4.4 : 3.9) * u);
+    // 9:16 은 글이 세이프존 안에 있게 창 아래쪽을 글자 없는 시각화기 칸으로 늘림
+    const win = TALL ? { x: sx, y: sy, w: sw, h: Math.min(H - 14 * u, sy + sh + 40 * u) - sy } : { x: sx, y: sy, w: sw, h: sh };
+    const iw = win.w - 2 * bw, ih = win.h - 2 * bw, top = tbh + tabh;
+    let mr, sr = null, dvr = null;
+    if (WIDE) { const mw = Math.round(iw * .68); mr = { x: 0, y: top, w: mw, h: ih - top }; dvr = { x: mw, y: top, w: bw, h: ih - top }; sr = { x: mw + bw, y: top, w: iw - mw - bw, h: ih - top }; }
+    else if (TALL || PORT) {
+      const mh = TALL ? Math.round(sy + sh - (win.y + bw + top)) : Math.round((ih - top) * .81);
+      mr = { x: 0, y: top, w: iw, h: mh }; dvr = { x: 0, y: top + mh, w: iw, h: bw }; sr = { x: 0, y: top + mh + bw, w: iw, h: ih - top - mh - bw };
+    } else mr = { x: 0, y: top, w: iw, h: ih - top };
+    const winEl = S.$('#win');
+    root.style.setProperty('--bw', bw + 'px');
+    box(winEl, win);
+    box(S.$('#tbar'), { x: 0, y: 0, w: iw, h: tbh });
+    box(S.$('#tabs'), { x: 0, y: tbh, w: iw, h: tabh });
+    box(S.$('#main'), mr);
+    if (dvr) box(S.$('#win .dv'), dvr);
+    if (sr) box(S.$('#side'), sr);
+    const pad = Math.round((TALL ? 3.2 : 2.8) * u);
+    const cw = mr.w - 2 * pad, vh = mr.h - 2 * pad;
+    const bufEl = S.$('#buf');
+    bufEl.style.left = pad + 'px'; bufEl.style.top = pad + 'px'; bufEl.style.width = cw + 'px';
+    // 탭 줄이 넘치면 지금 탭만 이름을 보임
+    const tabsEl = S.$('#tabs'), tabEls = S.$$('#tabs .tab');
+    tabEls[0].classList.add('on');
+    if (tabsEl.scrollWidth > tabsEl.clientWidth + 1) tabsEl.classList.add('cmp');
+    if (tabsEl.scrollWidth > tabsEl.clientWidth + 1) S.$('#tabs .ses').style.display = 'none';
+    tabEls[0].classList.remove('on');
+
+    /* ---------- 글 크기 ---------- */
+    const SC = M.clamp(+sty.scale || 1, .8, 1.4);
+    const fsS = (TALL ? 3.3 : PORT ? 3.1 : SQ ? 2.9 : 2.8) * u;
+    const fsK = fsS * 1.3, fsC = fsS * 1.18;
+    const fsP = (TALL ? 6.2 : PORT ? 5.6 : SQ ? 5 : 5.2) * u;
+    const fsB = (TALL ? 11 : PORT ? 10.5 : SQ ? 9.5 : 11) * u * SC;
+    [['--fs-s', fsS], ['--fs-k', fsK], ['--fs-c', fsC], ['--fs-p', fsP], ['--fs-btn', (TALL ? 5.4 : 4.6) * u], ['--lgh', (TALL ? 8 : 6.6) * u]]
+      .forEach(([k, v]) => root.style.setProperty(k, v + 'px'));
+    if (sty.tracking) S.$$('.big').forEach(b => { b.style.letterSpacing = sty.tracking + 'em'; });
+
+    // 훅: 프롬프트 > 뒤 큰 글
+    const ttl = S.$('#ttl'), hookPs = S.$('.hookl .ps');
+    const cRoom = (sty.title || 'type') === 'type' ? .6 : 0;     // 타자면 줄 끝 커서 자리
+    ttl.style.width = (cw - fsB * (.85 + cRoom)) + 'px';
+    const bigSz = S.fit(ttl, { max: fsB, maxLines: 3 });
+    hookPs.style.fontSize = bigSz + 'px'; hookPs.style.width = (bigSz * .85) + 'px';
+    ttl.style.width = (cw - bigSz * (.85 + cRoom)) + 'px';
+    ttl.style.minHeight = ttl.offsetHeight + 'px';            // 타자 치는 동안 줄 높이가 바뀌지 않게
+    // [ OK ] 꼬리표
+    const kk = S.$('.okl .kk');
+    if (kk) { kk.style.maxWidth = (cw - S.$('.okl .okb').offsetWidth - fsK * .5) + 'px'; kk.style.width = kk.style.maxWidth; S.fit(kk, { max: fsK, min: fsS * .8 }); kk.style.width = ''; }
+    // 장점 줄: 모두 같은 크기로 (가장 긴 줄에 맞춤)
+    const ptxs = S.$$('.ptl .tx');
+    let pSz = fsP;
+    ptxs.forEach(x => { x.style.width = (cw - fsP * 1.2) + 'px'; pSz = Math.min(pSz, S.fit(x, { max: fsP, maxLines: 2, keepMin: .78 })); });
+    S.$$('.ptl').forEach(l => { l.style.fontSize = pSz + 'px'; });
+    ptxs.forEach(x => { x.style.fontSize = ''; x.style.width = ''; });
+
+    // 명령 줄 높이 → 사진·아스키 칸 높이 (명령 줄 + 칸 + 다음 명령 줄이 화면에 꼭 맞게)
+    const cmdEl0 = S.$('.cmdl');
+    const cmdOuter = cmdEl0.offsetHeight + parseFloat(getComputedStyle(cmdEl0).marginBottom);
+    const blockH = Math.max(20 * u, vh - cmdOuter * 2 - fsS * .6);
+
+    /* ---------- 색 (캔버스용) ---------- */
+    const probe = document.createElement('i'); root.appendChild(probe);
+    const rgb = v => { probe.style.color = `var(${v})`; const m = getComputedStyle(probe).color.match(/[\d.]+/g) || [0, 0, 0]; return m.slice(0, 3).map(Number); };
+    const C = { bg: rgb('--bg'), on: rgb('--on-bg'), ac: rgb('--accent') };
+    probe.remove();
+    const lum = c => .299 * c[0] + .587 * c[1] + .114 * c[2];
+    const css = (c, a = 1) => `rgba(${c[0]},${c[1]},${c[2]},${a})`;
+
+    /* ---------- 갈무리 픽셀 글꼴을 점 비트맵으로 (12px = 글자 한 칸 12점, 숫자 7×11, 한글 11×11) ---------- */
+    const gcv = document.createElement('canvas'); gcv.width = 48; gcv.height = 20;
+    const gx = gcv.getContext('2d', { willReadFrequently: true });
+    const GL = {}, GROWS = 12;
+    const glyph = ch => {
+      if (GL[ch]) return GL[ch];
+      gx.clearRect(0, 0, 48, 20); gx.font = '12px "Galmuri11"'; gx.textBaseline = 'alphabetic'; gx.fillStyle = '#000';
+      gx.fillText(ch, 0, 13);
+      const w = Math.max(1, Math.min(48, Math.round(gx.measureText(ch).width)));
+      const d = gx.getImageData(0, 0, 48, 20).data, rows = [];
+      for (let y = 2; y < 2 + GROWS; y++) { const r = []; for (let x = 0; x < w; x++) r.push(d[(y * 48 + x) * 4 + 3] > 110 ? 1 : 0); rows.push(r); }
+      return (GL[ch] = { w, rows });
+    };
+    const comp = str => { const gs = [...String(str)].map(glyph); return { gs, w: gs.reduce((a, g) => a + g.w, 0) }; };
+
+    /* ---------- 사진: 디더링 (브랜드 두 색, 8×8 순서 디더) ---------- */
+    const B8 = [0, 32, 8, 40, 2, 34, 10, 42, 48, 16, 56, 24, 50, 18, 58, 26, 12, 44, 4, 36, 14, 46, 6, 38, 60, 28, 52, 20, 62, 30, 54, 22,
+      3, 35, 11, 43, 1, 33, 9, 41, 51, 19, 59, 27, 49, 17, 57, 25, 15, 47, 7, 39, 13, 45, 5, 37, 63, 31, 55, 23, 61, 29, 53, 21];
+    const [DK, LT] = lum(C.bg) < lum(C.on) ? [C.bg, C.on] : [C.on, C.bg];
+    function dither(img, w, h) {
+      const c = document.createElement('canvas'); c.width = w; c.height = h;
+      const g = c.getContext('2d', { willReadFrequently: true });
+      const iw2 = img.naturalWidth || 1, ih2 = img.naturalHeight || 1, ar = w / h;
+      let sw2 = iw2, sh2 = iw2 / ar; if (sh2 > ih2) { sh2 = ih2; sw2 = ih2 * ar; }
+      g.imageSmoothingQuality = 'high';
+      g.drawImage(img, (iw2 - sw2) / 2, (ih2 - sh2) / 2, sw2, sh2, 0, 0, w, h);
+      const im = g.getImageData(0, 0, w, h), d = im.data, n = w * h, L = new Float32Array(n), hist = new Uint32Array(256);
+      for (let i = 0; i < n; i++) { const v = .299 * d[i * 4] + .587 * d[i * 4 + 1] + .114 * d[i * 4 + 2]; L[i] = v; hist[Math.min(255, v | 0)]++; }
+      let lo = 0, hi = 255, acc = 0;
+      for (let i = 0; i < 256; i++) { acc += hist[i]; if (acc > n * .03) { lo = i; break; } }
+      acc = 0; for (let i = 255; i >= 0; i--) { acc += hist[i]; if (acc > n * .03) { hi = i; break; } }
+      const span = Math.max(24, hi - lo);
+      for (let y = 0; y < h; y++) for (let x = 0; x < w; x++) {
+        const i = y * w + x, v = Math.pow(M.clamp((L[i] - lo) / span), .95), on = v > (B8[(y & 7) * 8 + (x & 7)] + .5) / 64;
+        const c2 = on ? LT : DK; d[i * 4] = c2[0]; d[i * 4 + 1] = c2[1]; d[i * 4 + 2] = c2[2]; d[i * 4 + 3] = 255;
+      }
+      g.putImageData(im, 0, 0);
+      return c;
+    }
+
+    /* ---------- 사진 창 배치 (계단처럼 겹쳐 열림) ---------- */
+    const vwl = S.$('.vwl'), wins = [];
+    if (vwl) {
+      vwl.style.height = blockH + 'px';
+      const m = shots.length, BW = cw - 1.2 * u, BH = blockH - 1.2 * u;   // 그림자 자리
+      const pth = Math.round(3.1 * u), brd = .35 * u * 2;
+      const ar = m === 1 ? M.clamp(BW / (BH - pth), .8, 1.78) : (WIDE ? 4 / 3 : SQ ? 4 / 3 : 4 / 3);
+      const ox = m > 1 ? (TALL ? .22 : .26) : 0, oy = m > 1 ? (TALL ? .28 : .3) : 0;
+      const ww = Math.min(BW / (1 + (m - 1) * ox), ((BH / (1 + (m - 1) * oy)) - pth - brd) * ar + brd);
+      const wh = (ww - brd) / ar + pth + brd;
+      const dx = m > 1 ? (BW - ww) / (m - 1) : 0, dy = m > 1 ? (BH - wh) / (m - 1) : 0;
+      const x0 = m > 1 ? 0 : (BW - ww) / 2, y0 = m > 1 ? 0 : (BH - wh) / 2;
+      const imgEls = S.$$('#imgs img:not(#lgimg)');
+      let k = 0;
+      S.$$('.pw', vwl).forEach((el, j) => {
+        const r = { x: x0 + dx * j, y: y0 + dy * j, w: ww, h: wh };
+        box(el, r);
+        el.style.zIndex = j + 1;
+        const t2 = S.$('.pwt', el), pc = S.$('.pc2', el);
+        t2.style.height = pth + 'px'; pc.style.top = pth + 'px';
+        const cwp = ww - brd, chp = wh - pth - brd;
+        const w = { el, r, pp: S.$('.pp', el), sl: S.$('.sl', el), pc, chp, cv: null, rows: Math.max(1, Math.round(chp / Math.max(3, .42 * u))) };
+        if (shots[j].src) {
+          const dp = Math.max(3, .42 * u);
+          w.cv = dither(imgEls[k++], Math.max(8, Math.round(cwp / dp)), w.rows);
+          pc.appendChild(w.cv);
+        }
+        w.zr = S.$$('.zr', vwl).slice(j * 3, j * 3 + 3);
+        w.zr.forEach(z => { z.style.zIndex = 30; });
+        wins.push(w);
+      });
+    }
+
+    /* ---------- 아스키 아트 로고 (사진이 없을 때) ---------- */
+    const asl = S.$('.asl');
+    let artRows = [];
+    if (asl) {
+      const artEl = S.$('.art', asl), cap = S.$('.cap', asl);
+      let grid = null;                                   // grid[r][c] = 0 빈칸 · 1 글자(강조색) · 2 그림자 · 3..6 명암
+      const lgImg = S.$('#lgimg');
+      if (lgImg && lgImg.naturalWidth) {
+        // 로고 그림 → 명암 글자 (투명 배경이면 알파, 아니면 모서리 색과의 차이)
+        const ar = lgImg.naturalHeight / lgImg.naturalWidth;
+        let cols = 40, rows = Math.round(cols * ar);
+        if (rows > 20) { rows = 20; cols = Math.max(8, Math.round(rows / ar)); }
+        const c = document.createElement('canvas'); c.width = cols; c.height = rows;
+        const g = c.getContext('2d', { willReadFrequently: true }); g.drawImage(lgImg, 0, 0, cols, rows);
+        const d = g.getImageData(0, 0, cols, rows).data;
+        const alpha = d[3] < 250 || d[(cols - 1) * 4 + 3] < 250;
+        const bl = .299 * d[0] + .587 * d[1] + .114 * d[2];
+        grid = [];
+        for (let y = 0; y < rows; y++) { const r = []; for (let x = 0; x < cols; x++) {
+          const i = (y * cols + x) * 4, l = .299 * d[i] + .587 * d[i + 1] + .114 * d[i + 2];
+          const v = alpha ? d[i + 3] / 255 : M.clamp(Math.abs(l - bl) / 110);
+          r.push(v < .12 ? 0 : 2 + Math.min(4, Math.ceil(v * 4)));
+        } grid.push(r); }
+      } else {
+        // 글자 로고 → 픽셀 글꼴 큰 글자 + 오른쪽 아래 그림자 (figlet 같은 배너)
+        let txt = st.logo.text || st.highlight || st.kicker || 'hello';
+        let parts = [txt];
+        if (comp(txt).w > 64 && /\s/.test(txt)) { const ws = txt.split(/\s+/), hf = Math.ceil(ws.length / 2); parts = [ws.slice(0, hf).join(' '), ws.slice(hf).join(' ')]; }
+        const bmp = [];
+        parts.forEach((p, pi) => {
+          const cp = comp(p), rows = Array.from({ length: GROWS }, () => []);
+          cp.gs.forEach(g => g.rows.forEach((r, y) => rows[y].push(...r)));
+          if (pi) bmp.push([]);
+          bmp.push(...rows);
+        });
+        // 빈 가장자리 잘라 내기
+        let yA = bmp.findIndex(r => r.some(Boolean)), yB = bmp.length - 1 - [...bmp].reverse().findIndex(r => r.some(Boolean));
+        if (yA < 0) { yA = 0; yB = 0; }
+        const wMax = Math.max(1, ...bmp.map(r => r.length));
+        let xA = wMax, xB = 0;
+        bmp.forEach(r => r.forEach((v, x) => { if (v) { xA = Math.min(xA, x); xB = Math.max(xB, x); } }));
+        if (xA > xB) { xA = 0; xB = 0; }
+        const hh = yB - yA + 1, ww = xB - xA + 1, at = (y, x) => (bmp[y + yA] || [])[x + xA] ? 1 : 0;
+        grid = [];
+        for (let y = 0; y <= hh; y++) { const r = []; for (let x = 0; x <= ww; x++) r.push(at(y, x) ? 1 : (y > 0 && x > 0 && at(y - 1, x - 1) ? 2 : 0)); grid.push(r); }
+      }
+      const cols = grid[0].length;
+      const CH = ['', '█', '░', '░', '▒', '▓', '█'], CL = ['', 'a', 's', 's', 's', 'a', 'a'];
+      const row = r => { let h = '', cur = -1, run = ''; const flush = () => { if (run) h += cur > 0 ? `<span class="${CL[cur]}">${run}</span>` : run; run = ''; };
+        r.forEach(v => { if (v !== cur) { flush(); cur = v; } run += v ? CH[v] : BLANK; }); flush(); return h; };
+      const lines = ['┌' + '─'.repeat(cols) + '┐', ...grid.map(r => '│' + row(r) + '│'), '└' + '─'.repeat(cols) + '┘'];
+      artEl.innerHTML = lines.map(l => `<span class="r">${l}</span>`).join('');
+      const capH = cap ? fsS * 2 : 0;
+      const fsA = Math.min(cw / (cols + 2), (blockH - capH) / lines.length, 4.6 * u);
+      artEl.style.fontSize = fsA + 'px';
+      asl.style.height = blockH + 'px';
+      artRows = S.$$('.r', artEl);
+      // 상자를 칸 가운데로
+      const artH = lines.length * fsA + capH;
+      asl.style.paddingTop = Math.max(0, (blockH - artH) / 2) + 'px'; asl.style.boxSizing = 'border-box';
+      artEl.style.paddingLeft = Math.max(0, (cw - (cols + 2) * fsA) / 2) + 'px';
+      if (cap) cap.style.paddingLeft = artEl.style.paddingLeft;
+    }
+
+    /* ---------- 숫자 전광판 배치 ---------- */
+    let led = null;
+    if (num) {
+      const s2el = S.$('#s2'), cv = S.$('#led'), pre = S.$('#s2 .pre'), lbl = S.$('#s2 .lbl'), src = S.$('#s2 .src');
+      const fin = comp(S.numText(num.value, num.decimals)), suf = num.suffix ? comp(num.suffix) : { gs: [], w: 0 };
+      const GAPC = suf.w ? 3 : 0, MR = 1, ROWS = GROWS + 2 * MR;
+      const totC = fin.w + GAPC + suf.w;
+      [pre, lbl].forEach(x => { if (x) { x.style.width = cw + 'px'; S.fit(x, { max: fsP, maxLines: 2, keepMin: .7 }); } });
+      if (src) { src.style.width = cw + 'px'; S.fit(src, { max: fsS * .86, maxLines: 2, keepLines: false }); }
+      const preH = pre ? pre.offsetHeight + 1.4 * u : 0, lblH = lbl ? lbl.offsetHeight + 2.4 * u : 0, srcH = src ? src.offsetHeight + 2 * u : 0;
+      const P = Math.max(.5 * u, Math.min(cw / (totC + 2), (vh - preH - lblH - srcH) * (TALL ? .62 : .8) / ROWS, 4.8 * u));
+      const cols = Math.floor(cw / P), bwid = cols * P, bh = ROWS * P;
+      const dpr = window.devicePixelRatio || 1;
+      cv.width = Math.round(bwid * dpr); cv.height = Math.round(bh * dpr); cv.style.width = bwid + 'px'; cv.style.height = bh + 'px';
+      const ctx = cv.getContext('2d'); ctx.scale(dpr, dpr);
+      const gh = preH + bh + lblH, gy = pad + Math.max(0, (vh - srcH - gh) / 2);
+      if (pre) M.place(pre, pad, gy, { ax: 0, ay: 0, o: 0 });
+      M.place(cv, pad, gy + preH, { ax: 0, ay: 0 });
+      if (lbl) M.place(lbl, pad, gy + preH + bh + 2.4 * u, { ax: 0, ay: 0, o: 0 });
+      if (src) M.place(src, pad, pad + vh - src.offsetHeight, { ax: 0, ay: 0, o: 0 });
+      led = { s2el, ctx, pre, lbl, src, fin, suf, GAPC, MR, ROWS, P, cols, bwid, bh, numsrc: S.$('#numsrc') };
+    }
+
+    /* ---------- 마지막 장면 배치 ---------- */
+    const s4 = S.$('#s4'), ctaBox = S.$('#s4 .cta'), hd = S.$('#s4 .hd'), btn = S.$('#s4 .btn'), idle = S.$('#s4 .idle');
+    ctaBox.style.width = cw + 'px';
+    if (hd) { hd.style.width = (cw - fsB * .9 * cRoom) + 'px'; const z = S.fit(hd, { max: fsB * .9, maxLines: 3 }); hd.style.width = (cw - z * cRoom) + 'px'; hd.style.minHeight = hd.offsetHeight + 'px'; }
+    if (btn) { const bt = S.$('.bt', btn); if (btn.offsetWidth > cw - 1.2 * u) { bt.style.maxWidth = (cw - 1.2 * u - (btn.offsetWidth - bt.offsetWidth)) + 'px'; S.fit(bt, { max: parseFloat(getComputedStyle(bt).fontSize), min: fsS }); } }
+    const sub = S.$('#s4 .sub'); if (sub) { sub.style.width = cw + 'px'; S.fit(sub, { max: fsK, min: fsS * .8 }); }
+    const nt = S.$('#s4 .nt'); if (nt) { nt.style.width = cw + 'px'; S.fit(nt, { max: fsS * .82, maxLines: 2, keepLines: false }); }
+    const lgw = S.$('#s4 .lgw'), lg = S.$('#s4 .lg');
+    if (lg && lg.scrollWidth > cw) { const k = cw / lg.scrollWidth; lg.style.transformOrigin = '0 50%'; lg.style.transform = `scale(${k.toFixed(4)})`; }
+    const ctaH = ctaBox.offsetHeight;
+    if (ctaH > vh) { const k = vh / ctaH; ctaBox.style.transformOrigin = '0 0'; ctaBox.style.transform = `scale(${k.toFixed(4)})`; }
+    ctaBox.style.left = pad + 'px'; ctaBox.style.top = (pad + Math.max(0, (vh - Math.min(vh, ctaH)) / 2)) + 'px';
+
+    /* ---------- 시간표 (120BPM, 1박 0.5초) ---------- */
+    const q = x => Math.ceil(x * 4 - 1e-6) / 4;              // 반의반 박 위로 맞춤
+    const BARD = .5, PSTEP = pts.length > 3 ? 1 : 1.25, NUMD = 3.6, DRAW = .9, ROWD = .035, WSTEP = shots.length > 2 ? .45 : .55;
+    const cpsOf = s => Math.max(18, s.length / .6);           // 긴 명령은 조금 빠르게 (0.6초 안쪽)
+    const tWin = .3, tB0 = .34, tHook = .66, tT = .76;
+    const nCh = [...st.title.replace(/\s/g, '')].length, dEst = nCh / 20;
+    const enterEst = Math.max(q(tT + dEst + .6), 2);
+    const tTE = st.title ? S.fx.enter(ttl, tT, { highlight: st.highlight, def: 'type', caretHold: Math.max(.3, enterEst - (tT + dEst)) }) : tT;
+    const chMode = !!ttl.querySelector('.hl .ch');
+    // 강조 어절이 이어져 있으면 사이 빈칸도 상자로 이어 붙임 (한 덩어리 꼬리표)
+    const hlSp = [];
+    S.$$('.hl', ttl).forEach(w => {
+      let n = w.nextSibling;
+      if (n && n.nodeType === 3 && /^\s+$/.test(n.textContent) && n.nextSibling && n.nextSibling.classList && n.nextSibling.classList.contains('hl')) {
+        const sp = document.createElement('span'); sp.className = 'hlsp'; sp.textContent = ' '; n.replaceWith(sp); hlSp.push({ sp, next: sp.nextSibling });
+      }
+    });
+    const tEnter = Math.max(q(tTE + .6), 2);
+    const tOK = tEnter + .1;
+    let T = Math.max(tEnter + 1.5, 3.5), appear = tEnter + .4;
+    const cmdT = [], barT = [], ptT = [], winT = [], sceneT = [0];
+    let tN0 = null, tN1 = null, tC = 0, viewT = null, ascT = null, ascEnd = null;
+    cmds.forEach((c, i) => {
+      const cps = cpsOf(c.text), tType = T, tEnd = tType + c.text.length / cps, tEn = q(tEnd + .2);
+      cmdT.push({ ts: appear, tType, tEnd, tEn, cps });
+      if (c.id === 'pts') {
+        sceneT.push(tEn);
+        pts.forEach((_, j) => { const b = tEn + .15 + j * PSTEP; barT.push(b); ptT.push(b + BARD + .05); });
+        const last = ptT[ptT.length - 1]; appear = last + .45; T = q(last + 1.15);
+      } else if (c.id === 'num') {
+        sceneT.push(tEn); tN0 = tEn + .05; tN1 = tN0 + NUMD; appear = tN1; T = q(tN1 + .35);
+      } else if (c.id === 'ph') {
+        sceneT.push(tEn); viewT = tEn + .1;
+        shots.forEach((_, j) => winT.push(viewT + .1 + j * WSTEP * SG));
+        const lastEnd = winT[winT.length - 1] + .25 + DRAW; appear = lastEnd + .25; T = q(lastEnd + 1.2);
+      } else if (c.id === 'asc') {
+        sceneT.push(tEn); ascT = tEn + .1; ascEnd = ascT + .1 + artRows.length * ROWD;
+        appear = ascEnd + .45; T = q(ascEnd + 1.5);
+      } else { sceneT.push(tEn); tC = tEn + .05; }
+    });
+    // 마지막: 큰 글 → 버튼 → sub → 로고 → note, 버튼이 한 번 눌림
+    const tHd = tC + .3;
+    const tHdE = hd ? S.fx.enter(hd, tHd, { def: 'type', caretHold: .35 }) : tHd;
+    const tBtn = q(tHdE + .3), tSub = tBtn + .45 * SG, tLg = tBtn + .7 * SG, tNt = tBtn + .95 * SG, tPress = q(tBtn + 1.3);
+    const END = Math.max(tPress + 2.25, tNt + 2.2);
+    S.setDuration(END);
+    const tNumS = tN0 != null ? tN0 + .35 : 0, NUMLEN = 1.3;
+    if (led) S.fx.num(led.numsrc, tNumS, NUMLEN, num.value, { decimals: num.decimals });
+
+    /* ---------- 줄과 스크롤 ---------- */
+    const lines = [];
+    const lnEls = S.$$('#buf > .ln');
+    let ci = 0;
+    lnEls.forEach(el => {
+      const c = el.classList;
+      let ts = 0;
+      if (c.contains('boot')) ts = tB0 + lines.length * .07;
+      else if (c.contains('hookl')) ts = tHook;
+      else if (c.contains('okl')) ts = tOK;
+      else if (c.contains('cmdl')) ts = cmdT[ci++].ts;
+      else if (c.contains('barl')) ts = barT[+el.dataset.j];
+      else if (c.contains('ptl')) ts = ptT[+el.dataset.j];
+      else if (c.contains('vwl')) ts = viewT;
+      else if (c.contains('asl')) ts = ascT;
+      lines.push({ el, ts, bot: el.offsetTop + el.offsetHeight });
+    });
+    const scrollK = [[0, 0]];
+    let cur = 0;
+    lines.forEach(l => { const tg = Math.max(cur, l.bot - vh); if (tg > cur + .5) { scrollK.push([l.ts, tg, { d: .2, e: 'outCubic' }]); cur = tg; } });
+    const cmdEls = S.$$('#buf .cmdl').map(el => ({ el, ty: S.$('.ty', el), cur: S.$('.cur', el), s: null }));
+    const bars = S.$$('#buf .barl').map(el => ({ el, cf: S.$('.cf', el), ce: S.$('.ce', el), pc: S.$('.pc', el), n: -1 }));
+    const bootOk = S.$$('.boot .okw'), hookLn = S.$('.hookl');
+    const hlWords = S.$$('.hl', ttl);
+
+    /* ---------- 옆 상태판 · 시각화기 ---------- */
+    const side = S.$('#side');
+    let viz = null, menu = null, meters = null;
+    if (side) {
+      const vz = S.$('.viz', side);
+      let vr;
+      if (WIDE) {
+        const shd = S.$('.shd', side), hH = Math.round(3.6 * u); box(shd, { x: 0, y: 0, w: sr.w, h: hH });
+        const rowH = 5.6 * u, mH = rowH * 5;
+        const mn = S.$('.menu', side); box(mn, { x: 0, y: hH + 1.6 * u, w: sr.w, h: mH });
+        box(S.$('.mbox', mn), { x: 0, y: rowH * 2, w: sr.w, h: rowH });
+        menu = { items: S.$$('.mi', mn), rowH };
+        menu.items.forEach(it => { it.style.height = rowH + 'px'; });
+        const mts = S.$('.mts', side); mts.style.left = 1.6 * u + 'px'; mts.style.top = (hH + 1.6 * u + mH + 2.4 * u) + 'px'; mts.style.width = (sr.w - 3.2 * u) + 'px';
+        meters = S.$$('.mt', mts).slice(0, 3).map(m => ({ f: S.$('.mf', m), e: S.$('.ce', m), v: S.$('.mv', m), s: '' }));
+        meters.clk = S.$('.tclk', mts);
+        const vy = hH + 1.6 * u + mH + 2.4 * u + mts.offsetHeight + 2.4 * u;
+        vr = { x: 1.6 * u, y: vy, w: sr.w - 3.2 * u, h: Math.max(6 * u, sr.h - vy - 1.6 * u) };
+      } else vr = { x: 2.4 * u, y: 2.2 * u, w: sr.w - 4.8 * u, h: sr.h - 4.4 * u };
+      box(vz, vr);
+      const N = WIDE ? 12 : 22, gapB = vr.w * .018, bwB = (vr.w - gapB * (N - 1)) / N;
+      const cp = Math.max(4, Math.round((WIDE ? 1.6 : PORT ? 1.4 : 1.9) * u)), ch = Math.max(3, Math.round(cp * .66));
+      vz.style.setProperty('--vcp', cp + 'px'); vz.style.setProperty('--vch', ch + 'px');
+      viz = { bars: [], N, cp, ch, maxC: Math.max(3, Math.floor(vr.h / cp)) };
+      for (let i = 0; i < N; i++) { const b = document.createElement('i'); b.className = 'vb'; b.style.left = (i * (bwB + gapB)) + 'px'; b.style.width = bwB + 'px'; vz.appendChild(b); viz.bars.push({ el: b, n: -1 }); }
+    }
+    const menuK = [[0, 0]];
+    sceneT.forEach((s, i) => { if (i) menuK.push([s, i, { d: .25, e: 'outExpo' }]); });
+    const zrB = S.$$('.zr.bz'), ascCap = S.$('.asl .cap');
+    const clkEl = S.$('#tabs .clk');
+    const mmss = t => { const s = Math.max(0, Math.floor(t)); return String(Math.floor(s / 60)).padStart(2, '0') + ':' + String(s % 60).padStart(2, '0'); };
+
+    // 점선 사각형이 커지며 창이 열림 (옛 컴퓨터의 창 열기)
+    const zoom = (els, a, b, t, t0, d, steps = 6) => {
+      const k = (t - t0) / d;
+      if (k < 0 || k >= 1) { els.forEach(z => { z.style.visibility = 'hidden'; }); return; }
+      const s = Math.floor(k * steps);
+      els.forEach((z, j) => {
+        const st2 = s - j;
+        if (st2 < 0) { z.style.visibility = 'hidden'; return; }
+        const f = EZ((st2 + 1) / steps);
+        box(z, { x: M.lerp(a.x, b.x, f), y: M.lerp(a.y, b.y, f), w: M.lerp(a.w, b.w, f), h: M.lerp(a.h, b.h, f) });
+        z.style.visibility = 'inherit'; z.style.opacity = (1 - j * .3).toFixed(2);
+      });
+    };
+    // 왼쪽부터 끊어서 찍히는 줄
+    const rv = (el, t, t0, d = .22, n = 8) => {
+      if (!el) return;
+      if (t < t0) { el.style.visibility = 'hidden'; return; }
+      const k = Math.min(1, Math.floor(M.prog(t, t0, d) * n + 1e-6) / n);
+      el.style.visibility = 'inherit';
+      el.style.clipPath = k >= 1 ? 'none' : `inset(-30% ${((1 - k) * 100).toFixed(2)}% -30% 0)`;
+    };
+    const setTxt = (el, s) => { if (el && el._s !== s) { el.textContent = s; el._s = s; } };
+    const winA = { x: win.x + win.w * .45, y: win.y + win.h * .45, w: win.w * .1, h: win.h * .1 };
+
+    /* ---------- 매 프레임 ---------- */
+    S.ambient(t => {
+      // 창 열기
+      zoom(zrB, winA, win, t, .02, tWin - .02, 6);
+      winEl.style.visibility = t >= tWin ? 'inherit' : 'hidden';
+      // 탭·시계
+      const sc = sceneT.reduce((a, s, i) => t >= s ? i : a, 0);
+      tabEls.forEach((tb, i) => tb.classList.toggle('on', i === sc));
+      setTxt(clkEl, mmss(t));
+      // 화면 바꾸기: 버퍼 ↔ 전광판 ↔ 마지막
+      const inNum = tN0 != null && t >= tN0 && t < tN1, inCta = t >= tC;
+      bufEl.style.visibility = !inNum && !inCta ? 'inherit' : 'hidden';
+      if (led) led.s2el.style.visibility = inNum ? 'inherit' : 'hidden';
+      s4.style.visibility = inCta ? 'inherit' : 'hidden';
+
+      // 버퍼 줄
+      lines.forEach(l => { if (!l.el.classList.contains('okl') && !l.el.classList.contains('ptl')) l.el.style.visibility = t >= l.ts ? 'inherit' : 'hidden'; });
+      bootOk.forEach((o, i) => { o.style.visibility = t >= tB0 + i * .07 + .09 ? 'inherit' : 'hidden'; });
+      hookLn.classList.toggle('done', t >= tEnter);
+      // 강조 상자는 그 어절 글자가 들어올 때부터 (빈 상자가 먼저 보이지 않게)
+      hlWords.forEach(w => {
+        let on;
+        if (chMode) { const c0 = w.querySelector('.ch'); on = !!c0 && c0.style.display !== 'none' && c0.style.visibility !== 'hidden'; }
+        else { const sli = w.querySelector('.sli'); on = w.textContent.trim() !== '' && (!sli || gsap.getProperty(sli, 'yPercent') > -95); }
+        w.style.visibility = on ? '' : 'hidden'; w._on = on;
+      });
+      hlSp.forEach(h => { h.sp.style.visibility = h.next._on ? '' : 'hidden'; h.sp.style.opacity = h.next.style.opacity || ''; });
+      rv(S.$('.okl'), t, tOK, .2, 6);
+      cmdEls.forEach((c, i) => {
+        const T2 = cmdT[i];
+        const s = M.type(cmds[i].text, t, T2.tType, T2.cps);
+        if (c.s !== s) { c.ty.textContent = s; c.s = s; }
+        const act = t >= T2.ts && t < T2.tEn;
+        c.cur.style.visibility = act && (t < T2.tType ? M.blink(t, T2.ts + .25, 1) : true) ? 'inherit' : 'hidden';
+        c.el.classList.toggle('done', t >= T2.tEn);
+      });
+      bars.forEach((b, j) => {
+        const k = M.prog(t, barT[j], BARD), n = Math.floor(k * 10 + 1e-6);
+        if (b.n !== n) { b.cf.textContent = '■'.repeat(n); b.ce.textContent = '□'.repeat(10 - n); b.pc.textContent = (n * 10) + '%'; b.n = n; }
+      });
+      lines.forEach(l => { if (l.el.classList.contains('ptl')) rv(l.el, t, ptT[+l.el.dataset.j], .24, 8); });
+      bufEl.style.transform = `translateY(${(-M.anim(scrollK, t)).toFixed(1)}px)`;
+
+      // 사진 창: 점선 사각형 → 창 → 위에서 아래로 한 줄씩
+      wins.forEach((w, j) => {
+        const t0 = winT[j];
+        const a = { x: w.r.x + w.r.w * .4, y: w.r.y + w.r.h * .4, w: w.r.w * .2, h: w.r.h * .2 };
+        zoom(w.zr, a, w.r, t, t0, .22, 4);
+        const on = t >= t0 + .2;
+        w.el.style.visibility = on ? 'inherit' : 'hidden';
+        if (!on) return;
+        const k = M.prog(t, t0 + .25, DRAW), r = Math.floor(k * w.rows + 1e-6), y = w.chp * r / w.rows;
+        if (w.cv) w.cv.style.clipPath = r >= w.rows ? 'none' : `inset(0 0 ${(w.chp - y).toFixed(1)}px 0)`;
+        w.sl.style.visibility = w.cv && k > 0 && k < 1 ? 'inherit' : 'hidden';
+        w.sl.style.transform = `translateY(${y.toFixed(1)}px)`;
+        setTxt(w.pp, w.cv ? Math.floor(k * 100) + '%' : '');
+      });
+      // 아스키 아트: 한 줄씩 찍힘
+      if (artRows.length) {
+        artRows.forEach((r, i) => { r.style.visibility = t >= ascT + .1 + i * ROWD ? 'inherit' : 'hidden'; });
+        if (ascCap) rv(ascCap, t, ascEnd + .1, .25, 8);
+      }
+
+      // 숫자 전광판
+      if (led && inNum) drawLed(t);
+
+      // 마지막 장면
+      if (inCta) {
+        if (hd) hd.style.visibility = 'inherit';
+        const bx2 = btn || idle;
+        rv(bx2, t, tBtn, .25, 6);
+        const bc = S.$('.cur', bx2);
+        bc.style.visibility = t >= tBtn + .25 && M.blink(t, tBtn + .25, 1) ? 'inherit' : 'hidden';
+        if (btn) {
+          const pr = t >= tPress && t < tPress + .2;
+          btn.style.transform = pr ? `translate(${u.toFixed(1)}px, ${u.toFixed(1)}px)` : '';
+          btn.style.boxShadow = pr ? 'none' : '';
+          btn.classList.toggle('inv', t >= tPress && t < tPress + .12);
+        }
+        rv(sub, t, tSub, .25, 8);
+        rv(lgw, t, tLg, .3, 6);
+        rv(nt, t, tNt, .3, 8);
+      }
+
+      // 상태판·시각화기
+      if (viz) {
+        const b = Math.floor(t / .5), ph = t / .5 - b, N = viz.N;
+        viz.bars.forEach((v, i) => {
+          const r = M.rng(b * 977 + i * 131 + 7), r1 = r(), r2 = r();
+          const env = .5 + .5 * Math.cos((i / N) * Math.PI * .85);
+          const lv = Math.max(.16 + .1 * Math.sin(t * 3.1 + i * .7) + .1 * r2, (.42 + .58 * r1) * env * Math.exp(-ph * 2.2));
+          const n = t < tWin ? 0 : Math.max(1, Math.round(M.clamp(lv) * viz.maxC));
+          if (v.n !== n) { v.el.style.height = (n ? n * viz.cp - (viz.cp - viz.ch) : 0) + 'px'; v.n = n; }
+        });
+      }
+      if (menu) {
+        const off = M.anim(menuK, t);
+        menu.items.forEach((it, i) => { const y = (2 + i - off) * menu.rowH; it.style.transform = `translateY(${y.toFixed(1)}px)`; it.classList.toggle('on', Math.abs(i - off) < .5); });
+      }
+      if (meters) {
+        const k4 = Math.floor(t * 4);
+        meters.forEach((m, i) => {
+          const r = M.rng(k4 * 61 + i * 17 + 3)();
+          const v = M.clamp([.48, .3, .2][i] + .16 * Math.sin(t * (.9 + i * .5) + i) + .18 * (r - .5) + (sc === scn.length - 1 ? .1 : 0), .05, .97);
+          const n = Math.round(v * 8), s = n + ':' + Math.round(v * 100);
+          if (m.s !== s) { m.f.textContent = '■'.repeat(n); m.e.textContent = '□'.repeat(8 - n); m.v.textContent = Math.round(v * 100) + '%'; m.s = s; }
+        });
+        setTxt(meters.clk, mmss(t));
+      }
+    });
+
+    // 전광판 그리기: S.fx.num 이 바꾼 글자(세기·무작위)나 굴러가는 자리(주행거리계)를 읽어 점으로 켬
+    function drawLed(t) {
+      const L = led, ctx = L.ctx, cols = L.cols, R = L.ROWS, P = L.P;
+      const lit = new Uint8Array(R * cols);
+      const put = (g, col, dy, v, y0 = 0, y1 = GROWS) => {
+        for (let y = 0; y < GROWS; y++) { const yy = y + dy; if (yy < y0 || yy >= y1) continue; const row = g.rows[y];
+          for (let x = 0; x < g.w; x++) if (row[x] && col + x >= 0 && col + x < cols) lit[(L.MR + yy) * cols + col + x] = v; }
+      };
+      if (t >= tNumS) {
+        const end = L.MR + L.fin.w;                       // 숫자 칸 오른쪽 끝 (오른쪽 맞춤)
+        const strips = S.$$('.odo-s', L.numsrc);
+        if (strips.length) {
+          // 주행거리계: 자리마다 아래 숫자가 위로 밀고 올라옴 (점 한 줄 단위)
+          let col = L.MR, di = 0;
+          L.fin.gs.forEach((g, i) => {
+            const ch = [...S.numText(num.value, num.decimals)][i];
+            if (/\d/.test(ch) && strips[di]) {
+              const m = /translateY\((-?[\d.]+)em\)/.exec(strips[di++].style.transform || '');
+              const pos = m ? -parseFloat(m[1]) : 0, d0 = ((Math.floor(pos) % 10) + 10) % 10, sh2 = Math.round((pos - Math.floor(pos)) * GROWS);
+              put(glyph(String(d0)), col, -sh2, 1); put(glyph(String((d0 + 1) % 10)), col, GROWS - sh2, 1);
+            } else put(g, col, 0, 1);
+            col += g.w;
+          });
+        } else {
+          const cp = comp(L.numsrc.textContent || '0');
+          let col = end - cp.w;
+          cp.gs.forEach(g => { put(g, col, 0, 1); col += g.w; });
+        }
+        let col = end + L.GAPC;
+        L.suf.gs.forEach(g => { put(g, col, 0, 2); col += g.w; });
+      }
+      // 켜짐: 위에서 아래로 줄마다 켜지고, 나갈 때 위에서부터 꺼짐
+      const onR = Math.floor(M.prog(t, tN0, .3) * R + 1e-6), offR = 0;
+      ctx.clearRect(0, 0, L.bwid, L.bh);
+      const rad = P * .38, paths = [new Path2D(), new Path2D(), new Path2D()];
+      for (let y = offR; y < Math.min(onR, R); y++) for (let x = 0; x < cols; x++) {
+        const v = lit[y * cols + x], cx = (x + .5) * P, cy = (y + .5) * P;
+        paths[v].moveTo(cx + rad, cy); paths[v].arc(cx, cy, rad, 0, Math.PI * 2);
+      }
+      ctx.fillStyle = css(C.on, .1); ctx.fill(paths[0]);
+      ctx.fillStyle = css(C.ac); ctx.fill(paths[1]);
+      ctx.fillStyle = css(C.on); ctx.fill(paths[2]);
+      // 글: 앞말 → (숫자) → 설명 → 출처 주석
+      if (L.pre) { L.pre.style.opacity = 1; rv(L.pre, t, tN0 + .12, .2, 6); }
+      if (L.lbl) { L.lbl.style.opacity = 1; rv(L.lbl, t, tNumS + NUMLEN + .1, .3, 10); }
+      if (L.src) { L.src.style.opacity = 1; rv(L.src, t, tNumS + NUMLEN + .45, .3, 10); }
+    }
+  });
+})();
+</script>

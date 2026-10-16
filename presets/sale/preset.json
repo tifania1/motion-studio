@@ -1,0 +1,52 @@
+{
+  "id": "sale",
+  "order": 2,
+  "name": "세일",
+  "summary": "할인율이 슬롯처럼 굴러 꽂히고, 가격표에 줄이 그어지며 새 가격이 떨어져요. 비스듬한 띠가 계속 흐르는 강조색 화면.",
+  "look": "강조색 판 · 흐르는 띠 · 가격표",
+  "template": "sale",
+  "formats": [
+    "tall",
+    "portrait",
+    "square",
+    "wide"
+  ],
+  "seconds": 17,
+  "photos": {
+    "need": 0,
+    "hint": "사진 없이 돼요"
+  },
+  "ask": [
+    "행사 이름",
+    "최대 할인율",
+    "상품 두세 개의 원래 가격과 할인가",
+    "기간과 조건"
+  ],
+  "brief": "예) 가을 정기 세일, 10월 10일부터 12일까지 3일. 원두 200g 15,000원→10,500원, 드립백 10개입 12,000원→9,600원. 원두는 한 분께 3봉까지.",
+  "check": [
+    "할인 전·후 가격과 할인율 계산",
+    "기간(요일)과 조건"
+  ],
+  "music": {
+    "mood": "funk",
+    "bpm": 124,
+    "prompt": "funky disco house, slap bass, bright brass stabs, claps, energetic shopping vibe",
+    "sections": [
+      [
+        0,
+        2.5,
+        "quick build with risers"
+      ],
+      [
+        2.5,
+        13.4,
+        "the drop: full funky groove"
+      ],
+      [
+        13.4,
+        17,
+        "big final hit then short tail"
+      ]
+    ]
+  }
+}

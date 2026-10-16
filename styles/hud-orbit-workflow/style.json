@@ -1,0 +1,132 @@
+{
+  "id": "hud-orbit-workflow",
+  "name": "궤도 고리 작업 흐름",
+  "group": "다이어그램·데이터",
+  "template": "dataflow",
+  "summary": "어두운 회색 공간에 비스듬히 누운 빛나는 궤도 고리가 떠 있고, 빛 점이 고리를 따라 돌 때마다 마디에 고정폭 대문자 꼬리표가 켜지는 HUD풍 작업 흐름 필름",
+  "tags": [
+    "HUD",
+    "궤도",
+    "고정폭",
+    "흑백",
+    "작업 흐름",
+    "자동화",
+    "느림"
+  ],
+  "hand": false,
+  "source": {
+    "site": "keyframe.gallery",
+    "ref": "mux:sqc02T501djjpUEg9gpvStHiSVOuDq8RdcgynRYkR39q4",
+    "at": "0–40.5초",
+    "note": "원근으로 누운 타원 궤도 고리와 고리 둘레 눈금, 빛 점이 고리를 따라 돌며 남기는 밝은 호, 마디마다 점과 함께 켜지는 고정폭 대문자 꼬리표와 회색 칸 강조, 얕은 초점 속에서 카메라가 고리에 바짝 붙었다 물러나는 움직임, 두 고리가 엇갈려 겹치는 장면, 고리들이 작은 매듭 마크로 오므라들고 산세리프 한 줄이 흐림 속에 나타났다 사라지는 엔딩"
+  },
+  "palette": [
+    "#151617",
+    "#2A2C2E",
+    "#8E9194",
+    "#E8E9EA",
+    "#FFFFFF"
+  ],
+  "colors": {
+    "bg": "#151617",
+    "onBg": "#E8E9EA",
+    "onBgMuted": "rgba(232,233,234,.56)",
+    "paper": "#222426",
+    "ink": "#ECEDEE",
+    "accent": "#F2F3F4",
+    "accentInk": "#151617",
+    "pattern": "rgba(255,255,255,.03)",
+    "glow": "rgba(255,255,255,.55)"
+  },
+  "type": {
+    "display": [
+      "Geist Mono",
+      "Noto Sans KR"
+    ],
+    "heading": [
+      "Geist Mono",
+      "Noto Sans KR"
+    ],
+    "body": [
+      "Geist",
+      "Noto Sans KR"
+    ]
+  },
+  "fonts": [
+    {
+      "family": "Geist Mono",
+      "weight": "100 900",
+      "file": "fonts/GeistMono-Variable.woff2"
+    },
+    {
+      "family": "Geist",
+      "weight": "100 900",
+      "file": "fonts/Geist-Variable.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 500,
+      "file": "fonts/NotoSansKR-Medium.woff2"
+    }
+  ],
+  "look": {
+    "grain": 0.12,
+    "grainFps": 12,
+    "vignette": 0.6
+  },
+  "shape": {
+    "radius": "calc(var(--u) * 0.6)",
+    "safe": "calc(var(--u) * 6)"
+  },
+  "motion": {
+    "pace": "느림",
+    "bpm": 80,
+    "ease": "power2.inOut",
+    "stagger": 1,
+    "transitions": [
+      "blur",
+      "fade"
+    ]
+  },
+  "scenes": {
+    "bg": "none",
+    "align": "center",
+    "card": "outline",
+    "marker": "highlight",
+    "weight": 300,
+    "tracking": 0.12,
+    "case": "upper",
+    "rough": false,
+    "title": "type",
+    "frame": "none",
+    "deco": [
+      "rings",
+      "marks"
+    ],
+    "number": "scramble",
+    "scale": 0.72,
+    "pad": "calc(var(--u) * 6)",
+    "schemes": [
+      "dark"
+    ]
+  },
+  "signature": [
+    "원근으로 비스듬히 누운 타원 고리(1px 흰 선, 바깥쪽에 촘촘한 눈금) 위를 빛 점 하나가 천천히 돌고, 지나간 자리는 밝은 호로 잠깐 남았다 식음. 빛 점이 마디에 닿으면 작은 원 표시가 켜지고 옆에 고정폭 대문자 꼬리표가 한 글자씩 쳐짐",
+    "카메라가 고리에 바짝 붙어 호가 화면을 대각으로 가르고, 앞뒤 꼬리표는 초점 밖으로 흐려짐. 꼬리표 속 핵심 낱말 하나만 옅은 회색 칸이 깔리고, 고리 안쪽엔 90도 돌아간 작은 꼬리표가 호를 따라 놓임",
+    "물러나며 고리 전체와 엇갈린 두 번째 고리가 드러나고, 끝엔 고리들이 화면 가운데 작은 매듭 마크로 오므라든 뒤 산세리프 한 줄이 흐림에서 맺혔다 다시 흐림으로 사라짐"
+  ],
+  "fits": [
+    "자동화·워크플로 기능 소개",
+    "개발 도구·AI 에이전트 런칭",
+    "단계가 도는 과정 설명",
+    "차분한 기술 브랜드 티저"
+  ],
+  "avoid": [
+    "밝은 바탕",
+    "강조색 여러 개(흰 빛 하나로)",
+    "빠른 컷과 튀는 이징",
+    "굵고 큰 제목",
+    "평면 순서도처럼 반듯한 배치(고리는 늘 원근으로 눕히고 앞뒤를 흐리게)",
+    "손그림 선"
+  ]
+}

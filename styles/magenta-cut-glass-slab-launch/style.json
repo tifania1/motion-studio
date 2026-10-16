@@ -1,0 +1,144 @@
+{
+  "id": "magenta-cut-glass-slab-launch",
+  "name": "마젠타 컷 유리판 런칭",
+  "group": "3D·사물",
+  "template": "stage",
+  "summary": "검은 무대에서 청록·은빛·보라 유리판 더미를 카메라가 바짝 붙어 훑고, 박자마다 화면 전체가 마젠타 단색으로 번쩍 바뀌어요. 어두운 기기 화면과 숫자 카드, 눌리는 마젠타 버튼이 번갈아 나오는 금융 앱 런칭",
+  "tags": [
+    "3D",
+    "유리",
+    "마젠타",
+    "어두움",
+    "런칭",
+    "금융",
+    "기기 목업"
+  ],
+  "hand": false,
+  "source": {
+    "site": "keyframe.gallery",
+    "ref": "mux:mVoBo26ERKxHA5KYairfbIytFVyoEWJfrlIz8TDVn3E",
+    "at": "0–43.6초 (2–6초, 14.8–16초, 16.8초, 20.8초, 21.8–26.5초, 34.6–38초)",
+    "note": "검은 바탕 위 비스듬히 쌓인 젖빛 유리 둥근 사각판(청록·은·보라)을 접사로 훑는 카메라, 마젠타 단색 판과 큰 마젠타 원이 열리며 바뀌는 컷, 녹색 점 꼬리표를 단 어두운 카드 속 숫자가 줄어드는 지연 시간, 화면을 메우며 쏟아지는 납작한 동전 더미, 넓고 굵은 대문자 한 줄에서 앞 낱말만 마젠타, 어두운 거래 창의 마젠타 버튼과 초록 체크가 그려지는 완료, 흐린 분홍·보라 바탕 위 알약 검색창과 밝은 알약 카드를 누르는 커서"
+  },
+  "palette": [
+    "#111112",
+    "#D4127F",
+    "#2FD3B0",
+    "#7A3CF0",
+    "#C9CCD2",
+    "#F1EEF0"
+  ],
+  "colors": {
+    "bg": "#111112",
+    "onBg": "#F1EEF0",
+    "onBgMuted": "rgba(241,238,240,.58)",
+    "paper": "#1D1D20",
+    "ink": "#F4F1F3",
+    "accent": "#D4127F",
+    "accentInk": "#FFFFFF",
+    "pattern": "rgba(255,255,255,.06)",
+    "glow": "rgba(212,18,127,.4)"
+  },
+  "type": {
+    "display": [
+      "Archivo",
+      "Noto Sans KR"
+    ],
+    "heading": [
+      "Archivo",
+      "Noto Sans KR"
+    ],
+    "body": [
+      "Geist",
+      "Noto Sans KR"
+    ]
+  },
+  "fonts": [
+    {
+      "family": "Archivo",
+      "weight": "100 900",
+      "stretch": "62% 125%",
+      "file": "fonts/Archivo-Variable.woff2"
+    },
+    {
+      "family": "Geist",
+      "weight": "100 900",
+      "file": "fonts/Geist-Variable.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 500,
+      "file": "fonts/NotoSansKR-Medium.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 700,
+      "file": "fonts/NotoSansKR-Bold.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 900,
+      "file": "fonts/NotoSansKR-Black.woff2"
+    }
+  ],
+  "look": {
+    "vignette": 0.28
+  },
+  "shape": {
+    "radius": "calc(var(--u) * 1.6)"
+  },
+  "motion": {
+    "pace": "보통",
+    "bpm": 112,
+    "ease": "power3.out",
+    "stagger": 0.8,
+    "transitions": [
+      "cut",
+      "iris",
+      "cut",
+      "push"
+    ]
+  },
+  "scenes": {
+    "bg": "solid",
+    "align": "center",
+    "card": "flat",
+    "marker": "color",
+    "weight": 800,
+    "tracking": -0.02,
+    "case": "upper",
+    "rough": false,
+    "title": "mask",
+    "frame": "card",
+    "deco": [
+      "cursor"
+    ],
+    "number": "odometer",
+    "scale": 1.15,
+    "schemes": [
+      "dark",
+      "accent",
+      "dark",
+      "paper"
+    ]
+  },
+  "signature": [
+    "검은 바탕 위 젖빛 유리 둥근 사각판 4~6장(청록·은빛·보라)이 비스듬히 기둥처럼 쌓여 있고, 카메라가 판 모서리에 바짝 붙어 2~3초에 걸쳐 미끄러지듯 훑음. 판은 아주 천천히 돌고, 둥근 모서리에만 흰 빛이 맺힘",
+    "어두운 기기 장면에서 컷 한 번에 화면 전체가 마젠타 단색이 되거나, 가운데서 큰 마젠타 원이 열리며 바탕을 덮음. 원 위에는 녹색 점 꼬리표를 단 어두운 둥근 카드가 떠 있고 카드 속 숫자가 자리마다 굴러 줄어들며(200 → 61) 바탕은 흐린 마젠타·보라 액체 그라디언트로 번짐",
+    "어두운 거래 창에서 마젠타 알약 버튼이 눌리면 창이 완료 화면으로 바뀌고 초록 원과 체크가 한 획으로 그려짐. 이어 둥근 카드 가운데 젖빛 유리 마름모 아이콘이 떠서 천천히 기울어 돔"
+  ],
+  "fits": [
+    "금융·거래 앱 런칭",
+    "속도·지연 시간 같은 성능 숫자 자랑",
+    "다크 모드 대시보드 소개",
+    "결제·보상 기능 공개",
+    "젊은 테크 브랜드 티저"
+  ],
+  "avoid": [
+    "종이·손그림 질감",
+    "따뜻한 크림 바탕",
+    "강조색 여러 개(마젠타 하나, 성공은 초록, 유리 소품만 청록·보라)",
+    "세리프 글꼴",
+    "긴 문장 여러 줄"
+  ]
+}

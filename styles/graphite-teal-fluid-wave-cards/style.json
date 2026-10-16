@@ -1,0 +1,127 @@
+{
+  "id": "graphite-teal-fluid-wave-cards",
+  "name": "흑연 위 청록 물결 카드",
+  "group": "제품 UI",
+  "template": "uidemo",
+  "summary": "짙은 흑연 회색 위에 청록 물감 결이 흐르는 둥근 카드 하나가 화면 가득에서 작은 알약까지 몸을 바꿔 가며 템포·조성·파형을 보여 주고, 끝에는 어두운 파형 카드 떼가 깊이를 달리해 떠다니는 차분한 음악 도구 런칭",
+  "tags": [
+    "제품 UI",
+    "음악",
+    "청록",
+    "유체 그라디언트",
+    "유리",
+    "파형",
+    "어두움"
+  ],
+  "hand": false,
+  "source": {
+    "site": "keyframe.gallery",
+    "ref": "mux:kZX30167gZAWLLDf3npfCljxG3rZoCdNVV6LWURw2pt4",
+    "at": "0–59.2초",
+    "note": "흑연 바탕 위 어두운 입력 카드와 물감 결 썸네일, 청록 유리 구슬 버튼과 알약 입력창, 화면 가득한 청록 유체에서 카드로 줄어드는 형태 바꾸기, 굴러가는 BPM 숫자와 세로 바퀴 조성 피커, 파형 타임라인이 청록 카드로 접히는 장면, 깊이가 다른 파형 카드 떼, 흐림에서 맺히며 청록이 쓸고 지나가는 낱말, 바깥으로 겹겹이 퍼지는 둥근 사각 윤곽선"
+  },
+  "palette": [
+    "#1B1C1D",
+    "#2A2C2E",
+    "#3FB8C4",
+    "#1E5E66",
+    "#A9E3E6",
+    "#ECEEEE"
+  ],
+  "colors": {
+    "bg": "#1B1C1D",
+    "onBg": "#ECEEEE",
+    "onBgMuted": "rgba(236,238,238,.58)",
+    "paper": "#2A2C2E",
+    "ink": "#E9ECEC",
+    "accent": "#3FB8C4",
+    "accentInk": "#0E2A2E",
+    "pattern": "rgba(255,255,255,.06)",
+    "glow": "rgba(63,184,196,.35)"
+  },
+  "type": {
+    "display": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "heading": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "body": [
+      "Geist",
+      "Noto Sans KR"
+    ]
+  },
+  "fonts": [
+    {
+      "family": "Geist",
+      "weight": "100 900",
+      "file": "fonts/Geist-Variable.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 500,
+      "file": "fonts/NotoSansKR-Medium.woff2"
+    }
+  ],
+  "look": {
+    "vignette": 0.25
+  },
+  "shape": {
+    "radius": "calc(var(--u) * 2)"
+  },
+  "motion": {
+    "pace": "보통",
+    "bpm": 96,
+    "ease": "power3.inOut",
+    "stagger": 1,
+    "transitions": [
+      "blur",
+      "fade",
+      "cut"
+    ]
+  },
+  "scenes": {
+    "bg": "solid",
+    "align": "center",
+    "card": "glass",
+    "marker": "color",
+    "weight": 400,
+    "tracking": -0.01,
+    "case": "none",
+    "rough": false,
+    "title": "blur",
+    "frame": "card",
+    "deco": [
+      "orb",
+      "rings"
+    ],
+    "number": "odometer",
+    "scale": 1,
+    "schemes": [
+      "dark",
+      "accent",
+      "dark"
+    ]
+  },
+  "signature": [
+    "청록 물감 결이 천천히 흐르는 둥근 카드 하나가 장면을 이어 가요. 화면 가득 → 큰 카드 → 작은 카드 → 알약으로 0.8초씩 모양을 바꾸며 줄어들고, 그때마다 안의 반투명 유리 버튼·숫자·피커가 흐림으로 갈려요",
+    "템포 숫자는 자리마다 세로로 굴러 바뀌고(74 → 83), 조성 피커는 세로 바퀴처럼 돌아 위아래 낱말이 흐려져요. 파형 타임라인은 가운데 구간만 밝게 켜진 뒤 그 구간이 청록 카드로 접히고, 흰 파형 막대가 박자에 맞춰 출렁여요",
+    "어두운 작은 파형 카드 떼가 깊이를 달리해 천천히 떠다니고(멀수록 작고 흐림) 가운데 청록 카드 하나만 또렷해요. 끝은 흐림에서 왼쪽부터 맺히는 낱말 위로 청록이 쓸고 지나가 흰색으로 가라앉고, 가는 청록 둥근 사각 윤곽선이 바깥으로 겹겹이 퍼져요"
+  ],
+  "fits": [
+    "음악·오디오 제작 도구",
+    "AI 생성 기능 런칭",
+    "창작 앱 기능 훑기",
+    "설정값을 바꿔 보이는 데모",
+    "밤 분위기 제품 소개"
+  ],
+  "avoid": [
+    "흰 바탕",
+    "굵고 큰 제목",
+    "강조색 여러 개(청록 한 계열만)",
+    "빠른 컷 몽타주",
+    "손그림 선과 종이 질감"
+  ]
+}

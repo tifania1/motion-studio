@@ -1,0 +1,148 @@
+{
+  "id": "oil-canvas-ui-crosscut",
+  "name": "유화와 편집 화면 교차",
+  "group": "제품 UI",
+  "template": "uidemo",
+  "summary": "어둑한 고전 유화 장면을 천천히 다가가다 컷으로 밝은 상점 편집 화면에 들어가요. 그림 속 인물 뒤로 흰 고딕 제목이 숨고, 낱말 한 토막만 이탤릭 세리프로 바뀌는 런칭 필름이에요",
+  "tags": [
+    "제품 UI",
+    "유화",
+    "고전",
+    "편집기",
+    "런칭",
+    "교차 편집"
+  ],
+  "hand": false,
+  "source": {
+    "site": "keyframe.gallery",
+    "ref": "mux:Dghkd00dzK5amRcsleOndo00FlgyCniLMSWP019AubbcDA",
+    "at": "0–35.1초",
+    "note": "어두운 유화 풍경을 느리게 밀고 들어가는 카메라, 그림 속 인물·꽃 뒤에 깔리는 흰 고딕 제목과 숫자, 미색 판에 기능 이름 한 줄씩 컷, 보라 선택 상자와 떠 있는 흰 입력 알약으로 상점 화면을 고치는 장면, 그림 위를 가로지르는 제품과 짙은 알약 버튼, 두 안을 나란히 둔 전환율 숫자와 승자 꼬리표, 낱말 속 한 토막만 이탤릭 세리프에 노랑으로 물드는 엔딩 문장"
+  },
+  "palette": [
+    "#24302D",
+    "#6F8A8F",
+    "#9A3E2E",
+    "#ECEAE3",
+    "#E3C35A",
+    "#6B4EF0"
+  ],
+  "colors": {
+    "bg": "#24302D",
+    "onBg": "#F1EEE6",
+    "onBgMuted": "rgba(241,238,230,.66)",
+    "paper": "#ECEAE3",
+    "ink": "#1E1E1C",
+    "accent": "#E3C35A",
+    "accentInk": "#1E1A0E",
+    "pattern": "rgba(241,238,230,.08)",
+    "glow": "rgba(227,195,90,.3)"
+  },
+  "type": {
+    "display": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "heading": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "body": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "accent": [
+      "Instrument Serif",
+      "Gowun Batang"
+    ]
+  },
+  "fonts": [
+    {
+      "family": "Geist",
+      "weight": "100 900",
+      "file": "fonts/Geist-Variable.woff2"
+    },
+    {
+      "family": "Instrument Serif",
+      "weight": 400,
+      "style": "italic",
+      "file": "fonts/InstrumentSerif-Italic.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 500,
+      "file": "fonts/NotoSansKR-Medium.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 700,
+      "file": "fonts/NotoSansKR-Bold.woff2"
+    },
+    {
+      "family": "Gowun Batang",
+      "weight": 400,
+      "file": "fonts/GowunBatang-Regular.woff2"
+    }
+  ],
+  "look": {
+    "grain": 0.06,
+    "grainFps": 12,
+    "vignette": 0.28
+  },
+  "shape": {
+    "radius": "calc(var(--u) * 1.6)"
+  },
+  "motion": {
+    "pace": "보통",
+    "bpm": 100,
+    "ease": "power3.out",
+    "stagger": 0.9,
+    "transitions": [
+      "cut",
+      "fade",
+      "push"
+    ]
+  },
+  "scenes": {
+    "bg": "none",
+    "align": "left",
+    "card": "shadow",
+    "marker": "color",
+    "weight": 600,
+    "tracking": -0.025,
+    "case": "none",
+    "rough": false,
+    "title": "mask",
+    "frame": "browser",
+    "deco": [
+      "handles",
+      "cursor"
+    ],
+    "number": "count",
+    "scale": 1.15,
+    "schemes": [
+      "dark",
+      "paper",
+      "dark",
+      "paper"
+    ]
+  },
+  "signature": [
+    "어두운 유화 풍경이 5~6초에 걸쳐 4% 정도 천천히 다가오는 동안, 왼쪽 위 흰 고딕 제목이 줄마다 선 아래에서 올라와요. 그림 앞쪽 인물·꽃 조각이 제목 위로 겹쳐 글이 그림 속에 끼어 있는 것처럼 보여요",
+    "미색 상점 화면 한 구역에 보라 선택 상자가 씌워지고, 그 위에 떠 있는 흰 입력 알약에 고칠 말이 타이핑돼요. 입력이 끝나면 그 구역의 제목 글꼴·바탕이 컷으로 바뀌고, 상자는 다음 구역으로 옮겨 가요",
+    "엔딩 문장은 흰 고딕인데, 낱말 속 두세 글자만 이탤릭 세리프로 바뀌어 박혀요. 다음 박에 뒤쪽 어절들이 노랑으로 물들고, 이어 어두운 하늘 그림 가운데 작은 마크 하나만 남아요"
+  ],
+  "fits": [
+    "기능 묶음 발표·시즌 업데이트",
+    "상점·커머스 도구 런칭",
+    "AI 편집 기능 소개",
+    "격 있는 브랜드 캠페인"
+  ],
+  "avoid": [
+    "형광 그라디언트",
+    "손그림 선",
+    "빠른 글리치 컷",
+    "그림 위에 문장 여러 줄",
+    "강조색 여러 개(노랑 하나와 편집 표시용 보라만)"
+  ]
+}

@@ -1,0 +1,132 @@
+{
+  "id": "noir-playlist-gradient-pills",
+  "name": "어둠 속 재생목록과 노을 알약",
+  "group": "제품 UI",
+  "template": "uidemo",
+  "summary": "거의 검은 화면에 곡 목록, 입력창, 분위기 알약, 앨범 카드가 차례로 떠올라요. 고른 것에만 노을에서 보라로 번지는 빛이 켜지고, 끝에는 둥근 윤곽선이 메아리처럼 바깥으로 퍼지는 음악 앱 소개 결이에요",
+  "tags": [
+    "제품 UI",
+    "어두움",
+    "음악",
+    "알약",
+    "노을 그라디언트",
+    "목록"
+  ],
+  "hand": false,
+  "source": {
+    "site": "keyframe.gallery",
+    "ref": "mux:3smv3F4BOq00woREBRNzCVLeXSGEhDksIqXPvFGompHQ",
+    "at": "0–40.1초",
+    "note": "검은 바탕에서 휠처럼 흐르며 가운데 줄만 커지는 곡 목록, 세 줄로 엇갈려 흐르다 고른 것만 노을·보라 그라디언트로 차오르는 분위기 알약, 파형 끝에서 이어지는 가는 곡선, 사진 원이 열리며 그라디언트 판과 동심원 고리, 유리 원 속 세는 숫자, 앨범 표지 더미가 깊이를 달리해 흩어지는 장면, 둥근 십자 윤곽선이 한 겹씩 바깥으로 퍼지는 엔딩"
+  },
+  "palette": [
+    "#0D0D0E",
+    "#1E1E20",
+    "#E8604A",
+    "#8A5FB8",
+    "#5A63D0",
+    "#F1F1EF"
+  ],
+  "colors": {
+    "bg": "#0D0D0E",
+    "onBg": "#F1F1EF",
+    "onBgMuted": "rgba(241,241,239,.56)",
+    "paper": "#1E1E20",
+    "ink": "#F1F1EF",
+    "accent": "#E8604A",
+    "accentInk": "#1A0C08",
+    "pattern": "rgba(255,255,255,.07)",
+    "glow": "rgba(232,96,74,.4)"
+  },
+  "type": {
+    "display": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "heading": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "body": [
+      "Geist",
+      "Noto Sans KR"
+    ]
+  },
+  "fonts": [
+    {
+      "family": "Geist",
+      "weight": "100 900",
+      "file": "fonts/Geist-Variable.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 500,
+      "file": "fonts/NotoSansKR-Medium.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 700,
+      "file": "fonts/NotoSansKR-Bold.woff2"
+    }
+  ],
+  "look": {
+    "grain": 0.05,
+    "vignette": 0.3
+  },
+  "shape": {
+    "radius": "calc(var(--u) * 1.6)"
+  },
+  "motion": {
+    "pace": "보통",
+    "bpm": 96,
+    "ease": "power3.out",
+    "stagger": 1,
+    "transitions": [
+      "fade",
+      "blur",
+      "iris"
+    ]
+  },
+  "scenes": {
+    "bg": "solid",
+    "align": "center",
+    "card": "glass",
+    "marker": "color",
+    "weight": 500,
+    "tracking": -0.01,
+    "case": "none",
+    "rough": false,
+    "title": "type",
+    "frame": "none",
+    "deco": [
+      "rings"
+    ],
+    "number": "count",
+    "scale": 1,
+    "schemes": [
+      "dark",
+      "dark",
+      "accent",
+      "dark"
+    ]
+  },
+  "signature": [
+    "세로 곡 목록이 휠 피커처럼 1.6초 동안 위로 흐르다 멈춤. 가운데 줄만 1.08배로 커지고 밝아지며, 위아래 줄은 멀어질수록 작아지고 어두워지며 살짝 흐려짐",
+    "'+' 붙은 분위기 낱말 알약이 세 줄로 서로 반대 방향으로 천천히 흐르고, 박마다 알약 하나가 0.3초 만에 노을 산호에서 파랑으로 번지는 그라디언트로 차오르며 글자가 기울어지고 둘레에 같은 색 빛이 한 겹 번짐",
+    "엔딩: 검은 화면 가운데 둥근 십자 윤곽이 얇은 노을·보라 선으로 그어지고, 같은 모양 윤곽이 한 겹씩 바깥으로 메아리처럼 퍼져 화면을 채움. 그 안에 이름 글자가 흐림에서 한 글자씩 맺힘"
+  ],
+  "fits": [
+    "음악·오디오 앱 소개",
+    "추천·플레이리스트 기능",
+    "AI 창작 도구 런칭",
+    "크리에이터 수익·참여 안내",
+    "밤 분위기 제품 영상"
+  ],
+  "avoid": [
+    "흰 바탕",
+    "굵고 큰 외치는 제목",
+    "0.3초 단위 빠른 컷 몽타주",
+    "강조 그라디언트를 넓게 칠하기(숫자 장면 한 번만)",
+    "손그림 선과 종이 질감"
+  ]
+}

@@ -1,0 +1,223 @@
+<title>/*@TITLE@*/</title>
+<style>
+/*@FONTFACES@*/
+/*@BRAND_CSS@*/
+/*@ENGINE_CSS@*/
+
+/* ===== menu 템플릿: 신메뉴 쇼케이스 =====
+   크림색 판 위에 둥근 접시(사진)가 돌고, 둘레 글자가 회전하고, 스티커 태그·매달린 가격표가 붙는 한 컷 영상. */
+#menu { position: absolute; inset: 0; background: var(--paper); overflow: hidden; }
+.dots { position: absolute; inset: -5%; background-image: radial-gradient(circle, rgba(0, 0, 0, .07) 0 calc(var(--u) * .32), transparent calc(var(--u) * .38)); background-size: calc(var(--u) * 4.2) calc(var(--u) * 4.2); }
+.abs { position: absolute; left: 0; top: 0; }
+#hook { position: absolute; inset: 0; background: var(--accent); overflow: hidden; }
+#hook .stripe { position: absolute; left: -10%; right: -10%; height: calc(var(--u) * 7); background: rgba(0, 0, 0, .08); }
+.newword { display: flex; gap: .02em; font: 900 calc(var(--u) * 30)/.8 "Archivo", var(--font-display); font-stretch: 125%; color: var(--paper); letter-spacing: -.03em; white-space: nowrap; }
+.newword span { display: inline-block; }
+.pill { display: inline-flex; align-items: center; gap: calc(var(--u) * 1.2); background: var(--ink); color: var(--paper); font: 800 calc(var(--u) * 4.2)/1 var(--font-body); padding: calc(var(--u) * 1.8) calc(var(--u) * 3.4) calc(var(--u) * 2); border-radius: 999px; white-space: nowrap; }
+.pill i { width: calc(var(--u) * 1.3); height: calc(var(--u) * 1.3); border-radius: 50%; background: var(--accent); }
+#paperC { border-radius: 50%; background: var(--paper); }
+#plate { width: 10px; height: 10px; }
+#plate .disc, #plate .ring, #plate .photo { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); border-radius: 50%; }
+#plate .disc { background: var(--accent); }
+#plate .disc2 { background: transparent; border: calc(var(--u) * .5) dashed rgba(0, 0, 0, .18); }
+#plate .photo { overflow: hidden; background: var(--bg); box-shadow: 0 calc(var(--u) * 2) calc(var(--u) * 5) rgba(0, 0, 0, .28); }
+#plate .photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+#plate .photo .ph-empty { position: absolute; inset: 0; background: repeating-linear-gradient(45deg, var(--accent) 0 calc(var(--u) * 2), var(--bg) calc(var(--u) * 2) calc(var(--u) * 4)); opacity: .5; }
+#plate svg.ring { overflow: visible; }
+#plate svg.ring text { font: 800 calc(var(--u) * 3.3)/1 "Archivo", var(--font-body); font-stretch: 110%; fill: var(--ink); letter-spacing: .08em; }
+.mname { font: 900 calc(var(--u) * 11)/1.06 var(--font-heading); color: var(--ink); letter-spacing: -.04em; white-space: pre-line; word-break: keep-all; margin: 0; }
+.mdesc { font: 600 calc(var(--u) * 4.2)/1.4 var(--font-body); color: var(--ink); opacity: .78; white-space: pre-line; word-break: keep-all; margin: calc(var(--u) * 1.6) 0 0; }
+.mtext { text-align: center; }
+[data-format="wide"] .mtext { text-align: left; }
+[data-format="wide"] .mdesc { font-size: calc(var(--u) * 5.2); }
+[data-format="wide"] .tag { font-size: calc(var(--u) * 3.3); }
+.tag { display: inline-flex; align-items: center; gap: calc(var(--u) * 1.2); background: #fff; color: var(--ink); font: 800 calc(var(--u) * 3.7)/1.15 var(--font-body); padding: calc(var(--u) * 1.8) calc(var(--u) * 2.8) calc(var(--u) * 2); border-radius: calc(var(--u) * 1.6); box-shadow: 0 calc(var(--u) * .6) 0 rgba(0, 0, 0, .14), 0 0 0 calc(var(--u) * .35) var(--ink); white-space: nowrap; }
+.tag b { flex: none; width: calc(var(--u) * 4.4); height: calc(var(--u) * 4.4); border-radius: 50%; background: var(--accent); color: var(--accent-ink); display: grid; place-items: center; font: 900 calc(var(--u) * 2.6)/1 "Archivo", var(--font-display); }
+#price { width: 1px; height: 1px; }
+#price .string { position: absolute; left: -1px; width: 2px; background: var(--ink); opacity: .55; }
+#price .card { position: absolute; left: 0; transform: translateX(-50%); background: var(--ink); color: var(--paper); border-radius: calc(var(--u) * 2) calc(var(--u) * 2) calc(var(--u) * 3) calc(var(--u) * 3); padding: calc(var(--u) * 4.2) calc(var(--u) * 3.6) calc(var(--u) * 2.6); text-align: center; white-space: nowrap; clip-path: polygon(50% 0, 100% 18%, 100% 100%, 0 100%, 0 18%); }
+#price .card::before { content: ""; position: absolute; left: 50%; top: calc(var(--u) * 1.6); width: calc(var(--u) * 1.6); height: calc(var(--u) * 1.6); margin-left: calc(var(--u) * -.8); border-radius: 50%; background: var(--paper); }
+#price .pv { font: 900 calc(var(--u) * 7.4)/1 "Archivo", var(--font-display); font-stretch: 100%; letter-spacing: -.02em; }
+#price .pn { font: 700 calc(var(--u) * 3)/1.2 var(--font-body); opacity: .8; margin-top: calc(var(--u) * 1.2); }
+.ctabox { display: flex; flex-direction: column; align-items: center; gap: calc(var(--u) * 3.2); text-align: center; }
+[data-format="wide"] .ctabox { align-items: flex-start; text-align: left; }
+.logo { display: flex; align-items: baseline; gap: calc(var(--u) * 1.6); }
+.logo img { height: calc(var(--u) * 10); width: auto; }
+.logo .lt { font: 900 calc(var(--u) * 7)/1 var(--font-display); color: var(--accent); white-space: nowrap; }
+.logo .ls { font: 700 calc(var(--u) * 2.6)/1 var(--font-display); color: var(--ink); letter-spacing: .3em; white-space: nowrap; }
+.chead { font: 900 calc(var(--u) * 8)/1.15 var(--font-heading); color: var(--ink); letter-spacing: -.035em; white-space: pre-line; word-break: keep-all; margin: 0; }
+.btn { display: inline-flex; align-items: center; gap: calc(var(--u) * 2); background: var(--ink); color: var(--paper); font: 900 calc(var(--u) * 4.6)/1 var(--font-body); padding: calc(var(--u) * 2.8) calc(var(--u) * 5) calc(var(--u) * 3.1); border-radius: 999px; white-space: nowrap; }
+.btn svg { width: 1em; height: 1em; fill: currentColor; }
+.handle { font: 700 calc(var(--u) * 3.3)/1.3 var(--font-body); color: var(--ink); opacity: .7; white-space: pre-line; }
+.credit { font: 500 calc(var(--u) * 1.7)/1.2 var(--font-body); color: var(--ink); opacity: .6; white-space: nowrap; }
+</style>
+
+<div id="viewport"><div id="stage"><div id="cam"></div></div></div>
+
+<script>/*@GSAP@*/</script>
+<script>/*@DATA@*/</script>
+<script>/*@ENGINE_JS@*/</script>
+<script>
+(function () {
+  const S = Studio, M = S.M, C = S.content, B = S.brand, e = S.esc;
+  const cam = S.$('#cam');
+  const ARROW = '<svg viewBox="0 0 24 24"><path d="M5 11h10.2l-4.6-4.6L12 5l7 7-7 7-1.4-1.4 4.6-4.6H5z"/></svg>';
+  const photos = (C.photos && C.photos.length ? C.photos : ['']).slice(0, 4);
+  const tags = (C.tags || []).slice(0, 3);
+  const cta = C.cta || {};
+  const kicker = C.kicker || 'NEW';
+  const ringText = C.ring || `${kicker} · ${C.label || ''} · `;
+  const logoImg = B.logo && S.img(B.logo);
+
+  cam.appendChild(S.h(`<div id="menu">
+    <div class="dots"></div>
+    <div id="plate" class="abs">
+      <div class="disc"></div><div class="disc disc2"></div>
+      <svg class="ring" viewBox="-100 -100 200 200"><defs><path id="ringPath" d="M 0,-80 a 80,80 0 1,1 -0.01,0"/></defs><text><textPath href="#ringPath"></textPath></text></svg>
+      <div class="photo">${photos.map((k, i) => S.img(k) ? `<img data-i="${i}" src="${S.img(k)}" alt="">` : `<div class="ph-empty" data-i="${i}"></div>`).join('')}</div>
+    </div>
+    <div id="mtext" class="abs mtext"><h1 class="mname">${e(C.name || '')}</h1>${C.desc ? `<p class="mdesc">${e(C.desc)}</p>` : ''}</div>
+    ${tags.map((t, i) => `<div class="tag abs" data-i="${i}"><b>${i + 1}</b><span>${e(t)}</span></div>`).join('')}
+    ${C.price ? `<div id="price" class="abs"><div class="string"></div><div class="card"><div class="pv">${e(C.price)}</div>${C.priceNote ? `<div class="pn">${e(C.priceNote)}</div>` : ''}</div></div>` : ''}
+    <div id="ctabox" class="abs ctabox">
+      <div class="logo">${logoImg ? `<img src="${logoImg}" alt="">` : ''}${B.logoText ? `<span class="lt">${e(B.logoText)}</span>` : ''}${B.logoSub ? `<span class="ls">${e(B.logoSub)}</span>` : ''}</div>
+      ${cta.headline ? `<h2 class="chead">${e(cta.headline)}</h2>` : ''}
+      ${cta.button ? `<div class="btn"><span>${e(cta.button)}</span>${ARROW}</div>` : ''}
+      ${cta.sub ? `<div class="handle">${e(cta.sub)}</div>` : ''}
+    </div>
+    ${C.credit ? `<div class="credit abs" id="credit">${e(C.credit)}</div>` : ''}
+    <div id="hook">
+      <div class="stripe" style="top:18%"></div><div class="stripe" style="top:72%"></div>
+      <div class="newword abs" id="newword">${[...kicker].map(c => `<span>${e(c)}</span>`).join('')}</div>
+      ${C.label ? `<div class="pill abs" id="label"><i></i>${e(C.label)}</div>` : ''}
+      <div id="paperC" class="abs"></div>
+    </div>
+  </div>`));
+
+  S.start(S => {
+    const W = S.W, H = S.H, u = Math.min(W, H) / 100, sf = S.safe;
+    const sx = sf.left, sy = sf.top, sw = W - sf.left - sf.right, sh = H - sf.top - sf.bottom;
+    const wide = S.is('wide'), sq = S.is('square');
+    // ---- 배치 ----
+    const R = (wide ? .3 : sq ? .19 : S.is('portrait') ? .25 : .27) * Math.min(sw, sh);
+    const P = wide ? { x: sx + sw * .29, y: sy + sh * .5 } : { x: sx + sw / 2, y: sy + sh * (sq ? .35 : .35) };
+    const plate = S.$('#plate'), disc = S.$('.disc', plate), disc2 = S.$('.disc2', plate), photoBox = S.$('.photo', plate), ring = S.$('svg.ring', plate);
+    const sz = (el, d) => { el.style.width = el.style.height = d + 'px'; };
+    sz(disc, R * 2.36); sz(disc2, R * 2.62); sz(photoBox, R * 2); sz(ring, R * 2.72);
+    // 둘레 글자: 원 둘레를 꽉 채우도록 반복
+    const tp = S.$('textPath', plate);
+    let rt = ringText; while (rt.length < 34) rt += ringText;
+    tp.textContent = rt;
+    const txt = S.$('svg.ring text', plate);
+    txt.setAttribute('textLength', (2 * Math.PI * 80 * .985).toFixed(1)); txt.setAttribute('lengthAdjust', 'spacingAndGlyphs');
+    txt.style.fontSize = (9.5).toFixed(2) + 'px';   // viewBox 단위
+    const mtext = S.$('#mtext'), name = S.$('.mname', mtext);
+    const textW = wide ? sw * .4 : sw * .92;
+    mtext.style.width = textW + 'px';
+    S.fit(name, { max: (wide ? 13 : sq ? 9 : 11) * u, maxLines: 2 });
+    const T = wide ? { x: sx + sw * .6, y: sy + sh * .5, ax: 0, ay: .5 } : { x: sx + sw / 2, y: P.y + R * 1.42, ax: .5, ay: 0 };
+    const ctab = S.$('#ctabox');
+    ctab.style.width = (wide ? sw * .42 : sw * .9) + 'px';
+    const ch = S.$('.chead', ctab); if (ch) S.fit(ch, { max: (wide ? 7.5 : 8) * u, maxLines: 3 });
+    const tagEls = S.$$('.tag');
+    const ANG = wide ? [-150, 155, -40] : [-150, -28, 160];
+    const tagPos = tagEls.map((el, i) => {
+      const a = ANG[i % ANG.length] * Math.PI / 180, d = R * 1.12;
+      const w = el.offsetWidth, h = el.offsetHeight;
+      let x = P.x + Math.cos(a) * d, y = P.y + Math.sin(a) * d;
+      const ax = Math.cos(a) < -.2 ? 1 : Math.cos(a) > .2 ? 0 : .5;
+      x = M.clamp(x, sx + ax * w, sx + sw - (1 - ax) * w);
+      y = M.clamp(y, sy + h / 2, sy + sh - h / 2);
+      return { x, y, ax, rot: [-5, 4, -3][i % 3] };
+    });
+    const price = S.$('#price');
+    let PR = null;
+    if (price) {
+      const card = S.$('.card', price), str = S.$('.string', price);
+      const cw = card.offsetWidth, chh = card.offsetHeight;
+      const pivotY = wide ? sy - u * 2 : Math.max(0, P.y - R * 1.7);
+      const tagTop = P.y - R * (wide ? .55 : .45);
+      const len = Math.max(u * 6, tagTop - pivotY);
+      str.style.top = '0px'; str.style.height = len + 'px'; card.style.top = len + 'px';
+      const pxp = M.clamp(P.x + R * (wide ? 1.05 : 1.0), sx + cw / 2, (wide ? sx + sw * .52 : sx + sw) - cw / 2);
+      PR = { x: pxp, y: pivotY, drop: len + chh + u * 10 };
+    }
+    const credit = S.$('#credit');
+    if (credit) M.place(credit, sx + sw, sy + sh, { ax: 1, ay: 1 });
+
+    // ---- 시간표 (초) ----
+    const T1 = 2.5, T2 = 6.0, T3 = 9.5, T4 = 13.0, END = 17.0;
+    S.setDuration(END);
+    const swaps = [T2, T3].slice(0, Math.max(0, photos.length - 1));
+    const imgs = S.$$('.photo > *', plate);
+    const stripes = S.$$('#hook .stripe'), dots = S.$('#menu .dots');
+    const hook = S.$('#hook'), nw = S.$('#newword'), letters = S.$$('#newword span'), label = S.$('#label'), paperC = S.$('#paperC');
+    const RF = M.floodRadius ? M.floodRadius(W / 2, H / 2) : Math.hypot(W, H);
+
+    const root = S.$('#menu');
+    S.ambient(t => {
+      M.drift(root, t, .8);
+      // 훅: 강조색 판에 NEW 글자가 떨어지고, 크림색 원이 퍼지며 판이 바뀜
+      const hk = M.prog(t, T1 - .55, .55);
+      M.show(hook, t < T1);
+      M.place(nw, W / 2, H / 2 - (label ? u * 4 : 0), { s: (1 + .05 * M.prog(t, .4, 2)) * (1 - .25 * M.ease.inCubic(hk)) });
+      stripes.forEach((st, i) => { st.style.transform = `translateX(${((i ? -1 : 1) * t * 4 * u).toFixed(1)}px) rotate(${(i ? 3 : -3)}deg)`; });
+      dots.style.transform = `translate(${(-(t * 1.6 * u) % (4.2 * u)).toFixed(2)}px, ${(-(t * .8 * u) % (4.2 * u)).toFixed(2)}px)`;
+      letters.forEach((el, i) => { const k = M.spring(t - .1 - i * .12, 'pop'); el.style.transform = `translateY(${((1 - k) * -120).toFixed(1)}%) rotate(${((1 - k) * (i % 2 ? 14 : -14)).toFixed(2)}deg)`; el.style.opacity = M.clamp(k * 3).toFixed(3); });
+      if (label) M.place(label, W / 2, H / 2 + nw.offsetHeight / 2 + u * 3, { ay: 0, s: M.spring(t - .55, 'pop'), o: M.clamp((t - .5) * 6) });
+      const pr = M.ease.inOutCubic(M.prog(t, T1 - .55, .6));
+      if (t >= T1 - .55 && t < T1 + .1) { const r = RF * pr; paperC.style.width = paperC.style.height = 2 * r + 'px'; M.place(paperC, W / 2, H / 2); }
+      else M.show(paperC, false);
+
+      // 접시: 크게 튀어나와 자리 잡고, 마지막엔 위로 작아짐
+      const pin = M.spring(t - (T1 + .02), 'pop');
+      const pc = M.spring(t - T4, 'smooth');
+      const ctaS = wide ? 1 : .6, ctaY = wide ? P.y : sy + sh * (sq ? .2 : .2);
+      M.place(plate, P.x, M.lerp(P.y, ctaY, pc), { s: pin * M.lerp(1, ctaS, pc), o: t >= T1 + .02 ? 1 : 0 });
+      // 둘레 글자 회전 (사진을 바꿀 때 빨라짐)
+      let rot = t * 14;
+      for (const ts of swaps) rot += 160 * M.ease.inOutCubic(M.prog(t, ts - .1, .9));
+      ring.style.transform = `translate(-50%, -50%) rotate(${rot.toFixed(2)}deg)`;
+      disc2.style.transform = `translate(-50%, -50%) rotate(${(-t * 9).toFixed(2)}deg)`;
+      // 사진 바꾸기: 다음 사진이 시계 바늘처럼 쓸며 덮음
+      imgs.forEach((im, i) => {
+        if (i === 0) { im.style.visibility = 'inherit'; return; }
+        const ts = swaps[i - 1];
+        if (ts == null) { im.style.visibility = 'hidden'; return; }
+        const a = 360 * M.ease.inOutCubic(M.prog(t, ts - .1, .7));
+        im.style.visibility = a > .1 ? 'inherit' : 'hidden';
+        const m = a >= 359.9 ? 'none' : `conic-gradient(from 0deg, #000 0deg ${a.toFixed(2)}deg, transparent ${a.toFixed(2)}deg)`;
+        im.style.maskImage = im.style.webkitMaskImage = m;
+      });
+      const pulse = swaps.reduce((s, ts) => s + Math.sin(Math.PI * M.prog(t, ts - .1, .7)) * .04, 0);
+      photoBox.style.transform = `translate(-50%, -50%) scale(${(1 + pulse + .03 * Math.sin(t * 1.3)).toFixed(4)})`;
+
+      // 이름·설명
+      const nk = M.inout(t, T1 + .35, T4 - .15, 'snappy');
+      M.place(mtext, T.x, T.y + (nk < 1 ? (1 - nk) * u * 8 : -(nk - 1) * u * 6), { ax: T.ax, ay: T.ay, o: nk <= 1 ? M.clamp(nk * 1.6) : 2 - nk });
+
+      // 스티커 태그
+      tagEls.forEach((el, i) => {
+        const k = M.inout(t, T2 + .35 + i * .45, T3 - .2 + i * .05, 'pop');
+        const p = tagPos[i];
+        M.place(el, p.x, p.y, { ax: p.ax, s: k <= 1 ? k : 1 - .4 * (k - 1), rot: p.rot + (k <= 1 ? (1 - k) * 25 : 0), o: k <= 1 ? M.clamp(k * 3) : 2 - k });
+      });
+
+      // 매달린 가격표
+      if (PR) {
+        const dk = M.spring(t - (T3 + .3), { f: 1.6, z: .62 });
+        const out = M.ease.inCubic(M.prog(t, T4 - .2, .45));
+        const ang = M.swing(t, T3 + .3, 26, .9, .14);
+        M.place(price, PR.x, PR.y - PR.drop * (1 - dk) - PR.drop * out, { ax: 0, ay: 0, rot: ang, o: t >= T3 + .3 && out < 1 ? 1 : 0 });
+      }
+
+      // 마지막 장면
+      const ck = M.spring(t - (T4 + .25), 'snappy');
+      const cy = wide ? sy + sh * .5 : sy + sh * (sq ? .68 : .67);
+      M.place(ctab, wide ? sx + sw * .6 : sx + sw / 2, cy + (1 - ck) * u * 10, { ax: wide ? 0 : .5, ay: wide ? .5 : .5, o: t >= T4 + .25 ? M.clamp(ck * 1.5) : 0 });
+      const btn = S.$('.btn', ctab);
+      if (btn) btn.style.transform = t > T4 + 1.2 ? `scale(${(1 + .035 * Math.sin((t - T4) * 6)).toFixed(4)})` : '';
+    });
+  });
+})();
+</script>

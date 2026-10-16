@@ -1,0 +1,10 @@
+{
+  "kicker": "새 기능",
+  "title": "회의록은 이제\n알아서 정리돼요",
+  "highlight": "알아서",
+  "points": ["말하면 바로 받아 적고", "할 일만 골라 정리하고", "팀 채널로 바로 보내요"],
+  "number": { "prefix": "하루", "value": 40, "suffix": "분", "label": "정리하는 시간을 아껴요", "source": "시범 사용 팀 기준 (예시 수치)" },
+  "photos": ["photo1", "photo2"],
+  "cta": { "headline": "다음 회의부터\n바로 써 보세요", "button": "무료로 시작", "sub": "example.com" },
+  "note": "템플릿 예시용 가상 서비스입니다"
+}

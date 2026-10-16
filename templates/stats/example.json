@@ -1,0 +1,13 @@
+{
+  "label": "YEAR IN REVIEW",
+  "title": "2026년,\n숫자로 돌아보기",
+  "stats": [
+    { "label": "내려 드린 커피", "value": 12480, "unit": "잔", "viz": "bars", "series": [620, 840, 910, 1020, 1180, 1340] },
+    { "label": "새로 볶은 원두", "value": 37, "unit": "가지", "viz": "ring", "max": 50 },
+    { "label": "처음 오신 손님", "value": 1260, "unit": "명", "viz": "line", "series": [20, 45, 60, 52, 90, 120, 160] },
+    { "label": "함께한 농장", "value": 4, "unit": "곳", "viz": "dots" }
+  ],
+  "thanks": "올해도 함께해 주셔서\n고마워요",
+  "source": "가게 주문 기록 기준 (1월 1일 — 12월 20일)",
+  "cta": { "sub": "@계정이름" }
+}

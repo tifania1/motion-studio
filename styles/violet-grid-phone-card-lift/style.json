@@ -1,0 +1,122 @@
+{
+  "id": "violet-grid-phone-card-lift",
+  "name": "보라 격자 폰 카드 들어올림",
+  "group": "제품 UI",
+  "template": "uidemo",
+  "summary": "옅은 격자가 깔린 진보라 판 가운데 밝은 결제 폰 화면이 서 있고, 화면 속 카드 한 장이 폰보다 넓게 커지며 떠올라요. 네 귀퉁이 재단 표시가 그 카드를 잡아 주고, 잠시 머문 카드는 제자리로 쏙 내려앉아요",
+  "tags": [
+    "제품 UI",
+    "폰",
+    "결제",
+    "확대",
+    "보라",
+    "차분함"
+  ],
+  "hand": false,
+  "source": {
+    "site": "keyframe.gallery",
+    "ref": "mux:ko00Ar7nVXQO9SfvWlSHcsShRgIoMYl94beD6iRpw2HU",
+    "at": "0–20.1초",
+    "note": "진보라 격자 판 위 결제 폰 화면에서 구역 하나(합계, 달력, 주문 요약)가 폰보다 넓게 커지며 부드러운 그림자와 함께 떠오르고, 둘레에 ㄱ자 재단 표시 네 개가 붙는 클로즈업. 떠오른 카드 안에서 날짜 칸이 파랗게 채워지거나 목록이 펼쳐진 뒤 카드가 제자리로 내려앉고, 폰 위로 다음 화면이 연보라 탭처럼 비치다가 세로 흐림 속에 화면이 갈리는 리듬"
+  },
+  "palette": [
+    "#5730D0",
+    "#F0F0F2",
+    "#1C1C1E",
+    "#1F5FD6",
+    "#A99BEA"
+  ],
+  "colors": {
+    "bg": "#5730D0",
+    "onBg": "#FFFFFF",
+    "onBgMuted": "rgba(255,255,255,.72)",
+    "paper": "#F0F0F2",
+    "ink": "#1C1C1E",
+    "accent": "#1F5FD6",
+    "accentInk": "#FFFFFF",
+    "pattern": "rgba(255,255,255,.1)",
+    "glow": "rgba(169,155,234,.35)"
+  },
+  "type": {
+    "display": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "heading": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "body": [
+      "Geist",
+      "Noto Sans KR"
+    ]
+  },
+  "fonts": [
+    {
+      "family": "Geist",
+      "weight": "100 900",
+      "file": "fonts/Geist-Variable.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 500,
+      "file": "fonts/NotoSansKR-Medium.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 700,
+      "file": "fonts/NotoSansKR-Bold.woff2"
+    }
+  ],
+  "shape": {
+    "radius": "calc(var(--u) * 1.6)"
+  },
+  "motion": {
+    "pace": "보통",
+    "bpm": 96,
+    "ease": "power3.out",
+    "stagger": 1,
+    "transitions": [
+      "blur",
+      "push"
+    ]
+  },
+  "scenes": {
+    "bg": "grid",
+    "align": "center",
+    "card": "shadow",
+    "marker": "color",
+    "weight": 600,
+    "tracking": -0.01,
+    "case": "none",
+    "rough": false,
+    "title": "rise",
+    "frame": "phone",
+    "deco": [
+      "marks"
+    ],
+    "number": "count",
+    "scale": 1,
+    "schemes": [
+      "dark"
+    ]
+  },
+  "signature": [
+    "진보라 격자 판 가운데 폰 화면은 가만히 두고, 그 안의 구역 하나만 0.6초에 폰 너비의 1.3배로 커지며 앞으로 떠올라 부드러운 그림자를 드리움. 동시에 그 카드 둘레 조금 바깥에 ㄱ자 재단 표시 네 개가 붙고, 2~3초 머문 뒤 카드는 정확히 제자리로 줄어들며 내려앉음",
+    "떠오른 카드 안에서 작은 조작이 한 번 일어남: 달력 날짜 칸이 파랗게 채워지거나, 묶음 상품 목록이 아래로 펼쳐지거나, 합계 아래 한 줄이 드러남. 조작은 카드가 다 커진 뒤 한 박 쉬고 나서",
+    "폰 위쪽으로 다음 화면이 연보라 탭처럼 살짝 비쳐 있다가, 화면이 세로로 흐려지며 새 화면이 위에서 내려와 갈림. 맨 위 이름 줄만 바뀌고 나머지 틀은 그대로라 같은 흐름이 이어지는 느낌"
+  ],
+  "fits": [
+    "결제·주문 화면 소개",
+    "앱 기능 하나씩 짚기",
+    "폰 앱 업데이트 안내",
+    "쇼핑·구독 서비스 설명"
+  ],
+  "avoid": [
+    "질감·그레인",
+    "빠른 컷 몽타주",
+    "손그림 선",
+    "강조색 여러 개(파랑 하나만)",
+    "카드 여러 장을 한꺼번에 띄우기"
+  ]
+}

@@ -1,0 +1,135 @@
+{
+  "id": "violet-haze-bracket-carousel-voice-chips",
+  "name": "보랏빛 안개 괄호 진열과 말 입력 칩",
+  "group": "제품 UI",
+  "template": "uidemo",
+  "summary": "숯빛 어둠 아래로 보랏빛 안개가 깔리고, 가는 흰 괄호 틀에 담긴 라벤더빛 사물들이 회전 진열대처럼 한 칸씩 넘어가요. 어두운 입력창에 말하듯 문장이 쳐지면 낱말 몇 개가 파스텔 칩으로 바뀌고, 끝은 옅은 회색 판의 보라 아이콘 타일과 그라디언트 낱말로 닫혀요",
+  "tags": [
+    "제품 UI",
+    "어두움",
+    "보라",
+    "음성 입력",
+    "개발 도구",
+    "차분함"
+  ],
+  "hand": false,
+  "source": {
+    "site": "keyframe.gallery",
+    "ref": "mux:pnNDuX2JGU1Fl62ZZrU01Kbl56oiJmIPOroqtPmyed88",
+    "at": "0–9초, 13.7–23초, 29–41초",
+    "note": "옅은 회색 판의 작은 한 줄이 숯빛 판과 아래쪽 보랏빛 안개로 넘어가는 오프닝, 모서리 괄호와 눈금이 달린 가는 흰 틀에 라벤더빛 사물을 담아 원근 회전 진열대로 한 칸씩 넘기는 장면, 파일 꼬리표와 파형이 달린 어두운 입력창에서 문장이 쳐지며 낱말이 민트·라벤더·살구 칩으로 바뀌는 리듬, 그림 바탕 위 알약 입력창이 젖빛 보라 카드로 번지는 전환, 옅은 회색 위 보라 아이콘 타일과 왼쪽부터 보라 그라디언트로 물드는 낱말 엔딩"
+  },
+  "palette": [
+    "#16151C",
+    "#E6E4EE",
+    "#5B4BC4",
+    "#B7A6F2",
+    "#9FDDB2",
+    "#E9E8EC"
+  ],
+  "colors": {
+    "bg": "#16151C",
+    "onBg": "#E6E4EE",
+    "onBgMuted": "rgba(230,228,238,.56)",
+    "paper": "#E9E8EC",
+    "ink": "#1D1C24",
+    "accent": "#5B4BC4",
+    "accentInk": "#FFFFFF",
+    "pattern": "rgba(230,228,238,.08)",
+    "glow": "rgba(124,104,230,.4)"
+  },
+  "type": {
+    "display": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "heading": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "body": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "mono": [
+      "Geist Mono",
+      "Noto Sans KR"
+    ]
+  },
+  "fonts": [
+    {
+      "family": "Geist",
+      "weight": "100 900",
+      "file": "fonts/Geist-Variable.woff2"
+    },
+    {
+      "family": "Geist Mono",
+      "weight": "100 900",
+      "file": "fonts/GeistMono-Variable.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 500,
+      "file": "fonts/NotoSansKR-Medium.woff2"
+    }
+  ],
+  "look": {
+    "vignette": 0.25
+  },
+  "shape": {
+    "radius": "calc(var(--u) * 1.4)"
+  },
+  "motion": {
+    "pace": "보통",
+    "bpm": 96,
+    "ease": "power3.out",
+    "stagger": 1,
+    "transitions": [
+      "fade",
+      "push",
+      "blur"
+    ]
+  },
+  "scenes": {
+    "bg": "aurora",
+    "align": "center",
+    "card": "glass",
+    "marker": "color",
+    "weight": 400,
+    "tracking": -0.01,
+    "case": "none",
+    "rough": false,
+    "title": "type",
+    "frame": "none",
+    "deco": [
+      "marks"
+    ],
+    "number": "count",
+    "scale": 0.9,
+    "schemes": [
+      "paper",
+      "dark",
+      "dark",
+      "dark",
+      "paper"
+    ]
+  },
+  "signature": [
+    "원근 회전 진열대: 가는 흰 선 틀(네 모서리에 L자 괄호, 변 가운데 짧은 눈금, 구석에 작은 고정폭 좌표) 세 개가 나란히 서고 양옆 틀은 안쪽으로 35~45도 돌아가 있어요. 가운데 틀 속 라벤더빛 사물이 천천히 돌다가 2박마다 진열대 전체가 한 칸씩 옆으로 넘어가요(power3.inOut 0.8초)",
+    "어두운 둥근 입력창 위쪽에 작은 파일 꼬리표, 오른쪽 위에 말소리에 맞춰 출렁이는 막대 파형. 문장이 말하는 빠르기로 쳐지고, 특정 낱말은 쳐지는 순간 민트·라벤더·살구 중 한 색 칩 바탕이 0.2초에 차오르며 고정폭 글씨로 바뀌어요",
+    "엔딩은 옅은 회색 판 가운데 보라 아이콘 타일(안쪽 짙은 보라, 바깥 연라벤더 테두리 한 겹). 아래 작은 한 줄이 어절마다 왼쪽부터 보라 그라디언트로 물들며 나타나고, 앞 어절은 연라벤더로 옅어진 채 남아요"
+  ],
+  "fits": [
+    "개발 도구·코딩 보조 런칭",
+    "음성 입력·받아쓰기 기능 소개",
+    "주변기기·하드웨어와 소프트웨어를 잇는 이야기",
+    "차분한 다크 제품 소개"
+  ],
+  "avoid": [
+    "손그림 선과 종이 질감",
+    "형광 원색 여러 개",
+    "화면을 꽉 채우는 굵은 제목",
+    "빠른 번쩍 컷",
+    "그림자 짙은 카드"
+  ]
+}

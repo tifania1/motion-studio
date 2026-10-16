@@ -1,0 +1,125 @@
+{
+  "id": "orbit-card-ring-hub",
+  "name": "카드 고리와 허브",
+  "group": "제품 UI",
+  "template": "uidemo",
+  "summary": "옅은 회색 위에서 크기와 색이 제각각인 UI 카드들이 고리를 이뤄 돌고, 가운데 이름이 박자마다 갈려요. 끝에는 카드들이 흩어져 유리빛 허브 카드 둘레에 가는 선으로 이어지는 차분한 제품 묶음 소개",
+  "tags": [
+    "제품 UI",
+    "카드",
+    "고리",
+    "허브",
+    "밝음",
+    "디자인 시스템"
+  ],
+  "hand": false,
+  "source": {
+    "site": "keyframe.gallery",
+    "ref": "mux:UYvz00tKodZMssOq3wI00Yo7nxkrGvRw45ThTNUJi5gLU",
+    "at": "0–40.1초 (고리 10.7–17초, 허브 32–36초)",
+    "note": "가운데 낱말 둘레로 UI 카드 12장 안팎이 고리를 이뤄 돌며 박자마다 카테고리 이름이 바뀌는 장면, 카드 한 장이 가운데 작은 타일로 오므라든 뒤 그 자리에서 고리가 피어나는 이음, 디자인 시스템 판을 천천히 훑는 카메라, 빈 회색 화면에 낱말이 하나씩 놓이는 짧은 문장, 유리빛 허브 카드 둘레로 위성 카드들이 가는 회색 선으로 이어지는 끝맺음"
+  },
+  "palette": [
+    "#E6E6E4",
+    "#1C1C1E",
+    "#5B5BD6",
+    "#8A5CF6",
+    "#C8242E",
+    "#BFD7F2"
+  ],
+  "colors": {
+    "bg": "#E6E6E4",
+    "onBg": "#1C1C1E",
+    "onBgMuted": "rgba(28,28,30,.6)",
+    "paper": "#F7F7F8",
+    "ink": "#1C1C1E",
+    "accent": "#5B5BD6",
+    "accentInk": "#FFFFFF",
+    "pattern": "rgba(28,28,30,.06)",
+    "glow": "rgba(91,91,214,.3)"
+  },
+  "type": {
+    "display": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "heading": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "body": [
+      "Geist",
+      "Noto Sans KR"
+    ]
+  },
+  "fonts": [
+    {
+      "family": "Geist",
+      "weight": "100 900",
+      "file": "fonts/Geist-Variable.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 500,
+      "file": "fonts/NotoSansKR-Medium.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 700,
+      "file": "fonts/NotoSansKR-Bold.woff2"
+    }
+  ],
+  "shape": {
+    "radius": "calc(var(--u) * 1.6)"
+  },
+  "motion": {
+    "pace": "보통",
+    "bpm": 100,
+    "ease": "power3.inOut",
+    "stagger": 0.8,
+    "transitions": [
+      "cut",
+      "blur",
+      "push"
+    ]
+  },
+  "scenes": {
+    "bg": "solid",
+    "align": "center",
+    "card": "shadow",
+    "marker": "color",
+    "weight": 500,
+    "tracking": -0.02,
+    "case": "none",
+    "rough": false,
+    "title": "blur",
+    "frame": "none",
+    "deco": [
+      "cursor"
+    ],
+    "number": "count",
+    "scale": 1,
+    "schemes": [
+      "dark",
+      "paper"
+    ]
+  },
+  "signature": [
+    "가운데 짧은 이름 한 줄 둘레로 크기·색이 제각각인 UI 카드 10~12장이 고리를 이뤄요. 2박마다 고리가 30도씩 0.9초에 돌며(power3.inOut) 카드 몇 장이 새 카드로 갈리고, 가운데 이름도 흐림에서 맺히며 다음 이름으로 바뀜",
+    "앞 장면의 카드 한 장이 0.8초에 가운데 작은 타일로 오므라들어 반 박 머문 뒤, 그 자리에서 카드들이 한 장씩 0.04초 간격으로 바깥으로 튕겨 나가 고리가 피어남",
+    "끝 장면에서 유리빛 하늘색 허브 카드가 가운데 뜨고, 둘레 위성 카드들이 깊이를 달리해 흩어진 채 허브에서 뻗는 가는 회색 선으로 하나씩 이어지며 아주 천천히 떠다님"
+  ],
+  "fits": [
+    "템플릿·에셋 묶음 소개",
+    "디자인 시스템·컴포넌트 공개",
+    "여러 기능을 한 제품으로 묶어 보여 줄 때",
+    "플랫폼 연동·통합 런칭"
+  ],
+  "avoid": [
+    "어두운 바탕 전체",
+    "굵고 큰 제목",
+    "거친 질감·손그림 선",
+    "빠른 컷 몽타주",
+    "카드 하나만 덩그러니 오래 두기"
+  ]
+}

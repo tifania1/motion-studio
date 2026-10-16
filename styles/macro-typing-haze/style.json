@@ -1,0 +1,107 @@
+{
+  "id": "macro-typing-haze",
+  "name": "초근접 타이핑",
+  "group": "타이포",
+  "template": "uidemo",
+  "summary": "검색창이나 말풍선을 화면보다 크게 키워 바짝 붙고, 카메라가 커서를 따라 옆으로 흐르며 문장이 써져요. 둘레엔 옅은 색 안개",
+  "tags": [
+    "타이포",
+    "검색",
+    "채팅",
+    "클로즈업",
+    "AI"
+  ],
+  "hand": false,
+  "source": {
+    "site": "keyframe.gallery",
+    "ref": "mux:01eBPzqNDdG6wQFPa00sKt84pltugxk6Hfx02WNaegUWe8",
+    "at": "13–21초",
+    "note": "알약 검색창을 화면 폭보다 크게 키워 글자가 화면 높이의 1/8쯤 되게 하고, 커서가 화면 가운데 오른쪽에 머물도록 카메라가 옆으로 흐르는 방식, 위아래 분홍 안개, 다 쓰면 뒤로 빠지며 마이크와 둥근 검색 버튼이 드러나는 마무리. 다른 영상 mux:KErjYyyJwjyWH2nCmI2ie00MppObbEBfuCjEZ9dNaO2k 17–21초의 거대 말풍선 타이핑과 답 말풍선이 올라오는 장면도 같은 결이라 함께 참고"
+  },
+  "palette": [
+    "#F1EEF0",
+    "#FFFFFF",
+    "#1A1A1A",
+    "#C2185B",
+    "#EDB7D3",
+    "#C0CCE4"
+  ],
+  "colors": {
+    "bg": "#F1EEF0",
+    "onBg": "#1A1A1A",
+    "onBgMuted": "rgba(26,26,26,.5)",
+    "paper": "#FFFFFF",
+    "ink": "#1A1A1A",
+    "accent": "#C2185B",
+    "accentInk": "#FFFFFF",
+    "pattern": "rgba(194,24,91,.06)",
+    "glow": "rgba(226,120,180,.42)"
+  },
+  "type": {
+    "display": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "heading": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "body": [
+      "Geist",
+      "Noto Sans KR"
+    ]
+  },
+  "fonts": [
+    {
+      "family": "Geist",
+      "weight": "100 900",
+      "file": "fonts/Geist-Variable.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 500,
+      "file": "fonts/NotoSansKR-Medium.woff2"
+    }
+  ],
+  "look": {},
+  "shape": {
+    "radius": "999px"
+  },
+  "motion": {
+    "pace": "보통",
+    "bpm": 108,
+    "ease": "power2.out",
+    "stagger": 1,
+    "transitions": [
+      "zoom",
+      "fade"
+    ]
+  },
+  "scenes": {
+    "bg": "aurora",
+    "align": "left",
+    "card": "shadow",
+    "marker": "color",
+    "weight": 500,
+    "tracking": -0.01,
+    "case": "none",
+    "rough": false
+  },
+  "signature": [
+    "카메라가 커서를 따라감: 글 상자를 4~6배로 키운 판에서 M.type 으로 초당 12~14자를 치고, 매 프레임 커서 x 를 재서 카메라 중심을 '커서 x − 화면 폭 × 0.12' 로 M.anim 'soft' 처럼 부드럽게 따라가게. 앞부분 글자는 왼쪽 밖으로 잘려 나감",
+    "안개 바탕: 알약 위아래로 강조색의 아주 옅은 가로 띠(흐림 반경 짧은 변의 15% 이상)가 깔리고, 알약 아랫선에 강조색 가는 선이 비침",
+    "다 쓰면 뒤로 빠지기: zoom 을 0.5초에 절반쯤으로 줄이며 끝의 마이크 아이콘과 강조색 둥근 버튼이 드러나고, 버튼이 한 번 눌린 뒤(scale .92) 화면 전체가 흐림 디졸브로 결과 장면에 넘어감"
+  ],
+  "fits": [
+    "검색·추천 기능 소개",
+    "AI 비서에게 말 걸기",
+    "한 문장 훅(첫 3초)",
+    "'이렇게 물어보세요' 안내"
+  ],
+  "avoid": [
+    "여러 줄 긴 문장",
+    "작은 글씨",
+    "빽빽한 UI",
+    "어두운 바탕"
+  ]
+}

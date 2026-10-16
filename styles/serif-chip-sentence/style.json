@@ -1,0 +1,128 @@
+{
+  "id": "serif-chip-sentence",
+  "name": "칩이 박히는 세리프 문장",
+  "group": "타이포",
+  "template": "typeslam",
+  "summary": "따뜻한 회색 위 차분한 세리프 문장. 낱말이 아이콘 칩으로 바뀌고, 끝에는 이름표 단 커서 둘이 같이 문장을 써요",
+  "tags": [
+    "타이포",
+    "세리프",
+    "협업",
+    "AI",
+    "차분함"
+  ],
+  "hand": false,
+  "source": {
+    "site": "keyframe.gallery",
+    "ref": "mux:fx00J8025luennP7L4ouE5U1uwKEZzJB8uTbnEynOwjew",
+    "at": "0–5초, 85–94초",
+    "note": "문장 속 낱말이 아이콘+이름 칩으로 바뀌며 줄이 다시 흐르는 방식, 문장이 사라지고 칩만 남아 다음 화면의 메뉴 항목으로 내려앉는 이음, 마무리에서 이름표 단 커서 두 개가 서로 다른 색으로 동시에 타자하고 선택 상자 손잡이를 끌어 문장을 키우는 장면"
+  },
+  "palette": [
+    "#E7E6E1",
+    "#1C1B19",
+    "#B5532F",
+    "#5B86C4",
+    "#DCE6F5",
+    "#F1E2C6"
+  ],
+  "colors": {
+    "bg": "#E7E6E1",
+    "onBg": "#1C1B19",
+    "onBgMuted": "rgba(28,27,25,.55)",
+    "paper": "#FFFFFF",
+    "ink": "#1C1B19",
+    "accent": "#B5532F",
+    "accentInk": "#FFFFFF",
+    "pattern": "rgba(28,27,25,.06)",
+    "glow": "rgba(181,83,47,.16)"
+  },
+  "type": {
+    "display": [
+      "Instrument Serif",
+      "Gowun Batang"
+    ],
+    "heading": [
+      "Instrument Serif",
+      "Gowun Batang"
+    ],
+    "body": [
+      "Geist",
+      "Noto Sans KR"
+    ]
+  },
+  "fonts": [
+    {
+      "family": "Geist",
+      "weight": "100 900",
+      "file": "fonts/Geist-Variable.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 500,
+      "file": "fonts/NotoSansKR-Medium.woff2"
+    },
+    {
+      "family": "Instrument Serif",
+      "weight": 400,
+      "file": "fonts/InstrumentSerif-Regular.woff2"
+    },
+    {
+      "family": "Instrument Serif",
+      "weight": 400,
+      "style": "italic",
+      "file": "fonts/InstrumentSerif-Italic.woff2"
+    },
+    {
+      "family": "Gowun Batang",
+      "weight": 400,
+      "file": "fonts/GowunBatang-Regular.woff2"
+    },
+    {
+      "family": "Gowun Batang",
+      "weight": 700,
+      "file": "fonts/GowunBatang-Bold.woff2"
+    }
+  ],
+  "look": {},
+  "shape": {
+    "radius": "calc(var(--u) * 0.9)"
+  },
+  "motion": {
+    "pace": "보통",
+    "bpm": 92,
+    "ease": "power3.out",
+    "stagger": 1,
+    "transitions": [
+      "cut",
+      "fade"
+    ]
+  },
+  "scenes": {
+    "bg": "solid",
+    "align": "left",
+    "card": "flat",
+    "marker": "highlight",
+    "weight": 400,
+    "tracking": -0.02,
+    "case": "none",
+    "rough": false
+  },
+  "signature": [
+    "낱말이 칩으로 바뀜: 글자가 0.1초 흐려지며 빠지고 그 자리에 연한 색 둥근 칩(작은 아이콘 + 짧은 이름)이 0.25초에 커지며 생김. 칩 폭만큼 뒷말과 다음 줄이 스프링으로 밀려나 다시 흐름. 칩은 0.35초 간격으로 하나씩",
+    "문장이 옅어지며 사라지고 칩만 남아 떠 있다가, 다음 화면(메뉴·목록)의 제자리로 날아가 그 항목이 됨",
+    "이름표 단 커서 둘(서로 다른 색)이 문장 두 군데를 동시에 타자 → 다 쓰면 글자가 먹색으로 돌아오고, 네 모서리 손잡이 달린 선택 상자가 생겨 커서가 모서리를 끌어 문장을 키움"
+  ],
+  "fits": [
+    "협업·문서 도구 소개",
+    "새 기능 발표",
+    "브랜드 한 줄 메시지",
+    "차분한 기업 소개"
+  ],
+  "avoid": [
+    "굵은 고딕 큰 제목",
+    "쨍한 원색 바탕",
+    "빠른 컷 연타",
+    "사진을 꽉 채운 장면"
+  ]
+}

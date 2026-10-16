@@ -1,0 +1,29 @@
+{
+  "label": "COMPANY PROFILE",
+  "name": "",
+  "mission": "공장의 작은 신호를 읽어\n불량이 생기기 전에\n알려 드려요",
+  "highlight": "불량이 생기기 전에",
+  "pillarsTitle": "우리가 하는 일",
+  "pillars": [
+    { "symbol": "chip", "title": "설비 데이터 모으기", "desc": "센서와 설비 기록을 한곳에 모아요" },
+    { "symbol": "chart", "title": "불량 미리 알리기", "desc": "이상 신호를 AI가 먼저 찾아 알려요" },
+    { "symbol": "people", "title": "현장 교육", "desc": "작업자가 바로 쓰도록 함께 익혀요" }
+  ],
+  "factsTitle": "숫자로 보는 우리 회사",
+  "facts": [
+    { "value": 2019, "unit": "년", "label": "처음 문을 연 해" },
+    { "value": 48, "unit": "명", "label": "함께 일하는 사람" },
+    { "value": 1200, "unit": "대", "label": "연결한 설비" }
+  ],
+  "source": "예시 숫자예요 · 실제 기록과 기준 시점으로 바꿔 주세요",
+  "partnersTitle": "함께 일하는 곳",
+  "partners": ["A 정밀", "B 전자", "C 모빌리티", "D 화학", "E 에너지", "F 물류"],
+  "card": {
+    "slogan": "현장의 데이터를\n내일의 품질로",
+    "site": "lumenta.example",
+    "email": "hello@lumenta.example",
+    "tel": "02-000-0000",
+    "address": "서울 마포구 OO로 00 (예시 주소)"
+  },
+  "note": "템플릿 예시용 가상 기업입니다"
+}

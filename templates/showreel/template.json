@@ -1,0 +1,10 @@
+{
+  "name": "쇼릴",
+  "description": "15초(120BPM 30박) 모션 쇼릴. 글자 폭이 박자에 맞춰 출렁이고, 플러드·점→사각형→사진 격자·줌·유리 구슬·조리개·UI 모프·숫자 굴리기·비율 프레임·폰 세 대를 지나 워드마크로 돌아옵니다.",
+  "formats": ["square"],
+  "fonts": [
+    { "family": "Archivo", "weight": "100 900", "stretch": "62% 125%", "file": "fonts/Archivo-Variable.woff2" },
+    { "family": "Geist", "weight": "100 900", "file": "fonts/Geist-Variable.woff2" }
+  ],
+  "render": { "fps": 60, "blur": 4, "shutter": 0.5, "scale": 1.3333, "loop": false }
+}

@@ -1,0 +1,47 @@
+{
+  "id": "product-intro",
+  "order": 14,
+  "name": "제품·서비스 소개",
+  "summary": "엉킨 낙서 선이 팽팽하게 펴져 제품 창의 테두리가 되고, 기능 카드가 튀어나오고, 단계 점을 잇는 길과 버튼까지 선 하나로 이어져요.",
+  "look": "선 하나 · 제품 창 · 기능 카드 · 단계 점",
+  "template": "product",
+  "formats": [
+    "tall",
+    "portrait",
+    "square",
+    "wide"
+  ],
+  "seconds": 20,
+  "photos": {
+    "need": 1,
+    "hint": "제품 화면 스크린샷 1장(가로로 긴 화면이 좋아요). 없으면 선으로 그린 화면이 대신 나와요"
+  },
+  "ask": [
+    "제품·서비스 이름과 한 줄 소개",
+    "고객이 지금 겪는 불편 두세 가지",
+    "핵심 기능 2~4개 (기능 이름 + 한 줄)",
+    "도입하거나 쓰기 시작하는 순서 3~4단계",
+    "효과 숫자 하나와 그 근거 (없으면 빼요)",
+    "문의 버튼 문구와 웹사이트"
+  ],
+  "brief": "예) 제조 현장용 데이터 서비스 '루멘타 라인'. 불편: 라인마다 양식이 다름, 주간 보고에 반나절, 불량을 늦게 앎. 기능: 설비 바로 연결, 불량 미리 알림, 보고서 자동 작성. 도입: 상담 → 설비 연결 → 2주 시범 운영 → 전체 적용. 숫자는 근거 자료가 없어서 뺌.",
+  "check": [
+    "화면 속 기능이 실제로 있는지",
+    "효과 숫자의 근거(조사 대상·기간·비교 기준)와 출처 줄",
+    "스크린샷에 고객 정보·개인정보가 보이지 않는지",
+    "도입 단계와 웹사이트 주소"
+  ],
+  "music": {
+    "mood": "minimal",
+    "bpm": 120,
+    "prompt": "clean modern corporate electronic, soft plucked synths, warm pads, light punchy drums, confident and trustworthy, product introduction",
+    "sections": [
+      [0, 3, "sparse, slightly tense intro"],
+      [3, 5.5, "release and lift as the line straightens"],
+      [5.5, 10.5, "steady confident groove"],
+      [10.5, 14.5, "light rhythmic progression"],
+      [14.5, 17, "small lift"],
+      [17, 20, "warm resolved ending"]
+    ]
+  }
+}

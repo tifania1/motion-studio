@@ -1,0 +1,110 @@
+{
+  "id": "ember-orb-dark",
+  "name": "어둠 속 빛 구슬",
+  "group": "그라디언트·빛",
+  "template": "glow",
+  "summary": "검은 바탕에 노을빛 구슬이 숨 쉬고, 구슬이 열리면 흐릿한 색 덩어리 위로 유리 말풍선이 쌓이는 대화형 AI 무드",
+  "tags": [
+    "빛",
+    "구슬",
+    "어두움",
+    "대화",
+    "AI 음성"
+  ],
+  "hand": false,
+  "source": {
+    "site": "keyframe.gallery",
+    "ref": "mux:RCAV8OVI8qZ15zaiV4XGqA7QOPfji2U00HrhA5EPngIg",
+    "at": "13.2–32.9초",
+    "note": "검은 바탕의 빛 구슬과 얇은 동심원 선, 구슬이 원형으로 열리며 흐린 색 덩어리 바탕이 되는 전환, 유리 말풍선 타이핑, 문장을 감싸는 둥근 사각 선 그리기와 카드 3장 갈라짐"
+  },
+  "palette": [
+    "#0F1011",
+    "#F07A3A",
+    "#F6D06A",
+    "#5E8F4A",
+    "#9CC3E0",
+    "#ECEDEA"
+  ],
+  "colors": {
+    "bg": "#0F1011",
+    "onBg": "#ECEDEA",
+    "onBgMuted": "rgba(236,237,234,.58)",
+    "paper": "#26302A",
+    "ink": "#F1F2EE",
+    "accent": "#F07A3A",
+    "accentInk": "#1A0E08",
+    "pattern": "rgba(255,255,255,.08)",
+    "glow": "rgba(240,122,58,.45)"
+  },
+  "type": {
+    "display": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "heading": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "body": [
+      "Geist",
+      "Noto Sans KR"
+    ]
+  },
+  "fonts": [
+    {
+      "family": "Geist",
+      "weight": "100 900",
+      "file": "fonts/Geist-Variable.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 500,
+      "file": "fonts/NotoSansKR-Medium.woff2"
+    }
+  ],
+  "look": {
+    "grain": 0.07,
+    "vignette": 0.3
+  },
+  "shape": {
+    "radius": "calc(var(--u) * 1.8)"
+  },
+  "motion": {
+    "pace": "느림",
+    "bpm": 90,
+    "ease": "sine.inOut",
+    "stagger": 1.2,
+    "transitions": [
+      "iris",
+      "fade"
+    ]
+  },
+  "scenes": {
+    "bg": "aurora",
+    "align": "center",
+    "card": "glass",
+    "marker": "color",
+    "weight": 400,
+    "tracking": 0,
+    "case": "none",
+    "rough": false
+  },
+  "signature": [
+    "검은 바탕 한가운데 빛 구슬(빨강·주황·노랑·흰빛이 안에서 천천히 소용돌이) 둘레에 얇은 동심원 선 2~3개. 구슬은 4초 주기로 숨 쉬듯 조금 커졌다 작아짐",
+    "구슬이 화면보다 크게 원형으로 열리며 그 속 흐린 색 덩어리(초록·노랑·하늘)가 다음 장면 바탕이 되고, 그 위로 반투명 유리 말풍선이 한 줄씩 타이핑되며 쌓임",
+    "어두운 화면 가운데 짧은 문장이 써지고, 얇은 둥근 사각 선이 그려지며 문장을 감싼 뒤 안에서 색이 번져 나란한 카드 3장으로 갈라짐"
+  ],
+  "fits": [
+    "AI 상담·음성 비서",
+    "전화·예약 서비스",
+    "밤 분위기 브랜드",
+    "감성 런칭 티저"
+  ],
+  "avoid": [
+    "흰 바탕",
+    "빽빽한 UI",
+    "빠른 컷",
+    "굵은 제목"
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "_설명": "설치 파일(make_installer.py)에 함께 넣는 예시 브랜드와 영상. 여기 없는 브랜드·영상(내 광고 계정 자료)은 설치 파일에 들어가지 않아요.",
+  "brands": [
+    "_template",
+    "bax",
+    "haru-cafe",
+    "lumenta-demo",
+    "motion-studio"
+  ],
+  "videos": [
+    "bax-bangkok",
+    "bax-bangkok-promo",
+    "bax-channel-film",
+    "haru-launch-film",
+    "haru-spring-promo",
+    "haru-ui-morph",
+    "haru-weekend-event",
+    "studio-showreel",
+    "lumenta-company-intro",
+    "lumenta-product-intro",
+    "lumenta-history",
+    "lumenta-announcement",
+    "lumenta-scenes",
+    "lumenta-deck"
+  ],
+  "renders": [
+    "bax-channel-film",
+    "haru-launch-film",
+    "haru-ui-morph",
+    "studio-showreel"
+  ]
+}

@@ -1,0 +1,135 @@
+{
+  "id": "duotone-orb-pale-console",
+  "name": "옅은 회색 위 두 빛 유리 구슬",
+  "group": "제품 UI",
+  "template": "uidemo",
+  "summary": "옅은 회색 바탕 한가운데 붉은 주황과 하늘빛이 맴도는 젖빛 유리 구슬이 숨 쉬고, 구슬에서 설정 카드·대화창·가지 친 흐름도·알약 낱말이 차례로 피어나는 차분한 AI 런칭",
+  "tags": [
+    "제품 UI",
+    "구슬",
+    "옅은 회색",
+    "대화",
+    "AI 상담",
+    "차분함"
+  ],
+  "hand": false,
+  "source": {
+    "site": "keyframe.gallery",
+    "ref": "mux:Fg9vsk02HV4ur02gvCGybXPZdwbtYm81vgb6sQ01nwX8Cg",
+    "at": "0–42.8초",
+    "note": "옅은 회색 위에 흐린 흰 설정 카드가 한 장씩 쌓이는 장면, 붉은·푸른 유리 구슬의 숨쉬기와 크기 변화, 구슬을 작은 머리말로 단 대화창, 가는 선으로 가지 친 카드 흐름도를 카메라가 천천히 훑는 장면, 구슬이 점으로 오므라들며 어두운 비네트로 빠지고 점 격자 위 푸른 빛으로 넘어가는 전환, 구슬 둘레 가는 동심원과 작은 꼬리표, 화면을 넘는 흰 큰 숫자, 붉은 그라디언트 위 흩어진 말풍선, 알약 낱말이 비스듬히 쌓이는 마무리, 두 세로 막대가 벌어지며 이름이 드러나는 엔딩"
+  },
+  "palette": [
+    "#DCDCDC",
+    "#1C1C1C",
+    "#C9482A",
+    "#8FB2DA",
+    "#F2F2F1",
+    "#0D0F12"
+  ],
+  "colors": {
+    "bg": "#DCDCDC",
+    "onBg": "#1C1C1C",
+    "onBgMuted": "rgba(28,28,28,.6)",
+    "paper": "#F2F2F1",
+    "ink": "#1C1C1C",
+    "accent": "#C9482A",
+    "accentInk": "#FFFFFF",
+    "pattern": "rgba(143,178,218,.12)",
+    "glow": "rgba(143,178,218,.7)"
+  },
+  "type": {
+    "display": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "heading": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "body": [
+      "Geist",
+      "Noto Sans KR"
+    ]
+  },
+  "fonts": [
+    {
+      "family": "Geist",
+      "weight": "300",
+      "file": "fonts/Geist-Variable.woff2"
+    },
+    {
+      "family": "Geist",
+      "weight": "100 900",
+      "file": "fonts/Geist-Variable.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 500,
+      "file": "fonts/NotoSansKR-Medium.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 700,
+      "file": "fonts/NotoSansKR-Bold.woff2"
+    }
+  ],
+  "shape": {
+    "radius": "calc(var(--u) * 1.2)"
+  },
+  "motion": {
+    "pace": "느림",
+    "bpm": 92,
+    "ease": "power2.out",
+    "stagger": 1.1,
+    "transitions": [
+      "iris",
+      "fade",
+      "blur"
+    ]
+  },
+  "scenes": {
+    "bg": "solid",
+    "align": "center",
+    "card": "glass",
+    "marker": "underline",
+    "weight": 400,
+    "tracking": -0.01,
+    "case": "none",
+    "rough": false,
+    "title": "blur",
+    "frame": "none",
+    "deco": [
+      "orb",
+      "rings",
+      "bubbles"
+    ],
+    "number": "count",
+    "scale": 1,
+    "schemes": [
+      "dark",
+      "paper",
+      "dark",
+      "accent"
+    ]
+  },
+  "signature": [
+    "옅은 회색 한가운데 젖빛 유리 구슬 하나. 안에서 붉은 주황과 하늘빛이 반씩 맞물려 천천히 돌고, 4초 주기로 숨 쉬듯 커졌다 작아짐. 장면이 바뀔 땐 구슬이 작은 점으로 오므라들며 둘레가 짙은 회색 비네트로 어두워지고, 이어 검은 점 격자 위에 푸른 빛 덩어리가 번지는 화면으로 들어감",
+    "구슬 둘레에 가는 동심원 두세 겹이 그려지고 가운데에 작은 흰 꼬리표 한 줄이 맺힌 뒤, 카메라가 구슬 속으로 들어가면 구슬 색 그라디언트 위로 화면보다 큰 얇은 흰 숫자가 잘린 채 떠 있음. 이어 같은 붉은 바탕에 여러 말로 쓴 흰 말풍선이 제각각 자리에 톡톡 떠오름",
+    "흐린 흰 알약에 담긴 낱말이 가운데 하나 떴다가, 다음 낱말이 오면 앞 낱말이 위로 비스듬히 밀리며 작아져 세 칸 계단이 됨. 끝에는 가운데 얇은 세로 막대 둘이 좌우로 벌어지며 그 사이에 이름이 드러나고, 아래에 작은 주소 한 줄이 늦게 켜짐"
+  ],
+  "fits": [
+    "AI 상담·음성 에이전트 런칭",
+    "대화형 서비스 기능 소개",
+    "다국어·통역 기능 자랑",
+    "설정이 단순한 개발 도구",
+    "차분한 B2B 제품 영상"
+  ],
+  "avoid": [
+    "빠른 컷 몽타주",
+    "굵고 큰 제목 여러 줄",
+    "강조색 여러 개(붉은 주황 하나와 하늘빛 보조만)",
+    "손그림·종이 질감",
+    "흰 바탕에 진한 그림자"
+  ]
+}

@@ -1,0 +1,139 @@
+{
+  "id": "lime-violet-keyframe-cursor-cut",
+  "name": "라임·보라 키프레임 커서 컷",
+  "group": "제품 UI",
+  "template": "uidemo",
+  "summary": "라임, 보라, 주황, 검정 색면이 컷마다 갈려요. 그 위에 큰 검은 커서가 타임라인의 키프레임 마름모와 곡선 손잡이를 끌면 위의 도형이 그대로 따라 움직이고, 사진 판은 비스듬히 겹겹이 펼쳐지는 편집 도구 런칭",
+  "tags": [
+    "제품 UI",
+    "타임라인",
+    "커서",
+    "색면",
+    "런칭",
+    "편집기"
+  ],
+  "hand": false,
+  "source": {
+    "site": "keyframe.gallery",
+    "ref": "mux:AmzeRnqZZMkwb2k21byauK1W7S98IJfWXrM4W9VQtxQ",
+    "at": "0–68.2초",
+    "note": "라임 색면에서 부푸는 흰 원으로 여는 오프닝, 검은 화면 가운데 주황 산세리프 제목과 둘레에 흩어진 작은 타일, 보라 색면 위 연보라 알약과 타임라인 눈금·파란 재생 막대·키프레임 마름모를 큰 커서가 끄는 장면, 곡선 편집 패널, 옅은 회색 위 둥근 굵은 선 길을 따라 미끄러지는 글자 동그라미 노드와 애니메이션 종류 메뉴, 비스듬히 겹겹이 서는 사진 판과 이름표 커서, 연두 아이콘 격자, 검은 바탕 위 선택 핸들 단 도형 엔딩"
+  },
+  "palette": [
+    "#D6EE5E",
+    "#5B34E6",
+    "#121212",
+    "#EE7A3C",
+    "#C9C2F2",
+    "#2F7BF5"
+  ],
+  "colors": {
+    "bg": "#121212",
+    "onBg": "#F2F2EC",
+    "onBgMuted": "rgba(242,242,236,.6)",
+    "paper": "#D6EE5E",
+    "ink": "#141414",
+    "accent": "#5B34E6",
+    "accentInk": "#FFFFFF",
+    "pattern": "rgba(242,242,236,.08)",
+    "glow": "rgba(238,122,60,.4)"
+  },
+  "type": {
+    "display": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "heading": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "body": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "mono": [
+      "Geist Mono",
+      "Noto Sans KR"
+    ]
+  },
+  "fonts": [
+    {
+      "family": "Geist",
+      "weight": "100 900",
+      "file": "fonts/Geist-Variable.woff2"
+    },
+    {
+      "family": "Geist Mono",
+      "weight": "100 900",
+      "file": "fonts/GeistMono-Variable.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 500,
+      "file": "fonts/NotoSansKR-Medium.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 700,
+      "file": "fonts/NotoSansKR-Bold.woff2"
+    }
+  ],
+  "shape": {
+    "radius": "calc(var(--u) * 1.6)"
+  },
+  "motion": {
+    "pace": "보통",
+    "bpm": 112,
+    "ease": "power3.inOut",
+    "stagger": 0.8,
+    "transitions": [
+      "cut",
+      "push",
+      "cut",
+      "wipe"
+    ]
+  },
+  "scenes": {
+    "bg": "solid",
+    "align": "center",
+    "card": "flat",
+    "marker": "color",
+    "weight": 500,
+    "tracking": -0.02,
+    "case": "none",
+    "rough": false,
+    "title": "mask",
+    "frame": "window",
+    "deco": [
+      "cursor",
+      "handles"
+    ],
+    "number": "count",
+    "scale": 1.1,
+    "schemes": [
+      "paper",
+      "accent",
+      "dark",
+      "paper"
+    ]
+  },
+  "signature": [
+    "보라 색면 위에 연보라 알약 도형, 아래엔 흰 타임라인 눈금과 파란 재생 막대. 큰 검은 커서가 키프레임 마름모를 옆으로 끌면 알약이 같은 거리만큼 늘어나고, 곧바로 곡선 패널이 옆에서 떠서 커서가 베지어 손잡이를 당기면 곡선이 휘어요",
+    "옅은 회색 위로 둥글게 꺾인 굵은 선 길이 깔리고, 글자를 담은 노랑·주황 동그라미 노드가 파란 선택 핸들을 단 채 길을 따라 미끄러져요. 커서가 노드를 누르면 '위치·크기·회전·투명도' 같은 흰 메뉴 팝오버가 톡 열려요",
+    "푸른 회색 판 위에서 사진 판 여러 장이 3D 로 비스듬히 돌며 부채처럼 겹겹이 서고, 이름표 단 커서 둘과 초록 댓글 말풍선이 그 둘레로 모여들어요. 끝은 검은 화면 위 원·네모 도형이 선택 핸들을 단 채 박자마다 톡톡 자리를 바꿔요"
+  ],
+  "fits": [
+    "디자인·모션 편집 도구 런칭",
+    "타임라인·애니메이션 기능 소개",
+    "협업 기능 안내",
+    "개발·디자인 도구 업데이트 소식",
+    "기능 여러 개를 30~70초에 훑을 때"
+  ],
+  "avoid": [
+    "종이·그레인 같은 거친 질감",
+    "손그림 선",
+    "세리프 글꼴",
+    "느린 서서히 전환",
+    "한 화면에 색면 두 개 이상 섞기"
+  ]
+}

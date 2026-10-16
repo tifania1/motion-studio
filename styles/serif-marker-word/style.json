@@ -1,0 +1,131 @@
+{
+  "id": "serif-marker-word",
+  "name": "세리프 속 마커 낱말",
+  "group": "손그림",
+  "template": "sketchbook",
+  "summary": "차분한 세리프 문장이 타자되다가 한 낱말만 굵은 마커 손글씨 대문자로 써지고, 숫자엔 손 타원, 마지막 말엔 붓 밑줄이 그어지는 메모 결",
+  "tags": [
+    "손그림",
+    "세리프",
+    "손글씨",
+    "메모",
+    "차분함",
+    "라임"
+  ],
+  "hand": true,
+  "source": {
+    "site": "keyframe.gallery",
+    "ref": "mux:2uzDzGBVL6St4AcX8EmOEEOE8kvzw5UBlrNIZbxpeR4, mux:GVbb5NZBlhk01F6emqg8YTizmw331DojYtjJ9bGTYJlY",
+    "at": "0–5초, 15–17초, 25–31초 / 9.8–11초",
+    "note": "숯색·옅은 회색 바탕을 번갈아 쓰는 세리프 한 줄 문장, 타자 커서를 따라 막 친 글자가 분홍·하늘·연두로 물들었다 먹색으로 가라앉는 색 물결, 문장 속 한 낱말만 마커 손글씨 대문자로 0.6초에 써지는 방식, 올라가는 숫자를 손 타원이 감다가 마지막 숫자에서 라임으로 켜지는 순간, 끝 낱말 아래 붓 밑줄과 라임 한 장으로 닫는 마무리"
+  },
+  "palette": [
+    "#DFE0DA",
+    "#333333",
+    "#A9BD4E",
+    "#ECEBE4",
+    "#9AA6E6",
+    "#D88BD3"
+  ],
+  "colors": {
+    "bg": "#DFE0DA",
+    "onBg": "#333333",
+    "onBgMuted": "rgba(51,51,51,.62)",
+    "paper": "#333333",
+    "ink": "#ECEBE4",
+    "accent": "#A9BD4E",
+    "accentInk": "#2B2B2B",
+    "pattern": "rgba(51,51,51,.07)",
+    "glow": "rgba(169,189,78,.28)"
+  },
+  "type": {
+    "display": [
+      "Gowun Batang"
+    ],
+    "heading": [
+      "Gowun Batang"
+    ],
+    "body": [
+      "Gowun Batang"
+    ]
+  },
+  "fonts": [
+    {
+      "family": "Gowun Batang",
+      "weight": 400,
+      "file": "fonts/GowunBatang-Regular.woff2"
+    },
+    {
+      "family": "Gowun Batang",
+      "weight": 700,
+      "file": "fonts/GowunBatang-Bold.woff2"
+    },
+    {
+      "family": "Nanum Pen",
+      "weight": 400,
+      "file": "fonts/NanumPenScript-Regular.woff2"
+    },
+    {
+      "family": "Caveat",
+      "weight": "400 700",
+      "file": "fonts/Caveat-Variable.woff2"
+    }
+  ],
+  "look": {},
+  "shape": {
+    "radius": "calc(var(--u) * 1)",
+    "stroke": "hand"
+  },
+  "motion": {
+    "pace": "보통",
+    "bpm": 96,
+    "ease": "power3.out",
+    "stagger": 1,
+    "transitions": [
+      "cut",
+      "fade"
+    ]
+  },
+  "scenes": {
+    "bg": "solid",
+    "align": "center",
+    "card": "outline",
+    "marker": "underline",
+    "weight": 400,
+    "tracking": -0.01,
+    "case": "none",
+    "rough": true,
+    "title": "type",
+    "frame": "none",
+    "deco": [
+      "doodles"
+    ],
+    "number": "count",
+    "scale": 0.95,
+    "schemes": [
+      "paper",
+      "dark",
+      "dark",
+      "accent"
+    ]
+  },
+  "signature": [
+    "세리프 문장이 빠르게 타자되는 동안(초당 25자 안팎) 커서 바로 뒤 글자 몇 개가 분홍→하늘→연두로 물들어 따라오다 먹색으로 가라앉음. 강조할 낱말 자리에 오면 그 낱말만 마커 손글씨 대문자로 왼쪽부터 0.6초에 써지고, 세리프보다 1.2배 크게 −3도 기울어 문장 사이에 박힘",
+    "숫자 둘레에 크림색 손 타원이 0.7초에 한 바퀴 조금 넘게 그어지는 동안 숫자가 하나씩 올라가고, 마지막 숫자로 바뀌는 순간 라임색으로 켜졌다가 0.6초에 걸쳐 왼쪽부터 원래 색으로 돌아옴",
+    "마지막 문장의 끝 낱말 아래로 두툼한 붓 밑줄이 왼쪽에서 오른쪽으로 0.3초에 쓱 그어지고, 다음 컷은 라임 바탕 한 장에 로고와 세리프 한마디"
+  ],
+  "fits": [
+    "앱·서비스 새 기능 소개",
+    "메모·생산성 도구",
+    "브랜드 한 줄 메시지",
+    "차분한 기업 소식",
+    "뉴스레터 예고"
+  ],
+  "avoid": [
+    "굵은 고딕 제목",
+    "종이·그레인 질감",
+    "한 장면에 손글씨 낱말 둘 이상",
+    "빠른 컷 연타",
+    "원색 여러 개"
+  ]
+}

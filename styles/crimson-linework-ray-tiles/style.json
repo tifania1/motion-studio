@@ -1,0 +1,128 @@
+{
+  "id": "crimson-linework-ray-tiles",
+  "name": "진홍 선 도형과 모이는 빛살",
+  "group": "그래픽·도형",
+  "template": "brandmark",
+  "summary": "진홍 한 색 바탕에 흰 가는 선으로 원과 네모, 안내선이 그어지며 말을 감싸요. 짧은 막대들이 화면 가장자리에서 모여 빛살 기호가 되고, 그 기호가 사진 틀과 둥근 아이콘 타일 위로 번져 가는 브랜드 소개예요",
+  "tags": [
+    "도형",
+    "선",
+    "빨강",
+    "브랜드 소개",
+    "아이콘 타일",
+    "사진 카드"
+  ],
+  "hand": false,
+  "source": {
+    "site": "keyframe.gallery",
+    "ref": "mux:jFSvABNNan5leMhFmN02L9Jdkor71l95EjaP8ZKJWeeI",
+    "at": "1.8–89초",
+    "note": "진홍 바탕 가운데 흰 산세리프 한 줄, 두 낱말을 감싸며 겹치는 흰 원과 네모 선(10.7초), 짙은 적갈색 판 위 작은 네모 마디가 달린 안내선과 곡선 화살표(16–23초), 연회색 판에 둥근 진홍·적갈 아이콘 타일을 벤토처럼 짠 구성(30–34초), 짧은 막대가 가장자리에서 모여 빛살 기호가 되는 움직임(40.9초), 사진 위에 얹힌 빛살 기호와 기울어진 둥근 사진 카드(46–57초), 화면을 가르는 거대한 붉은 띠(67–71초), 모든 조각이 한 판에 모이는 벤토 엔딩(81.9초)"
+  },
+  "palette": [
+    "#C40A1E",
+    "#FFFFFF",
+    "#5C0811",
+    "#E6E5E3",
+    "#8E0C18"
+  ],
+  "colors": {
+    "bg": "#C40A1E",
+    "onBg": "#FFFFFF",
+    "onBgMuted": "rgba(255,255,255,.72)",
+    "paper": "#E6E5E3",
+    "ink": "#B30A1C",
+    "accent": "#5C0811",
+    "accentInk": "#FFFFFF",
+    "pattern": "rgba(255,255,255,.16)",
+    "glow": "rgba(255,255,255,.2)"
+  },
+  "type": {
+    "display": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "heading": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "body": [
+      "Geist",
+      "Noto Sans KR"
+    ]
+  },
+  "fonts": [
+    {
+      "family": "Geist",
+      "weight": "100 900",
+      "file": "fonts/Geist-Variable.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 500,
+      "file": "fonts/NotoSansKR-Medium.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 700,
+      "file": "fonts/NotoSansKR-Bold.woff2"
+    }
+  ],
+  "shape": {
+    "radius": "calc(var(--u) * 2.4)"
+  },
+  "motion": {
+    "pace": "보통",
+    "bpm": 100,
+    "ease": "power3.out",
+    "stagger": 1,
+    "transitions": [
+      "cut",
+      "wipe",
+      "push"
+    ]
+  },
+  "scenes": {
+    "bg": "solid",
+    "align": "center",
+    "card": "flat",
+    "marker": "highlight",
+    "weight": 600,
+    "tracking": -0.02,
+    "case": "none",
+    "rough": false,
+    "title": "rise",
+    "frame": "none",
+    "deco": [
+      "rings",
+      "marks"
+    ],
+    "number": "count",
+    "scale": 1.1,
+    "schemes": [
+      "dark",
+      "accent",
+      "paper",
+      "dark"
+    ]
+  },
+  "signature": [
+    "진홍 바탕 가운데 두 낱말이 나란히 놓이면, 2px 흰 선으로 한 낱말에는 원이, 다른 낱말에는 네모가 0.8초에 그어져요. 두 도형은 가운데에서 살짝 겹쳐 서로 이어진 두 성격을 보여 줘요",
+    "짙은 적갈색 판 위에 흰 안내선이 한 줄씩 뻗고, 꺾이는 자리마다 작은 흰 네모 마디가 톡 찍혀요. 낱말 옆에는 곡선 화살표가 그어지고, 선들이 이어져 지붕처럼 꺾인 큰 도형 하나로 맺혀요",
+    "짧고 굵은 막대 6~8개가 화면 가장자리에서 가운데로 모여 빛살 기호가 되고, 그 기호가 사진 위와 둥근 아이콘 타일 안에 차례로 얹혀요. 마지막에는 막대 하나가 화면보다 크게 늘어나 붉은 띠로 화면을 가로질러요"
+  ],
+  "fits": [
+    "브랜드 리뉴얼 소개",
+    "통신·생활 서비스 브랜드",
+    "디자인 시스템·가이드 공개",
+    "서비스 여러 개를 아이콘으로 훑을 때",
+    "지역·여행 캠페인"
+  ],
+  "avoid": [
+    "여러 색 그라디언트",
+    "손그림 선이나 떨림",
+    "그레인·종이 질감",
+    "강조색을 빨강 계열 밖으로 늘리기",
+    "한 화면에 긴 문장 여러 줄"
+  ]
+}

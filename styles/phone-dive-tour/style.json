@@ -1,0 +1,113 @@
+{
+  "id": "phone-dive-tour",
+  "name": "폰 속으로 들어가는 투어",
+  "group": "제품 UI",
+  "template": "uidemo",
+  "summary": "밝은 회색 위 폰 한 대. 화면 안으로 쑥 들어가 지도·사진 핀·바텀시트를 보고, 사진들은 흐림 속에 세로로 휙 지나가요",
+  "tags": [
+    "모바일 앱",
+    "여행",
+    "지도",
+    "제품 UI",
+    "세로 영상"
+  ],
+  "hand": false,
+  "source": {
+    "site": "keyframe.gallery",
+    "ref": "mux:01eBPzqNDdG6wQFPa00sKt84pltugxk6Hfx02WNaegUWe8",
+    "at": "0–13초, 21–45초",
+    "note": "카드 하나 둘레로 폰 테두리가 생기는 시작, 화면 내용이 흐림으로 바뀌는 디졸브, 폰을 키워 화면 안으로 들어가기, 지도 위 사진 핀이 차례로 튀어나오기, 바텀시트 올라오기, 사진이 세로로 빠르게 흐르는 모션 블러, 사진 한 장이 흰 테두리 스티커로 줄고 알약 버튼이 붙는 장면"
+  },
+  "palette": [
+    "#ECECEC",
+    "#FFFFFF",
+    "#161616",
+    "#D0245A",
+    "#E9E4D8",
+    "#BFD9B0"
+  ],
+  "colors": {
+    "bg": "#ECECEC",
+    "onBg": "#161616",
+    "onBgMuted": "rgba(22,22,22,.55)",
+    "paper": "#FFFFFF",
+    "ink": "#161616",
+    "accent": "#D0245A",
+    "accentInk": "#FFFFFF",
+    "pattern": "rgba(22,22,22,.05)",
+    "glow": "rgba(208,36,90,.18)"
+  },
+  "type": {
+    "display": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "heading": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "body": [
+      "Geist",
+      "Noto Sans KR"
+    ]
+  },
+  "fonts": [
+    {
+      "family": "Geist",
+      "weight": "100 900",
+      "file": "fonts/Geist-Variable.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 500,
+      "file": "fonts/NotoSansKR-Medium.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 700,
+      "file": "fonts/NotoSansKR-Bold.woff2"
+    }
+  ],
+  "look": {},
+  "shape": {
+    "radius": "calc(var(--u) * 3)"
+  },
+  "motion": {
+    "pace": "보통",
+    "bpm": 104,
+    "ease": "power2.inOut",
+    "stagger": 1,
+    "transitions": [
+      "zoom",
+      "fade",
+      "cut"
+    ]
+  },
+  "scenes": {
+    "bg": "solid",
+    "align": "center",
+    "card": "shadow",
+    "marker": "color",
+    "weight": 600,
+    "tracking": -0.02,
+    "case": "none",
+    "rough": false
+  },
+  "signature": [
+    "폰 속으로 들어가기: 폰 화면 내용이 흐림(blur 0→14px, 0.12초)으로 다음 내용에 바뀐 직후, 폰 전체를 0.25초에 2.4배쯤 키워 테두리는 화면 밖으로 나가고 화면 속 장면만 남음",
+    "지도 사진 핀: 흰 테두리 둥근 사진 썸네일 + 작은 프로필 원이 0.06초 간격으로 M.spring 'pop' 으로 튀어나오고, 이어 바텀시트가 아래에서 'snappy' 로 올라옴",
+    "세로 사진 릴: 둥근 사진 타일 열이 0.6초 동안 위로 빠르게 흐르며 세로 흐림, 멈추면서 한 장만 선명해지고 흰 테두리 스티커로 줄어듦 → 뒤에 한 장이 겹쳐 붙고 아래 알약 버튼이 나타남"
+  ],
+  "fits": [
+    "모바일 앱 기능 소개",
+    "여행·숙소·지도 서비스",
+    "앱 출시·업데이트",
+    "세로(9:16) 광고"
+  ],
+  "avoid": [
+    "어두운 바탕",
+    "두꺼운 그림자와 네온",
+    "글자 위주 장면",
+    "손그림"
+  ]
+}

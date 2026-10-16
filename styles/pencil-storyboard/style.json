@@ -1,0 +1,122 @@
+{
+  "id": "pencil-storyboard",
+  "name": "연필 콘티",
+  "group": "손그림",
+  "template": "sketchbook",
+  "summary": "흰 종이에 흑연 연필로 그린 콘티. 칸마다 번호, 빗금 그림자, 파란 색연필로 고친 자국이 남는 작업 노트 느낌",
+  "tags": [
+    "손그림",
+    "연필",
+    "콘티",
+    "기획",
+    "차분함"
+  ],
+  "hand": true,
+  "source": {
+    "site": "직접 정리",
+    "ref": "",
+    "at": "",
+    "note": "갤러리 영상에서 배운 게 아니고 손그림 모션에서 널리 쓰는 기법으로 정리했어요. 영화·광고 콘티(스토리보드) 그림의 칸 나누기, 빗금 명암, 파란 연필 수정 표시, 끊어 그리기(초당 8장)를 기준으로 잡았어요."
+  },
+  "palette": [
+    "#F7F6F2",
+    "#2B2B2B",
+    "#2F63C9",
+    "#9A9A96",
+    "#D94F3D"
+  ],
+  "colors": {
+    "bg": "#F7F6F2",
+    "onBg": "#2B2B2B",
+    "onBgMuted": "rgba(43,43,43,.62)",
+    "paper": "#FFFFFF",
+    "ink": "#2B2B2B",
+    "accent": "#2F63C9",
+    "accentInk": "#FFFFFF",
+    "pattern": "rgba(43,43,43,.07)",
+    "glow": "rgba(47,99,201,.16)"
+  },
+  "type": {
+    "display": [
+      "Caveat",
+      "Gaegu"
+    ],
+    "heading": [
+      "Gaegu"
+    ],
+    "body": [
+      "Gaegu"
+    ]
+  },
+  "fonts": [
+    {
+      "family": "Caveat",
+      "weight": "400 700",
+      "file": "fonts/Caveat-Variable.woff2"
+    },
+    {
+      "family": "Gaegu",
+      "weight": 700,
+      "file": "fonts/Gaegu-Bold.woff2"
+    }
+  ],
+  "look": {
+    "paper": "white",
+    "paperTone": 0.45,
+    "fiber": 0.55,
+    "grain": 0.12,
+    "grainFps": 8,
+    "boil": {
+      "amount": 0.8,
+      "fps": 6,
+      "scale": 0.02
+    }
+  },
+  "shape": {
+    "radius": "0px",
+    "stroke": "hand"
+  },
+  "motion": {
+    "pace": "느림",
+    "bpm": 90,
+    "ease": "power2.out",
+    "stagger": 1.4,
+    "transitions": [
+      "cut",
+      "fade"
+    ],
+    "stepped": 8
+  },
+  "scenes": {
+    "bg": "lines",
+    "align": "left",
+    "card": "outline",
+    "marker": "underline",
+    "weight": 700,
+    "tracking": 0,
+    "case": "none",
+    "rough": true,
+    "schemes": [
+      "dark",
+      "paper"
+    ]
+  },
+  "signature": [
+    "장면이 콘티 칸 하나처럼 손으로 그은 네모 안에 들어 있고, 칸 왼쪽 위에 '#1' 같은 칸 번호가 연필로 적힘",
+    "그림·도형은 외곽선이 먼저 한 획씩 그어지고 0.3초 뒤 빗금 명암이 채워짐(초당 8장으로 끊어서)",
+    "강조할 말 아래 파란 색연필 밑줄이 그어지고, 바꾼 말은 회색 줄로 그어 지운 뒤 옆에 새로 씀"
+  ],
+  "fits": [
+    "서비스 기획·과정 설명",
+    "단계별 안내",
+    "브랜드 이야기",
+    "캠페인 예고",
+    "제작 과정 공개"
+  ],
+  "avoid": [
+    "형광색",
+    "그림자 진한 카드",
+    "빠른 컷 연타",
+    "사진을 화면 가득"
+  ]
+}

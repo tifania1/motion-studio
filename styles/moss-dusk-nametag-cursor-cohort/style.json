@@ -1,0 +1,133 @@
+{
+  "id": "moss-dusk-nametag-cursor-cohort",
+  "name": "이끼빛 어둠 이름표 커서 모임",
+  "group": "제품 UI",
+  "template": "uidemo",
+  "summary": "짙은 녹회색 어둠에 흐린 빛 방울이 떠 있고, 파스텔 이름표를 단 커서들이 왼쪽 정렬 굵은 문장 둘레를 맴돌아요. 얼굴 카드가 흐림을 끌며 밀려와 한 줄로 서고, 영상 카드 아래 민트 말풍선이 쌓인 뒤 화살표가 물결 꼬리를 끌고 솟아오르는 커뮤니티 런칭",
+  "tags": [
+    "제품 UI",
+    "커서",
+    "이름표",
+    "커뮤니티",
+    "어두움",
+    "청록"
+  ],
+  "hand": false,
+  "source": {
+    "site": "keyframe.gallery",
+    "ref": "mux:Nhtph4HGxn5D8rwCa00iqyV01jGTb26JUXGvy4Y37bqeo",
+    "at": "0–20초",
+    "note": "굵고 끝이 둥근 흰 획 하나가 날아들며 글자를 지어 가는 워드마크 오프닝, 문장 둘레를 천천히 떠도는 파스텔 이름표 커서 떼, 화면 전체가 옆으로 흐르는 휙 전환, 얼굴 카드 셋이 줄 서고 커서 하나가 아래 머무는 장면, 영상 카드 아래 민트 말풍선 쌓기, 문장으로 파고드는 확대와 흰 세로 획, 빛 고리에서 물결 꼬리를 끌고 솟는 화살표"
+  },
+  "palette": [
+    "#1C2522",
+    "#ECEFEC",
+    "#6CC6C0",
+    "#F2A9B4",
+    "#8FB4F0",
+    "#6FD08C"
+  ],
+  "colors": {
+    "bg": "#1C2522",
+    "onBg": "#ECEFEC",
+    "onBgMuted": "rgba(236,239,236,.62)",
+    "paper": "#2A3A33",
+    "ink": "#EEF2EF",
+    "accent": "#6CC6C0",
+    "accentInk": "#0E1A19",
+    "pattern": "rgba(255,255,255,.06)",
+    "glow": "rgba(108,198,192,.3)"
+  },
+  "type": {
+    "display": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "heading": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "body": [
+      "Geist",
+      "Noto Sans KR"
+    ]
+  },
+  "fonts": [
+    {
+      "family": "Geist",
+      "weight": "100 900",
+      "file": "fonts/Geist-Variable.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 500,
+      "file": "fonts/NotoSansKR-Medium.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 700,
+      "file": "fonts/NotoSansKR-Bold.woff2"
+    }
+  ],
+  "look": {
+    "grain": 0.06,
+    "grainFps": 12,
+    "vignette": 0.35
+  },
+  "shape": {
+    "radius": "calc(var(--u) * 1.4)"
+  },
+  "motion": {
+    "pace": "보통",
+    "bpm": 110,
+    "ease": "power3.out",
+    "stagger": 0.8,
+    "transitions": [
+      "whip",
+      "blur",
+      "cut"
+    ]
+  },
+  "scenes": {
+    "bg": "aurora",
+    "align": "left",
+    "card": "glass",
+    "marker": "color",
+    "weight": 700,
+    "tracking": -0.01,
+    "case": "none",
+    "rough": false,
+    "title": "rise",
+    "frame": "none",
+    "deco": [
+      "cursor",
+      "bubbles",
+      "orb"
+    ],
+    "number": "count",
+    "scale": 1,
+    "schemes": [
+      "dark",
+      "paper",
+      "dark"
+    ]
+  },
+  "signature": [
+    "왼쪽 정렬 굵은 흰 문장 둘레로 파스텔 이름표(분홍·연보라·하늘·연두·자홍)를 단 작은 화살 커서 4~6개가 각자 다른 속도로 천천히 떠돌고, 문장이 바뀔 땐 화면 전체가 옆으로 흐림을 끌며 휙 넘어감",
+    "문장 오른쪽으로 둥근 얼굴 카드 3장이 흐림을 끌고 밀려와 0.15초 간격으로 줄을 서고, 이름표 커서 하나가 카드 아래로 와서 멈춤. 이어 영상 카드 한 장만 남고 그 아래 어두운 유리 판에 민트 말풍선이 한 칸씩 쌓이며 점 세 개 입력 중 알약이 맥박침",
+    "바닥의 납작한 청록 빛 고리에서 작은 화살표가 솟아올라 보라·하늘 물결 꼬리를 남기며 옅은 격자 네모를 뚫고 올라감. 처음과 끝은 굵고 끝이 둥근 흰 획 하나가 날아들어 낱말을 지어 가는 워드마크"
+  ],
+  "fits": [
+    "커뮤니티·모임 서비스 런칭",
+    "온라인 강의·스터디 모집",
+    "함께 쓰는 협업 도구 소개",
+    "멘토링·네트워킹 프로그램"
+  ],
+  "avoid": [
+    "흰 바탕",
+    "쨍한 원색 큰 면",
+    "손그림 선 떨림",
+    "강조 낱말 여러 개(문장마다 청록 한 낱말만)",
+    "빽빽한 표나 긴 문단"
+  ]
+}

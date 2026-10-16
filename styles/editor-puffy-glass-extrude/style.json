@@ -1,0 +1,140 @@
+{
+  "id": "editor-puffy-glass-extrude",
+  "name": "편집기 속 말랑 입체",
+  "group": "3D·사물",
+  "template": "uidemo",
+  "summary": "옅은 회색 디자인 편집기 화면에서 선택 상자에 잡힌 납작한 글자와 도형이 효과 하나를 누르는 순간 말랑한 점토나 맑은 유리 입체로 부풀어요. 유리는 뒤 글자를 휘게 비추고, 커서가 지나가면 입체 글자가 하나씩 고개를 들어요",
+  "tags": [
+    "3D",
+    "유리",
+    "점토",
+    "편집기",
+    "부풂",
+    "디자인 도구"
+  ],
+  "hand": false,
+  "source": {
+    "site": "keyframe.gallery",
+    "ref": "mux:rMcl37y8V7Hr6cPrWA2BzIPhnkQLKBHzdDNjJn402hs00",
+    "at": "0–68.4초",
+    "note": "왼쪽 레이어 목록, 오른쪽 속성 패널, 위 도구 막대가 있는 편집기 화면을 유지한 채, 대지 속 평면 아이콘·글자에 효과 프리셋을 고르면 두께가 뒤로 밀려 나오며 반들한 입체가 되는 흐름, 유리 도형이 문장 위를 지나며 굴절시키는 장면, 원색 바탕 포스터 위 두껍게 뽑힌 한글 글자, 커서를 따라 기울어지는 입체 글자, 작업물이 타일 벽으로 모이는 엔딩"
+  },
+  "palette": [
+    "#E6E6E8",
+    "#1C1C1F",
+    "#3F5BE0",
+    "#F2742B",
+    "#B07CF0",
+    "#E98C86"
+  ],
+  "colors": {
+    "bg": "#E6E6E8",
+    "onBg": "#1C1C1F",
+    "onBgMuted": "rgba(28,28,31,.6)",
+    "paper": "#FFFFFF",
+    "ink": "#1C1C1F",
+    "accent": "#3F5BE0",
+    "accentInk": "#FFFFFF",
+    "pattern": "rgba(28,28,31,.06)",
+    "glow": "rgba(176,124,240,.35)"
+  },
+  "type": {
+    "display": [
+      "Archivo",
+      "Noto Sans KR"
+    ],
+    "heading": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "body": [
+      "Geist",
+      "Noto Sans KR"
+    ]
+  },
+  "fonts": [
+    {
+      "family": "Archivo",
+      "weight": "100 900",
+      "stretch": "62% 125%",
+      "file": "fonts/Archivo-Variable.woff2"
+    },
+    {
+      "family": "Geist",
+      "weight": "100 900",
+      "file": "fonts/Geist-Variable.woff2"
+    },
+    {
+      "family": "Instrument Serif",
+      "weight": 400,
+      "file": "fonts/InstrumentSerif-Regular.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 500,
+      "file": "fonts/NotoSansKR-Medium.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 900,
+      "file": "fonts/NotoSansKR-Black.woff2"
+    }
+  ],
+  "shape": {
+    "radius": "calc(var(--u) * 1.2)"
+  },
+  "motion": {
+    "pace": "보통",
+    "bpm": 96,
+    "ease": "back.out(1.7)",
+    "stagger": 0.9,
+    "transitions": [
+      "cut",
+      "push",
+      "fade"
+    ]
+  },
+  "scenes": {
+    "bg": "solid",
+    "align": "center",
+    "card": "glass",
+    "marker": "color",
+    "weight": 800,
+    "tracking": -0.03,
+    "case": "none",
+    "rough": false,
+    "title": "pop",
+    "frame": "window",
+    "deco": [
+      "cursor",
+      "handles"
+    ],
+    "number": "count",
+    "scale": 1.2,
+    "schemes": [
+      "dark",
+      "paper",
+      "dark",
+      "accent"
+    ]
+  },
+  "signature": [
+    "편집기 대지 한가운데 파란 선택 상자에 잡힌 납작한 아이콘이나 낱말. 커서가 오른쪽 효과 목록에서 재질 하나를 누르면 0.6초 동안 두께가 뒤로 밀려 나오고 빛 줄이 겉면을 한 번 훑으며, 크기가 1 → 1.06 → 1 로 말랑하게 튕겨 반들한 입체가 됨",
+    "맑은 유리 도형(별꽃·물방울·네모 덩어리)이 문장이나 사진 위를 천천히 돌며 떠다니고, 도형 뒤 글자가 휘어 커 보이며 가장자리에 무지개 번짐이 살짝 생김",
+    "두껍게 뽑힌 입체 글자 위를 커서가 지나가면 가까운 글자부터 차례로 커서 쪽으로 기울며 조금 떠올랐다 내려앉음. 마지막엔 그동안 만든 대지들이 크기가 제각각인 타일 벽으로 모이며 카메라가 빠짐"
+  ],
+  "fits": [
+    "디자인·3D 도구 소개",
+    "기능 업데이트 하이라이트",
+    "앱 아이콘·브랜드 굿즈 공개",
+    "젊고 말랑한 브랜드 런칭",
+    "포스터·SNS 시안 모음"
+  ],
+  "avoid": [
+    "필름 그레인·종이 같은 거친 질감",
+    "어두운 바탕만 계속 쓰기",
+    "날카로운 각진 금속 재질",
+    "한 화면에 입체 여러 개를 동시에 부풀리기",
+    "편집기 틀 없이 입체만 보여 주기"
+  ]
+}

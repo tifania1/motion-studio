@@ -1,0 +1,138 @@
+{
+  "id": "blush-haze-charcoal-dial-bars",
+  "name": "분홍 안개 다이얼 막대",
+  "group": "그라디언트·빛",
+  "template": "glow",
+  "summary": "분홍·라벤더·살구빛 안개 위로 중간 굵기 산세리프 한 줄이 어절씩 붙고, 숯빛 판이 부드러운 가장자리로 덮었다 걷혀요. 젖빛 판 위 파형은 다이얼을 돌리면 고르게 펴지고, 비스듬히 누운 숯빛 카드에서는 막대가 차오르는 차분한 기술 소개 무드예요",
+  "tags": [
+    "빛",
+    "안개",
+    "파스텔",
+    "다이얼",
+    "막대 차트",
+    "음성 AI"
+  ],
+  "hand": false,
+  "source": {
+    "site": "keyframe.gallery",
+    "ref": "mux:FRbUwwGMS94Gy6c1I02Ebt6Jbml1cOlrrqTiViC02fQOY",
+    "at": "1–51초",
+    "note": "분홍·라벤더·살구 안개 바탕과 숯빛 판이 컷이나 부드러운 가장자리 와이프로 오가는 리듬, 어절이 하나씩 붙는 한 줄 문장, 글 아래 흰 네모 토큰 줄, 젖빛 판 위 파형과 두 꼬리표 사이를 도는 다이얼, 파형이 원형 고리로 말리는 장면, 3D로 기운 숯빛 막대 차트와 파랑 강조 막대, 폰 뒤를 꽉 채운 흰 대문자 벽"
+  },
+  "palette": [
+    "#EBD3D8",
+    "#CDAEE0",
+    "#F2DCC0",
+    "#2A2A2B",
+    "#4A9BE0",
+    "#FAF6F5"
+  ],
+  "colors": {
+    "bg": "#EBD3D8",
+    "onBg": "#2B2828",
+    "onBgMuted": "rgba(43,40,40,.62)",
+    "paper": "#2A2A2B",
+    "ink": "#F2EEEE",
+    "accent": "#4A9BE0",
+    "accentInk": "#0E1418",
+    "pattern": "rgba(43,40,40,.08)",
+    "glow": "rgba(205,174,224,.45)"
+  },
+  "type": {
+    "display": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "heading": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "body": [
+      "Geist",
+      "Noto Sans KR"
+    ]
+  },
+  "fonts": [
+    {
+      "family": "Geist",
+      "weight": "100 900",
+      "file": "fonts/Geist-Variable.woff2"
+    },
+    {
+      "family": "Geist Mono",
+      "weight": "100 900",
+      "file": "fonts/GeistMono-Variable.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 500,
+      "file": "fonts/NotoSansKR-Medium.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 900,
+      "file": "fonts/NotoSansKR-Black.woff2"
+    }
+  ],
+  "look": {
+    "grain": 0.05,
+    "vignette": 0.22
+  },
+  "shape": {
+    "radius": "calc(var(--u) * 1.2)"
+  },
+  "motion": {
+    "pace": "보통",
+    "bpm": 100,
+    "ease": "power2.out",
+    "stagger": 1,
+    "transitions": [
+      "cut",
+      "wipe",
+      "fade"
+    ]
+  },
+  "scenes": {
+    "bg": "aurora",
+    "align": "center",
+    "card": "shadow",
+    "marker": "color",
+    "weight": 500,
+    "tracking": -0.01,
+    "case": "upper",
+    "rough": false,
+    "title": "fade",
+    "frame": "none",
+    "deco": [
+      "marks"
+    ],
+    "number": "count",
+    "scale": 1,
+    "schemes": [
+      "dark",
+      "paper",
+      "dark",
+      "dark",
+      "paper"
+    ]
+  },
+  "signature": [
+    "분홍·라벤더·살구 안개가 천천히 흐르는 바탕 한가운데 중간 굵기 산세리프 한 줄이 어절씩 붙어요(첫 낱말 하나 → 한 박 뒤 둘째 낱말). 다음 장면은 컷으로 숯빛 판이 되거나, 숯빛 판이 위로 걷히며 아래 가장자리 3u 쯤이 흐릿하게 번진 채 안개를 드러내요",
+    "젖빛으로 살짝 기운 판 위에 거친 소리 파형이 지나가고, 아래 둥근 다이얼(눈금 다섯 개, 양옆에 작은 대문자 꼬리표 둘)의 바늘이 왼쪽에서 오른쪽으로 0.6초에 돌면 파형이 고르게 펴지다가 원형 고리로 말려요",
+    "숯빛 카드가 3D로 비스듬히 누운 채 미끄러져 들어오고 가로 막대가 하나씩 차올라요. 강조 막대만 파랑, 이어 옆에 아주 굵은 대문자 숫자 문구가 컷으로 박히고, 다른 장면에서는 화면보다 큰 흰 대문자 벽이 폰 한 대 뒤를 꽉 채워요"
+  ],
+  "fits": [
+    "AI 모델·연구 성과 발표",
+    "음성·오디오 기술 소개",
+    "성능 비교와 벤치마크",
+    "오픈소스 공개",
+    "차분한 기술 런칭 티저"
+  ],
+  "avoid": [
+    "채도 높은 원색 바탕",
+    "손그림·종이 질감",
+    "한 화면에 문장 여러 줄",
+    "통통 튀는 이징",
+    "강조색 여러 개(파랑 하나만)"
+  ]
+}

@@ -1,0 +1,131 @@
+{
+  "id": "symbol-world-hop",
+  "name": "기호 하나, 바뀌는 세계",
+  "group": "시네마틱",
+  "template": "cinema",
+  "summary": "가운데 흰 기호는 그대로, 위의 점이 튀어 내려앉을 때마다 뒤 세계가 성운·하늘·바위·별밭으로 컷. 보라 빛무리가 기호 모양을 따라 번지는 브랜드 공개",
+  "tags": [
+    "시네마틱",
+    "브랜드 공개",
+    "로고",
+    "성운",
+    "리듬"
+  ],
+  "hand": false,
+  "source": {
+    "site": "keyframe.gallery",
+    "ref": "mux:VyFKc6HZBtCDqcrH1SfF302nZWulqdI00qGpDJJHciTHE",
+    "at": "7.6–9.6초, 12.7–22.0초",
+    "note": "흐린 마크가 선명해지고 자간 넓은 대문자 이름이 맺히는 공개, 기호를 화면 가운데 고정한 채 재질·배경 세계만 박마다 컷으로 바꾸는 몽타주, 기호 모양을 따라 겹겹이 번지는 보라 빛무리와 기호가 휙 돌아 뒤집히는 움직임, 점이 튀어 내려앉을 때 납작해졌다 길쭉해지는 리듬"
+  },
+  "palette": [
+    "#1B1022",
+    "#F4F1F6",
+    "#9B8CF7",
+    "#D9467A",
+    "#3FC1A8",
+    "#5B8FE0"
+  ],
+  "colors": {
+    "bg": "#1B1022",
+    "onBg": "#F4F1F6",
+    "onBgMuted": "rgba(244,241,246,.62)",
+    "paper": "#ECE9E4",
+    "ink": "#3A1A26",
+    "accent": "#9B8CF7",
+    "accentInk": "#160C2A",
+    "pattern": "rgba(244,241,246,.08)",
+    "glow": "rgba(155,140,247,.5)"
+  },
+  "type": {
+    "display": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "heading": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "body": [
+      "Geist",
+      "Noto Sans KR"
+    ]
+  },
+  "fonts": [
+    {
+      "family": "Geist",
+      "weight": "100 900",
+      "file": "fonts/Geist-Variable.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 500,
+      "file": "fonts/NotoSansKR-Medium.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 700,
+      "file": "fonts/NotoSansKR-Bold.woff2"
+    }
+  ],
+  "look": {
+    "grain": 0.06,
+    "vignette": 0.3
+  },
+  "shape": {
+    "radius": "calc(var(--u) * 2.4)"
+  },
+  "motion": {
+    "pace": "보통",
+    "bpm": 92,
+    "ease": "power3.out",
+    "stagger": 1,
+    "transitions": [
+      "cut",
+      "cut",
+      "iris",
+      "cut"
+    ]
+  },
+  "scenes": {
+    "bg": "aurora",
+    "align": "center",
+    "card": "flat",
+    "marker": "color",
+    "weight": 700,
+    "tracking": 0.04,
+    "case": "upper",
+    "rough": false,
+    "title": "stamp",
+    "frame": "none",
+    "deco": [
+      "orb",
+      "rings"
+    ],
+    "number": "count",
+    "scale": 1.15,
+    "schemes": [
+      "dark",
+      "accent",
+      "dark",
+      "paper"
+    ]
+  },
+  "signature": [
+    "화면 한가운데 기호(또는 짧은 낱말)는 자리를 지키고, 위의 점이 튀어 올랐다 내려앉을 때마다(한 박, 약 0.65초) 뒤 세계가 컷으로 바뀜: 성운 → 하늘 사진 → 바위 → 형광 그라디언트 → 별밭. 내려앉는 순간 점이 납작한 알약이 됐다 길쭉해지며 둥글게 돌아옴",
+    "보라 빛무리: 짙은 자두색 바탕에서 기호 둘레로 기호 모양을 따라 번진 빛이 두세 겹 퍼지고, 기호가 0.3초에 휙 돌아 뒤집히면 빛무리가 반 박 늦게 따라 돎",
+    "공개: 흐린 기호가 0.3초에 선명해지고, 그 아래 자간 넓은 대문자 이름이 흐림에서 맺힘. 바탕은 아래가 짙은 연보라 구름"
+  ],
+  "fits": [
+    "브랜드 리뉴얼·새 로고 공개",
+    "앱 아이콘·상징 소개",
+    "런칭 티저",
+    "굿즈·캠페인 키 비주얼"
+  ],
+  "avoid": [
+    "글이 많은 장면",
+    "기호를 장면마다 다른 자리로 옮기기",
+    "부드러운 페이드 전환만 쓰기",
+    "작은 UI 화면"
+  ]
+}

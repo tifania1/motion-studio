@@ -1,0 +1,130 @@
+{
+  "id": "arch-stripe-touchpoints",
+  "name": "반원 줄무늬 브랜드 접점",
+  "group": "그래픽·도형",
+  "template": "brandmark",
+  "summary": "어두운 화면에서 둥근 머리 기둥에 채운 줄무늬 그라디언트가 일렁이고, 그 무늬 하나가 앱 아이콘, SNS 카드, 웹 화면, 폰·노트북으로 박자마다 옮겨 다니다가 마지막에 밝은 회색 위 검정 마크 하나로 맺히는 브랜드 시스템 필름",
+  "tags": [
+    "그래픽",
+    "패턴",
+    "그라디언트",
+    "브랜드 시스템",
+    "리브랜딩",
+    "로고 엔딩"
+  ],
+  "hand": false,
+  "source": {
+    "site": "keyframe.gallery",
+    "ref": "mux:s2Zc5PP5MVSvJEy5t7LlUJNURonHW6rXV1xQmnbqswc",
+    "at": "0–16.6초",
+    "note": "반원 머리 기둥과 사선 띠에 분홍·노랑·하늘 그라디언트를 채운 무늬 하나를 앱 아이콘, SNS 카드 격자, 어두운 웹 화면 뒤 바탕, 폰·노트북 화면, 옷과 모자로 1초 안팎마다 컷으로 옮기는 구성. 컷마다 천천히 다가가는 카메라, 어두운 장면과 밝은 장면의 번갈림, 끝에서 무늬를 모두 걷고 밝은 회색 위 검정 마크로 멈추는 엔딩"
+  },
+  "palette": [
+    "#1E1E1F",
+    "#ECECEA",
+    "#E3337F",
+    "#F4D23C",
+    "#3FA8E0",
+    "#D9D1E6"
+  ],
+  "colors": {
+    "bg": "#1E1E1F",
+    "onBg": "#F1F1EF",
+    "onBgMuted": "rgba(241,241,239,.62)",
+    "paper": "#ECECEA",
+    "ink": "#1C1C1C",
+    "accent": "#E3337F",
+    "accentInk": "#0F0F0F",
+    "pattern": "rgba(28,28,28,0)",
+    "glow": "rgba(227,51,127,.5)"
+  },
+  "type": {
+    "display": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "heading": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "body": [
+      "Geist",
+      "Noto Sans KR"
+    ]
+  },
+  "fonts": [
+    {
+      "family": "Geist",
+      "weight": "100 900",
+      "file": "fonts/Geist-Variable.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 500,
+      "file": "fonts/NotoSansKR-Medium.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 700,
+      "file": "fonts/NotoSansKR-Bold.woff2"
+    }
+  ],
+  "shape": {
+    "radius": "calc(var(--u) * 2.2)"
+  },
+  "motion": {
+    "pace": "빠름",
+    "bpm": 116,
+    "ease": "power3.out",
+    "stagger": 0.8,
+    "transitions": [
+      "cut",
+      "push",
+      "wipe"
+    ]
+  },
+  "scenes": {
+    "bg": "none",
+    "align": "center",
+    "card": "shadow",
+    "marker": "color",
+    "weight": 500,
+    "tracking": -0.02,
+    "case": "none",
+    "rough": false,
+    "title": "mask",
+    "frame": "none",
+    "deco": [
+      "shapes"
+    ],
+    "number": "count",
+    "scale": 1.1,
+    "schemes": [
+      "dark",
+      "accent",
+      "dark",
+      "paper",
+      "paper"
+    ]
+  },
+  "signature": [
+    "어두운 바탕에서 둥근 머리 기둥 10~14개가 반 박 간격으로 아래에서 솟아 한 줄로 서고, 기둥마다 채운 세로 그라디언트(분홍→노랑, 하늘→라일락)가 위아래로 천천히 흘러 무늬가 숨 쉬듯 일렁임",
+    "같은 무늬가 박마다 컷으로 다른 자리에 옮겨 감: 검은 둥근 사각 앱 아이콘 → SNS 카드 격자 → 어두운 웹 화면 뒤 바탕 → 폰·노트북 화면. 컷마다 그 안에서 1초 동안 2~4% 천천히 다가감",
+    "마지막엔 무늬를 모두 걷고 밝은 회색 바탕 한가운데 검정 마크와 이름 한 줄만 남겨 2~3초 그대로 둠"
+  ],
+  "fits": [
+    "리브랜딩 공개",
+    "브랜드 시스템·가이드 소개",
+    "투자 유치·새 기능 발표",
+    "스타트업 런칭 티저",
+    "굿즈·접점 쇼케이스"
+  ],
+  "avoid": [
+    "손그림 선",
+    "종이·그레인 질감",
+    "모눈·재단 표시 같은 설계도 무늬",
+    "무늬마다 다른 모양 섞기",
+    "긴 문장",
+    "느린 서서히 전환만 쓰기"
+  ]
+}

@@ -1,0 +1,135 @@
+{
+  "id": "beige-contour-desk-clay-voice-haze",
+  "name": "베이지 등고선 데스크와 흙빛 음성 안개",
+  "group": "제품 UI",
+  "template": "uidemo",
+  "summary": "옅은 등고선이 흐르는 베이지 바탕화면에서 카메라가 앱 창에 바짝 붙어 세리프 답이 흘러나오는 걸 보여 주고, 말로 입력할 땐 화면이 흐려지며 아래에서 테라코타 안개가 번져 올라오는 차분한 데스크톱 데모",
+  "tags": [
+    "제품 UI",
+    "데스크톱",
+    "AI 도우미",
+    "음성 입력",
+    "베이지",
+    "테라코타"
+  ],
+  "hand": false,
+  "source": {
+    "site": "keyframe.gallery",
+    "ref": "mux:kKSiXS00CuaU11SH3BT3vTwaUPRKGNJ7Jr01LnjWSXYiA",
+    "at": "0–35.4초",
+    "note": "옅은 등고선이 깔린 베이지 바탕과 가운데 흙빛 둥근 사각 아이콘, 크게 당겨 잡은 도크에서 바탕화면으로 빠지는 오프닝, 왼쪽 위 대괄호 속 키캡 두 개가 눌리면 뒤가 어두워지며 아래에 뜨는 얇은 입력 막대, 앱 창 안으로 파고들어 세리프 답이 줄줄이 써지며 올라가는 장면, 화면이 흐려지고 아래 3분의 1에서 테라코타 안개가 피어오르며 파형 알약이 뜨는 음성 입력, 아이콘을 누르면 짧은 먹색 획이 방사형으로 튀고 세리프 로고타입으로 닫히는 엔딩"
+  },
+  "palette": [
+    "#E3DDD2",
+    "#2B2622",
+    "#D27654",
+    "#F7F5F1",
+    "#C9C1B4"
+  ],
+  "colors": {
+    "bg": "#E3DDD2",
+    "onBg": "#2B2622",
+    "onBgMuted": "rgba(43,38,34,.62)",
+    "paper": "#F7F5F1",
+    "ink": "#1F1C19",
+    "accent": "#D27654",
+    "accentInk": "#1A0F0A",
+    "pattern": "rgba(255,252,246,.55)",
+    "glow": "rgba(210,118,84,.4)"
+  },
+  "type": {
+    "display": [
+      "Instrument Serif",
+      "Gowun Batang"
+    ],
+    "heading": [
+      "Gowun Batang"
+    ],
+    "body": [
+      "Geist",
+      "Noto Sans KR"
+    ]
+  },
+  "fonts": [
+    {
+      "family": "Instrument Serif",
+      "weight": 400,
+      "file": "fonts/InstrumentSerif-Regular.woff2"
+    },
+    {
+      "family": "Gowun Batang",
+      "weight": 400,
+      "file": "fonts/GowunBatang-Regular.woff2"
+    },
+    {
+      "family": "Gowun Batang",
+      "weight": 700,
+      "file": "fonts/GowunBatang-Bold.woff2"
+    },
+    {
+      "family": "Geist",
+      "weight": "100 900",
+      "file": "fonts/Geist-Variable.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 500,
+      "file": "fonts/NotoSansKR-Medium.woff2"
+    }
+  ],
+  "shape": {
+    "radius": "calc(var(--u) * 1.2)"
+  },
+  "motion": {
+    "pace": "보통",
+    "bpm": 96,
+    "ease": "power3.inOut",
+    "stagger": 1,
+    "transitions": [
+      "cut",
+      "blur",
+      "fade"
+    ]
+  },
+  "scenes": {
+    "bg": "lines",
+    "align": "center",
+    "card": "shadow",
+    "marker": "color",
+    "weight": 400,
+    "tracking": -0.01,
+    "case": "none",
+    "rough": false,
+    "title": "type",
+    "frame": "window",
+    "deco": [
+      "cursor"
+    ],
+    "number": "count",
+    "scale": 1,
+    "schemes": [
+      "dark",
+      "paper",
+      "dark",
+      "accent"
+    ]
+  },
+  "signature": [
+    "베이지 바탕 왼쪽 위에 큰 대괄호로 감싼 키캡 두 개가 떠서 차례로 눌리면(0.12초 꾹 내려감) 뒤 화면이 회색으로 한 톤 어두워지고, 아래 가운데에 얇은 흰 입력 막대가 0.4초에 솟아 질문이 쳐짐. 이어 카메라가 앱 창으로 파고들어 창이 화면을 거의 채움",
+    "말로 입력할 때: 앱 화면 전체가 6~8px 흐려지고, 아래 3분의 1에서 테라코타 안개가 1초 동안 번져 올라옴. 그 위에 반투명 알약 하나가 떠서 왼쪽 반짝 기호, 가운데 막대 파형(소리에 맞춰 키가 바뀜), 오른쪽 작은 키 꼬리표를 보여 주고, 손을 떼면 안개가 가라앉으며 말이 입력 막대 속 글자로 맺힘",
+    "엔딩: 등고선 베이지 바탕 가운데 흙빛 둥근 사각 아이콘을 커서가 누르면 아이콘이 작은 마크로 줄어들고, 둘레로 짧은 먹색 획 8개가 방사형으로 0.5초 튀었다 사라진 뒤 세리프 로고타입 한 줄로 닫힘"
+  ],
+  "fits": [
+    "데스크톱 앱 기능 소개",
+    "AI 도우미·대화형 도구 데모",
+    "음성 입력·단축키 기능 안내",
+    "차분한 업무용 도구 런칭"
+  ],
+  "avoid": [
+    "형광색이나 차가운 파랑 강조",
+    "빠른 컷 몽타주",
+    "굵은 고딕 대제목",
+    "어두운 바탕",
+    "풍경 사진 바탕화면"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "kind": "ONE DAY CLASS",
+  "name": "가을 핸드드립\n원데이 클래스",
+  "date": "10.25",
+  "day": "SAT",
+  "dateText": "10월 25일 토요일",
+  "time": "오후 2시 — 4시",
+  "place": "가게 2층 작업실",
+  "price": "참가비 무료",
+  "programTitle": "PROGRAM",
+  "program": [["14:00", "원두 이야기"], ["14:40", "직접 내려 보기"], ["15:30", "시음하고 질문하기"]],
+  "note": "앞치마와 원두는 저희가 준비해요",
+  "dday": "D-7",
+  "ddayNote": "선착순 20명",
+  "admit": "ADMIT ONE",
+  "cta": { "headline": "자리가 차기 전에\n신청해 주세요", "button": "신청하기", "sub": "@계정이름" }
+}

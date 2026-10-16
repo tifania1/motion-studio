@@ -1,0 +1,9 @@
+{
+  "name": "레트로 터미널",
+  "description": "옛 컴퓨터 창이 열리고 프롬프트에 첫 문장이 타자로 쳐져요. 장점마다 아스키 진행 막대가 차고 ✓ 줄이 찍히며 위로 흐르고, 화면이 지워진 뒤 점 전광판에 숫자가 켜져요. 사진은 디더링 창에 한 줄씩 그려지고(없으면 아스키 아트 로고), 마지막엔 깜빡이는 프롬프트 버튼. 예시 기준 23초(항목 수에 따라 16~25초).",
+  "fonts": [
+    { "family": "Galmuri11", "weight": 400, "file": "fonts/Galmuri11.woff2" },
+    { "family": "Silkscreen", "weight": 400, "file": "fonts/Silkscreen-Regular.woff2" },
+    { "family": "Geist Mono", "weight": "100 900", "file": "fonts/GeistMono-Variable.woff2" }
+  ]
+}

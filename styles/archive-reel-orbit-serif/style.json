@@ -1,0 +1,138 @@
+{
+  "id": "archive-reel-orbit-serif",
+  "name": "기록 필름과 궤도 세리프",
+  "group": "다이어그램·데이터",
+  "template": "dataflow",
+  "summary": "바랜 기록 필름 컷이 이야기를 열고, 먹빛 화면으로 넘어가면 가는 세리프 한 줄 둘레를 흰 머리카락 같은 타원 궤도선이 감싸며 천천히 기울어 도는 흑백 선화 설명 필름",
+  "tags": [
+    "궤도선",
+    "세리프",
+    "흑백",
+    "기록 필름",
+    "금융",
+    "느림"
+  ],
+  "hand": false,
+  "source": {
+    "site": "keyframe.gallery",
+    "ref": "mux:UejytD4qNUchha2wHrJBEl9Bmc00tccg4FYjOWs3fbjw",
+    "at": "0–52초, 52.8–101.7초",
+    "note": "바랜 색감의 옛 자료 화면(지구, 계산기 화면, 금고 문, 지폐 인쇄, 신문 스크랩 더미)이 몇 초마다 컷으로 이어지다 작은 틀들로 줄어 겹치며 먹빛으로 빠지는 앞부분, 먹빛 바탕 가운데 가는 세리프 한 줄이 글자씩 쳐지고 두 겹으로 끊긴 흰 타원 궤도선이 그어져 감싸는 장면, 여러 궤도 고리가 서로 다른 축으로 기울어 돌며 자이로스코프 같은 구로 모이는 장면, 위아래 가장자리에 흐르는 짧은 가로 눈금"
+  },
+  "palette": [
+    "#111111",
+    "#E8E6E1",
+    "#8A8A86",
+    "#E9E6DE",
+    "#B5874F",
+    "#2E4A63"
+  ],
+  "colors": {
+    "bg": "#111111",
+    "onBg": "#E8E6E1",
+    "onBgMuted": "rgba(232,230,225,.58)",
+    "paper": "#E9E6DE",
+    "ink": "#141414",
+    "accent": "#F2F0EB",
+    "accentInk": "#111111",
+    "pattern": "rgba(255,255,255,.07)",
+    "glow": "rgba(255,255,255,.16)"
+  },
+  "type": {
+    "display": [
+      "Instrument Serif",
+      "Gowun Batang"
+    ],
+    "heading": [
+      "Instrument Serif",
+      "Gowun Batang"
+    ],
+    "body": [
+      "Geist",
+      "Gowun Batang"
+    ]
+  },
+  "fonts": [
+    {
+      "family": "Instrument Serif",
+      "weight": 400,
+      "file": "fonts/InstrumentSerif-Regular.woff2"
+    },
+    {
+      "family": "Instrument Serif",
+      "weight": 400,
+      "style": "italic",
+      "file": "fonts/InstrumentSerif-Italic.woff2"
+    },
+    {
+      "family": "Gowun Batang",
+      "weight": 400,
+      "file": "fonts/GowunBatang-Regular.woff2"
+    },
+    {
+      "family": "Geist",
+      "weight": "100 900",
+      "file": "fonts/Geist-Variable.woff2"
+    }
+  ],
+  "look": {
+    "grain": 0.06,
+    "grainFps": 12,
+    "vignette": 0.12
+  },
+  "shape": {
+    "radius": "calc(var(--u) * 0.4)"
+  },
+  "motion": {
+    "pace": "느림",
+    "bpm": 80,
+    "ease": "sine.inOut",
+    "stagger": 1.1,
+    "transitions": [
+      "cut",
+      "fade",
+      "cut"
+    ]
+  },
+  "scenes": {
+    "bg": "none",
+    "align": "center",
+    "card": "outline",
+    "marker": "circle",
+    "weight": 400,
+    "tracking": 0,
+    "case": "none",
+    "rough": false,
+    "title": "type",
+    "frame": "none",
+    "deco": [
+      "rings",
+      "marks"
+    ],
+    "number": "count",
+    "scale": 0.9,
+    "schemes": [
+      "dark",
+      "dark",
+      "paper"
+    ]
+  },
+  "signature": [
+    "먹빛 화면 가운데 가는 세리프 한 줄이 글자씩 쳐지고, 흰 타원 궤도선이 1.5초에 걸쳐 그어지며 문장을 감쌈. 궤도선은 두 겹 평행선이 군데군데 끊기고 작은 마디 눈금이 박혀 있으며, 다 그려진 뒤 천천히 기울어 돌아 납작해졌다 둥글어짐",
+    "궤도 고리 3~6개가 각자 다른 축으로 기울어 느리게 돌다가 한가운데로 모여 자이로스코프 같은 선의 구가 되고, 다시 화면 밖으로 크게 벌어져 흩어짐",
+    "앞부분은 바랜 필름 색의 자료 화면 컷이 3~4초마다 이어지다, 끝 무렵 사진들이 작은 틀로 줄어 엇갈려 겹치고 하나씩 꺼지며 먹빛 화면만 남음"
+  ],
+  "fits": [
+    "금융·결제 인프라 소개",
+    "기술 비전·선언 필름",
+    "개념을 차근차근 설명하는 긴 영상",
+    "역사에서 오늘로 넘어오는 브랜드 이야기"
+  ],
+  "avoid": [
+    "밝은 바탕 장면을 길게 쓰기",
+    "굵은 제목",
+    "원색 강조색",
+    "빠른 박자 컷과 튀는 이징",
+    "손그림 선 떨림"
+  ]
+}

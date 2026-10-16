@@ -1,0 +1,110 @@
+{
+  "id": "serif-handles-editorial",
+  "name": "세리프와 선택 핸들",
+  "group": "콜라주·사진",
+  "template": "collage",
+  "summary": "큰 세리프 글자가 사진 위에 얹히고, 모서리 선택 핸들이 낱말과 사진 틀을 잡아 늘이며 박자마다 사진이 바뀌는 편집 감성",
+  "tags": [
+    "세리프",
+    "사진",
+    "편집",
+    "패션",
+    "뷰티"
+  ],
+  "hand": false,
+  "source": {
+    "site": "keyframe.gallery",
+    "ref": "mux:oGxZ1SQkTFuWWDXt5qC01kKA002Bnzf02uP2jZOlziw5mw",
+    "at": "0–9초, 14–47초",
+    "note": "낱말을 네 귀퉁이 괄호로 감싸고 반 박마다 낱말과 사진을 함께 컷, 흩어진 낱말과 사진 타일이 한 줄로 모였다 글자가 빠지며 사라짐, 사진 위 큰 세리프 문구 고정에 뒤 사진만 교체, 글자 마스크, 핸들로 틀을 넓히면 자간도 벌어짐"
+  },
+  "palette": [
+    "#ECEBE8",
+    "#1E1C1A",
+    "#B7A1F5",
+    "#6A4BDB",
+    "#C79A8C"
+  ],
+  "colors": {
+    "bg": "#ECEBE8",
+    "onBg": "#1E1C1A",
+    "onBgMuted": "rgba(30,28,26,.6)",
+    "paper": "#FFFFFF",
+    "ink": "#1E1C1A",
+    "accent": "#6A4BDB",
+    "accentInk": "#FFFFFF",
+    "pattern": "rgba(30,28,26,.07)",
+    "glow": "rgba(138,108,240,.3)"
+  },
+  "type": {
+    "display": [
+      "Noto Serif KR"
+    ],
+    "heading": [
+      "Noto Serif KR"
+    ],
+    "body": [
+      "Geist",
+      "Noto Sans KR"
+    ]
+  },
+  "fonts": [
+    {
+      "family": "Noto Serif KR",
+      "weight": 900,
+      "file": "fonts/NotoSerifKR-Black.woff2"
+    },
+    {
+      "family": "Geist",
+      "weight": "100 900",
+      "file": "fonts/Geist-Variable.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 500,
+      "file": "fonts/NotoSansKR-Medium.woff2"
+    }
+  ],
+  "look": {
+    "grain": 0.05
+  },
+  "shape": {
+    "radius": "calc(var(--u) * 0.4)"
+  },
+  "motion": {
+    "pace": "빠름",
+    "bpm": 120,
+    "ease": "power3.out",
+    "stagger": 1,
+    "transitions": [
+      "cut",
+      "zoom"
+    ]
+  },
+  "scenes": {
+    "bg": "grid",
+    "align": "center",
+    "card": "outline",
+    "marker": "color",
+    "weight": 900,
+    "tracking": -0.01,
+    "case": "none",
+    "rough": false
+  },
+  "signature": [
+    "낱말 하나를 네 귀퉁이 괄호(선택 핸들)로 감싸고 반 박마다 낱말과 뒤 사진을 함께 컷으로 바꿈. 괄호는 그 자리에서 새 낱말 너비에 맞춰 스프링으로 늘었다 줄어듦",
+    "흩어진 낱말과 작은 사진 타일이 한 줄 문장으로 모였다가, 글자가 무작위로 하나씩 빠지며 사라짐",
+    "사진 위 큰 세리프 문구는 그대로 두고 뒤 사진만 박자마다 바뀜. 글자 안에 사진을 채우거나(마스크), 선택 상자 핸들을 끌어 사진 틀을 넓히면 아래 낱말 자간도 같이 벌어짐"
+  ],
+  "fits": [
+    "패션·뷰티·향수",
+    "디자인·사진 서비스",
+    "매거진 느낌 브랜드",
+    "포트폴리오"
+  ],
+  "avoid": [
+    "굵은 고딕 제목",
+    "아이콘 위주 UI",
+    "네온 색"
+  ]
+}

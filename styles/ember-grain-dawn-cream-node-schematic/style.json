@@ -1,0 +1,146 @@
+{
+  "id": "ember-grain-dawn-cream-node-schematic",
+  "name": "주황 새벽 그레인과 미색 노드 도면",
+  "group": "제품 UI",
+  "template": "uidemo",
+  "summary": "첫 장면은 거친 그레인이 낀 주황 판이고, 그 아래로 노란 새벽빛이 번지며 문장이 한 글자씩 쳐지고 숫자가 굴러 올라가요. 컷 한 번에 미색 판으로 넘어가면 모서리 핸들을 단 가는 선 노드가 점선으로 이어지며 흐름도가 넓어져요. 끝에는 화면이 픽셀로 부서진 뒤 가는 주황 선 마크가 앵커 점을 짚으며 그려지는 개발자 런칭",
+  "tags": [
+    "제품 UI",
+    "개발자",
+    "런칭",
+    "주황",
+    "그레인",
+    "노드 도면",
+    "핸들"
+  ],
+  "hand": false,
+  "source": {
+    "site": "keyframe.gallery",
+    "ref": "mux:QQaDo8TFI81KhPgQkz4PY01lE4yOPFga7tUWXjWh9ffE",
+    "at": "0–55.1초",
+    "note": "주황 그레인 판 아래에서 숨 쉬듯 번지는 노란 새벽빛과 한 글자씩 쳐지는 미색 문장, 문장 속 퍼센트 숫자가 굴러 오름(5.5–7.7초), 큰 흰 알약 행동 버튼(9.9초), 모서리 작은 네모 핸들을 단 가는 선 상자와 점선 노드 흐름도(12.1–18.7초, 30.8–33.1초), 기호에서 맞춰지다 끝말만 주황으로 바뀌는 문장(23.1–25.3초), 주황 뾰족 그래프(35.2초), 미색·주황 반 나눔 카드(37.4–39.6초), 픽셀 모자이크로 부서지며 앵커 점 달린 선 마크가 그려지는 엔딩(46.2–48.4초)"
+  },
+  "palette": [
+    "#F7F4EF",
+    "#E5552A",
+    "#2B1A14",
+    "#F6C66A",
+    "#F2D3C6",
+    "#5B8FE0"
+  ],
+  "colors": {
+    "bg": "#EFECE7",
+    "onBg": "#2B1A14",
+    "onBgMuted": "rgba(43,26,20,.6)",
+    "paper": "#F7F4EF",
+    "ink": "#2B1A14",
+    "accent": "#E5552A",
+    "accentInk": "#0A0402",
+    "pattern": "rgba(43,26,20,.14)",
+    "glow": "rgba(246,198,106,.6)"
+  },
+  "type": {
+    "display": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "heading": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "body": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "mono": [
+      "Geist Mono",
+      "Noto Sans KR"
+    ]
+  },
+  "fonts": [
+    {
+      "family": "Geist",
+      "weight": "100 900",
+      "file": "fonts/Geist-Variable.woff2"
+    },
+    {
+      "family": "Geist Mono",
+      "weight": "100 900",
+      "file": "fonts/GeistMono-Variable.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 500,
+      "file": "fonts/NotoSansKR-Medium.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 700,
+      "file": "fonts/NotoSansKR-Bold.woff2"
+    }
+  ],
+  "look": {
+    "grain": 0.16,
+    "grainFps": 12,
+    "scanlines": 0.1,
+    "vignette": 0.1
+  },
+  "shape": {
+    "radius": "calc(var(--u) * 1.2)"
+  },
+  "motion": {
+    "pace": "보통",
+    "bpm": 110,
+    "ease": "power3.out",
+    "stagger": 0.8,
+    "transitions": [
+      "cut",
+      "wipe",
+      "blocks"
+    ]
+  },
+  "scenes": {
+    "bg": "none",
+    "align": "center",
+    "card": "outline",
+    "marker": "color",
+    "weight": 500,
+    "tracking": -0.02,
+    "case": "none",
+    "rough": false,
+    "title": "type",
+    "frame": "none",
+    "deco": [
+      "handles",
+      "marks"
+    ],
+    "number": "odometer",
+    "scale": 1,
+    "schemes": [
+      "dark",
+      "paper",
+      "paper",
+      "paper"
+    ]
+  },
+  "signature": [
+    "첫 장면만 주황 그레인 판이에요. 아래 가장자리에서 노랑·흰빛 새벽빛이 4초 주기로 숨 쉬듯 부풀고, 그 위 가운데에 문장이 한 글자씩 쳐져요. 문장 속 퍼센트 숫자는 자리마다 굴러 올라가 멈춰요",
+    "미색 판 위 가는 선 상자 네 귀퉁이에 작은 네모 핸들이 달리고, 상자끼리 점선과 둥근 곡선으로 이어져요. 카메라가 노드 하나에 바짝 붙었다가 천천히 빠지면 흐름도가 넓어지고, 가운데 노드 하나만 주황 선과 주황 아이콘으로 켜져요",
+    "엔딩: 앞 장면이 큰 픽셀 모자이크로 부서지며 분홍빛 미색 판으로 넘어가고, 가는 주황 선 마크가 앵커 점을 하나씩 짚으며 그려진 뒤 작은 주소 한 줄로 닫혀요"
+  ],
+  "fits": [
+    "개발자 도구·플랫폼 런칭",
+    "인프라·배포 서비스 소개",
+    "작업 흐름·자동화 설명",
+    "숫자 하나로 규모를 자랑할 때",
+    "기술 행사 오프닝"
+  ],
+  "avoid": [
+    "손그림 선",
+    "주황 말고 강조색 여러 개 (파랑은 노드 도면 한 장에만)",
+    "굵은 블랙 제목",
+    "주황 판을 여러 장면에 깔기 (첫 장면과 강조에만)",
+    "매끈한 무광 주황 (그레인을 꼭 깔아요)",
+    "빠른 글리치 컷"
+  ]
+}

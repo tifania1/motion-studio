@@ -1,0 +1,133 @@
+{
+  "id": "hyperspace-stat-reel",
+  "name": "초공간 숫자 결산",
+  "group": "시네마틱",
+  "template": "cinema",
+  "summary": "검은 화면에 흰 글이 왼쪽부터 쓸려 나오고, 큰 숫자 뒤로 파란 빛줄기가 쏟아지는 초공간. 글은 카메라 뒤로 지나가듯 커지며 빠지는 한 해 결산",
+  "tags": [
+    "시네마틱",
+    "결산",
+    "숫자",
+    "어두움",
+    "빛줄기"
+  ],
+  "hand": false,
+  "source": {
+    "site": "keyframe.gallery",
+    "ref": "mux:CDKH9ne02LWLl7YpVl402Y4xC00wUXqAywxsbIjgsL6va8",
+    "at": "0–6.4초, 10.4–18.0초, 22.0–25.0초",
+    "note": "한 단어가 크게 떴다 작아지며 다음 말이 붙는 오프닝, 아주 굵은 대문자 두 줄 쌓기, 숫자가 빠르게 올라가고 아래 단위 말이 옅게 붙는 장면, 글자가 한 자씩 갈아끼워지는 단어 바꾸기, 초공간 빛줄기 위로 왼쪽부터 쓸려 나오는 문장과 커지며 흐려지는 퇴장, 빛 덩어리가 글 뒤를 쓸고 지나가는 장면"
+  },
+  "palette": [
+    "#0E0E10",
+    "#F2F2F0",
+    "#3B66FF",
+    "#9DB8FF",
+    "#D9B25A",
+    "#1C2440"
+  ],
+  "colors": {
+    "bg": "#0E0E10",
+    "onBg": "#F2F2F0",
+    "onBgMuted": "rgba(242,242,240,.6)",
+    "paper": "#1A1B20",
+    "ink": "#F2F2F0",
+    "accent": "#3B66FF",
+    "accentInk": "#FFFFFF",
+    "pattern": "rgba(157,184,255,.10)",
+    "glow": "rgba(59,102,255,.45)"
+  },
+  "type": {
+    "display": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "heading": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "body": [
+      "Geist",
+      "Noto Sans KR"
+    ]
+  },
+  "fonts": [
+    {
+      "family": "Geist",
+      "weight": "100 900",
+      "file": "fonts/Geist-Variable.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 500,
+      "file": "fonts/NotoSansKR-Medium.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 700,
+      "file": "fonts/NotoSansKR-Bold.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 900,
+      "file": "fonts/NotoSansKR-Black.woff2"
+    }
+  ],
+  "look": {
+    "grain": 0.05,
+    "vignette": 0.4
+  },
+  "shape": {
+    "radius": "calc(var(--u) * 1.2)"
+  },
+  "motion": {
+    "pace": "빠름",
+    "bpm": 120,
+    "ease": "expo.out",
+    "stagger": 0.7,
+    "transitions": [
+      "cut",
+      "zoom",
+      "blur",
+      "cut"
+    ]
+  },
+  "scenes": {
+    "bg": "solid",
+    "align": "center",
+    "card": "shadow",
+    "marker": "color",
+    "weight": 600,
+    "tracking": -0.02,
+    "case": "none",
+    "rough": false,
+    "title": "fade",
+    "frame": "none",
+    "deco": [
+      "streaks"
+    ],
+    "number": "count",
+    "scale": 1.2,
+    "schemes": [
+      "dark"
+    ]
+  },
+  "signature": [
+    "문장이 왼쪽부터 부드러운 경계(글자 서너 자 폭의 그라디언트)로 쓸리며 드러남, 초당 14자쯤. 반 박 머문 뒤 0.25초 만에 8% 커지며 흐려져 카메라 뒤로 지나가듯 빠짐",
+    "숫자 장면: 화면 가장자리에서 파랑·흰 빛줄기가 가운데 어둠을 남기고 바깥으로 쏟아지는 초공간 위에, 큰 숫자가 0.6초 안에 20 → 67 → 100+ 처럼 확 올라가고 아래에 단위 말이 옅은 회색으로 붙음",
+    "단어 바꾸기: 앞 낱말 글자가 한 자씩 옅어지는 자리에 다음 낱말 글자가 겹쳐 들어와 0.4초 만에 갈아끼워짐(숫자 한 줄 → 동사 한 낱말)"
+  ],
+  "fits": [
+    "연말 결산·한 해 돌아보기",
+    "성과·마일스톤 발표",
+    "투자·수상 소식",
+    "런칭 티저",
+    "행사 하이라이트"
+  ],
+  "avoid": [
+    "밝은 바탕",
+    "손글씨·낙서 장식",
+    "한 화면에 긴 문장",
+    "알록달록한 원색"
+  ]
+}

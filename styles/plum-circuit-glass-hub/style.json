@@ -1,0 +1,140 @@
+{
+  "id": "plum-circuit-glass-hub",
+  "name": "분홍 회로 유리 허브",
+  "group": "제품 UI",
+  "template": "uidemo",
+  "summary": "거의 검은 어둠에서 분홍 빛 회로선이 둥글게 꺾이며 유리 아이콘 타일을 하나씩 잇고 가운데 허브 타일로 모여요. 남색 격자 판으로 넘어가면 넓은 유리 입력창에 짧은 명령이 1초마다 바뀌어 쳐지고, 아래로 푸른 빛이 번지는 남색 판이 이어지다 넓고 굵은 대문자가 어절마다 하얗게 켜지는 연동 소개 필름",
+  "tags": [
+    "제품 UI",
+    "유리",
+    "회로선",
+    "연동",
+    "어두움",
+    "분홍",
+    "남색"
+  ],
+  "hand": false,
+  "source": {
+    "site": "keyframe.gallery",
+    "ref": "mux:51oMSpLp3t2C1jYXlx8FAc4zQg6JbqLyv1UdW02e4MVw",
+    "at": "0–22.8초",
+    "note": "어둠 속에서 둥근 직각으로 꺾이며 그어지는 분홍 빛 회로선, 선을 따라 미끄러지는 분홍 빛 알약, 거의 검은 격자 공간에 떠 있는 유리 아이콘 타일과 그 사이를 따라 흐르는 카메라, 가운데 허브 타일로 모이는 짧은 빛 대시, 남색 격자 판 위 넓은 유리 입력창에 1초마다 바뀌는 명령 타이핑과 화면 아래 푸른 빛 번짐, 3D 공간에 떠서 허브를 둘러싸는 입력창 무리, 넓은 굵은 대문자가 회색에서 흰색으로 어절마다 켜지는 엔딩"
+  },
+  "palette": [
+    "#0E0D14",
+    "#1E1D5C",
+    "#E64FC6",
+    "#4B4FD6",
+    "#2B1430",
+    "#F2F1F6"
+  ],
+  "colors": {
+    "bg": "#0E0D14",
+    "onBg": "#F2F1F6",
+    "onBgMuted": "rgba(242,241,246,.58)",
+    "paper": "#1E1D5C",
+    "ink": "#F2F1F6",
+    "accent": "#E64FC6",
+    "accentInk": "#1A0716",
+    "pattern": "rgba(255,255,255,.09)",
+    "glow": "rgba(75,79,214,.45)"
+  },
+  "type": {
+    "display": [
+      "Archivo",
+      "Noto Sans KR"
+    ],
+    "heading": [
+      "Archivo",
+      "Noto Sans KR"
+    ],
+    "body": [
+      "Geist",
+      "Noto Sans KR"
+    ]
+  },
+  "fonts": [
+    {
+      "family": "Archivo",
+      "weight": "100 900",
+      "stretch": "62% 125%",
+      "file": "fonts/Archivo-Variable.woff2"
+    },
+    {
+      "family": "Geist",
+      "weight": "100 900",
+      "file": "fonts/Geist-Variable.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 500,
+      "file": "fonts/NotoSansKR-Medium.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 900,
+      "file": "fonts/NotoSansKR-Black.woff2"
+    }
+  ],
+  "look": {
+    "vignette": 0.5
+  },
+  "shape": {
+    "radius": "calc(var(--u) * 1.4)"
+  },
+  "motion": {
+    "pace": "보통",
+    "bpm": 120,
+    "ease": "power3.out",
+    "stagger": 0.8,
+    "transitions": [
+      "fade",
+      "blur",
+      "cut",
+      "push"
+    ]
+  },
+  "scenes": {
+    "bg": "grid",
+    "align": "center",
+    "card": "glass",
+    "marker": "color",
+    "weight": 850,
+    "tracking": -0.02,
+    "case": "upper",
+    "rough": false,
+    "title": "pop",
+    "frame": "card",
+    "deco": [
+      "orb",
+      "streaks"
+    ],
+    "number": "count",
+    "scale": 1.15,
+    "schemes": [
+      "dark",
+      "paper",
+      "paper"
+    ]
+  },
+  "signature": [
+    "거의 검은 어둠 속에서 가는 분홍 빛 회로선이 둥근 직각으로 꺾이며 0.8초에 그어지고, 0.3초 뒤 짧은 분홍 빛 알약이 선을 따라 미끄러져 유리 아이콘 타일에 닿으면 타일 테두리가 한순간 분홍으로 번쩍. 카메라는 옅은 격자 공간에서 선을 따라 비스듬히 천천히 흘러가고, 화면 가장자리는 짙은 어둠으로 가라앉음",
+    "가운데 허브 타일(짙은 남색 속, 흰 마크)로 사방의 회로선이 모이고 짧은 분홍 대시가 바깥에서 빨려 들어가며, 다 모이면 허브 테두리에 분홍 빛이 번짐",
+    "남색 격자 판 위 넓은 유리 입력창(속이 비치는 반투명 판, 1px 흰 테두리)에 짧은 명령 한 줄이 타이핑되고 아래 알약 칩이 붙음. 화면 아래에서 푸른 빛 구슬이 천천히 숨 쉬고, 2박(1초)마다 컷으로 다른 문장이 이어지다가 카메라가 뒤로 빠지면 같은 입력창 여러 장이 3D 공간에 비스듬히 떠서 허브를 둘러쌈"
+  ],
+  "fits": [
+    "서비스 연동·플러그인 소개",
+    "AI 도구 연결 안내",
+    "개발자 도구 런칭",
+    "사전 신청·대기 명단 모집"
+  ],
+  "avoid": [
+    "밝은 바탕",
+    "화면 전체를 자두색 한 톤으로 덮기",
+    "불투명한 카드 판",
+    "종이·손그림 질감",
+    "강조색 여러 개(분홍 하나, 남색·파랑은 바탕 판과 빛 번짐에만)",
+    "세리프 글꼴",
+    "빽빽한 표와 긴 문단"
+  ]
+}

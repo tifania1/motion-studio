@@ -1,0 +1,140 @@
+{
+  "id": "chat-to-dotfield-noir",
+  "name": "대화창에서 점 세계로",
+  "group": "다이어그램·데이터",
+  "template": "dataflow",
+  "summary": "밝은 회색 메신저 화면에 다급한 질문이 쌓이다가, 화면이 어두워지며 점·망점·문자 가루로 짠 흑백 데이터 세계로 들어가요. 작은 문장은 계단처럼 어절씩 놓이고, 끝에는 다시 밝은 대화창에 고정폭 표 하나가 답으로 놓여요",
+  "tags": [
+    "데이터",
+    "흑백",
+    "점 격자",
+    "대화",
+    "문자 가루",
+    "서사"
+  ],
+  "hand": false,
+  "source": {
+    "site": "keyframe.gallery",
+    "ref": "mux:OjTTFXoPtIaLA8uPo01jJ88jLkPVkhUf01qEIERo9ogf00",
+    "at": "0–65.7초",
+    "note": "밝은 메신저 화면에 질문 메시지가 쌓이고 카메라가 다가가는 도입(0–17초), 화면이 회색으로 바래며 어두운 점 격자 세계로 넘어가는 전환(17–20초), 망점 덩어리와 흐르는 질문 꼬리표 사이에 어절이 계단처럼 놓이고 한 낱말만 흰 상자로 뒤집히는 타이포(19.7–27.6초), 점으로 쌓은 피라미드·원통과 반짝이는 빛 점(30–37초), 기호 문자로 짠 동심 호(39.4초), 고정폭 표와 선 그래프가 깔린 터미널 화면(44–47초), 밝은 대화창으로 돌아와 표로 답하는 마무리(50–53초), 픽셀 가루 위 고정폭 한 줄(55–58초)"
+  },
+  "palette": [
+    "#1A1A1A",
+    "#E6E6E6",
+    "#EDEDEB",
+    "#8A8A8A",
+    "#FFFFFF"
+  ],
+  "colors": {
+    "bg": "#1A1A1A",
+    "onBg": "#E6E6E6",
+    "onBgMuted": "rgba(230,230,230,.55)",
+    "paper": "#EDEDEB",
+    "ink": "#1D1C1D",
+    "accent": "#EDEDED",
+    "accentInk": "#141414",
+    "pattern": "rgba(255,255,255,.1)",
+    "glow": "rgba(255,255,255,.35)"
+  },
+  "type": {
+    "display": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "heading": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "body": [
+      "Geist Mono",
+      "Noto Sans KR"
+    ]
+  },
+  "fonts": [
+    {
+      "family": "Geist",
+      "weight": "100 900",
+      "file": "fonts/Geist-Variable.woff2"
+    },
+    {
+      "family": "Geist Mono",
+      "weight": "100 900",
+      "file": "fonts/GeistMono-Variable.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 500,
+      "file": "fonts/NotoSansKR-Medium.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 700,
+      "file": "fonts/NotoSansKR-Bold.woff2"
+    }
+  ],
+  "look": {
+    "grain": 0.1,
+    "grainFps": 12,
+    "vignette": 0.35
+  },
+  "shape": {
+    "radius": "calc(var(--u) * 0.6)"
+  },
+  "motion": {
+    "pace": "보통",
+    "bpm": 96,
+    "ease": "power3.out",
+    "stagger": 1.3,
+    "transitions": [
+      "blur",
+      "cut",
+      "fade"
+    ]
+  },
+  "scenes": {
+    "bg": "dots",
+    "align": "center",
+    "card": "flat",
+    "marker": "highlight",
+    "weight": 400,
+    "tracking": 0,
+    "case": "none",
+    "rough": false,
+    "title": "type",
+    "frame": "none",
+    "deco": [
+      "dots",
+      "bubbles"
+    ],
+    "number": "scramble",
+    "scale": 0.9,
+    "schemes": [
+      "paper",
+      "dark",
+      "dark",
+      "dark",
+      "paper",
+      "dark"
+    ]
+  },
+  "signature": [
+    "밝은 회색 메신저 화면에 다급한 질문 메시지가 한 박마다 하나씩 쌓이고 카메라가 천천히 다가가다가, 화면이 회색으로 바래고 흐려지며(0.8초) 어두운 점 격자 세계로 넘어감",
+    "어두운 화면에 망점 덩어리가 물결처럼 흐르고 옅은 질문 꼬리표가 가장자리에서 미끄러지는 사이, 작은 산세리프 문장이 어절마다 아래·오른쪽으로 한 칸씩 내려가며 계단처럼 놓이고 핵심 낱말 하나만 흰 상자로 뒤집히거나 밑줄이 그어짐",
+    "기호 문자(:, ', I, V, S, $)로 짠 동심 호가 천천히 돌며 글자가 깜빡이고, 그 가운데 고정폭 한 줄이 앞에서 무작위 글자 하나를 끌고 다니며 쳐짐. 바탕엔 흩어진 픽셀 가루가 드문드문 켜졌다 꺼짐"
+  ],
+  "fits": [
+    "데이터·분석 도구 소개",
+    "AI 질의응답 서비스",
+    "업무 메신저 연동 기능",
+    "문제에서 해결로 가는 이야기형 런칭",
+    "개발자·분석가 대상 영상"
+  ],
+  "avoid": [
+    "원색 강조색",
+    "따뜻한 종이 질감",
+    "굵고 큰 제목",
+    "빠른 컷 몽타주",
+    "둥글고 통통 튀는 등장"
+  ]
+}

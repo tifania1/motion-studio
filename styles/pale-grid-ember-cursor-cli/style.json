@@ -1,0 +1,135 @@
+{
+  "id": "pale-grid-ember-cursor-cli",
+  "name": "옅은 격자 불씨 커서 CLI",
+  "group": "제품 UI",
+  "template": "uidemo",
+  "summary": "옅은 회색 격자 위에서 짙은 터미널 창으로 바짝 다가가면 주황 블록 커서가 빛을 머금고 명령을 쳐요. 주황 네모 점이 하나씩 켜져 픽셀 아이콘이 되고, 앱 창 위로 주황 빛 덩어리가 쓸고 지나가며, 이름표 단 커서가 화면을 돌아다니는 개발 도구 소개",
+  "tags": [
+    "제품 UI",
+    "개발 도구",
+    "터미널",
+    "주황",
+    "픽셀 아이콘",
+    "커서"
+  ],
+  "hand": false,
+  "source": {
+    "site": "keyframe.gallery",
+    "ref": "mux:k3XBnq02x6fZMR3Um2L2ZDdIj62u016IzYrrZfCeCrGt4",
+    "at": "0–43.8초",
+    "note": "옅은 회색 바탕의 가는 격자와 십자 눈금, 터미널 창으로 바짝 다가가 고정폭 명령을 치는 빛나는 주황 블록 커서, 주황 농담 네모 점이 하나씩 켜져 픽셀 아이콘이 되고 아래에 고정폭 꼬리표가 붙는 장면, 첫 낱말만 주황인 두 줄 문장, 앱 창 위를 대각선으로 쓸고 가는 흐린 주황 빛, 어두운 공간에 흩어진 화면 조각과 부채처럼 비스듬히 선 카드, 주황 값이 박힌 JSON 출력, 이름표 단 검은 화살표 커서와 흰 알약 상태 꼬리표, 아래에서 차오르는 주황 그라디언트 마무리"
+  },
+  "palette": [
+    "#EDEDED",
+    "#1C1C1C",
+    "#E8541E",
+    "#2A2A2A",
+    "#F2A27A",
+    "#8C8C8C"
+  ],
+  "colors": {
+    "bg": "#EDEDED",
+    "onBg": "#1C1C1C",
+    "onBgMuted": "rgba(28,28,28,.55)",
+    "paper": "#F7F7F5",
+    "ink": "#1C1C1C",
+    "accent": "#E8541E",
+    "accentInk": "#141414",
+    "pattern": "rgba(28,28,28,.09)",
+    "glow": "rgba(255,122,40,.45)"
+  },
+  "type": {
+    "display": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "heading": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "body": [
+      "Geist Mono",
+      "Noto Sans KR"
+    ]
+  },
+  "fonts": [
+    {
+      "family": "Geist",
+      "weight": "100 900",
+      "file": "fonts/Geist-Variable.woff2"
+    },
+    {
+      "family": "Geist Mono",
+      "weight": "100 900",
+      "file": "fonts/GeistMono-Variable.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 500,
+      "file": "fonts/NotoSansKR-Medium.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 700,
+      "file": "fonts/NotoSansKR-Bold.woff2"
+    }
+  ],
+  "shape": {
+    "radius": "calc(var(--u) * 1.2)"
+  },
+  "motion": {
+    "pace": "보통",
+    "bpm": 100,
+    "ease": "expo.out",
+    "stagger": 0.9,
+    "transitions": [
+      "cut",
+      "blur",
+      "fade"
+    ]
+  },
+  "scenes": {
+    "bg": "grid",
+    "align": "center",
+    "card": "shadow",
+    "marker": "color",
+    "weight": 600,
+    "tracking": -0.02,
+    "case": "none",
+    "rough": false,
+    "title": "blur",
+    "frame": "none",
+    "deco": [
+      "cursor",
+      "marks",
+      "dots"
+    ],
+    "number": "count",
+    "scale": 1,
+    "schemes": [
+      "paper",
+      "dark",
+      "paper",
+      "paper",
+      "accent"
+    ]
+  },
+  "signature": [
+    "옅은 회색 격자에서 짙은 터미널 창으로 카메라가 0.8초 만에 바짝 다가가 명령 한 줄이 화면을 채우고, 고정폭 글자가 초당 18자쯤 쳐지는 동안 주황 블록 커서가 주황 빛무리를 두른 채 깜빡이며 카메라가 커서를 따라 옆으로 흘러감",
+    "빈 회색 화면 가운데 주황 네모 점이 옅은 살구색부터 짙은 주황까지 농담을 달리해 반 박마다 하나씩 톡 켜져 4×4 픽셀 아이콘이 되고, 아래에 고정폭 꼬리표가 쳐짐. 다음 장면 직전엔 점이 몇 개만 남아 오므라들고, 첫 낱말만 주황인 두 줄 문장이 흐림에서 맺힘",
+    "밝은 앱 창이 천천히 커지는 동안 흐린 주황 빛 덩어리가 왼쪽 아래에서 오른쪽 위로 대각선으로 쓸고 지나가며 다음 화면으로 넘어감. 이어지는 장면에선 검은 화살표 커서가 짙은 이름표 알약을 달고 화면을 누비고, 왼쪽 아래 흰 알약 꼬리표에 작은 픽셀 아이콘과 '작업 중' 상태가 떠 있음"
+  ],
+  "fits": [
+    "개발 도구·CLI 소개",
+    "API·데이터 서비스 런칭",
+    "AI 에이전트 기능 시연",
+    "기능 여러 개를 아이콘 하나씩 훑을 때"
+  ],
+  "avoid": [
+    "손그림 선",
+    "강조색 여러 개(주황 하나만)",
+    "진한 그레인·종이 질감",
+    "한 화면에 긴 문단",
+    "통통 튀는 과한 바운스"
+  ]
+}

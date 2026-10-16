@@ -1,0 +1,405 @@
+<title>/*@TITLE@*/</title>
+<style>
+/*@FONTFACES@*/
+/*@BRAND_CSS@*/
+/*@ENGINE_CSS@*/
+img:not([src]), img[src=""] { visibility: hidden !important; }
+
+/* ===== showreel: 15초 모션 쇼릴 (1:1, 120BPM 30박) =====
+   박마다 무언가가 일어나고, 장면은 앞 장면의 물건이 모양을 바꿔 이어집니다. 모든 스타일은 render(t) 가 계산합니다. */
+:root { --dk: var(--bg, #0D0D0F); --pp: var(--paper, #F4F0E9); --ac: var(--accent, #FF5A1F); }
+#stage { background: var(--dk); }
+#world { position: absolute; left: 0; top: 0; width: 1080px; height: 1080px; }
+#world > *, #uim > *, #phones > *, #shape > * { position: absolute; }
+.hid { visibility: hidden; }
+#bg { left: 0; top: 0; width: 1080px; height: 1080px; background: var(--dk); }
+.row { left: 0; width: 1080px; overflow: hidden; display: flex; justify-content: center; }
+.row span { display: block; font-family: "Archivo", sans-serif; font-weight: 800; color: var(--pp); line-height: .86; white-space: pre; }
+#line { height: 6px; background: var(--ac); border-radius: 3px; transform-origin: 50% 50%; }
+#dot { border-radius: 50%; background: var(--ac); }
+#flood { border-radius: 50%; background: var(--ac); }
+.tile { overflow: hidden; background: #0D0D0F; }
+.tile img { position: absolute; left: 0; top: 0; width: 100%; height: 100%; object-fit: cover; }
+#ph { left: 0; top: 0; width: 1080px; height: 1080px; overflow: hidden; }
+#ph img { width: 100%; height: 100%; object-fit: cover; }
+#ph::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,0) 45%, rgba(0,0,0,.55)); }
+.cap { left: 70px; overflow: hidden; }
+.cap span { display: block; color: var(--pp); white-space: nowrap; }
+#cap1 span { font: 900 112px/1.05 var(--font-heading), sans-serif; letter-spacing: -.03em; }
+#cap2 span { font: 600 36px/1.2 "Geist", var(--font-body), sans-serif; opacity: .85; }
+#orb { }
+#iris { left: 0; top: 0; width: 1080px; height: 1080px; overflow: visible; }
+#uim { left: 0; top: 0; width: 1080px; height: 1080px; }
+#shape { overflow: hidden; }
+#uim .lab { left: 50%; top: 50%; transform: translate(-50%, -50%); font: 700 36px/1 "Geist", var(--font-body), sans-serif; color: var(--dk); white-space: nowrap; }
+#knob { border-radius: 50%; background: var(--pp); }
+#ind { background: var(--ac); }
+.tb { top: 0; height: 100%; display: grid; place-items: center; font: 700 30px/1 "Geist", var(--font-body), sans-serif; }
+#num { left: 0; top: 390px; width: 1080px; height: 300px; display: flex; justify-content: center; align-items: center; gap: 0; }
+.dg { position: relative; overflow: hidden; height: 300px; width: 196px; }
+.dg div { position: absolute; left: 0; top: 0; width: 100%; font: 800 300px/1 "Archivo", sans-serif; font-variation-settings: "wdth" 100; color: var(--pp); text-align: center; }
+.dg div span { display: block; height: 300px; }
+#unit { font: 700 54px/1 "Geist", sans-serif; color: var(--ac); align-self: flex-end; margin: 0 0 34px 18px; overflow: hidden; }
+#unit span { display: block; }
+#fr { border: 6px solid var(--ac); box-sizing: border-box; overflow: hidden; border-radius: 18px; }
+#fr img { position: absolute; left: 0; top: 0; width: 100%; height: 100%; object-fit: cover; }
+#frl { left: 0; top: 0; width: 1080px; height: 1080px; display: grid; place-items: center; pointer-events: none; }
+#frl .m { overflow: hidden; text-align: center; }
+#frl .m span { display: block; color: var(--pp); font: 800 70px/1 "Archivo", sans-serif; font-variation-settings: "wdth" 110; }
+#frl .m small { display: block; margin-top: 10px; font: 600 28px/1 "Geist", var(--font-body), sans-serif; color: rgba(244,240,233,.7); }
+#phones { left: 0; top: 0; width: 1080px; height: 1080px; }
+.phone { background: #050506; overflow: hidden; box-shadow: 0 24px 50px rgba(0,0,0,.4); }
+.phone .scr { position: absolute; overflow: hidden; background: #111; }
+.phone .scr img { position: absolute; left: 0; width: 100%; object-fit: cover; }
+#tag { left: 0; width: 1080px; text-align: center; overflow: hidden; }
+#tag span { display: block; font: 700 46px/1.2 var(--font-heading), sans-serif; color: var(--pp); }
+#sub { left: 0; width: 1080px; text-align: center; overflow: hidden; }
+#sub span { display: block; font: 600 30px/1.2 "Geist", sans-serif; color: rgba(244,240,233,.62); letter-spacing: .04em; }
+#ul { height: 6px; background: var(--ac); border-radius: 3px; }
+</style>
+
+<div id="viewport"><div id="stage"><div id="cam"><div id="world"></div></div></div></div>
+
+<script>/*@GSAP@*/</script>
+<script>/*@DATA@*/</script>
+<script>/*@ENGINE_JS@*/</script>
+<script>
+(function () {
+  const S = Studio, C = S.content, M = S.M, e = S.esc;
+  const world = S.$('#world');
+  const $ = id => document.getElementById(id);
+  const b = M.beat, DUR = b(30), CX = 540, CY = 540;
+  const lerp = M.lerp, clamp = M.clamp;
+  const sp = (t, a, s = 'snappy') => M.spring(t - a, s);
+  const ease = (t, a, d, k = 'inOutCubic') => M.ease[k](M.prog(t, a, d));
+  const img = k => S.img(k) || '';
+  const T = C.title || ['MOTION', 'STUDIO'];
+  const tiles = (C.tiles || []).filter(k => S.img(k));
+  while (tiles.length < 9 && tiles.length) tiles.push(tiles[tiles.length % Math.max(1, tiles.length)]);
+  const works = (C.works || []).filter(k => S.img(k));
+  const AC = S.cssVar('--accent') || '#FF5A1F', DK = S.cssVar('--bg') || '#0D0D0F', PP = S.cssVar('--paper') || '#F4F0E9';
+
+  world.innerHTML = `
+    <div id="bg"></div>
+    <div id="ph" class="hid"><img src="${img(tiles[4])}" alt=""></div>
+    <div class="cap hid" id="cap1"><span>${e((C.photoText || [])[0] || '브랜드 필름')}</span></div>
+    <div class="cap hid" id="cap2"><span>${e((C.photoText || [])[1] || '광고 · 런칭 · 채널')}</span></div>
+    <div id="orb" class="hid"></div>
+    ${tiles.slice(0, 9).map((k, i) => `<div class="tile hid" id="t${i}"><img src="${img(k)}" alt=""></div>`).join('')}
+    <div id="uim" class="hid"><div id="shape"><div class="lab" id="btnT">${e(C.button || '주문하기')}</div>
+      <svg id="spin" class="hid" width="56" height="56" viewBox="0 0 56 56" style="left:50%;top:50%;margin:-28px 0 0 -28px"><circle cx="28" cy="28" r="22" fill="none" stroke="${AC}" stroke-width="6" stroke-linecap="round" id="arc"/></svg>
+      <svg id="chk" class="hid" width="60" height="60" viewBox="0 0 24 24" style="left:50%;top:50%;margin:-30px 0 0 -30px"><path id="chkP" d="M5 12.5l4.2 4.2L19 7" fill="none" stroke="${DK}" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" pathLength="1" stroke-dasharray="1 1"/></svg>
+      <div id="knob" class="hid"></div><div id="ind" class="hid"></div>
+      ${(C.tabs || ['광고', '런칭', '채널']).map((x, i) => `<div class="tb hid" id="tb${i}">${e(x)}</div>`).join('')}</div></div>
+    <div id="num" class="hid"><div class="dg" id="d0"><div>${[...'0123456789'].map(n => `<span>${n}</span>`).join('')}</div></div><div class="dg" id="d1"><div>${[...'0123456789'].map(n => `<span>${n}</span>`).join('')}</div></div><div id="unit"><span>${e((C.counter || {}).label || 'fps')}</span></div></div>
+    <div id="fr" class="hid"><img src="${img(C.wide || works[0])}" alt="" id="frImg"></div>
+    <div id="frl" class="hid"><div class="m"><span id="frA"></span><small id="frB"></small></div></div>
+    <div id="phones" class="hid">${[0, 1, 2].map(i => `<div class="phone" id="p${i}"><div class="scr"><img id="pa${i}" alt=""><img id="pb${i}" alt=""></div></div>`).join('')}</div>
+    <svg id="iris" viewBox="0 0 1080 1080"></svg>
+    <div class="row" id="r1">${[...T[0]].map((c, i) => `<span id="a${i}">${e(c)}</span>`).join('')}</div>
+    <div class="row" id="r2">${[...(T[1] || '')].map((c, i) => `<span id="z${i}">${e(c)}</span>`).join('')}</div>
+    <div id="line"></div><div id="dot"></div>
+    <div id="tag" class="hid"><span>${e(C.tagline || '광고 영상, 모션 그래픽으로')}</span></div>
+    <div id="sub" class="hid"><span>${e(C.sub || '9:16 · 4:5 · 1:1 · 16:9')}</span></div>
+    <div id="ul" class="hid"></div>
+    <div id="flood" class="hid"></div>`;
+  const show = (el, on) => el.classList.toggle('hid', !on);
+  const box = (el, x, y, w, h, r, extra) => M.box(el, Object.assign({ x, y, w, h, r }, extra || {}));
+  const cursor = M.Cursor(world, { size: 1 });
+  const iris = M.Iris($('iris'), { fill: '#060607', seam: 'rgba(255,255,255,.22)', seamW: 2.4 });
+  const orbG = M.Glass($('orb'));
+  $('orb').querySelector('.m-glass-in').innerHTML = `<img src="${img(tiles[4])}" alt="" style="position:absolute;left:0;top:0;width:1080px;height:1080px;object-fit:cover">`;
+
+  /* ---------------------------------------------------------------- 글자 (가변 글꼴 wdth 로 박자에 맞춰 출렁임) */
+  const A = [...T[0]].map((_, i) => $('a' + i)), Z = [...(T[1] || '')].map((_, i) => $('z' + i));
+  let FS = 190;
+  function fitTitle() {
+    // 가장 넓은 상태(wdth 125)에서 900px 안에 들어가게 글자 크기 결정
+    [...A, ...Z].forEach(el => { el.style.fontSize = FS + 'px'; el.style.fontVariationSettings = '"wdth" 125, "wght" 800'; });
+    const w = Math.max($('r1').scrollWidth, $('r2').scrollWidth, ...[A, Z].map(L => L.reduce((a, el) => a + el.getBoundingClientRect().width, 0)));
+    FS = Math.floor(FS * Math.min(1.25, 880 / w));
+    [...A, ...Z].forEach(el => { el.style.fontSize = FS + 'px'; });
+  }
+  const LINE_Y = 540;
+  function title(t, mode) {
+    // mode 0: 시작(마스크 선에서 솟음), 1: 끝(다시 솟음)
+    const r1 = $('r1'), r2 = $('r2');
+    const H = FS * .86;
+    r1.style.top = (LINE_Y - 10 - H).toFixed(1) + 'px'; r1.style.height = H + 'px';
+    r2.style.top = (LINE_Y + 12).toFixed(1) + 'px'; r2.style.height = H + 'px';
+    const t0 = mode ? b(25) : b(0) + .12, t1 = mode ? b(25) + .2 : b(1);
+    A.forEach((el, i) => {
+      const k = sp(t, t0 + i * .045, { f: 2.8, z: .8 });
+      const exit = mode ? 0 : ease(t, b(4) + .05 + i * .02, .28, 'inCubic');
+      el.style.transform = `translateY(${((1 - k) * 105 - exit * 0).toFixed(2)}%)`;
+      el.style.visibility = k < .002 ? 'hidden' : '';
+    });
+    Z.forEach((el, i) => {
+      const k = sp(t, t1 + i * .045, { f: 2.8, z: .8 });
+      el.style.transform = `translateY(${(-(1 - k) * 105).toFixed(2)}%)`;
+      el.style.visibility = k < .002 ? 'hidden' : '';
+    });
+    // 박자 물결: b2, b3 (시작) / b27, b29 (끝)에 글자 폭이 차례로 좁아졌다 돌아옴
+    const waves = mode ? [b(28), b(29)] : [b(2), b(3)];
+    [A, Z].forEach((L, row) => L.forEach((el, i) => {
+      let p = 0;
+      for (const w of waves) { const x = (t - w - (i + row * 1.5) * .045) / .34; if (x > 0 && x < 1) p = Math.max(p, Math.sin(Math.PI * x)); }
+      el.style.fontVariationSettings = `"wdth" ${(125 - 58 * p).toFixed(2)}, "wght" ${(800 + 100 * p).toFixed(0)}`;
+    }));
+    // 선
+    const lk = ease(t, mode ? b(25) - .1 : b(0), .3, 'outCubic');
+    box($('line'), CX, LINE_Y, 900 * lk, 6, 3);
+    // 마침표: STUDIO 오른쪽 끝
+    const last = Z[Z.length - 1] || A[A.length - 1];
+    const rr = last.getBoundingClientRect(), wr = world.getBoundingClientRect(), sc = wr.width / 1080;
+    const dx = (rr.right - wr.left) / sc + FS * .05, dy = LINE_Y + 12 + H - FS * .06;
+    const dk = sp(t, mode ? b(25.5) : b(3.5), 'pop');
+    const bounce = mode ? (sp(t, b(29), 'pop') - sp(t, b(29) + .18, 'smooth')) * .35 : 0;
+    const ds = FS * .2;
+    return { dx: dx + ds / 2, dy: dy - ds / 2, ds, dk: Math.max(0, dk + bounce) };
+  }
+
+  /* ---------------------------------------------------------------- 격자 */
+  const P = 316, SZ = 300;
+  const slotXY = s => [CX + ((s % 3) - 1) * P, CY + (Math.floor(s / 3) - 1) * P];
+  // 섞기: b7 에 (0,8)(2,6), b7.5 에 (1,7)(3,5) 자리 바꿈
+  const SLOTS = [...Array(9)].map((_, i) => i);
+  const perm1 = [8, 1, 6, 3, 4, 5, 2, 7, 0], perm2 = [8, 7, 6, 5, 4, 3, 2, 1, 0];
+
+  /* ---------------------------------------------------------------- UI 모프 */
+  const UI = [
+    [0, [360, 104, 52]], [b(13), [112, 112, 56]], [b(14), [230, 124, 62]], [b(15), [540, 104, 52]], [b(16), [24, 24, 12]],
+  ];
+
+  /* ---------------------------------------------------------------- 커서 경로 */
+  const CUR = [[0, 1180, 1180], [b(11.6), 1180, 1180, .1], [b(12.4), 556, 552, .55], [b(13.2), 650, 640, .4], [b(14.4), 548, 552, .4], [b(15.4), CX + 6, 552, .4], [b(16.3), 1200, 1150, .6]];
+  const CLK = [b(12.5), b(14.5), b(15.5)];
+
+  /* ---------------------------------------------------------------- 그리기 */
+  function render(t) {
+    // 카메라
+    let cam = [CX, CY, 1];
+    if (t >= b(8) && t < b(8.8)) { const k = ease(t, b(8), b(.8), 'inOutCubic'); cam = [CX, CY, lerp(1, 1080 / SZ, k)]; }
+    if (t >= b(8.8) && t < b(11.5)) cam = [CX, CY, lerp(1, 1.07, ease(t, b(8.8), b(2.7), 'outSine'))];
+    if (t >= b(11.5) && t < b(16.6)) cam = M.anim([[b(11.5), [CX, CY, 1.75]], [b(13), [CX, CY, 2.6]], [b(14), [CX, CY, 2.0]], [b(15), [CX, CY, 1.35]], [b(16), [CX, CY, 1]]], t, 'soft');
+    M.camera(world, cam[0], cam[1], cam[2]);
+
+    // 배경색: 어두움 → (플러드 뒤) 강조색 → (조리개 뒤) 어두움 → (플러드 뒤) 강조색 → 어두움
+    const bg = $('bg');
+    const accentBg = (t >= b(4) + .3 && t < b(8.8)) || (t >= b(24) + .3 && t < b(24.6));
+    bg.style.background = accentBg ? AC : DK;
+
+    // 1) 글자
+    const startOn = t < b(4) + .35, endOn = t >= b(24.6);
+    const tt = title(t, endOn ? 1 : 0);
+    ['r1', 'r2', 'line'].forEach(id => show($(id), startOn || endOn));
+    const dot = $('dot');
+    show(dot, (startOn || endOn) && tt.dk > .01);
+    box(dot, tt.dx, tt.dy, tt.ds * tt.dk, tt.ds * tt.dk, tt.ds);
+
+    // 2) 플러드 (마침표에서 / 가운데 폰에서) → 오므라들어 다음 장면
+    const fl = $('flood');
+    let fOn = false;
+    if (t >= b(4) && t < b(4) + .32) { const R = M.floodRadius(tt.dx, tt.dy) * ease(t, b(4), .3, 'inCubic'); box(fl, tt.dx, tt.dy, 2 * R, 2 * R, R); fOn = true; }
+    if (t >= b(24) && t < b(25)) {
+      const k = ease(t, b(24), .3, 'inCubic'), k2 = ease(t, b(24) + .32, .38, 'inOutCubic');
+      const end = title(b(25.6), 1);
+      const R0 = M.floodRadius(CX, CY);
+      const R = R0 * k * (1 - k2) + (end.ds / 2) * k2;
+      const x = lerp(CX, end.dx, k2), y = lerp(CY, end.dy, k2);
+      box(fl, x, y, 2 * R, 2 * R, R); fOn = R > .5 && t < b(25.6);
+    }
+    show(fl, fOn);
+
+    // 3) 점 → 마름모 → 사진 타일 → 섞기 → 가운데 확대
+    const tilesOn = t >= b(4.4) && t < b(8.8);
+    for (let i = 0; i < 9; i++) {
+      const el = $('t' + i); if (!el) continue;
+      show(el, tilesOn);
+      if (!tilesOn) continue;
+      const row = Math.floor(i / 3), col = i % 3;
+      const pk = sp(t, b(4.5) + (row + col) * .05, 'pop');
+      const s1 = sp(t, b(5), 'snappy'), s2 = sp(t, b(5.5), 'snappy'), s3 = sp(t, b(6) + (row + col) * .03, { f: 2.6, z: .84 });
+      let size = 36 * Math.max(0, pk);
+      size = lerp(size, 74, s1); size = lerp(size, 110, s2); size = lerp(size, SZ, s3);
+      let rad = lerp(size / 2, 10, s1); rad = lerp(rad, 22, s3);
+      const rot = 45 * s1 - 45 * s2;
+      const p0 = slotXY(i), p1 = slotXY(perm1[i]), p2 = slotXY(perm2[i]);
+      const k1 = sp(t, b(7), { f: 2.4, z: .8 }), k2 = sp(t, b(7.5), { f: 2.4, z: .8 });
+      let x = lerp(lerp(p0[0], p1[0], k1), p2[0], k2), y = lerp(lerp(p0[1], p1[1], k1), p2[1], k2);
+      if (i === 4) rad = lerp(rad, 0, ease(t, b(8), b(.8), 'inCubic'));
+      box(el, x, y, size, size, rad, { rot });
+      el.style.zIndex = i === 4 ? 3 : 2;
+      const im = el.querySelector('img');
+      const ck = ease(t, b(6), .4, 'outCubic');
+      im.style.clipPath = `circle(${(ck * 75).toFixed(1)}% at 50% 50%)`;
+      im.style.transform = `rotate(${(-rot).toFixed(2)}deg) scale(${(1 + Math.abs(rot) / 45 * .45).toFixed(3)})`;
+    }
+
+    // 4) 전체 사진 + 글자 + 유리 구슬
+    const phOn = t >= b(8.8) - .001 && t < b(11.5);
+    show($('ph'), phOn);
+    ['cap1', 'cap2'].forEach((id, j) => {
+      const el = $(id); show(el, phOn);
+      if (!phOn) return;
+      el.style.top = (j ? 900 : 760) + 'px';
+      M.rise(el.querySelector('span'), sp(t, b(9 + j * .5), { f: 2.4, z: .82 }));
+    });
+    const ob = $('orb');
+    const oOn = t > b(10) && t < b(11.25);
+    show(ob, oOn);
+    if (oOn) {
+      const k = ease(t, b(10), b(1.2), 'inOutSine');
+      const d = 330, x = lerp(-220, 1300, k), y = 420 + Math.sin(k * Math.PI) * -40;
+      box(ob, x, y, d, d, d / 2);
+      orbG.set({ w: d, h: d, r: d / 2, strength: 64, band: 110, tint: .1 });
+      // 구슬 안은 1.4배 확대 (렌즈) — 구슬 가운데 기준
+      const mag = 1.4, im = ob.querySelector('.m-glass-in img');
+      im.style.transformOrigin = '0 0';
+      im.style.transform = `translate(${(-(x - d / 2) - (mag - 1) * x).toFixed(1)}px, ${(-(y - d / 2) - (mag - 1) * y).toFixed(1)}px) scale(${mag})`;
+      ob.style.boxShadow = '0 24px 50px rgba(0,0,0,.35)';
+    }
+
+    // 5) 화면 전체 조리개: 사진 위로 닫혔다가 UI 장면 위에서 열림
+    if (t >= b(11) && t < b(12.2)) {
+      const close = ease(t, b(11), .45, 'inCubic'), open = sp(t, b(11.5), { f: 2.4, z: .8 });
+      iris.set(CX, CY, M.floodRadius(CX, CY), clamp(1 - close + open), 0);
+      $('iris').style.visibility = '';
+    } else $('iris').style.visibility = 'hidden';
+
+    // 6) UI 모프 (버튼 → 로더 → 체크 → 토글 → 탭 → 점)
+    const uiOn = t >= b(11.45) && t < b(16.4);
+    show($('uim'), uiOn);
+    if (uiOn) {
+      const c = M.cursorAt(CUR, CLK, t);
+      let [w, h, r] = M.anim(UI, t, 'snappy');
+      const press = t < b(13) ? c.down : 0;
+      const shape = $('shape');
+      const bgc = t < b(13) ? PP : t < b(13.5) ? '#232326' : t < b(14) ? AC : t < b(15) ? M.color('#3A3A3E', AC, M.prog(t, b(14.5), .2)) : '#232326';
+      box(shape, CX, CY, w, h, r, { bg: bgc, s: 1 - .05 * press });
+      show($('btnT'), t < b(13) - .05);
+      $('btnT').style.transform = `translate(-50%, -50%) scale(${(1 - ease(t, b(13) - .15, .12, 'inCubic')).toFixed(3)})`;
+      show($('spin'), t >= b(13) && t < b(13.5) + .05);
+      const arc = $('arc'), L = 2 * Math.PI * 22;
+      arc.setAttribute('stroke-dasharray', `${(L * (.25 + .5 * ease(t, b(13), .45))).toFixed(1)} ${L}`);
+      $('spin').style.transform = `rotate(${(t * 520 % 360).toFixed(1)}deg)`;
+      show($('chk'), t >= b(13.5) && t < b(14) + .02);
+      $('chkP').setAttribute('stroke-dashoffset', (1 - ease(t, b(13.5) + .05, .25, 'outCubic')).toFixed(3));
+      // 토글: 앞쪽 끝이 먼저 (두 스프링)
+      const kn = $('knob'), tg = t >= b(14) + .04 && t < b(15) + .16;
+      show(kn, tg);
+      if (tg) {
+        const L0 = M.anim([[0, 12], [b(14.5), 118, 'trail']], t), R0 = M.anim([[0, 112], [b(14.5), 218, 'lead']], t);
+        const kk = sp(t, b(14), 'pop') * (1 - ease(t, b(15), .15, 'inCubic'));   // 탭으로 바뀔 때 오므라들며 사라짐
+        Object.assign(kn.style, { left: (w / 2 - 115 + L0).toFixed(1) + 'px', top: (h / 2 - 50 * kk).toFixed(1) + 'px', width: ((R0 - L0) * kk).toFixed(1) + 'px', height: (100 * kk).toFixed(1) + 'px', borderRadius: '50px' });
+      }
+      // 탭
+      const tabsOn = t >= b(15) + .08 && t < b(16) + .05;
+      show($('ind'), tabsOn);
+      [0, 1, 2].forEach(i => show($('tb' + i), tabsOn));
+      if (tabsOn) {
+        const seg = (w - 16) / 3;
+        const iL = M.anim([[0, 8], [b(15.5), 8 + seg, 'trail']], t), iR = M.anim([[0, 8 + seg], [b(15.5), 8 + 2 * seg, 'lead']], t);
+        const ik = sp(t, b(15) + .05, 'snappy');
+        Object.assign($('ind').style, { left: iL.toFixed(1) + 'px', top: '8px', width: ((iR - iL) * ik).toFixed(1) + 'px', height: (h - 16) + 'px', borderRadius: ((h - 16) / 2) + 'px' });
+        const act = t < b(15.5) + .06 ? 0 : 1;
+        [0, 1, 2].forEach(i => { const el = $('tb' + i); el.style.left = (8 + i * seg) + 'px'; el.style.width = seg + 'px'; el.style.color = i === act ? DK : PP; el.style.transform = `translateY(${((1 - sp(t, b(15) + .1 + i * .04, 'smooth')) * 40).toFixed(1)}px)`; el.style.opacity = clamp(sp(t, b(15) + .1 + i * .04, 'smooth')).toFixed(3); });
+      }
+      cursor.set(c.x, c.y, { down: c.down, ring: c.ring, s: 1.5 / Math.pow(cam[2], .6) });
+      cursor.el.style.visibility = '';
+    } else cursor.el.style.visibility = 'hidden';
+
+    // 7) 숫자 굴리기 → 비율 프레임
+    const numOn = t >= b(16) && t < b(17) + .2;
+    show($('num'), numOn);
+    if (numOn) {
+      const val = String((C.counter || {}).value ?? 60).padStart(2, '0');
+      [0, 1].forEach(i => {
+        const col = $('d' + i).firstElementChild, k = ease(t, b(16) + .05 + i * .08, .55, 'outQuart');
+        const target = +val[i] + (i === 0 ? 10 : 20) * 0;
+        const exit = ease(t, b(17) - .05, .2, 'inCubic');
+        col.style.transform = `translateY(${(-(target * k) * 300 - exit * 300 * 0).toFixed(1)}px)`;
+        $('d' + i).style.clipPath = `inset(${(exit * 100).toFixed(1)}% 0 0 0)`;
+        $('d' + i).style.transform = `translateY(${(-exit * 120).toFixed(1)}px)`;
+      });
+      M.rise($('unit').firstElementChild, sp(t, b(16.5), 'smooth') + ease(t, b(17) - .05, .2, 'inCubic'));
+    }
+    const RAT = C.formats || [['9:16', '릴스 · 쇼츠'], ['4:5', '피드'], ['1:1', '피드'], ['16:9', '유튜브']];
+    const dims = RAT.map(([r]) => { const [a, c] = r.split(':').map(Number); const k = Math.min(620 / c, 840 / a); return [a * k, c * k]; });
+    const frOn = t >= b(17) && t < b(20) + .3;
+    show($('fr'), frOn); show($('frl'), t >= b(17) && t < b(19) + .1);
+    if (frOn) {
+      let wh = [0, 0];
+      const ks = [b(17), b(17.5), b(18), b(18.5)].map(x => sp(t, x, { f: 2.6, z: .8 }));
+      wh = [dims[0][0] * ks[0], dims[0][1] * ks[0]];
+      for (let i = 1; i < 4; i++) wh = [lerp(wh[0], dims[i][0], ks[i]), lerp(wh[1], dims[i][1], ks[i])];
+      // 20박: 16:9 프레임이 가운데 폰으로 줄어듦
+      const pk = sp(t, b(20), { f: 2.3, z: .86 });
+      const pw = 300, ph = 534;
+      box($('fr'), CX, CY, lerp(wh[0], pw, pk), lerp(wh[1], ph, pk), lerp(18, 40, pk));
+      $('fr').style.borderColor = M.color(AC, '#050506', pk);
+      const ik = ease(t, b(19), .45, 'outCubic');
+      $('frImg').style.clipPath = `circle(${(ik * 80).toFixed(1)}% at 50% 50%)`;
+      $('frImg').style.visibility = ik < .01 ? 'hidden' : '';
+      let cur = 0; [b(17.5), b(18), b(18.5)].forEach((x, i) => { if (t >= x) cur = i + 1; });
+      $('frA').textContent = RAT[cur][0]; $('frB').textContent = RAT[cur][1];
+      const since = t - [b(17), b(17.5), b(18), b(18.5)][cur];
+      $('frl').querySelector('.m').style.clipPath = `inset(0 0 ${((1 - ease(since, 0, .18, 'outCubic')) * 100).toFixed(1)}% 0)`;
+      $('frl').style.opacity = (1 - ease(t, b(19) - .05, .15)).toFixed(3);
+    }
+
+    // 8) 폰 세 대: 가운데 폰 뒤에서 양옆이 펼쳐짐, 화면이 박마다 위로 밀림
+    const phOn2 = t >= b(20.1) && t < b(24.4);
+    show($('phones'), phOn2);
+    if (phOn2) {
+      const xs = [CX - 340, CX, CX + 340];
+      const sets = [[works[0], works[3], works[6]], [works[1], works[4], works[7]], [works[2], works[5], works[8]]];
+      [0, 1, 2].forEach(i => {
+        const p = $('p' + i);
+        const k = i === 1 ? 1 : sp(t, b(20.2), { f: 2.2, z: .82 });
+        const rise = sp(t, b(23) + i * .06, { f: 2, z: .8 }) * -30;
+        const suck = ease(t, b(24), .32, 'inCubic');
+        const x = lerp(lerp(CX, xs[i], k), CX, suck), y = CY + rise;
+        const s = 1 - suck * .9;
+        box(p, x, y, 300 * s, 534 * s, 40 * s);
+        p.style.zIndex = i === 1 ? 3 : 2;
+        const scr = p.querySelector('.scr');
+        Object.assign(scr.style, { left: (10 * s) + 'px', top: (10 * s) + 'px', width: (280 * s) + 'px', height: (514 * s) + 'px', borderRadius: (31 * s) + 'px' });
+        const st = Math.floor(clamp((t - b(21)) / b(1) + 1, 0, 2)) ;
+        const step = ease(t, b(21), .45) + ease(t, b(22), .45);
+        const ia = $('pa' + i), ib = $('pb' + i);
+        const list = sets[i].filter(Boolean);
+        const cur = list[Math.min(list.length - 1, Math.floor(step))], nxt = list[Math.min(list.length - 1, Math.floor(step) + 1)];
+        const f = step - Math.floor(step);
+        if (ia.getAttribute('src') !== img(cur)) ia.src = img(cur);
+        if (ib.getAttribute('src') !== img(nxt)) ib.src = img(nxt);
+        ia.style.height = ib.style.height = '100%';
+        ia.style.top = (-f * 100).toFixed(2) + '%'; ib.style.top = ((1 - f) * 100).toFixed(2) + '%';
+        void st;
+      });
+    }
+
+    // 9) 끝: 태그라인 · 아랫줄 · 밑줄
+    const tg = $('tag'), sb = $('sub'), ul = $('ul');
+    show(tg, endOn); show(sb, endOn); show(ul, endOn);
+    if (endOn) {
+      tg.style.top = '800px'; sb.style.top = '880px';
+      M.rise(tg.firstElementChild, sp(t, b(26), { f: 2.4, z: .82 }));
+      M.rise(sb.firstElementChild, sp(t, b(27), { f: 2.4, z: .82 }));
+      const w = tg.firstElementChild.scrollWidth || 600;
+      const uk = ease(t, b(28), .4, 'outCubic');
+      const tw = tg.firstElementChild.getBoundingClientRect().width / (world.getBoundingClientRect().width / 1080);
+      box(ul, CX, 868, Math.min(tw, 700) * uk, 6, 3);
+      void w;
+    }
+  }
+
+  if (C.poster == null) C.poster = b(1.6);   // 미리보기 첫 화면
+  S.start(async S => {
+    try { await document.fonts.ready; } catch (err) { /* 무시 */ }
+    fitTitle();
+    S.setDuration(DUR);
+    S.ambient(render);
+  });
+})();
+</script>

@@ -1,0 +1,63 @@
+{
+  "id": "dataflow",
+  "order": 104,
+  "group": "look",
+  "style": "dot-relay-diagrams",
+  "name": "데이터 흐름",
+  "summary": "옅은 점 격자 위 점 하나에서 가는 선이 뻗어 나가 항목마다 노드가 생기고, 카메라가 선을 따라 옮겨 다녀요. 모든 선이 한 점으로 모여 원형 게이지 안에서 숫자가 맞춰지고, 끝 노드가 버튼이 된 뒤 전체 지도로 물러나요.",
+  "look": "점 격자 · 노드와 선 · 달리는 신호 점 · 원형 게이지 · 전체 지도",
+  "template": "dataflow",
+  "formats": [
+    "tall",
+    "portrait",
+    "square",
+    "wide"
+  ],
+  "seconds": 17,
+  "photos": {
+    "need": 0,
+    "hint": "사진 없이 돼요. 넣으면 항목 노드 안에 작은 원형 썸네일로 차례로 들어가요(얼굴·제품·화면을 가운데에 둔 사진, 0~4장)"
+  },
+  "ask": [
+    "한 줄 훅(제목)과 그중 강조할 낱말",
+    "작은 꼬리표 (새 기능, AI 자동화 같은 것)",
+    "흐름 순서대로 짧은 단계·기능 2~5개 (하나에 18자 안쪽)",
+    "보여 줄 숫자 하나와 그 출처·기준 시점",
+    "마지막 한 줄과 버튼 문구, 사이트나 계정"
+  ],
+  "brief": "예) 회의록을 알아서 정리해 주는 새 기능. 훅: 회의록은 이제 알아서 정리돼요. 흐름: 말하면 바로 받아 적고 → 할 일만 골라 정리하고 → 팀 채널로 바로 보내요. 숫자: 하루 40분 아낌(시범 사용 팀 기준). 마지막: 다음 회의부터 바로 써 보세요, 무료로 시작, example.com",
+  "check": [
+    "숫자의 출처와 기준 시점 (source 칸이 게이지 오른쪽 아래 지시선 끝에 작게 나와요)",
+    "단위가 %일 때만 게이지가 그 비율만큼 차요. 다른 단위는 고리가 한 바퀴 다 그려져요",
+    "항목이 실제 쓰는 순서(흐름)대로인지, 없는 기능을 넣지 않았는지",
+    "'최초·1위·유일·최고·100%' 같은 말은 근거가 있을 때만",
+    "사진을 넣었다면 써도 되는 사진인지(직접 찍은 사진·CC0·CC BY 출처 표시)"
+  ],
+  "music": {
+    "mood": "tech",
+    "bpm": 120,
+    "prompt": "minimal clean electronic, soft plucked synth arpeggio, light ticking hi-hats and gentle data-like blips, precise and calm, warm sub bass, modern product explainer, 120 bpm",
+    "sections": [
+      [
+        0,
+        3,
+        "a single soft blip and airy pad as the first dot lights up and rings spread"
+      ],
+      [
+        3,
+        8,
+        "steady plucked arpeggio, a small blip on every new node"
+      ],
+      [
+        8,
+        12,
+        "lines gather: rising filter sweep, a soft hit as the ring closes and the number lands"
+      ],
+      [
+        12,
+        17,
+        "warm resolved chord as the end node becomes the button, gentle tail while the map pulls back"
+      ]
+    ]
+  }
+}

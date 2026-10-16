@@ -1,0 +1,111 @@
+{
+  "id": "color-settle-sentence",
+  "name": "한 어절씩 문장",
+  "group": "타이포",
+  "template": "typeslam",
+  "summary": "밝은 바탕 가운데에 문장이 한 어절씩 붙어 가고, 막 들어온 어절만 색이 깜빡이다 검정으로 가라앉는 담백한 타이포",
+  "tags": [
+    "타이포",
+    "문장",
+    "미니멀",
+    "내레이션",
+    "AI"
+  ],
+  "hand": false,
+  "source": {
+    "site": "keyframe.gallery",
+    "ref": "mux:02smVlhj00Mvg3dHc01dPGPf2DN15tugp2027bYKgriM01E00",
+    "at": "0–10초, 21–32초, 63–71초",
+    "note": "한 어절씩 덧붙이며 매번 가운데로 다시 맞추는 문장, 새 어절만 2~3프레임마다 색이 바뀌다 검정으로 가라앉음, 한 글자를 늘이는 '왜애애' 연출, 입력창 안으로 카메라가 들어가 커서를 따라가는 타이핑"
+  },
+  "palette": [
+    "#EDEDED",
+    "#0D0D0D",
+    "#1F6FE5",
+    "#34C759",
+    "#F07A2B",
+    "#B79CF2"
+  ],
+  "colors": {
+    "bg": "#EDEDED",
+    "onBg": "#0D0D0D",
+    "onBgMuted": "rgba(13,13,13,.55)",
+    "paper": "#FFFFFF",
+    "ink": "#0D0D0D",
+    "accent": "#1F6FE5",
+    "accentInk": "#FFFFFF",
+    "pattern": "rgba(13,13,13,.05)",
+    "glow": "rgba(31,111,229,.18)"
+  },
+  "type": {
+    "display": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "heading": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "body": [
+      "Geist",
+      "Noto Sans KR"
+    ]
+  },
+  "fonts": [
+    {
+      "family": "Geist",
+      "weight": "100 900",
+      "file": "fonts/Geist-Variable.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 500,
+      "file": "fonts/NotoSansKR-Medium.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 700,
+      "file": "fonts/NotoSansKR-Bold.woff2"
+    }
+  ],
+  "shape": {
+    "radius": "calc(var(--u) * 2.4)"
+  },
+  "motion": {
+    "pace": "보통",
+    "bpm": 90,
+    "ease": "power2.out",
+    "stagger": 1,
+    "transitions": [
+      "cut",
+      "zoom"
+    ]
+  },
+  "scenes": {
+    "bg": "solid",
+    "align": "center",
+    "card": "flat",
+    "marker": "color",
+    "weight": 600,
+    "tracking": -0.015,
+    "case": "none",
+    "rough": false
+  },
+  "signature": [
+    "문장을 한 어절씩(반 박, 약 0.33초) 덧붙이며 매번 가운데로 다시 맞춤. 줄이 넘치면 다음 줄로 넘어가고 윗줄도 함께 가운데로 미끄러짐",
+    "막 들어온 어절만 2~3프레임마다 파랑·주황·연보라·분홍·초록으로 바뀌며 반짝이다가 다음 어절이 오면 검정으로 가라앉음. 끝까지 색이 남는 건 강조 단어 하나",
+    "한 글자를 늘려 '왜애애애…'처럼 길게 뽑으며 색을 바꾸고, 입력창 장면에선 카메라가 창 안으로 크게 들어가 커서를 따라가며 타이핑한 뒤 빠져나옴"
+  ],
+  "fits": [
+    "서비스 소개 내레이션",
+    "브랜드 철학 한 줄",
+    "AI·생산성 도구",
+    "질문으로 여는 광고"
+  ],
+  "avoid": [
+    "사진 바탕",
+    "아주 굵은 블랙 제목",
+    "장면마다 다른 글꼴",
+    "빠른 컷 연속"
+  ]
+}

@@ -1,0 +1,133 @@
+{
+  "id": "charcoal-neon-rim-agent-cards",
+  "name": "숯빛 네온 테두리 에이전트 카드",
+  "group": "제품 UI",
+  "template": "uidemo",
+  "summary": "짙은 회색 판 가운데에 굵은 흰 문장이 놓이고 끝말만 금빛으로 물들어요. 어두운 UI 카드 테두리를 따라 자홍에서 금빛으로 번지는 빛이 돌고, 가는 선 끝의 흰 점이 문장과 아이콘 칩을 하나씩 이어 가는 AI 에이전트 소개 필름이에요",
+  "tags": [
+    "제품 UI",
+    "어두움",
+    "네온 테두리",
+    "AI 에이전트",
+    "금빛",
+    "자홍"
+  ],
+  "hand": false,
+  "source": {
+    "site": "keyframe.gallery",
+    "ref": "mux:v75ToWR3Pct2uKjIiEvZJCMlPbfjioI546zR7kp00i7c",
+    "at": "1.6–74.5초",
+    "note": "짙은 회색 판의 굵은 흰 두 줄 문장과 금빛 그라디언트 끝말, 대화 카드 아래로 부채처럼 퍼지는 금빛·자홍 곡선, 카드 테두리를 도는 네온 그라디언트 빛, 문장 사이에 끼어드는 그라디언트 고리 아이콘 칩과 카드 더미, 가는 선과 흰 점이 이끄는 마스크 문장과 갈래 목록, 자홍 사선 판 와이프, 한 점으로 모이는 자홍 빛줄기, 큰 가는 원 속 마무리 문장"
+  },
+  "palette": [
+    "#202020",
+    "#F3F3F1",
+    "#F2B23A",
+    "#EE7A3B",
+    "#C83CE6",
+    "#4BD66A"
+  ],
+  "colors": {
+    "bg": "#202020",
+    "onBg": "#F3F3F1",
+    "onBgMuted": "rgba(243,243,241,.56)",
+    "paper": "#2B2B2B",
+    "ink": "#F3F3F1",
+    "accent": "#F2B23A",
+    "accentInk": "#1C1306",
+    "pattern": "rgba(255,255,255,.06)",
+    "glow": "rgba(200,60,230,.42)"
+  },
+  "type": {
+    "display": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "heading": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "body": [
+      "Geist",
+      "Noto Sans KR"
+    ]
+  },
+  "fonts": [
+    {
+      "family": "Geist",
+      "weight": "100 900",
+      "file": "fonts/Geist-Variable.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 500,
+      "file": "fonts/NotoSansKR-Medium.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 700,
+      "file": "fonts/NotoSansKR-Bold.woff2"
+    }
+  ],
+  "look": {
+    "vignette": 0.22
+  },
+  "shape": {
+    "radius": "calc(var(--u) * 1.6)"
+  },
+  "motion": {
+    "pace": "보통",
+    "bpm": 100,
+    "ease": "expo.out",
+    "stagger": 0.9,
+    "transitions": [
+      "cut",
+      "wipe",
+      "fade"
+    ]
+  },
+  "scenes": {
+    "bg": "solid",
+    "align": "center",
+    "card": "outline",
+    "marker": "color",
+    "weight": 700,
+    "tracking": -0.02,
+    "case": "none",
+    "rough": false,
+    "title": "mask",
+    "frame": "card",
+    "deco": [
+      "streaks",
+      "cursor",
+      "rings"
+    ],
+    "number": "count",
+    "scale": 1.1,
+    "schemes": [
+      "dark",
+      "paper",
+      "dark"
+    ]
+  },
+  "signature": [
+    "짙은 회색 판 가운데 굵은 흰 문장 두 줄. 어절이 차례로 놓이고 마지막 말만 금빛에서 주황으로 번지는 그라디언트로 물들어요. 문장 사이 빈칸에는 그라디언트 고리를 두른 둥근 아이콘 칩이 톡톡 튀어나오거나 작은 카드 더미가 끼어들어 낱말 하나를 대신해요",
+    "어두운 UI 카드(대화창, 차트 카드, 순위 카드)의 테두리를 따라 자홍 → 주황 → 금빛 빛이 한 바퀴 돌며 바깥으로 부드럽게 번지고, 커서가 목록 한 줄을 누르면 그 줄만 초록 테두리로 바뀌어요. 수익 숫자는 초록으로 올라가요",
+    "가는 가로선 끝 흰 점이 화면을 가로질러 오면 문장이 그 선의 끝을 문턱 삼아 미끄러져 나오고, 선이 갈래를 쳐 아이콘 칩과 이름표 세 줄을 차례로 켜요. 마무리에서는 자홍 빛줄기 여러 가닥이 혜성처럼 한 점으로 모이고, 크고 가는 원 안에 금빛 낱말이 든 한 줄이 놓여요"
+  ],
+  "fits": [
+    "AI 에이전트·자동화 서비스 소개",
+    "투자·트레이딩 도구",
+    "대화형 제품 기능 투어",
+    "개발자 도구 런칭",
+    "긴 기능 설명 영상(1분 안팎)"
+  ],
+  "avoid": [
+    "밝은 바탕",
+    "손그림·종이 질감",
+    "세리프 글꼴",
+    "카드마다 다른 강조색(테두리 빛은 자홍·금빛 한 줄기만)",
+    "모든 요소에 빛 번짐 넣기",
+    "한 화면에 문장 여러 줄"
+  ]
+}

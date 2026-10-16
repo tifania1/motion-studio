@@ -1,0 +1,8 @@
+{
+  "name": "종이 콜라주",
+  "description": "장면마다 찢긴 종이판이 날아와 덮이고, 그 위에 스티커 꼬리표·어절마다 다른 색 종이 띠·테이프 붙인 쪽지·톱니 스티커 숫자·리소 톤 사진 조각이 박마다 툭툭 붙어요. 마지막엔 큰 종이 위 문구에 스티커 버튼과 테이프로 붙인 로고.",
+  "fonts": [
+    { "family": "Archivo", "weight": "100 900", "stretch": "62% 125%", "file": "fonts/Archivo-Variable.woff2" },
+    { "family": "Geist Mono", "weight": "100 900", "file": "fonts/GeistMono-Variable.woff2" }
+  ]
+}

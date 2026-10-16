@@ -1,0 +1,126 @@
+{
+  "id": "split-pane-earth-haze-quiet-launch",
+  "name": "갈린 판 흙빛 안개",
+  "group": "그라디언트·빛",
+  "template": "glow",
+  "summary": "옅은 회색 판이 베이지 판과 반씩 갈렸다 다시 이어지고, 올리브·세이지·테라코타·푸른 회색 안개 위로 작은 글자 한 줄과 흰 UI 카드가 조용히 떠올랐다 흐려지는 차분한 런칭",
+  "tags": [
+    "그라디언트",
+    "안개",
+    "흙빛",
+    "차분함",
+    "런칭",
+    "협업"
+  ],
+  "hand": false,
+  "source": {
+    "site": "keyframe.gallery",
+    "ref": "mux:nykAFiUhG65IDA48OG028LjtgNchVILNZ8CFQtV6qKdE",
+    "at": "0–39.7초",
+    "note": "옅은 회색 판에 베이지 판이 반만 밀려 들어와 양쪽 낱말을 가르는 열기(2초, 6.9초), 어둑한 올리브 안개 속 흰 글씨(4초), 세이지 안개 위 커서가 누른 알약 단추와 아이콘(8.9–9.9초), 테라코타 안개 위 로그인 카드와 사진 카드(11.9–14.8초), 원근으로 펼쳐진 알약 목록과 세로 막대 벽(16.8–18.8초), 표에 붉은 깃발이 꽂히는 검토 화면(19.8–21.8초), 가운데 문장 둘레를 천천히 도는 얼굴 원들(23.7–24.7초), 문서 카드 옆 타자(26.7–29.7초), 세로 결 유리 같은 베이지 줄 위에서 두 낱말이 한 문장으로 합쳐지는 마무리(31.7–34.6초)"
+  },
+  "palette": [
+    "#DCDCD6",
+    "#C4BBA0",
+    "#6E6A5C",
+    "#9DB78F",
+    "#C8663A",
+    "#A9B4B8"
+  ],
+  "colors": {
+    "bg": "#DCDCD6",
+    "onBg": "#1C1C1A",
+    "onBgMuted": "rgba(28,28,26,.6)",
+    "paper": "#C4BBA0",
+    "ink": "#1C1C1A",
+    "accent": "#C8663A",
+    "accentInk": "#160D08",
+    "pattern": "rgba(28,28,26,.06)",
+    "glow": "rgba(157,183,143,.4)"
+  },
+  "type": {
+    "display": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "heading": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "body": [
+      "Geist",
+      "Noto Sans KR"
+    ]
+  },
+  "fonts": [
+    {
+      "family": "Geist",
+      "weight": "100 900",
+      "file": "fonts/Geist-Variable.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 500,
+      "file": "fonts/NotoSansKR-Medium.woff2"
+    }
+  ],
+  "look": {
+    "grain": 0.04
+  },
+  "shape": {
+    "radius": "calc(var(--u) * 1.2)"
+  },
+  "motion": {
+    "pace": "느림",
+    "bpm": 80,
+    "ease": "power2.inOut",
+    "stagger": 1.3,
+    "transitions": [
+      "wipe",
+      "blur",
+      "fade",
+      "push"
+    ]
+  },
+  "scenes": {
+    "bg": "aurora",
+    "align": "center",
+    "card": "shadow",
+    "marker": "color",
+    "weight": 400,
+    "tracking": -0.01,
+    "case": "none",
+    "rough": false,
+    "title": "type",
+    "frame": "none",
+    "deco": [
+      "cursor"
+    ],
+    "number": "count",
+    "scale": 0.85,
+    "schemes": [
+      "dark",
+      "paper",
+      "dark",
+      "accent"
+    ]
+  },
+  "signature": [
+    "옅은 회색 판 왼쪽과 오른쪽에 낱말 하나씩. 베이지 판이 옆에서 1.2초에 걸쳐 반만 밀려 들어와 둘 사이를 가르고 멈춰요. 마지막에는 세로로 흐린 베이지 줄이 일렁이는 판 위에서 두 낱말이 가운데로 모여 한 문장이 돼요",
+    "안개 색면(올리브 → 세이지 → 테라코타 → 푸른 회색)이 흐림 전환으로 바뀌고, 그 위에 그림자가 부드러운 흰 카드 한두 장이 살짝 떠 있어요. 커서가 천천히 와서 알약 단추나 버튼을 누르면 다음 카드가 옆에 놓여요",
+    "작은 가운데 문장 둘레를 얼굴 원 여러 개가 아주 느리게 돌거나, 알약 목록이 원근으로 비스듬히 펼쳐진 채 한 줄만 또렷하게 켜져요. 글은 블록 없이 가는 커서를 따라 한 글자씩 쳐져요"
+  ],
+  "fits": [
+    "업무 도구·협업 서비스 런칭",
+    "고객과 회사를 잇는 포털 소개",
+    "법률·금융·컨설팅처럼 차분한 업종",
+    "기능 서너 개를 천천히 보여 줄 때"
+  ],
+  "avoid": [
+    "쨍한 원색",
+    "굵고 큰 제목",
+    "빠른 컷과 흔들림",
+    "네온·빛 번짐 테두리",
+    "한 화면에 카드 여러 장 빽빽이"
+  ]
+}

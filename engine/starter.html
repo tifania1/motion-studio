@@ -1,0 +1,47 @@
+<!-- MS-STARTER: 처음부터 새로 짜는 영상의 시작 파일. Claude Code 가 이 영상만을 위한 연출로 바꿔 짜고, 다 짜면 이 줄을 지웁니다. -->
+<title>/*@TITLE@*/</title>
+<style>
+/*@FONTFACES@*/
+/*@BRAND_CSS@*/
+/*@ENGINE_CSS@*/
+
+/* ===== 이 영상만을 위한 연출 (docs/SCRATCH.md 를 따라 짭니다) =====
+   글·숫자·사진 키는 모두 video.json 의 content 에 두고 여기서는 S.content 로 읽습니다.
+   그래야 앱의 문구 탭에서 글을 고칠 수 있어요. */
+#sc-start { background: var(--bg); color: var(--on-bg); }
+#sc-start .safe { display: flex; flex-direction: column; justify-content: center; align-items: flex-start; gap: calc(var(--u) * 3); }
+#sc-start .tag { font: 800 calc(var(--u) * 3)/1 var(--font-body); letter-spacing: .04em; color: var(--accent); }
+#sc-start h1 { font: 900 calc(var(--u) * 11)/1.1 var(--font-heading); letter-spacing: -.04em; margin: 0; white-space: pre-line; word-break: keep-all; width: 100%; }
+#sc-start p { font: 600 calc(var(--u) * 3.6)/1.45 var(--font-body); margin: 0; color: var(--on-bg-muted); white-space: pre-line; word-break: keep-all; width: 100%; }
+#sc-start .bar { width: calc(var(--u) * 14); height: calc(var(--u) * 1); background: var(--accent); border-radius: 99px; transform-origin: 0 50%; }
+</style>
+
+<div id="viewport"><div id="stage"><div id="cam"></div></div></div>
+
+<script>/*@GSAP@*/</script>
+<script>/*@DATA@*/</script>
+<script>/*@ENGINE_JS@*/</script>
+<script>
+(function () {
+  const S = Studio, C = S.content, e = S.esc;
+  const cam = S.$('#cam');
+  // 장면 하나 = <section class="scene"> 하나. 처음엔 숨겨져 있고 S.tl 에서 보이게 합니다.
+  cam.appendChild(S.h(`<section class="scene" id="sc-start"><div class="safe">
+    <div class="tag">${e(C.tag || 'NEW VIDEO')}</div>
+    <h1>${e(C.title || '')}</h1>
+    <i class="bar"></i>
+    ${C.sub ? `<p>${e(C.sub)}</p>` : ''}
+  </div></section>`));
+
+  S.start(S => {
+    const tl = S.tl, u = Math.min(S.W, S.H) / 100;
+    S.fit(S.$('#sc-start h1'), { max: 11 * u, maxLines: 4 });
+    tl.set('#sc-start', { autoAlpha: 1 }, 0);
+    S.fx.rise(S.words(S.$('#sc-start h1')), .2, { y: 60, stagger: .06, ease: 'power3.out' });
+    tl.fromTo('#sc-start .bar', { scaleX: 0 }, { scaleX: 1, duration: .6, ease: 'power3.inOut' }, .6);
+    S.fx.fade('#sc-start .tag', .1);
+    if (S.$('#sc-start p')) S.fx.rise(S.$('#sc-start p'), .9, { y: 24, ease: 'power3.out' });
+    S.setDuration(4);
+  });
+})();
+</script>

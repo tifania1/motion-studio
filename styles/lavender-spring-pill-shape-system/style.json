@@ -1,0 +1,142 @@
+{
+  "id": "lavender-spring-pill-shape-system",
+  "name": "라벤더 탄력 알약 시스템",
+  "group": "제품 UI",
+  "template": "uidemo",
+  "summary": "옅은 라벤더 바탕에서 둥근 알약 버튼과 UI 카드가 스프링처럼 눌렸다 튀며 모양을 바꾸고, 물결 선 위를 글자가 통통 타고 넘은 뒤 물결 테두리 도형과 넓은 대문자가 컷마다 터지는 디자인 시스템 공개",
+  "tags": [
+    "제품 UI",
+    "디자인 시스템",
+    "알약 버튼",
+    "탄력",
+    "도형 변신",
+    "파스텔"
+  ],
+  "hand": false,
+  "source": {
+    "site": "keyframe.gallery",
+    "ref": "mux:QN98Fo0100kYCGRkAwRjDNp4VRJuHn1iCqkGXeCNewtj00",
+    "at": "0–38.1초",
+    "note": "라벤더 바탕 가운데 제목과 둥글게 도는 로딩 기호가 모양을 바꾸는 오프닝(0–3.9초), 컴포넌트 타일 벽이 밝은 테마에서 짙은 자두 테마로 통째로 갈리는 장면(4.6–6.8초), 이징 곡선 그래프와 분홍 물결 선 위를 낱글자가 타고 넘는 움직임 설명(9.7–12.7초), 하늘빛 위 알약 버튼 줄이 눌리면 이웃 버튼이 찌그러졌다 펴지는 탄력(13.3–16.6초), 물결 테두리·꽃·오각형 도형 무리(22.4–22.9초), 색 점이 견본 타일로 불어나는 팔레트(24.4–27.3초), 넓은 기울인 대문자와 방향 흐림으로 휙 지나가는 도형 컷(29.2–35.1초)"
+  },
+  "palette": [
+    "#E8E0F0",
+    "#1C1B1F",
+    "#EE8A98",
+    "#3DB4E6",
+    "#A9CBEB",
+    "#E8C93A"
+  ],
+  "colors": {
+    "bg": "#E8E0F0",
+    "onBg": "#1C1B1F",
+    "onBgMuted": "rgba(28,27,31,.62)",
+    "paper": "#A9CBEB",
+    "ink": "#14202B",
+    "accent": "#EE8A98",
+    "accentInk": "#2B1016",
+    "pattern": "rgba(28,27,31,.07)",
+    "glow": "rgba(238,138,152,.4)"
+  },
+  "type": {
+    "display": [
+      "Archivo",
+      "Noto Sans KR"
+    ],
+    "heading": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "body": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "mono": [
+      "Geist Mono",
+      "Noto Sans KR"
+    ]
+  },
+  "fonts": [
+    {
+      "family": "Archivo",
+      "weight": "100 900",
+      "stretch": "62% 125%",
+      "file": "fonts/Archivo-Variable.woff2"
+    },
+    {
+      "family": "Geist",
+      "weight": "100 900",
+      "file": "fonts/Geist-Variable.woff2"
+    },
+    {
+      "family": "Geist Mono",
+      "weight": "100 900",
+      "file": "fonts/GeistMono-Variable.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 500,
+      "file": "fonts/NotoSansKR-Medium.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 900,
+      "file": "fonts/NotoSansKR-Black.woff2"
+    }
+  ],
+  "shape": {
+    "radius": "calc(var(--u) * 2.4)"
+  },
+  "motion": {
+    "pace": "보통",
+    "bpm": 112,
+    "ease": "back.out(1.6)",
+    "stagger": 0.8,
+    "transitions": [
+      "cut",
+      "iris",
+      "whip"
+    ]
+  },
+  "scenes": {
+    "bg": "mesh",
+    "align": "center",
+    "card": "flat",
+    "marker": "color",
+    "weight": 500,
+    "tracking": -0.01,
+    "case": "none",
+    "rough": false,
+    "title": "pop",
+    "frame": "none",
+    "deco": [
+      "shapes"
+    ],
+    "number": "count",
+    "scale": 1.15,
+    "schemes": [
+      "dark",
+      "paper",
+      "accent",
+      "dark"
+    ]
+  },
+  "signature": [
+    "알약 버튼 줄에서 하나가 눌리면 0.15초 동안 가로로 납작하게 찌그러졌다가 스프링으로 부풀며 폭이 넓어지고, 양옆 버튼은 밀려나며 반대로 살짝 찌그러졌다 제자리로 튐. 네모 버튼은 눌릴 때 모서리가 둥글어져 알약이 되고 안의 아이콘이 체크로 바뀜",
+    "검은 화면에 분홍 물결 선 두세 가닥이 흐르고, 낱말의 글자가 하나씩 선 위에 떨어져 물결을 타며 통통 튐(글자마다 0.08초 늦게). 앞에는 S자 이징 곡선 그래프 위를 점 하나가 미끄러지는 설명 컷",
+    "하늘빛 바탕에 물결 테두리 원·꽃·오각형·둥근 네모가 톡톡 튀어나와 무리를 짓고, 그중 짙은 물결 원 하나가 화면보다 크게 부풀며 다음 장면을 염. 끝 무렵 화면을 꽉 채운 넓고 기울인 대문자 한 낱말이 컷으로 박힘"
+  ],
+  "fits": [
+    "디자인 시스템·UI 키트 공개",
+    "앱 새 단장·테마 업데이트",
+    "컴포넌트·위젯 기능 소개",
+    "젊고 밝은 제품 런칭"
+  ],
+  "avoid": [
+    "각진 모서리",
+    "손그림 선과 종이 질감",
+    "느린 서서히 전환만 쓰기",
+    "탁하고 어두운 색만으로 채우기",
+    "한 화면에 긴 문단"
+  ]
+}

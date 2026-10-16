@@ -1,0 +1,747 @@
+<title>/*@TITLE@*/</title>
+<style>
+/*@FONTFACES@*/
+/*@BRAND_CSS@*/
+/*@ENGINE_CSS@*/
+
+/* ===== dataflow 템플릿: 데이터 흐름 (점과 선의 흐름도) =====
+   아주 옅은 점 격자 위, 점 하나가 켜지고 동심원이 퍼진 뒤 그 옆에 제목이 들어옴(시작 노드 N00).
+   그 점에서 가는 선이 뻗어 나가 항목마다 노드가 생기고 이름표가 붙음. 카메라가 선을 따라 노드에서 노드로 옮겨 감.
+   선 위로는 강조색 신호 점이 계속 달림 → 모든 노드에서 선이 한 점으로 모여 원형 게이지가 그려지고 숫자(지시선 끝 주석)
+   → 흐름 끝 노드가 커져 버튼이 되고, 카메라가 뒤로 빠지며 전체 지도가 한 화면에. 9:16·4:5·1:1 은 위→아래, 16:9 는 왼쪽→오른쪽. */
+#df { position: absolute; inset: 0; background: var(--bg); color: var(--on-bg); overflow: hidden;
+  --l1: color-mix(in srgb, var(--on-bg) 15%, transparent);
+  --l2: color-mix(in srgb, var(--on-bg) 22%, transparent);
+  --l3: color-mix(in srgb, var(--on-bg) 44%, transparent);
+  --mono: "Geist Mono", var(--font-body);
+  --num: "Geist", var(--font-heading);
+  --tw: 700; }
+#df .abs { position: absolute; left: 0; top: 0; }
+.dfd { position: absolute; inset: 0; pointer-events: none; }
+.dfw { position: absolute; left: 0; top: 0; width: 0; height: 0; transform-origin: 0 0; }
+#df-tm { position: absolute; inset: 0; }
+
+/* 선·노드·신호 (세계 좌표 SVG) */
+#df-svg { position: absolute; left: 0; top: 0; overflow: visible; --k: 1; }
+#df-svg .ln { fill: none; stroke: var(--l2); stroke-width: calc(var(--k) * 2.4px); stroke-linecap: round; stroke-linejoin: round; }
+#df-svg .lt { stroke: var(--l3); }
+#df-svg .ld { stroke: var(--l3); stroke-width: calc(var(--k) * 1.8px); }
+#df-svg .nd .nr { fill: var(--bg); stroke: var(--l3); stroke-width: calc(var(--k) * 2.4px); }
+#df-svg .nd .gl { fill: currentColor; }
+#df-svg .nd .gs { fill: none; stroke: currentColor; stroke-width: calc(var(--k) * 2px); }
+#df-svg .n0c { fill: var(--accent); }
+#df-svg .pul { fill: none; stroke: var(--accent); stroke-width: calc(var(--k) * 2px); }
+#df-svg .sig { fill: var(--accent); }
+#df-svg .r0 { fill: none; stroke: var(--l2); stroke-width: calc(var(--k) * 2px); }
+#df-svg .arc { fill: none; stroke: var(--accent); stroke-width: calc(var(--k) * 3.4px); stroke-linecap: round; }
+#df-svg .tk { stroke: var(--l3); stroke-width: calc(var(--k) * 1.6px); stroke-linecap: round; }
+#df-svg .dotE { fill: var(--accent); }
+.df-ph { position: absolute; border-radius: 50%; overflow: hidden; background: var(--l1); visibility: hidden; }
+.df-ph img { width: 100%; height: 100%; object-fit: cover; }
+.df-ph.slot { background: none; border: 2px dashed var(--l3); box-sizing: border-box; display: grid; place-items: center;
+  font: 500 calc(var(--u) * 1.5)/1 var(--mono); letter-spacing: .14em; color: var(--on-bg-muted); }
+
+/* 글 (세계 좌표, 세이프존 밖으로 나가면 가려짐) */
+#df-kick { display: inline-flex; align-items: center; gap: calc(var(--u) * 1.1); height: calc(var(--u) * 3.8); padding: 0 calc(var(--u) * 1.4);
+  border: 2px solid var(--l3); border-radius: calc(var(--u) * .8); box-sizing: border-box; white-space: nowrap; visibility: hidden;
+  font: 500 calc(var(--u) * 2)/1 var(--mono); letter-spacing: .06em; color: var(--on-bg); }
+#df-kick i { flex: none; width: calc(var(--u) * .9); height: calc(var(--u) * .9); background: var(--accent); border-radius: 50%; }
+#df-kick b { font-weight: 500; color: var(--on-bg-muted); letter-spacing: .12em; }
+#df-kick em { font-style: normal; min-width: 1px; }
+#df-title { font: var(--tw) 10px/1.16 var(--font-heading); letter-spacing: -.03em; color: var(--on-bg); white-space: pre-line; word-break: keep-all; }
+#df-title .hl { color: var(--accent); }
+.df-lab { position: absolute; visibility: hidden; }
+.df-tg { font: 500 calc(var(--u) * 1.7)/1 var(--mono); letter-spacing: .1em; color: var(--on-bg-muted); white-space: nowrap; }
+.df-tg b { font-weight: 600; color: var(--accent); }
+.df-lt { font: var(--tw) 10px/1.24 var(--font-heading); letter-spacing: -.025em; color: var(--on-bg); white-space: pre-line; word-break: keep-all; margin-top: calc(var(--u) * 1.1); }
+.df-lab.w { text-align: center; }
+.df-lab.w .df-lt { margin-left: auto; margin-right: auto; }
+#df-num { position: absolute; display: flex; flex-direction: column; align-items: center; text-align: center; visibility: hidden; }
+#df-num .np { font: var(--tw) 10px/1.2 var(--font-heading); color: var(--on-bg-muted); white-space: nowrap; margin-bottom: .2em; }
+#df-num .nr { display: flex; align-items: baseline; white-space: nowrap; }
+#df-num .nv { font: 400 10px/1 var(--num); letter-spacing: -.045em; font-variant-numeric: tabular-nums; }
+#df-num .ns { font: var(--tw) 10px/1 var(--font-heading); color: var(--accent); margin-left: .12em; }
+.df-co { position: absolute; visibility: hidden; }
+.df-co.cl { font: var(--tw) 10px/1.28 var(--font-heading); letter-spacing: -.02em; color: var(--on-bg); word-break: keep-all; }
+.df-co.cs { font: 500 10px/1.35 var(--font-body); color: var(--on-bg-muted); word-break: keep-all; }
+.df-co.tg { font: 500 calc(var(--u) * 1.7)/1 var(--mono); letter-spacing: .1em; color: var(--on-bg-muted); white-space: nowrap; }
+
+/* 화면에 붙은 것: 맨 위 흐름 표시줄, 끝 장면(제목·버튼·주소·로고) */
+#df-hud { display: flex; align-items: center; justify-content: space-between; font: 500 calc(var(--u) * 1.6)/1 var(--mono); letter-spacing: .1em; color: var(--on-bg-muted); white-space: nowrap; }
+#df-hud .hl0 { display: flex; align-items: center; gap: calc(var(--u) * 1.4); }
+#df-hud svg { overflow: visible; }
+#df-hud .hr { stroke: var(--l2); stroke-width: 2; }
+#df-hud .hd { fill: var(--bg); stroke: var(--l3); stroke-width: 2; }
+#df-tether { position: absolute; left: 0; top: 0; overflow: visible; }
+#df-tether path { fill: none; stroke: var(--accent); stroke-width: 2.6px; stroke-linecap: round; stroke-linejoin: round; }
+#df-tether circle { fill: var(--accent); }
+#df-hl { font: var(--tw) 10px/1.2 var(--font-heading); letter-spacing: -.03em; color: var(--on-bg); white-space: pre-line; word-break: keep-all; }
+#df-btn { position: absolute; left: 0; top: 0; background: var(--accent); color: var(--accent-ink); display: flex; align-items: center; justify-content: center; overflow: hidden; visibility: hidden; }
+#df-btn span { font: 700 10px/1 var(--font-body); white-space: nowrap; letter-spacing: -.01em; }
+#df-btn svg { flex: none; margin-left: .55em; width: .9em; height: .9em; overflow: visible; }
+#df-btn svg path { fill: none; stroke: currentColor; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+#df-sub { font: 500 10px/1.3 var(--font-body); color: var(--on-bg-muted); white-space: nowrap; }
+#df-logo { display: flex; align-items: center; gap: calc(var(--u) * 1.4); white-space: nowrap; }
+#df-logo img { width: auto; }
+#df-logo .lt { font: 800 10px/1 var(--font-display); color: var(--on-bg); letter-spacing: .02em; }
+#df-logo .ls { font: 500 calc(var(--u) * 1.6)/1 var(--mono); color: var(--on-bg-muted); letter-spacing: .18em; }
+#df-note { font: 500 10px/1.3 var(--font-body); color: var(--on-bg-muted); white-space: nowrap; }
+</style>
+
+<div id="viewport"><div id="stage"><div id="cam"></div></div></div>
+
+<script>/*@GSAP@*/</script>
+<script>/*@DATA@*/</script>
+<script>/*@ENGINE_JS@*/</script>
+<script>
+(function () {
+  const S = Studio, M = S.M, e = S.esc;
+  const st = S.story();
+  const PREVIEW = !window.__RENDER;
+  const cam = S.$('#cam');
+  const pad2 = n => String(n).padStart(2, '0');
+  const pad4 = n => String(Math.max(0, Math.round(n))).padStart(4, '0');
+  const NS = 'http://www.w3.org/2000/svg';
+
+  /* ---- 노드 목록: 항목(points)마다 하나, 사진은 차례로 노드 안 원형 썸네일. 항목보다 사진이 많으면 사진만 든 노드를 더함 ---- */
+  const nodes = st.points.map((p, i) => ({ label: p, photo: st.photos[i] ? st.photos[i].src : '', slot: '' }));
+  st.photos.slice(st.points.length).forEach(ph => nodes.push({ label: '', photo: ph.src, slot: '' }));
+  // 미리보기에서만: 아직 안 넣은 사진 자리를 점선 원으로
+  if (PREVIEW) for (let i = st.photos.length; i < Math.min(st.photoSlots.length, nodes.length); i++) if (!nodes[i].photo) nodes[i].slot = st.photoSlots[i];
+  const num = st.number;
+  const cta = st.cta;
+  const hasBtn = !!cta.button;
+
+  const ARROW = '<svg viewBox="0 0 12 12" aria-hidden="true"><path d="M1 6h9.2M6.6 2.2 10.4 6 6.6 9.8"/></svg>';
+  const logo = st.logo;
+
+  cam.appendChild(S.h(`<div id="df">
+    <div id="df-dots" class="dfd"></div><div id="df-dots2" class="dfd"></div>
+    <div id="df-tm"><div id="df-wl" class="dfw"><svg id="df-svg" width="1" height="1">
+      <g id="g-bun"></g><g id="g-trk"></g><g id="g-ring"></g><g id="g-pul"></g><g id="g-nd"></g><g id="g-sig"></g></svg>
+      ${nodes.map((n, i) => n.photo ? `<div class="df-ph" data-i="${i}"><img src="${n.photo}" alt=""></div>` : n.slot ? `<div class="df-ph slot" data-i="${i}">IMG ${pad2(i + 1)}</div>` : '').join('')}
+    </div>
+    <div id="df-wt" class="dfw">
+      <div id="df-kick" class="abs"><i></i>${st.kicker ? `<em></em>` : ''}<b>N00</b></div>
+      ${st.title ? `<div id="df-title" class="abs">${e(st.title)}</div>` : ''}
+      ${nodes.map((n, i) => `<div class="df-lab"><div class="df-tg"></div>${n.label ? `<div class="df-lt">${e(n.label)}</div>` : ''}</div>`).join('')}
+      ${num ? `<div id="df-num">${num.prefix ? `<div class="np">${e(num.prefix)}</div>` : ''}<div class="nr"><span class="nv"></span>${num.suffix ? `<span class="ns">${e(num.suffix)}</span>` : ''}</div></div>
+        ${num.label ? `<div class="df-co cl">${e(num.label)}</div>` : ''}${num.source ? `<div class="df-co cs">${e(num.source)}</div>` : ''}<div class="df-co tg ht"></div>` : ''}
+    </div></div>
+    <svg id="df-tether" width="1" height="1"><path/><g></g></svg>
+    <div id="df-hud" class="abs"><div class="hl0"><span class="hn"></span><svg class="hm"></svg></div><span class="hc"></span></div>
+    <div id="df-cta">
+      ${cta.headline ? `<div id="df-hl" class="abs">${e(cta.headline)}</div>` : ''}
+      <div id="df-btn">${hasBtn ? `<span>${e(cta.button)}${ARROW}</span>` : ''}</div>
+      ${cta.sub ? `<div id="df-sub" class="abs">${e(cta.sub)}</div>` : ''}
+      ${logo.img || logo.text ? `<div id="df-logo" class="abs">${logo.img ? `<img src="${logo.img}" alt="">` : `<span class="lt">${e(logo.text)}</span>`}${logo.sub ? `<span class="ls">${e(logo.sub)}</span>` : ''}</div>` : ''}
+      ${st.note ? `<div id="df-note" class="abs">${e(st.note)}</div>` : ''}
+    </div>
+  </div>`));
+
+  S.start(S => {
+    const W = S.W, H = S.H, u = Math.min(W, H) / 100, sf = S.safe;
+    const sx = sf.left, sy = sf.top, sw = W - sf.left - sf.right, sh = H - sf.top - sf.bottom;
+    const KEY = S.key, V = KEY !== 'wide';                  // V: 위→아래 흐름, 아니면 왼쪽→오른쪽
+    const Z = { tall: { tf: 8.4, lf: 4.6, R: 17, hl: 7.4 }, portrait: { tf: 7.8, lf: 4.4, R: 17, hl: 6.8 },
+      square: { tf: 6.8, lf: 4.0, R: 15, hl: 5.8 }, wide: { tf: 7.0, lf: 3.9, R: 19, hl: 6.0 } }[KEY];
+    const { clamp, prog, lerp } = M, E = M.ease;
+    const px = v => v.toFixed(1) + 'px';
+    const sty = S.sty();
+    const root = S.$('#df');
+    if (sty.weight) root.style.setProperty('--tw', Math.max(400, Math.min(900, +sty.weight)));
+    const easeName = S.ease('');
+    const camEase = /inout/i.test(easeName) ? gsap.parseEase(easeName) : E.inOutCubic;   // 스타일 이징이 inOut 이면 카메라도 그걸로
+    const popEase = gsap.parseEase(S.ease('power3.out'));
+
+    /* 화면 칸: 맨 위 흐름 표시줄(HUD) 아래가 내용 */
+    const hudH = 3 * u, cTop = sy + hudH + 2.6 * u, cBot = sy + sh, cH = cBot - cTop;
+    const A = [sx + sw / 2, cTop + cH / 2];                    // 카메라 기준점 (보통 여기에 보고 싶은 곳이 옴)
+
+    /* ---------- 세계(흐름도) 배치. 시작 노드 N00 = (0, 0) ---------- */
+    const wl = S.$('#df-wl'), wt = S.$('#df-wt'), svg = S.$('#df-svg');
+    const gBun = S.$('#g-bun'), gTrk = S.$('#g-trk'), gRing = S.$('#g-ring'), gPul = S.$('#g-pul'), gNd = S.$('#g-nd'), gSig = S.$('#g-sig');
+    const mk = (tag, attrs, parent) => { const el = document.createElementNS(NS, tag); for (const k in attrs) el.setAttribute(k, attrs[k]); if (parent) parent.appendChild(el); return el; };
+    const BB = { x0: 1e9, y0: 1e9, x1: -1e9, y1: -1e9 };       // 전체 지도 상자
+    const bb = (x0, y0, x1, y1) => { BB.x0 = Math.min(BB.x0, x0); BB.y0 = Math.min(BB.y0, y0); BB.x1 = Math.max(BB.x1, x1); BB.y1 = Math.max(BB.y1, y1); };
+    const setXY = (el, x, y) => { el.style.left = px(x); el.style.top = px(y); };
+    const tagOf = (k, x, y) => `<b>N${pad2(k)}</b> · x${pad4(x + 1000)} y${pad4(y + 1000)}`;
+    const cr = 2 * u;                                          // 둥근 꺾임 반지름
+
+    // 1) 시작 노드 + 꼬리표 + 제목
+    const r0 = 2.3 * u;
+    const kick = S.$('#df-kick'), title = S.$('#df-title');
+    const tx = 6.6 * u;                                        // 제목 왼쪽 (점에서 떨어진 거리)
+    const colL = -4.2 * u;                                     // 세로 흐름: 화면 왼쪽 끝이 되는 세계 x
+    const colR = V ? colL + sw - 1 * u : 0;
+    const tMaxW = V ? colR - tx : Math.min(104 * u, sw * .62);
+    let tLineH, tH = 0, tW = 0;
+    if (title) {
+      title.style.width = px(tMaxW - .5 * Z.tf * u);
+      S.fit(title, { max: Z.tf * u, maxLines: 3 });
+      tLineH = parseFloat(getComputedStyle(title).lineHeight);
+      title.style.width = 'max-content'; title.style.maxWidth = px(tMaxW - .5 * Z.tf * u);
+      // 반 글자 여유: 글자를 어절·글자 조각으로 나누고 커서가 붙어도(S.fx.enter) 줄이 바뀌지 않게
+      tW = Math.min(tMaxW, title.offsetWidth + .5 * parseFloat(title.style.fontSize)); title.style.width = px(tW); title.style.maxWidth = '';
+      tH = title.offsetHeight;
+    } else tLineH = Z.tf * u * 1.16;
+    const tTop = -tLineH / 2;                                  // 첫 줄 가운데에 점이 옴
+    if (title) setXY(title, tx, tTop);
+    const kH = 3.8 * u, kTop = tTop - 2.6 * u - kH;
+    setXY(kick, tx, kTop);
+    const kEm = S.$('em', kick);
+    if (kEm) kEm.textContent = st.kicker;
+    const kW = kick.offsetWidth;
+    if (kEm) kEm.textContent = '';
+    const tBot = tTop + Math.max(tH, tLineH);
+    const hookR = tx + Math.max(tW, kW);
+    bb(-r0 - 1 * u, kTop, hookR, tBot);
+
+    // 2) 노드 (항목). 라벨 크기를 먼저 재서 간격을 정함
+    const labs = S.$$('.df-lab', wt);
+    const rN = 1.9 * u, rP = (KEY === 'square' ? 5.4 : 5.8) * u;
+    nodes.forEach((n, i) => {
+      n.r = n.photo || n.slot ? rP : rN;
+      n.lab = labs[i]; n.lt = S.$('.df-lt', n.lab); n.tg = S.$('.df-tg', n.lab);
+    });
+    const pitchW = 48 * u;                                     // 가로 흐름의 기본 노드 간격
+    nodes.forEach((n, i) => {
+      if (n.lt) {
+        const w = V ? colR - (n.r + 3.6 * u) : 38 * u;
+        n.lt.style.width = px(w - .5 * Z.lf * u);
+        S.fit(n.lt, { max: Z.lf * u, maxLines: 2, keepMin: .86 });
+        n.lt.style.width = 'max-content'; n.lt.style.maxWidth = px(w - .5 * Z.lf * u);
+        const ww = Math.min(w, n.lt.offsetWidth + .5 * parseFloat(n.lt.style.fontSize)); n.lt.style.width = px(ww); n.lt.style.maxWidth = '';
+      }
+      n.tg.innerHTML = tagOf(i + 1, 0, 0);                     // 크기 재기용 (좌표는 아래에서 다시)
+      n.lw = n.lab.offsetWidth; n.lh = n.lab.offsetHeight;
+    });
+    // 위치
+    let Ty = 0;                                                // 가로 흐름의 줄기 높이
+    if (V) {
+      let y = tBot;
+      nodes.forEach((n, i) => {
+        if (i === 0) y = Math.max(tBot + 7 * u + n.lh / 2, tBot + 9 * u + n.r);
+        else { const p = nodes[i - 1]; y += Math.max(p.r + n.r + 9 * u, p.lh / 2 + n.lh / 2 + 6.5 * u, 20 * u); }
+        n.x = 0; n.y = y;
+      });
+    } else {
+      Ty = tBot + 10 * u;
+      let x = 0;
+      nodes.forEach((n, i) => {
+        if (i === 0) x = Math.max(32 * u, hookR + 12 * u, n.lw / 2 + 4 * u);
+        else { const p = nodes[i - 1]; x += Math.max(pitchW, p.lw / 2 + n.lw / 2 + 7 * u, p.r + n.r + 14 * u); }
+        n.x = x; n.y = Ty;
+      });
+    }
+    nodes.forEach((n, i) => {
+      n.tg.innerHTML = tagOf(i + 1, n.x, n.y);
+      if (V) { setXY(n.lab, n.x + n.r + 3.6 * u, n.y - n.lh / 2); bb(n.x - n.r, n.y - Math.max(n.r, n.lh / 2), n.x + n.r + 3.6 * u + n.lw, n.y + Math.max(n.r, n.lh / 2)); }
+      else { n.lab.classList.add('w'); setXY(n.lab, n.x - n.lw / 2, n.y + n.r + 2.6 * u); bb(n.x - Math.max(n.r, n.lw / 2), n.y - n.r, n.x + Math.max(n.r, n.lw / 2), n.y + n.r + 2.6 * u + n.lh); }
+    });
+    const last = nodes[nodes.length - 1];
+    const rMax = Math.max(rN, ...nodes.map(n => n.r));
+
+    /* ---------- 선 만들기 ---------- */
+    const rnd = pts => {   // 꺾인 선(점 목록)을 둥근 모서리 path 로
+      let d = `M${pts[0][0].toFixed(1)} ${pts[0][1].toFixed(1)}`;
+      for (let i = 1; i < pts.length; i++) {
+        const p = pts[i];
+        if (i < pts.length - 1) {
+          const q = pts[i - 1], nx = pts[i + 1];
+          const l1 = Math.hypot(p[0] - q[0], p[1] - q[1]), l2 = Math.hypot(nx[0] - p[0], nx[1] - p[1]);
+          const rr = Math.min(cr, l1 / 2, l2 / 2);
+          const ax = p[0] - (p[0] - q[0]) / (l1 || 1) * rr, ay = p[1] - (p[1] - q[1]) / (l1 || 1) * rr;
+          const bx = p[0] + (nx[0] - p[0]) / (l2 || 1) * rr, by = p[1] + (nx[1] - p[1]) / (l2 || 1) * rr;
+          d += `L${ax.toFixed(1)} ${ay.toFixed(1)}Q${p[0].toFixed(1)} ${p[1].toFixed(1)} ${bx.toFixed(1)} ${by.toFixed(1)}`;
+        } else d += `L${p[0].toFixed(1)} ${p[1].toFixed(1)}`;
+      }
+      return d;
+    };
+    const path = (d, cls, parent) => { const p = mk('path', { d, class: 'ln ' + (cls || '') }, parent); p._len = p.getTotalLength() || 1; p.style.strokeDasharray = `${p._len} ${p._len}`; p.style.strokeDashoffset = p._len; return p; };
+
+    // 3) 숫자: 모든 선이 모이는 원형 게이지
+    const R = Z.R * u;
+    let hub = null;
+    if (num) {
+      if (V) {
+        const y = last ? last.y + Math.max(last.r + 17 * u, last.lh / 2 + 9 * u) + R + 2.4 * u : tBot + 16 * u + R;
+        hub = { x: 0, y };
+      } else {
+        const x = last ? last.x + Math.max(last.r + 24 * u, last.lw / 2 + 12 * u) + R : Math.max(34 * u, hookR + 14 * u) + R;
+        hub = { x, y: Ty };
+      }
+      hub.top = V ? [hub.x, hub.y - R] : [hub.x - R, hub.y];          // 선이 모이는 점
+    }
+    /* ---------- 숫자와 지시선 주석 ---------- */
+    let NB = null;
+    if (hub) {
+      const box = S.$('#df-num'), nv = S.$('.nv', box), np = S.$('.np', box), ns = S.$('.ns', box);
+      const nvF = .78 * R;
+      nv.style.fontSize = px(nvF);
+      if (ns) ns.style.fontSize = px(nvF * .42);
+      if (np) np.style.fontSize = px(Math.max(2.2 * u, .19 * R));
+      nv.textContent = S.numText(num.value, num.decimals);
+      const nrEl = S.$('.nr', box), maxW = R * 1.56;
+      if (nrEl.offsetWidth > maxW) { const k = maxW / nrEl.offsetWidth; nv.style.fontSize = px(nvF * k); if (ns) ns.style.fontSize = px(nvF * k * .42); }
+      if (np) { np.style.maxWidth = px(R * 1.5); np.style.overflow = 'hidden'; S.fit(np, { max: parseFloat(np.style.fontSize) }); }
+      nv.style.minWidth = px(nv.offsetWidth);                  // 세는 동안 폭이 흔들리지 않게
+      nv.style.textAlign = 'center';
+      const bw = box.offsetWidth, bh = box.offsetHeight;
+      setXY(box, hub.x - bw / 2, hub.y - bh / 2 + (np ? 0 : .04 * R));
+      // 지시선: 라벨은 오른쪽 위(-40°), 출처는 오른쪽 아래(+40°)
+      const cl = S.$('.df-co.cl', wt), cs = S.$('.df-co.cs', wt), ht = S.$('.df-co.ht', wt);
+      const lead = (ang) => {
+        const a = ang * Math.PI / 180, p1 = [hub.x + (R + .6 * u) * Math.cos(a), hub.y + (R + .6 * u) * Math.sin(a)];
+        const sgn = Math.sign(Math.sin(a)) || 1;
+        const p2 = [p1[0] + 4 * u, p1[1] + sgn * 4 * u], p3 = [p2[0] + 5 * u, p2[1]];
+        return { pts: [p1, p2, p3], p3 };
+      };
+      const L1 = lead(-40), L2 = lead(40);
+      const coL = L1.p3[0] + 2 * u;
+      const coW = V ? (colR - coL) + (hub.x - colL) - (R + 3 * u) - 1 * u : 54 * u;   // 세로: 원+주석이 한 화면 폭에 들어가게
+      const leaders = [];
+      const lbF = (V ? 3.7 : 3.6) * u, srF = 2.1 * u;
+      if (cl) { cl.style.width = px(Math.max(24 * u, coW)); S.fit(cl, { max: lbF, maxLines: 3, keepLines: false }); const w = cl.style.width; cl.style.width = 'max-content'; cl.style.maxWidth = w; const ww = Math.min(parseFloat(w), cl.offsetWidth + .4 * parseFloat(cl.style.fontSize)); cl.style.width = px(ww); cl.style.maxWidth = ''; setXY(cl, coL, L1.p3[1] - cl.offsetHeight / 2); leaders.push({ p: path(rnd(L1.pts), 'ld', gRing), el: cl, dot: mk('circle', { class: 'sig', cx: L1.p3[0], cy: L1.p3[1], r: .55 * u }, gRing) }); bb(hub.x, L1.p3[1] - cl.offsetHeight / 2, coL + ww, L1.p3[1]); }
+      if (cs) { cs.style.width = px(Math.max(24 * u, coW)); cs.style.fontSize = px(srF); S.fit(cs, { max: srF, maxLines: 3, keepLines: false }); const w = cs.style.width; cs.style.width = 'max-content'; cs.style.maxWidth = w; const ww = Math.min(parseFloat(w), cs.offsetWidth + .4 * srF); cs.style.width = px(ww); cs.style.maxWidth = ''; setXY(cs, coL, L2.p3[1] - cs.offsetHeight / 2); leaders.push({ p: path(rnd(L2.pts), 'ld', gRing), el: cs, dot: mk('circle', { class: 'sig', cx: L2.p3[0], cy: L2.p3[1], r: .45 * u }, gRing) }); bb(hub.x, L2.p3[1], coL + ww, L2.p3[1] + cs.offsetHeight / 2); }
+      // 게이지 꼬리표 (왼쪽 아래, 나가는 선 왼쪽)
+      ht.innerHTML = `<b>N${pad2(nodes.length + 1)}</b> · SUM`;
+      const hw = ht.offsetWidth, hx0 = hub.x - .7 * R - hw, hy0 = hub.y + .78 * R + 1.6 * u;
+      setXY(ht, hx0, hy0);
+      bb(hx0, hub.y, hub.x, hy0 + ht.offsetHeight);
+      // 카메라가 볼 숫자 장면의 상자
+      const gx0 = Math.min(hub.x - R - 3 * u, hx0), gx1 = Math.max(hub.x + R + 3 * u, ...leaders.map(l => parseFloat(l.el.style.left) + l.el.offsetWidth));
+      const gy0 = Math.min(hub.y - R - 3 * u, ...leaders.map(l => parseFloat(l.el.style.top)));
+      const gy1 = Math.max(hub.y + R + 3 * u, ...leaders.map(l => parseFloat(l.el.style.top) + l.el.offsetHeight));
+      NB = { box, nv, np, ns, leaders, ht, c: [(gx0 + gx1) / 2, (gy0 + gy1) / 2], w: gx1 - gx0, h: gy1 - gy0 };
+    }
+
+    // 4) 끝 노드 E (버튼이 됨)
+    const rE = 2.2 * u;
+    // 세로 흐름에서 숫자가 없으면 끝 노드는 줄기에서 한 번 꺾여 화면 가운데 아래로 (버튼이 될 때 이름표가 화면 안에 남게)
+    const colCx = colL + (colR - colL + 1 * u) / 2, yK = last ? last.y + Math.max(last.r, last.lh / 2) + 5 * u : tBot + 5 * u;
+    let EP;
+    if (hub) EP = V ? [NB.c[0], hub.y + R + 16 * u] : [hub.x + R + 16 * u, hub.y];   // 세로: 숫자 장면 가운데 아래 (버튼이 될 때 주석이 화면 안에 남게)
+    else if (last) EP = V ? [colCx, yK + 11 * u] : [last.x + Math.max(last.r + 18 * u, last.lw / 2 + 12 * u), Ty];
+    else EP = V ? [colCx, yK + 11 * u] : [Math.max(30 * u, hookR + 14 * u), Ty];
+    bb(EP[0] - rE, EP[1] - rE, EP[0] + rE, EP[1] + rE);
+
+    // 줄기(trunk): N00 → 노드들 → (모이는 점 | E), 노드 하나씩 나눠 그림 (구간마다 path 하나). 숫자가 있으면 게이지 아래(오른쪽)에서 E 로 한 번 더
+    const segs = [];
+    if (V) {
+      let prev = [0, r0];
+      nodes.forEach(n => { segs.push({ pts: [prev, [0, n.y - n.r]], to: 'node' }); prev = [0, n.y + n.r]; });
+      segs.push({ pts: hub ? [prev, hub.top] : [prev, [0, yK], [EP[0], yK], [EP[0], EP[1] - rE]], to: hub ? 'hub' : 'end' });
+    } else {
+      const firstX = nodes.length ? nodes[0].x - nodes[0].r : (hub ? hub.top[0] : EP[0] - rE);
+      segs.push({ pts: [[0, r0], [0, Ty], [firstX, Ty]], to: nodes.length ? 'node' : hub ? 'hub' : 'end' });
+      if (nodes.length) {
+        let prev = [nodes[0].x + nodes[0].r, Ty];
+        nodes.slice(1).forEach(n => { segs.push({ pts: [prev, [n.x - n.r, Ty]], to: 'node' }); prev = [n.x + n.r, Ty]; });
+        segs.push({ pts: [prev, hub ? hub.top : [EP[0] - rE, Ty]], to: hub ? 'hub' : 'end' });
+      }
+    }
+    // (가로 흐름에서 노드가 없으면 첫 구간이 곧 마지막 구간)
+    const trunk = segs.map(s => ({ p: path(rnd(s.pts), 'lt', gTrk), to: s.to }));
+    let exit = null;
+    if (hub) {
+      const yk = hub.y + R + 6 * u;
+      const pts = V ? (Math.abs(EP[0] - hub.x) < 1 ? [[hub.x, hub.y + R], [EP[0], EP[1] - rE]] : [[hub.x, hub.y + R], [hub.x, yk], [EP[0], yk], [EP[0], EP[1] - rE]]) : [[hub.x + R, hub.y], [EP[0] - rE, EP[1]]];
+      exit = { p: path(rnd(pts), 'lt', gTrk) };
+    }
+    // 모으는 선(bundle): 노드마다 줄기 반대편으로 나가 나란히 달리다 모이는 점으로
+    const bundle = [];
+    if (hub) {
+      const k = nodes.length, P = hub.top;
+      nodes.forEach((n, i) => {
+        const off = rMax + 2.8 * u + (k - 1 - i) * 1.5 * u;
+        let d;
+        if (V) {
+          const lx = -off, y0 = n.y, yEnd = P[1] - 10 * u;
+          d = `M${(-n.r).toFixed(1)} ${y0.toFixed(1)}L${(lx + cr).toFixed(1)} ${y0.toFixed(1)}Q${lx.toFixed(1)} ${y0.toFixed(1)} ${lx.toFixed(1)} ${(y0 + cr).toFixed(1)}L${lx.toFixed(1)} ${yEnd.toFixed(1)}C${lx.toFixed(1)} ${(P[1] - 3 * u).toFixed(1)} ${P[0].toFixed(1)} ${(P[1] - 6 * u).toFixed(1)} ${P[0].toFixed(1)} ${P[1].toFixed(1)}`;
+        } else {
+          const ly = Ty - off, x0 = n.x, xEnd = P[0] - 11 * u;
+          d = `M${x0.toFixed(1)} ${(Ty - n.r).toFixed(1)}L${x0.toFixed(1)} ${(ly + cr).toFixed(1)}Q${x0.toFixed(1)} ${ly.toFixed(1)} ${(x0 + cr).toFixed(1)} ${ly.toFixed(1)}L${xEnd.toFixed(1)} ${ly.toFixed(1)}C${(P[0] - 3 * u).toFixed(1)} ${ly.toFixed(1)} ${(P[0] - 7 * u).toFixed(1)} ${P[1].toFixed(1)} ${P[0].toFixed(1)} ${P[1].toFixed(1)}`;
+        }
+        bundle.push({ p: path(d, '', gBun) });
+        if (V) bb(-off - 1 * u, n.y, 0, P[1]); else bb(n.x, Ty - off - 1 * u, P[0], Ty);
+      });
+    }
+
+    /* ---------- 노드 그림 ---------- */
+    const glyph = (i, r) => {
+      const a = .44 * r;
+      switch (i % 6) {
+        case 0: return `<circle class="gl" r="${a.toFixed(1)}"/>`;
+        case 1: return `<circle class="gs" r="${(a * .95).toFixed(1)}"/><circle class="gl" r="${(a * .36).toFixed(1)}"/>`;
+        case 2: return `<rect class="gl" x="${(-a * .82).toFixed(1)}" y="${(-a * .82).toFixed(1)}" width="${(a * 1.64).toFixed(1)}" height="${(a * 1.64).toFixed(1)}" rx="${(a * .3).toFixed(1)}"/>`;
+        case 3: return `<rect class="gl" x="${(-a * .74).toFixed(1)}" y="${(-a * .74).toFixed(1)}" width="${(a * 1.48).toFixed(1)}" height="${(a * 1.48).toFixed(1)}" transform="rotate(45)"/>`;
+        case 4: return `<path class="gs" d="M${(-a).toFixed(1)} 0H${a.toFixed(1)}M0 ${(-a).toFixed(1)}V${a.toFixed(1)}"/>`;
+        default: return `<circle class="gs" r="${a.toFixed(1)}"/><circle class="gs" r="${(a * .45).toFixed(1)}"/>`;
+      }
+    };
+    const ndG = (x, y, r, inner) => { const g = mk('g', { class: 'nd' }, gNd); g.innerHTML = `<circle class="nr" r="${r.toFixed(1)}"/>${inner}`; g._x = x; g._y = y; return g; };
+    // N00: 바깥 고리 + 강조색 점
+    const n0 = mk('g', { class: 'nd' }, gNd);
+    n0.innerHTML = `<circle class="nr" r="${r0.toFixed(1)}"/><circle class="n0c" r="${(r0 * .5).toFixed(1)}"/>`;
+    const n0p = [0, 1, 2].map(() => mk('circle', { class: 'pul', r: 1 }, gPul));
+    nodes.forEach((n, i) => { n.g = ndG(n.x, n.y, n.r, n.photo || n.slot ? '' : `<g class="gi">${glyph(i, n.r)}</g>`); n.gi = S.$('.gi', n.g); n.pul = mk('circle', { class: 'pul', r: 1 }, gPul); });
+    const phs = S.$$('.df-ph', wl);
+    phs.forEach(el => { const n = nodes[+el.dataset.i], d = (n.r - .5 * u) * 2; Object.assign(el.style, { width: px(d), height: px(d), left: px(n.x - d / 2), top: px(n.y - d / 2) }); n.ph = el; });
+    // 끝 노드
+    const nE = ndG(EP[0], EP[1], rE, `<circle class="dotE" r="${(rE * .48).toFixed(1)}"/>`);
+    const ePul = mk('circle', { class: 'pul', r: 1 }, gPul);
+
+    /* ---------- 게이지 ---------- */
+    let ring = null;
+    if (hub) {
+      const pct = /%|퍼센트|percent/i.test(num.suffix) && num.value > 0 && num.value <= 100 ? num.value / 100 : 1;
+      const c0 = mk('circle', { class: 'r0', cx: hub.x, cy: hub.y, r: R }, gRing);
+      // 모이는 점에서 시작해 시계 방향으로 (세로: 위, 가로: 왼쪽)
+      const a0 = V ? -Math.PI / 2 : Math.PI, a1 = a0 + Math.PI * 2 * Math.min(pct, .9999);
+      const pa = (a) => `${(hub.x + R * Math.cos(a)).toFixed(1)} ${(hub.y + R * Math.sin(a)).toFixed(1)}`;
+      const am = a0 + (a1 - a0) / 2;
+      const arcD = `M${pa(a0)}A${R.toFixed(1)} ${R.toFixed(1)} 0 0 1 ${pa(am)}A${R.toFixed(1)} ${R.toFixed(1)} 0 0 1 ${pa(a1)}`;
+      const arc = mk('path', { class: 'arc', d: arcD }, gRing);
+      const ticks = [];
+      for (let j = 0; j < 72; j++) {
+        const a = a0 + j / 72 * Math.PI * 2, big = j % 6 === 0, r1 = R + 1.4 * u, r2 = R + (big ? 2.8 * u : 2.1 * u);
+        ticks.push(mk('line', { class: 'tk', x1: (hub.x + r1 * Math.cos(a)).toFixed(1), y1: (hub.y + r1 * Math.sin(a)).toFixed(1), x2: (hub.x + r2 * Math.cos(a)).toFixed(1), y2: (hub.y + r2 * Math.sin(a)).toFixed(1) }, gRing));
+      }
+      const hp = mk('circle', { class: 'pul', r: 1 }, gPul);
+      ring = { c0, arc, ticks, hp, pct };
+      bb(hub.x - R - 3 * u, hub.y - R - 3 * u, hub.x + R + 3 * u, hub.y + R + 3 * u);
+    }
+
+    /* ---------- 끝 장면 (화면에 붙음) ---------- */
+    const hlEl = S.$('#df-hl'), btn = S.$('#df-btn'), sub = S.$('#df-sub'), logoEl = S.$('#df-logo'), note = S.$('#df-note');
+    const btnSpan = S.$('span', btn);
+    const bH = (V ? 9 : 8.4) * u;
+    if (btnSpan) btnSpan.style.fontSize = px(bH * .4);
+    const bW = btnSpan ? Math.min(sw * .9, btnSpan.offsetWidth + bH * 1.25) : bH;
+    if (btnSpan && btnSpan.offsetWidth > bW - bH * .9) S.fit(btnSpan, { max: bH * .4 });
+    if (sub) { sub.style.fontSize = px(2.8 * u); sub.style.maxWidth = px(V ? sw : sw * .4); sub.style.overflow = 'hidden'; S.fit(sub, { max: 2.8 * u }); }
+    if (note) { note.style.fontSize = px(1.8 * u); note.style.maxWidth = px(V ? sw : sw * .4); note.style.overflow = 'hidden'; S.fit(note, { max: 1.8 * u }); }
+    if (logoEl) {
+      const im = S.$('img', logoEl), lt = S.$('.lt', logoEl);
+      if (im) im.style.height = px(6.2 * u);
+      if (lt) lt.style.fontSize = px(4 * u);
+      logoEl.style.maxWidth = px(V ? sw : sw * .4);
+    }
+    let btnC, btnAnchor, mapR;
+    const subH = sub ? sub.offsetHeight : 0, noteH = note ? note.offsetHeight : 0, logoH = logoEl ? logoEl.offsetHeight : 0;
+    if (V) {
+      // 위: 큰 제목 / 가운데: 전체 지도 / 아래: 버튼 · 주소 · 로고 · 안내
+      let y = cBot;
+      const noteY = note ? (y -= noteH) : y; if (note) y -= 2.2 * u;
+      const logoY = logoEl ? (y -= logoH) : y; if (logoEl) y -= 3 * u;
+      const subY = sub ? (y -= subH) : y; if (sub) y -= 2.2 * u;
+      const btnY = hasBtn ? (y -= bH) : y;
+      btnC = [sx + sw / 2, btnY + bH / 2];
+      if (note) setXY(note, sx + (sw - note.offsetWidth) / 2, noteY);
+      if (logoEl) setXY(logoEl, sx + (sw - logoEl.offsetWidth) / 2, logoY);
+      if (sub) setXY(sub, sx + (sw - sub.offsetWidth) / 2, subY);
+      let hlB = cTop;
+      if (hlEl) {
+        hlEl.style.width = px(sw); hlEl.style.textAlign = 'center';
+        S.fit(hlEl, { max: Z.hl * u, maxLines: 3, maxHeight: (btnY - cTop) * .36 });
+        setXY(hlEl, sx, cTop); hlB = cTop + hlEl.offsetHeight;
+      }
+      mapR = { x0: sx, y0: hlB + 4.5 * u, x1: sx + sw, y1: btnY - (hasBtn ? 5 : 3.5) * u };
+      btnAnchor = hasBtn ? btnC : [sx + sw / 2, mapR.y1 - 2 * u];   // 버튼이 없으면 끝 노드는 지도 아래 끝에 남음
+    } else {
+      // 왼쪽: 전체 지도 / 오른쪽 기둥: 큰 제목 · 버튼 · 주소 · 로고
+      const colX = sx + sw * .58, colW = sx + sw - colX;
+      let hlh = 0;
+      if (hlEl) { hlEl.style.width = px(colW); S.fit(hlEl, { max: Z.hl * u, maxLines: 3, maxHeight: cH * .42 }); hlh = hlEl.offsetHeight; }
+      const stackH = (hlEl ? hlh + 4.4 * u : 0) + (hasBtn ? bH : 0) + (sub ? 2.4 * u + subH : 0) + (logoEl ? 4.4 * u + logoH : 0);
+      let y = cTop + (cH - (note ? noteH + 3 * u : 0) - stackH) / 2;
+      if (hlEl) { setXY(hlEl, colX, y); y += hlh + 4.4 * u; }
+      btnC = [colX + bW / 2, y + bH / 2]; if (hasBtn) y += bH; else y -= 2.4 * u;
+      if (sub) { y += 2.4 * u; setXY(sub, colX + (hasBtn ? bH * .3 : 0), y); y += subH; }
+      if (logoEl) { y += 4.4 * u; setXY(logoEl, colX, y); }
+      if (note) setXY(note, colX, cBot - noteH);
+      mapR = { x0: sx, y0: cTop, x1: colX - 8 * u, y1: cBot };
+      btnAnchor = hasBtn ? [colX + bH / 2, btnC[1]] : [mapR.x1 - 3 * u, cTop + cH / 2];   // 버튼 왼쪽 끝 동그라미 = 끝 노드 자리
+    }
+    // 전체 지도 맞추기
+    const bbW = BB.x1 - BB.x0, bbH = BB.y1 - BB.y0;
+    const zf = Math.min(1, (mapR.x1 - mapR.x0) / bbW, (mapR.y1 - mapR.y0) / bbH) * .94;
+    const mapC = [(mapR.x0 + mapR.x1) / 2, (mapR.y0 + mapR.y1) / 2], bbC = [(BB.x0 + BB.x1) / 2, (BB.y0 + BB.y1) / 2];
+    const EsF = [mapC[0] + (EP[0] - bbC[0]) * zf, mapC[1] + (EP[1] - bbC[1]) * zf];   // 끝에 E 가 화면에서 놓이는 곳
+
+    /* ---------- 시간표 (0.5초 단위) ---------- */
+    const tTitle0 = .9;
+    const tTitleEnd = title ? S.fx.enter(title, tTitle0, { highlight: st.highlight, def: 'mask' }) : tTitle0;
+    const HOOK = Math.max(3, Math.ceil((tTitleEnd + 1.1) * 2) / 2);
+    const STEP = 1.5;
+    nodes.forEach((n, i) => { n.T = HOOK + i * STEP; });
+    const NUM = HOOK + nodes.length * STEP + (nodes.length ? .5 : 0);
+    const NUMD = hub ? 4 : 0;
+    const CTA = NUM + NUMD;
+    const PULL = CTA + 1.25, PULLD = 1.5;
+    const END = CTA + 5;
+    S.setDuration(END);
+
+    // 항목 이름표 등장 (스타일 scenes.title 을 따름)
+    nodes.forEach(n => { if (n.lt) S.fx.enter(n.lt, n.T + .62, { def: 'mask' }); });
+    if (NB) { S.fx.num(NB.nv, NUM + 1.4, 1.3, num.value, { decimals: num.decimals }); }
+    if (hlEl) S.fx.enter(hlEl, PULL + .95, { def: 'mask' });
+
+    // 줄기 구간 시각
+    trunk.forEach((s, i) => {
+      if (s.to === 'node') { s.t0 = nodes[i].T; s.d = .55; }
+      else if (s.to === 'hub') { s.t0 = NUM + .15; s.d = 1.15; }
+      else { s.t0 = CTA; s.d = .6; }
+    });
+    // 다음 구간이 시작될 때 앞 구간은 강조색에서 옅은 색으로
+    trunk.forEach((s, i) => { s.tNext = i + 1 < trunk.length ? trunk[i + 1].t0 : exit ? CTA : 1e9; });
+    if (exit) { exit.t0 = CTA; exit.d = .6; exit.tNext = 1e9; }
+    bundle.forEach((b, i) => { b.t0 = NUM + .15 + S.stg(.06) * (nodes.length - 1 - i); b.d = 1.05; });
+    const routes = [...trunk, ...(exit ? [exit] : [])];
+    // 전체 길이 (끝에 경로 전체가 강조색으로 쓸림)
+    let acc = 0; routes.forEach(r => { r.L0 = acc; acc += r.p._len; }); const LT = acc || 1;
+    const SWEEP = PULL + .1, SWEEPD = 1.1;
+
+    /* ---------- 카메라 ---------- */
+    const ZB = V ? 1 : 1.16;                                  // 16:9 는 조금 다가가서 (위아래가 비지 않게)
+    let zH = ZB;
+    const hookC = V ? [colL + (colR - colL + 1 * u) / 2, (kTop + tBot) / 2] : [(-r0 - 1 * u + hookR) / 2, (kTop + Ty) / 2];
+    // 새 노드는 가운데보다 조금 흐름 쪽(아래·오른쪽)에 와서, 지나온 노드들이 나머지 화면을 채움
+    const qOf = n => V ? [colL + (colR - colL + 1 * u) / 2, n.y - cH * .1] : [n.x - sw * .12 / ZB, Ty + 5 * u];
+    const CK = [[0, [0, 0, Math.log(1.32 * ZB), A[0], A[1]]]];
+    const ck = (t, q, z, s, d) => CK.push([t, [q[0], q[1], Math.log(z), s[0], s[1]], { d, e: camEase }]);
+    ck(.55, hookC, ZB, A, 1.05);
+    nodes.forEach(n => ck(n.T, qOf(n), ZB, A, .95));
+    if (hub) {
+      const fromQ = last ? qOf(last) : hookC;
+      const mid = [(fromQ[0] + NB.c[0]) / 2, (fromQ[1] + NB.c[1]) / 2];
+      const zMid = Math.max(.6, Math.min(.9 * ZB, Math.min(sw / (Math.abs(NB.c[0] - fromQ[0]) + NB.w), cH / (Math.abs(NB.c[1] - fromQ[1]) + NB.h)) * 1.05));
+      ck(NUM + .1, mid, zMid, A, .7);
+      zH = Math.min(ZB, (sw - 2 * u) / NB.w, (cH - 2 * u) / NB.h);
+      ck(NUM + .5, NB.c, zH, A, .9);
+    }
+    const zC = V && hub ? Math.min(1, zH) : 1;                // 끝 노드가 버튼이 되는 순간의 배율
+    ck(CTA + .05, EP, zC, btnAnchor, .95);
+    // 흐름도 속 글 덩어리: 세이프존 왼쪽·오른쪽 끝을 넘기 시작하면 통째로 사라짐 (잘린 글이 남지 않게, 전체 지도에서는 다시 보임)
+    const textEls = [kick, title, ...nodes.map(n => n.lab), ...(NB ? [NB.box, NB.ht, ...NB.leaders.map(l => l.el)] : [])].filter(Boolean);
+    textEls.forEach(el => { el._x0 = parseFloat(el.style.left) || 0; el._x1 = el._x0 + el.offsetWidth; el._ea = 1; });
+    const cOut = { z: 1, ox: 0, oy: 0 };
+    const camAt = t => {
+      const v = M.anim(CK, t);
+      let z = Math.exp(v[2]);
+      let ox = v[3] - v[0] * z, oy = v[4] - v[1] * z;
+      if (t > PULL) {                                          // 끝 노드를 축으로 뒤로 빠짐
+        const k = camEase(prog(t, PULL, PULLD));
+        const s0 = [ox + EP[0] * z, oy + EP[1] * z];
+        const zz = Math.exp(lerp(Math.log(z), Math.log(zf), k));
+        const s1 = [lerp(s0[0], EsF[0], k), lerp(s0[1], EsF[1], k)];
+        z = zz; ox = s1[0] - EP[0] * zz; oy = s1[1] - EP[1] * zz;
+      }
+      cOut.z = z; cOut.ox = ox; cOut.oy = oy;
+      return cOut;
+    };
+
+    /* ---------- 바탕 점 격자, 글 가림막(세이프존) ---------- */
+    const dots = S.$('#df-dots'), dots2 = S.$('#df-dots2');
+    const G = 3.2 * u;
+    const dotImg = r => `radial-gradient(circle at center, var(--l1) 0 ${r.toFixed(2)}px, transparent ${(r + .7).toFixed(2)}px)`;
+    // 흐름도(선·글)는 세이프존 안 내용 칸에서만 보이고, 가장자리에서 서서히 사라짐 (위 HUD 줄과도 겹치지 않게)
+    const tm = S.$('#df-tm');
+    const mY = `linear-gradient(180deg, transparent ${px(cTop - 2.4 * u)}, #000 ${px(cTop + 7 * u)}, #000 ${px(cBot - 5 * u)}, transparent ${px(cBot + .6 * u)})`;
+    const mX = `linear-gradient(90deg, transparent ${px(sx - 4 * u)}, #000 ${px(sx + .2 * u)}, #000 ${px(sx + sw - .2 * u)}, transparent ${px(sx + sw + 4 * u)})`;
+    tm.style.webkitMaskImage = tm.style.maskImage = `${mY}, ${mX}`;
+    tm.style.webkitMaskComposite = 'source-in'; tm.style.maskComposite = 'intersect';
+
+    /* ---------- HUD: 흐름 표시줄 ---------- */
+    const hud = S.$('#df-hud'), hn = S.$('.hn', hud), hm = S.$('.hm', hud), hc = S.$('.hc', hud);
+    Object.assign(hud.style, { left: px(sx), top: px(sy), width: px(sw), height: px(hudH) });
+    const stops = [{ t: 0 }, ...nodes.map(n => ({ t: n.T })), ...(hub ? [{ t: NUM }] : []), { t: CTA }];
+    const hg = 2.4 * u, hdr = .55 * u;
+    hm.setAttribute('width', (stops.length - 1) * hg + 2 * hdr); hm.setAttribute('height', 2 * hdr + 2);
+    hm.setAttribute('viewBox', `${-hdr - 1} ${-hdr - 1} ${(stops.length - 1) * hg + 2 * hdr + 2} ${2 * hdr + 2}`);
+    mk('line', { class: 'hr', x1: 0, y1: 0, x2: (stops.length - 1) * hg, y2: 0 }, hm);
+    const hDots = stops.map((s, i) => mk('circle', { class: 'hd', cx: i * hg, cy: 0, r: hdr }, hm));
+
+    /* ---------- 신호 점 (pool) ---------- */
+    const sigPool = []; let sigN = 0;
+    const sig = (x, y, r, o) => {
+      let c = sigPool[sigN];
+      if (!c) { c = mk('circle', { class: 'sig' }, gSig); sigPool.push(c); }
+      c.setAttribute('cx', x.toFixed(1)); c.setAttribute('cy', y.toFixed(1)); c.setAttribute('r', Math.max(.1, r).toFixed(2));
+      c.style.opacity = clamp(o).toFixed(3); c.style.visibility = 'inherit';
+      sigN++;
+    };
+    const at = (p, s) => p.getPointAtLength(clamp(s, 0, p._len));
+    const comet = (p, s, r, o = 1) => { for (let j = 0; j < 4; j++) { const q = at(p, s - j * 1.1 * u); if (s - j * 1.1 * u < 0) break; sig(q.x, q.y, r * (1 - j * .2), o * (1 - j * .26)); } };
+    const flow = (p, t, t0, sp, gap, r, o, phase = 0) => {   // 다 그려진 선 위를 일정 간격으로 흐르는 점 (전체 시계 기준이라 선끼리 이어져 보임)
+      if (t < t0) return;
+      const L = p._len, off = (((t * sp + phase) % gap) + gap) % gap;
+      for (let s = off; s < L; s += gap) { const q = at(p, s); sig(q.x, q.y, r, o * clamp(s / (2 * u)) * clamp((L - s) / (2 * u))); }
+    };
+
+    /* ---------- 끝 장면 줄(tether): 지도 속 끝 노드 → 버튼 ---------- */
+    const teth = S.$('#df-tether'), tp = S.$('path', teth), tg = S.$('g', teth);
+    const tDots = [0, 1, 2, 3].map(() => mk('circle', { r: 4 }, tg));
+    const elbow = (x1, y1, x2, y2) => {
+      const pts = V ? [[x1, y1], [x1, (y1 + y2) / 2], [x2, (y1 + y2) / 2], [x2, y2]] : [[x1, y1], [(x1 + x2) / 2, y1], [(x1 + x2) / 2, y2], [x2, y2]];
+      return rnd(pts.filter((p, i) => i === 0 || Math.hypot(p[0] - pts[i - 1][0], p[1] - pts[i - 1][1]) > .5));
+    };
+
+    const nodeColor = (t, T, tNext) => `color-mix(in srgb, var(--accent) ${(100 * (t >= T + .45 ? 1 - prog(t, tNext, .5) : 0)).toFixed(0)}%, var(--on-bg))`;
+    const mix = a => `color-mix(in srgb, var(--accent) ${(clamp(a) * 100).toFixed(1)}%, var(--l3))`;
+
+    S.ambient(t => {
+      sigN = 0;
+      const c = camAt(t), z = c.z;
+      const tr = `translate(${c.ox.toFixed(2)}px, ${c.oy.toFixed(2)}px) scale(${z.toFixed(5)})`;
+      wl.style.transform = wt.style.transform = tr;
+      const k = 1 / Math.pow(z, .72);
+      for (const el of textEls) { const out = Math.max(0, sx - (c.ox + el._x0 * z)) + Math.max(0, c.ox + el._x1 * z - (sx + sw)); el._ea = clamp(1 - out / (2.5 * u)); }
+      svg.style.setProperty('--k', k.toFixed(4));
+      // 점 격자 (가까울 땐 촘촘, 멀어지면 성긴 격자만)
+      const g1 = G * z, g2 = G * 4 * z;
+      dots.style.backgroundImage = dotImg(Math.max(.9, 1.5 * Math.sqrt(z)));
+      dots.style.backgroundSize = `${g1.toFixed(2)}px ${g1.toFixed(2)}px`;
+      dots.style.backgroundPosition = `${(c.ox % g1 - g1 / 2).toFixed(2)}px ${(c.oy % g1 - g1 / 2).toFixed(2)}px`;
+      dots.style.opacity = clamp((g1 - 9) / 14).toFixed(3);
+      dots2.style.backgroundImage = dotImg(1.7);
+      dots2.style.backgroundSize = `${g2.toFixed(2)}px ${g2.toFixed(2)}px`;
+      dots2.style.backgroundPosition = `${(c.ox % g2 - g2 / 2).toFixed(2)}px ${(c.oy % g2 - g2 / 2).toFixed(2)}px`;
+      dots2.style.opacity = (.55 + .45 * (1 - clamp((g1 - 9) / 14))).toFixed(3);
+
+      /* 1) 시작: 점이 켜지고 동심원 */
+      const s0 = M.spring(t - .05, 'pop');
+      n0.setAttribute('transform', `scale(${clamp(s0, 0, 1.2).toFixed(4)})`);
+      n0.style.visibility = t > .05 ? 'inherit' : 'hidden';
+      n0p.forEach((p, j) => {
+        const kk = prog(t, .12 + j * .28, 1.25), rr = r0 + E.outCubic(kk) * (14 + j * 3) * u;
+        p.setAttribute('r', rr.toFixed(1)); p.style.opacity = kk > 0 && kk < 1 ? ((1 - kk) * .7).toFixed(3) : 0;
+      });
+      // 꼬리표: 타자
+      const kv = clamp((t - .55) * 8);
+      kick.style.visibility = kv > 0 ? 'inherit' : 'hidden'; kick.style.opacity = (kv * kick._ea).toFixed(3);
+      if (title) title.style.opacity = title._ea.toFixed(3);
+      if (kEm) kEm.textContent = M.type(st.kicker, t, .7, 26);
+
+      /* 2) 줄기와 노드 */
+      routes.forEach((r, i) => {
+        const kk = r.d ? E.inOutCubic(prog(t, r.t0, r.d)) : 0;
+        M.draw(r.p, kk);
+        const act = t >= r.t0 ? 1 - prog(t, r.tNext, .5) : 0;
+        const sw0 = clamp((t - (SWEEP + r.L0 / LT * SWEEPD)) / .25);
+        r.p.style.stroke = mix(Math.max(act, sw0));
+        if (kk > 0 && kk < 1) comet(r.p, kk * r.p._len, .85 * u * k, 1);
+      });
+      // 다 그려진 줄기 위로 흐르는 신호 (길 전체를 하나로 이어서)
+      routes.forEach(r => flow(r.p, t, r.t0 + r.d, 9 * u, 16 * u, .5 * u * k, .85, -r.L0));
+      nodes.forEach((n, i) => {
+        const tp0 = n.T + .5;
+        const sp = M.spring(t - tp0, 'snappy');
+        n.g.style.visibility = t >= tp0 ? 'inherit' : 'hidden';
+        n.g.setAttribute('transform', `translate(${n.x.toFixed(1)} ${n.y.toFixed(1)}) scale(${clamp(sp, 0, 1.15).toFixed(4)})`);
+        const tNext = i + 1 < nodes.length ? nodes[i + 1].T : hub ? NUM : CTA;
+        const col = nodeColor(t, n.T, tNext);
+        if (n.gi) n.gi.style.color = col;
+        n.g.querySelector('.nr').style.stroke = `color-mix(in srgb, var(--accent) ${(100 * (t >= tp0 ? 1 - prog(t, tNext, .5) : 0)).toFixed(0)}%, var(--l3))`;
+        const pk = prog(t, tp0, .9);
+        n.pul.setAttribute('cx', n.x); n.pul.setAttribute('cy', n.y);
+        n.pul.setAttribute('r', (n.r + E.outCubic(pk) * 7 * u).toFixed(1)); n.pul.style.opacity = pk > 0 && pk < 1 ? ((1 - pk) * .6).toFixed(3) : 0;
+        if (n.ph) {
+          const ck2 = E.outCubic(prog(t, tp0 + .05, .55));
+          n.ph.style.visibility = ck2 > 0 ? 'inherit' : 'hidden';
+          n.ph.style.clipPath = `circle(${(ck2 * 50).toFixed(2)}% at 50% 50%)`;
+        }
+        // 이름표: 꼬리표(좌표)는 바로, 글은 S.fx.enter 가 맡음
+        n.lab.style.visibility = t >= n.T + .55 ? 'inherit' : 'hidden';
+        n.lab.style.opacity = n.lab._ea.toFixed(3);
+        n.tg.style.opacity = clamp((t - (n.T + .55)) * 5).toFixed(3);
+      });
+
+      /* 3) 모이는 선과 게이지 */
+      if (hub) {
+        bundle.forEach(b => {
+          const kk = E.inOutCubic(prog(t, b.t0, b.d));
+          M.draw(b.p, kk);
+          if (kk > 0 && kk < 1) comet(b.p, kk * b.p._len, .7 * u * k, 1);
+          flow(b.p, t, b.t0 + b.d, 11 * u, 13 * u, .45 * u * k, .9, b.p._len % (13 * u));
+        });
+        const tA = NUM + 1.3;                                    // 선들이 모이는 시각 → 고리
+        const hk = prog(t, tA - .05, .8);
+        ring.hp.setAttribute('cx', hub.top[0]); ring.hp.setAttribute('cy', hub.top[1]);
+        ring.hp.setAttribute('r', (1 * u + E.outCubic(hk) * 8 * u).toFixed(1)); ring.hp.style.opacity = hk > 0 && hk < 1 ? ((1 - hk) * .8).toFixed(3) : 0;
+        const ak = popEase(prog(t, tA, 1.1));
+        M.draw(ring.arc, ak);
+        ring.c0.style.opacity = clamp((t - (tA - .2)) * 3).toFixed(3);
+        const nt = ring.ticks.length;
+        ring.ticks.forEach((tk, j) => { const kj = prog(t, tA + .1 + j / nt * .9, .12); tk.style.opacity = (kj * (j / nt <= ring.pct + .001 || ring.pct === 1 ? 1 : .45)).toFixed(3); tk.style.visibility = kj > 0 ? 'inherit' : 'hidden'; });
+        NB.box.style.visibility = t >= tA + .05 ? 'inherit' : 'hidden';
+        const nb = M.spring(t - (tA + .05), 'snappy');
+        NB.box.style.opacity = (clamp(nb * 1.4) * NB.box._ea).toFixed(3);
+        NB.box.style.transform = `translateY(${((1 - clamp(nb)) * 2 * u).toFixed(1)}px)`;
+        if (NB.ns) NB.ns.style.opacity = clamp((t - (tA + .9)) * 4).toFixed(3);
+        NB.leaders.forEach((l, j) => {
+          const t1 = tA + .95 + j * .35;
+          M.draw(l.p, E.outCubic(prog(t, t1, .4)));
+          l.dot.style.visibility = t >= t1 + .35 ? 'inherit' : 'hidden';
+          const lk = M.spring(t - (t1 + .3), 'snappy');
+          l.el.style.visibility = t >= t1 + .3 ? 'inherit' : 'hidden';
+          l.el.style.opacity = (clamp(lk * 1.5) * l.el._ea).toFixed(3);
+          l.el.style.transform = `translateX(${((1 - clamp(lk)) * -1.5 * u).toFixed(1)}px)`;
+        });
+        NB.ht.style.visibility = t >= tA + 1.4 ? 'inherit' : 'hidden';
+        NB.ht.style.opacity = (clamp((t - (tA + 1.4)) * 4) * NB.ht._ea).toFixed(3);
+      }
+
+      /* 4) 끝 노드 → 버튼 */
+      const tE = CTA + .55, tM = CTA + .8;
+      const se = M.spring(t - tE, 'snappy');
+      nE.style.visibility = t >= tE && (!hasBtn || t < tM || t > PULL + .05) ? 'inherit' : 'hidden';
+      nE.setAttribute('transform', `translate(${EP[0].toFixed(1)} ${EP[1].toFixed(1)}) scale(${clamp(se, 0, 1.15).toFixed(4)})`);
+      nE.querySelector('.nr').style.stroke = 'var(--accent)';
+      const epk = prog(t, tE, .9);
+      ePul.setAttribute('cx', EP[0]); ePul.setAttribute('cy', EP[1]);
+      ePul.setAttribute('r', (rE + E.outCubic(epk) * 8 * u).toFixed(1)); ePul.style.opacity = epk > 0 && epk < 1 ? ((1 - epk) * .7).toFixed(3) : 0;
+      // 버튼: 끝 노드 크기 동그라미에서 알약으로
+      if (hasBtn && t >= tM) {
+        const bk = M.spring(t - tM, { f: 2.1, z: .9 });
+        const h0 = 2 * rE * zC, hh = lerp(h0, bH, clamp(bk, 0, 1.05)), ww = lerp(h0, bW, clamp(bk, 0, 1.05));
+        const x = V ? btnAnchor[0] : btnAnchor[0] - h0 / 2 + ww / 2 - (hh - h0) / 2;
+        M.box(btn, { x, y: btnAnchor[1], w: ww, h: hh, r: hh / 2 });
+        btn.style.visibility = 'inherit';
+        if (btnSpan) { const bo = clamp((t - (tM + .35)) * 4); btnSpan.style.opacity = bo.toFixed(3); btnSpan.style.transform = `translateY(${((1 - bo) * .8 * u).toFixed(1)}px)`; }
+      } else btn.style.visibility = 'hidden';
+      // 줄: 지도 속 끝 노드에서 버튼까지
+      const es = [c.ox + EP[0] * z, c.oy + EP[1] * z];
+      const bEdge = V ? [btnAnchor[0], btnAnchor[1] - bH / 2] : [btnAnchor[0] - bH / 2, btnAnchor[1]];
+      const far = V ? bEdge[1] - es[1] : bEdge[0] - es[0];
+      if (hasBtn && t > PULL && far > rE * z + 2) {
+        const s1 = V ? [es[0], es[1] + rE * z] : [es[0] + rE * z, es[1]];
+        tp.setAttribute('d', elbow(s1[0], s1[1], bEdge[0], bEdge[1]));
+        tp.style.visibility = 'inherit';
+        const L = tp.getTotalLength();
+        tDots.forEach((d, j) => {
+          const s = (((t - PULL) * 7 * u + j * L / 4) % Math.max(1, L));
+          const q = tp.getPointAtLength(s);
+          d.setAttribute('cx', q.x.toFixed(1)); d.setAttribute('cy', q.y.toFixed(1)); d.setAttribute('r', (.42 * u).toFixed(1));
+          d.style.visibility = L > 3 * u ? 'inherit' : 'hidden'; d.style.opacity = (clamp(s / (1.5 * u)) * clamp((L - s) / (1.5 * u))).toFixed(3);
+        });
+      } else { tp.style.visibility = 'hidden'; tDots.forEach(d => d.style.visibility = 'hidden'); }
+      // 주소·로고·안내
+      const fadeIn = (el, t0) => { if (!el) return; const kk = M.spring(t - t0, 'snappy'); el.style.visibility = t >= t0 ? 'inherit' : 'hidden'; el.style.opacity = clamp(kk * 1.5).toFixed(3); el.style.translate = `0 ${((1 - clamp(kk)) * 1.6 * u).toFixed(1)}px`; };
+      fadeIn(sub, PULL + 1.25); fadeIn(logoEl, PULL + 1.45); fadeIn(note, PULL + 1.65);
+      if (hlEl) hlEl.style.visibility = t >= PULL + .9 ? 'inherit' : 'hidden';
+
+      /* HUD */
+      let cur = 0; stops.forEach((s, i) => { if (t >= s.t) cur = i; });
+      hDots.forEach((d, i) => { d.style.fill = i < cur ? 'var(--l3)' : i === cur ? 'var(--accent)' : 'var(--bg)'; d.style.stroke = i === cur ? 'var(--accent)' : 'var(--l3)'; });
+      hn.textContent = `FLOW ${pad2(cur)}/${pad2(stops.length - 1)}`;
+      const qx = (A[0] - c.ox) / z, qy = (A[1] - c.oy) / z;
+      hc.textContent = `x${pad4(qx + 1000)} y${pad4(qy + 1000)} · z${z.toFixed(2)}`;
+      hud.style.opacity = clamp(t * 3).toFixed(3);
+
+      for (let j = sigN; j < sigPool.length; j++) sigPool[j].style.visibility = 'hidden';
+    });
+  });
+})();
+</script>

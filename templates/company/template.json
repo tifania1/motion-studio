@@ -1,0 +1,8 @@
+{
+  "name": "회사 소개 (설계도 → 명함)",
+  "description": "격자와 치수선이 그려지며 화면이 설계도처럼 깔리고, 회사 이름이 선으로 짜 맞춰진 뒤 미션 한 문장 → 하는 일 블록이 아래에서 쌓여 올라옴 → 치수선 위에서 숫자가 굴러 맞춰짐 → 고객·파트너 이름 띠 → 명함 한 장이 3D로 뒤집히며 연락처. 18초 안팎.",
+  "fonts": [
+    { "family": "Archivo", "weight": "100 900", "stretch": "62% 125%", "file": "fonts/Archivo-Variable.woff2" },
+    { "family": "Geist Mono", "weight": "100 900", "file": "fonts/GeistMono-Variable.woff2" }
+  ]
+}

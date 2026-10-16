@@ -1,0 +1,112 @@
+{
+  "id": "lattice-annotate-minimal",
+  "name": "격자와 주석",
+  "group": "그래픽·도형",
+  "template": "brandmark",
+  "summary": "둥근 사각 격자 선이 깔린 미색 바탕에 작은 고정폭 주석과 점, 그라디언트 정사각형 하나로 짜는 조용한 설계도풍",
+  "tags": [
+    "미니멀",
+    "격자",
+    "주석",
+    "설계도",
+    "개발자"
+  ],
+  "hand": false,
+  "source": {
+    "site": "keyframe.gallery",
+    "ref": "mux:bCCKEhP00qPSMjt01Be8Vo01jT400i00KmALgEeDovUl02MoM",
+    "at": "0–8초, 20–34초, 58–67초",
+    "note": "일시정지 막대가 두 점으로 갈라져 문구 양 끝을 잡는 시작, 가운데 그라디언트 정사각형 둘레의 고정폭 주석과 정사각형이 화면을 채우는 포털 전환, 둥근 사각 격자 선 바탕, 어두운 반전 장면의 점 원"
+  },
+  "palette": [
+    "#E4E3E0",
+    "#141414",
+    "#6E6AA8",
+    "#C5C3BE",
+    "#B04A86"
+  ],
+  "colors": {
+    "bg": "#E4E3E0",
+    "onBg": "#141414",
+    "onBgMuted": "rgba(20,20,20,.55)",
+    "paper": "#F2F1EE",
+    "ink": "#141414",
+    "accent": "#6E6AA8",
+    "accentInk": "#FFFFFF",
+    "pattern": "rgba(20,20,20,.14)",
+    "glow": "rgba(110,106,168,.25)"
+  },
+  "type": {
+    "display": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "heading": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "body": [
+      "Geist",
+      "Noto Sans KR"
+    ]
+  },
+  "fonts": [
+    {
+      "family": "Geist",
+      "weight": "100 900",
+      "file": "fonts/Geist-Variable.woff2"
+    },
+    {
+      "family": "Geist Mono",
+      "weight": "100 900",
+      "file": "fonts/GeistMono-Variable.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 500,
+      "file": "fonts/NotoSansKR-Medium.woff2"
+    }
+  ],
+  "look": {
+    "grain": 0.03
+  },
+  "shape": {
+    "radius": "calc(var(--u) * 2.6)"
+  },
+  "motion": {
+    "pace": "보통",
+    "bpm": 100,
+    "ease": "expo.inOut",
+    "stagger": 1,
+    "transitions": [
+      "zoom",
+      "cut"
+    ]
+  },
+  "scenes": {
+    "bg": "grid",
+    "align": "center",
+    "card": "outline",
+    "marker": "color",
+    "weight": 500,
+    "tracking": -0.01,
+    "case": "none",
+    "rough": false
+  },
+  "signature": [
+    "일시정지 표시(세로 막대 둘)가 두 점으로 갈라져 양옆으로 미끄러지고 그 사이에 문구가 생김. 점은 문구 양 끝에 머물다 글자를 지우며 다시 모임",
+    "가운데 작은 그라디언트 정사각형 둘레에 고정폭 작은 주석(짧은 라벨+점)이 사방에 붙었다 바뀌고, 정사각형이 화면 가득 커지며 그 안이 다음 장면이 됨",
+    "바탕의 둥근 사각 격자 선이 가운데부터 바깥으로 한 겹씩 그려지며 퍼짐. 어두운 반전 장면에선 점 열댓 개가 원을 그리며 돌다 흩어짐"
+  ],
+  "fits": [
+    "AI·개발자 도구",
+    "기업 소개 오프닝",
+    "로고 엔딩",
+    "설계·기획 서비스"
+  ],
+  "avoid": [
+    "크고 굵은 글씨",
+    "원색",
+    "빽빽한 장면"
+  ]
+}

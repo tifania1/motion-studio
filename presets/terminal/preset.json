@@ -1,0 +1,48 @@
+{
+  "id": "terminal",
+  "order": 105,
+  "group": "look",
+  "style": "pixel-label-toybox",
+  "name": "레트로 터미널",
+  "summary": "옛 컴퓨터 터미널 창에서 첫 문장이 타자로 쳐지고, 장점마다 진행 막대가 차며 ✓ 줄이 찍혀요. 숫자는 점 전광판에 켜지고, 사진은 디더링 창에 한 줄씩 그려져요.",
+  "look": "터미널 창 · 타자 프롬프트 · 진행 막대 · 점 전광판 숫자 · 디더링 사진",
+  "template": "terminal",
+  "formats": [
+    "tall",
+    "portrait",
+    "square",
+    "wide"
+  ],
+  "seconds": 23,
+  "photos": {
+    "need": 2,
+    "hint": "0~4장. 대비가 뚜렷한 사진이 디더링해도 잘 보여요(제품 한 개, 사람 실루엣, 화면 캡처). 없으면 로고가 아스키 아트로 나와요"
+  },
+  "ask": [
+    "첫 문장(훅) 24자 안쪽과 그 안에서 뒤집어 보일 강조 어절",
+    "꼬리표 한 마디 (새 기능, 업데이트, 출시 같은 것)",
+    "장점·기능 2~5개 (하나에 18자 안쪽)",
+    "보여 줄 숫자 하나와 그 출처·기준 (없으면 빼도 돼요)",
+    "사진 0~4장 (대비가 뚜렷한 것)",
+    "마지막 문장, 버튼 문구, 사이트나 계정"
+  ],
+  "brief": "예) 회의록을 자동으로 정리해 주는 업무 도구의 새 기능 소개. 꼬리표 '새 기능', 첫 문장 '회의록은 이제 알아서 정리돼요'(강조: 알아서). 장점: 말하면 바로 받아 적고 / 할 일만 골라 정리하고 / 팀 채널로 바로 보내요. 숫자: 하루 40분 아낌(시범 사용 팀 기준). 버튼 '무료로 시작', example.com",
+  "check": [
+    "숫자의 출처와 기준 시점이 number.source 에 적혀 있는지 (화면에 # source: 주석 줄로 보여요)",
+    "'최고·1위·최초·100%' 같은 말은 근거가 있을 때만",
+    "사진이 디더링돼도 무엇인지 알아볼 수 있는지 (대비가 약하면 다른 사진으로)",
+    "사진 출처(CC BY 면 Photo: 표시)와 실제 제품·매장 사진이 아니면 '참고 사진' 표시",
+    "가상 브랜드로 만든 예시라면 note 에 그 표시가 남아 있는지"
+  ],
+  "music": {
+    "mood": "custom",
+    "bpm": 120,
+    "prompt": "upbeat retro chiptune with warm analog synth bass, crisp 8-bit arpeggios and a soft modern drum groove, playful but focused tech product mood, 120 BPM",
+    "sections": [
+      [0, 2, "single blip and short arpeggio as the window opens, typing ticks"],
+      [2, 9, "steady chiptune groove, a small pluck on every progress bar and check line"],
+      [9, 16, "brighter section with a bass drop when the dot-matrix number lights up, glitchy fills while photos draw line by line"],
+      [16, 23, "resolve to a confident hook, a short accent when the button is pressed, gentle tail"]
+    ]
+  }
+}

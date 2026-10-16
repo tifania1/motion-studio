@@ -1,0 +1,130 @@
+{
+  "id": "ash-pearl-prop-plan-checklist",
+  "name": "진주 소품 계획 체크리스트",
+  "group": "제품 UI",
+  "template": "uidemo",
+  "summary": "따뜻한 잿빛 분홍 바탕에 굵은 둥근 산세리프 한 줄이 놓이고, 무지갯빛 진주 소품 사이로 유리 입력창에 부탁이 쳐져요. 이어 세로 체크리스트가 한 단계씩 초록 체크로 차오르는 차분한 일 맡기기 UI 필름이에요",
+  "tags": [
+    "제품 UI",
+    "체크리스트",
+    "AI 비서",
+    "유리",
+    "진주빛 소품",
+    "따뜻한 회색"
+  ],
+  "hand": false,
+  "source": {
+    "site": "keyframe.gallery",
+    "ref": "mux:aP1b01hsxkQIwZDaxeqaGfKscP02OulfFIsIlPV012yMpQ",
+    "at": "0–39.6초",
+    "note": "짙은 올리브 판으로 열고 닫는 구성, 따뜻한 잿빛 분홍 바탕 위 굵은 둥근 산세리프 헤드라인 끝에 아이콘 칩이 톡 붙는 방식, 무지갯빛 진주 3D 소품이 둘레에 떠 있는 유리 입력창과 커서 클릭, 점 셋이 맴도는 '계획 세우는 중' 대기 화면, 스피너가 초록 체크로 바뀌고 아래 도구 칩이 하나씩 붙는 세로 체크리스트, 결과 카드 클릭에서 브라우저 창으로 넘어가는 흐름, 낱말 사이에 아이콘이 끼어들며 문장이 늘어나는 엔딩"
+  },
+  "palette": [
+    "#EAE4E1",
+    "#46403F",
+    "#4B4C43",
+    "#2E2B2A",
+    "#BFE3C4",
+    "#D9CCEB"
+  ],
+  "colors": {
+    "bg": "#EAE4E1",
+    "onBg": "#46403F",
+    "onBgMuted": "rgba(70,64,63,.6)",
+    "paper": "#F7F4F2",
+    "ink": "#3A3534",
+    "accent": "#4B4C43",
+    "accentInk": "#F3EFEB",
+    "pattern": "rgba(70,64,63,.06)",
+    "glow": "rgba(205,190,235,.4)"
+  },
+  "type": {
+    "display": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "heading": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "body": [
+      "Geist",
+      "Noto Sans KR"
+    ]
+  },
+  "fonts": [
+    {
+      "family": "Geist",
+      "weight": "100 900",
+      "file": "fonts/Geist-Variable.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 500,
+      "file": "fonts/NotoSansKR-Medium.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 700,
+      "file": "fonts/NotoSansKR-Bold.woff2"
+    }
+  ],
+  "shape": {
+    "radius": "calc(var(--u) * 2)"
+  },
+  "motion": {
+    "pace": "보통",
+    "bpm": 96,
+    "ease": "power3.out",
+    "stagger": 1,
+    "transitions": [
+      "cut",
+      "fade",
+      "cut",
+      "push"
+    ]
+  },
+  "scenes": {
+    "bg": "solid",
+    "align": "center",
+    "card": "glass",
+    "marker": "color",
+    "weight": 700,
+    "tracking": -0.03,
+    "case": "none",
+    "rough": false,
+    "title": "rise",
+    "frame": "none",
+    "deco": [
+      "cursor",
+      "bubbles"
+    ],
+    "number": "count",
+    "scale": 1.1,
+    "schemes": [
+      "accent",
+      "dark",
+      "dark",
+      "paper",
+      "accent"
+    ]
+  },
+  "signature": [
+    "잿빛 분홍 바탕 한가운데 젖빛 유리 입력창에 부탁 한 문장이 쳐지고, 오른쪽 아래 검은 동그라미 보내기 버튼을 큰 검은 커서가 눌러요. 창 둘레 귀퉁이에는 무지갯빛 진주 소품(말풍선, 가방 같은 것)이 화면 밖으로 잘린 채 천천히 떠다녀요",
+    "작은 점 셋이 맴도는 '계획 세우는 중…' 한 줄 뒤에 세로 체크리스트가 펼쳐져요. 단계마다 회색 원호 스피너가 돌다가 연초록 원 속 체크로 바뀌고, 그 아래 테두리만 있는 알약 도구 칩이 하나씩 붙어요. 진행 중인 줄은 끝이 옅게 바래며 빛이 훑고, 다 끝난 목록은 위로 밀려 올라가요",
+    "굵은 헤드라인이 앞 낱말만 먼저 놓였다가, 낱말 사이에 진주빛 아이콘 칩이 톡 끼어들면 나머지 말이 이어 붙으며 두 줄로 정리돼요. 처음과 끝은 짙은 올리브 판에 흰 굵은 이름과 작은 알약 꼬리표"
+  ],
+  "fits": [
+    "AI 비서·에이전트 소개",
+    "할 일·업무 자동화 도구",
+    "단계별로 일이 처리되는 과정 보여 주기",
+    "차분한 제품 런칭·미리보기 공개"
+  ],
+  "avoid": [
+    "쨍한 원색 그라디언트",
+    "빠른 몽타주 컷",
+    "세리프나 손글씨 글꼴",
+    "한 화면에 UI 여러 개를 빽빽하게",
+    "진주 소품을 화면 한가운데 크게 두기"
+  ]
+}

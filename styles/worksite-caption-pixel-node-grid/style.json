@@ -1,0 +1,143 @@
+{
+  "id": "worksite-caption-pixel-node-grid",
+  "name": "현장 자막과 픽셀 노드판",
+  "group": "다이어그램·데이터",
+  "template": "dataflow",
+  "summary": "작업 현장 실사 위에 흰 고딕 자막이 어절마다 흐림에서 맺히며 한 문장을 여러 컷에 걸쳐 이어 가고, 화면이 픽셀 조각으로 부서지면 숯빛 격자판으로 넘어가요. 격자판에서는 주황·노랑·분홍 픽셀 막대와 칸칸이 채워지는 픽셀 아이콘이 가는 직각 선으로 이어져요",
+  "tags": [
+    "다이어그램",
+    "실사",
+    "자막",
+    "픽셀",
+    "노드",
+    "숯빛",
+    "주황",
+    "AI 학습"
+  ],
+  "hand": false,
+  "source": {
+    "site": "keyframe.gallery",
+    "ref": "mux:NN55z2gaAOUhybul6eAWfASpr2WTlrE01qaKBh197TeM",
+    "at": "1.8–5.3초, 8.8–49.3초, 52.8–84.5초",
+    "note": "숯빛 격자 위 피아노 롤처럼 줄마다 미끄러지는 원색 픽셀 막대, 현장 실사 컷이 바뀌어도 이어지는 가운데 흰 자막(다음 어절이 흐릿하게 먼저 비치고 선명해짐), 픽셀 모자이크로 부서지는 전환, 주황 픽셀 화살표가 낀 문장이 옆으로 흐르는 장면, 점 격자 상자 속 픽셀 아이콘과 귀퉁이 흰 점, 직각으로 꺾이는 가는 연결선과 주황 네모 노드, 계단처럼 쌓이는 주황 막대 엔딩"
+  },
+  "palette": [
+    "#262626",
+    "#ECE8E1",
+    "#F0641E",
+    "#F7B52C",
+    "#E2401C",
+    "#E58FD0"
+  ],
+  "colors": {
+    "bg": "#262626",
+    "onBg": "#ECE8E1",
+    "onBgMuted": "rgba(236,232,225,.6)",
+    "paper": "#1C1C1C",
+    "ink": "#ECE8E1",
+    "accent": "#F0641E",
+    "accentInk": "#1A1A1A",
+    "pattern": "rgba(236,232,225,.08)",
+    "glow": "rgba(240,100,30,.35)"
+  },
+  "type": {
+    "display": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "heading": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "body": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "mono": [
+      "Geist Mono",
+      "Galmuri11"
+    ]
+  },
+  "fonts": [
+    {
+      "family": "Geist",
+      "weight": "100 900",
+      "file": "fonts/Geist-Variable.woff2"
+    },
+    {
+      "family": "Geist Mono",
+      "weight": "100 900",
+      "file": "fonts/GeistMono-Variable.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 500,
+      "file": "fonts/NotoSansKR-Medium.woff2"
+    },
+    {
+      "family": "Galmuri11",
+      "weight": 400,
+      "file": "fonts/Galmuri11.woff2"
+    }
+  ],
+  "look": {
+    "grain": 0.04,
+    "vignette": 0.15
+  },
+  "shape": {
+    "radius": "calc(var(--u) * 0.4)"
+  },
+  "motion": {
+    "pace": "보통",
+    "bpm": 90,
+    "ease": "power2.out",
+    "stagger": 1.4,
+    "transitions": [
+      "cut",
+      "blocks",
+      "cut",
+      "fade"
+    ]
+  },
+  "scenes": {
+    "bg": "grid",
+    "align": "center",
+    "card": "outline",
+    "marker": "color",
+    "weight": 400,
+    "tracking": -0.01,
+    "case": "none",
+    "rough": false,
+    "title": "blur",
+    "frame": "none",
+    "deco": [
+      "handles",
+      "marks"
+    ],
+    "number": "count",
+    "scale": 1,
+    "schemes": [
+      "dark"
+    ]
+  },
+  "signature": [
+    "현장 실사가 1.5~3초마다 컷으로 바뀌어도 가운데 흰 고딕 자막 한 문장은 이어져요. 다음 어절이 옅게 흐린 채 먼저 비치다가 0.6초에 선명해지고, 앞 어절은 그대로 남아요",
+    "실사 화면이 큰 네모 픽셀로 부서졌다 걷히는 모자이크 전환(0.5초) 뒤 숯빛 격자판으로 넘어가요. 격자 줄마다 주황·노랑·분홍·빨강 픽셀 막대가 피아노 롤처럼 옆으로 미끄러지며 칸에 딱 맞춰 멈춰요",
+    "점 격자 상자 안에서 픽셀 아이콘이 칸칸이 무작위 순서로 켜지고, 상자 귀퉁이에 작은 흰 점이 붙어요. 상자에서 가는 선이 직각으로 꺾이며 뻗어 작은 주황 네모 노드와 고정폭 꼬리표에 닿아요"
+  ],
+  "fits": [
+    "AI 모델·학습 플랫폼 런칭",
+    "제조·건설·연구 현장 이야기",
+    "기업용 도구 브랜드 필름",
+    "데이터가 모델이 되는 과정 설명",
+    "선언문처럼 한 문장을 길게 끌고 가는 영상"
+  ],
+  "avoid": [
+    "밝은 바탕",
+    "손그림 선",
+    "굵고 큰 제목",
+    "부드러운 그라디언트 바탕",
+    "한 화면에 자막 여러 줄",
+    "강조색 여러 개를 한꺼번에(주황 하나를 중심으로, 노랑·분홍·빨강은 픽셀 조각에만)"
+  ]
+}

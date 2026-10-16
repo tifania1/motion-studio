@@ -1,0 +1,137 @@
+{
+  "id": "noir-dotgrid-terminal-globe-deploy",
+  "name": "검은 점판 배포 데모",
+  "group": "제품 UI",
+  "template": "uidemo",
+  "summary": "검은 점 격자 위에서 청록 블록 커서가 명령을 치고, 비스듬한 코드 창에는 문장이 흰 반전 상자째 쳐져요. 빌드 로그가 쏟아진 뒤 점으로 짠 어두운 지구본에 초록 점이 하나씩 켜지고, 마지막은 청록 막대가 차오르는 대시보드로 이어지는 개발자 데모",
+  "tags": [
+    "제품 UI",
+    "개발자",
+    "터미널",
+    "코드",
+    "지구본",
+    "대시보드",
+    "어두움"
+  ],
+  "hand": false,
+  "source": {
+    "site": "keyframe.gallery",
+    "ref": "mux:MaWtkckmAR6yks8tQ81btDGLHNwMTr2cCe9sAVcwRio",
+    "at": "0–51초",
+    "note": "가장자리에 흐린 점 기둥이 깔린 검은 화면과 청록 블록 커서, 세로로 굴러가는 고정폭 자동완성 목록, 비스듬한 코드 창에 줄마다 흰 반전 상자째 쳐지는 문장, 흰 알약 막대 다섯 개 음성 파형, 청록 빌드 로그가 빠르게 흐르는 장면, 점으로 짠 지구본 위 이름표 카드에서 초록 선이 내려와 초록 네모가 켜지는 연결, 비스듬히 누운 어두운 대시보드의 청록 막대와 상태 꼬리표"
+  },
+  "palette": [
+    "#0B0C0D",
+    "#E8EAEA",
+    "#1FD5F9",
+    "#35E07A",
+    "#2A6E73",
+    "#3A3D40"
+  ],
+  "colors": {
+    "bg": "#0B0C0D",
+    "onBg": "#E8EAEA",
+    "onBgMuted": "rgba(232,234,234,.56)",
+    "paper": "#16181A",
+    "ink": "#E8EAEA",
+    "accent": "#1FD5F9",
+    "accentInk": "#06222A",
+    "pattern": "rgba(232,234,234,.08)",
+    "glow": "rgba(31,213,249,.3)"
+  },
+  "type": {
+    "display": [
+      "Geist Mono",
+      "Noto Sans KR"
+    ],
+    "heading": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "body": [
+      "Geist",
+      "Noto Sans KR"
+    ]
+  },
+  "fonts": [
+    {
+      "family": "Geist Mono",
+      "weight": "100 900",
+      "file": "fonts/GeistMono-Variable.woff2"
+    },
+    {
+      "family": "Geist",
+      "weight": "100 900",
+      "file": "fonts/Geist-Variable.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 500,
+      "file": "fonts/NotoSansKR-Medium.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 700,
+      "file": "fonts/NotoSansKR-Bold.woff2"
+    }
+  ],
+  "look": {
+    "vignette": 0.35
+  },
+  "shape": {
+    "radius": "calc(var(--u) * 0.8)"
+  },
+  "motion": {
+    "pace": "보통",
+    "bpm": 100,
+    "ease": "power3.inOut",
+    "stagger": 0.6,
+    "transitions": [
+      "cut",
+      "blur",
+      "fade"
+    ]
+  },
+  "scenes": {
+    "bg": "dots",
+    "align": "left",
+    "card": "outline",
+    "marker": "highlight",
+    "weight": 500,
+    "tracking": -0.01,
+    "case": "upper",
+    "rough": false,
+    "title": "type",
+    "frame": "terminal",
+    "deco": [
+      "dots",
+      "marks"
+    ],
+    "number": "count",
+    "scale": 0.9,
+    "schemes": [
+      "dark",
+      "paper",
+      "dark"
+    ]
+  },
+  "signature": [
+    "검은 화면 양옆에 흐린 점 기둥이 세로로 깔리고, 한가운데 청록 블록 커서가 두 번 깜빡인 뒤 고정폭 명령을 쳐요. 명령 옆으로 이름 목록이 세로 원통처럼 굴러 올라가다 한 줄에서 멈춰 골라짐",
+    "비스듬히 누운 코드 창으로 카메라가 천천히 파고들고, 따옴표 안 문장이 줄마다 흰 반전 상자(글자는 검정)를 깔고 쳐졌다가 다 쳐지면 상자가 걷혀 보통 코드 색으로 돌아감",
+    "청록 빌드 로그가 위로 빠르게 쏟아진 뒤 점으로 짠 어두운 지구본이 천천히 돌고, 위에 뜬 이름표 카드에서 가는 초록 선이 내려와 표면의 초록 네모를 켬. 이어 지구본 곳곳에 초록 점이 하나씩 켜지며 작은 꼬리표가 붙음"
+  ],
+  "fits": [
+    "개발자 도구·API 런칭",
+    "배포·인프라 서비스 소개",
+    "음성·실시간 기능 데모",
+    "SDK 사용법 짧은 투어",
+    "운영 대시보드 소개"
+  ],
+  "avoid": [
+    "밝은 바탕",
+    "손그림 선과 종이 질감",
+    "강조색 여러 개(청록 하나와 상태용 초록만)",
+    "통통 튀는 이징",
+    "큰 굵은 제목으로 화면 채우기"
+  ]
+}

@@ -1,0 +1,135 @@
+{
+  "id": "grain-macro-chapter-node-canvas",
+  "name": "접사 챕터 노드 캔버스",
+  "group": "제품 UI",
+  "template": "uidemo",
+  "summary": "그레인 낀 흐릿한 자연 접사 사진 위에 작은 흰 글씨로 '#번호 단계 이름'이 뜨고, 컷 한 번에 어두운 노드 캔버스로 들어가 카드가 풀리고 복제되고 민트 선으로 이어지는 단계별 사용법 필름",
+  "tags": [
+    "제품 UI",
+    "노드",
+    "챕터",
+    "그레인",
+    "접사 사진",
+    "어두움",
+    "사용법"
+  ],
+  "hand": false,
+  "source": {
+    "site": "keyframe.gallery",
+    "ref": "mux:meYkV9qgDFDHxEV602zuG7sCmV14qJX3q3oB1FYals014",
+    "at": "0–21.1초",
+    "note": "화면을 꽉 채운 그레인 낀 날개 접사 사진(분홍 → 주황·연두 → 파랑·주황 → 초록)을 챕터 판으로 쓰고 가운데 작은 흰 산세리프로 '#번호 + 낱말'을 한 낱말씩 붙이는 방식, 컷으로 넘어간 거의 검은 노드 캔버스에서 카드 하나가 오른쪽 클릭 메뉴로 풀려 격자로 펼쳐지고 2×2로 늘어나며, 마지막에 민트 곡선이 출력 점에서 뻗어 카드들을 잇는 흐름, 챕터 사진의 색이 다음 장면 카드 속 그림 색과 같은 색 잇기"
+  },
+  "palette": [
+    "#131313",
+    "#2A2A2C",
+    "#8ED6B4",
+    "#E07BE0",
+    "#F0A23A",
+    "#ECECEA"
+  ],
+  "colors": {
+    "bg": "#131313",
+    "onBg": "#ECECEA",
+    "onBgMuted": "rgba(236,236,234,.56)",
+    "paper": "#2A2A2C",
+    "ink": "#EDEDEB",
+    "accent": "#8ED6B4",
+    "accentInk": "#0E1A14",
+    "pattern": "rgba(255,255,255,.06)",
+    "glow": "rgba(142,214,180,.3)"
+  },
+  "type": {
+    "display": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "heading": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "body": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "mono": [
+      "Geist Mono",
+      "Noto Sans KR"
+    ]
+  },
+  "fonts": [
+    {
+      "family": "Geist",
+      "weight": "100 900",
+      "file": "fonts/Geist-Variable.woff2"
+    },
+    {
+      "family": "Geist Mono",
+      "weight": "100 900",
+      "file": "fonts/GeistMono-Variable.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 500,
+      "file": "fonts/NotoSansKR-Medium.woff2"
+    }
+  ],
+  "look": {
+    "grain": 0.12,
+    "grainFps": 12
+  },
+  "shape": {
+    "radius": "calc(var(--u) * 1.2)"
+  },
+  "motion": {
+    "pace": "보통",
+    "bpm": 96,
+    "ease": "power3.out",
+    "stagger": 1,
+    "transitions": [
+      "cut",
+      "cut",
+      "blur"
+    ]
+  },
+  "scenes": {
+    "bg": "solid",
+    "align": "center",
+    "card": "flat",
+    "marker": "color",
+    "weight": 500,
+    "tracking": -0.01,
+    "case": "none",
+    "rough": false,
+    "title": "fade",
+    "frame": "window",
+    "deco": [
+      "cursor"
+    ],
+    "number": "count",
+    "scale": 0.9,
+    "schemes": [
+      "dark",
+      "paper"
+    ]
+  },
+  "signature": [
+    "챕터 판: 화면을 꽉 채운 그레인 낀 흐릿한 자연 접사 사진이 아주 천천히 다가오고, 가운데 작은 흰 산세리프로 '#1 낱말'이 뜬 뒤 한 박 늦게 둘째 낱말이 옆에 붙어요. 사진 색은 다음 장면 카드 속 그림 색과 같게 맞춰요",
+    "컷으로 거의 검은 노드 캔버스. 가운데 카드 하나에 커서가 와서 오른쪽 클릭하면 작은 어두운 메뉴가 톡 열리고, 항목을 누르면 카드 옆으로 반투명 회색 판이 펼쳐지며 그림 카드들이 2×3 격자로 풀려 나와요",
+    "마지막 단계: 카드 출력 점에서 민트 곡선이 0.5초씩 뻗어 오른쪽 카드들로 이어지고, 카메라가 살짝 다가가요. 아래에 키캡 모양 단축키 버튼이 떠서 눌리면 카드 하나가 빠지고 선이 다시 이어져요"
+  ],
+  "fits": [
+    "단계별 기능 사용법",
+    "노드·워크플로 도구 소개",
+    "이미지 생성 도구 시연",
+    "업데이트 노트 영상",
+    "튜토리얼 시리즈 오프닝"
+  ],
+  "avoid": [
+    "큰 굵은 제목",
+    "밝은 흰 바탕 UI",
+    "강조색 여러 개(민트 선과 분홍 입력 점만)",
+    "선명하고 매끈한 사진을 챕터 판에 쓰기",
+    "빠른 몽타주 컷"
+  ]
+}

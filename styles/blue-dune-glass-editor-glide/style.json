@@ -1,0 +1,126 @@
+{
+  "id": "blue-dune-glass-editor-glide",
+  "name": "푸른 언덕 편집기 활공",
+  "group": "제품 UI",
+  "template": "uidemo",
+  "summary": "옅은 하늘 아래 코발트 물결 언덕이 겹겹이 누운 바탕 위에 밝은 디자인 편집기가 비스듬히 떠 있어요. 카메라가 레이어 목록, 캔버스, 속성 패널로 천천히 미끄러지며 파고들고, 유리 알약 도구 막대와 작은 팝오버가 톡톡 열리는 차분한 제품 투어",
+  "tags": [
+    "제품 UI",
+    "편집기",
+    "물결 언덕",
+    "카메라 이동",
+    "유리 알약",
+    "차분함"
+  ],
+  "hand": false,
+  "source": {
+    "site": "keyframe.gallery",
+    "ref": "mux:VAwQNtWr00gYnarxMcqQnyU39APOSikmXQ8KhAaKLiSo",
+    "at": "0–38.5초",
+    "note": "옅은 하늘과 코발트 물결 언덕 바탕, 흐림에서 맺히는 유리 알약 도구 막대, 비스듬히 기운 편집기 창을 카메라가 훑고 파고드는 움직임, 앵커와 핸들이 달린 펜 곡선, 속성 패널 위 색 고르기·효과 슬라이더 팝오버, 언덕 위에 마크 타일 하나로 닫는 엔딩"
+  },
+  "palette": [
+    "#DDE3F0",
+    "#2E4BC6",
+    "#8FA6E4",
+    "#F8F8FA",
+    "#5A57E6",
+    "#1C1E26"
+  ],
+  "colors": {
+    "bg": "#DDE3F0",
+    "onBg": "#1C1E26",
+    "onBgMuted": "rgba(28,30,38,.62)",
+    "paper": "#F8F8FA",
+    "ink": "#1C1E26",
+    "accent": "#5A57E6",
+    "accentInk": "#FFFFFF",
+    "pattern": "rgba(46,75,198,.10)",
+    "glow": "rgba(46,75,198,.55)"
+  },
+  "type": {
+    "display": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "heading": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "body": [
+      "Geist",
+      "Noto Sans KR"
+    ]
+  },
+  "fonts": [
+    {
+      "family": "Geist",
+      "weight": "100 900",
+      "file": "fonts/Geist-Variable.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 500,
+      "file": "fonts/NotoSansKR-Medium.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 700,
+      "file": "fonts/NotoSansKR-Bold.woff2"
+    }
+  ],
+  "shape": {
+    "radius": "calc(var(--u) * 1.6)"
+  },
+  "motion": {
+    "pace": "느림",
+    "bpm": 96,
+    "ease": "power3.inOut",
+    "stagger": 1,
+    "transitions": [
+      "blur",
+      "push",
+      "fade"
+    ]
+  },
+  "scenes": {
+    "bg": "mesh",
+    "align": "center",
+    "card": "glass",
+    "marker": "highlight",
+    "weight": 500,
+    "tracking": -0.02,
+    "case": "none",
+    "rough": false,
+    "title": "blur",
+    "frame": "window",
+    "deco": [
+      "cursor",
+      "handles"
+    ],
+    "number": "count",
+    "scale": 1,
+    "schemes": [
+      "paper"
+    ]
+  },
+  "signature": [
+    "코발트 물결 언덕 위에 편집기 창이 비스듬히 기운 채(rotateY −16°, rotateX 6° 안팎) 떠 있고, 카메라가 4~6초에 걸쳐 왼쪽 레이어 목록에서 캔버스 카드, 오른쪽 속성 패널로 천천히 미끄러지며 다가가요. 초점 밖 가장자리는 부드럽게 흐려요",
+    "텅 빈 언덕 하늘 한가운데 유리 알약 도구 막대가 흐림에서 맺히며 아이콘이 하나씩 늘어나요. 펜 도구를 누르면 막대가 다른 도구 묶음으로 몸을 바꾸고, 바탕 위로 앵커 점과 핸들이 달린 곡선이 한 획으로 그어져요",
+    "속성 패널에 바짝 붙은 채 작은 팝오버(색 고르기, 효과 슬라이더)가 톡 열리고, 커서가 막대를 끌면 옆 수치가 함께 굴러가요. 끝은 언덕 바탕에 둥근 사각 마크 타일 하나만 천천히 떠올라 머물러요"
+  ],
+  "fits": [
+    "디자인·편집 도구 소개",
+    "새 기능 투어",
+    "업데이트 발표",
+    "생산성 앱 런칭",
+    "설정·속성 기능 설명"
+  ],
+  "avoid": [
+    "빠른 컷 연속",
+    "굵고 큰 헤드라인",
+    "거친 질감·그레인",
+    "강조색 여러 개(남보라 하나만)",
+    "정면으로 납작하게 놓인 화면만 쓰기"
+  ]
+}

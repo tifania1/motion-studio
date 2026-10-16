@@ -1,0 +1,129 @@
+{
+  "id": "noir-chip-card-river-avatar-swarm",
+  "name": "어둠 속 카드 강과 얼굴 무리",
+  "group": "제품 UI",
+  "template": "uidemo",
+  "summary": "거의 검은 화면에 굵은 흰 제목이 흐림에서 맺히고, 알약 칩이 하나씩 밝아져요. 겹친 얼굴 원을 단 어두운 둥근 카드들이 두 줄로 옆으로 흘러가다 멀어지며 흩어지고, 얼굴 원 수십 개가 흰 알약 버튼 둘레로 모여들어 커서가 누르는 담백한 큐레이션 UI 소개",
+  "tags": [
+    "제품 UI",
+    "어두움",
+    "카드 격자",
+    "프로필",
+    "큐레이션",
+    "커뮤니티"
+  ],
+  "hand": false,
+  "source": {
+    "site": "keyframe.gallery",
+    "ref": "mux:bLvIKEFA8xtRztJobKdngWZSHnkaKVKj5UK9tWgJfk8",
+    "at": "0–21.5초",
+    "note": "별가루 어둠 속 오프닝, 가는 가로·세로 선 틀 안에서 굵은 제목 아래 알약 칩이 하나씩 옅은 회색에서 흰빛으로 밝아지는 장면, 어절이 흐림에서 맺히는 제목, 겹친 얼굴 원 셋과 굵은 제목·회색 설명을 담은 어두운 둥근 카드가 두 줄로 끊임없이 옆으로 흐르는 카드 강, 카드가 작게 멀어지며 흩어진 뒤 얼굴 원 무리가 흰 알약 버튼 둘레로 모여 커서가 누르는 장면, 별가루 위 왼쪽 아래 정렬 제목과 어절마다 흐림에서 맺히는 부제 엔딩"
+  },
+  "palette": [
+    "#0D0D0E",
+    "#1D1E20",
+    "#2F3336",
+    "#7A7F85",
+    "#E7E9EA"
+  ],
+  "colors": {
+    "bg": "#0D0D0E",
+    "onBg": "#E7E9EA",
+    "onBgMuted": "rgba(231,233,234,.56)",
+    "paper": "#1D1E20",
+    "ink": "#ECEDEE",
+    "accent": "#F2F3F4",
+    "accentInk": "#0D0D0E",
+    "pattern": "rgba(255,255,255,.06)",
+    "glow": "rgba(255,255,255,.14)"
+  },
+  "type": {
+    "display": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "heading": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "body": [
+      "Geist",
+      "Noto Sans KR"
+    ]
+  },
+  "fonts": [
+    {
+      "family": "Geist",
+      "weight": "100 900",
+      "file": "fonts/Geist-Variable.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 500,
+      "file": "fonts/NotoSansKR-Medium.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 700,
+      "file": "fonts/NotoSansKR-Bold.woff2"
+    }
+  ],
+  "look": {
+    "grain": 0.05,
+    "vignette": 0.35
+  },
+  "shape": {
+    "radius": "calc(var(--u) * 1.6)"
+  },
+  "motion": {
+    "pace": "보통",
+    "bpm": 100,
+    "ease": "power3.out",
+    "stagger": 1,
+    "transitions": [
+      "fade",
+      "blur"
+    ]
+  },
+  "scenes": {
+    "bg": "solid",
+    "align": "center",
+    "card": "outline",
+    "marker": "color",
+    "weight": 700,
+    "tracking": -0.02,
+    "case": "none",
+    "rough": false,
+    "title": "blur",
+    "frame": "none",
+    "deco": [
+      "cursor"
+    ],
+    "number": "count",
+    "scale": 1,
+    "schemes": [
+      "dark",
+      "paper",
+      "dark"
+    ]
+  },
+  "signature": [
+    "위아래 가는 가로선과 양옆 세로선으로 짠 틀 안에 굵은 흰 제목 한 줄. 그 아래 아이콘 달린 알약 칩이 가운데 정렬로 서너 줄 놓이고, 칩마다 0.15초씩 늦게 옅은 회색에서 흰빛으로 밝아져요. 마지막 한두 개는 흐린 채 남아요",
+    "겹친 얼굴 원 셋, 굵은 제목, 회색 설명 두세 줄을 담은 어두운 둥근 카드가 두 줄로 화면 양옆을 넘겨 놓여요. 두 줄이 조금씩 다른 속도로 왼쪽으로 쉬지 않고 흘러가고(초당 짧은 변의 4~5%), 카드는 늘 가장자리에서 잘려 보여요",
+    "카드 강이 작게 멀어지며 어둠 속에 흩어져 사라지고, 얼굴 원 수십 개가 크기를 달리해 흰 알약 버튼 둘레로 고리처럼 모여들어요. 커서가 와서 누르면 알약이 톡 눌렸다 돌아오고, 원들은 한 박 늦게 살짝 안으로 당겨져요"
+  ],
+  "fits": [
+    "커뮤니티·소셜 기능 소개",
+    "추천·큐레이션 목록",
+    "구독·팔로우 묶음 출시",
+    "주제별 모음 런칭",
+    "밤 분위기 앱 소개"
+  ],
+  "avoid": [
+    "밝은 바탕",
+    "강조색 여러 개(흰 알약 하나로 충분)",
+    "빠른 컷 몽타주",
+    "손그림·종이 질감",
+    "카드 안에 긴 글"
+  ]
+}

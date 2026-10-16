@@ -1,0 +1,49 @@
+{
+  "id": "stage",
+  "order": 107,
+  "group": "look",
+  "style": "hero-prop-bubbles",
+  "name": "사물 무대",
+  "summary": "촬영 무대 위로 로고 동전이 돌며 떠올라 자리 잡고, 장점은 주인공 둘레를 도는 비눗방울에 담겨 하나씩 앞으로 와요. 숫자는 동전 앞면에, 마지막엔 방울이 뒤로 모이며 유리 버튼.",
+  "look": "둥근 촬영 무대 · 3D 로고 동전 · 궤도 비눗방울 · 초점 이동",
+  "template": "stage",
+  "formats": [
+    "tall",
+    "portrait",
+    "square",
+    "wide"
+  ],
+  "seconds": 18.5,
+  "photos": {
+    "need": 0,
+    "hint": "사진 없이 돼요(로고 동전이 주인공). 넣으면 첫 사진이 둥근 카드로 주인공이 되고, 나머지(3장까지)는 궤도의 사진 구슬이 돼요. 가운데에 물건이 또렷한 정사각 사진이 잘 어울려요"
+  },
+  "ask": [
+    "작은 꼬리표 (예: 새 기능, 신제품)",
+    "첫 문장(훅) 24자 안쪽과 그 안에서 강조할 어절",
+    "장점·기능 2~5개 (하나에 18자 안쪽, 짧을수록 방울 속 글이 커요)",
+    "보여 줄 숫자 하나와 그 출처·기준 (없으면 숫자 장면이 빠져요)",
+    "주인공으로 세울 제품 사진 (없으면 로고 동전)",
+    "마지막 한마디와 버튼 문구, 주소나 계정"
+  ],
+  "brief": "예) 회의를 녹음하면 회의록과 할 일을 알아서 정리해 주는 AI 서비스. 말하면 바로 받아 적고, 할 일만 골라 정리하고, 팀 채널로 보내 줘요. 시범 사용 팀은 하루 40분을 아꼈어요(예시 수치). 버튼은 '무료로 시작', 주소 example.com",
+  "check": [
+    "숫자의 출처와 기준 시점 (number.source 에 적고, 지어낸 숫자는 넣지 않기)",
+    "highlight 가 title 안에 그대로 있는 어절인지",
+    "로고가 동전 앞면에 잘 보이는지 (로고 이미지는 투명 배경이 좋아요)",
+    "주인공 사진을 쓰면 실제 그 제품 사진인지, 아니면 '참고 사진' 표시",
+    "'최초·1위·유일·최고' 같은 말은 근거 자료가 있을 때만",
+    "버튼 문구와 주소가 실제로 쓰는 것인지"
+  ],
+  "music": {
+    "mood": "custom",
+    "bpm": 96,
+    "prompt": "soft playful product showcase, warm felt piano and marimba plucks, round bass, light glassy chimes, gentle bouncy groove at 96 BPM, clean and premium like a studio product film",
+    "sections": [
+      [0, 3.5, "a soft rising swell and a glassy chime as the coin spins up and lands"],
+      [3.5, 10, "light bouncy groove, a small bubble pop pluck on each new point"],
+      [10, 14, "a playful coin-flip flourish, tiny clinks as coins stack"],
+      [14, 18.5, "warm resolved chord, gentle shimmer under the button"]
+    ]
+  }
+}

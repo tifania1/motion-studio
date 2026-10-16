@@ -1,0 +1,106 @@
+{
+  "id": "sky-haze-calm-os",
+  "name": "하늘 안개 업무 화면",
+  "group": "제품 UI",
+  "template": "uidemo",
+  "summary": "밝은 바탕 가장자리에 하늘색 안개가 흐르고, 가는 글씨와 알약 버튼·알림 카드가 조용히 바뀌는 업무용 OS 느낌",
+  "tags": [
+    "제품 UI",
+    "업무",
+    "차분함",
+    "하늘색",
+    "가는 글씨"
+  ],
+  "hand": false,
+  "source": {
+    "site": "keyframe.gallery",
+    "ref": "mux:008fqoVxMFijPCAxIMKOKeaOYzemkCSBmBvw8oBrlsqI",
+    "at": "0–93초 (특히 0–11초, 26–44초, 45–61초)",
+    "note": "가장자리 하늘색 안개 바탕, 가는 글씨에 강조 단어만 세리프 이탤릭, 세그먼트 버튼을 고르면 바탕이 하늘→세이지→차콜로 바뀌는 모드 전환, 빈 알림 카드가 차오르는 순서, 도는 원→체크 상태 줄"
+  },
+  "palette": [
+    "#EEF0F1",
+    "#A9DDF0",
+    "#DDE3DA",
+    "#2C78B5",
+    "#2A2D30"
+  ],
+  "colors": {
+    "bg": "#EEF0F1",
+    "onBg": "#2A2D30",
+    "onBgMuted": "rgba(42,45,48,.58)",
+    "paper": "#FFFFFF",
+    "ink": "#1F2226",
+    "accent": "#2C78B5",
+    "accentInk": "#FFFFFF",
+    "pattern": "rgba(42,45,48,.06)",
+    "glow": "rgba(120,200,235,.45)"
+  },
+  "type": {
+    "display": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "heading": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "body": [
+      "Geist",
+      "Noto Sans KR"
+    ]
+  },
+  "fonts": [
+    {
+      "family": "Geist",
+      "weight": "100 900",
+      "file": "fonts/Geist-Variable.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 500,
+      "file": "fonts/NotoSansKR-Medium.woff2"
+    }
+  ],
+  "shape": {
+    "radius": "calc(var(--u) * 1.6)"
+  },
+  "motion": {
+    "pace": "느림",
+    "bpm": 90,
+    "ease": "power3.inOut",
+    "stagger": 1.2,
+    "transitions": [
+      "fade",
+      "zoom",
+      "push"
+    ]
+  },
+  "scenes": {
+    "bg": "aurora",
+    "align": "center",
+    "card": "shadow",
+    "marker": "color",
+    "weight": 400,
+    "tracking": -0.01,
+    "case": "none",
+    "rough": false
+  },
+  "signature": [
+    "하늘색 안개 덩어리 두세 개가 화면 가장자리를 천천히 떠도는 바탕 위에 가는 글씨 한 줄. 강조할 단어 하나만 다른 서체로 바꿔 끼움",
+    "알약 모양 세그먼트 버튼에서 흰 선택 칸이 미끄러지면 바탕 전체가 하늘 안개 → 세이지 회색 → 차콜로 바뀌며 '모드'가 넘어감",
+    "빈 알림 카드가 먼저 떠오르고 제목이 차오른 뒤 작은 상태 칩이 줄지어 붙음. 작업 중 표시는 도는 원 → 체크, 결과 숫자는 아주 가늘고 크게(소수점 아래는 작게)"
+  ],
+  "fits": [
+    "업무용 앱·SaaS 기능 소개",
+    "AI 비서",
+    "기업 소개",
+    "새 버전 안내"
+  ],
+  "avoid": [
+    "굵은 글씨",
+    "채도 높은 색",
+    "빠른 컷",
+    "짙은 그림자 카드"
+  ]
+}

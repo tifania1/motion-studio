@@ -1,0 +1,17 @@
+{
+  "soon": "COMING SOON",
+  "soonSub": "곧 문을 열어요",
+  "date": "10.15",
+  "dateText": "10월 15일 수요일",
+  "photos": ["photo1"],
+  "sign": ["CLOSED", "OPEN"],
+  "headline": "망원동 골목에\n새 카페가 문을 열어요",
+  "sub": "갓 볶은 원두 냄새가 나는 작은 가게",
+  "map": { "place": "가게 이름 망원점", "address": "서울 마포구 망원로 00", "hint": "망원역 2번 출구에서 걸어서 3분", "from": "망원역" },
+  "perks": { "title": "오픈 기념", "sub": "10.15 — 10.21", "items": ["첫 주 아메리카노 1+1", "선착순 100분께 원두 샘플"] },
+  "timeLabel": "영업시간",
+  "time": "매일 11:00 — 21:00",
+  "openWord": "OPEN",
+  "cta": { "headline": "첫 주에 꼭 들러 주세요", "button": "길 찾기", "sub": "@계정이름" },
+  "credit": ""
+}

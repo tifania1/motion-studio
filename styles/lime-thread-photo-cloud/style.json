@@ -1,0 +1,124 @@
+{
+  "id": "lime-thread-photo-cloud",
+  "name": "연두 실 사진 구름",
+  "group": "콜라주·사진",
+  "template": "dataflow",
+  "summary": "검은 바탕에서 사진 카드끼리 가는 흰 곡선으로 이어지고, 카드 모서리마다 작은 연두 꼬리표가 붙어요. 카드는 가지를 치며 늘어나다 끝에는 깊이가 제각각인 사진 구름으로 흩어지고, 그 가운데 작은 두 줄 문장이 떠요",
+  "tags": [
+    "사진",
+    "카드",
+    "연결선",
+    "어두움",
+    "연두",
+    "AI 사진"
+  ],
+  "hand": false,
+  "source": {
+    "site": "keyframe.gallery",
+    "ref": "mux:TSFE02lcygrmp801waUfkukRkmD1YYEx00ed8EeOvox01aI",
+    "at": "5.7–14.8초, 19.4초, 26.2–36.5초, 43.3–54.7초",
+    "note": "검은 점 격자 위 큰 사진과 작은 사진 카드를 잇는 둥근 꺾임 흰 선, 카드 모서리 연두 꼬리표와 연두 점 버튼, 가지 치는 카드 나무, 프롬프트 카드 속 연두 형광 낱말과 연두 버튼, 같은 사진을 크게 흐려 깐 바탕 위 카드, 연두 그라디언트 판의 전후 비교, 대각선으로 흐르는 카드 줄과 깊이가 다른 사진 구름, 작은 문장 두 줄의 계단 배치"
+  },
+  "palette": [
+    "#111111",
+    "#EDEDEA",
+    "#D8E63A",
+    "#262626",
+    "#9FA83A",
+    "#B3262B"
+  ],
+  "colors": {
+    "bg": "#111111",
+    "onBg": "#EDEDEA",
+    "onBgMuted": "rgba(237,237,234,.6)",
+    "paper": "#262626",
+    "ink": "#EDEDEA",
+    "accent": "#D8E63A",
+    "accentInk": "#141414",
+    "pattern": "rgba(255,255,255,.07)",
+    "glow": "rgba(216,230,58,.3)"
+  },
+  "type": {
+    "display": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "heading": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "body": [
+      "Geist",
+      "Noto Sans KR"
+    ]
+  },
+  "fonts": [
+    {
+      "family": "Geist",
+      "weight": "100 900",
+      "file": "fonts/Geist-Variable.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 500,
+      "file": "fonts/NotoSansKR-Medium.woff2"
+    }
+  ],
+  "shape": {
+    "radius": "calc(var(--u) * 1.2)"
+  },
+  "motion": {
+    "pace": "보통",
+    "bpm": 96,
+    "ease": "power3.out",
+    "stagger": 1.1,
+    "transitions": [
+      "cut",
+      "blur",
+      "fade"
+    ]
+  },
+  "scenes": {
+    "bg": "dots",
+    "align": "center",
+    "card": "flat",
+    "marker": "underline",
+    "weight": 300,
+    "tracking": -0.01,
+    "case": "none",
+    "rough": false,
+    "title": "rise",
+    "frame": "none",
+    "deco": [
+      "cursor"
+    ],
+    "number": "count",
+    "scale": 0.72,
+    "schemes": [
+      "dark",
+      "dark",
+      "dark",
+      "dark"
+    ]
+  },
+  "signature": [
+    "큰 사진이 화면 한쪽을 채우고, 반대편 작은 사진 카드에서 가는 흰 선이 둥글게 한 번 꺾이며 0.8초 동안 그어져 작은 한 줄 문장에 닿아요. 카드 아래 모서리에는 연두 꼬리표가 톡 붙고, 사진 귀퉁이에는 연두 점 하나가 켜져요",
+    "카드 하나에서 선이 두세 갈래로 뻗고, 갈래 끝마다 새 사진 카드가 0.15초 간격으로 커지며 나타나 작은 카드 나무가 돼요. 사진 카드 뒤 바탕은 같은 사진을 화면보다 크게 키워 흐리게 깔아 장면 전체가 그 사진의 색에 잠겨요",
+    "마무리에는 사진 카드 수십 장이 깊이를 달리해 흩어져 천천히 떠다니는 사진 구름이 돼요. 가운데에는 작은 흰 문장 두 줄이 계단처럼 어긋나게 놓이고, 앞쪽 카드는 크고 빠르게, 뒤쪽 카드는 작고 느리게 흘러요"
+  ],
+  "fits": [
+    "사진 보정·생성 도구 소개",
+    "AI 이미지 기능 런칭",
+    "개발자용 서비스 소개",
+    "인물·추억 사진 앨범",
+    "전후 비교를 보여 줄 때"
+  ],
+  "avoid": [
+    "밝은 바탕",
+    "굵고 큰 제목",
+    "연두로 화면을 넓게 칠하기(꼬리표·점·낱말 하나에만)",
+    "연두 말고 다른 강조색",
+    "손그림·종이 질감",
+    "빠른 글리치 컷"
+  ]
+}

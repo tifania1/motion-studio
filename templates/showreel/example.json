@@ -1,0 +1,65 @@
+{
+  "bpm": 120,
+  "progress": false,
+  "title": [
+    "MOTION",
+    "STUDIO"
+  ],
+  "tiles": [
+    "photo1",
+    "photo2",
+    "photo3",
+    "photo4",
+    "photo5",
+    "photo6",
+    "photo7",
+    "photo8",
+    "photo9"
+  ],
+  "photoText": [
+    "브랜드 필름",
+    "광고 · 런칭 · 채널"
+  ],
+  "button": "주문하기",
+  "tabs": [
+    "광고",
+    "런칭",
+    "채널"
+  ],
+  "counter": {
+    "value": 60,
+    "label": "fps"
+  },
+  "formats": [
+    [
+      "9:16",
+      "릴스 · 쇼츠"
+    ],
+    [
+      "4:5",
+      "피드"
+    ],
+    [
+      "1:1",
+      "피드"
+    ],
+    [
+      "16:9",
+      "유튜브"
+    ]
+  ],
+  "wide": "photo1",
+  "works": [
+    "photo1",
+    "photo2",
+    "photo3",
+    "photo4",
+    "photo5",
+    "photo6",
+    "photo7",
+    "photo8",
+    "photo9"
+  ],
+  "tagline": "광고 영상, 모션 그래픽으로",
+  "sub": "9:16 · 4:5 · 1:1 · 16:9"
+}

@@ -1,0 +1,112 @@
+{
+  "id": "dot-relay-diagrams",
+  "name": "점으로 잇는 데이터 그림",
+  "group": "다이어그램·데이터",
+  "template": "dataflow",
+  "summary": "옅은 회색 바탕 위 가는 선과 점. 그림 하나가 점 하나로 오므라들고, 그 점에서 다음 그림이 퍼져 나와요",
+  "tags": [
+    "데이터",
+    "과학",
+    "미니멀",
+    "설명",
+    "AI"
+  ],
+  "hand": false,
+  "source": {
+    "site": "keyframe.gallery",
+    "ref": "mux:y3IKdPvDbCRVCdvlfOhDIgx025gSKEjYkt6X3AU9fwuU",
+    "at": "0–28초",
+    "note": "타자로 친 문장을 선택해 지우고 명령어로 바꾸는 도입, 점이 쌓여 분포가 되고 곡선이 그려지는 장면, 연결망이 색별 무리로 갈라졌다 중심점으로 모이는 장면, 그림이 점 하나로 오므라들었다가 다음 그림으로 퍼지는 이음, 왼쪽 아래 자막이 글자 단위로 빠지고 올라오는 방식"
+  },
+  "palette": [
+    "#E3E4DF",
+    "#141414",
+    "#C2410C",
+    "#2478C0",
+    "#6C6CC0",
+    "#B9BAB4"
+  ],
+  "colors": {
+    "bg": "#E3E4DF",
+    "onBg": "#141414",
+    "onBgMuted": "rgba(20,20,20,.58)",
+    "paper": "#F3F3EF",
+    "ink": "#141414",
+    "accent": "#C2410C",
+    "accentInk": "#FFFFFF",
+    "pattern": "rgba(20,20,20,.07)",
+    "glow": "rgba(194,65,12,.16)"
+  },
+  "type": {
+    "display": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "heading": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "body": [
+      "Geist",
+      "Noto Sans KR"
+    ]
+  },
+  "fonts": [
+    {
+      "family": "Geist",
+      "weight": "100 900",
+      "file": "fonts/Geist-Variable.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 500,
+      "file": "fonts/NotoSansKR-Medium.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 700,
+      "file": "fonts/NotoSansKR-Bold.woff2"
+    }
+  ],
+  "look": {},
+  "shape": {
+    "radius": "0"
+  },
+  "motion": {
+    "pace": "보통",
+    "bpm": 100,
+    "ease": "power3.inOut",
+    "stagger": 0.6,
+    "transitions": [
+      "cut",
+      "iris"
+    ]
+  },
+  "scenes": {
+    "bg": "solid",
+    "align": "left",
+    "card": "outline",
+    "marker": "color",
+    "weight": 500,
+    "tracking": -0.01,
+    "case": "none",
+    "rough": false
+  },
+  "signature": [
+    "점 이음: 그림의 테두리 원이 0.1초 만에 회색으로 차며 줄고, 검은 점 → 아주 작은 점(0.2초) → 강조색으로 바뀐 뒤 그 점에서 다음 그림의 점들이 스프링으로 퍼짐(0.3초). 장면 사이는 늘 이 점 하나로 이음",
+    "점 무리가 기준선 위에 가운데부터 쌓여 분포 모양이 되고, 그 위로 강조색 곡선이 왼쪽에서 오른쪽으로 그려짐(M.draw 0.5초)",
+    "왼쪽 아래 자막: 앞 문구는 글자마다 아래로 빠지고(0.03초 간격) 새 문구는 글자마다 아래에서 올라옴. 첫 장면은 강조색 커서로 문장을 빠르게 치고(초당 30자 안팎) 오른쪽에서 왼쪽으로 선택해 지운 뒤 새 문장을 침"
+  ],
+  "fits": [
+    "AI·데이터 서비스 소개",
+    "연구·교육 기관 홍보",
+    "기능 여러 개를 차례로 보여 줄 때",
+    "숫자·통계가 주인공인 공지"
+  ],
+  "avoid": [
+    "사진을 꽉 채운 장면",
+    "두꺼운 카드와 그림자",
+    "넓게 칠한 원색 바탕",
+    "글 많은 장면"
+  ]
+}

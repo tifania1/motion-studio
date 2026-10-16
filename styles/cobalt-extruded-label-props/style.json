@@ -1,0 +1,153 @@
+{
+  "id": "cobalt-extruded-label-props",
+  "name": "코발트 두께 라벨과 소품",
+  "group": "3D·사물",
+  "template": "stage",
+  "summary": "쨍한 코발트 판과 옅은 회색 판을 오가요. 형광 그라디언트를 칠하고 검은 두께가 붙은 낱말 라벨이 톡톡 놓이면, 둘레로 3D 소품이 떠서 돌고 비스듬히 누운 앱 카드와 폰이 천천히 몸을 돌리는 기능 소개예요",
+  "tags": [
+    "3D",
+    "소품",
+    "코발트",
+    "그라디언트 라벨",
+    "앱 소개",
+    "기능 소개"
+  ],
+  "hand": false,
+  "source": {
+    "site": "keyframe.gallery",
+    "ref": "mux:wvBqVl1KoNvAAMOFMOWuIK00pkuhJxjF02hYE401a7eeY8",
+    "at": "0–40.7초",
+    "note": "코발트 바탕 가운데 흰 대문자 한 낱말이 또렷해졌다가 흐려지고 그 앞으로 철사 그물 수정구가 솟는 오프닝(2–5초). 옅은 회색 위 어절마다 따로 놓인 형광 그라디언트 라벨과 검은 두께, 둘레를 도는 동전·마이크·지구 소품(6.9–12초). 코발트 위 비스듬히 누운 앱 카드가 3D로 돌며 선 그래프가 그어지는 장면(13.9–20.8초). 폰 옆에 라벨 두 줄과 검은 손글씨 낱말이 붙는 단계 안내(23.8–32.7초). 옅은 회색 위 파란 알약에 문장이 쳐지고 연두 알약으로 바뀌는 엔딩(34.7–37.6초)"
+  },
+  "palette": [
+    "#1E2BE8",
+    "#E6E7EE",
+    "#8CF26A",
+    "#7FD3FF",
+    "#F2A7E0",
+    "#101330"
+  ],
+  "colors": {
+    "bg": "#1E2BE8",
+    "onBg": "#FFFFFF",
+    "onBgMuted": "rgba(255,255,255,.72)",
+    "paper": "#E6E7EE",
+    "ink": "#101330",
+    "accent": "#8CF26A",
+    "accentInk": "#0E1A0A",
+    "pattern": "rgba(255,255,255,.08)",
+    "glow": "rgba(140,242,106,.4)"
+  },
+  "type": {
+    "display": [
+      "Archivo",
+      "Noto Sans KR"
+    ],
+    "heading": [
+      "Archivo",
+      "Noto Sans KR"
+    ],
+    "body": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "hand": [
+      "Caveat",
+      "Nanum Pen"
+    ]
+  },
+  "fonts": [
+    {
+      "family": "Archivo",
+      "weight": "100 900",
+      "stretch": "62% 125%",
+      "file": "fonts/Archivo-Variable.woff2"
+    },
+    {
+      "family": "Geist",
+      "weight": "100 900",
+      "file": "fonts/Geist-Variable.woff2"
+    },
+    {
+      "family": "Caveat",
+      "weight": "400 700",
+      "file": "fonts/Caveat-Variable.woff2"
+    },
+    {
+      "family": "Nanum Pen",
+      "weight": 400,
+      "file": "fonts/NanumPenScript-Regular.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 700,
+      "file": "fonts/NotoSansKR-Bold.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 900,
+      "file": "fonts/NotoSansKR-Black.woff2"
+    }
+  ],
+  "look": {
+    "vignette": 0.22
+  },
+  "shape": {
+    "radius": "calc(var(--u) * 1.6)"
+  },
+  "motion": {
+    "pace": "보통",
+    "bpm": 112,
+    "ease": "back.out(1.6)",
+    "stagger": 0.9,
+    "transitions": [
+      "cut",
+      "whip",
+      "blur",
+      "cut"
+    ]
+  },
+  "scenes": {
+    "bg": "solid",
+    "align": "center",
+    "card": "shadow",
+    "marker": "highlight",
+    "weight": 800,
+    "tracking": -0.02,
+    "case": "none",
+    "rough": false,
+    "title": "pop",
+    "frame": "phone",
+    "deco": [
+      "shapes",
+      "orb"
+    ],
+    "number": "odometer",
+    "scale": 1.1,
+    "schemes": [
+      "dark",
+      "paper",
+      "dark",
+      "paper"
+    ]
+  },
+  "signature": [
+    "낱말 라벨: 어절마다 둥근 사각 판을 따로 두고 판에 형광 그라디언트(연두→하늘, 분홍→연보라→버터)를 칠해요. 오른쪽 아래로 검은 두께(짧은 변의 1.2%)가 붙어 있고, 두 줄은 엇갈려 놓여요. 판이 하나씩 0.3초 간격으로 톡 튀어나오고 3D로 ±12도 기울며 천천히 흔들려요",
+    "라벨 둘레에 동전·고리·지구·마이크 같은 3D 소품 3~5개가 깊이를 달리해 떠서 각자 천천히 돌아요. 한 라벨 옆에는 흰 테두리를 두른 검은 손글씨 낱말이 비뚤게 0.4초에 써져요",
+    "코발트 판 위 앱 카드나 폰이 비스듬히 누운 채(rotateY 20~30도) 몸을 돌리며 들어와요. 카드 속 초록 선 그래프가 그어지고 버튼이 눌리면 다음 카드로 휙 갈려요. 끝은 옅은 회색 위 파란 알약에 문장이 쳐진 뒤 알약이 연두로 바뀌어요"
+  ],
+  "fits": [
+    "앱 기능 소개",
+    "새 기능 런칭",
+    "사용 단계 안내(고르기·누르기·입력하기)",
+    "핀테크·예측·투표 서비스",
+    "젊은 브랜드 광고"
+  ],
+  "avoid": [
+    "손그림 종이 질감",
+    "어두운 시네마틱 톤",
+    "가는 세리프",
+    "한 화면에 라벨 세 줄 넘게",
+    "강조색 여러 개를 한 라벨에 섞어 칠하기"
+  ]
+}

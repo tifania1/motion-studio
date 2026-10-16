@@ -1,0 +1,134 @@
+{
+  "id": "hairline-construct-ui-unfold",
+  "name": "가는 선 설계 UI 펼침",
+  "group": "제품 UI",
+  "template": "uidemo",
+  "summary": "옅은 회색 판에 머리카락 같은 먹색 선이 한 줄씩 그어져 칸을 짜요. 그 칸 안에서 밝은 입력창, 파란 버튼, 표, 색 견본이 차례로 열리고, 끝은 선을 문턱 삼아 드러나는 세리프 한 줄로 조용히 맺히는 제품 소개 필름이에요",
+  "tags": [
+    "제품 UI",
+    "설계선",
+    "격자",
+    "미니멀",
+    "세리프",
+    "파랑"
+  ],
+  "hand": false,
+  "source": {
+    "site": "keyframe.gallery",
+    "ref": "mux:HIXH02zl6J6eUkKyC02BvPUSOJGmD1APYQYcO56T2v00K8",
+    "at": "0–29.1초",
+    "note": "빈 회색 판에 가는 선이 화면 끝까지 한 줄씩 그어지고 교차점에 점이 찍힌 뒤 칸 속 작은 네모가 먹색 도형으로 차오르는 오프닝(2.9–4.8초), 격자 사각형이 반투명 메아리로 터지는 장면(7.8–8.7초), 가이드선 사이에 딱 맞춰 열리는 밝은 입력창·파란 버튼·표(10.5–16.5초), 세로선 칸마다 놓이는 아이콘 줄과 색 견본 타일·세로 그라디언트 판(17.4–22.3초), 선을 문턱 삼아 왼쪽부터 드러나는 세리프 한 줄과 로고타입(24.2–29.1초)"
+  },
+  "palette": [
+    "#E4E4E6",
+    "#1C1D21",
+    "#2E4BE8",
+    "#ECECEE",
+    "#C9CACF",
+    "#9A9CA3"
+  ],
+  "colors": {
+    "bg": "#E4E4E6",
+    "onBg": "#1C1D21",
+    "onBgMuted": "rgba(28,29,33,.62)",
+    "paper": "#ECECEE",
+    "ink": "#1C1D21",
+    "accent": "#2E4BE8",
+    "accentInk": "#FFFFFF",
+    "pattern": "rgba(28,29,33,.22)",
+    "glow": "rgba(46,75,232,.22)"
+  },
+  "type": {
+    "display": [
+      "Instrument Serif",
+      "Gowun Batang"
+    ],
+    "heading": [
+      "Instrument Serif",
+      "Gowun Batang"
+    ],
+    "body": [
+      "Geist",
+      "Noto Sans KR"
+    ]
+  },
+  "fonts": [
+    {
+      "family": "Geist",
+      "weight": "100 900",
+      "file": "fonts/Geist-Variable.woff2"
+    },
+    {
+      "family": "Instrument Serif",
+      "weight": 400,
+      "file": "fonts/InstrumentSerif-Regular.woff2"
+    },
+    {
+      "family": "Gowun Batang",
+      "weight": 400,
+      "file": "fonts/GowunBatang-Regular.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 500,
+      "file": "fonts/NotoSansKR-Medium.woff2"
+    }
+  ],
+  "shape": {
+    "radius": "calc(var(--u) * 0.2)"
+  },
+  "motion": {
+    "pace": "보통",
+    "bpm": 100,
+    "ease": "power3.inOut",
+    "stagger": 1,
+    "transitions": [
+      "cut",
+      "wipe",
+      "fade"
+    ]
+  },
+  "scenes": {
+    "bg": "grid",
+    "align": "center",
+    "card": "outline",
+    "marker": "color",
+    "weight": 400,
+    "tracking": -0.01,
+    "case": "none",
+    "rough": false,
+    "title": "mask",
+    "frame": "none",
+    "deco": [
+      "marks",
+      "cursor"
+    ],
+    "number": "count",
+    "scale": 1,
+    "schemes": [
+      "paper",
+      "paper",
+      "dark"
+    ]
+  },
+  "signature": [
+    "빈 옅은 회색 판에 1px 먹색 선이 화면 끝에서 끝까지 반 박마다 한 줄씩 그어지고(세로 → 가로 → 사선), 교차점마다 작은 먹색 점이 톡 켜진 뒤, 점 넷이 이룬 칸 속 작은 회색 네모가 먹색 도형으로 차오름",
+    "밝은 UI는 늘 가이드선 사이에 딱 맞게 끼워짐. 입력창은 가로선 둘 사이에서 가운데부터 양옆으로 열리며 글이 쳐지고, 컷으로 화면 가운데 파란 버튼 하나, 다시 컷으로 행마다 '생성 중…' 칸이 값으로 바뀌는 표. 큰 숫자는 가는 세리프 400으로 올라감",
+    "마지막엔 같은 가는 선이 문장 둘레로 그어지고, 세리프 한 줄이 왼쪽 세로선을 문턱 삼아 왼쪽부터 드러난 뒤 선만 걷혀요. 로고타입도 왼쪽부터 드러나며 오른쪽 끝이 잠깐 흐리게 번짐"
+  ],
+  "fits": [
+    "업무 자동화·AI 도구 소개",
+    "스프레드시트·데이터 도구",
+    "조용한 B2B 런칭 티저",
+    "제품 철학을 한 줄로 맺는 브랜드 필름"
+  ],
+  "avoid": [
+    "손그림 선과 떨림",
+    "강조색 여러 개(파랑 하나만)",
+    "굵은 제목",
+    "짙은 그림자 카드",
+    "어두운 판이 길게 이어지는 구성",
+    "한 화면에 UI 여러 개",
+    "빠른 몽타주 컷"
+  ]
+}

@@ -1,0 +1,130 @@
+{
+  "id": "clay-bubble-phone-desk-relay",
+  "name": "점토빛 말풍선 원격 데스크",
+  "group": "제품 UI",
+  "template": "uidemo",
+  "summary": "따뜻한 베이지 바탕에 차분한 세리프 두 줄로 상황을 열어요. 테라코타 부탁 말풍선이 크게 떴다가 폰 대화창 속으로 들어가고, 폰에서 손그림 고리 선이 이어지면 옆에서 데스크톱이 밀려 들어와 일을 해내는 조용한 원격 데모예요",
+  "tags": [
+    "제품 UI",
+    "대화",
+    "폰",
+    "데스크톱",
+    "베이지",
+    "차분함",
+    "원격"
+  ],
+  "hand": false,
+  "source": {
+    "site": "keyframe.gallery",
+    "ref": "mux:2B7xuPhxRRP02K004QOV01rgY2oA7ZVUnArM01QqUlOdtZc",
+    "at": "1.5–67.5초",
+    "note": "베이지 바탕에 작은 알약 꼬리표와 세리프 두 줄 제목, 둘째 줄만 옅은 회색으로 낮춘 상황 문장. 화면 가운데 커다란 테라코타 부탁 말풍선이 폰 대화창으로 옮겨 가는 흐름. 폰이 왼쪽으로 작아지면 테라코타 고리 선이 그어지고 오른쪽에서 잘린 노트북·모니터가 밀려 들어오는 짝 구도. 결과는 다시 폰 대화창에 밝은 회색 말풍선과 화면 캡처 카드로 쌓여요. 사례 셋을 같은 순서로 되풀이해요"
+  },
+  "palette": [
+    "#D8D1C6",
+    "#2B2622",
+    "#A9533D",
+    "#F3EFEA",
+    "#8A847C",
+    "#7FA88F"
+  ],
+  "colors": {
+    "bg": "#D8D1C6",
+    "onBg": "#2B2622",
+    "onBgMuted": "rgba(43,38,34,.55)",
+    "paper": "#F3EFEA",
+    "ink": "#2B2622",
+    "accent": "#A9533D",
+    "accentInk": "#FFFFFF",
+    "pattern": "rgba(43,38,34,.06)",
+    "glow": "rgba(169,83,61,.22)"
+  },
+  "type": {
+    "display": [
+      "Gowun Batang"
+    ],
+    "heading": [
+      "Gowun Batang"
+    ],
+    "body": [
+      "Geist",
+      "Noto Sans KR"
+    ]
+  },
+  "fonts": [
+    {
+      "family": "Gowun Batang",
+      "weight": 400,
+      "file": "fonts/GowunBatang-Regular.woff2"
+    },
+    {
+      "family": "Gowun Batang",
+      "weight": 700,
+      "file": "fonts/GowunBatang-Bold.woff2"
+    },
+    {
+      "family": "Geist",
+      "weight": "100 900",
+      "file": "fonts/Geist-Variable.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 500,
+      "file": "fonts/NotoSansKR-Medium.woff2"
+    }
+  ],
+  "shape": {
+    "radius": "calc(var(--u) * 2.2)"
+  },
+  "motion": {
+    "pace": "느림",
+    "bpm": 84,
+    "ease": "power3.inOut",
+    "stagger": 1.1,
+    "transitions": [
+      "fade",
+      "push",
+      "cut"
+    ]
+  },
+  "scenes": {
+    "bg": "solid",
+    "align": "center",
+    "card": "flat",
+    "marker": "color",
+    "weight": 700,
+    "tracking": -0.01,
+    "case": "none",
+    "rough": false,
+    "title": "rise",
+    "frame": "phone",
+    "deco": [
+      "bubbles"
+    ],
+    "number": "count",
+    "scale": 0.9,
+    "schemes": [
+      "dark",
+      "paper",
+      "dark"
+    ]
+  },
+  "signature": [
+    "베이지 바탕 한가운데 세리프 두 줄. 첫 줄은 먹색으로 상황을 말하고, 둘째 줄은 옅은 회색으로 '그런데 나는 거기 없어요' 같은 반전을 0.4초 늦게 띄워요. 첫 장면에만 그 위에 작은 테두리 알약 꼬리표가 붙어요",
+    "부탁 문장이 화면 너비 절반쯤 되는 테라코타 말풍선(흰 산세리프 세 줄)으로 혼자 크게 떴다가, 둘레에 폰 대화창이 나타나면서 오른쪽 위 사용자 말풍선 자리로 줄어들어 들어가요",
+    "폰이 왼쪽으로 작게 물러나면 폰과 데스크톱 사이에 테라코타 고리 선(필기체 e 같은 동그란 고리 하나)이 0.6초에 그어지고, 오른쪽 가장자리에서 잘린 노트북·모니터가 밀려 들어와 앱이 혼자 일해요. 일이 끝나면 다시 폰으로 다가가 밝은 회색 답장 말풍선과 화면 캡처 카드가 차례로 쌓여요"
+  ],
+  "fits": [
+    "AI 비서·원격 작업 소개",
+    "폰과 컴퓨터를 잇는 기능 데모",
+    "사용 사례 여러 개를 같은 틀로 보여 줄 때",
+    "차분한 업무 도구 런칭"
+  ],
+  "avoid": [
+    "빠른 컷 몽타주",
+    "형광색·강조색 여러 개",
+    "어두운 바탕 장면",
+    "굵은 그로테스크 큰 글자",
+    "그레인·망점 같은 거친 질감"
+  ]
+}

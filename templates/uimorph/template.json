@@ -1,0 +1,9 @@
+{
+  "name": "UI 모프",
+  "description": "도형 하나가 끊기지 않고 버튼→로더→체크→다이내믹 아일랜드→플레이어→슬라이더→토글→탭→차트→⌘K→토스트→버튼으로 변하는 루프. 120BPM 7마디(14초), 커서가 클릭·드래그로 끌고 갑니다.",
+  "formats": ["square"],
+  "fonts": [
+    { "family": "Geist", "weight": "100 900", "file": "fonts/Geist-Variable.woff2" }
+  ],
+  "render": { "fps": 60, "blur": 4, "shutter": 0.5, "scale": 1.3333, "loop": true }
+}

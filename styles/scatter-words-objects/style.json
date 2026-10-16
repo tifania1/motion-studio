@@ -1,0 +1,109 @@
+{
+  "id": "scatter-words-objects",
+  "name": "흩어진 어절과 사물",
+  "group": "콜라주·사진",
+  "template": "collage",
+  "summary": "한 문장을 화면 곳곳에 흩어 놓고, 어절이 뜰 때마다 관련 사물 컷아웃이 회색 타일에 얹혀 툭툭 놓이는 콜라주",
+  "tags": [
+    "콜라주",
+    "사물",
+    "문장",
+    "생활",
+    "픽셀 전환"
+  ],
+  "hand": false,
+  "source": {
+    "site": "keyframe.gallery",
+    "ref": "mux:RCAV8OVI8qZ15zaiV4XGqA7QOPfji2U00HrhA5EPngIg",
+    "at": "0.8–13초",
+    "note": "어절을 화면 곳곳에 흩어 순서대로 띄우고 가운데 작은 아이콘을 축으로 고정, 어절마다 사물 컷아웃이 회색 타일에 얹혀 놓임, 정사각 픽셀 블록이 번지며 장면을 바꾸는 전환"
+  },
+  "palette": [
+    "#E9E8E4",
+    "#DCDAD5",
+    "#1C1C1C",
+    "#E8603C",
+    "#9C8CF0"
+  ],
+  "colors": {
+    "bg": "#E9E8E4",
+    "onBg": "#1C1C1C",
+    "onBgMuted": "rgba(28,28,28,.6)",
+    "paper": "#DCDAD5",
+    "ink": "#1C1C1C",
+    "accent": "#E8603C",
+    "accentInk": "#1C1C1C",
+    "pattern": "rgba(28,28,28,.06)",
+    "glow": "rgba(232,96,60,.25)"
+  },
+  "type": {
+    "display": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "heading": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "body": [
+      "Geist",
+      "Noto Sans KR"
+    ]
+  },
+  "fonts": [
+    {
+      "family": "Geist",
+      "weight": "100 900",
+      "file": "fonts/Geist-Variable.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 500,
+      "file": "fonts/NotoSansKR-Medium.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 700,
+      "file": "fonts/NotoSansKR-Bold.woff2"
+    }
+  ],
+  "shape": {
+    "radius": "calc(var(--u) * 0.6)"
+  },
+  "motion": {
+    "pace": "빠름",
+    "bpm": 120,
+    "ease": "expo.out",
+    "stagger": 1,
+    "transitions": [
+      "cut",
+      "wipe"
+    ]
+  },
+  "scenes": {
+    "bg": "solid",
+    "align": "center",
+    "card": "flat",
+    "marker": "color",
+    "weight": 500,
+    "tracking": -0.01,
+    "case": "none",
+    "rough": false
+  },
+  "signature": [
+    "문장을 어절로 쪼개 화면 여기저기에 계단처럼 흩어 놓고(위→아래, 왼→오로 읽히게) 0.2초 간격으로 하나씩 띄움. 가운데 작은 아이콘 하나는 축처럼 제자리",
+    "어절이 뜰 때마다 관련 사물 컷아웃(배경 지운 사진)이 연회색 정사각 타일에 얹혀 툭 놓임. 타일 크기는 제각각이고 몇 개는 화면 밖으로 잘림",
+    "장면을 바꿀 땐 정사각 픽셀 블록이 격자 칸에 무작위 순서로 번져 덮었다 걷힘. 블록 사이로 다음 장면 색이 먼저 비침"
+  ],
+  "fits": [
+    "여러 고객층·업종 나열",
+    "서비스가 하는 일 소개",
+    "생활 밀착 서비스",
+    "문제 제기 훅"
+  ],
+  "avoid": [
+    "사진 한 장으로 화면 꽉 채우기",
+    "굵고 큰 제목",
+    "어두운 바탕"
+  ]
+}

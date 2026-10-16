@@ -1,0 +1,132 @@
+{
+  "id": "teal-dusk-glass-node-tree",
+  "name": "청록 어둠 유리 노드 갈래",
+  "group": "다이어그램·데이터",
+  "template": "dataflow",
+  "summary": "청록이 살짝 도는 어둠 속으로 가는 빛 선이 내려와 유리 노드 카드를 켜고, 카드 아래에서 선이 둥글게 갈라져 다음 카드로 이어져요. 뒤로 푸른 안개가 번지고, 마지막은 점 가루와 유리 구슬로 조용히 닫히는 에이전트 흐름 다이어그램",
+  "tags": [
+    "다이어그램",
+    "노드",
+    "유리",
+    "어두움",
+    "청록",
+    "AI 에이전트",
+    "차분함"
+  ],
+  "hand": false,
+  "source": {
+    "site": "keyframe.gallery",
+    "ref": "mux:o01fDvKAokmBmgeuifCGHZlci02vUojGmIHD02Tac9b00NM",
+    "at": "3.6–53초",
+    "note": "빛 밑줄이 따라다니는 탭 줄, 알약 시작 노드에서 내려오는 가는 선과 화살촉, 청록 테두리가 켜지는 유리 노드 카드와 그라디언트 설명 글씨, 둥글게 둘·셋으로 갈라지는 선, 빈 어둠을 가로지르는 긴 곡선, 세 갈래 선이 꿰뚫는 그라디언트 문구, 푸른 안개 위 큰 카드 넘기기, 나무 전체로 물러나는 카메라, 옆에서 밀려오는 설정 패널, 안개 속 큰 낱말에서 점 가루 판과 유리 구슬로 이어지는 엔딩"
+  },
+  "palette": [
+    "#0E1213",
+    "#142629",
+    "#2E8FA0",
+    "#6FD3E8",
+    "#3A7BD5",
+    "#E8EEF0"
+  ],
+  "colors": {
+    "bg": "#0E1213",
+    "onBg": "#E8EEF0",
+    "onBgMuted": "rgba(232,238,240,.56)",
+    "paper": "#142629",
+    "ink": "#EAF3F4",
+    "accent": "#6FD3E8",
+    "accentInk": "#06181C",
+    "pattern": "rgba(111,211,232,.08)",
+    "glow": "rgba(58,123,213,.38)"
+  },
+  "type": {
+    "display": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "heading": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "body": [
+      "Geist",
+      "Noto Sans KR"
+    ]
+  },
+  "fonts": [
+    {
+      "family": "Geist",
+      "weight": "100 900",
+      "file": "fonts/Geist-Variable.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 500,
+      "file": "fonts/NotoSansKR-Medium.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 700,
+      "file": "fonts/NotoSansKR-Bold.woff2"
+    }
+  ],
+  "look": {
+    "vignette": 0.25
+  },
+  "shape": {
+    "radius": "calc(var(--u) * 1.4)"
+  },
+  "motion": {
+    "pace": "느림",
+    "bpm": 84,
+    "ease": "power3.out",
+    "stagger": 1.1,
+    "transitions": [
+      "fade",
+      "blur",
+      "push"
+    ]
+  },
+  "scenes": {
+    "bg": "aurora",
+    "align": "center",
+    "card": "glass",
+    "marker": "color",
+    "weight": 500,
+    "tracking": -0.01,
+    "case": "none",
+    "rough": false,
+    "title": "blur",
+    "frame": "none",
+    "deco": [
+      "orb",
+      "dots"
+    ],
+    "number": "count",
+    "scale": 1,
+    "schemes": [
+      "dark",
+      "paper",
+      "dark"
+    ]
+  },
+  "signature": [
+    "가는 청록 선이 위에서 0.8초에 그어져 내려오고, 화살촉이 닿는 순간 어두운 유리 노드 카드의 테두리가 청록으로 켜져요. 카메라는 선을 따라 천천히 아래로 내려가고, 카드 아래에서 선이 큰 곡선으로 둘·셋으로 갈라져 작은 카드들에 닿은 뒤 한 번 크게 물러나 나무 전체를 보여 줘요",
+    "가운데 짧은 문구가 흐림에서 선명해지며 왼쪽부터 열리고, 글씨는 짙은 청록에서 밝은 청록으로 번지는 그라디언트예요. 아래에서 세 갈래 선이 솟아 문구를 꿰뚫고 위쪽 끝에 작은 화살촉이 맺혀요",
+    "카드 뒤 푸른 안개 덩어리가 천천히 숨 쉬다가 큰 그라디언트 낱말을 품고, 이어 한 점으로 오므라든 뒤 점 가루 판으로 퍼지고, 마지막엔 안에서 푸른 결이 도는 유리 구슬 하나가 남아요"
+  ],
+  "fits": [
+    "AI 에이전트·자동화 흐름 소개",
+    "상담 봇 분기 설계",
+    "개발자 플랫폼 기능 설명",
+    "워크플로 빌더 런칭",
+    "차분한 기술 브랜드 영상"
+  ],
+  "avoid": [
+    "밝은 바탕",
+    "빠른 컷",
+    "강조색 여러 개(청록 하나와 푸른 안개만)",
+    "굵고 큰 제목 벽",
+    "손그림 선이나 거친 질감"
+  ]
+}

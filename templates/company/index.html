@@ -1,0 +1,807 @@
+<title>/*@TITLE@*/</title>
+<style>
+/*@FONTFACES@*/
+/*@BRAND_CSS@*/
+/*@ENGINE_CSS@*/
+
+/* ===== company 템플릿: 회사 소개 (설계도 → 명함) =====
+   가는 격자와 치수선이 그려지며 화면 전체가 설계도처럼 깔리고, 회사 이름이 선(윤곽)으로 그려진 뒤 채워짐.
+   설계도 위를 CAD 십자선(크로스헤어)이 옮겨 다니며 다음에 그려질 자리를 짚음.
+   미션 한 문장(강조 구절은 색 + 치수 밑줄) → 하는 일 블록이 아래에서 쌓여 올라옴(선 아이콘) → 치수선이 그어지며 숫자가 굴러 맞춰짐
+   → 고객·파트너 이름 상자가 띠처럼 흐름 → 명함 윤곽과 치수(90×50)가 그려지고 채워진 뒤 3D 로 뒤집혀 슬로건·연락처. */
+#co { position: absolute; inset: 0; background: var(--bg); overflow: hidden; color: var(--on-bg);
+  --l1: color-mix(in srgb, var(--on-bg) 6%, transparent);
+  --l2: color-mix(in srgb, var(--on-bg) 13%, transparent);
+  --l3: color-mix(in srgb, var(--on-bg) 34%, transparent);
+  --mono: "Geist Mono", var(--font-body); }
+#co .abs { position: absolute; left: 0; top: 0; }
+#co .sc { position: absolute; inset: 0; visibility: hidden; }
+
+/* 설계도 바탕: 잔 격자(배경) + 굵은 격자(선이 뻗어 나감) + 테두리·모서리 십자 + 위·왼쪽 눈금자 */
+#grid { position: absolute; left: 0; }
+#grid .mn { position: absolute; inset: 0; background-image: linear-gradient(var(--l1) 1px, transparent 1px), linear-gradient(90deg, var(--l1) 1px, transparent 1px); }
+#grid i { position: absolute; display: block; background: var(--l2); }
+#grid .gh { left: 0; width: 100%; height: 2px; }
+#grid .gv { top: 0; height: 100%; width: 2px; transform-origin: 50% 0; }
+#frame { border: 2px solid var(--l2); box-sizing: border-box; }
+#frame i { position: absolute; width: calc(var(--u) * 3.2); height: calc(var(--u) * 3.2); }
+#frame i::before, #frame i::after { content: ""; position: absolute; background: var(--accent); }
+#frame i::before { left: 0; right: 0; top: 50%; height: 2px; margin-top: -1px; }
+#frame i::after { top: 0; bottom: 0; left: 50%; width: 2px; margin-left: -1px; }
+#frame i:nth-child(1) { left: calc(var(--u) * -1.6); top: calc(var(--u) * -1.6); }
+#frame i:nth-child(2) { right: calc(var(--u) * -1.6); top: calc(var(--u) * -1.6); }
+#frame i:nth-child(3) { left: calc(var(--u) * -1.6); bottom: calc(var(--u) * -1.6); }
+#frame i:nth-child(4) { right: calc(var(--u) * -1.6); bottom: calc(var(--u) * -1.6); }
+#rt, #rl { background-repeat: no-repeat; box-sizing: border-box; }
+#rt { height: calc(var(--u) * 2.2); border-bottom: 2px solid var(--l2);
+  background-image: repeating-linear-gradient(90deg, var(--l3) 0 2px, transparent 2px calc(var(--u) * 1.2)), repeating-linear-gradient(90deg, var(--l3) 0 2px, transparent 2px calc(var(--u) * 6));
+  background-size: 100% 34%, 100% 78%; background-position: 0 100%, 0 100%; }
+#rl { width: calc(var(--u) * 2.2); border-right: 2px solid var(--l2);
+  background-image: repeating-linear-gradient(180deg, var(--l3) 0 2px, transparent 2px calc(var(--u) * 1.2)), repeating-linear-gradient(180deg, var(--l3) 0 2px, transparent 2px calc(var(--u) * 6));
+  background-size: 34% 100%, 78% 100%; background-position: 100% 0, 100% 0; }
+#rtm, #rlm { position: absolute; left: 0; top: 0; width: 0; height: 0; border: calc(var(--u) * .8) solid transparent; }
+#rtm { border-top-color: var(--accent); border-bottom-width: 0; }
+#rlm { border-left-color: var(--accent); border-right-width: 0; }
+
+/* CAD 십자선 */
+#xh { position: absolute; inset: 0; visibility: hidden; }
+#xhh, #xhv { position: absolute; left: 0; top: 0; background: color-mix(in srgb, var(--accent) 60%, transparent); }
+#xhh { width: 100%; height: 2px; }
+#xhv { height: 100%; width: 2px; }
+#xhb { position: absolute; left: 0; top: 0; width: calc(var(--u) * 2.6); height: calc(var(--u) * 2.6); border: 2px solid var(--accent); box-sizing: border-box; }
+#xhr { font: 500 calc(var(--u) * 1.7)/1 var(--mono); letter-spacing: .08em; color: var(--on-bg-muted); white-space: nowrap; }
+#guides { overflow: visible; }
+#guides path { fill: none; stroke: color-mix(in srgb, var(--accent) 60%, transparent); stroke-width: 2; }
+
+/* 치수선: 보조선(양 끝 세로) + 치수선(가운데서 양쪽으로) + 끝 사선 + 가운데 글자 */
+.dim { position: absolute; left: 0; top: 0; height: calc(var(--u) * 3.6); --dc: var(--accent); }
+.dim i, .dim b { position: absolute; display: block; background: var(--dc); }
+.dim .dl, .dim .dr { top: 50%; height: 2px; margin-top: -1px; }
+.dim .dl { left: 0; transform-origin: 100% 50%; }
+.dim .dr { right: 0; transform-origin: 0 50%; }
+.dim .xl, .dim .xr { top: 0; bottom: 0; width: 2px; transform-origin: 50% 0; }
+.dim .xl { left: -1px; } .dim .xr { right: -1px; }
+.dim .kl, .dim .kr { top: 50%; width: 2px; height: calc(var(--u) * 2.2); margin-top: calc(var(--u) * -1.1); }
+.dim .kl { left: -1px; } .dim .kr { right: -1px; }
+.dim .dt { position: absolute; left: 50%; top: 50%; font: 600 calc(var(--u) * 1.9)/1 var(--mono); letter-spacing: .22em; color: var(--dc); white-space: nowrap; padding-left: .22em; }
+
+/* 1) 제목 */
+#ttag { display: flex; align-items: baseline; gap: calc(var(--u) * 1.4); font: 600 calc(var(--u) * 2.3)/1 var(--mono); letter-spacing: .24em; white-space: nowrap; color: var(--on-bg); }
+#ttag b { color: var(--accent); font-weight: 700; }
+#ttag span { color: var(--on-bg-muted); }
+#ttag em { font-style: normal; min-width: 1px; }
+#mark { visibility: hidden; }
+#nm { position: absolute; overflow: visible; }
+#nm text { font-family: var(--font-display); font-weight: 900; fill: var(--on-bg); fill-opacity: 0; stroke: var(--on-bg); stroke-width: 2; stroke-linejoin: round; }
+#lgb { position: absolute; }
+#lgb svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+#lgb svg path { fill: none; stroke: color-mix(in srgb, var(--accent) 70%, transparent); stroke-width: .55; }
+#lgb img { position: absolute; left: 13%; top: 13%; width: 74%; height: 74%; object-fit: contain; }
+
+/* 머리줄: 왼쪽 회사 표시, 오른쪽 장 번호 */
+#hmark { display: flex; align-items: center; gap: calc(var(--u) * 1.4); white-space: nowrap; visibility: hidden; }
+#hmark img { height: calc(var(--u) * 4.4); width: auto; }
+#hmark .hn { font: 900 calc(var(--u) * 3.3)/1 var(--font-display); color: var(--on-bg); letter-spacing: .02em; }
+#htags { overflow: hidden; height: calc(var(--u) * 2.8); }
+.htg { position: absolute; right: 0; top: 0; font: 600 calc(var(--u) * 2.1)/1.3 var(--mono); letter-spacing: .22em; white-space: nowrap; color: var(--on-bg-muted); visibility: hidden; }
+.htg b { color: var(--accent); font-weight: 700; }
+#hrule { height: 2px; background: var(--l3); transform-origin: 0 50%; visibility: hidden; }
+#hrule::before, #hrule::after { content: ""; position: absolute; top: calc(var(--u) * -.8); width: 2px; height: calc(var(--u) * 1.6); background: var(--l3); }
+#hrule::before { left: 0; } #hrule::after { right: 0; }
+
+/* 장 제목 */
+.sh { font: 900 calc(var(--u) * 5.4)/1.15 var(--font-heading); letter-spacing: -.03em; color: var(--on-bg); white-space: nowrap; }
+
+/* 2) 미션 */
+#mtx { font: 700 calc(var(--u) * 8)/1.24 var(--font-heading); letter-spacing: -.035em; color: var(--on-bg); word-break: keep-all; }
+#mtx .ml { display: block; overflow: hidden; padding-bottom: .14em; margin-bottom: -.14em; }
+#mtx .mi { display: block; }
+#mtx .hl { position: relative; white-space: nowrap; }
+#mtx .hu { position: absolute; left: 0; right: 0; bottom: .0em; height: calc(var(--u) * .45); background: var(--accent); transform-origin: 0 50%; }
+#mtx .hu b { position: absolute; bottom: 0; width: calc(var(--u) * .45); height: .32em; background: var(--accent); }
+#mtx .hu b:first-child { left: 0; } #mtx .hu b:last-child { right: 0; }
+#mrule { width: 2px; background: var(--accent); transform-origin: 50% 0; }
+#mrule::before { content: ""; position: absolute; left: calc(var(--u) * -.7); top: calc(var(--u) * -.7); width: calc(var(--u) * 1.4); height: calc(var(--u) * 1.4); background: var(--accent); }
+
+/* 3) 하는 일: 점선 자리 → 블록이 아래에서 올라와 채움 */
+#pgrp { overflow: hidden; }
+.slot { position: absolute; border: 2px dashed var(--l3); border-radius: calc(var(--u) * 1); box-sizing: border-box; }
+.blk { position: absolute; background: var(--paper); color: var(--ink); border-radius: calc(var(--u) * 1); overflow: hidden; }
+.blk .stp { position: absolute; left: 0; top: 0; background: var(--accent); }
+.blk .bin { position: absolute; left: 0; top: 0; box-sizing: border-box; transform-origin: 0 0; }
+.blk .bi { font: 600 calc(var(--u) * 1.9)/1 var(--mono); letter-spacing: .2em; opacity: .6; white-space: nowrap; }
+.blk .ic { display: block; flex: none; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; overflow: visible; }
+.blk .btx { min-width: 0; }
+.blk .bt { font: 900 calc(var(--u) * 4.4)/1.22 var(--font-heading); letter-spacing: -.03em; word-break: keep-all; }
+.blk .bd { font: 500 calc(var(--u) * 3)/1.42 var(--font-body); opacity: .8; word-break: keep-all; margin-top: calc(var(--u) * .9); }
+.blk.row .bin { display: flex; align-items: center; }
+.blk.row .bi { position: absolute; right: calc(var(--u) * 2.4); top: calc(var(--u) * 2.2); }
+.blk.col .bin { display: flex; flex-direction: column; }
+.blk.col .btx { margin-top: auto; }
+#pfloor .fl { position: absolute; left: 0; top: 0; width: 100%; height: 2px; background: var(--l3); transform-origin: 0 50%; }
+#pfloor .ht { position: absolute; left: 0; top: 2px; width: 100%; height: calc(var(--u) * 1.6); background: repeating-linear-gradient(-45deg, var(--l2) 0 2px, transparent 2px calc(var(--u) * 1.1)); }
+
+/* 4) 숫자: 치수선 위에서 굴러 맞춰짐 */
+.fc { position: absolute; }
+.fc .fv { position: absolute; left: 0; top: 0; display: flex; align-items: baseline; white-space: nowrap; color: var(--on-bg); line-height: 1; }
+.odo { display: inline-flex; font: 300 1em/1 "Archivo", var(--font-display); letter-spacing: -.02em; font-variant-numeric: tabular-nums; }
+.odo .d { display: inline-block; height: 1em; overflow: hidden; }
+.odo .d .col { display: flex; flex-direction: column; }
+.odo .d .col i { font-style: normal; height: 1em; display: block; text-align: center; }
+.odo .s { display: inline-block; }
+.fc .fu { font: 800 .36em/1 var(--font-heading); color: var(--accent); margin-left: .14em; }
+.fc .fl { position: absolute; left: 0; top: 0; font: 700 calc(var(--u) * 3)/1.35 var(--font-body); color: var(--on-bg-muted); text-align: center; word-break: keep-all; }
+#fsrc { font: 500 calc(var(--u) * 1.9)/1.3 var(--font-body); color: var(--on-bg-muted); white-space: nowrap; text-align: right; }
+
+/* 5) 함께하는 곳: 윤곽선 상자 띠 */
+.band { position: absolute; }
+.band .bm { position: absolute; inset: 0; overflow: hidden;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent); mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent); }
+.band .trk { position: absolute; left: 0; top: 0; height: 100%; display: flex; align-items: center; white-space: nowrap; }
+.band .gl { position: absolute; left: 0; width: 100%; height: 2px; background: var(--l2); transform-origin: 0 50%; }
+.pt { position: relative; flex: none; display: inline-flex; align-items: center; justify-content: center; height: calc(var(--u) * 8.4 * var(--pk, 1)); padding: 0 calc(var(--u) * 3.4 * var(--pk, 1)); margin-right: calc(var(--u) * 2.4 * var(--pk, 1));
+  border: 2px solid var(--l3); border-radius: calc(var(--u) * .8); box-sizing: border-box; font: 800 calc(var(--u) * 3.6 * var(--pk, 1))/1 var(--font-heading); letter-spacing: -.02em; color: var(--on-bg); }
+.pt::before { content: attr(data-n); position: absolute; left: calc(var(--u) * .9); top: calc(var(--u) * .8); font: 600 calc(var(--u) * 1.25)/1 var(--mono); letter-spacing: .12em; color: var(--on-bg-muted); }
+.pt.im { background: #fff; border-color: transparent; }
+.pt.im::before { color: rgba(0, 0, 0, .4); }
+.pt.im img { height: calc(var(--u) * 5.2 * var(--pk, 1)); width: auto; max-width: calc(var(--u) * 26 * var(--pk, 1)); object-fit: contain; }
+
+/* 6) 명함 */
+#cout { overflow: visible; }
+#cout path { fill: none; stroke: var(--on-bg); stroke-width: 2; }
+#c3 { perspective: calc(var(--u) * 260); }
+#c3 .cflip { position: relative; width: 100%; height: 100%; transform-style: preserve-3d; }
+#c3 .cface { position: absolute; inset: 0; -webkit-backface-visibility: hidden; backface-visibility: hidden; border-radius: calc(var(--u) * 1.4); overflow: hidden;
+  box-shadow: 0 calc(var(--u) * 1.4) calc(var(--u) * 3.6) rgba(0, 0, 0, .22); }
+#c3 .cf { background: var(--paper); color: var(--ink); }
+#c3 .cb { background: var(--accent); color: var(--accent-ink); transform: rotateY(180deg); }
+.cf .cfi { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: calc(var(--u) * 1.8); padding-bottom: calc(var(--u) * 1.2); }
+.cf .cfi img { width: auto; }
+.cf .cn { font: 900 calc(var(--u) * 8)/1.05 var(--font-display); letter-spacing: .01em; white-space: nowrap; text-align: center; }
+.cf .cs { font: 600 calc(var(--u) * 1.9)/1 var(--mono); letter-spacing: .32em; padding-left: .32em; opacity: .7; white-space: nowrap; }
+.cf .cst { position: absolute; left: 0; right: 0; bottom: 0; height: calc(var(--u) * 1.3); background: var(--accent); }
+.cf .crn { position: absolute; width: calc(var(--u) * 2.4); height: calc(var(--u) * 2.4); border: 0 solid color-mix(in srgb, var(--ink) 35%, transparent); }
+.cf .crn:nth-of-type(1) { left: calc(var(--u) * 2.4); top: calc(var(--u) * 2.4); border-left-width: 2px; border-top-width: 2px; }
+.cf .crn:nth-of-type(2) { right: calc(var(--u) * 2.4); top: calc(var(--u) * 2.4); border-right-width: 2px; border-top-width: 2px; }
+.cb .cbi { position: absolute; left: 0; top: 0; display: flex; flex-direction: column; justify-content: center; box-sizing: border-box; transform-origin: 0 0; }
+.cb .csl { font: 900 calc(var(--u) * 5)/1.2 var(--font-heading); letter-spacing: -.03em; white-space: pre-line; word-break: keep-all; }
+.cb .crl { height: 2px; background: currentColor; opacity: .35; margin: calc(var(--u) * 2.4) 0 calc(var(--u) * 1.8); transform-origin: 0 50%; }
+.cb .cl { display: flex; align-items: baseline; gap: calc(var(--u) * 2); }
+.cb .cl b { flex: none; width: calc(var(--u) * 7.2); font: 600 calc(var(--u) * 1.8)/1 var(--mono); letter-spacing: .2em; opacity: .72; }
+.cb .cl span { display: block; flex: 1; min-width: 0; font: 700 calc(var(--u) * 3.1)/1.5 var(--font-body); white-space: nowrap; overflow: hidden; }
+.cb .cl span.wr { white-space: normal; word-break: keep-all; line-height: 1.35; }
+.cb .cbn { font: 900 calc(var(--u) * 7)/1.1 var(--font-display); white-space: nowrap; }
+#ctag { right: auto; }
+#cnote { font: 500 calc(var(--u) * 2)/1.3 var(--font-body); color: var(--on-bg-muted); white-space: nowrap; text-align: center; }
+</style>
+
+<div id="viewport"><div id="stage"><div id="cam"></div></div></div>
+
+<script>/*@GSAP@*/</script>
+<script>/*@DATA@*/</script>
+<script>/*@ENGINE_JS@*/</script>
+<script>
+(function () {
+  const S = Studio, M = S.M, C = S.content || {}, B = S.brand || {}, e = S.esc;
+  const cam = S.$('#cam');
+  const str = v => (v == null ? '' : String(v)).trim();
+  const pad2 = n => String(n).padStart(2, '0');
+
+  /* 선 아이콘 (48×48, 선만). content.pillars[].symbol 에 이름을 적음 */
+  const ICONS = {
+    chart: ['M8 8v32h32', 'M14 31l7-8 6 5 11-13', 'M31 15h7v7'],
+    globe: ['M24 8a16 16 0 1 1 0 32a16 16 0 1 1 0-32', 'M8 24h32', 'M24 8c-5 4.5-7.5 10-7.5 16s2.5 11.5 7.5 16', 'M24 8c5 4.5 7.5 10 7.5 16s-2.5 11.5-7.5 16', 'M11 16h26', 'M11 32h26'],
+    cube: ['M24 6l16 9v18l-16 9-16-9V15z', 'M8 15l16 9 16-9', 'M24 24v18'],
+    people: ['M18 10a6 6 0 1 1 0 12a6 6 0 1 1 0-12', 'M6 39c0-7 5.4-12 12-12s12 5 12 12', 'M33 13a5 5 0 1 1 0 10a5 5 0 1 1 0-10', 'M31 27.4c.6-.1 1.3-.2 2-.2 5.5 0 9 4.2 9 10.8'],
+    chip: ['M16 14h16a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H16a2 2 0 0 1-2-2V16a2 2 0 0 1 2-2z', 'M20 20h8v8h-8z', 'M19 8v6M24 8v6M29 8v6M19 34v6M24 34v6M29 34v6M8 19h6M8 24h6M8 29h6M34 19h6M34 24h6M34 29h6'],
+    book: ['M24 13c-4.5-3.2-10.5-4.2-16-3.2v27c5.5-1 11.5 0 16 3.2 4.5-3.2 10.5-4.2 16-3.2v-27c-5.5-1-11.5 0-16 3.2z', 'M24 13v27'],
+    shield: ['M24 6l14 5v11c0 9.2-5.8 16.2-14 20-8.2-3.8-14-10.8-14-20V11z', 'M17.5 24.5l4.5 4.5 9-10'],
+    spark: ['M22 8c1.6 8.6 4.4 11.4 13 13-8.6 1.6-11.4 4.4-13 13-1.6-8.6-4.4-11.4-13-13 8.6-1.6 11.4-4.4 13-13z', 'M37 30c.7 3.6 1.9 4.8 5.5 5.5-3.6.7-4.8 1.9-5.5 5.5-.7-3.6-1.9-4.8-5.5-5.5 3.6-.7 4.8-1.9 5.5-5.5z'],
+    factory: ['M6 40V22l10 6v-6l10 6v-6l10 6V9h6v31z', 'M12 34h4M21 34h4M30 34h4'],
+    cloud: ['M14 36h21a7 7 0 0 0 0-14h-.6A10 10 0 0 0 15 20.5 7.8 7.8 0 0 0 14 36z'],
+  };
+  const ICON_ORDER = ['chip', 'chart', 'people', 'globe', 'cube', 'cloud', 'shield', 'book', 'factory', 'spark'];
+  const iconSvg = (nm, i) => { const k = ICONS[str(nm)] ? str(nm) : ICON_ORDER[i % ICON_ORDER.length]; return `<svg class="ic" viewBox="0 0 48 48" aria-hidden="true">${ICONS[k].map(d => `<path d="${d}"/>`).join('')}</svg>`; };
+
+  /* ---- 내용 정리 (빈 값·빠진 키에도 깨지지 않게) ---- */
+  const name = str(C.name) || str(B.logoText) || str(B.name);
+  const nameLines = name.split('\n').map(s => s.trim()).filter(Boolean).slice(0, 2);
+  const logoImg = B.logo ? S.img(B.logo) : '';
+  const label = str(C.label);
+  const sub = str(B.logoSub);
+  const mission = str(C.mission);
+  const highlight = str(C.highlight);
+  const pillars = (Array.isArray(C.pillars) ? C.pillars : []).filter(p => p && typeof p === 'object' && (str(p.title) || str(p.desc))).slice(0, 4);
+  const facts = (Array.isArray(C.facts) ? C.facts : []).filter(f => f && typeof f === 'object' && str(f.value) !== '').slice(0, 4);
+  const partners = (Array.isArray(C.partners) ? C.partners : [])
+    .map(x => typeof x === 'string' || typeof x === 'number' ? str(x) : (x && typeof x === 'object' ? str(x.name || x.logo || x.photo) : ''))
+    .filter(Boolean).slice(0, 16);
+  const card = C.card && typeof C.card === 'object' ? C.card : {};
+  const slogan = str(card.slogan);
+  const contacts = [['WEB', card.site], ['MAIL', card.email], ['TEL', card.tel], ['ADDR', card.address]].map(([k, v]) => [k, str(v)]).filter(c => c[1]);
+  const note = str(C.note);
+
+  // 숫자: 설립 연도처럼 보이면 쉼표 없이, 그 밖의 숫자는 쉼표. 글자로 적으면 적은 그대로(숫자만 굴러감)
+  const isYear = f => /^년(도)?$/.test(str(f.unit)) || /설립|창립|창업|연도|since|founded|est/i.test(str(f.label));
+  const fmtVal = f => {
+    const v = f.value;
+    if (typeof v === 'number' && isFinite(v)) return isYear(f) && Number.isInteger(v) ? String(v) : v.toLocaleString('ko-KR', { maximumFractionDigits: 2 });
+    return str(v);
+  };
+  const odo = s => [...s].map(ch => /\d/.test(ch) ? `<span class="d"><span class="col">${Array.from({ length: 40 }, (_, k) => `<i>${k % 10}</i>`).join('')}</span></span>` : `<span class="s">${e(ch)}</span>`).join('');
+  const dimHtml = (id, lbl) => `<div class="dim"${id ? ` id="${id}"` : ''}><i class="xl"></i><i class="xr"></i><i class="dl"></i><i class="dr"></i><b class="kl"></b><b class="kr"></b>${lbl ? `<span class="dt">${e(lbl)}</span>` : ''}</div>`;
+
+  // 미션 줄 (강조 구절은 색 + 치수 밑줄)
+  const misLine = l => {
+    const i = highlight ? l.indexOf(highlight) : -1;
+    if (i < 0) return e(l);
+    return e(l.slice(0, i)) + `<span class="hl">${e(highlight)}<i class="hu"><b></b><b></b></i></span>` + e(l.slice(i + highlight.length));
+  };
+
+  /* ---- 장면 순서와 길이 (120BPM, 0.5초 단위) ---- */
+  const SC = [{ id: 'title', tag: label || 'COMPANY PROFILE', dur: 2.5 }];
+  if (mission) SC.push({ id: 'mis', tag: 'MISSION', dur: mission.replace(/\s/g, '').length > 30 ? 3.5 : 3.0 });
+  if (pillars.length) SC.push({ id: 'pil', tag: 'WHAT WE DO', dur: 2.0 + pillars.length * .5 });
+  if (facts.length) SC.push({ id: 'fac', tag: 'BY THE NUMBERS', dur: 2.0 + facts.length * .5 });
+  if (partners.length) SC.push({ id: 'par', tag: 'PARTNERS', dur: partners.length > 6 ? 3.0 : 2.5 });
+  SC.push({ id: 'card', tag: 'CONTACT', dur: 4.0 });
+  let acc = 0;
+  SC.forEach((s, i) => { s.i = i; s.T = acc; acc += s.dur; s.E = acc; });
+  const END = acc, TOT = pad2(SC.length);
+  const SCN = Object.fromEntries(SC.map(s => [s.id, s]));
+  const headed = SC.filter(s => s.id !== 'title' && s.id !== 'card');   // 머리줄이 보이는 장면
+
+  // 함께하는 곳: 다섯 곳 이상이면 두 줄로 나눠 서로 반대로 흐름
+  const rowsP = partners.length >= 5 ? [partners.filter((_, i) => i % 2 === 0), partners.filter((_, i) => i % 2 === 1)] : partners.length ? [partners] : [];
+  const ptHtml = (x, i) => { const im = S.img(x); return im ? `<span class="pt im" data-n="P${pad2(i + 1)}"><img src="${im}" alt=""></span>` : `<span class="pt" data-n="P${pad2(i + 1)}">${e(x)}</span>`; };
+
+  cam.appendChild(S.h(`<div id="co">
+    <div id="grid"><div class="mn"></div></div>
+    <div id="frame" class="abs"><i></i><i></i><i></i><i></i></div>
+    <div id="rt" class="abs"><i id="rtm"></i></div><div id="rl" class="abs"><i id="rlm"></i></div>
+    <svg id="guides" class="abs"></svg>
+    <div id="xh"><div id="xhh"></div><div id="xhv"></div><div id="xhb"></div></div>
+
+    <section id="s-title" class="sc">
+      <div id="ttag" class="abs"><b>01</b><span>/ ${TOT}</span><em></em></div>
+      ${dimHtml('tdim', sub)}
+    </section>
+
+    ${mission ? `<section id="s-mis" class="sc"><i id="mrule" class="abs"></i>
+      <div id="mtx" class="abs">${mission.split('\n').map(l => `<span class="ml"><span class="mi">${misLine(l)}</span></span>`).join('')}</div></section>` : ''}
+
+    ${pillars.length ? `<section id="s-pil" class="sc">${str(C.pillarsTitle) ? `<div class="sh abs">${e(C.pillarsTitle)}</div>` : ''}
+      <div id="pfloor" class="abs"><i class="fl"></i><i class="ht"></i></div>
+      <div id="pgrp" class="abs">${pillars.map(() => '<div class="slot"></div>').join('')}
+        ${pillars.map((p, i) => `<div class="blk"><i class="stp"></i><div class="bin"><span class="bi">${pad2(i + 1)}</span>${iconSvg(p.symbol || p.icon, i)}
+          <div class="btx">${str(p.title) ? `<div class="bt">${e(p.title)}</div>` : ''}${str(p.desc) ? `<div class="bd">${e(p.desc)}</div>` : ''}</div></div></div>`).join('')}
+      </div></section>` : ''}
+
+    ${facts.length ? `<section id="s-fac" class="sc">${str(C.factsTitle) ? `<div class="sh abs">${e(C.factsTitle)}</div>` : ''}
+      ${facts.map(f => `<div class="fc abs"><div class="fv"><span class="odo">${odo(fmtVal(f))}</span>${str(f.unit) ? `<span class="fu">${e(f.unit)}</span>` : ''}</div>${dimHtml('', '')}${str(f.label) ? `<div class="fl">${e(f.label)}</div>` : ''}</div>`).join('')}
+      ${str(C.source) ? `<div id="fsrc" class="abs">${e(C.source)}</div>` : ''}</section>` : ''}
+
+    ${partners.length ? `<section id="s-par" class="sc">${str(C.partnersTitle) ? `<div class="sh abs">${e(C.partnersTitle)}</div>` : ''}
+      ${rowsP.map(r => `<div class="band abs"><i class="gl"></i><i class="gl"></i><div class="bm"><div class="trk">${r.map(x => ptHtml(x, partners.indexOf(x))).join('')}</div></div></div>`).join('')}</section>` : ''}
+
+    <section id="s-card" class="sc">
+      <svg id="cout" class="abs"><path/></svg>
+      <div id="ctag" class="abs htg"><b>${TOT}</b> / ${TOT} &nbsp;CONTACT</div>
+      ${dimHtml('cdw', '90 MM')}${dimHtml('cdh', '50 MM')}
+      <div id="c3" class="abs"><div class="cflip">
+        <div class="cface cf"><i class="crn"></i><i class="crn"></i><div class="cfi">${logoImg ? `<img src="${logoImg}" alt="">` : ''}${nameLines.length ? `<div class="cn">${nameLines.map(e).join('<br>')}</div>` : ''}${sub ? `<div class="cs">${e(sub)}</div>` : ''}</div><i class="cst"></i></div>
+        <div class="cface cb"><div class="cbi">${slogan ? `<div class="csl">${e(slogan)}</div>` : name ? `<div class="cbn">${e(nameLines.join(' '))}</div>` : ''}${(slogan || name) && contacts.length ? '<i class="crl"></i>' : ''}
+          ${contacts.map(c => `<div class="cl"><b>${c[0]}</b><span${c[0] === 'ADDR' ? ' class="wr"' : ''}>${e(c[1])}</span></div>`).join('')}
+          </div></div>
+      </div></div>
+      ${note ? `<div id="cnote" class="abs">${e(note)}</div>` : ''}
+    </section>
+
+    <div id="hd"><div id="hmark" class="abs">${logoImg ? `<img src="${logoImg}" alt="">` : ''}${name ? `<span class="hn">${e(nameLines.join(' '))}</span>` : ''}</div>
+      <div id="htags" class="abs">${headed.map(s => `<div class="htg"><b>${pad2(s.i + 1)}</b> / ${TOT} &nbsp;${e(s.tag)}</div>`).join('')}</div>
+      <i id="hrule" class="abs"></i></div>
+    <div id="mark" class="abs">${logoImg ? `<div id="lgb"><svg viewBox="0 0 100 100"><path d="M2 2H98V98H2Z"/><path d="M50 2a48 48 0 1 1 0 96a48 48 0 1 1 0-96"/><path d="M2 2L98 98M98 2L2 98"/><path d="M50 -4V104M-4 50H104"/></svg><img src="${logoImg}" alt=""></div>` : ''}<svg id="nm"></svg></div>
+    <div id="xhr" class="abs"></div>
+  </div>`));
+
+  // 이름 글자 (SVG 글자 윤곽을 선으로 그림)
+  const NS = 'http://www.w3.org/2000/svg';
+  const nmSvg = S.$('#nm');
+  const nmTexts = nameLines.map(l => { const t = document.createElementNS(NS, 'text'); t.textContent = l; t.setAttribute('x', 0); t.setAttribute('y', 0); nmSvg.appendChild(t); return t; });
+
+  S.start(S => {
+    const W = S.W, H = S.H, u = Math.min(W, H) / 100, sf = S.safe;
+    const sx = sf.left, sy = sf.top, sw = W - sf.left - sf.right, sh = H - sf.top - sf.bottom;
+    const cx = sx + sw / 2, cy = sy + sh / 2;
+    const wide = S.is('wide'), tall = S.is('tall');
+    const { clamp, prog, lerp } = M, E = M.ease;
+    const root = S.$('#co');
+    S.setDuration(END);
+    const px = v => v.toFixed(1) + 'px';
+    const XK = [];                                        // 십자선 경로 [시각, [x, y], 스프링]
+    const xk = (t, x, y, sp) => XK.push([t, [x, y], sp || { f: 2.4, z: .92 }]);
+    const sweep = d => ({ d, e: 'inOutCubic' });
+
+    /* ---------- 설계도 바탕 ---------- */
+    const G = 12 * u, grid = S.$('#grid'), gH = H + 3 * G;
+    Object.assign(grid.style, { top: -G + 'px', width: W + 'px', height: gH + 'px' });
+    const ox = ((sx % G) + G) % G, oy = ((sy % G) + G) % G;
+    const mn = S.$('.mn', grid);
+    mn.style.backgroundSize = `${3 * u}px ${3 * u}px`; mn.style.backgroundPosition = `${ox}px ${oy}px`;
+    const gLines = [];
+    for (let y = oy; y < gH; y += G) { const el = S.h('<i class="gh"></i>'); el.style.top = (y - 1) + 'px'; grid.appendChild(el); gLines.push({ el, hz: true, d: .05 + clamp((y - G) / H) * .55, dir: Math.round(y / G) % 2 }); }
+    for (let x = ox; x < W; x += G) { const el = S.h('<i class="gv"></i>'); el.style.left = (x - 1) + 'px'; grid.appendChild(el); gLines.push({ el, hz: false, d: .12 + clamp(x / W) * .5 }); }
+    const frame = S.$('#frame'), fm = 1.6 * u;
+    Object.assign(frame.style, { left: px(sx - fm), top: px(sy - fm), width: px(sw + 2 * fm), height: px(sh + 2 * fm) });
+    const rt = S.$('#rt'), rl = S.$('#rl'), rtm = S.$('#rtm'), rlm = S.$('#rlm');
+    rt.style.width = W + 'px'; rl.style.height = H + 'px';
+    // 장면이 바뀔 때마다 격자가 한 칸씩 위로 (내용이 위로 빠지는 방향과 같게)
+    const panKeys = [[0, 0]];
+    SC.forEach((s, i) => { if (i) panKeys.push([s.T - .3, i * G, { f: 1.3, z: .95 }]); });
+
+    /* ---------- 1) 제목: 이름이 선으로 그려짐 ---------- */
+    const st = SCN.title, ttag = S.$('#ttag'), tdim = S.$('#tdim'), mark = S.$('#mark');
+    const lgb = S.$('#lgb');
+    const L = logoImg ? (wide ? 22 : tall ? 30 : 25) * u : 0;
+    // 글자 크기: 100px 로 재고 폭에 맞춤
+    nmTexts.forEach(t => t.style.fontSize = '100px');
+    const w100 = Math.max(1, ...nmTexts.map(t => t.getComputedTextLength()));
+    const maxNW = sw * (wide ? .64 : .84);
+    const F = Math.min((logoImg ? (tall ? 11 : 9) : nameLines.length > 1 ? (tall ? 13 : 11) : wide ? 16 : tall ? 19 : 16) * u, maxNW * 100 / w100);
+    nmTexts.forEach(t => t.style.fontSize = F + 'px');
+    const boxes = nmTexts.map(t => t.getBBox());
+    const nmW = Math.max(F, ...boxes.map(b => b.width)), lineAdv = F * 1.08;
+    const asc = boxes.length ? -boxes[0].y : F * .8, desc = boxes.length ? boxes[0].height + boxes[0].y : F * .2;
+    const nmH = nameLines.length ? asc + desc + (nameLines.length - 1) * lineAdv : 0;
+    nmTexts.forEach((t, i) => { t.setAttribute('x', nmW / 2); t.setAttribute('text-anchor', 'middle'); t.setAttribute('y', asc + i * lineAdv); });
+    const dashL = F * 5;
+    nmTexts.forEach(t => { t.style.strokeDasharray = `${dashL} ${dashL}`; t.style.strokeWidth = Math.max(1.6, F / 70).toFixed(2); });
+    nmSvg.setAttribute('width', nmW); nmSvg.setAttribute('height', Math.max(1, nmH)); nmSvg.setAttribute('viewBox', `0 0 ${nmW} ${Math.max(1, nmH)}`);
+    const mw = Math.max(L, nmW), mh = (L ? L + (nmH ? 3 * u : 0) : 0) + nmH;
+    Object.assign(mark.style, { width: px(mw), height: px(mh) });
+    if (lgb) Object.assign(lgb.style, { left: px((mw - L) / 2), top: '0px', width: px(L), height: px(L) });
+    Object.assign(nmSvg.style, { left: px((mw - nmW) / 2), top: px(L ? L + 3 * u : 0) });
+    const tagH = 2.4 * u, dimH = 3.6 * u;
+    S.$('em', ttag).textContent = SC[0].tag;
+    const tagW = ttag.offsetWidth;
+    const tdimW = Math.max(nmW, L, 30 * u);
+    const stackH = tagH + 5 * u + mh + 3 * u + dimH;
+    const y0 = cy - stackH / 2 - (tall ? 2 * u : 0);
+    const markCY = y0 + tagH + 5 * u + mh / 2;
+    const nmTop = markCY - mh / 2 + (L ? L + 3 * u : 0), nmLeft = cx - nmW / 2;
+    // 보조선 (이름 위·글자 기준선·아래, 왼쪽·오른쪽 끝에서 화면 끝까지)
+    const gsvg = S.$('#guides');
+    gsvg.setAttribute('width', W); gsvg.setAttribute('height', H); gsvg.setAttribute('viewBox', `0 0 ${W} ${H}`);
+    const gp = d => { const p = document.createElementNS(NS, 'path'); p.setAttribute('d', d); gsvg.appendChild(p); return p; };
+    const guides = [];
+    if (nmH) {
+      const ys = [nmTop, nmTop + asc + (nameLines.length - 1) * lineAdv, nmTop + nmH];
+      ys.forEach((y, i) => { guides.push({ p: gp(`M${cx} ${y}H${-2 * u}`), d: .25 + i * .06 }, { p: gp(`M${cx} ${y}H${W + 2 * u}`), d: .25 + i * .06 }); });
+      const ym = nmTop + nmH / 2;
+      [nmLeft, nmLeft + nmW].forEach((x, i) => { guides.push({ p: gp(`M${x} ${ym}V${-2 * u}`), d: .36 + i * .06 }, { p: gp(`M${x} ${ym}V${H + 2 * u}`), d: .36 + i * .06 }); });
+    }
+    const lgPaths = lgb ? S.$$('svg path', lgb) : [];
+    const lgImg = lgb ? S.$('img', lgb) : null;
+    // 머리줄의 회사 표시 자리 (이름이 날아가 줄어드는 곳)
+    const HH = 6 * u, hmark = S.$('#hmark'), htags = S.$('#htags'), hrule = S.$('#hrule');
+    const hn = S.$('.hn', hmark);
+    if (hn) { hn.style.maxWidth = px(sw * .5); hn.style.display = 'block'; hn.style.overflow = 'hidden'; S.fit(hn, { max: 3.3 * u }); }
+    const hmW = hmark.offsetWidth, hmH = hmark.offsetHeight;
+    M.place(hmark, sx, sy + HH / 2, { ax: 0, ay: .5, o: 0 });
+    const flyS = Math.min(hmH * 1.15 / Math.max(1, mh), hmW / Math.max(1, mw), 1);
+    const flyX = sx + mw * flyS / 2, flyY = sy + HH / 2;
+    htags.style.width = px(sw * .5);
+    M.place(htags, sx + sw, sy + HH / 2, { ax: 1, ay: .5 });
+    const htg = S.$$('.htg', htags);
+    Object.assign(hrule.style, { width: px(sw), left: px(sx), top: px(sy + HH + 1.2 * u - 1) });
+    const cTop = sy + HH + 4.6 * u, cBot = sy + sh;          // 머리줄 아래 내용 영역
+    const hdIn = headed.length ? headed[0].T : null, hdOut = SCN.card.T;
+    // 제목 장면 십자선
+    xk(0, nmLeft - 8 * u, nmTop + nmH * .7);
+    xk(.1, nmLeft, nmTop + nmH);
+    xk(.55, nmLeft + nmW, nmTop + nmH, sweep(.9));
+    xk(1.5, cx + tdimW / 2, y0 + stackH - dimH / 2);
+
+    /* 치수선 하나 그리기 (dt: 시작 뒤 흐른 시간, 0.75초 안에 다 그려짐) */
+    // 치수선은 가운데에서 양쪽으로 자람 (dl 은 오른쪽 끝, dr 은 왼쪽 끝이 기준)
+    const dimSetup = (el, w) => {
+      el.style.width = px(w);
+      const d = { xs: S.$$('.xl, .xr', el), dl: S.$('.dl', el), dr: S.$('.dr', el), ks: S.$$('.kl, .kr', el), dt: S.$('.dt', el) };
+      const gap = d.dt ? d.dt.offsetWidth + 2.4 * u : 0;
+      d.dl.style.width = d.dr.style.width = px(Math.max(0, (w - gap) / 2));
+      el._d = d;
+      return el;
+    };
+    const dimSet = (el, dt, o = 1) => {
+      const d = el._d, k1 = E.outCubic(prog(dt, 0, .3)), k2 = E.outCubic(prog(dt, .1, .5)), k3 = clamp(M.spring(dt - .5, 'pop'), 0, 1.2), k4 = prog(dt, .45, .25);
+      el.style.visibility = dt > 0 && o > .001 ? 'inherit' : 'hidden';
+      el.style.opacity = clamp(o).toFixed(3);
+      d.xs.forEach(x => x.style.transform = `scaleY(${k1.toFixed(4)})`);
+      d.dl.style.transform = d.dr.style.transform = `scaleX(${k2.toFixed(4)})`;
+      d.ks.forEach(x => x.style.transform = `rotate(45deg) scale(${k3.toFixed(4)})`);
+      if (d.dt) { d.dt.style.opacity = k4.toFixed(3); d.dt.style.transform = `translate(-50%, -50%) translateY(${((1 - k4) * u).toFixed(1)}px)`; }
+    };
+    dimSetup(tdim, tdimW);
+    M.place(tdim, cx, y0 + stackH - dimH / 2, { o: 0 });
+    tdim.style.visibility = 'hidden';
+
+    /* ---------- 2) 미션 ---------- */
+    const sm = SCN.mis;
+    let misLines = [], misHl = null, misHu = null, mrule = null, mtxBox = null;
+    if (sm) {
+      const mtx = S.$('#mtx'); mrule = S.$('#mrule');
+      const mx = wide ? cx - Math.min(sw - 8 * u, 130 * u) / 2 + 3 * u : sx + 4 * u;
+      const mW = wide ? Math.min(sw - 8 * u, 130 * u) - 3 * u : sw - 4 * u;
+      mtx.style.width = px(mW);
+      const availH = (cBot - cTop) * .9;
+      // 작성자가 \n 으로 나눈 줄을 먼저 지키고(62% 까지 줄임), 그래도 안 되면 줄바꿈을 허용하고 높이만 맞춤
+      const mMax = (tall ? 8.6 : wide ? 7.2 : 7.6) * u, mls = S.$$('.ml', mtx);
+      const setF = v => { mtx.style.fontSize = px(v); return v; };
+      const wraps = () => mls.some(l => l.offsetHeight > parseFloat(getComputedStyle(mtx).lineHeight) * 1.5) || mtx.scrollWidth > mtx.clientWidth + 1;
+      let mf = setF(mMax);
+      while ((wraps() || mtx.offsetHeight > availH) && mf > mMax * .62) mf = setF(mf * .95);
+      if (wraps() || mtx.offsetHeight > availH) { mf = setF(mMax); while (mtx.offsetHeight > availH && mf > mMax * .4) mf = setF(mf * .95); }
+      const mH = mtx.offsetHeight;
+      const my = tall ? cTop + (cBot - cTop) * .44 - mH / 2 : (cTop + cBot) / 2 - mH / 2;
+      M.place(mtx, mx, my, { ax: 0, ay: 0 });
+      Object.assign(mrule.style, { height: px(mH), left: px(mx - 3 * u), top: px(my) });
+      misLines = S.$$('.mi', mtx);
+      misHl = S.$('.hl', mtx); misHu = misHl && S.$('.hu', misHl);
+      mtxBox = { x: mx, y: my, w: mW, h: mH };
+      xk(sm.T - .1, mx - 3 * u, my);
+      if (misHl) {
+        const hx0 = mx + misHl.offsetLeft, hx1 = hx0 + misHl.offsetWidth, hy = my + misHl.offsetTop + misHl.offsetHeight;
+        xk(sm.T + .75, hx0, hy);
+        xk(sm.T + .95, hx1, hy, sweep(.55));
+      } else xk(sm.T + .8, mx + mW * .5, my + mH);
+    }
+
+    /* ---------- 3) 하는 일 ---------- */
+    const sp = SCN.pil;
+    let blocks = [];
+    if (sp) {
+      const sec = S.$('#s-pil'), shEl = S.$('.sh', sec), grp = S.$('#pgrp'), floor = S.$('#pfloor');
+      const n = pillars.length, gap = 2.4 * u;
+      const mode = wide ? 'cols' : !tall && n === 4 ? 'grid' : 'rows';
+      let top = cTop;
+      if (shEl) { shEl.style.maxWidth = px(sw); S.fit(shEl, { max: 5.4 * u }); M.place(shEl, sx, cTop, { ax: 0, ay: 0 }); top += shEl.offsetHeight + 3.4 * u; }
+      const availH = cBot - top - 3.4 * u;
+      let cols, rows, cw, ch;
+      if (mode === 'cols') { cols = n; rows = 1; cw = (sw - gap * (n - 1)) / n; ch = Math.min(availH, 58 * u); }
+      else if (mode === 'grid') { cols = 2; rows = 2; cw = (sw - gap) / 2; ch = Math.min((availH - gap) / 2, 40 * u); }
+      else { cols = 1; rows = n; cw = sw; ch = Math.min((availH - gap * (n - 1)) / n, (tall ? 25 : 20) * u); }
+      const GW = sw, GH = rows * ch + (rows - 1) * gap;
+      const gy = top + (availH - GH) / 2;
+      Object.assign(grp.style, { width: px(GW), height: px(GH) });
+      M.place(grp, sx, gy, { ax: 0, ay: 0 });
+      floor.style.width = px(sw + 6 * u);
+      M.place(floor, sx - 3 * u, gy + GH + 1.2 * u, { ax: 0, ay: 0 });
+      const slots = S.$$('.slot', grp), blks = S.$$('.blk', grp);
+      blks.forEach((b, i) => {
+        const c = i % cols, r = Math.floor(i / cols);
+        const x = c * (cw + gap), y = r * (ch + gap);
+        [slots[i], b].forEach(el => Object.assign(el.style, { left: px(x), top: px(y), width: px(cw), height: px(ch) }));
+        const row = mode === 'rows';
+        b.classList.add(row ? 'row' : 'col');
+        const stp = S.$('.stp', b);
+        Object.assign(stp.style, row ? { width: px(.9 * u), height: '100%' } : { width: '100%', height: px(.9 * u) });
+        const bin = S.$('.bin', b), ic = S.$('.ic', b), btx = S.$('.btx', b), bt = S.$('.bt', b), bd = S.$('.bd', b);
+        const pd = (row ? 3.4 : 3.6) * u;
+        const iw = row ? Math.min(ch * .5, 11 * u) : Math.min(cw * .3, ch * .24, 11 * u);
+        ic.setAttribute('width', iw); ic.setAttribute('height', iw);
+        if (row) {
+          Object.assign(bin.style, { width: px(cw), height: px(ch), padding: `0 ${px(6 * u)} 0 ${px(pd + 1 * u)}`, gap: px(3.4 * u) });
+          btx.style.flex = '1';
+          if (bt) S.fit(bt, { max: 4.6 * u, maxLines: 1 });
+          if (bd) S.fit(bd, { max: 3.1 * u, maxLines: 2, keepLines: false });
+        } else {
+          Object.assign(bin.style, { width: px(cw), height: px(ch), padding: `${px(pd + .6 * u)} ${px(pd)} ${px(pd)}` });
+          ic.style.marginTop = px(2.4 * u);
+          if (bt) S.fit(bt, { max: (wide ? 4.4 : 4.2) * u, maxLines: 2, keepLines: false });
+          if (bd) S.fit(bd, { max: 3 * u, maxLines: 3, keepLines: false });
+        }
+        // 그래도 넘치면 안쪽을 통째로 줄임
+        bin.style.height = 'auto';
+        const need = row ? bin.scrollHeight : bin.scrollHeight, k = Math.min(1, ch / Math.max(1, need));
+        bin.style.height = px(ch / k); bin.style.width = px(cw / k);
+        if (k < 1) bin.style.transform = `scale(${k.toFixed(4)})`;
+        blocks.push({ b, slot: slots[i], bin, paths: S.$$('.ic path', b), parts: [bt, bd].filter(Boolean), off: GH - y, tb: sp.T + (shEl ? .5 : .25) + i * .5, cx: sx + x + cw / 2, cy: gy + y + ch / 2 });
+      });
+      xk(sp.T - .1, sx, gy + GH + 1.2 * u);
+      blocks.forEach(o => xk(o.tb - .05, o.cx, o.cy));
+      sp.floor = floor; sp.sh = shEl;
+    }
+
+    /* ---------- 4) 숫자 ---------- */
+    const sfa = SCN.fac;
+    let factEls = [];
+    if (sfa) {
+      const sec = S.$('#s-fac'), shEl = S.$('.sh', sec), src = S.$('#fsrc');
+      const n = facts.length, gap = 2.4 * u;
+      let top = cTop;
+      if (shEl) { shEl.style.maxWidth = px(sw); S.fit(shEl, { max: 5.4 * u }); M.place(shEl, sx, cTop, { ax: 0, ay: 0 }); top += shEl.offsetHeight + 3 * u; }
+      let bot = cBot;
+      if (src) { src.style.maxWidth = px(sw); S.fit(src, { max: 1.9 * u }); M.place(src, sx + sw, cBot, { ax: 1, ay: 1 }); bot -= src.offsetHeight + 2 * u; }
+      const availH = bot - top;
+      let cols, rows;
+      if (wide) { cols = n; rows = 1; }
+      else if (n === 4) { cols = 2; rows = 2; }
+      else if (tall) { cols = 1; rows = n; }
+      else { cols = n; rows = 1; }
+      const cw = (sw - gap * (cols - 1)) / cols, ch = Math.min((availH - gap * (rows - 1)) / rows, 42 * u);
+      const GH = rows * ch + (rows - 1) * gap, gy = top + (availH - GH) / 2;
+      S.$$('.fc', sec).forEach((el, i) => {
+        const c = i % cols, r = Math.floor(i / cols);
+        // 마지막 줄에 칸이 모자라면 가운데로
+        const inRow = Math.min(cols, n - r * cols), offX = (cols - inRow) * (cw + gap) / 2;
+        const x = sx + offX + c * (cw + gap), y = gy + r * (ch + gap);
+        Object.assign(el.style, { width: px(cw), height: px(ch) });
+        M.place(el, x, y, { ax: 0, ay: 0 });
+        const fv = S.$('.fv', el), dim = S.$('.dim', el), fl = S.$('.fl', el);
+        let fs = Math.min(cols === 1 ? 17 * u : cols === 2 ? 15 * u : 13 * u, ch * .54);
+        fv.style.fontSize = px(fs);
+        if (fv.offsetWidth > cw * .8) { fs *= cw * .8 / fv.offsetWidth; fv.style.fontSize = px(fs); }
+        let lh = 0;
+        if (fl) { fl.style.width = px(cw * .92); S.fit(fl, { max: 3 * u, maxLines: 2, keepLines: false }); lh = fl.offsetHeight; }
+        const total = fs + 1.6 * u + dimH + (fl ? 1.2 * u + lh : 0);
+        if (total > ch) { const k = (ch - (total - fs)) / fs; if (k < 1) { fs *= Math.max(.5, k); fv.style.fontSize = px(fs); } }
+        const fvW = fv.offsetWidth, t0 = (ch - (fs + 1.6 * u + dimH + (fl ? 1.2 * u + lh : 0))) / 2;
+        M.place(fv, cw / 2, t0, { ax: .5, ay: 0 });
+        const dw = Math.min(cw * .9, fvW + 4 * u);
+        dimSetup(dim, dw);
+        M.place(dim, cw / 2, t0 + fs + 1.6 * u + dimH / 2, { o: 1 });
+        if (fl) M.place(fl, cw / 2, t0 + fs + 1.6 * u + dimH + 1.2 * u, { ax: .5, ay: 0 });
+        const f = facts[i], raw = fmtVal(f).replace(/[^\d]/g, '');
+        const tf = sfa.T + (shEl ? .5 : .25) + i * .5;
+        factEls.push({ el, fv, dim, fl, cols: S.$$('.odo .d .col', el), raw, fu: S.$('.fu', el), tf });
+        xk(tf - .1, x + cw / 2, y + t0 + fs + 1.6 * u + dimH / 2);
+      });
+      sfa.sh = shEl; sfa.src = src;
+    }
+
+    /* ---------- 5) 함께하는 곳 ---------- */
+    const spa = SCN.par;
+    let bands = [];
+    if (spa) {
+      const sec = S.$('#s-par'), shEl = S.$('.sh', sec);
+      let top = cTop;
+      if (shEl) { shEl.style.maxWidth = px(sw); S.fit(shEl, { max: 5.4 * u }); M.place(shEl, sx, cTop, { ax: 0, ay: 0 }); top += shEl.offsetHeight + 3 * u; }
+      const pk = tall ? 1.22 : 1;
+      sec.style.setProperty('--pk', pk);
+      const bh = 12 * u * pk, bgap = tall ? 5 * u : 3.6 * u;
+      const els = S.$$('.band', sec), nb = els.length;
+      const tot = nb * bh + (nb - 1) * bgap, by = top + (cBot - top - tot) / 2 - (tall ? 4 * u : 0);
+      els.forEach((b, r) => {
+        Object.assign(b.style, { width: px(sw), height: px(bh) });
+        const gls = S.$$('.gl', b); gls[0].style.top = '0px'; gls[1].style.top = px(bh - 2);
+        const trk = S.$('.trk', b), one = trk.innerHTML;
+        const segW = Math.max(1, trk.scrollWidth);
+        trk.innerHTML = one.repeat(Math.ceil((sw * 2) / segW) + 2);
+        const y = by + r * (bh + bgap);
+        bands.push({ b, trk, segW, x: sx, y, dir: r % 2 ? 1 : -1, gls, t0: spa.T - .05 + r * .15, ph: r * .37 });
+      });
+      xk(spa.T - .1, sx + sw - 4 * u, by - 1.6 * u);
+      spa.sh = shEl;
+    }
+
+    /* ---------- 6) 명함 ---------- */
+    const sc6 = SCN.card;
+    const c3 = S.$('#c3'), cflip = S.$('.cflip', c3), cf = S.$('.cf', c3), cb = S.$('.cb', c3), cout = S.$('#cout'), cdw = S.$('#cdw'), cdh = S.$('#cdh'), cnote = S.$('#cnote');
+    const cW = Math.min(sw * (wide ? .6 : .86), 96 * u), cH = cW * 5 / 9;
+    const ccx = cx - (wide ? 0 : 1.6 * u), ccy = cy - (cnote ? 3 * u : 0) - (tall ? 3 * u : 0);
+    Object.assign(c3.style, { width: px(cW), height: px(cH) });
+    M.place(c3, ccx, ccy, { o: 0 });
+    const cl = ccx - cW / 2, ctp = ccy - cH / 2;
+    // 앞면: 로고·이름
+    const cfi = S.$('.cfi', cf), cfImg = S.$('img', cfi), cn = S.$('.cn', cfi);
+    if (cfImg) cfImg.style.height = px(cH * (cn ? .34 : .5));
+    if (cn) { cn.style.maxWidth = px(cW * .78); S.fit(cn, { max: (logoImg ? 6.4 : nameLines.length > 1 ? 7 : 9) * u }); }
+    // 뒷면: 슬로건·연락처 (넘치면 통째로 줄임)
+    const cbi = S.$('.cbi', cb), pdC = 5 * u;
+    Object.assign(cbi.style, { width: px(cW), padding: `${px(pdC)} ${px(pdC * 1.1)}` });
+    const csl = S.$('.csl', cbi); if (csl) S.fit(csl, { max: 5 * u, maxLines: 2 });
+    S.$$('.cl span', cbi).forEach(s => S.fit(s, s.classList.contains('wr') ? { max: 3.1 * u, maxLines: 2, keepLines: false, min: 2 * u } : { max: 3.1 * u, maxLines: 1, min: 1.9 * u }));
+    const cbn = S.$('.cbn', cbi); if (cbn) S.fit(cbn, { max: (contacts.length ? 6 : 7) * u });
+    cbi.style.height = 'auto';
+    { const need = cbi.offsetHeight, k = Math.min(1, cH / Math.max(1, need)); cbi.style.height = px(cH / k); cbi.style.width = px(cW / k); if (k < 1) cbi.style.transform = `scale(${k.toFixed(4)})`; }
+    const cbParts = [csl || cbn, S.$('.crl', cbi), ...S.$$('.cl', cbi)].filter(Boolean);
+    // 윤곽선(도면) + 치수 90×50
+    cout.setAttribute('width', W); cout.setAttribute('height', H); cout.setAttribute('viewBox', `0 0 ${W} ${H}`);
+    const r6 = 1.4 * u, coutP = S.$('path', cout);
+    coutP.setAttribute('d', `M${cl + r6} ${ctp}H${cl + cW - r6}A${r6} ${r6} 0 0 1 ${cl + cW} ${ctp + r6}V${ctp + cH - r6}A${r6} ${r6} 0 0 1 ${cl + cW - r6} ${ctp + cH}H${cl + r6}A${r6} ${r6} 0 0 1 ${cl} ${ctp + cH - r6}V${ctp + r6}A${r6} ${r6} 0 0 1 ${cl + r6} ${ctp}Z`);
+    dimSetup(cdw, cW); dimSetup(cdh, cH);
+    M.place(cdw, ccx, ctp + cH + 3.4 * u, { o: 0 });
+    M.place(cdh, cl + cW + 3.4 * u, ccy, { o: 0, rot: -90 });
+    cdw.style.visibility = cdh.style.visibility = 'hidden';
+    if (cnote) { cnote.style.maxWidth = px(sw); S.fit(cnote, { max: 2 * u }); }
+    const noteY = Math.min(cBot - (cnote ? cnote.offsetHeight : 0), ctp + cH + 7 * u);
+    const T6 = sc6.T - .15, TF = T6 + 1.5;                // 윤곽선은 앞 장면이 빠지는 동안 시작, TF 뒤집기 시작
+    const ctag = S.$('#ctag');
+    xk(T6 - .1, cl, ctp);
+    xk(T6 + .15, cl + cW, ctp + cH, sweep(.55));
+
+    XK.sort((a, b) => a[0] - b[0]);
+    XK.unshift([-1, [...XK[0][1]]]);
+
+    /* ---------- 장면별 안/밖 ---------- */
+    const sceneEls = Object.fromEntries(SC.map(s => [s.id, S.$('#s-' + s.id)]));
+    const shIn = (el, t, t0) => { if (!el) return; const k = M.spring(t - t0, 'snappy'); el.style.translate = `0 ${((1 - k) * 4 * u).toFixed(1)}px`; el.style.opacity = t > t0 ? clamp(k * 1.6).toFixed(3) : '0'; };
+    const xhEl = S.$('#xh'), xhh = S.$('#xhh'), xhv = S.$('#xhv'), xhb = S.$('#xhb'), xhr = S.$('#xhr');
+
+    S.ambient(t => {
+      M.drift(root, t, .7);
+      /* 바탕 */
+      const pan = M.anim(panKeys, t);
+      grid.style.transform = `translateY(${(-(pan % G)).toFixed(2)}px)`;
+      gLines.forEach(g => {
+        const k = E.outCubic(prog(t, g.d, .65));
+        if (g.hz) { g.el.style.transformOrigin = g.dir ? '100% 50%' : '0 50%'; g.el.style.transform = `scaleX(${k.toFixed(4)})`; }
+        else g.el.style.transform = `scaleY(${k.toFixed(4)})`;
+      });
+      mn.style.opacity = E.outCubic(prog(t, .15, .9)).toFixed(3);
+      const fk = prog(t, .2, .5);
+      frame.style.opacity = rt.style.opacity = rl.style.opacity = fk.toFixed(3);
+      /* 십자선 */
+      const xy = M.anim(XK, t);
+      const xo = clamp((t - .05) * 5) * (1 - prog(t, T6 + .9, .35));
+      xhEl.style.visibility = xo > .001 ? 'inherit' : 'hidden';
+      xhEl.style.opacity = xo.toFixed(3);
+      xhh.style.transform = `translateY(${(xy[1] - 1).toFixed(1)}px)`;
+      xhv.style.transform = `translateX(${(xy[0] - 1).toFixed(1)}px)`;
+      xhb.style.transform = `translate(${(xy[0] - 1.3 * u).toFixed(1)}px, ${(xy[1] - 1.3 * u).toFixed(1)}px)`;
+      xhr.textContent = `X ${String(Math.round(clamp(xy[0], 0, 9999))).padStart(4, '0')}  Y ${String(Math.round(clamp(xy[1], 0, 9999))).padStart(4, '0')}`;
+      // 좌표 글자는 글자와 겹치지 않는 제목·명함 윤곽 때만 (십자선 오른쪽 아래)
+      const ro = (1 - prog(t, st.E - .7, .3)) + prog(t, T6 - .3, .2) * (1 - prog(t, T6 + .8, .3));
+      const rw = xhr.offsetWidth, rh = xhr.offsetHeight;
+      M.place(xhr, clamp(xy[0] + 1.4 * u, sx, sx + sw - rw), clamp(xy[1] + 1.2 * u, sy, sy + sh - rh), { ax: 0, ay: 0, o: xo * .9 * clamp(ro) });
+      rtm.style.transform = `translateX(${(xy[0] - .8 * u).toFixed(1)}px)`; rtm.style.top = px(2.2 * u - .8 * u - 2);
+      rlm.style.transform = `translateY(${(xy[1] - .8 * u).toFixed(1)}px)`; rlm.style.left = px(2.2 * u - .8 * u - 2);
+      rtm.style.opacity = rlm.style.opacity = xo.toFixed(3);
+
+      /* 장면 보이기 */
+      SC.forEach(s => {
+        const el = sceneEls[s.id]; if (!el) return;
+        const on = t >= s.T - .3 && t < s.E + .05;
+        el.style.visibility = on ? 'inherit' : 'hidden';
+        if (s.id !== 'title' && s.id !== 'card' && s.id !== 'mis') {
+          const k = E.inCubic(prog(t, s.E - .35, .35));
+          el.style.transform = `translateY(${(-k * 6 * u).toFixed(1)}px)`; el.style.opacity = (1 - k).toFixed(3);
+        }
+      });
+
+      /* 1) 제목 */
+      const tEx = prog(t, st.E - .55, .3);
+      M.place(ttag, cx - tagW / 2, y0 - tEx * 3 * u, { ax: 0, ay: 0, o: clamp((t - .2) * 6) * (1 - tEx) });
+      const tagTxt = SC[0].tag;
+      S.$('em', ttag).textContent = M.type(tagTxt, t, .3, 30);
+      guides.forEach(g => { M.draw(g.p, E.outCubic(prog(t, g.d, .6))); g.p.style.opacity = (1 - prog(t, 1.9, .5)).toFixed(3); });
+      dimSet(tdim, t - 1.3, 1 - tEx);
+      tdim.style.translate = `0 ${(-tEx * 3 * u).toFixed(1)}px`;
+      lgPaths.forEach((p, i) => { M.draw(p, E.inOutCubic(prog(t, .35 + i * .1, .6))); p.style.opacity = (1 - .6 * prog(t, 1.6, .5)).toFixed(3); });
+      if (lgImg) lgImg.style.clipPath = `inset(${((1 - E.outCubic(prog(t, .9, .55))) * 100).toFixed(2)}% 0 0 0)`;
+      nmTexts.forEach((tx, i) => {
+        const k = E.inOutCubic(prog(t, .55 + i * .12, .9));
+        tx.style.strokeDashoffset = (dashL * (1 - k)).toFixed(1);
+        tx.style.fillOpacity = E.outCubic(prog(t, 1.25 + i * .1, .5)).toFixed(3);
+        tx.style.strokeOpacity = (1 - prog(t, 1.75, .4)).toFixed(3);
+        tx.style.visibility = k > 0 ? 'inherit' : 'hidden';
+      });
+      // 이름이 머리줄 왼쪽으로 날아가 작아짐 (머리줄이 없으면 위로 빠짐)
+      if (hdIn != null) {
+        const fk2 = M.spring(t - (st.E - .3), { f: 1.6, z: .9 });
+        const s = lerp(1, flyS, fk2);
+        M.place(mark, lerp(cx, flyX, fk2), lerp(markCY, flyY, fk2), { s, o: 1 - clamp((fk2 - .55) / .3) });
+        const hk = clamp((fk2 - .55) / .3), hOut = E.inCubic(prog(t, hdOut - .35, .35));
+        M.place(hmark, sx, sy + HH / 2 - hOut * 3 * u, { ax: 0, ay: .5, o: hk * (1 - hOut) });
+      } else {
+        M.place(mark, cx, markCY - tEx * 4 * u, { o: 1 - tEx });
+      }
+      /* 머리줄 */
+      if (hdIn != null) {
+        const rk = E.outCubic(prog(t, hdIn - .1, .6)), hOut = E.inCubic(prog(t, hdOut - .35, .35));
+        hrule.style.transform = `translateY(${(-hOut * 3 * u).toFixed(1)}px) scaleX(${rk.toFixed(4)})`;
+        hrule.style.opacity = (1 - hOut).toFixed(3); hrule.style.visibility = rk > 0 && hOut < 1 ? 'inherit' : 'hidden';
+        headed.forEach((s, j) => {
+          const kin = M.spring(t - (s.T - .1), 'snappy');
+          const last = j === headed.length - 1;
+          const kout = last ? 0 : E.inCubic(prog(t, s.E - .2, .3));
+          const k = t < s.T - .1 ? 0 : kout > 0 ? 1 + kout : clamp(kin, 0, 1.02);
+          M.rise(htg[j], k);
+          htg[j].style.opacity = last ? (1 - hOut).toFixed(3) : '1';
+        });
+      }
+
+      /* 2) 미션 */
+      if (sm) {
+        const T = sm.T;
+        mrule.style.visibility = t > T - .1 && t < sm.E ? 'inherit' : 'hidden';
+        const rk = E.outCubic(prog(t, T - .1, .55)) - E.inCubic(prog(t, sm.E - .35, .3));
+        mrule.style.transform = `scaleY(${clamp(rk).toFixed(4)})`;
+        misLines.forEach((l, i) => {
+          const kin = M.spring(t - (T + i * .12), { f: 2.2, z: .9 });
+          const kout = E.inCubic(prog(t, sm.E - .38 + i * .05, .3));
+          M.rise(l, t < T + i * .12 ? 0 : kout > 0 ? 1 + kout : clamp(kin, 0, 1.03));
+        });
+        if (misHl) {
+          const hk = E.inOutCubic(prog(t, T + .95, .55));
+          misHl.style.color = `color-mix(in srgb, var(--accent) ${(hk * 100).toFixed(1)}%, var(--on-bg))`;
+          misHu.style.transform = `scaleX(${hk.toFixed(4)})`;
+          S.$$('b', misHu).forEach((b, j) => { b.style.opacity = (j ? prog(t, T + 1.45, .1) : prog(t, T + .95, .1)).toFixed(3); });
+        }
+      }
+
+      /* 3) 하는 일 */
+      if (sp) {
+        const T = sp.T;
+        shIn(sp.sh, t, T - .1);
+        const fl = E.outCubic(prog(t, T, .7));
+        S.$('.fl', sp.floor).style.transform = `scaleX(${fl.toFixed(4)})`;
+        S.$('.ht', sp.floor).style.clipPath = `inset(0 ${((1 - fl) * 100).toFixed(2)}% 0 0)`;
+        blocks.forEach((o, i) => {
+          o.slot.style.opacity = (clamp((t - (T + .1 + i * .08)) * 4) * .9).toFixed(3);
+          const kb = M.spring(t - o.tb, { f: 1.5, z: .84 });
+          o.b.style.visibility = t >= o.tb ? 'inherit' : 'hidden';
+          o.b.style.transform = `translateY(${((1 - kb) * o.off).toFixed(1)}px)`;
+          o.paths.forEach((p, j) => M.draw(p, E.inOutCubic(prog(t, o.tb + .3 + j * .08, .6))));
+          o.parts.forEach((p, j) => { const k = M.spring(t - (o.tb + .3 + j * .1), 'snappy'); p.style.opacity = clamp((t - (o.tb + .3 + j * .1)) * 4).toFixed(3); p.style.transform = `translateY(${((1 - k) * 2 * u).toFixed(1)}px)`; });
+        });
+      }
+
+      /* 4) 숫자 */
+      if (sfa) {
+        const T = sfa.T;
+        shIn(sfa.sh, t, T - .1);
+        if (sfa.src) sfa.src.style.opacity = clamp((t - (T + .6)) * 3).toFixed(3);
+        factEls.forEach(o => {
+          const dt = t - o.tf;
+          o.fv.style.opacity = clamp((dt + .1) * 6).toFixed(3);
+          dimSet(o.dim, dt);
+          const m = o.cols.length;
+          o.cols.forEach((col, j) => {
+            const dg = +o.raw[j] || 0, loops = 1 + Math.min(2, Math.floor(j * 2 / Math.max(1, m - 1)));
+            const k = E.outCubic(prog(t, o.tf - .05, .8 + (m - j) * .05));
+            col.style.transform = `translateY(${(-(loops * 10 + dg) * k).toFixed(3)}em)`;
+          });
+          if (o.fu) o.fu.style.opacity = prog(dt, .55, .3).toFixed(3);
+          if (o.fl) { const k = M.spring(dt - .4, 'snappy'); o.fl.style.opacity = clamp((dt - .4) * 4).toFixed(3); o.fl.style.translate = `0 ${((1 - k) * 1.6 * u).toFixed(1)}px`; }
+        });
+      }
+
+      /* 5) 함께하는 곳 */
+      if (spa) {
+        shIn(spa.sh, t, spa.T - .1);
+        const v = 6.5 * u;
+        bands.forEach(o => {
+          const k = M.spring(t - o.t0, 'snappy');
+          M.place(o.b, o.x + (1 - k) * 8 * u * -o.dir, o.y, { ax: 0, ay: 0, o: t > o.t0 ? clamp(k * 1.5) : 0 });
+          o.gls.forEach(g => g.style.transform = `scaleX(${E.outCubic(prog(t, o.t0 - .1, .6)).toFixed(4)})`);
+          const off = (((t - spa.T) * v + o.ph * o.segW) % o.segW + o.segW) % o.segW;
+          o.trk.style.transform = `translateX(${(o.dir < 0 ? -off : off - o.segW).toFixed(1)}px)`;
+        });
+      }
+
+      /* 6) 명함 */
+      {
+        const T = T6;
+        M.draw(coutP, E.inOutCubic(prog(t, T, .65)));
+        coutP.style.opacity = (1 - prog(t, T + 1.0, .3)).toFixed(3);
+        const dO = 1 - prog(t, TF - .2, .3);
+        dimSet(cdw, t - (T + .25), dO);
+        dimSet(cdh, t - (T + .4), dO);
+        const fillK = E.inOutCubic(prog(t, T + .55, .5));
+        cf.style.clipPath = fillK < 1 ? `inset(0 ${((1 - fillK) * 100).toFixed(2)}% 0 0 round ${px(1.4 * u)})` : 'none';
+        const fk3 = E.inOutCubic(prog(t, TF, .7));
+        const sway = prog(t, TF + .7, .8);
+        const ry = 180 * fk3 + Math.sin((t - TF) * 1.3) * 4 * sway;
+        const rx = Math.sin(Math.PI * fk3) * 10 + (2 + Math.cos((t - TF) * 1.1) * 2) * sway;
+        const lift = 1 + Math.sin(Math.PI * fk3) * .05;
+        cflip.style.transform = `rotateX(${rx.toFixed(2)}deg) rotateY(${ry.toFixed(2)}deg) scale(${lift.toFixed(4)})`;
+        M.place(c3, ccx, ccy, { o: t >= T + .55 ? 1 : 0 });
+        cbParts.forEach((p, j) => { const t0 = TF + .55 + j * .1, k = M.spring(t - t0, 'snappy'); p.style.opacity = clamp((t - t0) * 4).toFixed(3); p.style.transform = `translateX(${((1 - k) * 3 * u).toFixed(1)}px)`; });
+        { const k = M.spring(t - (T + .1), 'snappy'); M.place(ctag, cl, ctp - 4 * u + (1 - k) * 2 * u, { ax: 0, ay: 1, o: t > T + .1 ? clamp(k * 1.5) : 0 }); }
+        if (cnote) M.place(cnote, cx, noteY + (1 - M.spring(t - (TF + 1.1), 'snappy')) * 2 * u, { ax: .5, ay: 0, o: t > TF + 1.1 ? clamp((t - TF - 1.1) * 3) : 0 });
+      }
+    });
+  });
+})();
+</script>

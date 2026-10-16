@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>모션 스튜디오</title>
+<link rel="icon" href="/app/icon.png">
+<link rel="stylesheet" href="/app/app.css">
+</head>
+<body>
+<div id="app">
+  <header class="top">
+    <div class="mark"><i></i>모션 스튜디오</div>
+    <nav class="crumbs" id="crumbs" aria-label="현재 위치"></nav>
+    <div class="grow"></div>
+    <span class="save-state" id="saveState" aria-live="polite"></span>
+    <button class="btn ghost small" id="openOut" type="button" title="결과물 폴더 열기">결과 폴더</button>
+    <button class="btn ghost small" id="openAcct" type="button" title="Claude·Gemini API 키를 저장하고 골라 씁니다">AI 계정</button>
+    <button class="btn small" id="openCC" type="button" title="이 폴더에서 Claude Code를 엽니다">Claude Code 열기</button>
+  </header>
+  <aside class="rail" id="rail" aria-label="광고 계정과 영상"></aside>
+  <main class="editor" id="editor"></main>
+  <section class="stage" id="stage" aria-label="미리보기"></section>
+</div>
+<div class="jobs" id="jobs" aria-live="polite"></div>
+<dialog id="dlg"></dialog>
+<script src="/app/app.js"></script>
+</body>
+</html>

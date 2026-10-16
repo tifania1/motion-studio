@@ -1,0 +1,35 @@
+{
+  "id": "hiring",
+  "order": 7,
+  "name": "채용",
+  "summary": "화면 전체가 메신저 대화. 가게가 말을 걸고, 답이 입력창에 타이핑되고, 채용 카드가 오고, 지원 시트에서 손가락이 버튼을 눌러요.",
+  "look": "메신저 앱 · 말풍선 · 채용 카드",
+  "template": "hiring",
+  "formats": [
+    "tall",
+    "portrait",
+    "square",
+    "wide"
+  ],
+  "seconds": 18,
+  "photos": {
+    "need": 0,
+    "hint": "사진 없이 돼요 (프로필에 로고)"
+  },
+  "ask": [
+    "직무",
+    "근무 요일·시간·장소",
+    "급여나 혜택 (넣는다면)",
+    "지원 방법과 마감일"
+  ],
+  "brief": "예) 바리스타 파트타임 채용. 주 4일 오전 8시–오후 2시, 망원점. 초보 환영, 음료 무료. DM으로 짧은 소개, 10월 31일까지.",
+  "check": [
+    "근무 조건·급여(최저임금 이상)·마감일",
+    "차별적 조건이 없는지"
+  ],
+  "music": {
+    "mood": "minimal",
+    "bpm": 120,
+    "prompt": "playful minimal electronic, finger snaps, soft marimba, light bass, friendly and modern"
+  }
+}

@@ -1,0 +1,124 @@
+{
+  "id": "chalkboard-lesson",
+  "name": "칠판 수업",
+  "group": "손그림",
+  "template": "sketchbook",
+  "summary": "짙은 초록 칠판에 분필로 쓰는 수업. 분필 가루 결이 남은 흰 글씨, 노란 분필로 밑줄과 동그라미",
+  "tags": [
+    "손그림",
+    "분필",
+    "칠판",
+    "교육",
+    "어두움"
+  ],
+  "hand": true,
+  "source": {
+    "site": "직접 정리",
+    "ref": "",
+    "at": "",
+    "note": "갤러리 영상에서 배운 게 아니고 손그림 모션에서 널리 쓰는 기법으로 정리했어요. 칠판 판서 설명 영상의 분필 결(그레인), 글씨를 쓰는 속도, 노란 분필 강조, 지우개로 지우며 넘어가는 전환을 기준으로 잡았어요."
+  },
+  "palette": [
+    "#22302A",
+    "#F1F0E8",
+    "#F2D35B",
+    "#8FD3E8",
+    "#F29C9C"
+  ],
+  "colors": {
+    "bg": "#22302A",
+    "onBg": "#F1F0E8",
+    "onBgMuted": "rgba(241,240,232,.7)",
+    "paper": "#2D3D35",
+    "ink": "#F1F0E8",
+    "accent": "#F2D35B",
+    "accentInk": "#22302A",
+    "pattern": "rgba(255,255,255,.06)",
+    "glow": "rgba(242,211,91,.18)"
+  },
+  "type": {
+    "display": [
+      "Caveat",
+      "Nanum Pen"
+    ],
+    "heading": [
+      "Nanum Pen"
+    ],
+    "body": [
+      "Gaegu"
+    ]
+  },
+  "fonts": [
+    {
+      "family": "Caveat",
+      "weight": "400 700",
+      "file": "fonts/Caveat-Variable.woff2"
+    },
+    {
+      "family": "Nanum Pen",
+      "weight": 400,
+      "file": "fonts/NanumPenScript-Regular.woff2"
+    },
+    {
+      "family": "Gaegu",
+      "weight": 700,
+      "file": "fonts/Gaegu-Bold.woff2"
+    }
+  ],
+  "look": {
+    "grain": 0.24,
+    "grainFps": 8,
+    "vignette": 0.4,
+    "boil": {
+      "amount": 0.9,
+      "fps": 8
+    }
+  },
+  "shape": {
+    "radius": "calc(var(--u) * .6)",
+    "stroke": "hand"
+  },
+  "motion": {
+    "pace": "보통",
+    "bpm": 96,
+    "ease": "power1.out",
+    "stagger": 1.5,
+    "transitions": [
+      "fade",
+      "cut"
+    ],
+    "stepped": 12
+  },
+  "scenes": {
+    "bg": "none",
+    "align": "left",
+    "card": "outline",
+    "marker": "underline",
+    "weight": 400,
+    "tracking": 0,
+    "case": "none",
+    "rough": true,
+    "schemes": [
+      "dark",
+      "paper"
+    ]
+  },
+  "signature": [
+    "글씨가 분필로 쓰듯 왼쪽부터 한 어절씩(초당 12장) 나타나고, 끝나면 노란 분필 밑줄이 쓱 그어짐",
+    "다음 장면으로 갈 때 지우개가 지나간 자리처럼 흐릿한 가로 띠가 남았다가 사라짐(서서히 바뀜)",
+    "숫자·도표는 분필 선으로 테두리부터 그리고, 막대는 빗금으로 칠함"
+  ],
+  "fits": [
+    "강의·학원 홍보",
+    "개념 설명",
+    "시험·입시 일정 안내",
+    "꿀팁 시리즈",
+    "어두운 분위기 공지"
+  ],
+  "avoid": [
+    "흰 바탕",
+    "사진 많이",
+    "반짝이는 효과",
+    "정교한 UI 화면"
+  ]
+}

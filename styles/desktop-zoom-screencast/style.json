@@ -1,0 +1,109 @@
+{
+  "id": "desktop-zoom-screencast",
+  "name": "바탕화면 확대 녹화",
+  "group": "제품 UI",
+  "template": "uidemo",
+  "summary": "풍경 사진 바탕화면 위 앱 창에서 카메라가 큰 커서를 따라 확대했다 빠지며 클릭·입력을 보여 주는 화면 녹화풍",
+  "tags": [
+    "제품 UI",
+    "화면 녹화",
+    "커서",
+    "튜토리얼",
+    "카메라"
+  ],
+  "hand": false,
+  "source": {
+    "site": "keyframe.gallery",
+    "ref": "mux:8Xsc4lQPfFrQykduYEUSDB02JSEKAf01UQJkdgTc3pZ00w",
+    "at": "0–34초",
+    "note": "풍경 바탕화면 위 창, 큰 화살표 커서를 따라 2.5~4배 확대했다 물러나는 카메라, 확대한 채 타이핑하고 전송하면 빠지는 흐름, 작업판 위 아바타 핀과 댓글, 휴대폰 틀 안 스크롤"
+  },
+  "palette": [
+    "#9DB1A5",
+    "#F7F7F5",
+    "#111111",
+    "#1A62D6",
+    "#D7F35B"
+  ],
+  "colors": {
+    "bg": "#9DB1A5",
+    "onBg": "#10130F",
+    "onBgMuted": "rgba(16,19,15,.65)",
+    "paper": "#F7F7F5",
+    "ink": "#111111",
+    "accent": "#1A62D6",
+    "accentInk": "#FFFFFF",
+    "pattern": "rgba(16,19,15,.06)",
+    "glow": "rgba(26,98,214,.25)"
+  },
+  "type": {
+    "display": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "heading": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "body": [
+      "Geist",
+      "Noto Sans KR"
+    ]
+  },
+  "fonts": [
+    {
+      "family": "Geist",
+      "weight": "100 900",
+      "file": "fonts/Geist-Variable.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 500,
+      "file": "fonts/NotoSansKR-Medium.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 700,
+      "file": "fonts/NotoSansKR-Bold.woff2"
+    }
+  ],
+  "shape": {
+    "radius": "calc(var(--u) * 1.8)"
+  },
+  "motion": {
+    "pace": "보통",
+    "bpm": 110,
+    "ease": "power3.inOut",
+    "stagger": 1,
+    "transitions": [
+      "zoom",
+      "cut"
+    ]
+  },
+  "scenes": {
+    "bg": "none",
+    "align": "left",
+    "card": "shadow",
+    "marker": "highlight",
+    "weight": 500,
+    "tracking": -0.01,
+    "case": "none",
+    "rough": false
+  },
+  "signature": [
+    "풍경 사진 바탕화면 위에 앱 창 하나. 카메라가 큰 화살표 커서를 따라 2.5~4배로 확대해 누르는 곳을 크게 보여 주고 다시 물러남",
+    "확대한 채 입력창에 문장이 타이핑되고, 전송을 누르면 카메라가 빠지며 결과가 창 안에서 펼쳐짐",
+    "작업판 위 여러 화면 사이를 동료 아바타 핀과 댓글 말풍선이 오가고, 마지막엔 결과물이 휴대폰 틀 안에서 스크롤됨"
+  ],
+  "fits": [
+    "앱·웹 사용법 안내",
+    "연동 기능 시연",
+    "업데이트 소개",
+    "튜토리얼 광고"
+  ],
+  "avoid": [
+    "화면 전체를 덮는 큰 타이포",
+    "빠른 컷",
+    "그라디언트 바탕"
+  ]
+}

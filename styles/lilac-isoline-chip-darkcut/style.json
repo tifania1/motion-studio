@@ -1,0 +1,132 @@
+{
+  "id": "lilac-isoline-chip-darkcut",
+  "name": "연보라 등각 도면과 어둠 컷",
+  "group": "다이어그램·데이터",
+  "template": "dataflow",
+  "summary": "옅은 회색 격자 위에 연보라 가는 선으로 그린 등각 칩 도면이 층층이 들리고, 선을 뻗어 작은 판들을 이어요. 사이사이 숯빛 화면으로 컷되면 흰 두 줄 문장과 빛나는 아이콘 띠, 큰 숫자가 지나가는 차분한 B2B 런칭",
+  "tags": [
+    "등각",
+    "선 도면",
+    "연보라",
+    "어두운 컷",
+    "B2B",
+    "런칭"
+  ],
+  "hand": false,
+  "source": {
+    "site": "keyframe.gallery",
+    "ref": "mux:AnKlLh3QhdxdNs9cF02blznjbwC02uZLCK02golaPVnmJs",
+    "at": "0–50.5초",
+    "note": "가장자리에 연보라 안개가 낀 옅은 회색 바탕, 낱말 하나만 보라로 바꿔 끼우는 문장, 연보라 선으로 그린 등각 칩이 층으로 들리며 연결선과 작은 판을 뻗는 도면, 바닥 면에 누워 등각 축을 따라 놓이는 꼬리표, 숯빛 화면의 십자 눈금과 아래 줄이 흐려지는 흰 두 줄 문장, 가운데 칸만 빛나는 아이콘 띠와 뒤에 옅게 깔린 큰 숫자, 점 무늬 동심원 위 마무리 문장과 마크"
+  },
+  "palette": [
+    "#EDEDF0",
+    "#1F1F24",
+    "#6A45E0",
+    "#A99BEF",
+    "#161618",
+    "#F4F4F6"
+  ],
+  "colors": {
+    "bg": "#EDEDF0",
+    "onBg": "#1F1F24",
+    "onBgMuted": "rgba(31,31,36,.62)",
+    "paper": "#161618",
+    "ink": "#EDEDF0",
+    "accent": "#6A45E0",
+    "accentInk": "#FFFFFF",
+    "pattern": "rgba(106,69,224,.2)",
+    "glow": "rgba(140,115,240,.18)"
+  },
+  "type": {
+    "display": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "heading": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "body": [
+      "Geist",
+      "Noto Sans KR"
+    ]
+  },
+  "fonts": [
+    {
+      "family": "Geist",
+      "weight": "100 900",
+      "file": "fonts/Geist-Variable.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 500,
+      "file": "fonts/NotoSansKR-Medium.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 700,
+      "file": "fonts/NotoSansKR-Bold.woff2"
+    }
+  ],
+  "look": {
+    "grain": 0.04
+  },
+  "shape": {
+    "radius": "calc(var(--u) * 0.8)"
+  },
+  "motion": {
+    "pace": "보통",
+    "bpm": 96,
+    "ease": "power2.out",
+    "stagger": 1,
+    "transitions": [
+      "cut",
+      "fade"
+    ]
+  },
+  "scenes": {
+    "bg": "grid",
+    "align": "center",
+    "card": "outline",
+    "marker": "color",
+    "weight": 600,
+    "tracking": -0.02,
+    "case": "none",
+    "rough": false,
+    "title": "blur",
+    "frame": "none",
+    "deco": [
+      "marks"
+    ],
+    "number": "count",
+    "scale": 1,
+    "schemes": [
+      "paper",
+      "dark",
+      "paper",
+      "dark",
+      "paper"
+    ]
+  },
+  "signature": [
+    "옅은 회색 격자 위에 연보라 1.5px 선으로 그린 등각 칩이 가운데 놓이고, 층 서너 장이 0.6초 간격으로 위로 들려 벌어져요. 이어서 칩 옆면에서 가는 연결선이 등각 축을 따라 뻗고, 선 끝마다 속이 빈 작은 판과 알약 꼬리표가 하나씩 내려앉아요. 면은 채우지 않거나 연보라 #A99BEF 를 아주 옅게만 깔고, 카메라는 아주 천천히 비스듬히 흘러요",
+    "설명 꼬리표는 바닥 면에 눕혀 등각 축 방향으로 기울여 놓아요(가로축 30°, 세로로 눌러 60%). 도면 소품(자물쇠판·방패·괄호 쌍)이 바뀔 때마다 꼬리표도 함께 컷으로 바뀌어요",
+    "두 번째 장면부터 숯빛 화면으로 컷되면 네 귀퉁이에 십자 눈금이 켜지고, 가운데 흰 두 줄 문장은 윗줄이 선명하고 아랫줄은 회색으로 흐려져요. 아이콘 칸 띠가 옆으로 흐르며 가운데 칸만 연보라 빛을 옅게 머금고, 그 뒤에 옅은 큰 숫자가 올라가요"
+  ],
+  "fits": [
+    "B2B·개발자 도구 런칭",
+    "보안·인프라 플랫폼 소개",
+    "기능 구조를 도면으로 설명할 때",
+    "연결·통합 서비스"
+  ],
+  "avoid": [
+    "손그림 선",
+    "꽉 찬 원색 면",
+    "진한 보라로 채운 광택 동전·구슬",
+    "떠다니는 링과 빛 구슬 장식",
+    "빠른 반 박 컷",
+    "두꺼운 그림자와 반짝이는 3D 재질",
+    "한 화면에 문장 세 줄 이상"
+  ]
+}

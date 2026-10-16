@@ -1,0 +1,126 @@
+{
+  "id": "pixel-label-toybox",
+  "name": "픽셀 꼬리표 장난감 상자",
+  "group": "레트로·픽셀",
+  "template": "terminal",
+  "summary": "검은 바탕에 픽셀 글꼴 한 줄, 핵심 낱말만 흰 상자로 뒤집혀요. 한두 박마다 컷으로 작은 장난감 화면(겹쳐 도는 흰 선 카드, 원색 도형이 끈적하게 붙는 판)이 바뀌는 데모 릴",
+  "tags": [
+    "픽셀",
+    "다크",
+    "데모 릴",
+    "원색 도형",
+    "기능 나열"
+  ],
+  "hand": false,
+  "source": {
+    "site": "keyframe.gallery",
+    "ref": "mux:rzlw1ohklszuyM3u84cPTwfs2iOv024N1bDMMUe025Nus",
+    "at": "0–3초, 7.5–16.5초, 22–24.5초",
+    "note": "검은 바탕 픽셀 글꼴 문장에서 핵심 낱말만 흰 상자로 뒤집는 강조, 세로 메뉴가 한 칸씩 굴러 올라가며 가운데 고정 상자에 들어온 항목만 뒤집히는 목록, 흰 선 둥근 카드 여러 장이 시간차로 따라 도는 잔상 묶음, 연회색 판 위 원색 원·네모·막대가 떠 있다가 파란 원끼리 끈적하게 붙었다 떨어지는 장면, 픽셀 글자가 같은 낱말 여러 겹으로 깊이 방향 잔상을 남기는 장면, 3×3 칸에 서로 다른 흰 선 루프, 픽셀 로고가 색 조각으로 흩어졌다 한 점으로 오므라드는 마무리"
+  },
+  "palette": [
+    "#121214",
+    "#EDEDED",
+    "#3A6DF0",
+    "#E23F4B",
+    "#E9A21B",
+    "#3ED6B5"
+  ],
+  "colors": {
+    "bg": "#121214",
+    "onBg": "#EDEDED",
+    "onBgMuted": "rgba(237,237,237,.55)",
+    "paper": "#D7D7D9",
+    "ink": "#141416",
+    "accent": "#3A6DF0",
+    "accentInk": "#FFFFFF",
+    "pattern": "rgba(255,255,255,.06)",
+    "glow": "rgba(58,109,240,.35)"
+  },
+  "type": {
+    "display": [
+      "Galmuri11"
+    ],
+    "heading": [
+      "Galmuri11"
+    ],
+    "body": [
+      "Geist Mono",
+      "Noto Sans KR"
+    ]
+  },
+  "fonts": [
+    {
+      "family": "Galmuri11",
+      "weight": 400,
+      "file": "fonts/Galmuri11.woff2"
+    },
+    {
+      "family": "Geist Mono",
+      "weight": "100 900",
+      "file": "fonts/GeistMono-Variable.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 500,
+      "file": "fonts/NotoSansKR-Medium.woff2"
+    }
+  ],
+  "look": {},
+  "shape": {
+    "radius": "calc(var(--u) * 0.6)"
+  },
+  "motion": {
+    "pace": "빠름",
+    "bpm": 120,
+    "ease": "expo.out",
+    "stagger": 0.7,
+    "transitions": [
+      "cut",
+      "blocks",
+      "cut",
+      "zoom"
+    ]
+  },
+  "scenes": {
+    "bg": "solid",
+    "align": "center",
+    "card": "outline",
+    "marker": "highlight",
+    "weight": 400,
+    "tracking": 0.02,
+    "case": "none",
+    "rough": false,
+    "title": "slot",
+    "frame": "none",
+    "deco": [
+      "shapes"
+    ],
+    "number": "scramble",
+    "scale": 0.95,
+    "schemes": [
+      "dark",
+      "paper",
+      "dark"
+    ]
+  },
+  "signature": [
+    "뒤집힌 낱말 상자: 검은 바탕 가운데 픽셀 글꼴 한 줄이 놓이고, 핵심 낱말 하나만 흰 바탕 검은 글자 상자로 뒤집힘. 상자 오른쪽 아래로 1px 흰 테두리가 0.3u 어긋나 한 겹 더 붙어 있어 찍어 낸 라벨처럼 보임",
+    "굴러가는 메뉴: 흐린 회색 테두리 칸에 담긴 항목 4~5개가 0.5초마다 한 칸씩 위로 굴러 올라가고(expo.out 0.25초), 화면 가운데 고정된 흰 테두리 칸에 들어온 항목만 글자 둘레가 흰 상자로 뒤집힘",
+    "끈적한 원색 장난감 판: 연회색 바탕에 파랑·빨강·노랑·민트 원과 둥근 네모, 짧은 막대가 아래로 옅은 그림자를 달고 떠다니며 천천히 돌고, 파란 원 둘이 가까워지면 메타볼처럼 늘어나 붙었다가 다시 떨어짐. 가운데엔 검은 픽셀 글 한 낱말"
+  ],
+  "fits": [
+    "앱·서비스 기능 여러 개 나열",
+    "개발 도구·게임 툴 발표",
+    "인디 게임·픽셀 감성 브랜드",
+    "짧은 티저 릴",
+    "업데이트 소식"
+  ],
+  "avoid": [
+    "세리프 글꼴",
+    "사진을 꽉 채운 장면",
+    "부드러운 페이드 전환",
+    "긴 문장",
+    "그라디언트 바탕"
+  ]
+}

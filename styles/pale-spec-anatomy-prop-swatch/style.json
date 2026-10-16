@@ -1,0 +1,123 @@
+{
+  "id": "pale-spec-anatomy-prop-swatch",
+  "name": "옅은 회색 명세 진열",
+  "group": "3D·사물",
+  "template": "stage",
+  "summary": "옅은 회색 판 위에 글꼴, 모서리, 아이콘, 색을 하나씩 떼어 보여 주는 차분한 디자인 시스템 소개예요. 주황·황토 색면에서는 화면보다 큰 글자와 아이콘이 안내선 위에 놓이고, 납작한 아이콘은 반들한 3D 소품으로 자라 흰 카드 속에 들어가요",
+  "tags": [
+    "3D·사물",
+    "디자인 시스템",
+    "UI 칩",
+    "색 견본",
+    "옅은 회색",
+    "차분함"
+  ],
+  "hand": false,
+  "source": {
+    "site": "keyframe.gallery",
+    "ref": "mux:1TqgxINEA00SprNxyBe88402gxqq4T00QdgG02aM2KnAG00I",
+    "at": "1.3–62.5초",
+    "note": "빈 회색 판에서 작은 이름이 타자되고 가는 선이 그어지는 오프닝, 주황 판에 화면보다 큰 글자를 앵커 점과 함께 잘라 보여 주는 해부 장면, 굵기 목록이 위로 흐르는 장면, 숯빛 모서리 덩어리의 반지름이 퍼센트 숫자와 함께 바뀌는 다이얼, 황토 판 기준 격자 위 흰 선 아이콘, 픽셀 아이콘에서 선 아이콘을 거쳐 3D 소품으로 자라는 줄, 그림자 넓은 흰 카드 속 작은 3D 소품, 색표 격자와 사진 위 색 견본 카드, 비스듬히 누운 두꺼운 타일 엔딩"
+  },
+  "palette": [
+    "#EDEDED",
+    "#222222",
+    "#D8621C",
+    "#D9992B",
+    "#FAFAF8"
+  ],
+  "colors": {
+    "bg": "#EDEDED",
+    "onBg": "#222222",
+    "onBgMuted": "rgba(34,34,34,.55)",
+    "paper": "#FAFAF8",
+    "ink": "#222222",
+    "accent": "#D8621C",
+    "accentInk": "#111111",
+    "pattern": "rgba(34,34,34,.08)",
+    "glow": "rgba(216,98,28,.12)"
+  },
+  "type": {
+    "display": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "heading": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "body": [
+      "Geist",
+      "Noto Sans KR"
+    ]
+  },
+  "fonts": [
+    {
+      "family": "Geist",
+      "weight": "100 900",
+      "file": "fonts/Geist-Variable.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 500,
+      "file": "fonts/NotoSansKR-Medium.woff2"
+    }
+  ],
+  "shape": {
+    "radius": "calc(var(--u) * 2.4)"
+  },
+  "motion": {
+    "pace": "보통",
+    "bpm": 96,
+    "ease": "power3.out",
+    "stagger": 1,
+    "transitions": [
+      "cut",
+      "fade",
+      "push"
+    ]
+  },
+  "scenes": {
+    "bg": "solid",
+    "align": "center",
+    "card": "shadow",
+    "marker": "color",
+    "weight": 400,
+    "tracking": -0.02,
+    "case": "none",
+    "rough": false,
+    "title": "type",
+    "frame": "card",
+    "deco": [
+      "handles",
+      "marks"
+    ],
+    "number": "count",
+    "scale": 0.88,
+    "schemes": [
+      "dark",
+      "dark",
+      "accent",
+      "dark"
+    ]
+  },
+  "signature": [
+    "해부 오프닝: 빈 회색 판을 1초 넘게 비워 둔 뒤 작은 이름 한 줄이 한 글자씩 쳐지고, 가는 선이 왼쪽 끝에서 글자 키높이까지 그어짐. 컷으로 주황 판이 되면 화면보다 큰 글자 두 자가 잘린 채 앵커 점과 작은 수치 꼬리표를 달고 놓이고, 이어 굵기 목록 일곱 줄이 위로 천천히 흐름",
+    "모서리 다이얼: 숯빛 덩어리의 둥근 귀퉁이 하나가 화면 절반을 채우고 점선 안내선과 핸들이 곡선 끝에 붙어 있음. 구석의 회색 퍼센트 숫자가 40%에서 60%로 굴러 오르는 동안 반지름이 같이 넓어지고 핸들이 곡선을 따라 미끄러짐",
+    "아이콘이 소품으로: 같은 사물이 왼쪽부터 아주 작은 픽셀 아이콘, 선 아이콘, 반들한 3D 소품 순서로 한 박마다 커지며 줄지어 나타나고 카메라는 오른쪽으로 흐름. 마지막 소품은 그림자 넓은 흰 카드의 작은 아이콘 자리로 쏙 줄어 들어감"
+  ],
+  "fits": [
+    "디자인 시스템·브랜드 가이드 공개",
+    "앱 리뉴얼 소개",
+    "여행·숙박·예약 서비스",
+    "아이콘·3D 소품 세트 발표",
+    "글꼴·색 체계 설명"
+  ],
+  "avoid": [
+    "그레인·종이 같은 거친 질감",
+    "네온 빛 번짐",
+    "빠른 글리치 컷",
+    "굵고 빽빽한 제목",
+    "한 화면에 강조색 여러 개"
+  ]
+}

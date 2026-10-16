@@ -1,0 +1,135 @@
+{
+  "id": "forest-lime-swatch-echo-page-wall",
+  "name": "숲색 라임 견본 메아리",
+  "group": "그래픽·도형",
+  "template": "brandmark",
+  "summary": "형광 라임과 짙은 숲색 두 판을 컷으로 오가요. 핸들 달린 둥근 사각이 펼쳐지며 마크가 드러나고, 마크 메아리 무늬, 키 큰 색 견본 카드, 사진 위 유리 카드, 비스듬히 흐르는 웹 화면 벽이 차례로 이어지는 리브랜딩 공개",
+  "tags": [
+    "도형",
+    "리브랜딩",
+    "초록",
+    "색 견본",
+    "브랜드 가이드",
+    "금융 앱"
+  ],
+  "hand": false,
+  "source": {
+    "site": "keyframe.gallery",
+    "ref": "mux:GQUPAdhXzTwkCQy6OFHEhJrBdNWdhtDJhCykz02a9gnY",
+    "at": "0–65초",
+    "note": "라임 판 위 작은 흰 문구가 흐림에서 맺히고 끝 낱말 자리를 비워 두는 오프닝, 네 귀퉁이 핸들을 단 숲색 둥근 사각이 펼쳐져 화면을 덮는 전환, 숲색 위 라임 마크가 사선으로 겹겹이 찍혀 계단진 꼬리를 만드는 무늬, 굵기가 칸마다 달라지는 글자 견본 격자, 옅은 민트 위로 밀려 들어오는 키 큰 색 견본 카드, 단색 카드 위 도는 3D 소품, 사진 위 젖빛 유리 카드, 어두운 바탕에 비스듬히 흐르는 웹 화면 벽"
+  },
+  "palette": [
+    "#23391A",
+    "#4BD35B",
+    "#E7F0E3",
+    "#F1F5EC",
+    "#D9606A",
+    "#111311"
+  ],
+  "colors": {
+    "bg": "#23391A",
+    "onBg": "#F1F5EC",
+    "onBgMuted": "rgba(241,245,236,.66)",
+    "paper": "#E7F0E3",
+    "ink": "#1C2E15",
+    "accent": "#4BD35B",
+    "accentInk": "#1A2E12",
+    "pattern": "rgba(75,211,91,.14)",
+    "glow": "rgba(75,211,91,.35)"
+  },
+  "type": {
+    "display": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "heading": [
+      "Archivo",
+      "Noto Sans KR"
+    ],
+    "body": [
+      "Geist",
+      "Noto Sans KR"
+    ]
+  },
+  "fonts": [
+    {
+      "family": "Geist",
+      "weight": "100 900",
+      "file": "fonts/Geist-Variable.woff2"
+    },
+    {
+      "family": "Archivo",
+      "weight": "100 900",
+      "stretch": "62% 125%",
+      "file": "fonts/Archivo-Variable.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 500,
+      "file": "fonts/NotoSansKR-Medium.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 700,
+      "file": "fonts/NotoSansKR-Bold.woff2"
+    }
+  ],
+  "shape": {
+    "radius": "calc(var(--u) * 1.6)"
+  },
+  "motion": {
+    "pace": "보통",
+    "bpm": 96,
+    "ease": "expo.out",
+    "stagger": 1,
+    "transitions": [
+      "cut",
+      "wipe",
+      "push"
+    ]
+  },
+  "scenes": {
+    "bg": "solid",
+    "align": "center",
+    "card": "flat",
+    "marker": "color",
+    "weight": 600,
+    "tracking": -0.02,
+    "case": "none",
+    "rough": false,
+    "title": "blur",
+    "frame": "none",
+    "deco": [
+      "handles",
+      "marks"
+    ],
+    "number": "count",
+    "scale": 1,
+    "schemes": [
+      "accent",
+      "dark",
+      "paper",
+      "dark"
+    ]
+  },
+  "signature": [
+    "형광 라임 판에 작은 흰 문구가 흐림에서 맺히고 끝 낱말 자리는 잠깐 비어 있어요. 이어 네 귀퉁이에 작은 핸들을 단 숲색 둥근 사각이 가운데서 펼쳐지며 화면을 덮고, 그 숲색 판 위로 마크와 이름이 드러나요",
+    "숲색 판 위에 라임 마크 하나를 사선 방향으로 조금씩 밀어 가며 겹겹이 찍어 계단진 메아리 꼬리를 만들고, 그 꼬리가 줄지어 반복돼 화면을 무늬로 채워요",
+    "옅은 민트 판 위로 키 큰 둥근 색 견본 카드가 한 장씩 옆에서 밀려 들어와 나란히 서고, 고른 카드에만 작은 이름표가 붙어요. 숲색 → 진초록 → 라임 다음 판에선 산호 → 분홍 계열로 갈려요"
+  ],
+  "fits": [
+    "리브랜딩 공개",
+    "금융·결제 앱 소개",
+    "브랜드 가이드 발표",
+    "새 웹사이트·앱 런칭",
+    "굿즈·캠페인 묶음 소개"
+  ],
+  "avoid": [
+    "손그림 선과 종이 질감",
+    "그레인·주사선 같은 거친 결",
+    "세리프 글꼴",
+    "산호·분홍을 넓게 쓰기(견본 판에만)",
+    "프레임 단위 글리치나 빠른 깜빡임"
+  ]
+}

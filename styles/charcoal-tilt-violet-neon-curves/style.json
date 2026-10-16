@@ -1,0 +1,131 @@
+{
+  "id": "charcoal-tilt-violet-neon-curves",
+  "name": "숯빛 비스듬 판 위 보라 네온 곡선",
+  "group": "제품 UI",
+  "template": "uidemo",
+  "summary": "숯빛 어둠 속에 비스듬히 누운 어두운 UI 판을 카메라가 천천히 미끄러지며 훑어요. 큰 숫자가 올라가는 동안 보라 네온 선이 판 모서리에서 뻗어 나오고, 회색 곡선 다발 사이로 바짝 파고들었다가 흰 두 줄 문장으로 조용히 닫혀요",
+  "tags": [
+    "제품 UI",
+    "어두움",
+    "네온",
+    "보라",
+    "그래프",
+    "카메라 투어",
+    "느림"
+  ],
+  "hand": false,
+  "source": {
+    "site": "keyframe.gallery",
+    "ref": "mux:01oupC02Zr8TYjB02NOup2lGaFHbGc9UhCSMRp7iD02uEqQ",
+    "at": "0–36초",
+    "note": "숯빛 바탕에 크게 기울여 눕힌 어두운 판과 얕은 초점(가까운 모서리만 선명), 큰 퍼센트 숫자가 올라가며 판 모서리에서 보라 네온 선이 뻗는 장면, 회색 곡선 다발 속으로 파고드는 접사, 설정 글줄이 카메라 이동을 따라 차례로 맺히는 패닝, 드롭다운 목록의 선택 막대가 한 칸씩 내려가는 움직임, 점선 목표선과 곡선 위를 미끄러지는 점·값 목록, 평면 어둠 위 흰 두 줄 문장 엔딩"
+  },
+  "palette": [
+    "#161618",
+    "#242428",
+    "#8B6CFF",
+    "#6E6E76",
+    "#F2F2F4"
+  ],
+  "colors": {
+    "bg": "#161618",
+    "onBg": "#F2F2F4",
+    "onBgMuted": "rgba(242,242,244,.5)",
+    "paper": "#242428",
+    "ink": "#F2F2F4",
+    "accent": "#8B6CFF",
+    "accentInk": "#120B26",
+    "pattern": "rgba(255,255,255,.05)",
+    "glow": "rgba(139,108,255,.55)"
+  },
+  "type": {
+    "display": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "heading": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "body": [
+      "Geist",
+      "Noto Sans KR"
+    ]
+  },
+  "fonts": [
+    {
+      "family": "Geist",
+      "weight": "100 900",
+      "file": "fonts/Geist-Variable.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 500,
+      "file": "fonts/NotoSansKR-Medium.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 700,
+      "file": "fonts/NotoSansKR-Bold.woff2"
+    }
+  ],
+  "look": {
+    "grain": 0.05,
+    "vignette": 0.35
+  },
+  "shape": {
+    "radius": "calc(var(--u) * 1.6)"
+  },
+  "motion": {
+    "pace": "느림",
+    "bpm": 84,
+    "ease": "power2.inOut",
+    "stagger": 1.1,
+    "transitions": [
+      "blur",
+      "fade"
+    ]
+  },
+  "scenes": {
+    "bg": "solid",
+    "align": "left",
+    "card": "flat",
+    "marker": "color",
+    "weight": 600,
+    "tracking": -0.02,
+    "case": "none",
+    "rough": false,
+    "title": "blur",
+    "frame": "card",
+    "deco": [
+      "streaks"
+    ],
+    "number": "count",
+    "scale": 1,
+    "schemes": [
+      "dark",
+      "paper",
+      "dark"
+    ]
+  },
+  "signature": [
+    "숯빛 어둠 속 어두운 UI 판을 크게 기울여 눕히고(rotateX 50° 안팎, rotateZ −25° 안팎) 카메라가 한 방향으로 쉬지 않고 천천히 미끄러짐. 초점은 얕아서 가까운 쪽 글줄만 선명하고 먼 쪽은 흐린데, 카메라가 지나가는 자리를 따라 초점이 옮겨 가며 글줄이 차례로 맺힘",
+    "판 위 큰 퍼센트 숫자가 2~3초에 걸쳐 올라가는 동안 판 모서리에서 보라 네온 선이 빛 번짐을 두르고 뻗어 나오고, 아래로 회색 곡선 몇 가닥이 뒤따름. 이어 카메라가 그 곡선 다발 속으로 바짝 파고들어 흐린 앞쪽 선 사이로 보라 선이 휘어 흐름",
+    "곡선 그래프 위에 흰 점선 목표선이 왼쪽부터 그어지고, 보라 곡선 위를 작은 고리 점이 미끄러지면 옆의 값 목록 숫자가 따라 바뀜. 드롭다운에서는 선택 막대가 한 칸씩 내려가고 판 아래 모서리에 보라 막대가 차오름"
+  ],
+  "fits": [
+    "분석·대시보드 기능 소개",
+    "개발자 도구 런칭",
+    "성과 지표 설명",
+    "설정 화면 사용법",
+    "밤 분위기의 제품 티저"
+  ],
+  "avoid": [
+    "밝은 바탕",
+    "빠른 컷",
+    "보라 말고 다른 강조색",
+    "평면으로 정면에서 본 UI만 쓰기",
+    "글이 많은 장면",
+    "손그림 선"
+  ]
+}

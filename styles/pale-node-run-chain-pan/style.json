@@ -1,0 +1,125 @@
+{
+  "id": "pale-node-run-chain-pan",
+  "name": "노드 실행 체인",
+  "group": "제품 UI",
+  "template": "uidemo",
+  "summary": "옅은 회색 캔버스 위에 그림자가 부드러운 흰 노드 카드가 파랑·노랑 곡선으로 이어져요. 커서가 작은 실행 단추를 누를 때마다 다음 카드가 채워지고, 카메라는 그 흐름을 따라 오른쪽으로 천천히 옮겨 가요",
+  "tags": [
+    "제품 UI",
+    "노드",
+    "워크플로",
+    "커서",
+    "카메라 이동",
+    "AI 도구"
+  ],
+  "hand": false,
+  "source": {
+    "site": "keyframe.gallery",
+    "ref": "mux:gR01O00PCR01zdIRvO1fGtOeNrS4u4oOp9A36SzQfZ1i7E",
+    "at": "0–22.6초",
+    "note": "옅은 회색 바탕에서 회색 소개말 뒤로 굵은 검정 낱말이 붙고, 글줄이 왼쪽으로 비켜나며 첫 카드가 오른쪽에서 밀려 들어오는 오프닝(0–2.9초). 가운데 처리 카드의 짧은 지시어가 1초마다 바뀌고 실행 단추를 누르면 노랑 선 너머 결과 카드가 새 그림으로 채워지는 반복(2.9–8.8초). 카메라가 오른쪽으로 따라가 파랑 선 갈래를 잇는 이동(9.8–12.7초). 한 카드에서 파랑 곡선이 세 갈래로 뻗고, 옅은 파랑 선택 막이 덮인 뒤 카드 셋이 차례로 움직이는 장면(12.7–19.6초). 회색 위 작은 검정 마크로 닫는 끝(20.6–22.6초)"
+  },
+  "palette": [
+    "#DADADA",
+    "#F2F2F2",
+    "#1C1C1C",
+    "#2F6FE0",
+    "#F2C230",
+    "#3BBF4A"
+  ],
+  "colors": {
+    "bg": "#DADADA",
+    "onBg": "#1C1C1C",
+    "onBgMuted": "rgba(28,28,28,.6)",
+    "paper": "#F2F2F2",
+    "ink": "#1C1C1C",
+    "accent": "#2F6FE0",
+    "accentInk": "#FFFFFF",
+    "pattern": "rgba(28,28,28,.06)",
+    "glow": "rgba(47,111,224,.28)"
+  },
+  "type": {
+    "display": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "heading": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "body": [
+      "Geist",
+      "Noto Sans KR"
+    ]
+  },
+  "fonts": [
+    {
+      "family": "Geist",
+      "weight": "100 900",
+      "file": "fonts/Geist-Variable.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 500,
+      "file": "fonts/NotoSansKR-Medium.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 700,
+      "file": "fonts/NotoSansKR-Bold.woff2"
+    }
+  ],
+  "shape": {
+    "radius": "calc(var(--u) * 1.2)"
+  },
+  "motion": {
+    "pace": "보통",
+    "bpm": 120,
+    "ease": "power3.inOut",
+    "stagger": 1,
+    "transitions": [
+      "push",
+      "cut",
+      "fade"
+    ]
+  },
+  "scenes": {
+    "bg": "solid",
+    "align": "center",
+    "card": "shadow",
+    "marker": "color",
+    "weight": 700,
+    "tracking": -0.02,
+    "case": "none",
+    "rough": false,
+    "title": "fade",
+    "frame": "none",
+    "deco": [
+      "cursor"
+    ],
+    "number": "count",
+    "scale": 0.9,
+    "schemes": [
+      "dark",
+      "paper"
+    ]
+  },
+  "signature": [
+    "커서가 처리 카드 위의 작은 흰 실행 단추를 누르면 노랑 곡선이 출력 점에서 다음 카드로 0.5초 만에 그어지고, 비어 있던 결과 카드가 흐림에서 선명한 그림으로 채워져요. 카메라는 power3.inOut 으로 1초에 걸쳐 오른쪽으로 옮겨 다음 마디를 화면 가운데 둬요",
+    "같은 카드 줄은 그대로 둔 채 가운데 카드의 짧은 굵은 지시어만 2박(1초)마다 새로 쳐지고, 다음 2박에 결과 카드가 그 지시어대로 바뀌어요. 이 '치고 → 누르고 → 채워지는' 고리를 서너 번 되풀이해요",
+    "카메라가 뒤로 빠지면 카드 하나의 출력 점에서 파랑 곡선 여러 가닥이 0.08초 간격으로 뻗어 나란한 카드 셋에 닿고, 옅은 파랑 선택 막이 셋을 덮은 뒤 선에 흐린 빛이 한 번 지나가며 카드들이 왼쪽부터 차례로 움직여요"
+  ],
+  "fits": [
+    "AI 생성 도구의 작업 흐름 소개",
+    "자동화·파이프라인 도구 런칭",
+    "단계를 이어 결과를 만드는 기능 설명",
+    "한 입력에서 여러 결과로 갈라지는 기능"
+  ],
+  "avoid": [
+    "어두운 바탕",
+    "빠른 컷 몽타주",
+    "손그림 선과 종이 질감",
+    "화면을 꽉 채우는 큰 제목",
+    "연결 종류와 상관없는 장식용 강조색"
+  ]
+}

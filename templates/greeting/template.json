@@ -1,0 +1,8 @@
+{
+  "name": "시즌 인사 (카드)",
+  "description": "계절 그림이 선으로 그려지고, 봉투에서 카드가 나와 펜으로 인사말이 써지고, 달력에 쉬는 날이 동그라미 쳐지는 조용한 인사 영상. 15초 안팎.",
+  "fonts": [
+    { "family": "GreetSerif", "weight": 900, "file": "fonts/NotoSerifKR-Black.woff2" },
+    { "family": "Archivo", "weight": "100 900", "stretch": "62% 125%", "file": "fonts/Archivo-Variable.woff2" }
+  ]
+}

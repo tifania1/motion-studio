@@ -1,0 +1,130 @@
+{
+  "id": "charcoal-keycap-menu-demo",
+  "name": "숯빛 판 키캡 메뉴 시연",
+  "group": "제품 UI",
+  "template": "uidemo",
+  "summary": "숯빛 판 한가운데 반들한 물체 하나를 두고, 커서가 누르면 옆에 드롭다운 메뉴가 톡 열리고 아래에서 밝은 키캡이 솟아 눌리며 물체가 바뀌어요. 끝에는 밝은 캔버스 위 앱 화면들을 카메라가 옆으로 훑는 디자인 도구 기능 소개예요",
+  "tags": [
+    "제품 UI",
+    "디자인 도구",
+    "드롭다운",
+    "단축키",
+    "무지개 그라디언트",
+    "어두운 판"
+  ],
+  "hand": false,
+  "source": {
+    "site": "keyframe.gallery",
+    "ref": "mux:VvD4YG5xP01P0286WRJCavPFgoBxy00pZIsRLGWZOspA02M",
+    "at": "0–60.4초 (6–13초, 18–23초, 25–34초, 36–56초)",
+    "note": "숯빛 판 가운데 유리 같은 물체 하나와 옆에 열리는 속성 패널·드롭다운(선택 줄만 남보라), 회색 조명 판 아래에서 솟아 차례로 눌리는 밝은 키캡, 키를 누를 때마다 사진 카드 격자가 새 배치로 미끄러지는 재배치, 밝은 캔버스 위 앱 화면들을 옆으로 훑으며 패널 하나로 다가가는 카메라, 첫머리 무지개 그라디언트 관 구조물 근접 촬영"
+  },
+  "palette": [
+    "#1C1C1E",
+    "#ECECEA",
+    "#4B44D8",
+    "#F2F2F0",
+    "#B6F03C",
+    "#E5389A"
+  ],
+  "colors": {
+    "bg": "#1C1C1E",
+    "onBg": "#ECECEA",
+    "onBgMuted": "rgba(236,236,234,.6)",
+    "paper": "#F2F2F0",
+    "ink": "#1C1C1E",
+    "accent": "#4B44D8",
+    "accentInk": "#FFFFFF",
+    "pattern": "rgba(255,255,255,.06)",
+    "glow": "rgba(150,90,255,.35)"
+  },
+  "type": {
+    "display": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "heading": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "body": [
+      "Geist",
+      "Noto Sans KR"
+    ]
+  },
+  "fonts": [
+    {
+      "family": "Geist",
+      "weight": "100 900",
+      "file": "fonts/Geist-Variable.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 500,
+      "file": "fonts/NotoSansKR-Medium.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 700,
+      "file": "fonts/NotoSansKR-Bold.woff2"
+    }
+  ],
+  "look": {
+    "vignette": 0.25
+  },
+  "shape": {
+    "radius": "calc(var(--u) * 1.6)"
+  },
+  "motion": {
+    "pace": "보통",
+    "bpm": 100,
+    "ease": "power3.out",
+    "stagger": 0.9,
+    "transitions": [
+      "cut",
+      "push",
+      "fade"
+    ]
+  },
+  "scenes": {
+    "bg": "solid",
+    "align": "center",
+    "card": "shadow",
+    "marker": "color",
+    "weight": 600,
+    "tracking": -0.02,
+    "case": "none",
+    "rough": false,
+    "title": "fade",
+    "frame": "window",
+    "deco": [
+      "cursor",
+      "handles"
+    ],
+    "number": "count",
+    "scale": 1,
+    "schemes": [
+      "dark",
+      "dark",
+      "paper"
+    ]
+  },
+  "signature": [
+    "숯빛 판 한가운데 반들한 물체 하나(유리 같은 아이콘이나 카드), 오른쪽에 작은 흰 속성 패널. 커서가 칸을 누르면 그 아래로 드롭다운이 0.15초에 위에서 펼쳐지고, 선택된 줄만 남보라 띠에 체크 표시. 줄을 고르면 메뉴가 바로 닫히고 물체의 칠이 컷으로 바뀜(직선 → 원형 → 각도 그라디언트)",
+    "회색 조명 판 위 물체 아래로 밝은 회색 키캡 두세 개가 아래에서 솟아오르고, 박마다 하나씩 눌렸다 올라옴(키가 2u 내려가며 그림자가 줄어듦). 마지막 키가 눌리는 순간 물체가 복제되거나 스타일이 옮겨 붙음",
+    "보라 사진 카드 격자에서 키캡이 눌릴 때마다 카드들이 새 배치로 한꺼번에 미끄러져 크기·자리를 바꿈. 이어 밝은 캔버스 위에 앱 화면 여러 장이 나란히 놓이고 카메라가 옆으로 훑다가 오른쪽 속성 패널 하나에 바짝 다가감"
+  ],
+  "fits": [
+    "디자인·편집 도구 새 기능 소개",
+    "단축키·작업 흐름 안내",
+    "버전 업데이트 하이라이트",
+    "앱 화면 여러 장을 한 번에 보여 줄 때"
+  ],
+  "avoid": [
+    "손그림 선과 종이 질감",
+    "화면 가득 큰 제목",
+    "한 화면에 물체 여러 개를 동시에 움직이기",
+    "느린 흐림 전환",
+    "강조색 여러 개(선택 줄 남보라 하나, 무지개는 물체 칠에만)"
+  ]
+}

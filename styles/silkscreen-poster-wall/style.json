@@ -1,0 +1,135 @@
+{
+  "id": "silkscreen-poster-wall",
+  "name": "실크스크린 포스터 벽",
+  "group": "콜라주·사진",
+  "template": "collage",
+  "summary": "어두운 갈색 판 위에 원색 포스터 세 장이 나란히 서고 박마다 통째로 갈리는, 판 찍기 색 겹침과 뭉툭한 대문자의 포스터 벽",
+  "tags": [
+    "포스터",
+    "실크스크린",
+    "원색",
+    "지역",
+    "축제"
+  ],
+  "hand": false,
+  "source": {
+    "site": "keyframe.gallery",
+    "ref": "mux:XkvmBq6aGtYwE01SBUZsGMWmpDuYJ622x2N02P2EtRltY",
+    "at": "30.6–37.0초, 43.0–45.6초",
+    "note": "세로 포스터 세 장을 같은 간격으로 세우고 1.3초마다 한꺼번에 컷으로 바꾸는 배치, 포스터마다 원색 한 장 바탕 + 같은 계열 옅은 거대 글자 + 굵게 뭉친 대문자, 아래 낱말이 붓으로 칠하듯 드러나는 움직임, 크기 다른 포스터가 얇은 틈으로 꽉 찬 벽과 그 위를 지나가는 굵은 물결선"
+  },
+  "palette": [
+    "#33261A",
+    "#E12A2A",
+    "#C9E83A",
+    "#1F7A3A",
+    "#F58AC0",
+    "#2D46C8"
+  ],
+  "colors": {
+    "bg": "#33261A",
+    "onBg": "#F2E6C9",
+    "onBgMuted": "rgba(242,230,201,.66)",
+    "paper": "#C9E83A",
+    "ink": "#183A1E",
+    "accent": "#E12A2A",
+    "accentInk": "#FFF3D6",
+    "pattern": "rgba(242,230,201,.08)",
+    "glow": "rgba(225,42,42,.3)"
+  },
+  "type": {
+    "display": [
+      "Archivo",
+      "Noto Sans KR"
+    ],
+    "heading": [
+      "Archivo",
+      "Noto Sans KR"
+    ],
+    "body": [
+      "Archivo",
+      "Noto Sans KR"
+    ]
+  },
+  "fonts": [
+    {
+      "family": "Archivo",
+      "weight": "100 900",
+      "stretch": "62% 125%",
+      "file": "fonts/Archivo-Variable.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 700,
+      "file": "fonts/NotoSansKR-Bold.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 900,
+      "file": "fonts/NotoSansKR-Black.woff2"
+    }
+  ],
+  "look": {
+    "grain": 0.12,
+    "halftone": 0.1,
+    "halftoneSize": 0.9,
+    "rgbSplit": {
+      "amount": 0.5
+    }
+  },
+  "shape": {
+    "radius": "0px"
+  },
+  "motion": {
+    "pace": "빠름",
+    "bpm": 110,
+    "ease": "power4.out",
+    "stagger": 0.8,
+    "transitions": [
+      "cut",
+      "cut",
+      "push"
+    ]
+  },
+  "scenes": {
+    "bg": "solid",
+    "align": "center",
+    "card": "flat",
+    "marker": "color",
+    "weight": 900,
+    "tracking": -0.01,
+    "case": "upper",
+    "rough": false,
+    "title": "stamp",
+    "frame": "poster",
+    "deco": [
+      "scribble",
+      "marks"
+    ],
+    "number": "count",
+    "scale": 1.35,
+    "schemes": [
+      "dark",
+      "accent",
+      "paper",
+      "dark"
+    ]
+  },
+  "signature": [
+    "포스터 셋: 어두운 갈색 판 위에 세로 포스터 세 장이 같은 간격으로 서 있고, 박마다(약 1.3초) 세 장이 한꺼번에 컷으로 새 판이 됨. 위 가운데 작은 대문자 이름, 포스터 밑에는 작은 대문자 꼬리표 셋",
+    "포스터 한 장: 원색 바탕 한 색 위에 한 톤 밝은 같은 계열 색으로 거대한 글자를 깔고, 그 위에 굵게 뭉친 대문자 두세 줄이 쾅 박힘. 맨 아래 낱말은 붓으로 칠하듯 왼쪽부터 0.4초에 드러남",
+    "포스터 벽: 크기가 다른 포스터·사진 칸이 얇은 검은 틈을 두고 화면을 꽉 채운 채 아주 천천히 커지고, 한 칸 위로 굵은 물결선이 손으로 쓰듯 0.8초에 그어지며 지나감"
+  ],
+  "fits": [
+    "지역·관광 홍보",
+    "축제·공연 라인업",
+    "로컬 브랜드·굿즈",
+    "전시·문화 행사"
+  ],
+  "avoid": [
+    "부드러운 그라디언트",
+    "유리 질감",
+    "가는 글씨",
+    "무채색 차분한 장면"
+  ]
+}

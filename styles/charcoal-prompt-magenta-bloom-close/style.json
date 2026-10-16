@@ -1,0 +1,129 @@
+{
+  "id": "charcoal-prompt-magenta-bloom-close",
+  "name": "숯빛 입력창에서 자홍 노을로",
+  "group": "그라디언트·빛",
+  "template": "glow",
+  "summary": "숯빛 둥근 입력판에 굵은 흰 부탁이 쳐지고 보내기 단추가 보라 빛 구슬로 부풀어요. 빛 테두리 줄이 쌓였다 작은 목록으로 접히면 밝은 라벤더 판에서 버튼과 숫자 카드가 움직이고, 끝은 주황·자홍·파랑 노을 위에 흰 문장이 어절씩 쳐지는 AI 기능 런칭",
+  "tags": [
+    "그라디언트",
+    "AI",
+    "입력창",
+    "런칭",
+    "자홍",
+    "어둠에서 밝음으로"
+  ],
+  "hand": false,
+  "source": {
+    "site": "keyframe.gallery",
+    "ref": "mux:kqKFdIFitYFLLuuQfu4jwnaH7008NFnHbqIvpILzC01xM",
+    "at": "0–16.6초",
+    "note": "숯빛 둥근 입력판에 큰 흰 산세리프가 쳐지고 보내기 단추가 보라 빛무리 구슬이 되는 열기, 분홍→파랑 빛 테두리 줄이 하나씩 쌓이며 끝 낱말만 분홍으로 물드는 목록, 그 줄들이 작은 모달로 오므라든 뒤 빛무리 커서가 누르는 순간, 밝은 라벤더 판의 기울며 눌리는 보라 버튼과 가장자리가 빛나는 숫자 카드, 자홍 메시 그라디언트 위 커서와 함께 어절씩 늘어나는 마무리 문장"
+  },
+  "palette": [
+    "#1F1F21",
+    "#D9D8E8",
+    "#E43F86",
+    "#F26B3A",
+    "#7A6FD6",
+    "#4F6FE0"
+  ],
+  "colors": {
+    "bg": "#1F1F21",
+    "onBg": "#F2F1F4",
+    "onBgMuted": "rgba(242,241,244,.62)",
+    "paper": "#D9D8E8",
+    "ink": "#141418",
+    "accent": "#C2257A",
+    "accentInk": "#FFFFFF",
+    "pattern": "rgba(255,255,255,.06)",
+    "glow": "rgba(150,110,240,.45)"
+  },
+  "type": {
+    "display": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "heading": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "body": [
+      "Geist",
+      "Noto Sans KR"
+    ]
+  },
+  "fonts": [
+    {
+      "family": "Geist",
+      "weight": "100 900",
+      "file": "fonts/Geist-Variable.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 500,
+      "file": "fonts/NotoSansKR-Medium.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 700,
+      "file": "fonts/NotoSansKR-Bold.woff2"
+    }
+  ],
+  "shape": {
+    "radius": "calc(var(--u) * 1.6)"
+  },
+  "motion": {
+    "pace": "보통",
+    "bpm": 110,
+    "ease": "power3.out",
+    "stagger": 0.9,
+    "transitions": [
+      "cut",
+      "blur",
+      "fade"
+    ]
+  },
+  "scenes": {
+    "bg": "mesh",
+    "align": "center",
+    "card": "shadow",
+    "marker": "color",
+    "weight": 600,
+    "tracking": -0.03,
+    "case": "none",
+    "rough": false,
+    "title": "type",
+    "frame": "none",
+    "deco": [
+      "cursor",
+      "orb"
+    ],
+    "number": "count",
+    "scale": 1.15,
+    "schemes": [
+      "dark",
+      "dark",
+      "paper",
+      "accent"
+    ]
+  },
+  "signature": [
+    "숯빛 둥근 입력판 왼쪽 위에 화면 높이 12% 안팎의 흰 굵은 산세리프 부탁이 가는 세로 커서와 함께 어절씩 쳐져요(첫 어절은 보라빛으로 떴다가 흰색으로 가라앉음). 다 쳐지면 오른쪽 아래 흰 보내기 동그라미가 0.3초에 보라 빛무리 구슬로 부풀고 안에서 진행 호가 돌아요",
+    "어두운 바탕에 테두리만 분홍→파랑 그라디언트로 빛나는 긴 줄 상자가 위에서 하나씩 쌓이고, 줄 안 글이 쳐질 때 끝 낱말만 분홍으로 물들어요. 셋이 쌓이면 테두리 빛이 꺼지며 작은 모달 목록으로 오므라들고, 보라 빛무리를 두른 커서가 아래 파란 버튼을 눌러 다음 장면을 열어요",
+    "밝은 라벤더 회색 판에서 보라 버튼이 눌리는 순간 살짝 3D 로 기울었다 돌아오고, 가장자리에 분홍·파랑 빛이 번진 흰 카드의 큰 숫자가 올라가요. 끝은 주황·자홍·분홍보라·파랑 메시 그라디언트가 화면을 채우고, 그 위 흰 문장이 한 낱말 → 두 낱말 → 한 줄로 커서와 함께 늘어나요"
+  ],
+  "fits": [
+    "AI 도구의 새 기능 런칭",
+    "결제·연동 기능 소개",
+    "부탁 한 줄로 결과가 나오는 데모",
+    "개발·제작 도구 광고",
+    "15~20초 짧은 소셜 영상"
+  ],
+  "avoid": [
+    "종이·그레인 같은 거친 질감",
+    "세리프나 손글씨 글꼴",
+    "빽빽한 표와 긴 문단",
+    "강조색을 장면마다 새로 늘리기",
+    "끝까지 무채색으로만 마무리"
+  ]
+}

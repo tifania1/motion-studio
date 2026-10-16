@@ -1,0 +1,58 @@
+{
+  "id": "brandmark",
+  "order": 109,
+  "group": "look",
+  "style": "handle-shapes-merge",
+  "name": "도형으로 짜는 브랜드",
+  "summary": "격자 위에서 원·사각·사분원 도형이 선택 핸들을 달고 모양을 바꾸며 마크로 짜 맞춰지고, 박마다 색면이 갈리다 로고 락업으로 끝나요.",
+  "look": "12칸 격자 · 도형 모프 · 색면 와이프 · 로고 락업",
+  "template": "brandmark",
+  "formats": [
+    "tall",
+    "portrait",
+    "square",
+    "wide"
+  ],
+  "seconds": 21,
+  "photos": {
+    "need": 0,
+    "hint": "사진 없이 돼요(도형 무늬 타일로 채워져요). 넣으면 1~4장이 원·아치·사분원 마스크 타일로 격자에 끼워져요. 주제가 가운데 있는 사진이 좋아요"
+  },
+  "ask": [
+    "작은 꼬리표 한마디 (새 기능, 리브랜딩, 런칭 같은 말)",
+    "첫 문장 두 줄과 그중 강조할 어절",
+    "장점이나 기능 2~5개 (하나에 18자 안쪽)",
+    "보여 줄 숫자 하나와 그 출처·기준 (없으면 빼도 돼요)",
+    "마지막 한 줄, 버튼 글, 주소나 계정"
+  ],
+  "brief": "예) 회의록을 알아서 정리해 주는 새 기능 소개. 첫 문장: 회의록은 이제 알아서 정리돼요. 장점: 말하면 바로 받아 적고, 할 일만 골라 정리하고, 팀 채널로 바로 보내요. 숫자: 하루 40분 아낌(시범 사용 팀 기준). 마지막: 다음 회의부터 바로 써 보세요 · 무료로 시작 · example.com",
+  "check": [
+    "숫자 옆 출처(number.source)가 실제 근거와 기준 시점을 담고 있는지",
+    "'최고·1위·최초·유일' 같은 말은 근거 자료가 있을 때만",
+    "로고 이미지는 배경이 투명한 것이 좋아요 (마크가 이미지로 바뀌어요)",
+    "사진은 쓸 수 있는 것인지 (직접 찍은 사진, CC0, CC BY 는 출처 표시)",
+    "가상 예시 문구(example.com, 예시 수치)가 남지 않았는지"
+  ],
+  "music": {
+    "mood": "keynote",
+    "bpm": 120,
+    "prompt": "minimal swiss design electronic, crisp clicks and woodblock ticks on every beat, clean sub bass, tight modern groove, precise and confident brand identity reveal",
+    "sections": [
+      [
+        0,
+        4,
+        "sparse clicks as shapes pop in, a soft riser into the title"
+      ],
+      [
+        4,
+        16.5,
+        "steady tight groove, a small accent on every colour change and number"
+      ],
+      [
+        16.5,
+        21,
+        "shapes gather, one clean resolving hit on the logo lockup"
+      ]
+    ]
+  }
+}

@@ -1,0 +1,131 @@
+{
+  "id": "pale-haze-tangle-line-card-fan",
+  "name": "엉킨 선 정리 런칭",
+  "group": "제품 UI",
+  "template": "uidemo",
+  "summary": "옅은 회색 가장자리에 분홍 안개가 번지고, 굵은 검정 선이 고리를 지으며 엉키다 자두빛 판에서 문제를 말해요. 남보라 굵은 낱말 하나로 정리된 뒤 자홍·주황·파랑 그라디언트 판을 지나, 끝에는 비스듬히 누운 UI 판들이 가운데 문장 둘레로 부채처럼 도는 SaaS 런칭 필름",
+  "tags": [
+    "제품 UI",
+    "런칭",
+    "굵은 고딕",
+    "그라디언트",
+    "문제와 해결",
+    "타자"
+  ],
+  "hand": false,
+  "source": {
+    "site": "keyframe.gallery",
+    "ref": "mux:mkjq8xtj9lsosOSLV0001vvrzhIuJEFa2nTHwRgubp4Ps",
+    "at": "0–59.5초 (1.2–13.1초, 24.9초, 35.6초, 38–43초, 45–52.3초)",
+    "note": "옅은 회색 위 분홍·라벤더 가장자리 안개와 굵은 기하 고딕 한 줄, 끝에 점이 달린 굵은 검정 선이 들어와 고리를 그리며 아이콘 원을 꿰고 엉키는 문제 제시, 자두빛 어두운 판의 엉킨 흰 선, 낱말이 기호로 뒤섞이며 취소선으로 지워지는 글리치, 남보라 굵은 낱말 하나로 정리되는 컷, 그레인 낀 자홍·주황·파랑 그라디언트 판, 남보라 막대 커서 타자와 고쳐 쓰기, 도넛 그래프, 가운데 문장 둘레로 방사형으로 도는 두께 있는 UI 판"
+  },
+  "palette": [
+    "#EEEDF0",
+    "#17161C",
+    "#3B2E85",
+    "#D61BD8",
+    "#F06A3A",
+    "#3B8BEF"
+  ],
+  "colors": {
+    "bg": "#EEEDF0",
+    "onBg": "#17161C",
+    "onBgMuted": "rgba(23,22,28,.62)",
+    "paper": "#F7F6FA",
+    "ink": "#17161C",
+    "accent": "#4A3BD1",
+    "accentInk": "#FFFFFF",
+    "pattern": "rgba(23,22,28,.06)",
+    "glow": "rgba(232,64,120,.38)"
+  },
+  "type": {
+    "display": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "heading": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "body": [
+      "Geist",
+      "Noto Sans KR"
+    ]
+  },
+  "fonts": [
+    {
+      "family": "Geist",
+      "weight": "100 900",
+      "file": "fonts/Geist-Variable.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 500,
+      "file": "fonts/NotoSansKR-Medium.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 700,
+      "file": "fonts/NotoSansKR-Bold.woff2"
+    }
+  ],
+  "look": {
+    "grain": 0.06
+  },
+  "shape": {
+    "radius": "calc(var(--u) * 1.6)"
+  },
+  "motion": {
+    "pace": "보통",
+    "bpm": 110,
+    "ease": "expo.out",
+    "stagger": 0.8,
+    "transitions": [
+      "cut",
+      "blur",
+      "fade"
+    ]
+  },
+  "scenes": {
+    "bg": "aurora",
+    "align": "center",
+    "card": "shadow",
+    "marker": "color",
+    "weight": 700,
+    "tracking": -0.03,
+    "case": "none",
+    "rough": false,
+    "title": "type",
+    "frame": "none",
+    "deco": [
+      "orb"
+    ],
+    "number": "count",
+    "scale": 1.15,
+    "schemes": [
+      "paper",
+      "paper",
+      "dark",
+      "accent",
+      "paper"
+    ]
+  },
+  "signature": [
+    "끝에 둥근 점이 달린 굵은 검정 선이 화면 옆에서 0.6초에 미끄러져 들어와 고리를 여러 번 그리며 작은 흰 아이콘 원들을 꿰어 엉키고, 컷 한 번에 자두빛 어두운 판으로 넘어가 흰 엉킨 선 사이 가운데에 굵은 흰 문장 한 줄",
+    "문제를 말하는 낱말이 기호로 뒤섞이며 떨리다 가로줄에 그어져 지워지고, 컷으로 옅은 회색 위 남보라 굵은 낱말 하나가 흐림에서 맺힘. 이어 남보라 막대 커서가 문장을 치다가 끝 낱말을 지우고 다시 고쳐 침",
+    "마무리에서 두께 있는 UI 판 10여 장이 가운데 짧은 문장 둘레로 방사형으로 비스듬히 누워 천천히 돌며 다가오고, 판 모서리에 초록·분홍 빛이 스쳐 지나감"
+  ],
+  "fits": [
+    "SaaS·업무 도구 새 버전 런칭",
+    "여러 도구를 하나로 묶는 제품 소개",
+    "문제 제시에서 해결로 넘어가는 이야기형 광고",
+    "기능 묶음 훑기"
+  ],
+  "avoid": [
+    "손그림 선과 종이 질감",
+    "세리프 글꼴",
+    "한 장면에 강조색 여러 개(그라디언트 판 말고는 남보라 하나)",
+    "긴 문단",
+    "어두운 판을 오래 끌기(문제 장면 한두 컷만)"
+  ]
+}

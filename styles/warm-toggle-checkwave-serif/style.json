@@ -1,0 +1,131 @@
+{
+  "id": "warm-toggle-checkwave-serif",
+  "name": "토글 연쇄와 체크 물결",
+  "group": "제품 UI",
+  "template": "uidemo",
+  "summary": "따뜻한 회색 바탕에서 설정 패널의 토글이 위에서부터 줄줄이 켜지고, 차분한 세리프 문장 한 줄에 테라코타 손 타원이 그어져요. 원판 격자에는 체크 표시가 물결처럼 차오르는 조용한 설정 안내 필름이에요",
+  "tags": [
+    "제품 UI",
+    "설정",
+    "토글",
+    "세리프",
+    "테라코타",
+    "차분함"
+  ],
+  "hand": false,
+  "source": {
+    "site": "keyframe.gallery",
+    "ref": "mux:b00JvdgYq4aipcALzrQzP2M4CFbsaZ4wxfJk9hF7kaC00",
+    "at": "0–31.1초",
+    "note": "커서가 누르면 목록 토글이 위에서부터 차례로 켜지는 연쇄(0–2.9초), 왼쪽 가장자리로 반쯤 밀려난 패널 옆 세리프 두 줄과 꼬리 달린 테라코타 손 타원(4.1–5.8초), 말을 마친 문장이 옅은 회색으로 가라앉는 퇴장, 패널과 사람 원판 기둥을 잇는 가는 테라코타 선(7.8–9.7초), 원판 격자에 고리가 그려지고 파이처럼 차올라 체크가 찍히는 물결(11.7–15.6초), 인사 제목 아래 입력 카드와 드롭다운 토글(17.5–24.3초), 진행 중 작업 줄이 하나씩 쌓이는 대화(25.3–28.2초), 알약 꼬리표를 얹은 세리프 마무리(30.2–31.1초)"
+  },
+  "palette": [
+    "#E5E1DA",
+    "#2A2622",
+    "#CB6B52",
+    "#F4F2EE",
+    "#3B82D6",
+    "#BDB8B0"
+  ],
+  "colors": {
+    "bg": "#E5E1DA",
+    "onBg": "#2A2622",
+    "onBgMuted": "rgba(42,38,34,.58)",
+    "paper": "#F4F2EE",
+    "ink": "#2A2622",
+    "accent": "#B5563F",
+    "accentInk": "#FFFFFF",
+    "pattern": "rgba(42,38,34,.07)",
+    "glow": "rgba(203,107,82,.25)"
+  },
+  "type": {
+    "display": [
+      "Gowun Batang"
+    ],
+    "heading": [
+      "Gowun Batang"
+    ],
+    "body": [
+      "Geist",
+      "Noto Sans KR"
+    ]
+  },
+  "fonts": [
+    {
+      "family": "Gowun Batang",
+      "weight": 400,
+      "file": "fonts/GowunBatang-Regular.woff2"
+    },
+    {
+      "family": "Gowun Batang",
+      "weight": 700,
+      "file": "fonts/GowunBatang-Bold.woff2"
+    },
+    {
+      "family": "Geist",
+      "weight": "100 900",
+      "file": "fonts/Geist-Variable.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 500,
+      "file": "fonts/NotoSansKR-Medium.woff2"
+    }
+  ],
+  "shape": {
+    "radius": "calc(var(--u) * 1.2)"
+  },
+  "motion": {
+    "pace": "보통",
+    "bpm": 96,
+    "ease": "power3.out",
+    "stagger": 0.8,
+    "transitions": [
+      "cut",
+      "fade",
+      "push"
+    ]
+  },
+  "scenes": {
+    "bg": "solid",
+    "align": "center",
+    "card": "shadow",
+    "marker": "circle",
+    "weight": 400,
+    "tracking": -0.01,
+    "case": "none",
+    "rough": false,
+    "title": "fade",
+    "frame": "none",
+    "deco": [
+      "cursor",
+      "dots"
+    ],
+    "number": "count",
+    "scale": 0.9,
+    "schemes": [
+      "dark",
+      "paper",
+      "dark"
+    ]
+  },
+  "signature": [
+    "토글 연쇄: 커서가 맨 위 토글을 누르면 아래 목록 토글이 0.08초 간격으로 위에서부터 하나씩 켜져요(회색 → 파랑, 손잡이가 오른쪽으로 미끄러짐). 다 켜지면 패널이 왼쪽 가장자리로 반쯤 밀려나 가운데를 비워요",
+    "가운데 세리프 두 줄이 어절씩 나타나고, 핵심 구절에 꼬리 달린 테라코타 손 타원이 0.6초 동안 한 획으로 그어져요. 말을 마친 문장은 바로 지우지 않고 옅은 회색으로 가라앉혔다가 다음 장면에서 컷으로 넘겨요",
+    "체크 물결: 옅은 원판 격자 위에 테라코타 고리가 그려지고, 고리 안이 시계방향 파이처럼 차오른 뒤 흰 체크가 찍혀요. 이 과정이 왼쪽 열부터 오른쪽으로 물결처럼 번지고, 다 채워지면 가운데에 세리프 한 줄이 놓여요"
+  ],
+  "fits": [
+    "기업용 설정·관리 기능 안내",
+    "연동·통합 기능 출시",
+    "권한·보안 기능 소개",
+    "차분한 B2B 제품 소개",
+    "온보딩 흐름 설명"
+  ],
+  "avoid": [
+    "네온이나 짙은 그라디언트",
+    "빠른 컷 몽타주",
+    "굵은 고딕 큰 제목",
+    "테라코타 말고 다른 강조색(토글 파랑만 예외)",
+    "화면 흔들림·번쩍임"
+  ]
+}

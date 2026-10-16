@@ -1,0 +1,134 @@
+{
+  "id": "charcoal-reed-stripe-mono-nodes",
+  "name": "숯빛 세로줄 고정폭 노드",
+  "group": "다이어그램·데이터",
+  "template": "dataflow",
+  "summary": "숯빛 판에서 초록·회색 세로줄 기둥이 칸칸이 켜졌다가 가는 한 줄로 접혀요. 고정폭 꼬리표를 단 노드 상자가 가는 선으로 하나씩 이어지고, 옅은 회색 판으로 넘어가면 데이터 카드의 막대와 표가 차오르는 개발 도구 흐름 필름이에요",
+  "tags": [
+    "다이어그램",
+    "데이터",
+    "고정폭",
+    "세로줄",
+    "초록",
+    "개발 도구"
+  ],
+  "hand": false,
+  "source": {
+    "site": "keyframe.gallery",
+    "ref": "mux:02PXDNRzoXLgT3HsmNBK6bcCnPlSlFkw7tfqAJGFpZ024",
+    "at": "0–32.9초",
+    "note": "초록·회색 세로줄로 채운 도형과 화면 가득 칸칸이 켜지는 세로줄 기둥 판(0–4초), 판이 가는 가로줄과 고정폭 꼬리표 막대로 접히는 흐름(6–7초), 큰 숫자 아래로 떨어지는 세로 눈금선(8초), 옅은 회색 위 어두운 숫자 카드 셋(9.9초), 초록 테두리 노드 상자가 선으로 이어지고 점선 묶음 상자 안으로 들어가는 다이어그램(10.9–13.9초), 웹페이지 시안 벽을 비스듬히 훑는 카메라(14.9–17.9초), 실패 줄만 빨갛게 칠한 코드 단계 목록과 옅은 회색 노드 갈래(18.9–21.9초), 막대가 숫자와 함께 차오르는 데이터 카드와 초록 줄이 켜지는 표(27.8–29.8초)"
+  },
+  "palette": [
+    "#222321",
+    "#3DBE8B",
+    "#9CCB8E",
+    "#1F4A4F",
+    "#C9E6D6",
+    "#ECECEA"
+  ],
+  "colors": {
+    "bg": "#222321",
+    "onBg": "#E6E8E3",
+    "onBgMuted": "rgba(230,232,227,.6)",
+    "paper": "#ECECEA",
+    "ink": "#222321",
+    "accent": "#3DBE8B",
+    "accentInk": "#0E1A14",
+    "pattern": "rgba(230,232,227,.07)",
+    "glow": "rgba(61,190,139,.3)"
+  },
+  "type": {
+    "display": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "heading": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "body": [
+      "Geist Mono",
+      "Noto Sans KR"
+    ]
+  },
+  "fonts": [
+    {
+      "family": "Geist",
+      "weight": "100 900",
+      "file": "fonts/Geist-Variable.woff2"
+    },
+    {
+      "family": "Geist Mono",
+      "weight": "100 900",
+      "file": "fonts/GeistMono-Variable.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 500,
+      "file": "fonts/NotoSansKR-Medium.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 700,
+      "file": "fonts/NotoSansKR-Bold.woff2"
+    }
+  ],
+  "shape": {
+    "radius": "calc(var(--u) * 0.4)"
+  },
+  "motion": {
+    "pace": "보통",
+    "bpm": 100,
+    "ease": "power3.out",
+    "stagger": 0.8,
+    "transitions": [
+      "cut",
+      "wipe",
+      "push"
+    ]
+  },
+  "scenes": {
+    "bg": "solid",
+    "align": "center",
+    "card": "outline",
+    "marker": "color",
+    "weight": 400,
+    "tracking": -0.01,
+    "case": "upper",
+    "rough": false,
+    "title": "type",
+    "frame": "window",
+    "deco": [
+      "marks"
+    ],
+    "number": "count",
+    "scale": 1,
+    "schemes": [
+      "dark",
+      "dark",
+      "paper",
+      "dark"
+    ]
+  },
+  "signature": [
+    "세로줄 기둥 판: 화면을 8×2 칸으로 나누고 칸마다 가는 세로줄을 촘촘히 세워 초록·연두·회색·빈칸 중 하나로 칠해요. 칸이 제각각 한 프레임씩 계단처럼 켜지고 바뀌다가, 2박 뒤 판 전체가 가는 가로줄 하나로 오므라들어요. 그 줄은 초록 마디 몇 개를 품고 있다가 고정폭 대문자 꼬리표 막대가 돼요",
+    "노드 이어 붙이기: 박마다 상자 하나가 생겨요. 1px 초록 테두리가 그려지고, 왼쪽 가장자리에 점선 띠가 붙고, 고정폭 대문자 꼬리표가 쳐져요. 이어서 가는 선이 다음 상자로 뻗고 마디에 작은 네모 점이 찍혀요. 마지막 상자는 초록 머리 막대를 단 점선 묶음 상자 안으로 들어가고, 선 위로 작은 초록 네모가 신호처럼 지나가요",
+    "옅은 회색 판 위 어두운 데이터 카드: 짙은 청록·회녹·옅은 민트 세로 막대가 아래에서 차오르는 동안 막대 안 숫자가 같이 올라가요. 카드 귀퉁이에는 세로줄 바둑판 타일이 하나 있고, 이어지는 표에서는 한 줄만 초록으로 켜져요"
+  ],
+  "fits": [
+    "개발자 도구·API 소개",
+    "데이터 파이프라인·처리 흐름 설명",
+    "AI 인프라·런타임 런칭",
+    "기술 제품의 작동 원리 설명",
+    "처리량·성과 숫자 보여 주기"
+  ],
+  "avoid": [
+    "손그림 선과 따뜻한 종이 질감",
+    "둥글고 통통한 모양",
+    "빛 번짐과 화려한 그라디언트",
+    "강조색 여러 개(초록 하나, 실패 표시용 빨강 한 줄만)",
+    "굵고 큰 제목",
+    "빠른 몰아치기 컷"
+  ]
+}

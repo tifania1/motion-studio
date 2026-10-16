@@ -1,0 +1,142 @@
+{
+  "id": "plum-haze-gradient-word-tilt-cards",
+  "name": "자두빛 안개 속 기운 유리 카드",
+  "group": "그라디언트·빛",
+  "template": "glow",
+  "summary": "짙은 자두빛 어둠 가장자리에 보라·분홍 빛이 번지고, 가운데 낱말은 흐림에서 맺히며 라벤더에서 분홍으로 물들어요. 그 사이로 노드 그래프와 가격 카드, 코드 창이 비스듬히 누운 채 초점을 옮겨 가며 지나가는 차분한 제품 무드예요",
+  "tags": [
+    "빛",
+    "어두움",
+    "보라",
+    "유리 카드",
+    "노드",
+    "가격표",
+    "제품 소개"
+  ],
+  "hand": false,
+  "source": {
+    "site": "keyframe.gallery",
+    "ref": "mux:wkYfoS3gGq99YJOSZGuNhxH00JJAFevrsr7o01DBjJGgs",
+    "at": "1.5–10.3초, 13–22초, 25–31초, 33.8–41초, 44–53초, 55.8–67초",
+    "note": "밝은 회색에서 세로 막대 커서와 회색 문장으로 열다가 아래부터 보라 빛이 번지며 어둠으로 넘어가는 오프닝, 위아래가 잘린 거대한 빛 테두리 원, 흐림에서 맺히는 보라→분홍 그라디언트 낱말과 그 밑을 흐르는 분홍·파랑 빛줄기, 3D로 기운 노드 그래프·코드 창을 카메라가 미끄러지며 훑는 초점 이동, 유리 후기 카드, 겹쳐 쌓이는 가격 카드와 라벤더 빛 테두리, 숫자를 감싸는 빛 고리"
+  },
+  "palette": [
+    "#1A1424",
+    "#2A2236",
+    "#B49CF4",
+    "#E8638F",
+    "#6F4BD8",
+    "#ECE6F5"
+  ],
+  "colors": {
+    "bg": "#1A1424",
+    "onBg": "#ECE6F5",
+    "onBgMuted": "rgba(236,230,245,.6)",
+    "paper": "#2A2236",
+    "ink": "#F1ECF7",
+    "accent": "#B49CF4",
+    "accentInk": "#1A1226",
+    "pattern": "rgba(236,230,245,.07)",
+    "glow": "rgba(232,99,143,.4)"
+  },
+  "type": {
+    "display": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "heading": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "body": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "mono": [
+      "Geist Mono",
+      "Noto Sans KR"
+    ]
+  },
+  "fonts": [
+    {
+      "family": "Geist",
+      "weight": "100 900",
+      "file": "fonts/Geist-Variable.woff2"
+    },
+    {
+      "family": "Geist Mono",
+      "weight": "100 900",
+      "file": "fonts/GeistMono-Variable.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 500,
+      "file": "fonts/NotoSansKR-Medium.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 700,
+      "file": "fonts/NotoSansKR-Bold.woff2"
+    }
+  ],
+  "look": {
+    "grain": 0.05,
+    "vignette": 0.35
+  },
+  "shape": {
+    "radius": "calc(var(--u) * 1.6)"
+  },
+  "motion": {
+    "pace": "느림",
+    "bpm": 96,
+    "ease": "power2.out",
+    "stagger": 1.1,
+    "transitions": [
+      "blur",
+      "iris",
+      "fade"
+    ]
+  },
+  "scenes": {
+    "bg": "aurora",
+    "align": "center",
+    "card": "glass",
+    "marker": "color",
+    "weight": 500,
+    "tracking": -0.02,
+    "case": "none",
+    "rough": false,
+    "title": "blur",
+    "frame": "none",
+    "deco": [
+      "rings",
+      "streaks"
+    ],
+    "number": "count",
+    "scale": 1.1,
+    "schemes": [
+      "dark",
+      "paper",
+      "dark"
+    ]
+  },
+  "signature": [
+    "가운데 큰 낱말 하나가 흐림 8px에서 0.6초에 맺히고, 색은 라벤더에서 분홍으로 번지는 그라디언트로 칠해져요. 그 아래로 흐린 분홍·파랑 빛줄기가 옆으로 천천히 흐르고, 다음 낱말은 그 밑에서 흐린 회색으로 미리 기다려요",
+    "화면보다 큰 원의 테두리만 흰빛·분홍빛으로 빛나며 위아래가 잘린 채 다가와요. 원이 열리면(iris) 다음 장면이 되고, 숫자 장면에서는 같은 빛 고리가 큰 숫자를 감싸요",
+    "노드 그래프·코드 창·가격 카드가 3D로 비스듬히 누운 채 카메라가 4~6초에 걸쳐 천천히 미끄러져요. 초점은 카드 하나에서 다음 카드로 옮겨 가고, 앞뒤 카드는 흐려져요. 고른 카드에만 라벤더 빛 테두리가 켜져요"
+  ],
+  "fits": [
+    "자동화·워크플로 도구 소개",
+    "개발자용 제품 런칭",
+    "가격제·요금 안내",
+    "사용자 후기 모음",
+    "AI 에이전트 기능 소개"
+  ],
+  "avoid": [
+    "흰 바탕을 오래 쓰기(오프닝 한 장만)",
+    "빠른 컷과 글리치",
+    "굵고 빽빽한 제목",
+    "원색 강조를 여러 개 쓰기",
+    "평평하게 정면만 보는 UI"
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "hook": {
+    "kicker": "짧은 꼬리표 (예: 이번 주 신메뉴)",
+    "headline": "첫 2초에 멈추게 할\n한두 줄 문장",
+    "highlight": "멈추게 할",
+    "sub": ""
+  },
+  "visuals": [
+    { "image": "photo1", "title": "사진 1 제목\n두 줄까지", "sub": "짧은 설명 한 줄", "credit": "", "focus": [0.5, 0.5] },
+    { "image": "photo2", "title": "사진 2 제목", "sub": "짧은 설명 한 줄", "credit": "", "focus": [0.5, 0.5], "pan": "left" },
+    { "image": "photo3", "title": "사진 3 제목", "sub": "짧은 설명 한 줄", "credit": "", "focus": [0.5, 0.5] }
+  ],
+  "benefits": {
+    "title": "고르는 이유",
+    "items": ["장점 하나", "장점 둘", "장점 셋"]
+  },
+  "proof": { "number": 100, "suffix": "%", "label": "숫자에 대한 설명 (근거 있는 숫자만)" },
+  "cta": {
+    "headline": "마지막에 할 행동을\n한 문장으로",
+    "button": "버튼 문구",
+    "sub": "@계정이름 · 고지 문구"
+  }
+}

@@ -1,0 +1,141 @@
+{
+  "id": "cutmat-dot-cursor-system",
+  "name": "커팅 매트 점 커서 시스템",
+  "group": "제품 UI",
+  "template": "uidemo",
+  "summary": "남보라·빨강·초록 커팅 매트와 나뭇결 책상 위에 두꺼운 흰 테두리 앱 창이 놓이고, 검은 점 커서가 버튼 가장자리에 바짝 붙어 누르는 동안 카메라가 창 모서리로 파고들어요. 사이사이 분홍·민트 판에서는 가는 줄 사이로 큰 그로테스크 목록이 흘러가요",
+  "tags": [
+    "제품 UI",
+    "디자인 시스템",
+    "커서",
+    "커팅 매트",
+    "분홍",
+    "목록 타이포"
+  ],
+  "hand": false,
+  "source": {
+    "site": "keyframe.gallery",
+    "ref": "mux:ALQhYmPhIa3Xa1GF57PNLgeviZbZ02tnEpW8y4owoByM",
+    "at": "0–83.4초",
+    "note": "나뭇결 책상 위 빈 나무 판과 모서리 고정폭 주석, 남보라·빨강·초록 커팅 매트 위 두꺼운 흰 테두리 창, 화살표 없이 검은 점 하나로 된 커서가 목록·버튼에 붙어 누르는 동작, 검은 알약 분류 꼬리표, 분홍·민트 판의 가는 줄 사이 큰 산세리프 목록, 벽에 걸린 포스터 판, 창 모서리로 바짝 다가가는 카메라"
+  },
+  "palette": [
+    "#F6B3CE",
+    "#5A5C9C",
+    "#D85A5C",
+    "#1F5FE8",
+    "#D8B68C",
+    "#161616"
+  ],
+  "colors": {
+    "bg": "#F6B3CE",
+    "onBg": "#161616",
+    "onBgMuted": "rgba(22,22,22,.62)",
+    "paper": "#F7F6F3",
+    "ink": "#161616",
+    "accent": "#1F5FE8",
+    "accentInk": "#FFFFFF",
+    "pattern": "rgba(22,22,22,.1)",
+    "glow": "rgba(31,95,232,.25)"
+  },
+  "type": {
+    "display": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "heading": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "body": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "mono": [
+      "Geist Mono",
+      "Noto Sans KR"
+    ]
+  },
+  "fonts": [
+    {
+      "family": "Geist",
+      "weight": "100 900",
+      "file": "fonts/Geist-Variable.woff2"
+    },
+    {
+      "family": "Geist Mono",
+      "weight": "100 900",
+      "file": "fonts/GeistMono-Variable.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 500,
+      "file": "fonts/NotoSansKR-Medium.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 700,
+      "file": "fonts/NotoSansKR-Bold.woff2"
+    }
+  ],
+  "look": {
+    "grain": 0.04,
+    "vignette": 0.16
+  },
+  "shape": {
+    "radius": "calc(var(--u) * 2.4)"
+  },
+  "motion": {
+    "pace": "보통",
+    "bpm": 96,
+    "ease": "power3.inOut",
+    "stagger": 1,
+    "transitions": [
+      "push",
+      "cut",
+      "fade"
+    ]
+  },
+  "scenes": {
+    "bg": "grid",
+    "align": "left",
+    "card": "shadow",
+    "marker": "highlight",
+    "weight": 400,
+    "tracking": -0.01,
+    "case": "none",
+    "rough": false,
+    "title": "mask",
+    "frame": "window",
+    "deco": [
+      "cursor",
+      "marks"
+    ],
+    "number": "count",
+    "scale": 1.1,
+    "schemes": [
+      "paper",
+      "dark",
+      "paper",
+      "accent"
+    ]
+  },
+  "signature": [
+    "화살표 없이 검은 점 하나뿐인 커서(지름은 글자 높이의 1.2배쯤)가 power3.inOut 으로 미끄러져 와서 목록 줄이나 버튼 가장자리에 반쯤 걸치듯 멈추고, 누를 때 0.9배로 줄었다 돌아와요. 눌린 줄에는 짙은 테두리 칸이 생겨요",
+    "커팅 매트(남보라·빨강·초록, 가는 분홍·흰 눈금선) 위에 두꺼운 흰 테두리 창을 두고, 카메라가 1.2초에 걸쳐 창 한 모서리로 2~3배 다가가요. 왼쪽 위에는 검은 알약 꼬리표와 옅은 회색 낱말 하나가 붙어요",
+    "분홍이나 민트 판에서 큰 그로테스크 목록 줄이 가는 가로줄 사이로 한 줄씩 차올라 위로 흘러가요. 오른쪽 위엔 짙은 알약 꼬리표, 왼쪽 위엔 작은 두 줄 제목이 붙어요"
+  ],
+  "fits": [
+    "디자인 시스템·구성요소 소개",
+    "기능 원칙 설명",
+    "생산성 도구 시연",
+    "제품 철학 발표"
+  ],
+  "avoid": [
+    "네온·빛 번짐",
+    "기울인 3D 판",
+    "손그림 선",
+    "한 화면에 강조색 여럿",
+    "빠른 글리치 컷"
+  ]
+}

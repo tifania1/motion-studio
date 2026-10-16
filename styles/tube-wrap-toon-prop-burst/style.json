@@ -1,0 +1,130 @@
+{
+  "id": "tube-wrap-toon-prop-burst",
+  "name": "빛 관이 휘감는 소품 터짐",
+  "group": "3D·사물",
+  "template": "stage",
+  "summary": "검은 바탕에서 실사 셀카가 같은 구도의 평면 일러스트로 바뀌고, 굵은 빛 관이 카드와 문장을 한 바퀴 휘감고 지나가요. 끝에는 마크 둘레로 말랑한 3D 소품들이 톡 터져 나왔다가 다시 빨려 들어가는 창작 도구 런칭",
+  "tags": [
+    "3D 소품",
+    "일러스트",
+    "빛 관",
+    "런칭",
+    "창작 도구",
+    "어두움"
+  ],
+  "hand": false,
+  "source": {
+    "site": "keyframe.gallery",
+    "ref": "mux:702eysAV8tZGyo00502sV00fJp027M4R2Pm00xQB3PQlcObrg",
+    "at": "0–19.1초",
+    "note": "검은 화면에 둥근 마크 글자가 한 자씩 찍히는 오프닝, 분홍·노랑 판 위 폰 속 셀카가 같은 구도의 일러스트로 컷되는 변신, 둥근 카드로 오므라든 그림을 굵은 파란 관이 감싸는 동작, 무지개 빛 번짐 글자, 젖빛 유리 카드와 흐림 전환, 일러스트 카드 격자, 카드들이 3D로 흩어졌다 소용돌이로 모이는 장면, 민트 빛 관이 문장을 나선으로 휘감는 장면, 마크 둘레로 3D 소품이 터졌다 거둬지는 엔딩"
+  },
+  "palette": [
+    "#0E0E0F",
+    "#4FD8C4",
+    "#3E86E8",
+    "#E48AD3",
+    "#F5D23C",
+    "#F2F2F0"
+  ],
+  "colors": {
+    "bg": "#0E0E0F",
+    "onBg": "#F2F2F0",
+    "onBgMuted": "rgba(242,242,240,.62)",
+    "paper": "#E48AD3",
+    "ink": "#1A1020",
+    "accent": "#4FD8C4",
+    "accentInk": "#0E0E0F",
+    "pattern": "rgba(255,255,255,.06)",
+    "glow": "rgba(79,216,196,.42)"
+  },
+  "type": {
+    "display": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "heading": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "body": [
+      "Geist",
+      "Noto Sans KR"
+    ]
+  },
+  "fonts": [
+    {
+      "family": "Geist",
+      "weight": "100 900",
+      "file": "fonts/Geist-Variable.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 500,
+      "file": "fonts/NotoSansKR-Medium.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 700,
+      "file": "fonts/NotoSansKR-Bold.woff2"
+    }
+  ],
+  "shape": {
+    "radius": "calc(var(--u) * 2.2)"
+  },
+  "motion": {
+    "pace": "보통",
+    "bpm": 115,
+    "ease": "power3.out",
+    "stagger": 0.8,
+    "transitions": [
+      "cut",
+      "blur",
+      "push",
+      "cut"
+    ]
+  },
+  "scenes": {
+    "bg": "solid",
+    "align": "center",
+    "card": "glass",
+    "marker": "color",
+    "weight": 600,
+    "tracking": -0.015,
+    "case": "none",
+    "rough": false,
+    "title": "type",
+    "frame": "none",
+    "deco": [
+      "shapes",
+      "orb"
+    ],
+    "number": "count",
+    "scale": 1,
+    "schemes": [
+      "dark",
+      "paper",
+      "dark",
+      "dark"
+    ]
+  },
+  "signature": [
+    "실사 사진 → 같은 구도의 평면 일러스트로 한 박에 컷되고, 그림이 둥근 정사각 카드로 오므라드는 순간 굵은 빛 관(파랑, 끝은 둥글고 안쪽이 밝음)이 아래에서 솟아 카드 둘레를 반 바퀴 감고 화면 밖으로 빠져요",
+    "검은 화면 가운데 작은 흰 문장 하나, 민트 빛 관이 화면 왼쪽에서 들어와 문장 둘레를 나선으로 한 바퀴 휘감고 0.8초 만에 꼬리부터 사라져요",
+    "마크 글자가 자리 잡으면 둘레로 말랑한 3D 소품 10여 개가 0.4초 만에 사방으로 톡 튀어나와 살짝 흔들리며 떠 있다가, 1.5초 뒤 마크 쪽으로 빨려 들어가 글자만 남아요"
+  ],
+  "fits": [
+    "창작·그림 도구 런칭",
+    "AI 이미지·아바타 서비스",
+    "앱 브랜드 공개",
+    "젊은 크리에이터 커뮤니티",
+    "사진 꾸미기·필터 기능 소개"
+  ],
+  "avoid": [
+    "밝은 흰 바탕만 쓰기",
+    "가는 세리프",
+    "빽빽한 표·숫자",
+    "느린 페이드만 이어 붙이기",
+    "관 선을 여러 개 동시에 쓰기"
+  ]
+}

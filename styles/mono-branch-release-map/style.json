@@ -1,0 +1,129 @@
+{
+  "id": "mono-branch-release-map",
+  "name": "가지선 릴리스 지도",
+  "group": "다이어그램·데이터",
+  "template": "dataflow",
+  "summary": "어두운 회색 공간에 가는 흰 선 다발이 한 점에서 갈래갈래 뻗고, 갈래 끝마다 흰 네모와 고정폭 꼬리표가 켜져요. 카메라는 기울어진 지도를 천천히 훑고, 문장은 블록 커서를 따라 한 글자씩 쳐져요",
+  "tags": [
+    "다이어그램",
+    "가지선",
+    "어두움",
+    "고정폭",
+    "릴리스",
+    "느림"
+  ],
+  "hand": false,
+  "source": {
+    "site": "keyframe.gallery",
+    "ref": "mux:8YF2n5YpSkNzloe1crHn4GIqmiwKgalgrzj5dYtozYU",
+    "at": "0–26.1초",
+    "note": "오른쪽 한 점으로 모이는 가는 흰 선 다발과 갈래 끝 흰 네모 꼬리표, 앞쪽 선은 굵고 흐리고 뒤쪽 선은 가늘고 선명한 피사계 심도, 기울어진 판을 훑는 느린 카메라, 비스듬히 겹쳐 선 패널 세 장, 검은 화면 가운데 고정폭 대문자 타이핑과 블록 커서(지웠다 다시 치기)"
+  },
+  "palette": [
+    "#141415",
+    "#232427",
+    "#E6E6E3",
+    "#8E8F92",
+    "#7F82D8"
+  ],
+  "colors": {
+    "bg": "#141415",
+    "onBg": "#E6E6E3",
+    "onBgMuted": "rgba(230,230,227,.55)",
+    "paper": "#1F2023",
+    "ink": "#E6E6E3",
+    "accent": "#E6E6E3",
+    "accentInk": "#141415",
+    "pattern": "rgba(255,255,255,.06)",
+    "glow": "rgba(230,230,227,.18)"
+  },
+  "type": {
+    "display": [
+      "Geist Mono",
+      "Noto Sans KR"
+    ],
+    "heading": [
+      "Geist Mono",
+      "Noto Sans KR"
+    ],
+    "body": [
+      "Geist Mono",
+      "Noto Sans KR"
+    ]
+  },
+  "fonts": [
+    {
+      "family": "Geist Mono",
+      "weight": "100 900",
+      "file": "fonts/GeistMono-Variable.woff2"
+    },
+    {
+      "family": "Geist",
+      "weight": "100 900",
+      "file": "fonts/Geist-Variable.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 500,
+      "file": "fonts/NotoSansKR-Medium.woff2"
+    }
+  ],
+  "look": {
+    "grain": 0.06,
+    "grainFps": 12,
+    "vignette": 0.35
+  },
+  "shape": {
+    "radius": "calc(var(--u) * 0.6)"
+  },
+  "motion": {
+    "pace": "느림",
+    "bpm": 80,
+    "ease": "power2.inOut",
+    "stagger": 1,
+    "transitions": [
+      "fade",
+      "cut",
+      "fade"
+    ]
+  },
+  "scenes": {
+    "bg": "solid",
+    "align": "center",
+    "card": "outline",
+    "marker": "highlight",
+    "weight": 400,
+    "tracking": 0.08,
+    "case": "upper",
+    "rough": false,
+    "title": "type",
+    "frame": "none",
+    "deco": [
+      "marks"
+    ],
+    "number": "scramble",
+    "scale": 0.9,
+    "schemes": [
+      "dark"
+    ]
+  },
+  "signature": [
+    "가는 흰 선 수십 가닥이 화면 오른쪽 한 점에서 왼쪽으로 부채처럼 갈라지며 2~3초에 그어지고, 갈래 끝마다 작은 흰 네모와 고정폭 대문자 꼬리표가 0.1~0.2초 간격으로 켜짐. 앞쪽 선은 굵고 흐리게, 먼 선은 가늘고 선명하게",
+    "카메라가 지도를 바닥처럼 기울여(rotateX 40~55°, rotateZ −8°) 아주 천천히 옆으로 미끄러지며 훑고, 같은 지도를 담은 어두운 패널 세 장이 비스듬히 겹쳐 서서 앞으로 다가옴",
+    "검은 화면 가운데 고정폭 대문자 한 줄이 흰 블록 커서를 따라 쳐지고, 커서가 깜빡이다 글자를 지운 뒤 다른 말로 다시 침"
+  ],
+  "fits": [
+    "기능·버전 출시 소개",
+    "일정·로드맵 관리 도구",
+    "개발 도구 런칭",
+    "프로젝트 흐름 설명",
+    "차분한 기술 브랜드 티저"
+  ],
+  "avoid": [
+    "밝은 바탕",
+    "강조색 여러 개",
+    "통통 튀는 이징",
+    "굵은 큰 제목",
+    "빠른 컷 몰아치기"
+  ]
+}

@@ -1,0 +1,689 @@
+<title>/*@TITLE@*/</title>
+<style>
+/*@FONTFACES@*/
+/*@BRAND_CSS@*/
+/*@ENGINE_CSS@*/
+
+/* ===== typeslam 템플릿: 타이포 쇼 (결 템플릿 · 타이포) =====
+   글자 자체가 화면의 전부예요. 사진·아이콘·카드 대신 큰 글자의 크기·자름·방향·색 반전으로 박자를 만들어요.
+   훅     꼬리표(kicker)가 위에 작게 찍히고, 제목 어절이 박마다 화면을 꽉 채운 채 잘려서 부딪혀 들어옴
+          → 마지막에 문장이 정상 크기로 정렬(S.fx.enter, 기본 stamp). 강조 어절은 강조색 블록으로 반전
+   장점   한 항목 = 한 장면. 가로 띠(위아래 줄이 반대로 흐름) / 세로 스택(압축 글자가 떨어져 쌓임) / 잘린 초대형 한 단어 + 작은 문장
+   숫자   화면보다 큰 숫자(S.fx.num)가 굴러 맞춰지고, 앞말·단위·설명은 모서리 꼬리표, 출처는 아주 작게
+   사진   큰 글자 속을 사진으로 채움(background-clip:text) + 박 사이 0.25초 화면 가득 플래시 컷
+   끝     문구가 굵게 쌓이고 두꺼운 테두리 버튼, 아래 띠에 로고·주소. 마지막 박에 화면 색이 한 번 뒤집힘
+   장면 사이는 글자색 블록이 쓸고 지나가거나(sweep) 강조색 플래시 + 두 프레임 색 반전(flash)이 번갈아 나와요.
+   색은 장면마다 base(바탕/글자) · inv(뒤집음) · acc(강조색 블록) 셋 중 하나를 #ts 의 --sbg·--sfg 로 바꿔 끼워요. */
+#ts { --sbg: var(--bg); --sfg: var(--on-bg); --smut: color-mix(in srgb, var(--sfg) 64%, var(--sbg));
+  position: absolute; inset: 0; overflow: hidden; background: var(--sbg); color: var(--sfg); }
+.ts-sc { position: absolute; inset: 0; overflow: hidden; visibility: hidden; }
+.abs { position: absolute; left: 0; top: 0; }
+.disp { font-family: var(--ts-disp); font-weight: 900; letter-spacing: var(--ts-tr, -.035em); line-height: 1; }
+.nw { white-space: pre; width: max-content; }
+.vt { writing-mode: vertical-rl; text-orientation: upright; letter-spacing: -.03em; }
+/* 꼬리표 (꼬리말·번호·숫자 앞말·단위) */
+.tag { font: 700 calc(var(--u) * 2.9)/1 var(--ts-mono); letter-spacing: .04em; white-space: pre; width: max-content;
+  padding: .52em .78em .46em; border: calc(var(--u) * .32) solid var(--sfg); color: var(--sfg); background: var(--sbg); }
+.tag.lg { font-size: calc(var(--u) * 5); border-width: calc(var(--u) * .5); padding: .36em .56em .32em; font-weight: 800; }
+.upper .tag { text-transform: uppercase; }
+#cnt.on { background: var(--sfg); color: var(--sbg); }
+/* 글리치 타자: 글자 묶음마다 블록이 한 프레임씩 바뀌며 찍힘 */
+.gw { display: inline-block; white-space: pre; }
+.ch { position: relative; }
+.ch.g1 { background: var(--sfg); color: var(--sbg); }
+.ch.g2 { background: var(--accent); color: var(--accent-ink); }
+.ch.g3 { box-shadow: inset 0 0 0 calc(var(--u) * .3) var(--accent); }
+.ch.cur::after { content: ""; position: absolute; left: 100%; top: -.04em; width: .5em; height: 1.08em; background: var(--sfg); }
+/* 훅: 어절 슬램과 정렬된 제목 */
+.slam { visibility: hidden; }
+.slam.ghost { color: transparent; -webkit-text-stroke: calc(var(--u) * .4) var(--sfg); }
+#ttl { white-space: pre-line; word-break: keep-all; line-height: 1.06; visibility: hidden; text-wrap: balance; }
+#ttl .hl { background: var(--accent); color: var(--accent-ink); padding: 0 .07em; }
+#ttl .hl.hx1 { background: var(--sfg); color: var(--sbg); }
+#ttl .hl.hx2 { background: transparent; color: var(--sfg); box-shadow: inset 0 0 0 calc(var(--u) * .45) var(--accent); }
+/* 장점: 가로 띠 */
+.row { display: flex; align-items: center; white-space: pre; width: max-content; }
+.row .rt { color: transparent; -webkit-text-stroke: calc(var(--u) * .3) var(--sfg); }
+.row .sq { display: block; flex: none; width: .26em; height: .26em; margin: 0 .34em; background: var(--sfg); }
+.bd-mid .wc { white-space: pre-line; word-break: keep-all; line-height: 1.06; text-wrap: balance; }
+.wblk { position: absolute; left: calc(var(--u) * -1.2); right: calc(var(--u) * -1.2); top: calc(var(--u) * -.8); bottom: calc(var(--u) * -.8); background: var(--sfg); visibility: hidden; }
+/* 장점: 세로 스택 */
+.sk-ln { visibility: hidden; }
+.sk-ln.inv { background: var(--sfg); color: var(--sbg); padding: 0 .05em; }
+/* 장점: 잘린 초대형 한 단어 + 작은 문장 */
+.cr-sm { background: var(--sbg); padding: calc(var(--u) * 1.4) calc(var(--u) * 1.8) calc(var(--u) * 1.6); }
+.cr-tx { white-space: pre-line; word-break: keep-all; line-height: 1.14; letter-spacing: -.02em; text-wrap: balance; }
+/* 숫자 */
+#nm-big, #nm-meas { font-family: var(--ts-num); font-weight: 900; line-height: 1; white-space: pre; width: max-content; letter-spacing: -.015em; font-variant-numeric: lining-nums; }
+#nm-meas { visibility: hidden; }
+#nm-meas i { display: inline-block; width: 1px; height: 0; vertical-align: baseline; }
+#nm-lab .wc { background: var(--sfg); color: var(--sbg); padding: .14em .3em .2em; white-space: pre-line; word-break: keep-all; line-height: 1.16; letter-spacing: -.02em; text-wrap: balance; }
+#nm-src { font: 600 calc(var(--u) * 1.9)/1.3 var(--ts-mono); color: var(--smut); white-space: pre-line; word-break: keep-all; background: var(--sbg); padding: .2em .4em .2em 0; }
+/* 사진 */
+.ph-full { width: 100%; height: 100%; object-fit: cover; visibility: hidden; }
+.ph-word { visibility: hidden; color: transparent; -webkit-background-clip: text; background-clip: text; background-size: cover; background-position: 50% 50%;
+  -webkit-text-stroke: calc(var(--u) * .2) var(--sfg); }
+/* 끝 */
+.ct-ln { visibility: hidden; }
+#ct-btn .wc { display: flex; align-items: center; gap: .42em; border: calc(var(--u) * 1) solid var(--sfg); padding: .46em .74em .5em; color: var(--sfg);
+  font: 900 calc(var(--u) * 5.2)/1 var(--ts-disp); letter-spacing: -.02em; white-space: pre; width: max-content; }
+#ct-btn .wc.solid { background: var(--sfg); color: var(--sbg); }
+#ct-btn .ar { width: .86em; height: .86em; flex: none; }
+#ct-btn .ar path { fill: none; stroke: currentColor; stroke-width: 3.4; stroke-linecap: square; stroke-linejoin: miter; }
+#ct-band { display: flex; align-items: center; justify-content: space-between; gap: calc(var(--u) * 3); padding-top: calc(var(--u) * 2.2); box-sizing: border-box; }
+#ct-band .rule { position: absolute; left: 0; top: 0; width: 100%; height: calc(var(--u) * .55); background: var(--sfg); transform-origin: 0 50%; }
+.lg { display: flex; align-items: center; gap: calc(var(--u) * 1.4); white-space: nowrap; min-width: 0; }
+.lg img { height: calc(var(--u) * 7.4); width: auto; display: block; }
+.lg .lt { font: 900 calc(var(--u) * 4.8)/1 var(--ts-disp); letter-spacing: -.02em; }
+.lg .ls { font: 700 calc(var(--u) * 1.9)/1 var(--ts-mono); letter-spacing: .18em; color: var(--smut); }
+#ct-band .sub { font: 700 calc(var(--u) * 2.7)/1.2 var(--ts-mono); letter-spacing: .02em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-width: 0; }
+#ct-note { font: 600 calc(var(--u) * 1.8)/1.3 var(--ts-mono); color: var(--smut); white-space: nowrap; }
+/* 장면 사이 덮개 */
+#sweep, #flash { position: absolute; left: 0; top: 0; width: 100%; height: 100%; visibility: hidden; z-index: 30; }
+#flash { background: var(--accent); }
+#kick, #cnt { z-index: 20; }
+</style>
+
+<div id="viewport"><div id="stage"><div id="cam"></div></div></div>
+
+<script>/*@GSAP@*/</script>
+<script>/*@DATA@*/</script>
+<script>/*@ENGINE_JS@*/</script>
+<script>
+(function () {
+  const S = Studio, M = S.M, e = S.esc;
+  const st = S.story();
+  const cam = S.$('#cam');
+  const hlSet = new Set(st.highlight.split(/\s+/).filter(Boolean));
+  const tWords = st.title.split(/\s+/).filter(Boolean);
+  const slamWords = tWords.slice(0, 12);                     // 박마다 부딪히는 어절 (12개까지)
+  const pts = st.points, num = st.number, phs = st.photos, cta = st.cta, logo = st.logo;
+  const VERT = S.is('tall', 'portrait'), WIDE = S.is('wide');
+  const LAYS = ['band', 'stack', 'crop'];                     // 장점 장면 배치를 차례로 돌려 씀
+  const plain = w => w.replace(/[^\p{L}\p{N}]/gu, '');
+  const glen = s => [...String(s)].length;
+  // 가장 긴 어절 (같으면 뒤의 것)
+  const longest = s => { const ws = String(s).split(/\s+/).filter(Boolean); let b = ws[0] || ''; ws.forEach(w => { if (glen(plain(w)) >= glen(plain(b))) b = w; }); return b; };
+  // 끝 문구 줄: 작성자가 나눈 줄을 따르고, 한 줄이 길면 어절 사이에서 두 줄로
+  const headLines = (() => {
+    const ls = (cta.headline || logo.text).split('\n').map(x => x.trim()).filter(Boolean).slice(0, 4);   // 끝 문구가 없으면 브랜드 이름을 크게
+    if (ls.length === 1 && glen(ls[0]) > 9) {
+      const ws = ls[0].split(/\s+/);
+      if (ws.length > 1) {
+        let best = 1, bv = 1e9;
+        for (let k = 1; k < ws.length; k++) { const v = Math.abs(glen(ws.slice(0, k).join(' ')) - glen(ws.slice(k).join(' '))); if (v < bv) { bv = v; best = k; } }
+        return [ws.slice(0, best).join(' '), ws.slice(best).join(' ')];
+      }
+    }
+    return ls;
+  })();
+  // 사진을 채울 큰 글자: 강조 어절 → 제목의 가장 긴 어절
+  const phWord = st.highlight || (tWords.length ? longest(st.title) : '');
+
+  /* ---------- 글꼴: 브랜드·스타일 글꼴을 따라가되, 한글이 없는 영문 글꼴(예: Cinzel) 뒤에 한글 글꼴을 이어 붙임 ---------- */
+  const rootCS = getComputedStyle(document.documentElement);
+  const fams = v => String(v || '').split(',').map(x => x.trim()).filter(x => x && !/^(serif|sans-serif|monospace|cursive|fantasy|system-ui|ui-[a-z-]+)$/i.test(x));
+  const famList = [...new Set([...fams(rootCS.getPropertyValue('--font-display')), ...fams(rootCS.getPropertyValue('--font-heading')), ...fams(rootCS.getPropertyValue('--font-body'))])];
+  const DISP = [...famList, 'sans-serif'].join(', ');
+  const MONO = ['"Geist Mono"', ...famList, 'monospace'].join(', ');
+  const NUMF = ['"Archivo"', ...famList, 'sans-serif'].join(', ');
+
+  /* ---------- 장면 HTML ---------- */
+  const ptHtml = pts.map((p, i) => {
+    const lay = LAYS[i % 3];
+    if (lay === 'band') return `<div class="ts-sc sc-pt" data-i="${i}" data-lay="band"><div class="rows"></div>
+      <div class="bd-mid abs"><div class="wc disp">${e(p)}</div><i class="wblk"></i></div></div>`;
+    if (lay === 'stack') return `<div class="ts-sc sc-pt" data-i="${i}" data-lay="stack"><div class="sk"></div><i class="sk-ms disp nw abs" style="visibility:hidden"></i></div>`;
+    return `<div class="ts-sc sc-pt" data-i="${i}" data-lay="crop"><div class="cr-big disp nw abs">${e(longest(p))}</div>
+      <div class="cr-sm abs"><div class="cr-tx disp">${e(p)}</div></div></div>`;
+  }).join('');
+  const numHtml = num ? `<div class="ts-sc" id="sc-num">
+      <div id="nm-big" class="abs"></div><div id="nm-meas" class="abs"><span></span><i></i></div>
+      ${num.prefix ? `<div id="nm-pre" class="tag lg abs">${e(num.prefix)}</div>` : ''}
+      ${num.suffix ? `<div id="nm-suf" class="tag lg abs">${e(num.suffix)}</div>` : ''}
+      ${num.label ? `<div id="nm-lab" class="abs"><div class="wc disp">${e(num.label)}</div><i class="wblk"></i></div>` : ''}
+      ${num.source ? `<div id="nm-src" class="abs">${e(num.source)}</div>` : ''}</div>` : '';
+  const phHtml = phs.length ? `<div class="ts-sc" id="sc-ph">
+      ${phs.map(p => `<img class="ph-full abs" src="${p.src}" alt="">`).join('')}
+      ${phWord ? phs.map(p => `<div class="ph-word disp nw abs" style="background-image:url('${p.src}')">${e(phWord)}</div>`).join('') : ''}</div>` : '';
+  const logoHtml = `<div class="lg">${logo.img ? `<img src="${logo.img}" alt="">` : ''}${logo.text ? `<span class="lt">${e(logo.text)}</span>` : ''}${logo.sub ? `<span class="ls">${e(logo.sub)}</span>` : ''}</div>`;
+  const ctaHtml = `<div class="ts-sc" id="sc-cta">
+      ${headLines.map(l => `<div class="ct-ln disp nw abs">${e(l)}</div>`).join('')}
+      ${cta.button ? `<div id="ct-btn" class="abs"><div class="wc"><span>${e(cta.button)}</span><svg class="ar" viewBox="0 0 24 24" aria-hidden="true"><path d="M2.5 12H19M12.5 4.5 20 12l-7.5 7.5"/></svg></div><i class="wblk"></i></div>` : ''}
+      <div id="ct-band" class="abs"><i class="rule"></i>${logoHtml}${cta.sub ? `<div class="sub">${e(cta.sub)}</div>` : ''}</div>
+      ${st.note ? `<div id="ct-note" class="abs">${e(st.note)}</div>` : ''}</div>`;
+
+  cam.appendChild(S.h(`<div id="ts">
+    <div class="ts-sc" id="sc-hook">
+      ${slamWords.map(w => `<div class="slam disp nw abs">${e(w)}</div>`).join('')}
+      ${st.title ? `<div id="ttl" class="disp abs">${e(st.title)}</div>` : ''}
+    </div>
+    ${ptHtml}${numHtml}${phHtml}${ctaHtml}
+    ${st.kicker ? `<div id="kick" class="tag abs">${e(st.kicker)}</div>` : ''}
+    <div id="cnt" class="tag abs"></div>
+    <i id="sweep"></i><i id="flash"></i>
+  </div>`));
+  const root = S.$('#ts');
+  root.style.setProperty('--ts-disp', DISP);
+  root.style.setProperty('--ts-mono', MONO);
+  root.style.setProperty('--ts-num', NUMF);
+
+  S.start(async S => {
+    const W = S.W, H = S.H, u = Math.min(W, H) / 100, sf = S.safe;
+    const sx = sf.left, sy = sf.top, sw = W - sf.left - sf.right, sh = H - sf.top - sf.bottom;
+    const cx = sx + sw / 2, cy = sy + sh / 2;
+    const sty = S.sty();
+    const ALIGN = sty.align === 'center' ? 'center' : 'left';
+    if (sty.tracking != null && isFinite(+sty.tracking)) root.style.setProperty('--ts-tr', Math.min(0, +sty.tracking) + 'em');
+    if (sty.case === 'upper') root.classList.add('upper');
+    const ez = n => { try { const f = gsap.parseEase(n); return typeof f === 'function' ? f : null; } catch (er) { return null; } };
+    const EZ = ez(S.ease('expo.out')) || ez('expo.out');      // 주요 등장 (스타일 이징을 따름)
+    const FR = 1 / 30;
+    const ceilB = x => Math.ceil(x * 2 - 1e-6) / 2;           // 0.5초(120BPM 한 박) 단위로 올림
+
+    // 글꼴이 다 들어온 다음에 잼
+    const sample = [st.kicker, st.title, ...pts, num ? [num.prefix, num.suffix, num.label, num.source].join(' ') : '', cta.headline, cta.button, cta.sub, st.note, logo.text, logo.sub, phWord].join(' ');
+    try {
+      await Promise.all([
+        document.fonts.load(`900 100px ${DISP}`, sample), document.fonts.load(`700 100px ${DISP}`, sample),
+        document.fonts.load(`700 40px ${MONO}`, sample + '0123456789/'), document.fonts.load(`600 40px ${MONO}`, sample),
+        document.fonts.load(`900 100px ${NUMF}`, '0123456789,.')]);
+    } catch (er) { /* 글꼴을 못 불러도 대체 글꼴로 계속 */ }
+
+    /* ---------- 도우미 ---------- */
+    const nat = (el, fs = 100) => { el.style.fontSize = fs + 'px'; return [el.offsetWidth, el.offsetHeight]; };
+    // 글리치 타자 준비: 어절(줄바꿈 안 됨) 안에 글자 span, 2~3글자 묶음마다 깜빡일 상태 순서(시드 고정)
+    function glitchPrep(el, seed) {
+      const text = el.textContent; el.textContent = '';
+      const chars = [];
+      text.split('\n').forEach((line, li) => {
+        if (li) el.appendChild(document.createElement('br'));
+        line.split(/(\s+)/).forEach(part => {
+          if (!part) return;
+          if (/^\s+$/.test(part)) { el.appendChild(document.createTextNode(part)); return; }
+          const w = document.createElement('span'); w.className = 'gw';
+          for (const c of part) { const s = document.createElement('span'); s.className = 'ch'; s.textContent = c; w.appendChild(s); chars.push(s); }
+          el.appendChild(w);
+        });
+      });
+      const r = M.rng(seed), gi = [], seqs = [];
+      for (let i = 0, g = 0; i < chars.length; g++) {
+        const k = Math.min(chars.length - i, 2 + Math.floor(r() * 2));
+        const seq = []; for (let j = 0; j < 8; j++) seq.push(['g1', 'g2', 'g3', 'g1', 'g2', ''][Math.floor(r() * 6)]);
+        seqs.push(seq);
+        for (let j = 0; j < k; j++) gi.push([g, i]);
+        i += k;
+      }
+      return { chars, gi, seqs, cls: chars.map(() => '?') };
+    }
+    // t 의 순수 함수: 초당 cps 글자씩 찍히고, 묶음마다 life 초 동안 검정·강조색·테두리 블록이 한 프레임(1/15초)씩 바뀌다 멈춤
+    function glitchAt(g, t, t0, cps = 30, life = .42, hold = .45) {
+      if (!g) return;
+      const n = g.chars.length, shown = t < t0 ? 0 : Math.min(n, Math.floor((t - t0) * cps + 1e-6) + 1);
+      const curOn = t >= t0 && t < t0 + n / cps + hold;
+      g.chars.forEach((c, i) => {
+        const [gidx, i0] = g.gi[i], a = t - (t0 + i0 / cps);
+        let cls = i < shown ? 'ch' : 'ch hid';
+        if (i < shown && a >= 0 && a < life) { const s = g.seqs[gidx][Math.floor(a * 15) % 8]; if (s) cls += ' ' + s; }
+        if (curOn && i === shown - 1) cls += ' cur';
+        if (g.cls[i] !== cls) { c.className = cls; c.style.visibility = i < shown ? 'inherit' : 'hidden'; g.cls[i] = cls; }
+      });
+    }
+    // 블록 와이프: 글자색 블록이 왼쪽에서 자라 글자 자리를 덮고, 오른쪽으로 줄어들며 글을 드러냄
+    function wipeAt(box, t, t0, d1 = .15, d2 = .22) {
+      if (!box) return;
+      const wc = box._wc || (box._wc = S.$('.wc', box)), blk = box._blk || (box._blk = S.$('.wblk', box));
+      const a = M.prog(t, t0, d1), b = M.prog(t, t0 + d1, d2);
+      if (t < t0) { M.show(wc, false); M.show(blk, false); return; }
+      if (a < 1) { M.show(wc, false); M.show(blk, true); blk.style.transformOrigin = '0 50%'; blk.style.transform = `scaleX(${M.ease.outCubic(a).toFixed(4)})`; return; }
+      M.show(wc, true);
+      if (b < 1) { M.show(blk, true); blk.style.transformOrigin = '100% 50%'; blk.style.transform = `scaleX(${(1 - M.ease.inOutCubic(b)).toFixed(4)})`; }
+      else M.show(blk, false);
+    }
+    // 줄 나누기 후보마다 '꽉 찬 정도'를 재서 가장 꽉 차는 쪽을 고름 (줄마다 폭을 맞춘 포스터 스택)
+    function bestStack(words, maxL, boxW, boxH, CQ, cap, meas) {
+      const memo = {};
+      const width100 = s => { if (memo[s] == null) { meas.textContent = s; memo[s] = nat(meas, 100)[0] / 100; } return memo[s]; };
+      const n = words.length, gap = .07;
+      let best = null;
+      const tryCuts = cuts => {
+        const L = cuts.length - 1, ls = [];
+        for (let k = 0; k < L; k++) ls.push(words.slice(cuts[k], cuts[k + 1]).join(' '));
+        const w1 = ls.map(width100);
+        const fs = w1.map(w => Math.min(boxW / (w * CQ), cap));
+        const Ht = fs.reduce((a, b) => a + b, 0) + gap * (L - 1) * Math.min(...fs);
+        const k = Math.min(1, boxH / Ht);
+        let area = 0; fs.forEach((f, j) => { area += (w1[j] * CQ * f * k) * (f * k); });
+        let score = area / (boxW * boxH);
+        if (n >= 2 && L === 1) score *= .55;                 // 한 줄짜리는 스택답지 않음
+        if (!best || score > best.score + 1e-6) best = { score, ls, fs: fs.map(f => f * k), w1 };
+      };
+      const rec = (start, cuts) => {
+        if (cuts.length - 1 > maxL) return;
+        if (start === n) { tryCuts(cuts); return; }
+        for (let end = start + 1; end <= n; end++) rec(end, [...cuts, end]);
+      };
+      if (n <= 9) rec(0, [0]);
+      else { const per = Math.ceil(n / maxL), cuts = [0]; for (let k = per; k < n; k += per) cuts.push(k); cuts.push(n); tryCuts(cuts); }
+      return best;
+    }
+
+    /* ---------- 훅: 어절 슬램 ---------- */
+    const kick = S.$('#kick');
+    const kickG = kick ? glitchPrep(kick, 11) : null;
+    let kickH = 0;
+    if (kick) { M.place(kick, ALIGN === 'center' ? cx : sx, sy, { ax: ALIGN === 'center' ? .5 : 0, ay: 0 }); kickH = kick.offsetHeight; }
+    // 어절마다 다른 모양: H 가로로 꽉(잘림) · Q 좁게 눌러 위에서 떨어짐 · V 세로 기둥(세로 화면) / X 크게 잘려 옆에서 · R 작게서 커짐(살짝 기움). 강조 어절은 A(강조색 화면)
+    const CYC = [['H', 'base'], ['Q', 'inv'], [VERT ? 'V' : 'X', 'base'], ['R', 'inv']];
+    let ci = 0;
+    const aT = sy + (kickH ? kickH + 2 * u : 0), aH = sy + sh - aT, aC = aT + aH / 2;   // 슬램 자리: 꼬리표 아래 세이프존
+    const SL = S.$$('.slam').map((el, i) => {
+      const w = slamWords[i], isHl = hlSet.has(w);
+      const [v, sch] = isHl ? ['A', 'acc'] : CYC[ci++ % CYC.length];
+      if (v === 'V') el.classList.add('vt');
+      const [w100, h100] = nat(el, 100);
+      const s = { el, v, sch, sxq: 1, ax: .5, x: W / 2, y: aC, rot: 0 };
+      let fs;
+      if (v === 'V') fs = Math.min(aH * 1.04 / (h100 / 100), sw * .98 / (w100 / 100));
+      else if (v === 'Q') { s.sxq = VERT ? .6 : .7; fs = Math.min(W * 1.06 / (w100 / 100 * s.sxq), aH * .98 / (h100 / 100)); }
+      else if (v === 'X') { fs = Math.min(W * 1.38 / (w100 / 100), aH / (h100 / 100)); s.ax = 0; s.x = sx * .4; }
+      else if (v === 'R') { fs = Math.min(W * 1.16 / (w100 / 100), aH * .9 / (h100 / 100)); s.rot = -4; }
+      else fs = Math.min(W * 1.12 / (w100 / 100), aH * .92 / (h100 / 100));
+      el.style.fontSize = fs.toFixed(1) + 'px';
+      return s;
+    });
+    const nS = SL.length;
+    // 정렬된 제목 (정상 크기)
+    const ttl = S.$('#ttl');
+    if (ttl) {
+      ttl.style.width = (sw * .9).toFixed(1) + 'px'; ttl.style.textAlign = ALIGN;
+      const top = sy + (kickH ? kickH + 4 * u : 0), avail = sy + sh - top;
+      S.fit(ttl, { max: (S.is('tall') ? 15 : S.is('portrait') ? 14 : WIDE ? 15 : 13.5) * u, maxLines: 3, maxHeight: avail });
+      ttl.style.width = sw + 'px';                            // 강조 블록 여백만큼 넓혀 둠 (맞춘 줄이 다시 꺾이지 않게)
+      M.place(ttl, ALIGN === 'center' ? cx : sx, top + (avail - ttl.offsetHeight) / 2, { ax: ALIGN === 'center' ? .5 : 0, ay: 0 });
+      M.show(ttl, false);
+    }
+
+    /* ---------- 장점 장면 배치 ---------- */
+    const cnt = S.$('#cnt');
+    const ptEls = S.$$('.sc-pt');
+    const CQ = { tall: .68, portrait: .74, square: .8, wide: .9 }[S.key] || .8;   // 세로 스택 글자 누름 (좁은 폭)
+    cnt.textContent = '00 / 00';
+    M.place(cnt, sx + sw, sy, { ax: 1, ay: 0 });
+    const cntH = cnt.offsetHeight;
+    const PT = ptEls.map((el, i) => {
+      const lay = el.dataset.lay, p = pts[i], o = { el, lay, i };
+      if (lay === 'band') {
+        const mid = S.$('.bd-mid', el), wc = S.$('.wc', mid);
+        wc.style.width = (sw * (WIDE ? .84 : .98)).toFixed(1) + 'px'; wc.style.textAlign = ALIGN;
+        S.fit(wc, { max: (S.is('tall') ? 12.5 : WIDE ? 11 : 11) * u, maxLines: 2, keepLines: false });
+        const mh = mid.offsetHeight;
+        o.mid = mid; o.mx = ALIGN === 'center' ? cx : sx; o.max = ALIGN === 'center' ? .5 : 0; o.my = cy;
+        // 위아래로 거대한 윤곽 글자 줄을 채움 (줄마다 반대로 흐름)
+        const rowsEl = S.$('.rows', el), fsR = Math.round((S.is('tall') ? .2 : S.is('portrait') ? .23 : WIDE ? .3 : .27) * H);
+        const unit = `<span class="rt">${e(p)}</span><i class="sq"></i>`;
+        const probe = S.h(`<div class="row disp abs" style="font-size:${fsR}px;visibility:hidden">${unit}</div>`); rowsEl.appendChild(probe);
+        const uw = probe.offsetWidth; probe.remove();
+        const dur = 3, v = (VERT ? .34 : .22) * W, travel = v * dur + W * .7;
+        const reps = Math.max(2, Math.ceil((W + travel + uw) / Math.max(1, uw)) + 1);
+        const pitch = fsR * 1.02, gapR = 2.6 * u;
+        const ys = [];
+        for (let y = o.my - mh / 2 - gapR - fsR / 2; y > -fsR / 2; y -= pitch) ys.push(y);
+        for (let y = o.my + mh / 2 + gapR + fsR / 2; y < H + fsR / 2; y += pitch) ys.push(y);
+        const rr = M.rng(31 + i * 7);
+        o.rows = ys.map((y, k) => {
+          const r = S.h(`<div class="row disp abs" style="font-size:${fsR}px">${unit.repeat(reps)}</div>`); rowsEl.appendChild(r);
+          const dir = (k + (y < o.my ? 0 : 1)) % 2 ? 1 : -1;
+          return { el: r, y, dir, v, x0: dir < 0 ? -rr() * uw : -(v * dur + W * .7) - rr() * uw };
+        });
+      } else if (lay === 'stack') {
+        const box = S.$('.sk', el), meas = S.$('.sk-ms', el);
+        const top = sy + cntH + 3 * u, availH = sy + sh - top;
+        const maxL = S.is('tall') ? 4 : S.is('portrait') ? 3 : S.is('square') ? 3 : 2;
+        const b = bestStack(p.split(/\s+/).filter(Boolean), maxL, sw, availH * .94, CQ, availH * (VERT ? .34 : .5), meas);
+        meas.remove();
+        const gap = .07 * Math.min(...b.fs);
+        const tot = b.fs.reduce((a, c) => a + c, 0) + gap * (b.ls.length - 1);
+        let y = top + (availH - tot) / 2;
+        o.lines = b.ls.map((l, j) => {
+          const inv = b.ls.length > 1 && j === 1;                // 둘째 줄은 글자색 블록으로 뒤집음 (블록 여백만큼 글자를 조금 줄임)
+          const ln = S.h(`<div class="sk-ln disp nw abs${inv ? ' inv' : ''}">${e(l)}</div>`); box.appendChild(ln);
+          const f = b.fs[j] * (inv ? b.w1[j] / (b.w1[j] + .1) : 1);
+          ln.style.fontSize = f.toFixed(1) + 'px';
+          y += b.fs[j];
+          const r = { el: ln, x: ALIGN === 'center' ? cx : sx, ax: ALIGN === 'center' ? .5 : 0, y, h: f };
+          y += gap;
+          return r;
+        });
+      } else {
+        const big = S.$('.cr-big', el), sm = S.$('.cr-sm', el), tx = S.$('.cr-tx', sm);
+        o.big = big; o.sm = sm;
+        if (VERT) {
+          big.classList.add('vt');
+          const [w100, a100] = nat(big, 100);
+          const fs = Math.min(H * 1.04 / (a100 / 100), W * .78 / (w100 / 100));
+          big.style.fontSize = fs.toFixed(1) + 'px';
+          const colW = w100 / 100 * fs;
+          o.bx = W - colW * .32; o.by = H / 2;
+          const room = o.bx - colW / 2 - sx - 3 * u;
+          tx.style.width = Math.max(sw * .42, Math.min(sw * .7, room)).toFixed(1) + 'px';
+        } else {
+          const [w100, h100] = nat(big, 100);
+          const fs = Math.min(W * (WIDE ? 1.3 : 1.42) / (w100 / 100), H * 1.02 / (h100 / 100));
+          big.style.fontSize = fs.toFixed(1) + 'px';
+          o.bx = W / 2; o.by = WIDE ? H * .42 : H * .4;
+          tx.style.width = (sw * (WIDE ? .5 : .66)).toFixed(1) + 'px';
+        }
+        const txMax = (S.is('tall') ? 8.4 : S.is('portrait') ? 7.4 : WIDE ? 6 : 6.8) * u;
+        if (S.fit(tx, { max: txMax, maxLines: 2, keepLines: false }) < txMax * .66) S.fit(tx, { max: txMax, maxLines: 3, keepLines: false });
+        o.g = glitchPrep(tx, 101 + i * 13);
+        o.smx = sx; o.smy = sy + sh;
+      }
+      return o;
+    });
+
+    /* ---------- 숫자 배치 ---------- */
+    const NM = {};
+    if (num) {
+      const big = S.$('#nm-big'), meas = S.$('#nm-meas'), txt = S.numText(num.value, num.decimals);
+      const STR = { tall: 68, portrait: 76, square: 88, wide: 108 }[S.key] || 88;   // Archivo 너비 축
+      [big, meas].forEach(x => { x.style.fontStretch = STR + '%'; });
+      S.$('span', meas).textContent = txt;
+      const [w100] = nat(meas, 100);
+      // 숫자 윗선(대문자 높이)과 기준선 위치를 재서 숫자 눈 중심을 화면 중심에 맞춤
+      let capA = .72;
+      try { const cv = document.createElement('canvas').getContext('2d'); cv.font = `900 200px ${NUMF}`; const m = cv.measureText('0123456789'); if (m.actualBoundingBoxAscent > 10) capA = m.actualBoundingBoxAscent / 200; } catch (er) { /* 기본값 */ }
+      const pre = S.$('#nm-pre'), suf = S.$('#nm-suf'), lab = S.$('#nm-lab'), src = S.$('#nm-src');
+      // 아래 설명·출처 크기를 먼저 정함
+      if (src) { src.style.maxWidth = (sw * .9).toFixed(1) + 'px'; }
+      if (lab) { const wc = S.$('.wc', lab); wc.style.maxWidth = (sw * (WIDE ? .6 : .9)).toFixed(1) + 'px'; wc.style.width = 'max-content'; S.fit(wc, { max: (VERT ? 6.2 : 5.2) * u, maxLines: 2, keepLines: false }); }
+      const preH = Math.max(pre ? pre.offsetHeight : 0, suf ? suf.offsetHeight : 0);
+      const srcH = src ? src.offsetHeight : 0, labH = lab ? lab.offsetHeight : 0;
+      const regT = sy + (preH ? preH + 2 * u : 0), regB = sy + sh - srcH - (labH ? labH + 2.4 * u : 0);
+      const regH = Math.max(sh * .4, regB - regT);
+      const bleed = glen(txt) <= 3 ? 1.05 : glen(txt) <= 5 ? 1 : .94;   // 짧은 숫자만 화면 밖으로 잘림 (긴 숫자는 끝자리가 읽히게)
+      let fs = Math.min(W * bleed / (w100 / 100), (VERT ? regH * 1.08 : H * 1.02) / capA);
+      meas.style.fontSize = fs + 'px'; big.style.fontSize = fs.toFixed(1) + 'px';
+      const bl = S.$('i', meas).offsetTop;                    // 기준선 (상자 위에서부터)
+      const boxH = meas.offsetHeight;
+      const targetY = VERT ? (regT + regB) / 2 : H / 2;
+      // 글자 잉크 가운데를 맞춤 (숫자마다 옆 여백이 달라서, 상자 가운데가 눈 가운데가 아님)
+      let inkShift = 0;
+      try {
+        const cv = document.createElement('canvas').getContext('2d');
+        const kw = STR < 69 ? 'extra-condensed' : STR < 81 ? 'condensed' : STR < 94 ? 'semi-condensed' : STR < 106 ? 'normal' : STR < 119 ? 'semi-expanded' : 'expanded';
+        cv.font = `900 ${kw} 200px ${NUMF}`;
+        const m = cv.measureText(txt);
+        if (m.width > 1) inkShift = ((m.actualBoundingBoxLeft - m.actualBoundingBoxRight) / 2 + m.width / 2) / m.width;   // 상자 폭에 대한 비율
+      } catch (er) { /* 상자 가운데로 */ }
+      NM.x = W / 2 + inkShift * meas.offsetWidth; NM.y = targetY + boxH / 2 - (bl - capA * fs / 2);
+      NM.STR = STR; NM.big = big; NM.pre = pre; NM.suf = suf; NM.lab = lab; NM.src = src;
+      big.textContent = txt;
+      meas.remove();
+      if (pre) { NM.preG = glitchPrep(pre, 51); M.place(pre, sx, sy, { ax: 0, ay: 0 }); }
+      if (suf) { NM.sufG = glitchPrep(suf, 57); M.place(suf, sx + sw, sy, { ax: 1, ay: 0 }); }
+      if (lab) M.place(lab, sx, sy + sh - srcH - (srcH ? 1.2 * u : 0), { ax: 0, ay: 1 });
+      if (src) { NM.srcG = glitchPrep(src, 63); M.place(src, sx, sy + sh, { ax: 0, ay: 1 }); }
+    }
+
+    /* ---------- 사진 배치 ---------- */
+    const PH = { full: S.$$('.ph-full'), words: S.$$('.ph-word') };
+    if (PH.words.length) {
+      const [w100, h100] = nat(PH.words[0], 100);
+      PH.sxq = VERT ? .72 : 1;
+      const fs = Math.min(W * 1.08 / (w100 / 100 * PH.sxq), (VERT ? sh * .95 : H * .98) / (h100 / 100));
+      PH.words.forEach(w => { w.style.fontSize = fs.toFixed(1) + 'px'; });
+      PH.y = VERT ? cy : H / 2;
+    }
+
+    /* ---------- 끝 장면 배치 ---------- */
+    const CT = {};
+    {
+      const band = S.$('#ct-band'), note = S.$('#ct-note'), btn = S.$('#ct-btn');
+      const lgImg = S.$('#ct-band .lg img');
+      if (lgImg) lgImg.style.maxWidth = (sw * .4).toFixed(1) + 'px';
+      band.style.width = sw + 'px';
+      const sub = S.$('#ct-band .sub'); if (sub) sub.style.maxWidth = (sw * .55).toFixed(1) + 'px';
+      const noteH = note ? note.offsetHeight + 1 * u : 0;
+      if (note && note.offsetWidth > sw) note.style.fontSize = (1.8 * u * sw / note.offsetWidth * .98).toFixed(2) + 'px';
+      const bandH = band.offsetHeight;
+      CT.bandY = sy + sh - noteH - bandH;
+      M.place(band, sx, CT.bandY, { ax: 0, ay: 0 });
+      if (note) M.place(note, sx, sy + sh, { ax: 0, ay: 1 });
+      let btnH = 0;
+      if (btn) {
+        const wc = S.$('.wc', btn);
+        if (wc.offsetWidth > sw) { wc.style.fontSize = (5.2 * u * sw / wc.offsetWidth * .98).toFixed(1) + 'px'; }
+        btnH = btn.offsetHeight;
+      }
+      // 끝 문구: 줄마다 폭을 맞춘 굵은 스택 (짧은 줄이 지나치게 커지지 않게 상한). 문구 + 버튼 묶음을 띠 위 자리 가운데에
+      const lines = S.$$('.ct-ln');
+      const gapB = btn ? 5 * u : 0;
+      const top = sy, bottom = CT.bandY - 4 * u, availH = Math.max(10 * u, bottom - top - btnH - gapB);
+      const cap = (S.is('tall') ? 19 : S.is('portrait') ? 16 : WIDE ? 15 : 14) * u;
+      const fs = lines.map(l => Math.min(sw / (nat(l, 100)[0] / 100), cap));
+      const gap = .06;
+      const tot = fs.reduce((a, b) => a + b * (1 + gap), 0) - (fs.length ? fs[fs.length - 1] * gap : 0);
+      const k = tot > availH ? availH / tot : 1;
+      const grp = tot * k + (btn ? gapB + btnH : 0);
+      let y = top + (bottom - top - grp) * (VERT ? .42 : .5);
+      CT.lines = lines.map((l, j) => {
+        const f = fs[j] * k; l.style.fontSize = f.toFixed(1) + 'px';
+        M.place(l, ALIGN === 'center' ? cx : sx, y, { ax: ALIGN === 'center' ? .5 : 0, ay: 0 });
+        M.show(l, false);
+        y += f * (1 + gap);
+        return l;
+      });
+      if (btn) {
+        CT.btnY = (lines.length ? y - fs[fs.length - 1] * k * gap : y) + gapB;
+        M.place(btn, ALIGN === 'center' ? cx : sx, CT.btnY, { ax: ALIGN === 'center' ? .5 : 0, ay: 0 });
+      }
+      CT.band = band; CT.note = note; CT.btn = btn; CT.rule = S.$('#ct-band .rule');
+      CT.bandKids = [...band.children].filter(x => !x.classList.contains('rule'));
+    }
+
+    /* ---------- 시간표 (120BPM, 0.5초 한 박) ---------- */
+    const scenes = [];
+    const tS = st.kicker && nS ? .5 : 0;                     // 꼬리표가 있으면 한 박 뒤에 첫 어절
+    const iv = nS <= 5 ? .5 : .25;                           // 어절이 많으면 반 박마다
+    const tA = nS ? tS + nS * iv : .5;                       // 문장으로 정렬
+    let tE = tA;
+    if (ttl) tE = S.fx.enter(ttl, tA, { highlight: st.highlight, def: 'stamp' });
+    const hls = ttl ? S.$$('.hl', ttl) : [];
+    const tHL = Math.max(tA + .2, tE - .25);
+    const hookOn = !!(nS || st.kicker);
+    const hookEnd = hookOn ? ceilB(Math.max(tA + (nS ? 2 : 1.5), tE + 1)) : 0;
+    if (hookOn) scenes.push({ id: 'hook', el: S.$('#sc-hook'), t0: 0, t1: hookEnd,
+      scheme: t => (!nS || t < tS || t >= tA) ? 'base' : SL[Math.min(nS - 1, Math.floor((t - tS) / iv + 1e-6))].sch, render: renderHook });
+    let T = hookEnd;
+    PT.forEach((o, i) => {
+      const d = 2 + (glen(pts[i].replace(/\s/g, '')) > 12 ? .5 : 0);
+      const flipS = i >= 3;                                  // 두 바퀴째는 색을 뒤집어 새로 보이게
+      const base = o.lay === 'crop' ? 'inv' : 'base';
+      const sch = flipS ? (base === 'base' ? 'inv' : 'base') : base;
+      scenes.push({ id: 'pt', pt: o, el: o.el, t0: T, t1: T + d, scheme: () => sch, render: t => renderPoint(o, t) });
+      o.t0 = T; o.t1 = T + d; T += d;
+    });
+    const pops = [];                                         // 강조색 번쩍임 (두 프레임)
+    if (num) {
+      const t0 = T;
+      NM.t0 = t0;
+      NM.tLand = S.fx.num(NM.big, t0 + .3, 1.2, num.value, { decimals: num.decimals });
+      pops.push(NM.tLand);
+      scenes.push({ id: 'num', el: S.$('#sc-num'), t0, t1: t0 + 3, scheme: () => 'base', render: renderNum });
+      T += 3;
+    }
+    if (phs.length) {
+      const d = phs.length * .5 + 1;
+      PH.t0 = T; PH.t1 = T + d;
+      scenes.push({ id: 'ph', el: S.$('#sc-ph'), t0: T, t1: T + d, scheme: () => 'inv', render: renderPh });
+      T += d;
+    }
+    {
+      const t0 = T;
+      CT.t0 = t0;
+      let tt = t0 + .1;
+      CT.lines.forEach((l, j) => { tt = Math.max(tt, S.fx.enter(l, t0 + .1 + j * .3, { def: 'stamp' })); });
+      CT.tBtn = Math.min(t0 + 2, Math.max(t0 + .6, tt - .1));
+      CT.tBand = CT.tBtn + .3;
+      const d = 4;
+      CT.tInv = t0 + d - 1;                                  // 마지막 두 박: 화면 색이 뒤집힘
+      pops.push(CT.tInv);
+      scenes.push({ id: 'cta', el: S.$('#sc-cta'), t0, t1: t0 + d, scheme: t => t >= CT.tInv ? 'inv' : 'base', render: renderCta });
+      T += d;
+    }
+    const END = T;
+    S.setDuration(END);
+    // 장면 사이 이음: 글자색 블록 쓸기와 강조색 플래시를 번갈아
+    const bounds = [];
+    for (let k = 1; k < scenes.length; k++) {
+      const from = scenes[k - 1], B = scenes[k].t0;
+      bounds.push({ B, kind: k % 2 ? 'sweep' : 'flash', dir: ((k - 1) >> 1) % 2 ? -1 : 1, col: from.scheme(B - .01) });
+    }
+    const SCH = { base: ['var(--bg)', 'var(--on-bg)'], inv: ['var(--on-bg)', 'var(--bg)'], acc: ['var(--accent)', 'var(--accent-ink)'] };
+    let curSch = '';
+    const setScheme = n => { if (n === curSch) return; curSch = n; root.style.setProperty('--sbg', SCH[n][0]); root.style.setProperty('--sfg', SCH[n][1]); };
+    const sweep = S.$('#sweep'), flash = S.$('#flash');
+
+    /* ---------- 장면 그리기 (모두 t 의 순수 함수) ---------- */
+    function renderHook(t) {
+      glitchAt(kickG, t, 0, 28);
+      const ai = t < tS ? -1 : Math.min(nS - 1, Math.floor((t - tS) / iv + 1e-6));
+      SL.forEach((s, i) => {
+        const pre = i === 0 && t < tS;
+        const post = i === nS - 1 && t >= tA && t < tA + .32;   // 문장이 찍히는 동안 마지막 어절이 윤곽선으로 작아지며 빠짐
+        if ((t >= tA && !post) || (t < tA && !pre && i !== ai)) { M.show(s.el, false); return; }
+        const gh = pre || post;
+        if (s._g !== gh) { s.el.classList.toggle('ghost', gh); s._g = gh; }
+        if (pre) {   // 꼬리표가 찍히는 동안 첫 어절이 윤곽선으로 다가옴
+          const k = M.prog(t, 0, tS);
+          M.place(s.el, s.x, s.y, { s: .8 + .16 * M.ease.outCubic(k), sx: s.sxq, ax: s.ax, rot: s.rot, o: .4 + .6 * Math.min(1, k * 2) });
+          return;
+        }
+        if (post) {
+          const k = M.ease.outCubic(M.prog(t, tA, .32));
+          M.place(s.el, s.x, s.y, { s: 1.035 - .25 * k, sx: s.sxq, ax: s.ax, rot: s.rot, o: .5 * (1 - k) });
+          return;
+        }
+        const ti = tS + i * iv, k = EZ(M.prog(t, ti, .16)), z = 1 + .035 * M.prog(t, ti, iv);
+        let x = s.x, y = s.y, sc = 1;
+        if (s.v === 'H' || s.v === 'A') sc = M.lerp(1.45, 1, k);
+        else if (s.v === 'Q') y = s.y - (1 - k) * H * .3;
+        else if (s.v === 'V') y = s.y + (1 - k) * H * .32;
+        else if (s.v === 'X') x = s.x + (1 - k) * W * .4;
+        else if (s.v === 'R') sc = M.lerp(.55, 1, k);
+        M.place(s.el, x, y, { s: sc * z, sx: s.sxq, ax: s.ax, rot: s.rot });
+      });
+      if (ttl) M.show(ttl, t >= tA);
+      // 정렬 뒤 강조 어절이 몇 프레임 깜빡이다 강조색 블록으로 멈춤
+      const a = t - tHL, HX = ['hx1', 'hx2', '', 'hx1', 'hx2', ''];
+      const cls = a < 0 || a >= .4 ? '' : HX[Math.floor(a * 15) % HX.length];
+      hls.forEach(hh => { if (hh._c !== cls) { hh.classList.remove('hx1', 'hx2'); if (cls) hh.classList.add(cls); hh._c = cls; } });
+    }
+    function renderPoint(o, t) {
+      const t0 = o.t0, lt = t - t0;
+      if (o.lay === 'band') {
+        const rush = 1 - EZ(M.prog(t, t0, .6));               // 들어올 때 빠르게 몰려옴
+        o.rows.forEach(r => M.place(r.el, r.x0 + r.dir * (r.v * lt + W * .7 * (1 - rush)), r.y, { ax: 0, ay: .5 }));
+        M.place(o.mid, o.mx, o.my, { ax: o.max, ay: .5 });
+        wipeAt(o.mid, t, t0 + .08);
+      } else if (o.lay === 'stack') {
+        const n = o.lines.length;
+        o.lines.forEach((l, j) => {
+          const tl0 = t0 - .1 + (n - 1 - j) * S.stg(.1), fd = .24, tLand = tl0 + fd;   // 아래 줄부터 떨어져 쌓임 (덮개 뒤에서 이미 떨어지기 시작)
+          if (t < tl0) { M.show(l.el, false); return; }
+          let y = l.y, sq = 1;
+          if (t < tLand) { const k = M.prog(t, tl0, fd); y = M.lerp(-2 * u, l.y, k * k); }
+          else sq = 1 - .14 * (1 - M.spring(t - tLand, { f: 5, z: .8 }));
+          M.place(l.el, l.x, y, { sx: CQ, sy: sq, ax: l.ax, ay: 1 });
+        });
+      } else {
+        const k = EZ(M.prog(t, t0, .34)), dr = M.prog(t, t0, o.t1 - t0);
+        if (VERT) M.place(o.big, o.bx, o.by + (1 - k) * H * .9 - dr * H * .05, { ax: .5, ay: .5 });
+        else M.place(o.big, o.bx + (1 - k) * W * .8 - dr * W * .08, o.by, { ax: .5, ay: .5 });
+        M.place(o.sm, o.smx, o.smy, { ax: 0, ay: 1 });
+        glitchAt(o.g, t, t0 + .28, 30);
+      }
+    }
+    function renderNum(t) {
+      const t0 = NM.t0, tl = NM.tLand;
+      // 굴러가는 동안 좁게 뭉쳐 있다가, 멈추는 순간 제 폭으로 풀리며 쿵
+      const rel = EZ(M.prog(t, tl - .04, .34));
+      NM.big.style.fontStretch = M.lerp(Math.max(62, NM.STR - 24), NM.STR, rel).toFixed(1) + '%';
+      const ent = EZ(M.prog(t, t0, .22));
+      const kick = t >= tl ? .05 * (1 - EZ(M.prog(t, tl, .4))) : 0;
+      M.place(NM.big, NM.x, NM.y, { s: M.lerp(1.25, 1, ent) + kick, ax: .5, ay: .5 });
+      glitchAt(NM.preG, t, t0 + .12, 24);
+      glitchAt(NM.sufG, t, t0 + .3, 24);
+      wipeAt(NM.lab, t, tl + .08);
+      if (NM.src) M.show(NM.src, t >= tl + .3);              // 빈 상자가 먼저 보이지 않게
+      glitchAt(NM.srcG, t, tl + .3, 60, .3, .2);
+    }
+    function renderPh(t) {
+      const n = PH.full.length, lt = t - PH.t0;
+      const idx = Math.max(0, Math.min(n - 1, Math.floor(lt / .5 + 1e-6))), sub = lt - idx * .5;
+      const full = !PH.words.length || sub < .25;             // 박 사이 0.25초는 사진이 화면 가득
+      PH.full.forEach((im, j) => {
+        const on = full && j === idx;
+        M.show(im, on);
+        if (on) im.style.transform = `scale(${(1.1 - .1 * EZ(M.prog(sub, 0, .25))).toFixed(4)})`;
+      });
+      PH.words.forEach((w, j) => {
+        const on = !full && j === idx;
+        if (!on) { M.show(w, false); return; }
+        const k = EZ(M.prog(sub, .25, .2));
+        M.place(w, W / 2, PH.y, { s: M.lerp(1.12, 1, k) + .03 * M.prog(t, PH.t0, PH.t1 - PH.t0), sx: PH.sxq });
+        w.style.backgroundPosition = `${(30 + 40 * M.prog(t, PH.t0 + idx * .5, 1.2)).toFixed(2)}% 50%`;
+      });
+    }
+    function renderCta(t) {
+      CT.lines.forEach(l => M.show(l, t >= CT.t0));
+      wipeAt(CT.btn, t, CT.tBtn, .16, .24);
+      if (CT.btn) { const wc = CT.btn._wc; const f = t >= CT.tInv; if (wc._f !== f) { wc.classList.toggle('solid', f); wc._f = f; } }
+      const rk = EZ(M.prog(t, CT.tBand, .45));
+      CT.rule.style.transform = `scaleX(${rk.toFixed(4)})`;
+      CT.bandKids.forEach((x, j) => { const k = M.spring(t - (CT.tBand + .15 + j * .08), 'snappy'); x.style.opacity = M.clamp(k * 1.4).toFixed(3); x.style.transform = `translateY(${((1 - Math.min(1, k)) * 3 * u).toFixed(1)}px)`; });
+      if (CT.note) CT.note.style.opacity = M.clamp((t - (CT.tBand + .4)) * 4).toFixed(3);
+    }
+
+    S.ambient(t => {
+      let cur = null;
+      scenes.forEach((sc, i) => { const on = t >= sc.t0 && (t < sc.t1 || i === scenes.length - 1); M.show(sc.el, on); if (on) cur = sc; });
+      // 덮개: 블록 쓸기 · 플래시
+      let fl = false, flip = false, sw_ = null;
+      for (const b of bounds) {
+        if (b.kind === 'flash') {
+          if (t >= b.B - 2 * FR - 1e-4 && t < b.B + FR - 1e-4) fl = true;
+          else if (t >= b.B + FR - 1e-4 && t < b.B + 3 * FR - 1e-4) flip = true;   // 플래시 뒤 두 프레임은 색이 뒤집힌 채
+        } else if (t >= b.B - .2 && t < b.B + .24) sw_ = b;
+      }
+      for (const p of pops) if (t >= p - 1e-4 && t < p + 2 * FR - 1e-4) fl = true;
+      let sch = cur ? cur.scheme(t) : 'base';
+      if (flip) sch = sch === 'base' ? 'inv' : 'base';
+      setScheme(sch);
+      if (cur) cur.render(t);
+      // 꼬리표·번호
+      if (kick) M.show(kick, !!cur && cur.id === 'hook');
+      const isPt = !!cur && (cur.id === 'pt' || cur.id === 'ph');
+      M.show(cnt, isPt);
+      if (isPt) {
+        const txt = cur.id === 'pt' ? `${String(cur.pt.i + 1).padStart(2, '0')} / ${String(pts.length).padStart(2, '0')}`
+          : `${String(Math.min(phs.length, Math.floor((t - PH.t0) / .5 + 1e-6) + 1)).padStart(2, '0')} / ${String(phs.length).padStart(2, '0')}`;
+        if (cnt.textContent !== txt) cnt.textContent = txt;
+        cnt.classList.toggle('on', t - cur.t0 < .14);
+      }
+      flash.style.visibility = fl ? 'inherit' : 'hidden';
+      if (sw_) {
+        const a = M.prog(t, sw_.B - .2, .2), b = M.prog(t, sw_.B, .24);
+        let l = 0, r = W;
+        if (t < sw_.B) r = W * M.ease.inCubic(a); else l = W * M.ease.outCubic(b);
+        if (sw_.dir < 0) [l, r] = [W - r, W - l];
+        sweep.style.visibility = r - l > .5 ? 'inherit' : 'hidden';
+        sweep.style.background = SCH[sw_.col][1];
+        sweep.style.transformOrigin = '0 0';
+        sweep.style.transform = `translateX(${l.toFixed(1)}px) scaleX(${((r - l) / W).toFixed(4)})`;
+      } else sweep.style.visibility = 'hidden';
+    });
+  });
+})();
+</script>

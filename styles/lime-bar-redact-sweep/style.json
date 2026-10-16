@@ -1,0 +1,145 @@
+{
+  "id": "lime-bar-redact-sweep",
+  "name": "라임 막대 가림 쓸기",
+  "group": "타이포",
+  "template": "typeslam",
+  "summary": "거의 검은 화면 위로 형광 라임 판과 흰 막대가 번갈아 쓸고 지나가요. 굵고 빽빽한 그로테스크 문장은 검은 상자 안이나 라임 바탕 위에 쳐지는 보안 런칭 필름이에요",
+  "tags": [
+    "타이포",
+    "형광 라임",
+    "어두움",
+    "보안",
+    "개발 도구",
+    "런칭"
+  ],
+  "hand": false,
+  "source": {
+    "site": "keyframe.gallery",
+    "ref": "mux:bWVa6YL3jVilocplrLLcH5ZHCc2YU00BuvMFhc7lT614",
+    "at": "0–39.6초",
+    "note": "숯빛 바탕과 형광 라임 판이 와이프로 번갈아 바뀌는 리듬, 라임 판 위에 깔린 가는 작도선과 모서리 꼬리표, 흰 막대가 검은 문장 상자를 꿰고 지나가는 장면, 막대 끝에 달린 라임 표지판, 고정폭 대문자 문구가 벽처럼 쌓이고 라임 세로 막대가 그 위를 쓰는 장면, 화면을 가르는 큰 체크 획, 비스듬히 누운 회색 꼬리표 도식에서 한 갈래만 라임으로 켜지는 장면"
+  },
+  "palette": [
+    "#111111",
+    "#E3F26B",
+    "#F2F2F0",
+    "#6E6E6A",
+    "#D9443A"
+  ],
+  "colors": {
+    "bg": "#111111",
+    "onBg": "#F2F2F0",
+    "onBgMuted": "rgba(242,242,240,.6)",
+    "paper": "#F2F2F0",
+    "ink": "#111111",
+    "accent": "#E3F26B",
+    "accentInk": "#111111",
+    "pattern": "rgba(255,255,255,.07)",
+    "glow": "rgba(227,242,107,.35)"
+  },
+  "type": {
+    "display": [
+      "Archivo",
+      "Noto Sans KR"
+    ],
+    "heading": [
+      "Archivo",
+      "Noto Sans KR"
+    ],
+    "body": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "mono": [
+      "Geist Mono",
+      "Noto Sans KR"
+    ]
+  },
+  "fonts": [
+    {
+      "family": "Archivo",
+      "weight": "100 900",
+      "stretch": "62% 125%",
+      "file": "fonts/Archivo-Variable.woff2"
+    },
+    {
+      "family": "Geist",
+      "weight": "100 900",
+      "file": "fonts/Geist-Variable.woff2"
+    },
+    {
+      "family": "Geist Mono",
+      "weight": "100 900",
+      "file": "fonts/GeistMono-Variable.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 500,
+      "file": "fonts/NotoSansKR-Medium.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 700,
+      "file": "fonts/NotoSansKR-Bold.woff2"
+    }
+  ],
+  "look": {
+    "vignette": 0.2
+  },
+  "shape": {
+    "radius": "calc(var(--u) * 0.3)"
+  },
+  "motion": {
+    "pace": "빠름",
+    "bpm": 120,
+    "ease": "expo.out",
+    "stagger": 0.6,
+    "transitions": [
+      "wipe",
+      "cut",
+      "push"
+    ]
+  },
+  "scenes": {
+    "bg": "lines",
+    "align": "left",
+    "card": "outline",
+    "marker": "highlight",
+    "weight": 600,
+    "tracking": -0.04,
+    "case": "upper",
+    "rough": false,
+    "title": "type",
+    "frame": "none",
+    "deco": [
+      "marks"
+    ],
+    "number": "scramble",
+    "scale": 1.15,
+    "schemes": [
+      "dark",
+      "accent",
+      "dark",
+      "dark",
+      "accent"
+    ]
+  },
+  "signature": [
+    "형광 라임 판이 한쪽에서 0.35초 만에 화면 전체를 쓸고 덮어요. 그 위에 검정 그로테스크 문장이 커서 없이 빠르게 쳐지고, 한 박 반쯤 머문 뒤 다시 검은 화면으로 쓸려 넘어가요",
+    "흰 가로 막대가 왼쪽에서 화면을 가로지르며 두꺼운 흰 테두리 속 검은 문장 상자를 꿰고 지나가요. 막대 끝에는 픽셀 아이콘이 박힌 라임 정사각 표지판이 달려 밀려오고, 상자 속 낱말 하나만 라임으로 켜져요",
+    "같은 짧은 고정폭 대문자 문구가 한 줄씩 늘어나 화면을 벽처럼 채우고, 라임 세로 막대가 그 위를 쓸고 가요. 이어서 화면보다 큰 라임 체크 획이 대각선으로 그어지거나, 비스듬히 누운 회색 꼬리표 도식에서 연결선 한 갈래만 라임 빛으로 켜져요"
+  ],
+  "fits": [
+    "보안·인증 기능 런칭",
+    "개발자 도구 소개",
+    "AI 에이전트·자동화 서비스",
+    "문제 → 해결을 짧게 보여 주는 제품 영상"
+  ],
+  "avoid": [
+    "따뜻한 종이 질감",
+    "세리프·손글씨 글꼴",
+    "라임 말고 다른 강조색을 넓게 쓰기",
+    "둥글고 말랑한 모서리",
+    "느린 서서히 전환"
+  ]
+}

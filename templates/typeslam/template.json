@@ -1,0 +1,8 @@
+{
+  "name": "타이포 쇼",
+  "description": "글자만으로 짠 키네틱 타이포. 제목 어절이 박마다 화면을 꽉 채운 채 잘려 부딪혀 들어오고 문장으로 정렬된 뒤, 장점마다 반대로 흐르는 거대 글자 띠·떨어져 쌓이는 압축 글자·잘린 초대형 한 단어가 번갈아 나오고, 화면보다 큰 숫자와 굵게 쌓이는 끝 문구로 마무리해요. 장면 사이는 글자색 블록이 쓸고 가거나 강조색으로 번쩍여요.",
+  "fonts": [
+    { "family": "Archivo", "weight": "100 900", "stretch": "62% 125%", "file": "fonts/Archivo-Variable.woff2" },
+    { "family": "Geist Mono", "weight": "100 900", "file": "fonts/GeistMono-Variable.woff2" }
+  ]
+}

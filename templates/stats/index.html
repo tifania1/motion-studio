@@ -1,0 +1,164 @@
+<title>/*@TITLE@*/</title>
+<style>
+/*@FONTFACES@*/
+/*@BRAND_CSS@*/
+/*@ENGINE_CSS@*/
+
+/* ===== stats 템플릿: 숫자로 보는 성과 (대시보드) =====
+   카드 여러 장이 놓인 대시보드를 카메라가 한 장씩 날아가 확대하고, 숫자가 주행거리계처럼 굴러 맞춰지며
+   막대·고리·선 그래프가 그려짐. 마지막엔 전체가 보이게 물러나며 인사. */
+#st { position: absolute; inset: 0; background: var(--bg); overflow: hidden; }
+#st .grid { position: absolute; inset: -50%; background-image: linear-gradient(var(--pattern) 1px, transparent 1px), linear-gradient(90deg, var(--pattern) 1px, transparent 1px); background-size: calc(var(--u) * 6) calc(var(--u) * 6); }
+#world { position: absolute; left: 0; top: 0; transform-origin: 0 0; }
+.abs { position: absolute; left: 0; top: 0; }
+.card { position: absolute; border-radius: calc(var(--u) * 3.4); background: color-mix(in srgb, var(--on-bg) 7%, transparent); box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--on-bg) 16%, transparent); padding: calc(var(--u) * 5); box-sizing: border-box; color: var(--on-bg); overflow: hidden; }
+.card .lb { font: 800 calc(var(--u) * 3.6)/1.2 var(--font-body); color: var(--on-bg-muted); display: flex; align-items: center; gap: calc(var(--u) * 1.6); }
+.card .lb i { width: calc(var(--u) * 1.6); height: calc(var(--u) * 1.6); border-radius: 50%; background: var(--accent); }
+.card .num { display: flex; align-items: baseline; margin-top: calc(var(--u) * 2.4); }
+.odo { display: inline-flex; font: 900 calc(var(--u) * 17)/1 "Archivo", var(--font-display); font-stretch: 80%; letter-spacing: -.02em; color: var(--on-bg); font-variant-numeric: tabular-nums; }
+.odo .d { display: inline-block; height: 1em; overflow: hidden; }
+.odo .d .col { display: flex; flex-direction: column; }
+.odo .d .col i { font-style: normal; height: 1em; display: block; text-align: center; }
+.odo .s { display: inline-block; }
+.card .un { font: 900 calc(var(--u) * 5.6)/1 var(--font-heading); color: var(--accent); margin-left: calc(var(--u) * 1.6); }
+.viz { position: absolute; left: calc(var(--u) * 5); right: calc(var(--u) * 5); bottom: calc(var(--u) * 4.4); }
+.bars { display: flex; align-items: flex-end; gap: 6%; }
+.bars b { flex: 1; background: color-mix(in srgb, var(--on-bg) 22%, transparent); border-radius: calc(var(--u) * .8) calc(var(--u) * .8) 0 0; transform-origin: 50% 100%; }
+.bars b:last-child { background: var(--accent); }
+.viz svg { width: 100%; height: 100%; overflow: visible; }
+.viz .track { fill: none; stroke: color-mix(in srgb, var(--on-bg) 14%, transparent); }
+.viz .arc { fill: none; stroke: var(--accent); stroke-linecap: round; }
+.viz .ln { fill: none; stroke: var(--accent); stroke-linecap: round; stroke-linejoin: round; }
+.viz .area { fill: var(--accent); opacity: .16; }
+.viz .dot { fill: var(--accent); }
+.dots { display: flex; flex-wrap: wrap; gap: calc(var(--u) * 2); align-items: flex-end; align-content: flex-end; }
+.dots b { width: calc(var(--u) * 9); height: calc(var(--u) * 9); border-radius: 50%; background: var(--accent); }
+.dots b:nth-child(even) { background: color-mix(in srgb, var(--on-bg) 30%, transparent); }
+#ttl { text-align: center; }
+#ttl .k { font: 900 calc(var(--u) * 3.2)/1 "Archivo", var(--font-display); font-stretch: 125%; letter-spacing: .3em; color: var(--accent); }
+#ttl h1 { font: 900 calc(var(--u) * 11)/1.12 var(--font-heading); color: var(--on-bg); letter-spacing: -.04em; white-space: pre-line; word-break: keep-all; margin: calc(var(--u) * 2.4) 0 0; }
+#ttl h1 .ln { display: block; overflow: hidden; padding-bottom: .06em; }
+#ttl h1 .ln span { display: inline-block; }
+#thanks { text-align: center; }
+#thanks h2 { font: 900 calc(var(--u) * 8)/1.15 var(--font-heading); color: var(--on-bg); letter-spacing: -.035em; white-space: pre-line; word-break: keep-all; margin: 0; }
+#thanks .lg { display: flex; justify-content: center; align-items: baseline; gap: calc(var(--u) * 1.4); margin-top: calc(var(--u) * 2.4); }
+#thanks .lg img { height: calc(var(--u) * 8); width: auto; }
+#thanks .lt { font: 900 calc(var(--u) * 5)/1 var(--font-display); color: var(--accent); }
+#thanks .ls { font: 700 calc(var(--u) * 2.2)/1 var(--font-display); letter-spacing: .3em; color: var(--on-bg); }
+#thanks .hd { font: 700 calc(var(--u) * 3.2)/1.3 var(--font-body); color: var(--on-bg-muted); margin-top: calc(var(--u) * 1.2); }
+#src { font: 600 calc(var(--u) * 2)/1.3 var(--font-body); color: var(--on-bg-muted); white-space: pre-line; }
+</style>
+
+<div id="viewport"><div id="stage"><div id="cam"></div></div></div>
+
+<script>/*@GSAP@*/</script>
+<script>/*@DATA@*/</script>
+<script>/*@ENGINE_JS@*/</script>
+<script>
+(function () {
+  const S = Studio, M = S.M, C = S.content, B = S.brand, e = S.esc;
+  const cam = S.$('#cam');
+  const stats = (C.stats || []).slice(0, 4);
+  const logoImg = B.logo && S.img(B.logo);
+  const fmt = v => { const s = String(v); if (/[^\d]/.test(s)) return s; return Number(s).toLocaleString('ko-KR'); };
+  const odo = v => [...fmt(v)].map(ch => /\d/.test(ch) ? `<span class="d"><span class="col">${Array.from({ length: 40 }, (_, k) => `<i>${k % 10}</i>`).join('')}</span></span>` : `<span class="s">${e(ch)}</span>`).join('');
+  const vizHtml = st => {
+    const v = st.viz || 'bars';
+    if (v === 'bars') { const ser = (st.series && st.series.length ? st.series : [3, 4, 5, 6, 7, 8]).slice(0, 12); const mx = Math.max(...ser); return `<div class="viz bars" data-viz="bars">${ser.map(x => `<b style="height:${(x / mx * 100).toFixed(1)}%"></b>`).join('')}</div>`; }
+    if (v === 'ring') return `<div class="viz" data-viz="ring"><svg viewBox="0 0 100 100" preserveAspectRatio="xMaxYMax meet"><circle class="track" cx="50" cy="50" r="40" stroke-width="12"/><circle class="arc" cx="50" cy="50" r="40" stroke-width="12" transform="rotate(-90 50 50)"/></svg></div>`;
+    if (v === 'line') return `<div class="viz" data-viz="line"><svg preserveAspectRatio="none"><path class="area"/><path class="ln"/><circle class="dot" r="1"/></svg></div>`;
+    if (v === 'dots') return `<div class="viz dots" data-viz="dots">${Array.from({ length: Math.min(24, Math.max(1, parseInt(st.value, 10) || 1)) }, () => '<b></b>').join('')}</div>`;
+    return '';
+  };
+  cam.appendChild(S.h(`<div id="st"><div class="grid"></div>
+    <div id="world">${stats.map((st, i) => `<div class="card" data-i="${i}"><div class="lb"><i></i>${e(st.label || '')}</div>
+      <div class="num"><span class="odo">${odo(st.value ?? '')}</span><span class="un">${e(st.unit || '')}</span></div>${vizHtml(st)}</div>`).join('')}</div>
+    <div id="ttl" class="abs">${C.label ? `<div class="k">${e(C.label)}</div>` : ''}<h1>${String(C.title || '').split('\n').map(l => `<span class="ln"><span>${e(l)}</span></span>`).join('')}</h1></div>
+    <div id="thanks" class="abs">${C.thanks ? `<h2>${e(C.thanks)}</h2>` : ''}<div class="lg">${logoImg ? `<img src="${logoImg}" alt="">` : ''}${B.logoText ? `<span class="lt">${e(B.logoText)}</span>` : ''}${B.logoSub ? `<span class="ls">${e(B.logoSub)}</span>` : ''}</div>${(C.cta || {}).sub ? `<div class="hd">${e(C.cta.sub)}</div>` : ''}</div>
+    ${C.source ? `<div id="src" class="abs">${e(C.source)}</div>` : ''}
+  </div>`));
+
+  S.start(S => {
+    const W = S.W, H = S.H, u = Math.min(W, H) / 100, sf = S.safe;
+    const sx = sf.left, sy = sf.top, sw = W - sf.left - sf.right, sh = H - sf.top - sf.bottom;
+    const wide = S.is('wide');
+    const n = Math.max(1, stats.length);
+    // 카드 판: 2열 격자 (가로 화면은 한 줄)
+    const cols = wide ? Math.min(n, 4) : Math.min(2, n), rows = Math.ceil(n / cols);
+    const cw = wide ? 92 * u : 86 * u, ch = wide ? 62 * u : 74 * u, g = 4 * u;
+    const cards = S.$$('.card');
+    const pos = cards.map((c, i) => { const col = i % cols, row = Math.floor(i / cols); c.style.left = col * (cw + g) + 'px'; c.style.top = row * (ch + g) + 'px'; c.style.width = cw + 'px'; c.style.height = ch + 'px'; return { x: col * (cw + g) + cw / 2, y: row * (ch + g) + ch / 2 }; });
+    const GW = cols * cw + (cols - 1) * g, GH = rows * ch + (rows - 1) * g;
+    const world = S.$('#world');
+    // 카드 안 그래프 크기
+    cards.forEach((c, i) => {
+      const viz = S.$('.viz', c); if (!viz) return;
+      const top = S.$('.num', c).offsetTop + S.$('.num', c).offsetHeight + 4 * u;
+      viz.style.top = top + 'px';
+      const vh = ch - top - 4.4 * u;
+      if (viz.dataset.viz === 'line') {
+        const st = stats[i], ser = (st.series && st.series.length ? st.series : [1, 2, 3]).slice(0, 16), mx = Math.max(...ser), mn = Math.min(...ser);
+        const vw = viz.offsetWidth, svg = S.$('svg', viz); svg.setAttribute('viewBox', `0 0 ${vw} ${vh}`);
+        const P = ser.map((v, k) => [k / (ser.length - 1 || 1) * vw, vh - (v - mn) / ((mx - mn) || 1) * vh * .9 - vh * .05]);
+        const d = 'M ' + P.map(p => p.map(x => x.toFixed(1)).join(' ')).join(' L ');
+        S.$('.ln', svg).setAttribute('d', d); S.$('.ln', svg).setAttribute('stroke-width', u * .9);
+        S.$('.area', svg).setAttribute('d', d + ` L ${vw} ${vh} L 0 ${vh} Z`);
+        const dot = S.$('.dot', svg); dot.setAttribute('r', u * 1.6); dot.setAttribute('cx', P[P.length - 1][0]); dot.setAttribute('cy', P[P.length - 1][1]);
+      }
+    });
+    // 카메라: 각 카드를 세이프존 가운데에 크게
+    const offX = W / 2 - (sx + sw / 2), offY = H / 2 - (sy + sh / 2);
+    const zCard = Math.min(sw / cw, sh / ch) * .94;
+    const ttl = S.$('#ttl'), thanks = S.$('#thanks');
+    ttl.style.width = thanks.style.width = sw + 'px';
+    S.fit(S.$('h1', ttl), { max: (wide ? 9 : 11) * u, maxLines: 3 });
+    const th = thanks.offsetHeight;
+    const overTop = sy + th + 6 * u, overBot = sy + sh - u * 2;
+    const zAll = Math.min(sw / GW, (overBot - overTop) / GH) * .94;
+    const camOver = [GW / 2 + offX / zAll * 0 + (W / 2 - (sx + sw / 2)) / zAll, GH / 2 + (H / 2 - (overTop + overBot) / 2) / zAll];
+    const T0 = 2.4, STEP = 2.7, T4 = T0 + n * STEP, END = T4 + 3.8;
+    S.setDuration(END);
+    const camKeys = [[0, [GW / 2 + offX / .5, GH / 2 + offY / .5 + GH * .1, .5]]];
+    pos.forEach((p, i) => camKeys.push([T0 + i * STEP - .45, [p.x + offX / zCard, p.y + offY / zCard, zCard], { f: 1.15, z: .9 }]));
+    camKeys.push([T4, [camOver[0], camOver[1], zAll], { f: .9, z: .95 }]);
+    const odos = cards.map(c => S.$$('.odo .d .col', c));
+    const lines = S.$$('#ttl h1 .ln span');
+    const src = S.$('#src'); if (src) M.place(src, sx + sw, sy + sh, { ax: 1, ay: 1 });
+
+    const root = S.$('#st');
+    S.ambient(t => {
+      M.drift(root, t);
+      const c = M.anim(camKeys, t);
+      M.camera(world, c[0], c[1], c[2]);
+      S.$('#st .grid').style.transform = `translate(${(-c[0] * c[2] * .15 % (6 * u)).toFixed(1)}px, ${(-c[1] * c[2] * .15 % (6 * u)).toFixed(1)}px)`;
+      // 제목
+      const tk = M.inout(t, .1, T0 - .5, 'snappy', .4);
+      M.place(ttl, sx + sw / 2, sy + sh * .46, { o: tk <= 1 ? 1 : 2 - tk, s: tk > 1 ? 1 - (tk - 1) * .2 : 1 });
+      lines.forEach((l, i) => { M.rise(l, M.clamp(M.spring(t - (.25 + i * .18), 'snappy'), 0, 1.04)); });
+      const kk = S.$('#ttl .k'); if (kk) kk.style.opacity = M.clamp((t - .1) * 3).toFixed(3);
+      // 카드: 처음엔 흐리게 깔려 있다가 차례가 오면 숫자·그래프
+      cards.forEach((card, i) => {
+        const ta = T0 + i * STEP;
+        const on = t >= ta - .4;
+        card.style.opacity = (t < T0 - .6 ? M.clamp((t - .6) * 1.2) * .35 : on ? 1 : .35).toFixed(3);
+        const digs = odos[i], m = digs.length;
+        digs.forEach((col, j) => {
+          const raw = String(stats[i].value).replace(/[^\d]/g, ''); const dgt = +raw[j] || 0;
+          const loops = 1 + Math.min(2, Math.floor(j * 2 / Math.max(1, m - 1)));   // 끝자리일수록 많이 돎 (줄 40칸 안)
+          const k = M.ease.outCubic(M.prog(t, ta - .1, 1.1 + (m - j) * .08));
+          col.style.transform = `translateY(${(-(loops * 10 + dgt) * k + 0).toFixed(3)}em)`;
+        });
+        const viz = S.$('.viz', card); if (!viz) return;
+        const vk = M.prog(t, ta + .3, 1.1);
+        if (viz.dataset.viz === 'bars') S.$$('b', viz).forEach((b, j, all) => { b.style.transform = `scaleY(${M.spring(t - (ta + .25 + j * .07), 'snappy').toFixed(4)})`; });
+        if (viz.dataset.viz === 'ring') { const st = stats[i], fr = M.clamp((parseFloat(st.value) || 0) / (parseFloat(st.max) || 100)); M.draw(S.$('.arc', viz), fr * M.ease.inOutCubic(vk)); }
+        if (viz.dataset.viz === 'line') { M.draw(S.$('.ln', viz), M.ease.inOutCubic(vk)); S.$('.area', viz).style.opacity = (.16 * M.prog(t, ta + 1.1, .4)).toFixed(3); S.$('.dot', viz).style.visibility = vk >= 1 ? 'inherit' : 'hidden'; }
+        if (viz.dataset.viz === 'dots') S.$$('b', viz).forEach((b, j) => { b.style.transform = `scale(${M.spring(t - (ta + .25 + j * .06), 'pop').toFixed(4)})`; });
+      });
+      // 마지막 인사
+      const hk = M.spring(t - (T4 + .5), 'snappy');
+      M.place(thanks, sx + sw / 2, sy + u * 2 + (1 - hk) * u * 6, { ay: 0, o: t > T4 + .5 ? M.clamp(hk * 1.6) : 0 });
+    });
+  });
+})();
+</script>

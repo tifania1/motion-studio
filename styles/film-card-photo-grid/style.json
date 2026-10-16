@@ -1,0 +1,123 @@
+{
+  "id": "film-card-photo-grid",
+  "name": "필름 사진 카드와 사진 벽",
+  "group": "콜라주·사진",
+  "template": "collage",
+  "summary": "검은 화면에 낱말 바퀴가 굴러 멈추고, 필름 색 사진 카드 위 얇은 알약에 검색어가 쳐진 뒤 카드가 하얗게 바래며 사진 벽으로 터지는 큐레이션",
+  "tags": [
+    "사진",
+    "검색",
+    "큐레이션",
+    "필름",
+    "격자"
+  ],
+  "hand": false,
+  "source": {
+    "site": "keyframe.gallery",
+    "ref": "mux:dFB1q4Of6ukoQ1cP02npOHNVGu67faUAo2ylhZZMq1vw",
+    "at": "1.0–8.2초, 29.0–35.6초, 40.0–42.6초",
+    "note": "검은 화면 가운데 낱말 목록이 세로로 굴러 얇은 알약 칸에 멈추는 바퀴, 청록 그늘·노란 빛으로 색을 민 필름 사진을 큰 둥근 카드에 담고 얇은 흰 알약에 검색어를 타자하는 장면, 카드가 하얗게 바래며 크기 다른 사진 칸이 꽉 찬 벽으로 바뀌어 천천히 커지고 한 칸이 앞으로 나와 화면을 채우는 이음"
+  },
+  "palette": [
+    "#0F0F10",
+    "#EDEDE8",
+    "#E8B83A",
+    "#2E8C84",
+    "#E06A2C",
+    "#9FD3C7"
+  ],
+  "colors": {
+    "bg": "#0F0F10",
+    "onBg": "#EDEDE8",
+    "onBgMuted": "rgba(237,237,232,.55)",
+    "paper": "#F1F1EE",
+    "ink": "#1A1A1A",
+    "accent": "#2E8C84",
+    "accentInk": "#FFFFFF",
+    "pattern": "rgba(237,237,232,.07)",
+    "glow": "rgba(232,184,58,.25)"
+  },
+  "type": {
+    "display": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "heading": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "body": [
+      "Geist",
+      "Noto Sans KR"
+    ]
+  },
+  "fonts": [
+    {
+      "family": "Geist",
+      "weight": "100 900",
+      "file": "fonts/Geist-Variable.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 500,
+      "file": "fonts/NotoSansKR-Medium.woff2"
+    }
+  ],
+  "look": {
+    "grain": 0.08,
+    "vignette": 0.2
+  },
+  "shape": {
+    "radius": "calc(var(--u) * 2.2)"
+  },
+  "motion": {
+    "pace": "보통",
+    "bpm": 100,
+    "ease": "power3.inOut",
+    "stagger": 1,
+    "transitions": [
+      "fade",
+      "zoom",
+      "cut"
+    ]
+  },
+  "scenes": {
+    "bg": "solid",
+    "align": "center",
+    "card": "outline",
+    "marker": "color",
+    "weight": 400,
+    "tracking": 0,
+    "case": "none",
+    "rough": false,
+    "title": "type",
+    "frame": "card",
+    "deco": [
+      "cursor"
+    ],
+    "number": "odometer",
+    "scale": 0.9,
+    "schemes": [
+      "dark",
+      "paper",
+      "dark"
+    ]
+  },
+  "signature": [
+    "낱말 바퀴: 검은 화면 가운데 작은 글 옆에 얇은 테두리 알약이 있고, 낱말 목록이 그 칸을 지나 위에서 아래로 굴러감(위아래로 갈수록 옅어짐). 천천히 출발해 빨라졌다 감속하며 1.2초에 대여섯 칸을 지나 넘침 없이 멈춤. 멈춘 낱말이 옅어지고 빈 알약에 검색어가 타자됨",
+    "필름 사진 카드: 큰 둥근 카드 안에 필름처럼 색을 민 사진(청록 그늘·노란 빛·그레인)이 0.4초에 어둠에서 떠오르며 아주 천천히 다가오고, 가운데 얇은 흰 테두리 알약 안으로 검색어가 초당 35~40자로 쳐지며 알약이 글을 따라 늘어남",
+    "사진 벽으로: 카드가 0.2초에 우윳빛으로 하얗게 바랜 뒤 컷, 밝은 종이 위에 크기 다른 사진 칸들이 흰 틈을 두고 꽉 찬 벽이 1초 넘게 천천히 커짐. 그중 한 칸이 크게 확대된 화면이 되고 뒤 벽은 흐리고 하얗게 깔림"
+  ],
+  "fits": [
+    "검색·추천 서비스",
+    "쇼핑·여행 큐레이션",
+    "메뉴·상품 여러 개 소개",
+    "사진이 많은 브랜드"
+  ],
+  "avoid": [
+    "굵은 큰 제목",
+    "원색 바탕",
+    "손그림 장식",
+    "사진 없이 글만"
+  ]
+}

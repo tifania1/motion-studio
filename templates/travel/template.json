@@ -1,0 +1,7 @@
+{
+  "name": "여행 하이라이트 (지도)",
+  "description": "종이 지도 위로 점선 길이 그려지고 비행기가 따라가다, 들르는 곳마다 핀이 꽂히고 폴라로이드가 떨어지는 여행 영상. 마지막엔 지도 전체로 물러나요. 4곳 기준 17초.",
+  "fonts": [
+    { "family": "Archivo", "weight": "100 900", "stretch": "62% 125%", "file": "fonts/Archivo-Variable.woff2" }
+  ]
+}

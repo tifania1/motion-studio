@@ -1,0 +1,148 @@
+{
+  "id": "chalk-math-board",
+  "name": "칠판 수학 노트",
+  "group": "손그림",
+  "template": "sketchbook",
+  "summary": "검은 석판 칠판에 점 격자를 깔고, 반듯한 고딕 제목과 고정폭 꼬리표 옆으로 분필 손글씨 수식과 빗금 친 도형이 그려지는 연구 노트",
+  "tags": [
+    "손그림",
+    "분필",
+    "수학",
+    "연구",
+    "어두움",
+    "다이어그램"
+  ],
+  "hand": true,
+  "source": {
+    "site": "keyframe.gallery",
+    "ref": "mux:ugsHYDsdrHw3U5j9Of4iU2DpMbjS6LwdbnpWqoGio6E",
+    "at": "0–28초",
+    "note": "석판색 칠판 위에 반듯한 고딕 제목·고정폭 대문자 꼬리표와 분필 손글씨 주석을 섞는 비율, 점 격자 위 삼각형 테두리를 한 획에 긋고 빗금으로 쓸어 칠하는 순서, 큰 원 안에 동그라미가 가운데 고리부터 차오르는 방식, 주석을 다 쓰고 분필 타원으로 감싸는 타이밍, 장면 끝에 선을 거꾸로 지우고 점들을 색 분필 점 하나로 모으는 이음"
+  },
+  "palette": [
+    "#1E2124",
+    "#ECECE6",
+    "#B9A6F2",
+    "#F2CF3C",
+    "#E27731",
+    "#F2B8C0"
+  ],
+  "colors": {
+    "bg": "#1E2124",
+    "onBg": "#ECECE6",
+    "onBgMuted": "rgba(236,236,230,.6)",
+    "paper": "#2A2D31",
+    "ink": "#ECECE6",
+    "accent": "#B9A6F2",
+    "accentInk": "#1E2124",
+    "pattern": "rgba(236,236,230,.22)",
+    "glow": "rgba(185,166,242,.2)"
+  },
+  "type": {
+    "display": [
+      "Caveat",
+      "Nanum Pen"
+    ],
+    "heading": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "body": [
+      "Geist Mono",
+      "Noto Sans KR"
+    ]
+  },
+  "fonts": [
+    {
+      "family": "Geist",
+      "weight": "100 900",
+      "file": "fonts/Geist-Variable.woff2"
+    },
+    {
+      "family": "Geist Mono",
+      "weight": "100 900",
+      "file": "fonts/GeistMono-Variable.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 500,
+      "file": "fonts/NotoSansKR-Medium.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 700,
+      "file": "fonts/NotoSansKR-Bold.woff2"
+    },
+    {
+      "family": "Caveat",
+      "weight": "400 700",
+      "file": "fonts/Caveat-Variable.woff2"
+    },
+    {
+      "family": "Nanum Pen",
+      "weight": 400,
+      "file": "fonts/NanumPenScript-Regular.woff2"
+    }
+  ],
+  "look": {
+    "grain": 0.16,
+    "grainFps": 4,
+    "vignette": 0.2
+  },
+  "shape": {
+    "radius": "0px",
+    "stroke": "hand"
+  },
+  "motion": {
+    "pace": "보통",
+    "bpm": 102,
+    "ease": "power3.out",
+    "stagger": 0.8,
+    "transitions": [
+      "iris",
+      "fade"
+    ]
+  },
+  "scenes": {
+    "bg": "dots",
+    "align": "center",
+    "card": "outline",
+    "marker": "circle",
+    "weight": 500,
+    "tracking": -0.01,
+    "case": "upper",
+    "rough": true,
+    "title": "type",
+    "frame": "none",
+    "deco": [
+      "dots",
+      "marks",
+      "doodles"
+    ],
+    "number": "count",
+    "scale": 0.95,
+    "schemes": [
+      "dark",
+      "paper"
+    ]
+  },
+  "signature": [
+    "점 격자 위 분필 도형: 꼭짓점에서 시작한 테두리가 0.8초에 한 획으로 그어지고, 이어서 비스듬한 분필 빗금이 한쪽 끝에서 반대쪽으로 1초 동안 쓸며 면을 칠함. 나갈 땐 그린 순서를 거꾸로 되감듯 지워짐",
+    "그림 옆 여백에 손글씨 수식 주석이 한 글자씩(0.08초 간격, −5도 기울기) 써지고, 반 박 쉬고 분필 타원이 한 바퀴 조금 넘게 0.5초에 감아 둘러쌈",
+    "화면 위 가장자리 한 줄에 작은 고정폭 대문자 꼬리표 세 칸(문제 · 번호 01/10 · 분야)이 타자되고, 장면 끝에는 점들이 가운데로 모여 색 분필 점 하나가 됐다가 그 점에서 다음 그림의 점들이 퍼져 나옴"
+  ],
+  "fits": [
+    "AI·연구 성과 발표",
+    "수학·과학 교육",
+    "알고리즘·원리 설명",
+    "01/10 같은 연재 콘텐츠",
+    "기술 블로그 예고"
+  ],
+  "avoid": [
+    "밝은 바탕",
+    "사진을 꽉 채운 장면",
+    "제목까지 손글씨로",
+    "한 화면에 문장 여러 줄",
+    "반짝이는 그라디언트"
+  ]
+}

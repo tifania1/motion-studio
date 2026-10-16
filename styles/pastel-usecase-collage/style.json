@@ -1,0 +1,114 @@
+{
+  "id": "pastel-usecase-collage",
+  "name": "파스텔 쓰임새 콜라주",
+  "group": "그래픽·도형",
+  "template": "brandmark",
+  "summary": "쓰임새마다 바탕을 다른 파스텔로 칠하고, 같은 색 계열 짙은 말풍선을 가운데 둔 채 UI 카드와 거친 질감 사각형이 둘레에 쌓여요",
+  "tags": [
+    "콜라주",
+    "파스텔",
+    "UI 카드",
+    "쓰임새",
+    "협업"
+  ],
+  "hand": false,
+  "source": {
+    "site": "keyframe.gallery",
+    "ref": "mux:ZDy4g3Ef7lNCX02VeRCknEXqGmV014sEND5btaiaMVaZM",
+    "at": "0–25초",
+    "note": "민트·살구·라벤더로 쓰임새를 나누는 색 체계, 같은 색 계열의 짙은 말풍선, 그라디언트에 노이즈를 얹은 평평한 사각형, 카드가 엇갈려 들어오고 깊이마다 다른 속도로 흐르는 시차, 질문 알림 위로 답 알림이 덮이며 쌓이는 알림 묶음"
+  },
+  "palette": [
+    "#D7E8DE",
+    "#184824",
+    "#E7DDD4",
+    "#48240C",
+    "#E0DCEA",
+    "#302454"
+  ],
+  "colors": {
+    "bg": "#D7E8DE",
+    "onBg": "#10301A",
+    "onBgMuted": "rgba(16,48,26,.62)",
+    "paper": "#F4F4F2",
+    "ink": "#1A1A1A",
+    "accent": "#184824",
+    "accentInk": "#FFFFFF",
+    "pattern": "rgba(24,72,36,.08)",
+    "glow": "rgba(48,204,108,.28)"
+  },
+  "type": {
+    "display": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "heading": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "body": [
+      "Geist",
+      "Noto Sans KR"
+    ]
+  },
+  "fonts": [
+    {
+      "family": "Geist",
+      "weight": "100 900",
+      "file": "fonts/Geist-Variable.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 500,
+      "file": "fonts/NotoSansKR-Medium.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 700,
+      "file": "fonts/NotoSansKR-Bold.woff2"
+    }
+  ],
+  "look": {
+    "grain": 0.04
+  },
+  "shape": {
+    "radius": "calc(var(--u) * 2.4)"
+  },
+  "motion": {
+    "pace": "보통",
+    "bpm": 112,
+    "ease": "power3.out",
+    "stagger": 1,
+    "transitions": [
+      "cut",
+      "fade"
+    ]
+  },
+  "scenes": {
+    "bg": "solid",
+    "align": "center",
+    "card": "shadow",
+    "marker": "color",
+    "weight": 500,
+    "tracking": -0.01,
+    "case": "none",
+    "rough": false
+  },
+  "signature": [
+    "쓰임새 장면 = 색 한 벌: 아주 연한 파스텔 바탕 · 같은 계열 아주 짙은 말풍선(흰 글자) · 같은 계열 진한 원색 사각형(노이즈 질감). 쓰임새가 바뀌면 바탕색이 컷으로 바뀜",
+    "콜라주 쌓기: 가운데 말풍선이 먼저 0.3초에 올라오고, UI 카드 3~5장이 0.12초 간격으로 뒤·옆에서 scale .92→1 로 들어옴. 사각형은 카드 앞뒤 여러 깊이에 두고 깊이마다 다른 속도로 천천히 흐름(시차)",
+    "알림 묶음: 짙은 색 질문 알림이 위에서 내려오고, 0.4초 뒤 흰 답 알림이 그 위에 덮이며 앞 알림은 아래로 얇게 비침(scale .94, y +1.2u)"
+  ],
+  "fits": [
+    "협업·업무 도구의 쓰임새 소개",
+    "팀·부서별 기능 나눠 보여 주기",
+    "한 영상에 사례 세 가지",
+    "B2B SaaS 광고"
+  ],
+  "avoid": [
+    "채도 높은 바탕",
+    "어두운 바탕",
+    "손그림 선",
+    "글자만 크게 쓰는 장면 연속"
+  ]
+}

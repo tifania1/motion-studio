@@ -1,0 +1,5 @@
+{
+  "_설명": "앱이 켜질 때 이 저장소에서 새 버전을 받아요 (tools/update.py). 끄려면 사용자 폴더 .motion-studio/update/off 파일을 만드세요.",
+  "repo": "https://github.com/tifania1/motion-studio.git",
+  "branch": "main"
+}

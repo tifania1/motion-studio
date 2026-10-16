@@ -1,0 +1,128 @@
+{
+  "id": "lime-badge-megatype",
+  "name": "배지 박힌 거대 글자",
+  "group": "타이포",
+  "template": "typeslam",
+  "summary": "연두에서 버터색으로 번지는 바탕에 톱니 배지 속 숫자가 굴러 오르며 문장 맨 앞에 박히고, 화면을 꽉 채운 흰 글자 벽을 카메라가 훑다 확 빠지는 결산 타이포",
+  "tags": [
+    "타이포",
+    "결산",
+    "숫자",
+    "연두",
+    "배지"
+  ],
+  "hand": false,
+  "source": {
+    "site": "keyframe.gallery",
+    "ref": "mux:Q3O8o00zWB8026OoufXgsWIqLowhm2L8Qx2nNXvUo9cxY",
+    "at": "2.6–10.8초, 10.9–16.0초",
+    "note": "별 모양 배지 구멍을 통과해 들어가 톱니 배지 숫자가 굴러 오르고 배지가 작아져 한 줄 문장 맨 앞에 들어가는 장면, 낱말 사이가 벌어지며 다음 문장으로 바뀌고 기울인 따옴표 구절에서 멈추는 흐름, 화면을 꽉 채운 흰 글자 벽을 카메라가 비스듬히 훑다 확 빠지는 장면(낱말 사이 배지 숫자가 계속 바뀜), 입체 배지 조각과 두툼한 막대가 쌓였다 눌려 스티커가 되는 끝"
+  },
+  "palette": [
+    "#C4EBA4",
+    "#E9F0B0",
+    "#F5F7EE",
+    "#2E9A3E",
+    "#8E86E8",
+    "#17301A"
+  ],
+  "colors": {
+    "bg": "#C4EBA4",
+    "onBg": "#17301A",
+    "onBgMuted": "rgba(23,48,26,.66)",
+    "paper": "#F5F7EE",
+    "ink": "#17301A",
+    "accent": "#2E9A3E",
+    "accentInk": "#FFFFFF",
+    "pattern": "rgba(255,255,255,.5)",
+    "glow": "rgba(255,255,255,.4)"
+  },
+  "type": {
+    "display": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "heading": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "body": [
+      "Geist",
+      "Noto Sans KR"
+    ]
+  },
+  "fonts": [
+    {
+      "family": "Geist",
+      "weight": "100 900",
+      "file": "fonts/Geist-Variable.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 500,
+      "file": "fonts/NotoSansKR-Medium.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 700,
+      "file": "fonts/NotoSansKR-Bold.woff2"
+    }
+  ],
+  "look": {
+    "grain": 0.08
+  },
+  "shape": {
+    "radius": "calc(var(--u) * 1.4)"
+  },
+  "motion": {
+    "pace": "보통",
+    "bpm": 108,
+    "ease": "power3.out",
+    "stagger": 0.9,
+    "transitions": [
+      "zoom",
+      "cut",
+      "push"
+    ]
+  },
+  "scenes": {
+    "bg": "mesh",
+    "align": "center",
+    "card": "shadow",
+    "marker": "color",
+    "weight": 700,
+    "tracking": -0.03,
+    "case": "none",
+    "rough": false,
+    "title": "pop",
+    "frame": "none",
+    "deco": [
+      "ticker",
+      "shapes"
+    ],
+    "number": "odometer",
+    "scale": 1.4,
+    "schemes": [
+      "dark",
+      "paper",
+      "dark"
+    ]
+  },
+  "signature": [
+    "톱니 배지 숫자: 카메라가 커다란 별 모양 배지 구멍을 두세 겹 통과해 들어가면 가운데 초록 배지 안 숫자가 0.4초에 208 → 236 처럼 굴러 오르고, 배지가 연노랑으로 바래며 작아져 한 줄 문장 맨 앞 자리로 가는 동안 뒤 낱말이 초당 30자로 한 글자씩 찍힘",
+    "거대 흰 글자 벽: 화면 높이의 1/4 을 넘는 반투명 흰 글자 줄이 빽빽한 벽을 이루고, 카메라가 벽 위를 왼쪽 위로 비스듬히 2.5초 훑음. 낱말 사이 초록 배지 숫자는 0.35초마다 바뀌고, 마지막 0.2초에 확 빠지며 벽 전체가 드러남",
+    "한 줄 흐름과 끝: 낱말 사이가 벌어지며 다음 문장 낱말로 채워지고, 줄이 왼쪽으로 흘러가다 기울인 따옴표 구절에서 멈춰 가운데 자리 잡음. 끝은 두툼한 초록 막대들이 쌓였다 납작하게 눌려 작은 스티커가 됨"
+  ],
+  "fits": [
+    "연말 결산·사용 통계",
+    "앱 리포트·회고",
+    "성과 공유",
+    "커뮤니티 연말 인사"
+  ],
+  "avoid": [
+    "어두운 바탕",
+    "세리프",
+    "사진 위주 장면",
+    "글리치·번쩍임"
+  ]
+}

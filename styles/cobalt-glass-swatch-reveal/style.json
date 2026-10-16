@@ -1,0 +1,138 @@
+{
+  "id": "cobalt-glass-swatch-reveal",
+  "name": "코발트 유리 견본 공개",
+  "group": "그래픽·도형",
+  "template": "brandmark",
+  "summary": "밝은 회색 위 작은 글 한 줄이 흐림에서 맺혀요. 가는 선으로 지은 원과 정사각 도형은 코발트 그라디언트 위에서 두꺼운 유리 입체가 되고, 그 뒤로 색 견본 띠와 글꼴 견본, 모니터 화면이 컷으로 이어지는 차분한 브랜드 공개예요",
+  "tags": [
+    "도형",
+    "코발트",
+    "유리",
+    "브랜드 공개",
+    "견본",
+    "차분함"
+  ],
+  "hand": false,
+  "source": {
+    "site": "keyframe.gallery",
+    "ref": "mux:N00wqwjO3ud5YBtxFVHDBzBPcYRQbSqTjyIl9xFQrMbc",
+    "at": "1.1–57.1초",
+    "note": "밝은 회색 위 작은 산세리프가 흐림에서 맺히며 써지는 문장, 가는 선 정사각·원 아래로 솟는 코발트 빛, 앵커로 짚는 외곽선 글자, 코발트 그라디언트 위 유리 입체 클로즈업, 정사각 타일 체커보드와 가로 띠 색 견본, 잘린 거대 글꼴 견본과 흐린 낱말 원통, 회색 스튜디오 모니터, 검은 화면 마무리"
+  },
+  "palette": [
+    "#E6E6E4",
+    "#141414",
+    "#2F55E8",
+    "#5B7FEA",
+    "#E3E4E8",
+    "#121212"
+  ],
+  "colors": {
+    "bg": "#E6E6E4",
+    "onBg": "#141414",
+    "onBgMuted": "rgba(20,20,20,.6)",
+    "paper": "#121212",
+    "ink": "#ECECEA",
+    "accent": "#2F55E8",
+    "accentInk": "#FFFFFF",
+    "pattern": "rgba(20,20,20,.1)",
+    "glow": "rgba(47,85,232,.4)"
+  },
+  "type": {
+    "display": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "heading": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "body": [
+      "Geist",
+      "Noto Sans KR"
+    ]
+  },
+  "fonts": [
+    {
+      "family": "Geist",
+      "weight": "100 900",
+      "file": "fonts/Geist-Variable.woff2"
+    },
+    {
+      "family": "Geist Mono",
+      "weight": "100 900",
+      "file": "fonts/GeistMono-Variable.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 500,
+      "file": "fonts/NotoSansKR-Medium.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 700,
+      "file": "fonts/NotoSansKR-Bold.woff2"
+    }
+  ],
+  "look": {
+    "grain": 0.05
+  },
+  "shape": {
+    "radius": "calc(var(--u) * 0.4)"
+  },
+  "motion": {
+    "pace": "보통",
+    "bpm": 96,
+    "ease": "power3.out",
+    "stagger": 1,
+    "transitions": [
+      "cut",
+      "blur",
+      "fade"
+    ]
+  },
+  "scenes": {
+    "bg": "solid",
+    "align": "center",
+    "card": "flat",
+    "marker": "color",
+    "weight": 500,
+    "tracking": -0.02,
+    "case": "none",
+    "rough": false,
+    "title": "blur",
+    "frame": "none",
+    "deco": [
+      "handles",
+      "marks"
+    ],
+    "number": "count",
+    "scale": 1.1,
+    "schemes": [
+      "dark",
+      "dark",
+      "accent",
+      "dark",
+      "paper"
+    ]
+  },
+  "signature": [
+    "밝은 회색 한가운데 작은 산세리프 한 줄이 왼쪽부터 써지고, 막 들어온 글자 서너 개는 흐림 4px·옅은 상태로 꼬리를 끌다 0.25초에 맺힘",
+    "머리카락 같은 선으로 그린 정사각 속 원 아래로 코발트 빛이 지평선처럼 1.2초에 솟아오르고, 이어 그 도형이 두꺼운 유리 입체가 되어 한쪽이 짙고 반대쪽이 하얗게 빠지는 코발트 그라디언트 위에서 카메라가 바짝 다가가며 천천히 돎",
+    "화면을 반듯한 색면으로 나누는 견본 장면: 코발트·옅은 회색·흑요석 가로 띠 셋에 고정폭 색 이름과 hex, 또는 파랑·흰·검정 정사각 타일 체커보드에서 마크 변형이 반 박마다 갈림"
+  ],
+  "fits": [
+    "브랜드 리뉴얼·아이덴티티 공개",
+    "개발·디자인 도구 런칭 티저",
+    "사전 신청 모집",
+    "브랜드 가이드 소개",
+    "새 마크 발표"
+  ],
+  "avoid": [
+    "손그림 선과 떨림",
+    "강조색 여러 개(코발트 하나만)",
+    "화면을 꽉 채우는 굵은 제목 남발",
+    "반 박 몽타주처럼 몰아치는 컷",
+    "무지개·네온 그라디언트"
+  ]
+}

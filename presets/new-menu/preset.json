@@ -1,0 +1,52 @@
+{
+  "id": "new-menu",
+  "order": 1,
+  "name": "신메뉴 출시",
+  "summary": "새 메뉴 하나를 주인공으로. 둥근 접시 위 사진, 돌아가는 둘레 글자, 스티커 태그, 매달린 가격표.",
+  "look": "크림색 판 · 둥근 접시 · 가격표",
+  "template": "menu",
+  "formats": [
+    "tall",
+    "portrait",
+    "square",
+    "wide"
+  ],
+  "seconds": 17,
+  "photos": {
+    "need": 3,
+    "hint": "메뉴 클로즈업, 만드는 손이나 재료, 매장 테이블"
+  },
+  "ask": [
+    "메뉴 이름과 한 줄 설명",
+    "가격과 판매 기간",
+    "재료·맛·옵션 포인트 세 가지",
+    "사진 세 장"
+  ],
+  "brief": "예) 10월 한 달 한정 밤 라떼 출시. 6,500원. 국산 밤 페이스트, 에스프레소 두 샷, 따뜻하게·차갑게 모두 돼요.",
+  "check": [
+    "가격·판매 기간이 매장 안내와 같은지",
+    "실제 메뉴 사진이 아니면 '참고 사진' 표시"
+  ],
+  "music": {
+    "mood": "cafe",
+    "bpm": 120,
+    "prompt": "warm acoustic cafe pop, plucked nylon guitar, soft claps, light shaker, bright and cozy",
+    "sections": [
+      [
+        0,
+        2.5,
+        "soft intro, guitar only"
+      ],
+      [
+        2.5,
+        13,
+        "full groove with light drums"
+      ],
+      [
+        13,
+        17,
+        "bright ending with a final strum"
+      ]
+    ]
+  }
+}

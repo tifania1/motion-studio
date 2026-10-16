@@ -1,0 +1,126 @@
+{
+  "id": "dot-constellation-prism-pill",
+  "name": "점 잇기 낱말과 무지개 테두리 입력창",
+  "group": "그라디언트·빛",
+  "template": "glow",
+  "summary": "숯빛 어둠에 흰 점들이 떠 있고, 낱말이 점 자리에 하나씩 놓이면 가는 선이 점을 잇고 뒤로 네 가지 색 빛 덩어리가 번져요. 옅은 회색 판에서는 알약 입력창에 큰 글자가 쳐지고, 어두운 판으로 돌아오면 입력창 테두리에 무지개 빛이 돌아요",
+  "tags": [
+    "빛",
+    "무지개",
+    "입력창",
+    "검색",
+    "AI",
+    "점과 선"
+  ],
+  "hand": false,
+  "source": {
+    "site": "keyframe.gallery",
+    "ref": "mux:Gxedy00PS00JipCsAwAuzN4IrRFLq6gVPLaeD26JzVU64",
+    "at": "0–72초 (특히 1–25초, 27–44초, 46–67초)",
+    "note": "어두운 바탕에서 흰 점 위에 낱말이 하나씩 놓이고 선이 점을 이으며 뒤로 흐린 색 구슬이 번지는 도입, 그 선이 색 그라디언트 물결·나선으로 휘는 흐름, 옅은 회색 판의 큰 타자 글자와 알약 입력창, 무지개 고리 로딩, 어두운 판에서 입력창·폰 테두리를 따라 도는 무지개 빛, 색이 갈라지는 낱말과 흐린 색 고리 속 낱말"
+  },
+  "palette": [
+    "#1E1F23",
+    "#E6E7EA",
+    "#4A86F0",
+    "#E5483F",
+    "#F2B632",
+    "#3DAA5C"
+  ],
+  "colors": {
+    "bg": "#1E1F23",
+    "onBg": "#E8E9EC",
+    "onBgMuted": "rgba(232,233,236,.6)",
+    "paper": "#E6E7EA",
+    "ink": "#1F2023",
+    "accent": "#4A86F0",
+    "accentInk": "#0B1020",
+    "pattern": "rgba(255,255,255,.07)",
+    "glow": "rgba(74,134,240,.42)"
+  },
+  "type": {
+    "display": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "heading": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "body": [
+      "Geist",
+      "Noto Sans KR"
+    ]
+  },
+  "fonts": [
+    {
+      "family": "Geist",
+      "weight": "100 900",
+      "file": "fonts/Geist-Variable.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 500,
+      "file": "fonts/NotoSansKR-Medium.woff2"
+    }
+  ],
+  "look": {
+    "vignette": 0.25
+  },
+  "shape": {
+    "radius": "calc(var(--u) * 3)"
+  },
+  "motion": {
+    "pace": "보통",
+    "bpm": 96,
+    "ease": "power2.inOut",
+    "stagger": 1.1,
+    "transitions": [
+      "blur",
+      "iris",
+      "fade",
+      "cut"
+    ]
+  },
+  "scenes": {
+    "bg": "aurora",
+    "align": "center",
+    "card": "glass",
+    "marker": "color",
+    "weight": 400,
+    "tracking": -0.01,
+    "case": "none",
+    "rough": false,
+    "title": "type",
+    "frame": "none",
+    "deco": [
+      "orb",
+      "streaks"
+    ],
+    "number": "count",
+    "scale": 1.1,
+    "schemes": [
+      "dark",
+      "paper",
+      "dark"
+    ]
+  },
+  "signature": [
+    "숯빛 바탕에 흰 점 6~8개가 흩어져 있고, 문장이 낱말 하나씩 점 옆에 놓여요. 낱말이 놓일 때마다 앞 점에서 새 점까지 가는 흰 선이 0.5초에 그어지고, 그 뒤로 파랑·빨강·노랑·초록 중 한 색의 흐린 빛 덩어리가 피었다 스러져요. 선은 차츰 색 그라디언트를 입은 물결이나 나선으로 휘어요",
+    "옅은 회색 판에 흰 알약 입력창이 떠 있고, 화면 높이 20% 안팎의 큰 산세리프 낱말이 한 글자씩 쳐져요. 막 쳐진 마지막 글자만 파랑이고, 입력창 안 아이콘 둘레에는 가는 무지개 고리가 돌며 기다림을 알려요",
+    "어두운 판에서 알약 입력창이나 폰의 테두리를 따라 파랑→빨강→노랑→초록 빛이 천천히 한 바퀴 돌고, 그 빛이 둘레로 흐리게 번져요. 사이사이 낱말 하나가 빨강·초록·파랑으로 갈라져 번졌다가 흰 글자로 모여요"
+  ],
+  "fits": [
+    "AI 검색·질문 서비스 런칭",
+    "음성·카메라 입력 기능 소개",
+    "차분한 기술 브랜드 티저",
+    "새 입력 방식 안내"
+  ],
+  "avoid": [
+    "굵은 제목",
+    "한 색을 넓게 칠한 색면",
+    "손그림 선과 종이 질감",
+    "빠른 컷 연속",
+    "한 화면에 문장 여러 줄"
+  ]
+}

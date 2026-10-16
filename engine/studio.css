@@ -1,0 +1,84 @@
+/* Motion Studio 기본 스타일. 색·글꼴 변수는 build.py가 브랜드(brand.json)에서 채웁니다. */
+html, body { height: 100%; margin: 0; }
+body { background: #0b0814; color: var(--ink); font-family: var(--font-body); overflow: hidden; -webkit-font-smoothing: antialiased; }
+#viewport { position: fixed; inset: 0; overflow: hidden; background: #0b0814; }
+#stage { position: absolute; left: 50%; top: 50%; width: var(--W); height: var(--H); overflow: hidden; background: var(--bg);
+  transform: translate(-50%, -50%) scale(var(--s, .5)); transform-origin: 50% 50%; }
+#cam { position: absolute; inset: 0; }
+.scene { position: absolute; inset: 0; overflow: hidden; visibility: hidden; }
+.safe { position: absolute; top: var(--safe-t); bottom: var(--safe-b); left: var(--safe-l); right: var(--safe-r); }
+.ch, .wd { display: inline-block; white-space: pre; }
+/* 결 템플릿 공통 등장 (S.fx.enter · S.fx.num) */
+.caret { display: inline-block; width: .07em; height: 1em; margin-left: .04em; vertical-align: -.12em; background: currentColor; }
+.slw { overflow: hidden; vertical-align: bottom; padding: .06em .02em; margin: -.06em -.02em; }
+.slw .sli { display: inline-block; }
+.mln { display: block; overflow: hidden; padding-bottom: .06em; margin-bottom: -.06em; }
+.mli { display: inline-block; }
+.odo { display: inline-block; height: 1em; line-height: 1em; overflow: hidden; vertical-align: top; }
+.odo-s { display: flex; flex-direction: column; }
+.odo-s span { display: block; height: 1em; line-height: 1em; }
+.fill { position: absolute; inset: 0; }
+img { display: block; user-select: none; -webkit-user-drag: none; }
+
+/* 강조 마커: --mk 를 0%→100% 로 움직이면 형광펜이 그어짐 */
+.mark { position: relative; white-space: nowrap; color: var(--mark-ink, inherit); z-index: 0; }
+.mark::before { content: ""; position: absolute; left: -.06em; right: -.06em; bottom: .04em; height: .42em; z-index: -1;
+  background: linear-gradient(90deg, var(--accent) 0 var(--mk, 0%), transparent var(--mk, 0%)); border-radius: .08em; }
+
+/* 전환 효과 */
+#fx-wipe { position: absolute; inset: 0; pointer-events: none; z-index: 40; overflow: hidden; }
+#fx-wipe i { position: absolute; top: -20%; bottom: -20%; left: -40%; width: 180%; visibility: hidden; } /* 위치는 studio.js가 GSAP으로 잡음 */
+#fx-ring { position: absolute; width: 0; height: 0; border: calc(var(--u) * 1.6) solid var(--accent); border-radius: 50%; z-index: 41; visibility: hidden; box-sizing: border-box; }
+#fx-iris { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 42; visibility: hidden; pointer-events: none; }
+#fx-flood { position: absolute; border-radius: 50%; z-index: 42; visibility: hidden; pointer-events: none; }
+#fx-prog { position: absolute; left: 0; bottom: 0; width: 100%; height: calc(var(--u) * .7); background: var(--accent); transform-origin: 0 50%; transform: scaleX(0); z-index: 45; }
+#fx-safe { position: absolute; inset: 0; pointer-events: none; z-index: 60; }
+#fx-safe b { position: absolute; background: rgba(255, 30, 60, .28); outline: 2px dashed rgba(255, 30, 60, .8); outline-offset: -1px; }
+#fx-safe span { position: absolute; left: 12px; top: 12px; font: 700 22px/1 sans-serif; color: #fff; background: rgba(255, 30, 60, .85); padding: 6px 10px; border-radius: 6px; }
+
+/* 플레이어 UI (렌더 때는 숨김) */
+#ui { position: fixed; inset: 0; z-index: 100; pointer-events: none; font-family: system-ui, sans-serif; }
+#cover { position: absolute; inset: 0; display: grid; place-items: center; background: rgba(11, 8, 20, .35); pointer-events: auto; cursor: pointer; border: 0; padding: 0; }
+#cover[hidden] { display: none; }
+#cover .pb { display: flex; align-items: center; gap: 12px; background: var(--accent); color: var(--accent-ink); font: 800 clamp(16px, 2.4vw, 24px)/1 var(--font-body); padding: 16px 28px; border-radius: 999px; box-shadow: 0 8px 0 rgba(0, 0, 0, .3); }
+#cover .pb svg { width: 1.2em; height: 1.2em; fill: currentColor; }
+#bar { position: absolute; left: 50%; bottom: 14px; transform: translateX(-50%); width: min(760px, calc(100% - 32px)); display: flex; align-items: center; gap: 8px; padding: 8px 12px; background: rgba(14, 10, 26, .85); border-radius: 999px; pointer-events: auto; transition: opacity .3s; box-sizing: border-box; }
+#bar.idle { opacity: 0; }
+#bar button { flex: none; width: 36px; height: 36px; border-radius: 50%; border: 0; background: transparent; color: #fff; display: grid; place-items: center; cursor: pointer; padding: 0; }
+#bar button:hover { background: rgba(255, 255, 255, .12); }
+#bar button:focus-visible { outline: 3px solid var(--accent); }
+#bar button svg { width: 20px; height: 20px; fill: currentColor; }
+#seek { flex: 1; min-width: 0; accent-color: var(--accent); }
+#time { flex: none; font: 500 13px/1 system-ui, sans-serif; color: rgba(255, 255, 255, .85); font-variant-numeric: tabular-nums; min-width: 80px; text-align: right; }
+body.hide-cursor { cursor: none; }
+body.render #ui { display: none; }
+
+/* 모션 도구(motion.js) 부품 */
+.m-cursor { position: absolute; left: 0; top: 0; z-index: 80; pointer-events: none; transform-origin: 0 0; }
+.m-cur-arrow, .m-cur-hand { position: absolute; left: -3px; top: -2px; filter: drop-shadow(0 2px 3px rgba(0, 0, 0, .28)); }
+.m-cur-hand { left: -10px; top: -3px; }
+.m-cur-ring { position: absolute; left: 0; top: 0; width: 56px; height: 56px; border-radius: 50%; border: 3px solid rgba(20, 20, 22, .55); box-sizing: border-box; visibility: hidden; }
+.m-glass { position: absolute; overflow: hidden; isolation: isolate; --tint: .12; --light: 1; }
+.m-glass-in { position: absolute; inset: 0; overflow: hidden; }
+.m-glass-rim { position: absolute; inset: 0; border-radius: inherit; pointer-events: none;
+  background: linear-gradient(180deg, rgba(255, 255, 255, calc(var(--tint) + .1)), rgba(255, 255, 255, var(--tint)) 45%, rgba(255, 255, 255, calc(var(--tint) * .5)));
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, calc(.32 * var(--light))), inset 0 1.5px 0 rgba(255, 255, 255, calc(.75 * var(--light))),
+    inset 0 -1px 0 rgba(255, 255, 255, calc(.3 * var(--light))), inset 0 0 18px rgba(255, 255, 255, calc(.12 * var(--light))); }
+.mask { display: inline-block; overflow: hidden; vertical-align: top; padding-bottom: .08em; margin-bottom: -.08em; }
+.mask > * { display: inline-block; }
+
+/* 룩 (스타일 질감): 종이·그레인·하프톤·디더·주사선·비네트. studio.js 의 applyLook 이 채움 */
+/* 그릇에는 z-index 를 주지 않음: 쌓임 맥락이 생기면 multiply 같은 섞기가 아래 화면과 섞이지 않고 그냥 덮어 버림 */
+#fx-look { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
+#fx-look i { position: absolute; inset: 0; display: block; z-index: 50; }
+#fx-blocks { position: absolute; inset: 0; z-index: 43; pointer-events: none; visibility: hidden; }
+#fx-blocks i { position: absolute; display: block; }
+
+/* 발표 자료 플레이어 */
+#ui.deck #bar.dk-bar { width: auto; max-width: calc(100% - 32px); gap: 6px; }
+#dk-no { font: 600 14px/1 system-ui, sans-serif; color: #fff; min-width: 56px; text-align: center; font-variant-numeric: tabular-nums; }
+.dk-help { font: 500 12px/1.2 system-ui, sans-serif; color: rgba(255, 255, 255, .6); padding: 0 8px; white-space: nowrap; }
+@media (max-width: 720px) { .dk-help { display: none; } }
+#dk-blank { position: fixed; inset: 0; z-index: 120; pointer-events: auto; cursor: none; }
+#dk-blank[hidden], #dk-goto[hidden] { display: none; }
+#dk-goto { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); background: rgba(14, 10, 26, .88); color: #fff; font: 700 22px/1 system-ui, sans-serif; padding: 16px 22px; border-radius: 14px; z-index: 110; }

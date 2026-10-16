@@ -1,0 +1,119 @@
+{
+  "id": "agent-cursor-board",
+  "name": "시안 판 위 AI 커서",
+  "group": "제품 UI",
+  "template": "uidemo",
+  "summary": "점 격자 캔버스 위 웹페이지 시안들. 보라색 AI 커서가 '바꾸는 중…' 꼬리표를 달고 지나가면 구역이 하나씩 다시 칠해지고, 굵은 제목은 글 상자 안에서 솟아올라요",
+  "tags": [
+    "디자인 도구",
+    "웹사이트 빌더",
+    "AI",
+    "캔버스",
+    "커머스"
+  ],
+  "hand": false,
+  "source": {
+    "site": "keyframe.gallery",
+    "ref": "mux:kTkD1QLPoq1sLk3g2DDboh5EmE6a6EYiOEmOg7A37Uk",
+    "at": "0–25초",
+    "note": "굵은 그로테스크 제목이 얇은 글 상자 테두리 안에서 아래→위로 솟고 상자 폭도 함께 늘어나는 등장, 아래 시안으로 내려가는 카메라, 프롬프트 알약 입력, 보라 커서와 꼬리표가 구역을 훑으면 그 구역에 반투명 보라 덮개와 뼈대 반짝이가 깔렸다가 어두운 디자인으로 바뀌는 장면, 캔버스 전체로 물러나 시안 여러 장이 보이는 장면, 제목을 선택해 다시 쓰기"
+  },
+  "palette": [
+    "#E1E1E1",
+    "#FFFFFF",
+    "#111111",
+    "#6A3FE0",
+    "#A9B6E0",
+    "#1E1A19"
+  ],
+  "colors": {
+    "bg": "#E1E1E1",
+    "onBg": "#111111",
+    "onBgMuted": "rgba(17,17,17,.55)",
+    "paper": "#FFFFFF",
+    "ink": "#111111",
+    "accent": "#6A3FE0",
+    "accentInk": "#FFFFFF",
+    "pattern": "rgba(17,17,17,.12)",
+    "glow": "rgba(106,63,224,.22)"
+  },
+  "type": {
+    "display": [
+      "Archivo",
+      "Noto Sans KR"
+    ],
+    "heading": [
+      "Archivo",
+      "Noto Sans KR"
+    ],
+    "body": [
+      "Geist",
+      "Noto Sans KR"
+    ]
+  },
+  "fonts": [
+    {
+      "family": "Archivo",
+      "weight": "100 900",
+      "stretch": "62% 125%",
+      "file": "fonts/Archivo-Variable.woff2"
+    },
+    {
+      "family": "Geist",
+      "weight": "100 900",
+      "file": "fonts/Geist-Variable.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 500,
+      "file": "fonts/NotoSansKR-Medium.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 900,
+      "file": "fonts/NotoSansKR-Black.woff2"
+    }
+  ],
+  "look": {},
+  "shape": {
+    "radius": "calc(var(--u) * 0.6)"
+  },
+  "motion": {
+    "pace": "빠름",
+    "bpm": 120,
+    "ease": "expo.out",
+    "stagger": 0.8,
+    "transitions": [
+      "zoom",
+      "push",
+      "cut"
+    ]
+  },
+  "scenes": {
+    "bg": "dots",
+    "align": "center",
+    "card": "outline",
+    "marker": "highlight",
+    "weight": 800,
+    "tracking": -0.04,
+    "case": "none",
+    "rough": false
+  },
+  "signature": [
+    "글 상자에서 솟는 제목: 얇은 보라 1px 테두리 상자가 먼저 생기고(글 폭의 70%), 굵은 제목이 상자 아랫변을 마스크 삼아 아래에서 올라옴(M.rise, 0.4초, expo.out). 그동안 상자 폭이 글 폭까지 늘어남",
+    "AI 커서가 고치기: 보라 삼각 커서 + 알약 꼬리표('바꾸는 중…', 글자 위로 반짝이 띠)가 구역을 지나가면 그 구역에 반투명 보라 덮개와 테두리가 0.2초에 깔리고, 안의 글·사진이 회색 뼈대 막대로 바뀌었다가 0.6초 뒤 새 디자인(어두운 판)으로 갈아끼워짐",
+    "캔버스로 물러나기: zoom 1 → 0.35 로 0.9초 동안 빠지며 둘레에 시안 여러 장이 드러남. 이어 가운데 제목을 드래그 선택(연파랑 하이라이트) → 지우고 새 문장을 치면 상자가 줄 수만큼 늘어남"
+  ],
+  "fits": [
+    "웹사이트·쇼핑몰 빌더 소개",
+    "디자인 도구·AI 편집 기능",
+    "리브랜딩·시안 비교",
+    "포트폴리오"
+  ],
+  "avoid": [
+    "손그림·종이 질감",
+    "파스텔 그라디언트",
+    "느린 페이드",
+    "세리프 제목"
+  ]
+}

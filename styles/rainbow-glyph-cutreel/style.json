@@ -1,0 +1,128 @@
+{
+  "id": "rainbow-glyph-cutreel",
+  "name": "무지개 기호 컷 릴",
+  "group": "그래픽·도형",
+  "template": "brandmark",
+  "summary": "검은 바탕에 무지개 그라디언트로 칠한 굵은 기호들이 1초마다 컷으로 바뀌며 흰 글자 사이로 끼어들고, 끝에는 기호들이 한 줄로 모였다가 단색 마크로 접히는 행사 티저",
+  "tags": [
+    "그래픽",
+    "무지개",
+    "기호",
+    "행사",
+    "티저",
+    "빠름"
+  ],
+  "hand": false,
+  "source": {
+    "site": "keyframe.gallery",
+    "ref": "mux:Su7Lc00VqnYoGW9X6Mziy1b02bUL02otw4029TOk6OrebXQ",
+    "at": "0–26.7초",
+    "note": "무지개 그라디언트 기호를 화면보다 크게 잘라 겹치는 오프닝, 흰 글자 낱말 사이로 3D 기호가 앞뒤로 끼어드는 문장 장면, 같은 문구를 네 줄로 쌓아 위로 흘리는 글자 벽, 기호 3×3 판과 장면 사이사이의 흰 바탕 반전, 기호가 한 줄로 모였다가 막대·사선·원 마크로 접히고 흰 단색 워드마크와 날짜로 끝나는 엔딩"
+  },
+  "palette": [
+    "#111111",
+    "#F2F2F0",
+    "#4C7CF5",
+    "#E8473F",
+    "#F7B500",
+    "#2FB463"
+  ],
+  "colors": {
+    "bg": "#111111",
+    "onBg": "#F2F2F0",
+    "onBgMuted": "rgba(242,242,240,.62)",
+    "paper": "#F2F2F0",
+    "ink": "#111111",
+    "accent": "#F7B500",
+    "accentInk": "#111111",
+    "pattern": "rgba(255,255,255,.06)",
+    "glow": "rgba(120,130,255,.35)"
+  },
+  "type": {
+    "display": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "heading": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "body": [
+      "Geist",
+      "Noto Sans KR"
+    ]
+  },
+  "fonts": [
+    {
+      "family": "Geist",
+      "weight": "100 900",
+      "file": "fonts/Geist-Variable.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 500,
+      "file": "fonts/NotoSansKR-Medium.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 700,
+      "file": "fonts/NotoSansKR-Bold.woff2"
+    }
+  ],
+  "shape": {
+    "radius": "calc(var(--u) * 2)"
+  },
+  "motion": {
+    "pace": "빠름",
+    "bpm": 120,
+    "ease": "expo.out",
+    "stagger": 0.8,
+    "transitions": [
+      "cut",
+      "cut",
+      "whip",
+      "iris"
+    ]
+  },
+  "scenes": {
+    "bg": "solid",
+    "align": "center",
+    "card": "flat",
+    "marker": "color",
+    "weight": 500,
+    "tracking": -0.02,
+    "case": "none",
+    "rough": false,
+    "title": "mask",
+    "frame": "none",
+    "deco": [
+      "shapes"
+    ],
+    "number": "count",
+    "scale": 1.25,
+    "schemes": [
+      "dark",
+      "dark",
+      "paper",
+      "dark"
+    ]
+  },
+  "signature": [
+    "흰 글자 문장 사이로 무지개 그라디언트 3D 기호가 끼어들어 몇 글자는 기호 뒤에 숨고 몇 글자는 기호 앞에 남는 깊이 겹침. 기호는 0.4초에 확 커져 들어와 살짝 돌며 멈추고, 한 박 뒤 컷",
+    "같은 짧은 문구를 화면을 꽉 채우는 네 줄로 쌓아 위로 천천히 흘리고, 가운데로 큰 기호 하나가 지나가며 맨 아래 줄은 그라디언트로 물듦",
+    "엔딩: 기호 3×3 판이 컷으로 지나간 뒤 모든 기호가 괄호 안 한 줄로 모여 0.6초에 납작한 막대·사선·원 세 조각 마크로 접히고, 컷으로 흰 단색 마크와 날짜 한 줄만 남음"
+  ],
+  "fits": [
+    "행사·컨퍼런스 티저",
+    "개발자 행사 예고",
+    "기능 여러 개 훑는 런칭",
+    "날짜 공지가 있는 카운트다운"
+  ],
+  "avoid": [
+    "손그림 선",
+    "종이·그레인 질감",
+    "느린 서서히 전환",
+    "강조색 하나만 쓰는 단색 기호",
+    "한 화면에 긴 문장"
+  ]
+}

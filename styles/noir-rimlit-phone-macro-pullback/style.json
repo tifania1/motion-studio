@@ -1,0 +1,125 @@
+{
+  "id": "noir-rimlit-phone-macro-pullback",
+  "name": "어둠 속 은빛 폰 매크로",
+  "group": "제품 UI",
+  "template": "uidemo",
+  "summary": "거의 검은 어둠 속에서 은빛 테두리를 따라 빛이 미끄러지며 폰 모서리를 바짝 훑어요. 카메라가 천천히 물러나면 폰이 기울어 돌고, 화면 속 숫자가 자리마다 굴러 맞춰지는 차분한 다크 제품 공개예요",
+  "tags": [
+    "제품 UI",
+    "어두움",
+    "폰",
+    "매크로",
+    "느림",
+    "금융"
+  ],
+  "hand": false,
+  "source": {
+    "site": "keyframe.gallery",
+    "ref": "mux:gf3BfFBITk58l3inB00scD01rqtPoeK01Ll6aZiB1kGAkc",
+    "at": "0–6.8초, 6.8–19.3초, 20.3–22.2초, 24.2–30.1초",
+    "note": "검은 바탕에서 폰 테두리 모서리와 화면 귀퉁이의 둥근 + 버튼을 바짝 훑다가 작은 메뉴가 열리는 매크로 오프닝, 화면으로 물러나 폰이 옆선 한 줄까지 기울었다 눕고 도는 3D 움직임, 잔고 숫자가 자리마다 굴러 맞춰지는 화면, 어둠 사이에 한 번 끼어드는 밝은 하늘 컷, 검은 화면 가운데 작은 마크와 흰 한 줄, 주소로 조용히 닫는 엔딩"
+  },
+  "palette": [
+    "#111111",
+    "#F2F2F2",
+    "#26272A",
+    "#4ADE80",
+    "#8EC3E6",
+    "#8C8C8C"
+  ],
+  "colors": {
+    "bg": "#111111",
+    "onBg": "#F2F2F2",
+    "onBgMuted": "rgba(242,242,242,.55)",
+    "paper": "#1C1D1F",
+    "ink": "#F2F2F2",
+    "accent": "#4ADE80",
+    "accentInk": "#0B1A10",
+    "pattern": "rgba(255,255,255,.05)",
+    "glow": "rgba(255,255,255,.14)"
+  },
+  "type": {
+    "display": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "heading": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "body": [
+      "Geist",
+      "Noto Sans KR"
+    ]
+  },
+  "fonts": [
+    {
+      "family": "Geist",
+      "weight": "100 900",
+      "file": "fonts/Geist-Variable.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 500,
+      "file": "fonts/NotoSansKR-Medium.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 700,
+      "file": "fonts/NotoSansKR-Bold.woff2"
+    }
+  ],
+  "look": {
+    "vignette": 0.35
+  },
+  "shape": {
+    "radius": "calc(var(--u) * 2.4)"
+  },
+  "motion": {
+    "pace": "느림",
+    "bpm": 84,
+    "ease": "power3.inOut",
+    "stagger": 1.1,
+    "transitions": [
+      "fade",
+      "cut",
+      "blur"
+    ]
+  },
+  "scenes": {
+    "bg": "solid",
+    "align": "center",
+    "card": "flat",
+    "marker": "color",
+    "weight": 600,
+    "tracking": -0.01,
+    "case": "none",
+    "rough": false,
+    "title": "blur",
+    "frame": "phone",
+    "deco": [],
+    "number": "odometer",
+    "scale": 0.9,
+    "schemes": [
+      "dark"
+    ]
+  },
+  "signature": [
+    "매크로 오프닝: 검은 화면에서 폰 테두리 한 귀퉁이만 보일 만큼 바짝 붙고, 은빛 반사광이 모서리 곡선을 따라 2~3초에 천천히 미끄러져요. 화면 귀퉁이의 둥근 + 버튼이 살짝 눌리면 작은 메뉴 네 줄이 톡 열리고, 그다음 카메라가 4초 동안 물러나 폰 전체가 들어와요",
+    "폰이 어둠 속에서 몸을 돌려요. 비스듬히 섰다가 옆선 한 줄로 얇아지고, 다시 눕혀져 화면이 기울어 보인 뒤 반듯하게 서요. 그동안 화면 속 큰 잔고 숫자는 자리마다 위아래로 굴러 맞춰지고, 소수점 뒤는 회색, 바뀐 폭은 초록 알약으로 붙어요",
+    "끝은 아주 조용하게 닫혀요. 어둠 사이에 밝은 하늘빛 화면이 딱 한 번 끼어든 뒤 검은 화면으로 돌아와 가운데 작은 마크, 흰 한 줄, 주소가 하나씩 흐림에서 맺혔다 사라져요"
+  ],
+  "fits": [
+    "금융·지갑 앱 공개",
+    "프리미엄 폰 앱 런칭",
+    "하드웨어 질감을 보여 주는 제품 티저",
+    "브랜드 첫 공개 영상"
+  ],
+  "avoid": [
+    "밝은 바탕 장면 여러 번(하늘빛은 한 번만)",
+    "빠른 컷 몽타주",
+    "종이·손그림 질감",
+    "강조색 여러 개(초록 하나만)",
+    "화면을 꽉 채우는 큰 제목"
+  ]
+}

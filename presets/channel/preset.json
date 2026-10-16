@@ -1,0 +1,138 @@
+{
+  "id": "channel",
+  "order": 10,
+  "name": "채널 홍보",
+  "summary": "애플 키노트 필름처럼 한 컷으로. 워드마크 → 사진 격자 → 터미널 → 앱 → 채널 페이지 → 구독 → 업로드 상태 → 워드마크.",
+  "look": "키노트 필름 · 리퀴드 글래스 · 조리개",
+  "template": "keynote",
+  "formats": [
+    "square"
+  ],
+  "seconds": 20,
+  "photos": {
+    "need": 9,
+    "hint": "채널 대표 사진 9장(격자·배너·썸네일·책상)"
+  },
+  "ask": [
+    "채널 이름(워드마크는 영어 한 단어)",
+    "채널 소개 한 줄",
+    "영상 제목 네 개",
+    "기획 메모 몇 줄"
+  ],
+  "brief": "예) 주말 여행 브이로그 채널 'Vlog'. 매주 토요일 업로드. 최근 영상: 바다 마을 하루, 숲길 캠핑, 골목 맛집 지도, 첫 해외 여행.",
+  "check": [
+    "채널 이름·영상 제목이 실제와 같은지",
+    "CC BY 사진이면 출처 줄"
+  ],
+  "music": {
+    "mood": "keynote",
+    "bpm": 120
+  },
+  "content": {
+    "film": "channel",
+    "bpm": 120,
+    "progress": false,
+    "wordmark": "Vlog",
+    "label": "주말마다 떠나는 작은 여행",
+    "photos": [
+      "photo1",
+      "photo2",
+      "photo3",
+      "photo4",
+      "photo5",
+      "photo6",
+      "photo7",
+      "photo8",
+      "photo9"
+    ],
+    "hero": 3,
+    "build": {
+      "prompt": "vlog plan --weekly",
+      "lines": [
+        "→ 월  아이디어 정리",
+        "→ 화  촬영 장소 답사",
+        "→ 목  촬영",
+        "→ 금  편집",
+        "→ 토  업로드",
+        "✓ 1 video · every week"
+      ],
+      "app": {
+        "title": "이번 주 영상",
+        "sub": "주말 여행 브이로그",
+        "items": [
+          [
+            "바다 마을 하루",
+            "토요일 업로드",
+            "photo2"
+          ],
+          [
+            "숲길 캠핑",
+            "다음 주",
+            "photo4"
+          ],
+          [
+            "골목 맛집 지도",
+            "준비 중",
+            "photo6"
+          ]
+        ]
+      }
+    },
+    "channel": {
+      "name": "채널 이름",
+      "sub": "여행 · 브이로그 · 맛집",
+      "banner": "photo3",
+      "avatar": "photo1",
+      "videos": [
+        [
+          "바다 마을 하루",
+          "photo2"
+        ],
+        [
+          "숲길 캠핑",
+          "photo4"
+        ],
+        [
+          "골목 맛집 지도",
+          "photo6"
+        ],
+        [
+          "첫 해외 여행",
+          "photo8"
+        ]
+      ],
+      "subscribe": "구독",
+      "subscribed": "구독중",
+      "notifyTitle": "채널 이름",
+      "notify": "새 영상 · 바다 마을 하루"
+    },
+    "states": [
+      {
+        "text": "아이디어",
+        "icon": "bulb"
+      },
+      {
+        "text": "대본",
+        "icon": "doc"
+      },
+      {
+        "text": "촬영",
+        "percent": 64
+      },
+      {
+        "text": "편집",
+        "icon": "cut"
+      },
+      {
+        "text": "업로드",
+        "icon": "check"
+      }
+    ],
+    "desk": {
+      "photo": "photo5",
+      "mascot": ""
+    },
+    "credit": "",
+    "note": false
+  }
+}

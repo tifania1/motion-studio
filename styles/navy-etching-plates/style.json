@@ -1,0 +1,133 @@
+{
+  "id": "navy-etching-plates",
+  "name": "남색 동판화",
+  "group": "손그림",
+  "template": "sketchbook",
+  "summary": "옅은 회색 종이에 남색 한 가지로 새긴 동판화 삽화와 차분한 세리프. 가는 테두리 판 아래 캡션 상자에 어절이 내려앉고, 빗금 구름 사이로 카메라가 올려다봐요",
+  "tags": [
+    "판화",
+    "에칭",
+    "세리프",
+    "남색",
+    "고급",
+    "도시"
+  ],
+  "hand": true,
+  "source": {
+    "site": "keyframe.gallery",
+    "ref": "mux:tuXO018UDuQqRyPphOAA68H97OzjQfuuPMRdm3GpREkw",
+    "at": "0–24초, 50–66초",
+    "note": "남색 단색 에칭 삽화(가는 펜 선 + 빗금·교차 빗금 명암, 흰 여백이 하이라이트), 1px 테두리 판과 아래 캡션 상자 구도, 어절이 작고 옅게 위에서 내려앉는 등장과 왼쪽부터 회색으로 흐려지는 퇴장, 판이 세 칸으로 갈라져 가운데가 글 칸이 되는 장면, 카메라가 위로 틸트해 빗금 구름 하늘로 넘어가는 이음, 그린 사물이 가로질러 지나가며 화면을 닦는 마무리"
+  },
+  "palette": [
+    "#EAEAEA",
+    "#2B3256",
+    "#5A72B8",
+    "#9AA6CF",
+    "#F6F6F3"
+  ],
+  "colors": {
+    "bg": "#EAEAEA",
+    "onBg": "#2B3256",
+    "onBgMuted": "rgba(43,50,86,.62)",
+    "paper": "#F6F6F3",
+    "ink": "#2B3256",
+    "accent": "#5A72B8",
+    "accentInk": "#FFFFFF",
+    "pattern": "rgba(43,50,86,.08)",
+    "glow": "rgba(111,134,196,.22)"
+  },
+  "type": {
+    "display": [
+      "Instrument Serif",
+      "Gowun Batang"
+    ],
+    "heading": [
+      "Instrument Serif",
+      "Gowun Batang"
+    ],
+    "body": [
+      "Gowun Batang"
+    ]
+  },
+  "fonts": [
+    {
+      "family": "Instrument Serif",
+      "weight": 400,
+      "file": "fonts/InstrumentSerif-Regular.woff2"
+    },
+    {
+      "family": "Gowun Batang",
+      "weight": 400,
+      "file": "fonts/GowunBatang-Regular.woff2"
+    },
+    {
+      "family": "Gowun Batang",
+      "weight": 700,
+      "file": "fonts/GowunBatang-Bold.woff2"
+    }
+  ],
+  "look": {
+    "paper": "white",
+    "paperTone": 0.2,
+    "fiber": 0.25,
+    "grain": 0.05,
+    "tint": "#34417A",
+    "tintMode": "color",
+    "tintAmount": 0.2
+  },
+  "shape": {
+    "radius": "0px"
+  },
+  "motion": {
+    "pace": "느림",
+    "bpm": 84,
+    "ease": "power3.out",
+    "stagger": 1.25,
+    "transitions": [
+      "zoom",
+      "blur",
+      "push"
+    ]
+  },
+  "scenes": {
+    "bg": "solid",
+    "align": "center",
+    "card": "outline",
+    "marker": "color",
+    "weight": 400,
+    "tracking": -0.01,
+    "case": "none",
+    "rough": false,
+    "title": "blur",
+    "frame": "poster",
+    "deco": [
+      "marks"
+    ],
+    "number": "count",
+    "scale": 1.1,
+    "schemes": [
+      "dark",
+      "paper"
+    ]
+  },
+  "signature": [
+    "판과 캡션 상자: 화면 위 2/3 에 남색 1px 테두리 판(그림·사진, 남색 단색), 그 아래 같은 선의 낮은 캡션 상자. 판 안 그림은 장면 내내 천천히 밀고 들어가고(크기 1.00→1.12, 3초, 선형에 가깝게) 캡션 문장만 바뀜. 판이 가운데부터 벌어져 세 칸이 되고 가운데 빈 칸에 문장이 들어오는 변주도 이 결",
+    "어절 내려앉기: 새 어절이 제 크기의 60%, 반 줄 위, 옅은 남색(30%), 흐림 4px 에서 시작해 0.35초에 제자리·제 크기·남색으로 내려앉음(어절 사이 0.15초). 강조 어절은 연보라빛 남색으로 남음. 나갈 때는 왼쪽 어절부터 0.1초 간격으로 회색으로 옅어지며 흐려지고, 그 자리에 다음 문장이 같은 방식으로 겹쳐 들어옴",
+    "빗금 구름 하늘로 올려다보기: 장면 사이에 카메라가 위로 틸트(내용이 아래로 0.8초에 빠지고 새 내용이 위에서 내려옴). 교차 빗금으로 명암을 넣은 구름 3~5개가 화면 가장자리에서 서로 다른 속도로 천천히 흘러 로고·숫자 둘레를 감쌈"
+  ],
+  "fits": [
+    "금융·투자·법률 서비스",
+    "도시·부동산·여행지 소개",
+    "기관·브랜드 이야기",
+    "고급 제품 런칭",
+    "숫자 하나를 크게 보여 주는 발표"
+  ],
+  "avoid": [
+    "원색 여러 개",
+    "굵은 고딕 큰 제목",
+    "둥근 모서리 카드와 그림자",
+    "빠른 컷 연타",
+    "선이 떨리는 손그림 효과"
+  ]
+}

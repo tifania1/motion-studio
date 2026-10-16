@@ -1,0 +1,127 @@
+{
+  "id": "mint-wave-band",
+  "name": "민트 소리 띠",
+  "group": "그라디언트·빛",
+  "template": "glow",
+  "summary": "옅은 민트 바탕 아래로 흐린 초록 빛 띠가 소리 물결처럼 넘실대고, 화면이 세로 줄 모자이크로 번졌다 걷히며 겹 알약이 퍼지는 오디오 런칭",
+  "tags": [
+    "그라디언트",
+    "민트",
+    "오디오",
+    "모자이크",
+    "밝음"
+  ],
+  "hand": false,
+  "source": {
+    "site": "keyframe.gallery",
+    "ref": "mux:yVenVW1Qjh6acCtblywsnJnixWxtlN4sEN5Jr1TUah4",
+    "at": "0–12.4초, 13.4–22.5초",
+    "note": "흰 바탕 아래쪽에 크게 흐린 초록 가로 띠가 넘실대고 같은 초록 계열 글이 흐림에서 맺히며 작아지는 장면, 세로 줄 칸으로 쪼개져 번졌다 걷히는 모자이크 전환과 그 위 재생 막대 카드, 문구를 감싼 알약이 겹겹이 퍼지는 장면, 가로선 여러 줄이 한 줄로 모여 구간이 나뉜 막대가 되는 장면, 서비스 이름 목록이 위로 굴러가는 끝 장면"
+  },
+  "palette": [
+    "#EEF3EC",
+    "#7EE08F",
+    "#2FBF62",
+    "#7FF0C4",
+    "#C9F2B8",
+    "#17552D"
+  ],
+  "colors": {
+    "bg": "#EEF3EC",
+    "onBg": "#17552D",
+    "onBgMuted": "rgba(23,85,45,.66)",
+    "paper": "#FFFFFF",
+    "ink": "#1F2A22",
+    "accent": "#2FBF62",
+    "accentInk": "#0B2E17",
+    "pattern": "rgba(61,203,108,.12)",
+    "glow": "rgba(61,203,108,.45)"
+  },
+  "type": {
+    "display": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "heading": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "body": [
+      "Geist",
+      "Noto Sans KR"
+    ]
+  },
+  "fonts": [
+    {
+      "family": "Geist",
+      "weight": "100 900",
+      "file": "fonts/Geist-Variable.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 500,
+      "file": "fonts/NotoSansKR-Medium.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 700,
+      "file": "fonts/NotoSansKR-Bold.woff2"
+    }
+  ],
+  "look": {
+    "grain": 0.04
+  },
+  "shape": {
+    "radius": "calc(var(--u) * 6)"
+  },
+  "motion": {
+    "pace": "보통",
+    "bpm": 100,
+    "ease": "power2.out",
+    "stagger": 1,
+    "transitions": [
+      "blur",
+      "blocks",
+      "fade"
+    ]
+  },
+  "scenes": {
+    "bg": "aurora",
+    "align": "center",
+    "card": "flat",
+    "marker": "color",
+    "weight": 500,
+    "tracking": -0.01,
+    "case": "none",
+    "rough": false,
+    "title": "blur",
+    "frame": "none",
+    "deco": [
+      "rings"
+    ],
+    "number": "count",
+    "scale": 1,
+    "schemes": [
+      "dark",
+      "accent",
+      "paper"
+    ]
+  },
+  "signature": [
+    "아래쪽 1/3에 초록·민트가 섞인 가로 빛 띠가 크게 흐린 채 소리 물결처럼 천천히 넘실대고(3초 주기), 그 위로 같은 초록 계열 글이 흐림에서 맺히며 살짝 작아져 자리 잡음",
+    "모자이크 전환: 화면이 세로 줄 칸(민트·연두·하늘)으로 쪼개져 칸마다 다른 속도로 위아래로 번졌다 걷히며 다음 장면이 나옴. 가운데 흰 재생 막대 카드의 시간이 0:30 → 3:00 으로 늘며 막대가 길어짐",
+    "겹 알약: 가운데 문구를 감싼 둥근 알약이 안에서부터 너덧 겹 퍼져 나가며 커지고(겹마다 0.15초 차이), 끝에는 가는 가로선 여러 줄이 한 줄로 모여 구간이 나뉜 막대가 됨"
+  ],
+  "fits": [
+    "음악·오디오 서비스",
+    "AI 기능·모델 출시",
+    "웰니스·헬스케어",
+    "친환경 브랜드"
+  ],
+  "avoid": [
+    "어두운 바탕",
+    "굵은 검정 큰 제목",
+    "사진을 꽉 채운 장면",
+    "빠른 컷 연타"
+  ]
+}

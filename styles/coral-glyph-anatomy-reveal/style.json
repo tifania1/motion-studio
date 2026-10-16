@@ -1,0 +1,135 @@
+{
+  "id": "coral-glyph-anatomy-reveal",
+  "name": "산호 글자꼴 해부",
+  "group": "타이포",
+  "template": "typeslam",
+  "summary": "옅은 회색·짙은 회색·산호 분홍 세 색만으로 글자꼴을 뜯어 보여 주는 서체 공개 필름. 문장부호가 커서 옆에서 갈아 끼워지고, 화면보다 큰 글자 획과 기준선, 굵기가 차오르는 글자 줄이 박자마다 컷으로 이어져요",
+  "tags": [
+    "타이포",
+    "서체 공개",
+    "글자 해부",
+    "산호 분홍",
+    "회색조",
+    "기하 산세리프"
+  ],
+  "hand": false,
+  "source": {
+    "site": "keyframe.gallery",
+    "ref": "mux:Z45dUTUHQFQsVRHe6wlk00d2WKASnQ4hMpWY9YA6J2X4",
+    "at": "0–40.7초",
+    "note": "산호 커서 옆에서 마침표·물음표·느낌표가 갈아 끼워지는 오프닝, 분홍 화면을 꽉 채운 흰 굵은 낱말, 짙은 회색 판이 옆에서 밀려 들어오는 와이프, 화면보다 크게 잘린 글자 획 클로즈업, 가는 기준선 위의 굵은 낱말, 같은 글자가 굵기를 바꾸며 줄지어 흐르는 장면, 곡선 윤곽을 따라 그은 가는 동심 호, 앵커 점과 커서로 짓는 구성선, 회색 겹 줄무늬 속 분홍 글자, 흩어진 굵은 글자들, 분홍 바탕 작은 흰 문장 엔딩"
+  },
+  "palette": [
+    "#ECECEC",
+    "#3C3C3C",
+    "#DE5267",
+    "#959595",
+    "#FFFFFF"
+  ],
+  "colors": {
+    "bg": "#ECECEC",
+    "onBg": "#3C3C3C",
+    "onBgMuted": "rgba(60,60,60,.62)",
+    "paper": "#3C3C3C",
+    "ink": "#ECECEC",
+    "accent": "#DE5267",
+    "accentInk": "#141414",
+    "pattern": "rgba(222,82,103,.35)",
+    "glow": "rgba(222,82,103,.28)"
+  },
+  "type": {
+    "display": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "heading": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "body": [
+      "Geist",
+      "Noto Sans KR"
+    ]
+  },
+  "fonts": [
+    {
+      "family": "Geist",
+      "weight": "100 900",
+      "file": "fonts/Geist-Variable.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 500,
+      "file": "fonts/NotoSansKR-Medium.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 700,
+      "file": "fonts/NotoSansKR-Bold.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 900,
+      "file": "fonts/NotoSansKR-Black.woff2"
+    }
+  ],
+  "shape": {
+    "radius": "calc(var(--u) * 0.4)"
+  },
+  "motion": {
+    "pace": "보통",
+    "bpm": 104,
+    "ease": "power3.inOut",
+    "stagger": 0.9,
+    "transitions": [
+      "cut",
+      "wipe",
+      "push",
+      "cut"
+    ]
+  },
+  "scenes": {
+    "bg": "solid",
+    "align": "center",
+    "card": "flat",
+    "marker": "color",
+    "weight": 700,
+    "tracking": -0.02,
+    "case": "none",
+    "rough": false,
+    "title": "type",
+    "frame": "none",
+    "deco": [
+      "marks",
+      "cursor"
+    ],
+    "number": "count",
+    "scale": 1.3,
+    "schemes": [
+      "dark",
+      "accent",
+      "dark",
+      "paper"
+    ]
+  },
+  "signature": [
+    "옅은 회색 가운데 가는 산세리프 낱말 하나와 산호 막대 커서. 박자마다 끝의 문장부호만 마침표 → 물음표 → 느낌표로 갈아 끼워지고, 첫 글자에 산호 블록이 한 박 얹혔다가, 컷으로 화면 전체가 산호가 되며 흰 문장부호 하나만 크게 남음",
+    "글자꼴 해부: 화면보다 크게 잘린 글자 획 클로즈업, 가는 산호 기준선(밑선·엑스하이트·윗선) 위에 박히는 굵은 낱말, 곡선 윤곽을 따라 0.6초에 그어지는 가는 산호 동심 호, 앵커 네모와 커서가 끌고 가는 직각 구성선을 장면마다 하나씩",
+    "같은 글자 한 줄이 가는 굵기에서 아주 굵게 차오르며 옆으로 흐르고, 짙은 회색 판이 옆에서 밀려 들어와 화면을 반씩 가름. 끝 무렵 회색 겹 줄무늬가 글자 하나를 감싸 착시 무늬를 만든 뒤 산호 바탕 작은 흰 문장으로 닫힘"
+  ],
+  "fits": [
+    "서체·글꼴 공개",
+    "브랜드 리뉴얼 발표",
+    "디자인 시스템 소개",
+    "이름·로고타입 공개",
+    "타이포 중심 티저"
+  ],
+  "avoid": [
+    "그라디언트·빛 번짐",
+    "사진·3D 소품",
+    "세 색 밖의 강조색",
+    "손그림 선",
+    "질감(그레인·종이)",
+    "한 화면에 긴 문단 여러 개"
+  ]
+}

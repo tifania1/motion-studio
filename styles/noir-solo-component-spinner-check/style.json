@@ -1,0 +1,131 @@
+{
+  "id": "noir-solo-component-spinner-check",
+  "name": "검은 판 부품 견본",
+  "group": "제품 UI",
+  "template": "uidemo",
+  "summary": "거의 검은 화면 한가운데에 버튼, 입력창, 링크 같은 UI 부품이 하나씩만 놓여요. 커서가 누르면 바탕이 한 단계 밝아지고, 작은 스피너가 돌다 체크로 맺히는 조용한 컴포넌트 견본 필름",
+  "tags": [
+    "제품 UI",
+    "어두움",
+    "컴포넌트",
+    "디자인 시스템",
+    "절제",
+    "느림"
+  ],
+  "hand": false,
+  "source": {
+    "site": "keyframe.gallery",
+    "ref": "mux:ZoMsiMQ01jbU4HiDd02ja6WQbIZMguzfB5Wf004KFdw3mE",
+    "at": "0–30.1초",
+    "note": "거의 검은 바탕 한가운데에 부품 하나만 두는 구성을 배웠어요. 커서가 누르면 버튼 바탕이 한 단계 밝아지는 반응, 어두운 타일 격자가 밝은 큰 타일 하나로 합쳐지는 전환, 밝은 판과 어두운 판에 같은 큰 글자를 나란히 놓는 글꼴 견본, 모서리 둥글기를 보여 주는 원호 안내선과 치수 꼬리표도 담았어요. 그 밖에 입력창의 자리 글이 타이핑으로 바뀌는 장면, 스피너가 체크로 바뀌는 장면, 점선 밑줄 링크, 버튼 변형 네 개를 한 줄로 세운 장면, 문서 화면으로 물러나는 카메라, 천천히 도는 어두운 유리 정육면체, 작은 이름 한 줄로 닫는 마무리를 배웠어요"
+  },
+  "palette": [
+    "#111111",
+    "#1E1E1E",
+    "#2C2C2C",
+    "#EDEDED",
+    "#8A8A8A",
+    "#E5484D"
+  ],
+  "colors": {
+    "bg": "#111111",
+    "onBg": "#EDEDED",
+    "onBgMuted": "rgba(237,237,237,.55)",
+    "paper": "#1E1E1E",
+    "ink": "#EDEDED",
+    "accent": "#F2F2F2",
+    "accentInk": "#111111",
+    "pattern": "rgba(255,255,255,.04)",
+    "glow": "rgba(255,255,255,.12)"
+  },
+  "type": {
+    "display": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "heading": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "body": [
+      "Geist",
+      "Noto Sans KR"
+    ]
+  },
+  "fonts": [
+    {
+      "family": "Geist",
+      "weight": "100 900",
+      "file": "fonts/Geist-Variable.woff2"
+    },
+    {
+      "family": "Geist Mono",
+      "weight": "100 900",
+      "file": "fonts/GeistMono-Variable.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 500,
+      "file": "fonts/NotoSansKR-Medium.woff2"
+    }
+  ],
+  "look": {
+    "grain": 0.04
+  },
+  "shape": {
+    "radius": "calc(var(--u) * 1.2)"
+  },
+  "motion": {
+    "pace": "느림",
+    "bpm": 90,
+    "ease": "power3.out",
+    "stagger": 1.0,
+    "transitions": [
+      "cut",
+      "fade",
+      "blur"
+    ]
+  },
+  "scenes": {
+    "bg": "solid",
+    "align": "center",
+    "card": "flat",
+    "marker": "underline",
+    "weight": 400,
+    "tracking": -0.01,
+    "case": "none",
+    "rough": false,
+    "title": "blur",
+    "frame": "none",
+    "deco": [
+      "cursor",
+      "handles"
+    ],
+    "number": "odometer",
+    "scale": 0.7,
+    "schemes": [
+      "dark",
+      "dark",
+      "dark",
+      "dark"
+    ]
+  },
+  "signature": [
+    "검은 화면 한가운데에 숯빛 버튼 하나만 놓여요. 손가락 커서가 오른쪽 아래에서 미끄러져 와 누르면 버튼이 0.1초 동안 97%로 눌렸다 돌아오고, 바탕이 #1E1E1E 에서 #2C2C2C 로 한 단계 밝아져요",
+    "작은 정사각 버튼 속에서 가는 원호 스피너가 약 1.5초 동안 돌다가 0.2초에 사라지고, 같은 자리에 체크 표시가 0.3초에 한 획으로 그어져요. 바로 앞 장면에서는 입력창의 회색 자리 글이 지워지고 흰 글자가 초당 18자쯤으로 쳐져요",
+    "모서리 둥글기를 설명할 때는 부품을 지우고 가는 회색 원호 두세 개만 남겨요. 원호 양끝과 가운데에 작은 핸들 점을 달고 고정폭 치수 꼬리표를 붙인 뒤, 원호 반지름을 천천히 바꿔 가며 보여 줘요"
+  ],
+  "fits": [
+    "디자인 시스템·컴포넌트 공개",
+    "UI 라이브러리 소개",
+    "개발자 도구 런칭",
+    "기능 하나를 차분히 집중 소개"
+  ],
+  "avoid": [
+    "화려한 그라디언트와 빛 번짐",
+    "강조색 여러 개(빨강은 위험 버튼 하나에만)",
+    "빠른 컷 몽타주",
+    "한 화면에 부품 여러 개를 빽빽이(변형 줄과 문서 장면만 예외)",
+    "굵고 큰 제목"
+  ]
+}

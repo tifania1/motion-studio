@@ -1,0 +1,109 @@
+{
+  "id": "framed-dusk-gradient",
+  "name": "액자 속 짙은 그라디언트",
+  "group": "그라디언트·빛",
+  "template": "glow",
+  "summary": "가장자리를 얇게 남긴 미색 액자 안에서 자두·남색 그라디언트가 흐르고, 흰 입력 카드에 문장이 타이핑되는 무드",
+  "tags": [
+    "그라디언트",
+    "입력창",
+    "자두색",
+    "프리미엄",
+    "AI"
+  ],
+  "hand": false,
+  "source": {
+    "site": "keyframe.gallery",
+    "ref": "mux:bCCKEhP00qPSMjt01Be8Vo01jT400i00KmALgEeDovUl02MoM",
+    "at": "8–12초, 30–33초, 36–45초, 55–58초",
+    "note": "얇은 미색 띠를 남긴 둥근 액자 안 그라디언트, 흰 입력 카드 타이핑과 분홍 형광 단어, 'A — B'에서 뒤 단어가 바뀔 때마다 바탕색도 바뀜, 그라디언트 칸과 UI 칸이 체크무늬로 들어서는 전환"
+  },
+  "palette": [
+    "#4B2340",
+    "#8C3A6E",
+    "#5B6FA8",
+    "#C9A27A",
+    "#EFEDEE",
+    "#E07AB4"
+  ],
+  "colors": {
+    "bg": "#4B2340",
+    "onBg": "#F6EEF2",
+    "onBgMuted": "rgba(246,238,242,.7)",
+    "paper": "#EFEDEE",
+    "ink": "#18151A",
+    "accent": "#E07AB4",
+    "accentInk": "#18151A",
+    "pattern": "rgba(255,255,255,.08)",
+    "glow": "rgba(224,122,180,.35)"
+  },
+  "type": {
+    "display": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "heading": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "body": [
+      "Geist",
+      "Noto Sans KR"
+    ]
+  },
+  "fonts": [
+    {
+      "family": "Geist",
+      "weight": "100 900",
+      "file": "fonts/Geist-Variable.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 500,
+      "file": "fonts/NotoSansKR-Medium.woff2"
+    }
+  ],
+  "look": {
+    "grain": 0.08
+  },
+  "shape": {
+    "radius": "calc(var(--u) * 2.4)"
+  },
+  "motion": {
+    "pace": "보통",
+    "bpm": 100,
+    "ease": "power3.inOut",
+    "stagger": 1,
+    "transitions": [
+      "zoom",
+      "fade",
+      "cut"
+    ]
+  },
+  "scenes": {
+    "bg": "mesh",
+    "align": "center",
+    "card": "flat",
+    "marker": "highlight",
+    "weight": 400,
+    "tracking": -0.01,
+    "case": "none",
+    "rough": false
+  },
+  "signature": [
+    "화면 가장자리 1~1.5%를 미색 띠로 남긴 둥근 액자 안에서 자두·보라·남색 그라디언트가 천천히 흐름. 가운데에는 흰 입력 카드 하나",
+    "카드에 문장이 타이핑되고 핵심 단어에 분홍 형광 블록이 칠해졌다 사라짐. 파일 아이콘이 날아와 카드 위에 붙음",
+    "'A — B' 문구에서 뒤 단어만 바뀔 때마다 바탕 그라디언트도 호박·남색·자두·청보라로 함께 바뀜. 화면을 칸으로 나눠 그라디언트 칸과 UI 칸이 체크무늬로 들어섰다 한 화면으로 합쳐짐"
+  ],
+  "fits": [
+    "AI 도구·입력창 중심 기능",
+    "연동·통합 소개",
+    "프리미엄 서비스",
+    "음성·대화 서비스"
+  ],
+  "avoid": [
+    "밝은 원색",
+    "크고 굵은 제목",
+    "손그림"
+  ]
+}

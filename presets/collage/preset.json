@@ -1,0 +1,59 @@
+{
+  "id": "collage",
+  "order": 106,
+  "group": "look",
+  "style": "riso-torn-editorial",
+  "name": "종이 콜라주",
+  "summary": "잡지를 오려 붙이듯 찢긴 종이판이 장면마다 날아와 덮이고, 스티커 꼬리표·색 종이 띠 제목·테이프 붙인 쪽지·톱니 스티커 숫자·리소 톤 사진 조각이 박마다 툭툭 붙어요.",
+  "look": "찢은 종이 · 색 종이 띠 · 테이프 · 스티커 · 리소 망점 사진",
+  "template": "collage",
+  "formats": [
+    "tall",
+    "portrait",
+    "square",
+    "wide"
+  ],
+  "seconds": 19.5,
+  "photos": {
+    "need": 2,
+    "hint": "있으면 1~4장이 찢은 사진·폴라로이드·원형 오림·우표로 겹겹이 붙고, 리소 인쇄처럼 강조색 망점 톤이 입혀져요. 없어도 돼요(사진 칸을 비우면 사진 장면이 빠져요). 가운데에 주인공이 있는 사진이 잘 맞아요"
+  },
+  "ask": [
+    "작은 꼬리표 한마디 (둥근 스티커에 들어가요, 14자 안쪽 · 5자 안쪽이면 동그라미)",
+    "첫 문장(24자 안쪽, 두 줄)과 그중 강조할 어절 (강조색 종이 띠 + 망점)",
+    "장점·기능·순서 2~5개 (하나에 18자 안쪽, 쪽지 한 장씩)",
+    "숫자 하나와 그 근거(출처·기준 시점) — 없으면 숫자 장면을 빼요",
+    "넣을 사진이 있는지 (0~4장)",
+    "마지막 한마디, 버튼 문구, 주소나 계정"
+  ],
+  "brief": "예) 회의록을 자동으로 정리해 주는 서비스의 새 기능 소개. 말하면 받아 적고, 할 일만 골라 정리하고, 팀 채널로 보내 줌. 시범 사용 팀 기준 하루 40분을 아낌. 마지막은 '무료로 시작' 버튼과 example.com",
+  "check": [
+    "숫자 옆 출처(source)가 실제 근거와 기준 시점을 말하는지",
+    "'최초·1위·유일·최고·100%' 같은 말은 근거가 있을 때만",
+    "강조 어절(highlight)이 첫 문장 안에 그대로 있는지",
+    "사진을 넣었다면 쓸 수 있는 사진인지(직접 찍은 사진·CC0·CC BY)와 출처 표시, 실제 상품 사진이 아니면 '참고 사진' 표시",
+    "주소·계정(cta.sub)이 지금 쓰는 것인지"
+  ],
+  "music": {
+    "mood": "funk",
+    "bpm": 120,
+    "prompt": "playful indie collage groove, snappy breakbeat drums, hand claps and paper-rustle percussion, plucky bass, bright toy-piano and glockenspiel stabs, cut-and-paste zine energy, 120 BPM",
+    "sections": [
+      [
+        0,
+        3.5,
+        "punchy start, a clap on every pasted word strip"
+      ],
+      [
+        3.5,
+        15.5,
+        "bouncy steady groove, small stab on every note, sticker and photo that lands"
+      ],
+      [
+        15.5,
+        19.5,
+        "final build and a confident last hit as the button sticker lands"
+      ]
+    ]
+  }
+}

@@ -1,0 +1,141 @@
+{
+  "id": "cream-prompt-thermal-cutreel",
+  "name": "미색 프롬프트 열화상 컷",
+  "group": "제품 UI",
+  "template": "uidemo",
+  "summary": "따뜻한 미색 바탕의 흰 입력창에 문장이 쳐지면 그 말대로 지은 밝은 앱 화면이 2초마다 컷으로 이어져요. 사이사이 열화상처럼 엉켜 흐르는 주황·분홍 판 위에 검은 알약 버튼 하나가 떠서 눌리는 앱 제작 런칭",
+  "tags": [
+    "제품 UI",
+    "프롬프트",
+    "앱 제작",
+    "열화상",
+    "컷",
+    "미색"
+  ],
+  "hand": false,
+  "source": {
+    "site": "keyframe.gallery",
+    "ref": "mux:EAHuPJA3GqEX9axcOrXSEYWjom4ji7HAzCjjk3LIicQ",
+    "at": "0–50.5초",
+    "note": "미색 바탕 가운데 꺾쇠로 감싼 낱말과 둘레에 튀는 빗금 조각, 흰 입력창 타자 뒤 그 말대로 지은 앱 화면이 컷으로 바뀌는 리듬(사진 위 아이콘 낀 큰 두 낱말, 파일 트리, 테두리 알약 연결 문장, 색 칩 달력, 폰), 막간에 한 번 나오는 숯빛 코드·화살표·동그라미 격자, 열화상·무지갯빛 흐린 판 위 검은 알약 버튼과 커서 클릭, 작은 무지갯빛 구슬이 주황 테두리 알약 낱말로 바뀌는 엔딩. 화면 대부분은 미색과 흰 입력창·밝은 앱 화면이에요"
+  },
+  "palette": [
+    "#E7E3DD",
+    "#FBFAF7",
+    "#1C1C1B",
+    "#E8742A",
+    "#C9DC5A",
+    "#A9CBEA"
+  ],
+  "colors": {
+    "bg": "#E7E3DD",
+    "onBg": "#1C1C1B",
+    "onBgMuted": "rgba(28,28,27,.6)",
+    "paper": "#FBFAF7",
+    "ink": "#1C1C1B",
+    "accent": "#E8742A",
+    "accentInk": "#1A1A1A",
+    "pattern": "rgba(28,28,27,.08)",
+    "glow": "rgba(232,116,42,.12)"
+  },
+  "type": {
+    "display": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "heading": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "body": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "mono": [
+      "Geist Mono",
+      "Noto Sans KR"
+    ]
+  },
+  "fonts": [
+    {
+      "family": "Geist",
+      "weight": "100 900",
+      "file": "fonts/Geist-Variable.woff2"
+    },
+    {
+      "family": "Geist Mono",
+      "weight": "100 900",
+      "file": "fonts/GeistMono-Variable.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 500,
+      "file": "fonts/NotoSansKR-Medium.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 700,
+      "file": "fonts/NotoSansKR-Bold.woff2"
+    }
+  ],
+  "shape": {
+    "radius": "calc(var(--u) * 1.6)"
+  },
+  "motion": {
+    "pace": "빠름",
+    "bpm": 112,
+    "ease": "expo.out",
+    "stagger": 0.8,
+    "transitions": [
+      "cut",
+      "blur",
+      "cut",
+      "fade"
+    ]
+  },
+  "scenes": {
+    "bg": "solid",
+    "align": "center",
+    "card": "shadow",
+    "marker": "color",
+    "weight": 600,
+    "tracking": -0.03,
+    "case": "none",
+    "rough": false,
+    "title": "type",
+    "frame": "card",
+    "deco": [
+      "cursor",
+      "marks",
+      "dots"
+    ],
+    "number": "count",
+    "scale": 1,
+    "schemes": [
+      "paper",
+      "paper",
+      "dark",
+      "paper"
+    ]
+  },
+  "signature": [
+    "미색 바탕 한가운데 꺾쇠로 감싼 작은 낱말(< 낱말 >)이 놓이고, 둘레에 짧은 사선 조각 6~8개가 가운데서 바깥으로 1~2u 튀어 나가며 돌다가 0.5초 뒤 사라짐. 같은 빗금 조각은 흰 입력창이 뜰 때 한 번 더 튐",
+    "흰 둥근 입력창(아주 옅은 그림자 한 겹으로 미색 위에 살짝 뜸)에 문장이 커서 막대와 함께 쳐지고 검은 화살표 버튼이 눌리면, 그 말대로 지은 밝은 앱 화면이 2박마다 컷으로 갈림. 사진을 꽉 깐 첫 화면에는 아이콘 하나를 사이에 낀 큰 두 낱말이 화면 가장자리에서 잘리게 걸림",
+    "막간에 한 번, 열화상처럼 주황·노랑·분홍·하늘이 엉켜 흐르는 판(또는 숯빛 판) 위에 검은 알약 버튼이나 흰 대화 상자 하나만 떠 있고, 커서가 와서 누르면 버튼이 살짝 눌렸다 돌아옴. 끝에는 미색 위 작은 무지갯빛 구슬이 주황 테두리 알약 낱말로 바뀜"
+  ],
+  "fits": [
+    "AI 앱 빌더·노코드 도구 런칭",
+    "개발 도구 기능 투어",
+    "예약·관리 앱 소개",
+    "만드는 과정을 보여 주는 데모",
+    "한 문장에서 결과물로 이어지는 이야기"
+  ],
+  "avoid": [
+    "종이·손그림 질감",
+    "어두운 판을 여러 장면에 쓰기(숯빛·열화상 판은 막간 한 번만, 나머지는 미색과 흰 화면)",
+    "굵은 포스터 글자를 장면마다 쓰기(큰 낱말은 사진 위 한두 번만)",
+    "주황으로 면을 채우기(강조 상자 배경·그래프 면 대신 버튼·칩·선·엔딩 알약에만)",
+    "네온 빛 번짐과 진한 그림자(흰 카드는 옅은 그림자로 살짝만 띄움)",
+    "모든 장면을 느린 페이드로 잇기"
+  ]
+}

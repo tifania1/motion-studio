@@ -1,0 +1,152 @@
+{
+  "id": "material-reel-prompt-glow",
+  "name": "재질 릴과 노을 입력창",
+  "group": "타이포",
+  "template": "glow",
+  "summary": "어두운 화면에 분홍 털결, 바람에 눕는 풀, 부푼 연두 글자, 화면을 꽉 채운 넓은 대문자 시안이 1~2초마다 컷으로 지나가요. 이어 화면 아래 3분의 1에서 분홍·주황·파랑 노을빛이 번지고, 가운데 짙은 유리 입력 카드에 문장이 쳐졌다 고쳐지는 디자인 쇼릴",
+  "tags": [
+    "타이포",
+    "쇼릴",
+    "재질",
+    "노을빛",
+    "입력창",
+    "어두움",
+    "빠름"
+  ],
+  "hand": false,
+  "source": {
+    "site": "keyframe.gallery",
+    "ref": "mux:plCwK69V5ds5sTvvluR00CWMizHJnRuHUhfSPUgzrOcI",
+    "at": "0–54.3초",
+    "note": "흐림에서 맺히는 첫 낱말, 털·풀·부푼 글자·크롬 기호 같은 재질 판이 1~2초마다 컷으로 바뀌는 오프닝(0–17초), 화면을 꽉 채운 넓은 대문자 포스터 시안(18–23초), 아래에서 노을빛이 번지는 짙은 유리 입력 카드에 문장이 쳐지고 지워졌다 다시 쳐지는 리듬(25–28초, 39–44초), 사진 위로 흐르는 거대한 연하늘 대문자와 그 위에 뜬 댓글 창(30–37초), 흐림 속 둥근 빛 고리와 작은 문장으로 닫는 엔딩(50–54초)"
+  },
+  "palette": [
+    "#121214",
+    "#EDEDEB",
+    "#F0508C",
+    "#F27A3D",
+    "#4A5CF0",
+    "#A8DDF0"
+  ],
+  "colors": {
+    "bg": "#121214",
+    "onBg": "#EDEDEB",
+    "onBgMuted": "rgba(237,237,235,.6)",
+    "paper": "#1C1C20",
+    "ink": "#F2F2F0",
+    "accent": "#F0508C",
+    "accentInk": "#1A0A10",
+    "pattern": "rgba(255,255,255,.06)",
+    "glow": "rgba(242,122,61,.55)"
+  },
+  "type": {
+    "display": [
+      "Archivo",
+      "Noto Sans KR"
+    ],
+    "heading": [
+      "Archivo",
+      "Noto Sans KR"
+    ],
+    "body": [
+      "Geist",
+      "Noto Sans KR"
+    ]
+  },
+  "fonts": [
+    {
+      "family": "Archivo",
+      "weight": "100 900",
+      "stretch": "62% 125%",
+      "file": "fonts/Archivo-Variable.woff2"
+    },
+    {
+      "family": "Geist",
+      "weight": "100 900",
+      "file": "fonts/Geist-Variable.woff2"
+    },
+    {
+      "family": "Instrument Serif",
+      "weight": 400,
+      "file": "fonts/InstrumentSerif-Regular.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 500,
+      "file": "fonts/NotoSansKR-Medium.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 700,
+      "file": "fonts/NotoSansKR-Bold.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 900,
+      "file": "fonts/NotoSansKR-Black.woff2"
+    }
+  ],
+  "look": {
+    "grain": 0.08,
+    "vignette": 0.35
+  },
+  "shape": {
+    "radius": "calc(var(--u) * 2)"
+  },
+  "motion": {
+    "pace": "빠름",
+    "bpm": 110,
+    "ease": "power3.out",
+    "stagger": 0.6,
+    "transitions": [
+      "cut",
+      "blur",
+      "cut",
+      "push"
+    ]
+  },
+  "scenes": {
+    "bg": "aurora",
+    "align": "center",
+    "card": "glass",
+    "marker": "color",
+    "weight": 800,
+    "tracking": -0.03,
+    "case": "upper",
+    "rough": false,
+    "title": "blur",
+    "frame": "card",
+    "deco": [
+      "cursor",
+      "orb"
+    ],
+    "number": "count",
+    "scale": 1.3,
+    "stretch": "125%",
+    "schemes": [
+      "dark",
+      "dark",
+      "dark",
+      "accent"
+    ]
+  },
+  "signature": [
+    "재질 몽타주: 어두운 화면에서 화면 가득한 재질·글자 판(분홍 털결, 바람에 눕는 풀, 부푼 연두 글자, 세로로 늘어나 흐림을 끄는 압축 대문자, 크롬 기호)이 1~2초마다 컷으로 바뀜. 판마다 아주 천천히 다가가거나 옆으로 밀리고, 첫 낱말은 흐림에서 분홍·파랑 번짐을 달고 맺힘",
+    "화면 아래 3분의 1에서 분홍(#F0508C)·주황(#F27A3D)·파랑(#4A5CF0) 노을빛이 천천히 번지는 어두운 화면 가운데 짙은 유리 입력 카드. 문장이 타이핑되다 뒤쪽 몇 글자가 지워지고 다른 말로 다시 쳐지며, 커서가 오른쪽 아래 둥근 보내기 단추를 누르면 카드가 시안 고르기 판으로 넓어짐",
+    "사진 위로 화면보다 큰 연하늘 넓은 대문자 낱말(Archivo 너비 125%)이 아래가 잘린 채 천천히 옆으로 흐르고, 그 위에 어두운 댓글 창이 떠서 이름표 단 말 한 줄씩 쌓임. 다음 컷에서 시안 색과 글자가 바뀌어 있음"
+  ],
+  "fits": [
+    "AI 디자인·웹사이트 제작 도구 런칭",
+    "크리에이티브 스튜디오 쇼릴",
+    "포트폴리오·시안 모음 소개",
+    "협업 피드백 기능 소개"
+  ],
+  "avoid": [
+    "밝은 흰 바탕이나 밝은 회색 면이 화면에 비치는 장면",
+    "노을빛 없이 평평한 검정만 이어지는 슬라이드",
+    "손그림 선과 종이 질감",
+    "한 화면에 긴 문단",
+    "노을빛 말고 다른 그라디언트 섞기",
+    "느린 서서히 전환만 이어 쓰기"
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "id": "app-feature",
+  "order": 8,
+  "name": "앱 기능 소개",
+  "summary": "도형 하나가 버튼·플레이어·토글·차트·검색창으로 모양을 바꾸는 14초 루프. 흑백 키노트 UI 데모.",
+  "look": "흑백 UI · 모프 · 커서",
+  "template": "uimorph",
+  "formats": [
+    "square"
+  ],
+  "seconds": 14,
+  "photos": {
+    "need": 0,
+    "hint": "앨범 아트 한 장이 있으면 좋아요"
+  },
+  "ask": [
+    "앱 이름과 핵심 기능",
+    "버튼·토스트 문구",
+    "검색 예시 단어",
+    "차트에 넣을 실제 수치"
+  ],
+  "brief": "예) 습관 기록 앱 '하루체크'. 알림 켜기, 주간 기록 차트(이번 주 +24%), ⌘K로 습관 검색.",
+  "check": [
+    "화면 속 기능이 실제로 있는지",
+    "차트 수치의 출처"
+  ],
+  "music": {
+    "mood": "minimal",
+    "bpm": 120,
+    "prompt": "minimal tech house, clean punchy kick, crisp hats, warm sub bass, seamless loop"
+  }
+}

@@ -1,0 +1,126 @@
+{
+  "id": "rack-focus-float",
+  "name": "초점 옮기는 떠다니는 소품",
+  "group": "3D·사물",
+  "template": "stage",
+  "summary": "밝은 회색 공간에 반들반들한 3D 아이콘과 사진 구슬이 깊이를 달리해 떠 있고, 큰 문장은 하늘빛으로 번져 있다가 선명한 먹색으로 맺혀요. 카메라 초점이 소품 사이를 옮겨 다녀요",
+  "tags": [
+    "3D 아이콘",
+    "피사계 심도",
+    "밝음",
+    "기능 소개",
+    "부드러움"
+  ],
+  "hand": false,
+  "source": {
+    "site": "keyframe.gallery",
+    "ref": "mux:Ut02l7P1M01zjWE5KRwpVj8MiQvWnCLFsSEqY4qBjUydA",
+    "at": "0–4.5초, 5–9초, 10–13초, 18.5–25초",
+    "note": "문장이 하늘빛 번진 빛 글씨로 나타났다 선명한 먹색으로 맺히는 등장, 가까운 구슬이 크게 흐려진 채 카메라 앞을 휙 지나가는 전환, 사진 구슬이 멀리 작게에서 가까이 크게로 휘어진 띠를 이루며 다가오는 장면, 3D 아이콘이 문장 둘레에 깊이를 달리해 떠 있고 가까운 것일수록 흐린 배치, 초점이 사람 구슬 하나로 옮겨 가며 나머지가 흐려지는 장면, 모든 것이 흐려지며 카메라 쪽으로 흩어지는 퇴장"
+  },
+  "palette": [
+    "#ECECEE",
+    "#1D1D1F",
+    "#5AC8FA",
+    "#2E8BF0",
+    "#34C759",
+    "#F5C33B"
+  ],
+  "colors": {
+    "bg": "#ECECEE",
+    "onBg": "#1D1D1F",
+    "onBgMuted": "rgba(29,29,31,.62)",
+    "paper": "#FFFFFF",
+    "ink": "#1D1D1F",
+    "accent": "#2E8BF0",
+    "accentInk": "#FFFFFF",
+    "pattern": "rgba(29,29,31,.04)",
+    "glow": "rgba(90,200,250,.6)"
+  },
+  "type": {
+    "display": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "heading": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "body": [
+      "Geist",
+      "Noto Sans KR"
+    ]
+  },
+  "fonts": [
+    {
+      "family": "Geist",
+      "weight": "100 900",
+      "file": "fonts/Geist-Variable.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 500,
+      "file": "fonts/NotoSansKR-Medium.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 700,
+      "file": "fonts/NotoSansKR-Bold.woff2"
+    }
+  ],
+  "look": {},
+  "shape": {
+    "radius": "calc(var(--u) * 3)"
+  },
+  "motion": {
+    "pace": "보통",
+    "bpm": 96,
+    "ease": "power3.out",
+    "stagger": 1,
+    "transitions": [
+      "blur",
+      "zoom"
+    ]
+  },
+  "scenes": {
+    "bg": "solid",
+    "align": "center",
+    "card": "shadow",
+    "marker": "color",
+    "weight": 600,
+    "tracking": -0.02,
+    "case": "none",
+    "rough": false,
+    "title": "blur",
+    "frame": "none",
+    "deco": [
+      "orb"
+    ],
+    "number": "count",
+    "scale": 1,
+    "schemes": [
+      "dark",
+      "paper",
+      "dark"
+    ]
+  },
+  "signature": [
+    "빛 글씨가 맺힘: 문장이 하늘빛(#5AC8FA) 글자와 넓게 번진 빛 테두리로 흐릿하게 나타나 0.6초 동안 번짐이 줄며 선명한 먹색으로 바뀜. 설명 두 줄은 0.4초 늦게 같은 방식으로 작게",
+    "초점 옮기기: 문장 둘레에 3D 아이콘·사진 구슬 5~7개가 깊이를 달리해 떠 있고, 가까운 것일수록 크고 흐림. 한 박 동안 초점이 구슬 하나로 옮겨 가면 그 구슬만 선명해지며 살짝 커지고 나머지는 흐려짐",
+    "카메라 앞을 지나는 구슬: 장면이 바뀔 때 크고 흐린 파란 구슬 몇 개가 화면 아래나 옆에서 카메라 쪽으로 휙 지나가며 앞 장면을 가리고, 그 사이 소품들은 흐려지며 바깥으로 흩어짐. 다음 문장은 빈 바탕에서 빛 글씨로 맺힘"
+  ],
+  "fits": [
+    "앱·구독 서비스 혜택 소개",
+    "클라우드·저장·사진 서비스",
+    "가족·친구 공유 기능",
+    "부드러운 브랜드 캠페인",
+    "기능 여러 개를 문장 하나씩"
+  ],
+  "avoid": [
+    "어두운 바탕",
+    "거친 질감",
+    "손그림",
+    "빠른 컷",
+    "평면 아이콘만 쓰기"
+  ]
+}

@@ -1,0 +1,132 @@
+{
+  "id": "noir-floor-haze-chapter-cards",
+  "name": "어둠 아래 장 바뀌는 안개",
+  "group": "제품 UI",
+  "template": "uidemo",
+  "summary": "거의 검은 화면 아래쪽에 흐린 빛기둥 안개가 깔리고, 장이 바뀔 때마다 그 안개가 파랑, 호박, 청록으로 물들어요. 그 위로 어두운 UI 카드가 비스듬히 미끄러져 와 평평하게 내려앉고, 흰 글자는 흐림에서 한 글자씩 맺히는 차분한 기능 런칭",
+  "tags": [
+    "제품 UI",
+    "어두움",
+    "안개",
+    "장 나누기",
+    "카드",
+    "런칭"
+  ],
+  "hand": false,
+  "source": {
+    "site": "keyframe.gallery",
+    "ref": "mux:Fhxkevh1eYOYQXG6tfAqA7mr2orejm6TB5Mz1A01uSN4",
+    "at": "0–37.9초",
+    "note": "어두운 화면 아래 흐린 빛기둥 안개가 장마다 파랑 → 호박 → 청록 → 파랑으로 바뀌는 구성, 비스듬히 누운 어두운 카드가 움직임 흐림을 끌고 들어와 평평하게 서는 진입, 글자가 흐림에서 한 글자씩 맺히는 제목, 장 사이 흰 산세리프 한두 줄 표제, 호박빛 고정폭 터미널 창, 계단 꺾은선이 그어지는 카드, 폰 대화창과 음성 말풍선, 어두운 지도 위 빨간 점과 맥박 치는 초록 점, 작은 기호와 낱말 하나로 닫는 끝"
+  },
+  "palette": [
+    "#0E0F11",
+    "#4F8EF0",
+    "#E39A4A",
+    "#5FC6A8",
+    "#1C1D20",
+    "#EDEEF0"
+  ],
+  "colors": {
+    "bg": "#0E0F11",
+    "onBg": "#EDEEF0",
+    "onBgMuted": "rgba(237,238,240,.6)",
+    "paper": "#1C1D20",
+    "ink": "#F2F3F5",
+    "accent": "#4F8EF0",
+    "accentInk": "#0A1120",
+    "pattern": "rgba(255,255,255,.06)",
+    "glow": "rgba(79,142,240,.4)"
+  },
+  "type": {
+    "display": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "heading": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "body": [
+      "Geist",
+      "Noto Sans KR"
+    ]
+  },
+  "fonts": [
+    {
+      "family": "Geist",
+      "weight": "100 900",
+      "file": "fonts/Geist-Variable.woff2"
+    },
+    {
+      "family": "Geist Mono",
+      "weight": "100 900",
+      "file": "fonts/GeistMono-Variable.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 500,
+      "file": "fonts/NotoSansKR-Medium.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 700,
+      "file": "fonts/NotoSansKR-Bold.woff2"
+    }
+  ],
+  "shape": {
+    "radius": "calc(var(--u) * 1.6)"
+  },
+  "motion": {
+    "pace": "보통",
+    "bpm": 96,
+    "ease": "power3.out",
+    "stagger": 0.8,
+    "transitions": [
+      "blur",
+      "fade",
+      "push"
+    ]
+  },
+  "scenes": {
+    "bg": "aurora",
+    "align": "center",
+    "card": "glass",
+    "marker": "color",
+    "weight": 500,
+    "tracking": -0.01,
+    "case": "none",
+    "rough": false,
+    "title": "blur",
+    "frame": "card",
+    "deco": [
+      "cursor"
+    ],
+    "number": "count",
+    "scale": 1,
+    "schemes": [
+      "dark",
+      "paper",
+      "dark"
+    ]
+  },
+  "signature": [
+    "화면 위 60%는 거의 검고, 아래 40%에 흐린 빛기둥 안개(세로로 긴 빛 덩어리 6~8개를 크게 흐린 것)가 천천히 일렁임. 장이 바뀌면 표제가 뜨는 동안 안개 색이 1초에 걸쳐 파랑 → 호박 → 청록 → 파랑으로 바뀌어 장을 나눔",
+    "어두운 UI 카드가 오른쪽 아래에서 비스듬히 누운 채(rotateY −22°, rotateX 10°) 움직임 흐림을 끌고 들어와 1.2초 만에 평평하게 서고, 카드 속 제목은 왼쪽부터 글자마다 흐림에서 맺힘. 이어 커서가 위 메뉴 알약을 누르고, 계단 꺾은선이 오른쪽으로 그어짐",
+    "장 사이에는 안개 위 가운데에 흰 산세리프 표제 한두 줄만 흐림에서 맺혔다 흐림으로 빠지고, 끝에는 같은 안개 위에 작은 흰 기호가 돌며 내려앉은 뒤 그 옆에 낱말 하나가 붙어 닫힘"
+  ],
+  "fits": [
+    "AI 에이전트·자동화 기능 런칭",
+    "기능을 세 갈래 장으로 나눠 소개할 때",
+    "개발자 도구·API 소개",
+    "대화·메신저 연동 기능",
+    "데이터·지도 대시보드 시연"
+  ],
+  "avoid": [
+    "흰 바탕이나 밝은 판",
+    "안개를 화면 위까지 채우기",
+    "빠른 컷 몽타주",
+    "굵고 꽉 찬 제목",
+    "한 장면에 강조색 여러 개(장마다 안개 한 색만)"
+  ]
+}

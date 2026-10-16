@@ -1,0 +1,129 @@
+{
+  "id": "lilac-blob-glyph-ui-pullback",
+  "name": "라일락 기호 맺힘 줌아웃",
+  "group": "제품 UI",
+  "template": "uidemo",
+  "summary": "옅은 라일락 회색 위로 흐릿한 숯빛 알약 덩어리들이 떠돌다 작은 선 아이콘 하나로 맺혀요. 카메라가 천천히 물러나면 그 아이콘이 버튼, 로그인 폼, 폰 화면 순서로 넓어지고, 끝은 왼쪽 정렬 두 줄 문장과 가운데 작은 마크로 조용히 닫히는 기능 소개",
+  "tags": [
+    "제품 UI",
+    "로그인",
+    "보안",
+    "아이콘",
+    "줌아웃",
+    "차분함",
+    "라일락"
+  ],
+  "hand": false,
+  "source": {
+    "site": "keyframe.gallery",
+    "ref": "mux:rsyKd02P1EeRrDdLJDfrWnSPGQid5LQY00DFBzEIrW1Nc",
+    "at": "0–21.2초",
+    "note": "아이콘 획에 아주 바짝 붙은 채 흐린 숯빛 알약 덩어리가 움직임 흐림을 끌고 제자리로 모여 얼굴 인식 기호가 되는 오프닝(0–3.8초), 기호 → 버튼 → 로그인 폼 → 폰 화면으로 이어지는 한 번의 긴 줌아웃(3.8–8.6초), 폰 위 검은 알약이 둥근 사각으로 부풀어 초록 스캔과 체크를 보여 주는 확인(9.6–12.5초), 첫 낱말이 흐림에서 맺힌 뒤 굵은 두 번째 줄이 붙는 왼쪽 정렬 문장(13.4–16.3초), 가운데 작은 마크 엔딩(17.3–21.2초)"
+  },
+  "palette": [
+    "#ECEBF0",
+    "#1E1E24",
+    "#6B4FE0",
+    "#3A3A40",
+    "#34C759",
+    "#F8F8FA"
+  ],
+  "colors": {
+    "bg": "#ECEBF0",
+    "onBg": "#1E1E24",
+    "onBgMuted": "rgba(30,30,36,.58)",
+    "paper": "#F8F8FA",
+    "ink": "#1E1E24",
+    "accent": "#6B4FE0",
+    "accentInk": "#FFFFFF",
+    "pattern": "rgba(30,30,36,.06)",
+    "glow": "rgba(107,79,224,.22)"
+  },
+  "type": {
+    "display": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "heading": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "body": [
+      "Geist",
+      "Noto Sans KR"
+    ]
+  },
+  "fonts": [
+    {
+      "family": "Geist",
+      "weight": "100 900",
+      "file": "fonts/Geist-Variable.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 500,
+      "file": "fonts/NotoSansKR-Medium.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 700,
+      "file": "fonts/NotoSansKR-Bold.woff2"
+    }
+  ],
+  "look": {
+    "grain": 0.05,
+    "vignette": 0.12
+  },
+  "shape": {
+    "radius": "calc(var(--u) * 1.2)"
+  },
+  "motion": {
+    "pace": "느림",
+    "bpm": 80,
+    "ease": "power2.inOut",
+    "stagger": 1,
+    "transitions": [
+      "fade",
+      "blur",
+      "cut"
+    ]
+  },
+  "scenes": {
+    "bg": "solid",
+    "align": "left",
+    "card": "shadow",
+    "marker": "color",
+    "weight": 600,
+    "tracking": -0.01,
+    "case": "none",
+    "rough": false,
+    "title": "blur",
+    "frame": "phone",
+    "deco": [],
+    "number": "count",
+    "scale": 1,
+    "schemes": [
+      "dark",
+      "paper"
+    ]
+  },
+  "signature": [
+    "아이콘 획에 아주 바짝 붙어 시작해요. 결 낀 흐릿한 숯빛 알약·점 덩어리 6~8개가 움직임 흐림을 끌며 화면 가장자리에서 떠돌다가 3초쯤에 걸쳐 제자리로 모이고, 굽은 꺾쇠 넷과 눈·코·입이 맞춰지며 작은 선 아이콘 하나로 맺혀요",
+    "맺힌 아이콘에서 카메라가 끊김 없이 물러나요. 아이콘이 흰 버튼 속 글자 옆 기호가 되고, 버튼 위아래로 입력창·보라 버튼·작은 버튼 줄이 드러난 뒤, 그 전체가 폰 화면 속 로그인 폼이 될 때까지 한 번에 넓어져요",
+    "폰 맨 위 검은 알약이 둥근 사각으로 부풀며 그 안에서 스캔 아이콘이 초록으로 훑고 지나가고, 1초 뒤 초록 동그라미 체크로 바뀐 다음 화면이 계정 화면으로 넘어가요"
+  ],
+  "fits": [
+    "로그인·인증 기능 소개",
+    "보안·개인정보 업데이트",
+    "개발 도구 새 기능 알림",
+    "앱 기능 하나를 짧게 보여 줄 때",
+    "차분한 제품 공지"
+  ],
+  "avoid": [
+    "빠른 컷 몰아치기",
+    "진한 색면 바탕",
+    "손그림 선",
+    "화면을 꽉 채운 큰 글자",
+    "강조색 여러 개(보라 하나와 확인용 초록만)"
+  ]
+}

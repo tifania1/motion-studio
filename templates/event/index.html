@@ -1,0 +1,196 @@
+<title>/*@TITLE@*/</title>
+<style>
+/*@FONTFACES@*/
+/*@BRAND_CSS@*/
+/*@ENGINE_CSS@*/
+
+/* ===== event 템플릿: 행사 안내 (티켓) =====
+   커다란 날짜 숫자가 윤곽선으로 지나가고 → 티켓이 날아와 꽂히고 → 일시·장소가 차례로 찍히고
+   → 뒤집어 프로그램 → 디데이 도장 → 절취선을 따라 반쪽이 찢겨 나가며 신청 안내. */
+#ev { position: absolute; inset: 0; background: var(--bg); overflow: hidden; }
+.abs { position: absolute; left: 0; top: 0; }
+.outline { font: 900 calc(var(--u) * 60)/.8 "Archivo", var(--font-display); font-stretch: 62%; color: transparent; -webkit-text-stroke: calc(var(--u) * .35) var(--on-bg); opacity: .22; white-space: nowrap; letter-spacing: -.02em; }
+.solid { font: 900 calc(var(--u) * 34)/.8 "Archivo", var(--font-display); font-stretch: 62%; color: var(--accent); white-space: nowrap; letter-spacing: -.02em; }
+.solid small { display: block; font-size: .24em; letter-spacing: .3em; color: var(--on-bg); margin-top: .25em; font-stretch: 125%; padding-left: .3em; }
+#tk { perspective: 1800px; }
+#tk .flip { position: relative; transform-style: preserve-3d; width: 100%; height: 100%; }
+#tk .side { position: absolute; inset: 0; backface-visibility: hidden; display: flex; filter: drop-shadow(0 calc(var(--u) * 2) calc(var(--u) * 3) rgba(0,0,0,.35)); }
+#tk .side.back { transform: rotateY(180deg); }
+.vert .side { flex-direction: column; }
+.main { position: relative; flex: 1; background: var(--accent); color: var(--accent-ink); border-radius: calc(var(--u) * 2.4); padding: calc(var(--u) * 5.4); box-sizing: border-box; min-width: 0; min-height: 0; overflow: hidden; }
+.mi { display: flex; flex-direction: column; transform-origin: 0 0; height: 100%; }
+.stub { position: relative; background: var(--paper); color: var(--ink); border-radius: calc(var(--u) * 2.4); box-sizing: border-box; padding: calc(var(--u) * 4); display: flex; flex-direction: column; justify-content: space-between; align-items: center; }
+.hz .stub { width: 27%; border-left: calc(var(--u) * .5) dashed rgba(0,0,0,.25); }
+.vert .stub { height: 24%; border-top: calc(var(--u) * .5) dashed rgba(0,0,0,.25); flex-direction: row; }
+.kind { font: 900 calc(var(--u) * 3.2)/1 "Archivo", var(--font-display); font-stretch: 125%; letter-spacing: .3em; opacity: .75; }
+.nm { font: 900 calc(var(--u) * 9)/1.12 var(--font-heading); letter-spacing: -.04em; white-space: pre-line; word-break: keep-all; margin: calc(var(--u) * 2.6) 0 0; }
+.fields { display: grid; grid-template-columns: 1fr; column-gap: calc(var(--u) * 4); row-gap: calc(var(--u) * 2.2); margin-top: auto; padding-top: calc(var(--u) * 4); border-top: 2px solid rgba(0,0,0,.18); }
+.fields .f { display: flex; align-items: baseline; gap: calc(var(--u) * 3); min-width: 0; }
+.fields .f .k { flex: none; width: calc(var(--u) * 13); }
+.hz .fields { grid-template-columns: 1fr 1fr; row-gap: calc(var(--u) * 2.6); }
+.hz .fields .f { display: block; }
+.hz .fields .f .k { width: auto; }
+.hz .fields .v { font-size: calc(var(--u) * 4.2); }
+.fields .k { font: 900 calc(var(--u) * 2.8)/1.6 "Archivo", var(--font-display); font-stretch: 125%; letter-spacing: .2em; opacity: .7; }
+.fields .v { font: 900 calc(var(--u) * 4.8)/1.25 var(--font-body); white-space: nowrap; overflow: hidden; }
+.stub .sd { font: 900 calc(var(--u) * 11)/.9 "Archivo", var(--font-display); font-stretch: 62%; text-align: center; }
+.stub .sd small { display: block; font-size: .3em; letter-spacing: .2em; font-stretch: 125%; margin-top: .3em; }
+.stub .bc { width: calc(var(--u) * 7); height: 52%; background: repeating-linear-gradient(180deg, var(--ink) 0 3px, transparent 3px 5px, var(--ink) 5px 6px, transparent 6px 9px, var(--ink) 9px 13px, transparent 13px 15px); transform-origin: 50% 0; }
+.vert .stub .bc { width: 46%; height: calc(var(--u) * 7); background: repeating-linear-gradient(90deg, var(--ink) 0 3px, transparent 3px 5px, var(--ink) 5px 6px, transparent 6px 9px, var(--ink) 9px 13px, transparent 13px 15px); transform-origin: 0 50%; }
+.stub .adm { font: 900 calc(var(--u) * 2.6)/1.2 "Archivo", var(--font-display); font-stretch: 125%; letter-spacing: .25em; text-align: center; opacity: .7; }
+.notch { position: absolute; width: calc(var(--u) * 6); height: calc(var(--u) * 6); border-radius: 50%; background: var(--bg); z-index: 2; }
+.back .main { justify-content: flex-start; }
+.prog { list-style: none; margin: calc(var(--u) * 3.6) 0 0; padding: 0; display: flex; flex-direction: column; gap: calc(var(--u) * 2.4); }
+.prog li { display: flex; gap: calc(var(--u) * 3); align-items: baseline; font: 800 calc(var(--u) * 5)/1.3 var(--font-body); word-break: keep-all; }
+.prog li b { flex: none; font: 900 calc(var(--u) * 4.6)/1.3 "Archivo", var(--font-display); font-stretch: 85%; min-width: 4.2em; }
+.pnote { margin-top: auto; font: 800 calc(var(--u) * 3.8)/1.3 var(--font-body); opacity: .8; }
+#stamp { width: calc(var(--u) * 26); height: calc(var(--u) * 26); border-radius: 50%; border: calc(var(--u) * 1.2) solid var(--ink); color: var(--ink); display: grid; place-items: center; text-align: center; box-sizing: border-box; background: rgba(255,255,255,.12); }
+#stamp b { display: block; font: 900 calc(var(--u) * 8.4)/1 "Archivo", var(--font-display); font-stretch: 75%; }
+#stamp span { display: block; font: 800 calc(var(--u) * 2.8)/1.2 var(--font-body); margin-top: calc(var(--u) * .6); }
+.ctabox { display: flex; flex-direction: column; align-items: center; gap: calc(var(--u) * 3); text-align: center; }
+.chead { font: 900 calc(var(--u) * 7.4)/1.15 var(--font-heading); color: var(--on-bg); letter-spacing: -.035em; white-space: pre-line; word-break: keep-all; margin: 0; }
+.btn { display: inline-flex; align-items: center; gap: calc(var(--u) * 2); background: var(--accent); color: var(--accent-ink); font: 900 calc(var(--u) * 4.8)/1 var(--font-body); padding: calc(var(--u) * 2.8) calc(var(--u) * 5) calc(var(--u) * 3.1); border-radius: 999px; white-space: nowrap; }
+.btn svg { width: 1em; height: 1em; fill: currentColor; }
+.handle { font: 700 calc(var(--u) * 3.3)/1.3 var(--font-body); color: var(--on-bg-muted); white-space: pre-line; }
+.logo { display: flex; align-items: baseline; gap: calc(var(--u) * 1.4); }
+.logo img { height: calc(var(--u) * 8); width: auto; }
+.logo .lt { font: 900 calc(var(--u) * 5.6)/1 var(--font-display); color: var(--accent); white-space: nowrap; }
+.logo .ls { font: 700 calc(var(--u) * 2.2)/1 var(--font-display); color: var(--on-bg); letter-spacing: .3em; white-space: nowrap; }
+</style>
+
+<div id="viewport"><div id="stage"><div id="cam"></div></div></div>
+
+<script>/*@GSAP@*/</script>
+<script>/*@DATA@*/</script>
+<script>/*@ENGINE_JS@*/</script>
+<script>
+(function () {
+  const S = Studio, M = S.M, C = S.content, B = S.brand, e = S.esc;
+  const cam = S.$('#cam');
+  const ARROW = '<svg viewBox="0 0 24 24"><path d="M5 11h10.2l-4.6-4.6L12 5l7 7-7 7-1.4-1.4 4.6-4.6H5z"/></svg>';
+  const vert = S.is('tall', 'portrait');
+  const fields = [['DATE', C.dateText], ['TIME', C.time], ['PLACE', C.place], ['FEE', C.price]].filter(f => f[1]);
+  const prog = (C.program || []).slice(0, 5);
+  const cta = C.cta || {};
+  const logoImg = B.logo && S.img(B.logo);
+  const stubHtml = `<div class="stub"><div class="sd">${e(C.date || '')}<small>${e(C.day || '')}</small></div><div class="bc"></div><div class="adm">${e(C.admit || 'ADMIT ONE')}</div></div>`;
+  cam.appendChild(S.h(`<div id="ev">
+    <div class="outline abs" id="ol">${e(C.date || '')} ${e(C.date || '')} ${e(C.date || '')}</div>
+    <div class="solid abs" id="sol">${e(C.date || '')}<small>${e(C.day || '')}</small></div>
+    <div id="tk" class="abs ${vert ? 'vert' : 'hz'}"><div class="flip">
+      <div class="side front"><div class="main"><div class="mi">
+        <div class="kind">${e(C.kind || 'EVENT')}</div><h1 class="nm">${e(C.name || '')}</h1>
+        <div class="fields">${fields.map(f => `<div class="f"><div class="k">${e(f[0])}</div><div class="v">${e(f[1])}</div></div>`).join('')}</div>
+      </div></div>${stubHtml}</div>
+      <div class="side back"><div class="main"><div class="mi">
+        <div class="kind">${e(C.programTitle || 'PROGRAM')}</div>
+        <ul class="prog">${prog.map(p => `<li><b>${e(p[0] || '')}</b><span>${e(p[1] || '')}</span></li>`).join('')}</ul>
+        ${C.note ? `<div class="pnote">${e(C.note)}</div>` : ''}
+      </div></div>${stubHtml}</div>
+    </div><i class="notch"></i><i class="notch"></i></div>
+    <div id="tear" class="abs ${vert ? 'vert' : 'hz'}"></div>
+    ${C.dday ? `<div id="stamp" class="abs"><div><b>${e(C.dday)}</b>${C.ddayNote ? `<span>${e(C.ddayNote)}</span>` : ''}</div></div>` : ''}
+    <div id="ctabox" class="abs ctabox">
+      ${cta.headline ? `<h2 class="chead">${e(cta.headline)}</h2>` : ''}
+      ${cta.button ? `<div class="btn"><span>${e(cta.button)}</span>${ARROW}</div>` : ''}
+      <div class="logo">${logoImg ? `<img src="${logoImg}" alt="">` : ''}${B.logoText ? `<span class="lt">${e(B.logoText)}</span>` : ''}${B.logoSub ? `<span class="ls">${e(B.logoSub)}</span>` : ''}</div>
+      ${cta.sub ? `<div class="handle">${e(cta.sub)}</div>` : ''}
+    </div>
+  </div>`));
+
+  S.start(S => {
+    const W = S.W, H = S.H, u = Math.min(W, H) / 100, sf = S.safe;
+    const sx = sf.left, sy = sf.top, sw = W - sf.left - sf.right, sh = H - sf.top - sf.bottom;
+    const cx = sx + sw / 2, cy = sy + sh / 2;
+    const wide = S.is('wide');
+    // 티켓 크기
+    const tk = S.$('#tk');
+    const tw = vert ? Math.min(sw * .92, 84 * u) : Math.min(sw * (wide ? .72 : .98), (wide ? 150 : 100) * u);
+    const th = vert ? Math.min(sh * .9, tw * 1.45) : Math.min(sh * .66, tw * .58);
+    tk.style.width = tw + 'px'; tk.style.height = th + 'px';
+    S.$$('.nm', tk).forEach(n => S.fit(n, { max: (vert ? 8.4 : 7.6) * u, maxLines: 3 }));
+    S.$$('.fields .v', tk).forEach(v => S.fit(v, { max: (vert ? 4.8 : 4.2) * u }));
+    // 내용이 넘치면 통째로 줄임
+    S.$$('.main', tk).forEach(mn => {
+      const mi = S.$('.mi', mn), cs = getComputedStyle(mn);
+      const avail = mn.clientHeight - parseFloat(cs.paddingTop) - parseFloat(cs.paddingBottom);
+      mi.style.height = 'auto';
+      const need = mi.scrollHeight + u * 2;
+      const k = Math.min(1, avail / need);
+      mi.style.width = (100 / k).toFixed(3) + '%'; mi.style.height = (avail / k) + 'px'; mi.style.transform = k < 1 ? `scale(${k.toFixed(4)})` : '';
+    });
+    // 절취선 양 끝의 반원 홈
+    const stubF = S.$('.front .stub', tk), notches = S.$$('.notch', tk);
+    const cutPos = vert ? stubF.offsetTop : stubF.offsetLeft;
+    notches.forEach((n, i) => {
+      const r = 3 * u;
+      if (vert) { n.style.left = (i ? tw - r : -r) + 'px'; n.style.top = (cutPos - r) + 'px'; }
+      else { n.style.left = (cutPos - r) + 'px'; n.style.top = (i ? th - r : -r) + 'px'; }
+    });
+    // 찢겨 나갈 반쪽: 앞면 반쪽을 복제
+    const tear = S.$('#tear');
+    const stubClone = stubF.cloneNode(true);
+    tear.appendChild(stubClone);
+    tear.style.width = (vert ? tw : stubF.offsetWidth) + 'px'; tear.style.height = (vert ? stubF.offsetHeight : th) + 'px';
+    stubClone.style.width = '100%'; stubClone.style.height = '100%';
+    const ol = S.$('#ol'), sol = S.$('#sol'), stamp = S.$('#stamp'), ctab = S.$('#ctabox');
+    S.fit(sol, { max: (wide ? 30 : 34) * u });
+    ctab.style.width = (wide ? sw * .42 : sw) + 'px';
+    const chd = S.$('.chead', ctab); if (chd) S.fit(chd, { max: 7.4 * u, maxLines: 2 });
+    const fieldEls = S.$$('.front .fields .f', tk), bcs = S.$$('.bc', tk);
+    const progLis = S.$$('.back .prog li', tk);
+    const flip = S.$('.flip', tk);
+
+    const T1 = 2.6, T2 = 7.2, T3 = 10.6, T4 = 13.2, END = 17;
+    S.setDuration(END);
+    const olW = ol.offsetWidth;
+    const root = S.$('#ev');
+    S.ambient(t => {
+      M.drift(root, t);
+      // 1) 윤곽선 숫자가 흐르고, 같은 날짜가 꽉 찬 글자로 꽂힘
+      ol.style.transform = `translate(${(W * .1 - (t * 60 * u / 10) % (olW / 3)).toFixed(1)}px, ${(H / 2 - ol.offsetHeight / 2).toFixed(1)}px)`;
+      const sk = M.inout(t, .3, T1 - .2, { f: 2.6, z: .7 }, .3);
+      M.place(sol, cx, cy, { s: sk <= 1 ? 1.6 - .6 * sk : 1 - .6 * (sk - 1), o: sk <= 1 ? M.clamp(sk * 2) : 2 - sk });
+      sol.style.clipPath = `inset(0 ${((1 - M.ease.outCubic(M.prog(t, .3, .7))) * 100).toFixed(2)}% 0 0)`;
+      // 2) 티켓이 날아와 꽂힘
+      const tk0 = M.spring(t - (T1 - .3), { f: 1.8, z: .72 });
+      const lift = M.spring(t - (T4 + .9), 'smooth');
+      const ty = M.lerp(cy, wide ? cy : sy + (vert ? sh * .34 : sh * .27), lift);
+      const tScale = M.lerp(1, vert ? .62 : wide ? .66 : .5, lift);
+      const tx = M.lerp(cx, wide ? sx + sw * .3 : cx, lift);
+      M.place(tk, tx + (1 - tk0) * W * 1.1, ty, { rot: -3 + (1 - tk0) * 24, s: tScale, o: t > T1 - .3 ? 1 : 0 });
+      fieldEls.forEach((f, i) => { const k = M.ease.outCubic(M.prog(t, T1 + .9 + i * .4, .4)); f.style.opacity = M.clamp(k * 3).toFixed(3); f.style.clipPath = `inset(-20% ${((1 - k) * 100).toFixed(1)}% -20% 0)`; });
+      bcs.forEach(b => { b.style.transform = vert ? `scaleX(${M.ease.outCubic(M.prog(t, T1 + 2.4, .6)).toFixed(4)})` : `scaleY(${M.ease.outCubic(M.prog(t, T1 + 2.4, .6)).toFixed(4)})`; });
+      // 3) 뒤집어 프로그램, 다시 앞면
+      const fl = 180 * (M.ease.inOutCubic(M.prog(t, T2, .7)) - M.ease.inOutCubic(M.prog(t, T3, .7)));
+      flip.style.transform = `rotateY(${fl.toFixed(2)}deg)`;
+      progLis.forEach((li, i) => { const k = M.spring(t - (T2 + .7 + i * .3), 'snappy'); li.style.opacity = M.clamp(k * 2).toFixed(3); li.style.transform = `translateX(${((1 - k) * u * 5).toFixed(1)}px)`; });
+      // 4) 디데이 도장
+      if (stamp) {
+        const s0 = T3 + .9, k = M.prog(t, s0, .3);
+        const sx2 = cx + tw * (vert ? .27 : .2) * tScale, sy2 = ty + th * (vert ? .1 : .14) * tScale;
+        const out = M.prog(t, T4 + .4, .3);
+        M.place(stamp, sx2, sy2, { s: (2.4 - 1.4 * M.ease.inQuart(k)) * (1 - out * .4), rot: -30 + 18 * k, o: k > 0 ? Math.min(M.clamp(k * 3), 1 - out) : 0 });
+      }
+      if (t >= T3 + 1.2 && t < T3 + 1.5) { const a = (1 - M.prog(t, T3 + 1.2, .3)) * u * .9; cam.style.transform = `translate(${(Math.sin(t * 90) * a).toFixed(1)}px, ${(Math.cos(t * 70) * a).toFixed(1)}px)`; } else cam.style.transform = '';
+      // 5) 반쪽이 찢겨 떨어짐: 앞면 반쪽을 숨기고 복제본을 떨어뜨림
+      const tr = M.prog(t, T4, 1.2);
+      const torn = t >= T4;
+      stubF.style.visibility = torn ? 'hidden' : '';
+      notches.forEach(n => n.style.visibility = torn ? 'hidden' : '');
+      if (torn) {
+        const rect0x = vert ? 0 : stubF.offsetLeft - tw / 2 + stubF.offsetWidth / 2, rect0y = vert ? stubF.offsetTop - th / 2 + stubF.offsetHeight / 2 : 0;
+        const ang = (-3 + (vert ? 1 : -1) * 38 * M.ease.inQuad(tr)) * Math.PI / 180;
+        const bx = cx + rect0x * Math.cos(-3 * Math.PI / 180) - rect0y * Math.sin(-3 * Math.PI / 180);
+        const by = cy + rect0x * Math.sin(-3 * Math.PI / 180) + rect0y * Math.cos(-3 * Math.PI / 180);
+        M.place(tear, bx + (vert ? -1 : 1) * tr * u * 20, by + M.ease.inQuad(tr) * H * .9, { rot: ang * 180 / Math.PI, o: tr < 1 ? 1 : 0 });
+      } else M.show(tear, false);
+      // 6) 신청 안내
+      const ck = M.spring(t - (T4 + 1.2), 'snappy');
+      M.place(ctab, wide ? sx + sw * .76 : cx, (wide ? cy : sy + sh * (vert ? .78 : .74)) + (1 - ck) * u * 8, { o: t > T4 + 1.2 ? M.clamp(ck * 1.6) : 0 });
+      const btn = S.$('.btn', ctab);
+      if (btn) btn.style.transform = t > T4 + 2 ? `scale(${(1 + .035 * Math.sin((t - T4) * 6)).toFixed(4)})` : '';
+    });
+  });
+})();
+</script>

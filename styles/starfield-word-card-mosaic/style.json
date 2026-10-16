@@ -1,0 +1,127 @@
+{
+  "id": "starfield-word-card-mosaic",
+  "name": "별가루 낱말 카드 모자이크",
+  "group": "제품 UI",
+  "template": "uidemo",
+  "summary": "푸른 별가루가 천천히 흩날리는 검은 화면 가운데 흰 산세리프 낱말 하나가 한 글자씩 쳐지면, 그 둘레로 앱 결과물 카드가 박자마다 칸칸이 채워져 모자이크가 돼요. 문장 사이로 입력 알약이 끼어들고, 끝에는 동사 세 개가 한 줄로 모이는 기능 묶음 소개",
+  "tags": [
+    "제품 UI",
+    "어두움",
+    "기능 소개",
+    "AI",
+    "카드 격자",
+    "타이핑"
+  ],
+  "hand": false,
+  "source": {
+    "site": "keyframe.gallery",
+    "ref": "mux:eHdZqBfDHeEPAR6JaVeD2X7TI1cbQOwgglmJZjzH002U",
+    "at": "0–52초",
+    "note": "검은 바탕에 푸른 점 가루가 흩날리는 공간, 가운데 흰 산세리프 낱말이 한 글자씩 쳐지고 둘레에 결과물 카드가 3×3 칸으로 박자마다 채워지는 모자이크(2–4초, 17–19초), 낱말 옆에서 비스듬히 돌아 들어오는 카드(19.7초), 문장의 위아래 낱말 사이에 입력 알약이 끼어드는 구성(31초), 밝은 판에서 완료 칩이 한 줄씩 켜지는 컷(33초), 동사 세 개가 한 줄로 모였다가 별가루가 한 점으로 모이는 엔딩(43–50초)"
+  },
+  "palette": [
+    "#0E0E10",
+    "#ECEDEF",
+    "#5B8DEF",
+    "#17181C",
+    "#2A2B30",
+    "#8FD3A8"
+  ],
+  "colors": {
+    "bg": "#0E0E10",
+    "onBg": "#ECEDEF",
+    "onBgMuted": "rgba(236,237,239,.6)",
+    "paper": "#17181C",
+    "ink": "#ECEDEF",
+    "accent": "#5B8DEF",
+    "accentInk": "#0B1020",
+    "pattern": "rgba(110,150,255,.35)",
+    "glow": "rgba(91,141,239,.35)"
+  },
+  "type": {
+    "display": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "heading": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "body": [
+      "Geist",
+      "Noto Sans KR"
+    ]
+  },
+  "fonts": [
+    {
+      "family": "Geist",
+      "weight": "100 900",
+      "file": "fonts/Geist-Variable.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 500,
+      "file": "fonts/NotoSansKR-Medium.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 700,
+      "file": "fonts/NotoSansKR-Bold.woff2"
+    }
+  ],
+  "shape": {
+    "radius": "calc(var(--u) * 1.4)"
+  },
+  "motion": {
+    "pace": "보통",
+    "bpm": 116,
+    "ease": "power3.out",
+    "stagger": 0.8,
+    "transitions": [
+      "cut",
+      "fade",
+      "push"
+    ]
+  },
+  "scenes": {
+    "bg": "dots",
+    "align": "center",
+    "card": "outline",
+    "marker": "color",
+    "weight": 500,
+    "tracking": -0.02,
+    "case": "none",
+    "rough": false,
+    "title": "type",
+    "frame": "none",
+    "deco": [
+      "streaks"
+    ],
+    "number": "count",
+    "scale": 1.0,
+    "schemes": [
+      "dark",
+      "dark",
+      "dark",
+      "paper"
+    ]
+  },
+  "signature": [
+    "검은 바탕에 푸른 점 가루가 화면 가운데에서 바깥으로 아주 천천히 흩날리고, 한가운데 흰 산세리프 낱말이 한 글자씩 쳐져요. 이어서 둘레 3×3 칸에 앱 결과물 카드가 반 박마다 하나씩 톡 채워지고, 가운데 칸 두 개에는 낱말 두 개가 위아래로 남아요",
+    "문장을 위아래로 갈라 첫 낱말은 위에 크게, 끝 낱말은 아래에 크게 두고, 그 사이로 얇은 선 테두리의 입력 알약이 밀려 들어와 부탁 한 줄이 쳐져요. 다음 컷 하나만 밝은 판으로 바뀌어 완료 칩이 위에서부터 한 줄씩 초록으로 켜져요",
+    "엔딩에서는 앞에서 쓴 동사 세 개가 한 줄로 모여 놓이고, 별가루가 가운데 한 점으로 빨려 들며 작은 마크 하나로 맺혀요"
+  ],
+  "fits": [
+    "AI 도구 기능 묶음 소개",
+    "여러 쓰임새를 동사로 훑는 런칭",
+    "키노트 오프닝",
+    "업데이트 하이라이트 릴"
+  ],
+  "avoid": [
+    "밝은 바탕이 주가 되는 구성",
+    "손그림 선",
+    "굵고 빽빽한 제목",
+    "강조색 여러 개",
+    "한 화면에 문장 여러 줄"
+  ]
+}

@@ -1,0 +1,134 @@
+{
+  "id": "linework-icon-split-system",
+  "name": "선 아이콘 분할 시스템",
+  "group": "제품 UI",
+  "template": "uidemo",
+  "summary": "먹색 바탕 가운데 작은 파란 선 아이콘 하나가 동심원 물결로 퍼지고, 화면이 밝은 판과 어두운 판으로 갈라져 박자마다 아이콘이 갈려요. 오른쪽에선 점·네모·고리·알약이 서로 모양을 바꾸고, 끝에는 큰 UI 조각과 아이콘 격자로 이어지는 디자인 시스템 소개",
+  "tags": [
+    "아이콘",
+    "디자인 시스템",
+    "선 그림",
+    "분할 화면",
+    "파랑",
+    "먹색"
+  ],
+  "hand": false,
+  "source": {
+    "site": "keyframe.gallery",
+    "ref": "mux:5cCjaNNhzIjhAjyJywR6355BUsYa02I01T0201AT7M9LDvU",
+    "at": "0–59.9초",
+    "note": "먹색 바탕 한가운데 작은 아이콘에서 시작해 파란 동심원이 화면을 채우며 아이콘이 퍼져 나가는 오프닝, 밝은 판(연파랑 정사각 타일 속 남색 선 아이콘)과 어두운 판(파란 점·네모·고리·막대·토글 모양 바꾸기)으로 가르는 분할 화면, 화면보다 크게 잘라 보여 주는 탭 막대·전환 버튼·별점 같은 UI 조각, 9×5 아이콘 격자, 작은 문장 앞에 붙는 아이콘과 문장 위로 박자마다 바뀌는 아이콘 줄, 파란 판 한 장으로 닫는 엔딩"
+  },
+  "palette": [
+    "#1F252B",
+    "#2FA0D4",
+    "#A9CDE9",
+    "#E6EAEE",
+    "#1E3A52",
+    "#E3EBF2"
+  ],
+  "colors": {
+    "bg": "#1F252B",
+    "onBg": "#E3EBF2",
+    "onBgMuted": "rgba(227,235,242,.6)",
+    "paper": "#E6EAEE",
+    "ink": "#1E3A52",
+    "accent": "#2FA0D4",
+    "accentInk": "#0F1E2A",
+    "pattern": "rgba(227,235,242,.06)",
+    "glow": "rgba(47,160,212,.3)"
+  },
+  "type": {
+    "display": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "heading": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "body": [
+      "Geist",
+      "Noto Sans KR"
+    ]
+  },
+  "fonts": [
+    {
+      "family": "Geist",
+      "weight": "100 900",
+      "file": "fonts/Geist-Variable.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 500,
+      "file": "fonts/NotoSansKR-Medium.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 700,
+      "file": "fonts/NotoSansKR-Bold.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 900,
+      "file": "fonts/NotoSansKR-Black.woff2"
+    }
+  ],
+  "shape": {
+    "radius": "calc(var(--u) * 2.4)"
+  },
+  "motion": {
+    "pace": "보통",
+    "bpm": 100,
+    "ease": "back.out(1.5)",
+    "stagger": 0.8,
+    "transitions": [
+      "wipe",
+      "iris",
+      "cut",
+      "push"
+    ]
+  },
+  "scenes": {
+    "bg": "solid",
+    "align": "center",
+    "card": "flat",
+    "marker": "color",
+    "weight": 800,
+    "tracking": -0.01,
+    "case": "none",
+    "rough": false,
+    "title": "pop",
+    "frame": "none",
+    "deco": [
+      "rings",
+      "dots"
+    ],
+    "number": "count",
+    "scale": 0.9,
+    "schemes": [
+      "dark",
+      "paper",
+      "dark",
+      "accent"
+    ]
+  },
+  "signature": [
+    "먹색 바탕 한가운데 짧은 변의 4%짜리 파란 선 아이콘 하나가 톡 커지고, 그 자리에서 파란 동심원 3~4겹이 바깥으로 번지며 화면을 채워요. 고리를 따라 작은 선 아이콘 20여 개가 흩어져 나가고, 아래로 굵은 낱말 한 줄이 가장자리에서 잘린 채 올라와요",
+    "화면을 세로로 갈라 왼쪽 밝은 회색 판엔 연파랑 정사각 타일 속 남색 선 아이콘이 반 박마다 컷으로 갈리고, 오른쪽 먹색 판에선 파란 도형이 점 → 둥근 네모 → 고리 → 세로 막대 → 알약 토글로 끊김 없이 모양을 바꿔요",
+    "작은 한 줄 문장 앞에 선 아이콘이 붙어 함께 놓이고, 문장 위 아이콘 줄(6~7개)이 박자마다 다른 묶음으로 톡톡 바뀌다 하나로 줄어들어요. 마지막은 파란 판 한 장에 이름 한 줄"
+  ],
+  "fits": [
+    "디자인 시스템·아이콘 세트 공개",
+    "앱 리뉴얼 소개",
+    "기능을 아이콘으로 훑을 때",
+    "다국어·접근성 이야기"
+  ],
+  "avoid": [
+    "그라디언트와 빛 번짐",
+    "종이·그레인 같은 질감",
+    "채운 아이콘이나 3D 아이콘",
+    "파랑 말고 다른 강조색",
+    "긴 문장"
+  ]
+}

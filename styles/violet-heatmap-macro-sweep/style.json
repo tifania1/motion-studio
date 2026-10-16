@@ -1,0 +1,131 @@
+{
+  "id": "violet-heatmap-macro-sweep",
+  "name": "보라 활동 격자 매크로 훑기",
+  "group": "제품 UI",
+  "template": "uidemo",
+  "summary": "어두운 판에 카메라가 바짝 누워 비스듬히 미끄러져요. 화면보다 큰 요일 머리글자가 지나가고, 빈 칸들이 물결처럼 보라로 켜지며, 툴팁 하나가 뜬 뒤 평면 카드로 물러나는 조용한 데이터 UI 필름",
+  "tags": [
+    "제품 UI",
+    "어두움",
+    "보라",
+    "히트맵",
+    "매크로 카메라",
+    "초점 흐림",
+    "느림"
+  ],
+  "hand": false,
+  "source": {
+    "site": "keyframe.gallery",
+    "ref": "mux:01Vo8sUQTtmqUyR3Z2AEPaScZLk3PT004CgY3t25hfn9w",
+    "at": "0–38.8초 (4–8초, 9.9–15초, 16.9–23초, 24.8–31초)",
+    "note": "어두운 판 위를 낮은 각도로 비스듬히 훑는 매크로 카메라와 얕은 초점, 원근 속 거대한 요일 머리글자, 빈 칸이 왼쪽부터 보라 농도 세 단계로 켜지며 살짝 솟는 활동 격자, 칸 하나 위 어두운 두 줄 툴팁, 위로 빠지며 평면 카드 속 작은 격자로 정착하는 마무리, 왼쪽 정렬 흰 두 줄 문장과 가운데 작은 마크 엔딩"
+  },
+  "palette": [
+    "#1E1E21",
+    "#2C2C30",
+    "#6A4BE0",
+    "#8B6CF0",
+    "#B29BF7",
+    "#ECECEE"
+  ],
+  "colors": {
+    "bg": "#1E1E21",
+    "onBg": "#ECECEE",
+    "onBgMuted": "rgba(236,236,238,.56)",
+    "paper": "#2A2A2E",
+    "ink": "#F1F1F3",
+    "accent": "#8B6CF0",
+    "accentInk": "#140E26",
+    "pattern": "rgba(255,255,255,.05)",
+    "glow": "rgba(139,108,240,.42)"
+  },
+  "type": {
+    "display": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "heading": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "body": [
+      "Geist",
+      "Noto Sans KR"
+    ]
+  },
+  "fonts": [
+    {
+      "family": "Geist",
+      "weight": "100 900",
+      "file": "fonts/Geist-Variable.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 500,
+      "file": "fonts/NotoSansKR-Medium.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 700,
+      "file": "fonts/NotoSansKR-Bold.woff2"
+    }
+  ],
+  "look": {
+    "grain": 0.05,
+    "vignette": 0.34
+  },
+  "shape": {
+    "radius": "calc(var(--u) * 1.2)"
+  },
+  "motion": {
+    "pace": "느림",
+    "bpm": 80,
+    "ease": "power2.inOut",
+    "stagger": 1.1,
+    "transitions": [
+      "blur",
+      "fade",
+      "cut"
+    ]
+  },
+  "scenes": {
+    "bg": "solid",
+    "align": "left",
+    "card": "flat",
+    "marker": "color",
+    "weight": 500,
+    "tracking": -0.01,
+    "case": "none",
+    "rough": false,
+    "title": "blur",
+    "frame": "card",
+    "deco": [
+      "dots"
+    ],
+    "number": "count",
+    "scale": 0.9,
+    "schemes": [
+      "dark",
+      "paper",
+      "dark"
+    ]
+  },
+  "signature": [
+    "카메라가 어두운 판에 낮게 누워(판을 rotateX 58°·rotateZ −22°로 눕힘) 한 방향으로 천천히 미끄러져요. 화면 높이의 20~30%쯤 되는 요일 머리글자가 원근 속에서 한 글자씩 지나가고, 초점은 가운데 띠에만 맺혀 앞뒤는 흐려요",
+    "어두운 빈 칸들이 왼쪽부터 물결처럼 0.06초 간격으로 보라 세 단계(옅은·보통·짙은) 중 하나로 켜져요. 켜지는 칸은 살짝 솟으며 둘레에 보라 빛이 번지고, 카메라는 켜지는 앞줄을 낮게 따라가요",
+    "칸 하나만 밝게 솟고 그 위로 어두운 둥근 툴팁(상태 한 줄, 날짜 한 줄)이 떠올라요. 한 박 머문 뒤 카메라가 위로 빠지며 판이 평평하게 일어나 둥근 카드 속 작은 격자로 정착하고, 흐림 전환으로 왼쪽 정렬 흰 두 줄 문장이 이어져요"
+  ],
+  "fits": [
+    "사용자 활동·사용량 대시보드 소개",
+    "개발자 도구·관리 콘솔 기능 공개",
+    "기록·출석·습관 추적 앱",
+    "데이터 한 가지를 차분히 강조하는 짧은 기능 영상"
+  ],
+  "avoid": [
+    "밝은 바탕",
+    "강조색 여러 개(보라 한 가지 농도만)",
+    "빠른 컷과 튀는 이징",
+    "굵고 큰 제목",
+    "손그림·종이 질감"
+  ]
+}

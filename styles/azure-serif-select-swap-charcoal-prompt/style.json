@@ -1,0 +1,137 @@
+{
+  "id": "azure-serif-select-swap-charcoal-prompt",
+  "name": "하늘 파랑 세리프 고쳐 쓰기와 숯빛 입력 카드",
+  "group": "제품 UI",
+  "template": "uidemo",
+  "summary": "파랑 면에 흰 세리프 한 줄이 쳐지고, 카메라가 낱말 하나에 바짝 붙어 선택 상자로 덮은 뒤 새 낱말로 갈아 써요. 숯빛 판에서는 밝은 입력 카드의 버튼으로 파고들었다 빠지고, 보내기를 누르면 파란 원이 솟아올라 화면을 덮는 차분한 글쓰기 도우미 시연",
+  "tags": [
+    "제품 UI",
+    "세리프",
+    "타이핑",
+    "파랑",
+    "확대",
+    "입력창"
+  ],
+  "hand": false,
+  "source": {
+    "site": "keyframe.gallery",
+    "ref": "mux:JbvfCmmINrklj02OvvH2kfZNyAF28Ww7iU5YpTY00Jc74",
+    "at": "0–19.5초",
+    "note": "파란 면 위 흰 세리프 타이핑과 큰 곡선 획(0–1초), 낱말에 바짝 붙어 선택 상자로 덮고 갈아 쓰는 확대(1.9–2.9초), 커서가 누르는 자리에 마지막 낱말이 톡 나타남(3.9–4.9초), 숯빛 판의 밝은 입력 카드와 알약 탭 막대(5.8–8.7초), 버튼으로 확대해 검은 툴팁과 함께 누르기(9.7–10.7초), 짧은 부탁이 긴 문장으로 다시 쳐지며 새 어절만 파랑(11.7초), 보내기 버튼에서 솟는 파란 원 전환(12.6–14.6초), 세리프 문장 속 UI 버튼 칩(14.6초), 다홍 쐐기 와이프로 숯빛 끝 판(15.5–16.5초)"
+  },
+  "palette": [
+    "#1E74C8",
+    "#232526",
+    "#ECECEA",
+    "#FFFFFF",
+    "#8CC6F0",
+    "#E2553A"
+  ],
+  "colors": {
+    "bg": "#232526",
+    "onBg": "#ECEDEB",
+    "onBgMuted": "rgba(236,237,235,.62)",
+    "paper": "#ECECEA",
+    "ink": "#1C1D1E",
+    "accent": "#1E74C8",
+    "accentInk": "#FFFFFF",
+    "pattern": "rgba(236,237,235,.06)",
+    "glow": "rgba(30,116,200,.35)"
+  },
+  "type": {
+    "display": [
+      "Gowun Batang",
+      "Instrument Serif"
+    ],
+    "heading": [
+      "Gowun Batang",
+      "Instrument Serif"
+    ],
+    "body": [
+      "Geist",
+      "Noto Sans KR"
+    ]
+  },
+  "fonts": [
+    {
+      "family": "Gowun Batang",
+      "weight": 400,
+      "file": "fonts/GowunBatang-Regular.woff2"
+    },
+    {
+      "family": "Instrument Serif",
+      "weight": 400,
+      "file": "fonts/InstrumentSerif-Regular.woff2"
+    },
+    {
+      "family": "Geist",
+      "weight": "100 900",
+      "file": "fonts/Geist-Variable.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 500,
+      "file": "fonts/NotoSansKR-Medium.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 700,
+      "file": "fonts/NotoSansKR-Bold.woff2"
+    }
+  ],
+  "shape": {
+    "radius": "calc(var(--u) * 1.2)"
+  },
+  "motion": {
+    "pace": "보통",
+    "bpm": 100,
+    "ease": "power3.out",
+    "stagger": 0.8,
+    "transitions": [
+      "cut",
+      "iris",
+      "wipe"
+    ]
+  },
+  "scenes": {
+    "bg": "solid",
+    "align": "center",
+    "card": "flat",
+    "marker": "highlight",
+    "weight": 400,
+    "tracking": 0,
+    "case": "none",
+    "rough": false,
+    "title": "type",
+    "frame": "none",
+    "deco": [
+      "cursor"
+    ],
+    "number": "count",
+    "scale": 1.2,
+    "schemes": [
+      "accent",
+      "dark",
+      "accent",
+      "dark"
+    ]
+  },
+  "signature": [
+    "파랑 면 가운데 흰 세리프 한 줄이 쳐진 뒤, 카메라가 고칠 낱말로 2.5배쯤 바짝 붙어요. 그 낱말을 옅은 파랑 선택 상자가 덮고 커서가 새 낱말을 갈아 쳐요. 0.6초 만에 다시 빠지면 고친 문장이 한 줄로 서 있고, 다음 문장의 마지막 낱말은 커서 화살표가 누르는 자리에 톡 나타나요",
+    "숯빛 판 가운데 밝은 회색 입력 카드가 떠 있고, 그 위에 알약 탭 막대가 붙어 있어요. 커서가 반짝이 버튼으로 가면 카메라가 버튼 쪽으로 확대되고 검은 툴팁이 뜬 채 눌려요. 버튼이 옅은 파랑으로 켜지면 카메라가 빠지고, 짧은 부탁이 긴 문장으로 다시 쳐지며 막 붙은 어절만 파랑으로 남았다가 먹색으로 가라앉아요",
+    "보내기 버튼을 누르면 화면 아래에서 파란 원이 솟아 부풀며 화면을 덮고, 파란 면에는 흰 세리프 문장 사이에 실제 UI 버튼 칩이 끼어 있어요. 끝 판은 다홍 쐐기가 오른쪽 모서리에서 비스듬히 쓸어 숯빛으로 넘어가요"
+  ],
+  "fits": [
+    "문서·글쓰기 도우미 소개",
+    "AI 입력창 기능 하나 시연",
+    "업무용 도구의 새 버튼 알리기",
+    "15~20초 기능 티저"
+  ],
+  "avoid": [
+    "종이·그레인 같은 질감",
+    "굵은 산세리프 큰 제목",
+    "파랑 말고 다른 강조색 여러 개",
+    "빽빽한 대시보드",
+    "반 박마다 갈리는 몽타주 컷"
+  ]
+}

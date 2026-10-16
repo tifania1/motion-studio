@@ -1,0 +1,33 @@
+{
+  "id": "notice",
+  "order": 9,
+  "name": "공지",
+  "summary": "공항 출발 안내판처럼 글자판이 차르륵 넘어가며 제목과 공지 줄이 맞춰지고, 끝엔 가게 이름으로 넘어가요.",
+  "look": "어두운 안내판 · 스플릿 플랩",
+  "template": "notice",
+  "formats": [
+    "tall",
+    "portrait",
+    "square",
+    "wide"
+  ],
+  "seconds": 12,
+  "photos": {
+    "need": 0,
+    "hint": "사진 없이 돼요"
+  },
+  "ask": [
+    "공지 제목",
+    "날짜와 내용 세 줄 안팎",
+    "아래 안내 한 줄"
+  ],
+  "brief": "예) 연휴 영업 안내. 10월 9일 목요일 한글날 휴무, 10일 금요일 오후 1시 오픈, 11일 토요일 평소대로.",
+  "check": [
+    "날짜·요일·시간이 정확한지"
+  ],
+  "music": {
+    "mood": "lofi",
+    "bpm": 96,
+    "prompt": "calm lo-fi, soft drums, mellow keys, gentle and informative"
+  }
+}

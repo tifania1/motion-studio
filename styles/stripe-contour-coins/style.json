@@ -1,0 +1,143 @@
+{
+  "id": "stripe-contour-coins",
+  "name": "세로 줄무늬 등고선",
+  "group": "레트로·픽셀",
+  "template": "brandmark",
+  "summary": "밝은 회색 위에 가는 세로 줄로 칠한 등고선 덩어리가 물결처럼 번지고, 줄무늬 동전이 뒤집히며 날아다녀요. 기울인 굵은 낱말은 글자마다 살짝 뛰고, 끝엔 픽셀 글꼴 칩이 띠로 흘러요",
+  "tags": [
+    "픽셀",
+    "금융",
+    "줄무늬",
+    "남색",
+    "핀테크"
+  ],
+  "hand": false,
+  "source": {
+    "site": "keyframe.gallery",
+    "ref": "mux:Ofgt49i00RmxVtYce7r02JTecvunRf2NzFb01LdYMsPLR8",
+    "at": "0.6–16.4초",
+    "note": "가는 세로 줄로 칠한 등고선 덩어리(연보라·크림·연두·남색)가 가운데 구멍을 두고 번지는 바탕과 계단 픽셀 가장자리, 연두 픽셀 띠가 쓸어 올리는 전환, 기울인 굵은 낱말의 글자 물결과 한 글자만 남색으로 반짝임, 줄무늬 원판이 3D로 뒤집히며 낱말을 바꾸고 여러 개 흩어짐, 남색 전체 화면과 흰 시계, 픽셀 글꼴 색 칩이 서로 반대로 흐르는 띠"
+  },
+  "palette": [
+    "#EDEDED",
+    "#2222E6",
+    "#C990EE",
+    "#F2E9C4",
+    "#B9EE7E",
+    "#8FB39A"
+  ],
+  "colors": {
+    "bg": "#EDEDED",
+    "onBg": "#111111",
+    "onBgMuted": "rgba(17,17,17,.6)",
+    "paper": "#F2E9C4",
+    "ink": "#111111",
+    "accent": "#2222E6",
+    "accentInk": "#FFFFFF",
+    "pattern": "rgba(34,34,230,.22)",
+    "glow": "rgba(201,144,238,.35)"
+  },
+  "type": {
+    "display": [
+      "Archivo",
+      "Noto Sans KR"
+    ],
+    "heading": [
+      "Archivo",
+      "Noto Sans KR"
+    ],
+    "body": [
+      "Geist",
+      "Noto Sans KR"
+    ]
+  },
+  "fonts": [
+    {
+      "family": "Archivo",
+      "weight": "100 900",
+      "stretch": "62% 125%",
+      "file": "fonts/Archivo-Variable.woff2"
+    },
+    {
+      "family": "Geist",
+      "weight": "100 900",
+      "file": "fonts/Geist-Variable.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 700,
+      "file": "fonts/NotoSansKR-Bold.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 500,
+      "file": "fonts/NotoSansKR-Medium.woff2"
+    },
+    {
+      "family": "Silkscreen",
+      "weight": 400,
+      "file": "fonts/Silkscreen-Regular.woff2"
+    },
+    {
+      "family": "Galmuri11",
+      "weight": 400,
+      "file": "fonts/Galmuri11.woff2"
+    }
+  ],
+  "look": {},
+  "shape": {
+    "radius": "calc(var(--u) * 0.8)"
+  },
+  "motion": {
+    "pace": "보통",
+    "bpm": 116,
+    "ease": "power3.out",
+    "stagger": 0.8,
+    "transitions": [
+      "iris",
+      "blocks",
+      "cut"
+    ]
+  },
+  "scenes": {
+    "bg": "solid",
+    "align": "center",
+    "card": "flat",
+    "marker": "color",
+    "weight": 650,
+    "tracking": -0.02,
+    "case": "none",
+    "rough": false,
+    "title": "pop",
+    "frame": "none",
+    "deco": [
+      "ticker",
+      "shapes"
+    ],
+    "number": "count",
+    "scale": 1,
+    "schemes": [
+      "dark",
+      "accent",
+      "dark",
+      "paper"
+    ]
+  },
+  "signature": [
+    "가는 세로 줄(1.2u 간격, 굵기 0.45u)로 칠한 등고선 덩어리가 가운데 빈 구멍을 남기고 바깥으로 물결처럼 번졌다 오므라듦. 띠마다 색이 다르고(연보라·연두·크림, 가끔 남색 조각) 가장자리는 픽셀 계단",
+    "기울인 굵은 낱말이 한 박에 하나씩 놓이고, 글자들이 물결처럼 차례로 0.3em 뛰어올랐다 내려앉음. 막 들어온 글자 하나만 남색으로 반짝이다 검정으로, 나갈 땐 첫 글자들이 기호로 뒤섞이며 사라짐",
+    "세로 줄무늬로 칠한 원판(동전)이 가로 폭 1 → 0.1 → 1 로 3D 뒤집히며 안의 낱말을 바꾸고, 같은 동전 여러 개가 기운 채 흩어져 떠다님. 끝은 픽셀 글꼴 색 칩 두세 줄이 서로 반대로 흐르다 위아래 가장자리 띠로 줄어들고, 남색 전체 화면에 주소가 타자됨"
+  ],
+  "fits": [
+    "핀테크·투자·포인트 서비스",
+    "새 기능 한 단어씩 소개",
+    "앱 출시",
+    "숫자·시간 강조(24시간·365일)"
+  ],
+  "avoid": [
+    "손그림",
+    "사진 배경",
+    "부드러운 흐림 그라디언트",
+    "세리프 글꼴"
+  ]
+}

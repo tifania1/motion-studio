@@ -1,0 +1,10 @@
+{
+  "scenes": [
+    { "type": "title", "kicker": "꼬리표", "text": "첫 장면 제목은\n두 줄까지", "sub": "아래 작은 문장" },
+    { "type": "text", "text": "한 장면에\n한 메시지", "highlight": "한 메시지" },
+    { "type": "photo", "image": "photo1", "text": "사진 위 제목", "sub": "사진을 설명하는 짧은 문장" },
+    { "type": "number", "number": 30, "suffix": "%", "text": "근거 있는 숫자 하나" },
+    { "type": "list", "text": "목록 제목", "items": ["첫째", "둘째", "셋째"] }
+  ],
+  "cta": { "headline": "마지막에 할 행동을\n한 문장으로", "button": "버튼 문구", "sub": "@계정이름" }
+}

@@ -1,0 +1,134 @@
+{
+  "id": "pale-text-bubble-phone-build",
+  "name": "문자 말풍선 앱 짓기",
+  "group": "제품 UI",
+  "template": "uidemo",
+  "summary": "아주 옅은 회색 화면에 점 세 개 입력 중 말풍선이 맥박치다 글자 말풍선으로 부풀어요. 대화가 쌓이면 아래에서 폰이 솟아 그 대화창이 되고, 회색 받은 말과 파란 보낸 말이 오가는 사이 앱이 지어져 라임 판 위 폰 세 대로 펼쳐지는 런칭",
+  "tags": [
+    "제품 UI",
+    "말풍선",
+    "대화",
+    "폰",
+    "런칭",
+    "담백함"
+  ],
+  "hand": false,
+  "source": {
+    "site": "keyframe.gallery",
+    "ref": "mux:YFnu6VoKSr01SarRS5NAUKmnfd004O47Ur2ZolwVeFcJE",
+    "at": "0–22.1초",
+    "note": "빈 회색 화면에 생기는 입력 중 말풍선과 그 자리에서 글자 말풍선으로 부푸는 변신, 말풍선 더미 아래에서 솟는 폰이 곧 대화창이 되는 이음, 파란 보낸 말풍선이 빈 모양으로 먼저 톡 나온 뒤 글이 채워지는 리듬, 대화를 따라 위로 흐르는 카메라, 링크 카드에서 라임 판 위 폰 세 대로 넘어가는 컷, 이탤릭 세리프가 섞인 마크 글자 엔딩"
+  },
+  "palette": [
+    "#EDEDED",
+    "#1C1C1E",
+    "#E2E2E4",
+    "#4A9BE6",
+    "#D6EC6A",
+    "#FFFFFF"
+  ],
+  "colors": {
+    "bg": "#EDEDED",
+    "onBg": "#1C1C1E",
+    "onBgMuted": "rgba(28,28,30,.6)",
+    "paper": "#FFFFFF",
+    "ink": "#1C1C1E",
+    "accent": "#1A72CC",
+    "accentInk": "#FFFFFF",
+    "pattern": "rgba(28,28,30,.06)",
+    "glow": "rgba(74,155,230,.3)"
+  },
+  "type": {
+    "display": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "heading": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "body": [
+      "Geist",
+      "Noto Sans KR"
+    ]
+  },
+  "fonts": [
+    {
+      "family": "Geist",
+      "weight": "100 900",
+      "file": "fonts/Geist-Variable.woff2"
+    },
+    {
+      "family": "Instrument Serif",
+      "weight": 400,
+      "style": "italic",
+      "file": "fonts/InstrumentSerif-Italic.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 500,
+      "file": "fonts/NotoSansKR-Medium.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 700,
+      "file": "fonts/NotoSansKR-Bold.woff2"
+    }
+  ],
+  "shape": {
+    "radius": "calc(var(--u) * 2.2)"
+  },
+  "motion": {
+    "pace": "보통",
+    "bpm": 100,
+    "ease": "back.out(1.5)",
+    "stagger": 1,
+    "transitions": [
+      "push",
+      "cut",
+      "fade"
+    ]
+  },
+  "scenes": {
+    "bg": "solid",
+    "align": "center",
+    "card": "flat",
+    "marker": "color",
+    "weight": 500,
+    "tracking": -0.01,
+    "case": "none",
+    "rough": false,
+    "title": "pop",
+    "frame": "phone",
+    "deco": [
+      "bubbles"
+    ],
+    "number": "count",
+    "scale": 1,
+    "schemes": [
+      "dark",
+      "paper",
+      "dark",
+      "accent"
+    ]
+  },
+  "signature": [
+    "빈 회색 화면 가운데에 꼬리 원이 달린 점 세 개 입력 중 말풍선이 톡 생겨요. 점이 차례로 진해지며 1~2초 맥박치다가 그 자리에서 글자 말풍선으로 부풀고, 다음 말이 오면 앞 말풍선은 한 칸 위로 밀리고 아래에 새 입력 중 말풍선이 생겨요",
+    "말풍선 더미 아래에서 폰이 솟아오르고 카메라가 화면 안으로 다가가면, 앞서 뜬 말풍선들이 그대로 대화창의 회색 받은 말이 돼요. 파란 보낸 말풍선은 오른쪽에 빈 알약으로 먼저 톡 나온 뒤 글이 채워지고, 대화가 쌓일수록 카메라가 위로 따라 흘러요. 마지막 보낸 말 아래엔 작은 회색 '읽음' 꼬리표",
+    "'잠시만요…' 같은 대답 아래 링크 미리보기 카드가 뜨고, 컷 한 번에 연두에서 흰빛으로 번지는 라임 판 위에 폰 세 대가 부채꼴로 서서 천천히 다가와요. 끝은 회색 판 가운데 이탤릭 세리프와 산세리프가 한 낱말에 섞인 마크 글자"
+  ],
+  "fits": [
+    "대화형 AI·챗봇 런칭",
+    "문자로 쓰는 서비스 소개",
+    "앱 만들기·자동화 도구",
+    "고객 응대 흐름 시연",
+    "짧은 기능 티저"
+  ],
+  "avoid": [
+    "어두운 바탕",
+    "질감·그레인",
+    "강조색 여러 개(파랑 하나와 마지막 라임만)",
+    "굵고 큰 제목",
+    "빠른 컷 몽타주"
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "id": "uidemo",
+  "order": 102,
+  "group": "look",
+  "style": "agent-cursor-board",
+  "name": "제품 화면 시연",
+  "summary": "잘 만든 SaaS 런칭 영상처럼, 브랜드 색으로 그린 앱 화면 안에서 커서가 타자 치고 누르며 카메라가 다가가요. 입력창에 쳐진 한 줄이 결과 목록이 되고, 대시보드 숫자와 갤러리를 지나 큰 버튼을 누르며 끝나요.",
+  "look": "앱 창·폰 화면 · 커서와 타자 · 다가가는 카메라 · 체크 목록 · 대시보드",
+  "template": "uidemo",
+  "formats": [
+    "tall",
+    "portrait",
+    "square",
+    "wide"
+  ],
+  "seconds": 20,
+  "photos": {
+    "need": 0,
+    "hint": "있으면 앱 안 갤러리 칸에 들어가 펼쳐져요(1~4장, 제품 사진·결과물·사용 장면). 없으면 갤러리 장면이 빠지고 대시보드 그래프가 그림 역할을 해요"
+  },
+  "ask": [
+    "입력창에 쳐질 한 줄 훅(제목, 24자 안쪽)과 그중 강조할 낱말",
+    "창 위 탭에 붙일 작은 꼬리표 (새 기능, 업데이트 같은 것)",
+    "결과 목록으로 하나씩 체크될 장점·기능 2~5개 (하나에 18자 안쪽)",
+    "대시보드에 보여 줄 숫자 하나와 그 출처·기준 시점 (없으면 빼요)",
+    "마지막 한 줄, 버튼 문구, 사이트나 계정"
+  ],
+  "brief": "예) 회의록을 알아서 정리해 주는 새 기능. 훅: 회의록은 이제 알아서 정리돼요. 목록: 말하면 바로 받아 적고 / 할 일만 골라 정리하고 / 팀 채널로 바로 보내요. 숫자: 하루 40분 아낌(시범 사용 팀 기준). 마지막: 다음 회의부터 바로 써 보세요, 무료로 시작, example.com",
+  "check": [
+    "화면에 나오는 기능이 실제로 있는지 (목록 항목이 곧 기능 약속이 돼요)",
+    "숫자의 출처와 기준 시점 (source 칸이 대시보드 카드 아래에 작게 나와요)",
+    "버튼 문구의 '무료' 같은 말에 조건(기간·대상·횟수)이 있는지",
+    "사진에 고객 정보·개인정보가 보이지 않는지",
+    "사이트 주소·계정이 지금 쓰는 것인지"
+  ],
+  "music": {
+    "mood": "minimal",
+    "bpm": 120,
+    "prompt": "clean upbeat tech product launch music, crisp plucked synths, soft keyboard-click percussion, warm bass, light four-on-the-floor groove, confident and friendly SaaS demo",
+    "sections": [
+      [0, 2.5, "light sparse intro with soft ticks like typing"],
+      [2.5, 7.5, "groove starts, small bright accent on each checked item"],
+      [7.5, 14, "steady confident groove while the dashboard and gallery open"],
+      [14, 20, "lift at the button click, warm resolved ending"]
+    ]
+  }
+}

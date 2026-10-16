@@ -1,0 +1,53 @@
+{
+  "id": "event",
+  "order": 6,
+  "name": "행사 안내",
+  "summary": "날짜가 크게 흐르고, 티켓이 날아와 일시·장소가 찍히고, 뒤집어 프로그램, 디데이 도장, 절취선을 찢으며 신청 안내.",
+  "look": "진한 바탕 · 티켓 · 디데이 도장",
+  "template": "event",
+  "formats": [
+    "tall",
+    "portrait",
+    "square",
+    "wide"
+  ],
+  "seconds": 17,
+  "photos": {
+    "need": 0,
+    "hint": "사진 없이 돼요"
+  },
+  "ask": [
+    "행사 이름",
+    "날짜·요일·시간·장소",
+    "참가비와 정원",
+    "프로그램 세 줄",
+    "신청 방법"
+  ],
+  "brief": "예) 10월 25일 토요일 오후 2–4시 핸드드립 원데이 클래스. 하루한잔 2층 작업실, 무료, 선착순 20명. 원두 이야기→직접 내려 보기→시음.",
+  "check": [
+    "날짜·요일·시간·장소·참가비",
+    "디데이 숫자는 올리는 날 기준"
+  ],
+  "music": {
+    "mood": "citypop",
+    "bpm": 120,
+    "prompt": "bright city pop, funky bass, clean electric guitar, glossy synths, exciting weekend event",
+    "sections": [
+      [
+        0,
+        2.6,
+        "short build"
+      ],
+      [
+        2.6,
+        13.2,
+        "full groove"
+      ],
+      [
+        13.2,
+        17,
+        "final chorus and clean ending"
+      ]
+    ]
+  }
+}

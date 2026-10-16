@@ -1,0 +1,129 @@
+{
+  "id": "cream-jewel-ribbon-swatches",
+  "name": "미색 판과 보석색 리본",
+  "group": "그래픽·도형",
+  "template": "brandmark",
+  "summary": "미색 판과 보라·솔빛·남색 보석색 판이 번갈아 가며, 가는 물결 선 위로 그라디언트 리본과 색 견본 막대가 장면마다 바뀌어요. 큰 낱말 옆 숫자가 컷마다 뛰면서 둘레에 고정폭 주석이 불어나고, 끝에는 카드 구름이 한 줄기로 모여드는 제품 공개 필름이에요",
+  "tags": [
+    "도형",
+    "그라디언트 리본",
+    "색 견본",
+    "미색",
+    "보석색",
+    "주석",
+    "제품 공개"
+  ],
+  "hand": false,
+  "source": {
+    "site": "keyframe.gallery",
+    "ref": "mux:hG9wbXCHSTcqvFQ8vv6MJGSz2X3LIIMG02UEbUgC4RTs",
+    "at": "0–47초",
+    "note": "미색 바탕 가운데 작은 고정폭 대문자 낱말이 하나씩 떠서 옆으로 벌어지고 비스듬히 흩어지는 오프닝, 굵은 띠 하나로 된 물결 마크가 그어지는 장면, 가는 가로선이 물결 선으로 휘며 보라·솔빛·남색 판으로 넘어가는 흐름, 연두→민트→분홍→주황 그라디언트 리본과 점선 부채살, 세로 그라디언트 견본 막대가 납작한 색 네모 두 줄로 바뀌는 장면, 점 여섯 개 육각 도식, 큰 보통 굵기 그로테스크 낱말 옆 숫자가 컷마다 커지며 둘레에 고정폭 주석·토글·점선 별자리가 늘어나는 장면, 회전하는 고리 아이콘, 보석색 판 위 3D 공간에 떠 있다가 한 줄기로 모이는 카드 구름"
+  },
+  "palette": [
+    "#E9E5DD",
+    "#1C1C1B",
+    "#EFA3DC",
+    "#4A1C82",
+    "#1F4A35",
+    "#1C2B52"
+  ],
+  "colors": {
+    "bg": "#E9E5DD",
+    "onBg": "#1C1C1B",
+    "onBgMuted": "rgba(28,28,27,.62)",
+    "paper": "#4A1C82",
+    "ink": "#F3F0EA",
+    "accent": "#EFA3DC",
+    "accentInk": "#1C1C1B",
+    "pattern": "rgba(28,28,27,.12)",
+    "glow": "rgba(170,236,140,.35)"
+  },
+  "type": {
+    "display": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "heading": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "body": [
+      "Geist Mono",
+      "Noto Sans KR"
+    ]
+  },
+  "fonts": [
+    {
+      "family": "Geist",
+      "weight": "100 900",
+      "file": "fonts/Geist-Variable.woff2"
+    },
+    {
+      "family": "Geist Mono",
+      "weight": "100 900",
+      "file": "fonts/GeistMono-Variable.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 500,
+      "file": "fonts/NotoSansKR-Medium.woff2"
+    }
+  ],
+  "shape": {
+    "radius": "calc(var(--u) * 0.8)"
+  },
+  "motion": {
+    "pace": "보통",
+    "bpm": 100,
+    "ease": "power3.inOut",
+    "stagger": 1,
+    "transitions": [
+      "cut",
+      "wipe",
+      "push"
+    ]
+  },
+  "scenes": {
+    "bg": "lines",
+    "align": "center",
+    "card": "flat",
+    "marker": "highlight",
+    "weight": 400,
+    "tracking": -0.03,
+    "case": "upper",
+    "rough": false,
+    "title": "fade",
+    "frame": "none",
+    "deco": [
+      "marks",
+      "rings"
+    ],
+    "number": "odometer",
+    "scale": 1.2,
+    "schemes": [
+      "paper",
+      "dark",
+      "paper"
+    ]
+  },
+  "signature": [
+    "미색 판 한가운데 작은 고정폭 대문자 낱말이 한 박마다 하나씩 떠서 한 줄로 모였다가, 1초 동안 옆으로 벌어지고 위아래로 비스듬히 흩어져 물 위에 뜬 것처럼 흔들려요. 이어 굵은 띠 하나로 된 물결 마크가 한 획에 그어지고, 마크 자리에 가는 가로선 여러 줄이 깔리다 물결로 휘면서 보석색 판으로 넘어가요",
+    "미색 판 위에 세로 그라디언트 견본 막대 8~10개가 높이를 달리해 한 줄로 솟고, 막대 위 귀퉁이에는 작은 고정폭 꼬리표가 붙어요. 다음 박에 막대가 짧아지며 납작한 색 네모로 굳고, 가운데 선을 기준으로 위아래 두 줄로 거울처럼 갈라져요",
+    "큰 보통 굵기 그로테스크 낱말 옆 숫자가 컷마다 커지고(1 → 3 → 15처럼), 판도 미색과 숯빛을 오가요. 숫자가 뛸 때마다 둘레에 고정폭 대문자 주석, 검은 칸이 옮겨 가는 토글, 점선 별자리, 작은 선 아이콘이 늘어나 화면이 점점 빽빽해져요"
+  ],
+  "fits": [
+    "제품·버전 공개",
+    "개발 도구·AI 도구 런칭",
+    "브랜드 리뉴얼 소개",
+    "기능 여러 개를 한 영상에 묶을 때",
+    "행사 키노트 오프닝"
+  ],
+  "avoid": [
+    "손그림 선과 종이 질감",
+    "굵은 제목(제목은 400 안팎으로 가볍게)",
+    "그라디언트를 글자에 칠하기(리본·견본·카드에만)",
+    "형광 빛 번짐과 그림자 여러 겹",
+    "한 판에 보석색 두 가지 섞기"
+  ]
+}

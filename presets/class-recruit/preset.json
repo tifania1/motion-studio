@@ -1,0 +1,36 @@
+{
+  "id": "class-recruit",
+  "order": 5,
+  "name": "수강생 모집",
+  "summary": "모눈 노트를 아래로 넘겨 보듯. 손그림 동그라미, 테이프 붙인 사진, 채워지는 시간표, 체크되는 커리큘럼, 남은 자리, 포스트잇.",
+  "look": "모눈 노트 · 손그림 · 포스트잇",
+  "template": "academy",
+  "formats": [
+    "tall",
+    "portrait",
+    "square",
+    "wide"
+  ],
+  "seconds": 18,
+  "photos": {
+    "need": 1,
+    "hint": "수업 장면이나 결과물"
+  },
+  "ask": [
+    "누구를 위한 수업인지 한 줄",
+    "수업 요일·시간",
+    "커리큘럼 네 줄",
+    "정원과 남은 자리",
+    "개강일·신청 방법"
+  ],
+  "brief": "예) 직장인 핸드드립 4주 과정. 화·목 저녁 7시 반, 토요일 오전 11시 반. 정원 12명, 남은 자리 4. 11월 4일 개강, 프로필 링크로 신청.",
+  "check": [
+    "개강일·요일·시간·정원",
+    "남은 자리는 올리는 날 기준"
+  ],
+  "music": {
+    "mood": "lofi",
+    "bpm": 120,
+    "prompt": "upbeat lo-fi hip hop, warm electric piano, soft vinyl crackle, light snare, studying vibe"
+  }
+}

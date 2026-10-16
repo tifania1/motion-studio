@@ -1,0 +1,123 @@
+{
+  "id": "miniature-props-search-halo",
+  "name": "미니어처 사물 검색 고리",
+  "group": "3D·사물",
+  "template": "stage",
+  "summary": "옅은 회색 화면 가운데 둥근 글자 한 줄과 알약 검색창은 그대로 두고, 둘레의 오려낸 사물·별점 카드·작은 사람 모형이 한 묶음씩 천천히 녹아 사라졌다가 새 묶음으로 피어나는 진열장 같은 장면",
+  "tags": [
+    "사물",
+    "컷아웃",
+    "미니어처",
+    "검색",
+    "쇼핑",
+    "차분함"
+  ],
+  "hand": false,
+  "source": {
+    "site": "keyframe.gallery",
+    "ref": "mux:6l9VvqphppsxnXkqRZvCUrKoZX00lWO02LJxmy5PvqF9Q",
+    "at": "0–12.6초",
+    "note": "가운데 둥근 글자와 알약 검색창은 고정하고 둘레 사물 묶음(오려낸 사물, 별점 달린 흰 카드, 기운 정사각 타일)이 통째로 흐려지며 바뀌는 구성, 커다란 사물 위에 앉거나 선 손가락만 한 사람 모형, 묶음이 바뀔 때마다 아래 페이지 점이 한 칸 늘어나는 진행 표시"
+  },
+  "palette": [
+    "#ECECED",
+    "#FFFFFF",
+    "#1C1C1F",
+    "#5A31F4",
+    "#F2B84B",
+    "#C9C3B8"
+  ],
+  "colors": {
+    "bg": "#ECECED",
+    "onBg": "#1C1C1F",
+    "onBgMuted": "rgba(28,28,31,.58)",
+    "paper": "#FFFFFF",
+    "ink": "#1C1C1F",
+    "accent": "#5A31F4",
+    "accentInk": "#FFFFFF",
+    "pattern": "rgba(28,28,31,.05)",
+    "glow": "rgba(90,49,244,.18)"
+  },
+  "type": {
+    "display": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "heading": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "body": [
+      "Geist",
+      "Noto Sans KR"
+    ]
+  },
+  "fonts": [
+    {
+      "family": "Geist",
+      "weight": "100 900",
+      "file": "fonts/Geist-Variable.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 500,
+      "file": "fonts/NotoSansKR-Medium.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 700,
+      "file": "fonts/NotoSansKR-Bold.woff2"
+    }
+  ],
+  "shape": {
+    "radius": "calc(var(--u) * 1.6)"
+  },
+  "motion": {
+    "pace": "느림",
+    "bpm": 80,
+    "ease": "power2.out",
+    "stagger": 1.3,
+    "transitions": [
+      "fade",
+      "blur"
+    ]
+  },
+  "scenes": {
+    "bg": "solid",
+    "align": "center",
+    "card": "shadow",
+    "marker": "color",
+    "weight": 700,
+    "tracking": -0.02,
+    "case": "none",
+    "rough": false,
+    "title": "fade",
+    "frame": "none",
+    "deco": [],
+    "number": "count",
+    "scale": 0.9,
+    "schemes": [
+      "dark",
+      "paper"
+    ]
+  },
+  "signature": [
+    "가운데 보라 둥근 글자 한 줄과 흰 알약 검색창은 끝까지 고정. 둘레에 오려낸 사물 2~3개, 별점 달린 흰 카드 3~4장, 살짝 기운 정사각 사진 타일 3~4장이 고리처럼 놓이고, 묶음이 바뀔 땐 전부 함께 0.6초 동안 옅어지고 흐려진 뒤 새 묶음이 0.1초 간격으로 하나씩 피어남",
+    "커다랗게 놓인 사물(베개, 의자, 신발, 냄비) 위에 손가락만 한 사람 모형이 앉거나 서 있음. 사물이 자리 잡고 한 박 뒤에 사람 모형이 톡 나타나거나 자리를 옮김",
+    "화면 아래 작은 페이지 점 줄. 묶음이 바뀔 때마다 지금 칸이 긴 막대로 늘어나며 다음 칸으로 옮겨 감"
+  ],
+  "fits": [
+    "쇼핑·커머스 앱 소개",
+    "검색·추천 기능 런칭",
+    "카테고리별 상품 훑기",
+    "편집숍·생활용품 브랜드",
+    "선물 고르기 캠페인"
+  ],
+  "avoid": [
+    "어두운 바탕",
+    "빠른 컷과 흔들림",
+    "굵고 큰 문장 여러 줄",
+    "강한 질감·그레인",
+    "강조색 여러 개(보라 하나와 별점 노랑만)"
+  ]
+}

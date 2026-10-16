@@ -1,0 +1,130 @@
+{
+  "id": "dot-pill-waveform-pale-ui",
+  "name": "점과 알약 파형",
+  "group": "제품 UI",
+  "template": "uidemo",
+  "summary": "옅은 회색 위에서 검은 점 하나가 어절 사이를 뛰어다니며 문장을 이끌어요. 점이 갈라져 소리 물결이 되고, 그 물결은 검은 알약 안의 막대 파형으로 접혔다가 하늘빛이 번지는 흰 앱 창으로 펼쳐지는 조용한 음성 UI",
+  "tags": [
+    "제품 UI",
+    "음성",
+    "알약",
+    "파형",
+    "미니멀",
+    "차분함"
+  ],
+  "hand": false,
+  "source": {
+    "site": "keyframe.gallery",
+    "ref": "mux:DHJp01B6OkRfyPeeU13TiaK5ZxZDaaOc7dt00Gb002T7AI",
+    "at": "0–46초 (4–8초, 10–14초, 18–34초, 36–42초)",
+    "note": "검은 점이 커서처럼 어절을 끌고 오고 어절은 기준선이 엇갈린 높이에서 내려앉는 문장, 점 둘이 가는 선으로 이어져 물결 파형으로 떠는 장면, 점 속 하늘 사진이 원형으로 열리는 전환, 검은 알약 막대 파형이 흰 앱 창으로 번지고 창 아래에 검은 알약 자막이 붙는 구성, 하늘빛 테두리 빛, 가운데 한 줄 둘레를 반원으로 도는 앱 타일, 흐린 하늘빛 고리가 오므라드는 마무리"
+  },
+  "palette": [
+    "#ECECEC",
+    "#111111",
+    "#2F6FDB",
+    "#FFFFFF",
+    "#A9C8F2"
+  ],
+  "colors": {
+    "bg": "#ECECEC",
+    "onBg": "#111111",
+    "onBgMuted": "rgba(17,17,17,.58)",
+    "paper": "#FFFFFF",
+    "ink": "#111111",
+    "accent": "#2F6FDB",
+    "accentInk": "#FFFFFF",
+    "pattern": "rgba(17,17,17,.06)",
+    "glow": "rgba(120,170,240,.45)"
+  },
+  "type": {
+    "display": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "heading": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "body": [
+      "Geist",
+      "Noto Sans KR"
+    ]
+  },
+  "fonts": [
+    {
+      "family": "Geist",
+      "weight": "100 900",
+      "file": "fonts/Geist-Variable.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 500,
+      "file": "fonts/NotoSansKR-Medium.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 700,
+      "file": "fonts/NotoSansKR-Bold.woff2"
+    }
+  ],
+  "shape": {
+    "radius": "calc(var(--u) * 1.4)"
+  },
+  "motion": {
+    "pace": "보통",
+    "bpm": 100,
+    "ease": "power3.out",
+    "stagger": 1,
+    "transitions": [
+      "fade",
+      "iris",
+      "cut",
+      "fade"
+    ]
+  },
+  "scenes": {
+    "bg": "solid",
+    "align": "center",
+    "card": "shadow",
+    "marker": "color",
+    "weight": 600,
+    "tracking": -0.03,
+    "case": "none",
+    "rough": false,
+    "title": "pop",
+    "frame": "window",
+    "deco": [
+      "orb",
+      "rings"
+    ],
+    "number": "count",
+    "scale": 1.1,
+    "schemes": [
+      "dark",
+      "dark",
+      "paper",
+      "dark"
+    ]
+  },
+  "signature": [
+    "검은 점 하나가 문장 끝 커서처럼 앞서가요. 점이 톡 옆으로 뛸 때마다 어절이 하나씩 붙는데, 어절마다 기준선이 위아래로 엇갈린 높이에서 나타나 0.3초 만에 한 줄로 내려앉아요. 강조할 어절 하나만 파랑",
+    "점이 둘로 갈라져 화면 양끝으로 벌어지고, 그 사이를 가는 선 몇 가닥이 이어 소리 물결처럼 떨어요. 물결은 가운데로 모여 검은 알약 안의 흰 막대 파형(막대 4~5개가 박자에 맞춰 출렁임)이 되고, 알약 왼쪽에 작은 아이콘이 톡 붙었다가 알약이 번지며 흰 앱 창으로 열려요. 창 가장자리엔 하늘빛이 은은하게 번지고, 창 아래 검은 알약 자막 한 줄이 떠요",
+    "가운데 한 줄 문장 둘레로 둥근 흰 타일들이 반원 고리를 이루며 천천히 돌아 지나가요. 마지막엔 화면 가득한 흐린 하늘빛 고리가 오므라들어 다시 검은 점 하나로 맺혀요"
+  ],
+  "fits": [
+    "음성 입력·받아쓰기 도구",
+    "AI 비서·자동 답장 기능",
+    "여러 앱과 이어지는 연동 소개",
+    "조용한 제품 런칭",
+    "기능 하나를 차분히 보여 줄 때"
+  ],
+  "avoid": [
+    "어두운 바탕",
+    "강조색 여러 개(파랑 하나만)",
+    "빠른 컷 연속",
+    "질감·그레인",
+    "손그림 선",
+    "한 화면에 긴 문장"
+  ]
+}

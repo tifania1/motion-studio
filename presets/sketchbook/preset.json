@@ -1,0 +1,59 @@
+{
+  "id": "sketchbook",
+  "order": 103,
+  "group": "look",
+  "style": "hand-marker-notes",
+  "name": "손그림 노트",
+  "summary": "책상 위 스프링 노트에 손으로 써 내려가는 설명 영상이에요. 포스트잇과 손글씨 제목, 한 획 동그라미, 체크리스트, 손 타원 속 숫자, 폴라로이드를 지나 도장 찍힌 마지막 장으로 끝나요.",
+  "look": "스프링 노트 · 손글씨 · 한 획 동그라미 · 넘어가는 장",
+  "template": "sketchbook",
+  "formats": [
+    "tall",
+    "portrait",
+    "square",
+    "wide"
+  ],
+  "seconds": 20,
+  "photos": {
+    "need": 0,
+    "hint": "없어도 돼요(대신 전구 낙서가 그려져요). 넣으면 1~4장이 테이프 붙인 폴라로이드로 붙어요. 정사각으로 잘리니 가운데에 주인공이 있는 사진이 좋아요"
+  },
+  "ask": [
+    "작은 꼬리표 한마디 (포스트잇에 들어가요, 14자 안쪽)",
+    "첫 문장(24자 안쪽, 두 줄)과 그중 동그라미 칠 어절",
+    "장점·기능·순서 2~5개 (하나에 18자 안쪽)",
+    "숫자 하나와 그 근거(출처·기준) — 없으면 숫자 장을 빼요",
+    "넣을 사진이 있는지 (0~4장)",
+    "마지막 한마디, 버튼 문구, 주소나 계정"
+  ],
+  "brief": "예) 회의록을 자동으로 정리해 주는 서비스의 새 기능 소개. 말하면 받아 적고, 할 일만 골라 정리하고, 팀 채널로 보내 줌. 시범 사용 팀 기준 하루 40분을 아낌. 마지막은 '무료로 시작' 버튼과 example.com",
+  "check": [
+    "숫자 옆 출처(source)가 실제 근거와 기준 시점을 말하는지",
+    "'최초·1위·유일·최고·100%' 같은 말은 근거가 있을 때만",
+    "동그라미 칠 어절(highlight)이 첫 문장 안에 그대로 있는지",
+    "사진을 넣었다면 쓸 수 있는 사진인지(직접 찍은 사진·CC0·CC BY)와 출처 표시",
+    "주소·계정(cta.sub)이 지금 쓰는 것인지"
+  ],
+  "music": {
+    "mood": "custom",
+    "bpm": 100,
+    "prompt": "light playful acoustic instrumental, plucked ukulele and soft pizzicato, pencil-tap percussion and gentle claps, warm and friendly explainer mood, 100 BPM",
+    "sections": [
+      [
+        0,
+        4,
+        "soft plucks and a pencil-tap pulse while the first page is written"
+      ],
+      [
+        4,
+        15,
+        "steady light groove, small accent on every check mark and on the big number"
+      ],
+      [
+        15,
+        20,
+        "warm resolved ending with a single soft hit as the stamp lands"
+      ]
+    ]
+  }
+}

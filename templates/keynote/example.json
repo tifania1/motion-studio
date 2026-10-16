@@ -1,0 +1,78 @@
+{
+  "film": "launch",
+  "bpm": 120,
+  "progress": false,
+  "wordmark": "Brew",
+  "label": "브랜드 한 줄 소개",
+  "photos": [
+    "photo1",
+    "photo2",
+    "photo3",
+    "photo4",
+    "photo5",
+    "photo6",
+    "photo7",
+    "photo8",
+    "photo9"
+  ],
+  "hero": 3,
+  "glass": {
+    "word": "Fresh",
+    "next": "photo6",
+    "time": "9:41",
+    "date": "10월 7일 수요일",
+    "song": "곡 제목",
+    "artist": "브랜드 라디오"
+  },
+  "site": {
+    "logo": "브랜드",
+    "nav": "주문",
+    "headline": "한 줄 헤드라인",
+    "product": "상품 이름",
+    "price": "00,000원",
+    "roasts": [
+      [
+        "옵션1",
+        "#C9A27C"
+      ],
+      [
+        "옵션2",
+        "#8A5A33"
+      ],
+      [
+        "옵션3",
+        "#3A2416"
+      ]
+    ],
+    "sizes": [
+      "작게",
+      "크게"
+    ],
+    "cta": "주문하기",
+    "tab": "브랜드 — 상품"
+  },
+  "states": [
+    {
+      "text": "주문 완료",
+      "icon": "check"
+    },
+    {
+      "text": "준비 중",
+      "percent": 72
+    },
+    {
+      "text": "배송 중",
+      "icon": "van",
+      "route": true
+    },
+    {
+      "text": "도착",
+      "icon": "check"
+    }
+  ],
+  "wall": {
+    "photo": "photo8"
+  },
+  "credit": "",
+  "note": ""
+}

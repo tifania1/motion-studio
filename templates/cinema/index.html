@@ -1,0 +1,607 @@
+<title>/*@TITLE@*/</title>
+<style>
+/*@FONTFACES@*/
+/*@BRAND_CSS@*/
+/*@ENGINE_CSS@*/
+
+/* ===== cinema 템플릿: 시네마틱 (결 템플릿, 공통 content) =====
+   영화 예고편·브랜드 필름처럼. 위아래 검은 레터박스, 화면 가장자리 아주 약한 비네트와 필름 그레인.
+   검은 화면에 kicker 가 넓은 자간으로 떴다 사라지고, 첫 사진(없으면 깊은 그라디언트 하늘과 먼지 빛)이 천천히 밀려오며 title 이 맺힘
+   → points 는 장(챕터) 카드: '01 / 03' 장 번호와 가는 줄, 그 아래 자막. 장마다 사진을 바꿔 깔고 켄번스 방향을 바꿈(없으면 동심원 고리·별밭·안개)
+     장 사이는 짧은 블랙 컷과 빛 번짐(light leak)이 번갈아
+   → number: 초공간 빛줄기가 점점 빨라지는 가운데 큰 숫자가 다가옴, label 은 자막, source 는 작은 각주
+   → 남은 사진은 짧은 몽타주 → 페이드 투 블랙, 위에서 내려오는 빛을 받으며 로고가 나타나고 headline 자막, 얇은 테두리 버튼, 엔딩 크레딧처럼 sub·note.
+   글자는 모두 세이프존 안. 9:16 은 레터박스를 얇게 하고 글을 세이프존 안쪽에 둠. */
+#cin { position: absolute; inset: 0; overflow: hidden; background: var(--deep); color: var(--sink); }
+#cin .scn { position: absolute; inset: 0; overflow: hidden; visibility: hidden; }
+#cin .bg { position: absolute; inset: 0; overflow: hidden; }
+#cin i { display: block; font-style: normal; }
+
+/* 사진 장면: 켄번스 + 필름 색 보정 + 위아래 그늘 */
+.bg.ph { background: var(--deep); }
+.bg .kb { position: absolute; inset: 0; transform-origin: 50% 50%; }
+.bg .kb img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: saturate(.82) contrast(1.08) brightness(.8); }
+.bg .tone { position: absolute; inset: 0; mix-blend-mode: soft-light; opacity: .55; background: linear-gradient(155deg, var(--acc-a) 0%, transparent 48%, var(--leak-a) 100%); }
+.bg .scrim { position: absolute; inset: 0; background: linear-gradient(180deg, var(--scr-a5) 0%, transparent 26%, transparent 58%, var(--scr-a6) 100%); }
+.ph-empty { position: absolute; inset: 0; display: grid; place-items: start center; padding-top: calc(var(--H) * .17); box-sizing: border-box; background: repeating-linear-gradient(135deg, var(--sink-a1) 0 calc(var(--u) * 2), transparent calc(var(--u) * 2) calc(var(--u) * 4)), var(--scr); }
+.ph-empty span { font: 500 calc(var(--u) * 2.6)/1.6 "Geist Mono", var(--font-body); letter-spacing: .24em; color: var(--mute); text-align: center; white-space: pre-line; }
+
+/* 사진이 없을 때의 장면들: 깊은 하늘 · 동심원 고리 · 별밭 · 안개 · 초공간 · 엔딩 */
+.ab { background: linear-gradient(180deg, var(--deep) 0%, var(--scr) 64%, var(--hz) 100%); }
+.ab.hyper, .ab.end { background: var(--deep); }
+.sky .sun { position: absolute; border-radius: 50%; background: radial-gradient(closest-side, var(--glow-a5), var(--glow-a2) 46%, transparent 100%); }
+.sky .rays { position: absolute; inset: 0; mix-blend-mode: screen; }
+.sky .rays i { position: absolute; left: 0; top: 0; transform-origin: 50% 0; background: linear-gradient(180deg, var(--ray) 0%, transparent 88%); filter: blur(calc(var(--u) * 1.4)); }
+.rings svg { position: absolute; left: 0; top: 0; overflow: visible; }
+.rings circle { fill: none; stroke: var(--sink); }
+.ab .core { position: absolute; left: 0; top: 0; border-radius: 50%; background: radial-gradient(closest-side, var(--glow-a4), var(--glow-a1) 55%, transparent 100%); }
+.stars canvas, .hyper canvas { position: absolute; left: 0; top: 0; width: 100%; height: 100%; }
+.stars canvas { transform-origin: 50% 50%; }
+.fog i { position: absolute; left: 0; top: 0; border-radius: 50%; background: radial-gradient(closest-side, var(--fogc), transparent 100%); }
+.end .pool { position: absolute; left: 0; top: 0; border-radius: 50%; background: radial-gradient(closest-side, var(--glow-a4), var(--glow-a1) 50%, transparent 100%); }
+.end .beam { position: absolute; left: 0; top: 0; filter: blur(calc(var(--u) * 1.8)); mix-blend-mode: screen; }
+.end .beam i { width: 100%; height: 100%; background: linear-gradient(180deg, var(--beam) 0%, var(--beam2) 55%, transparent 100%); clip-path: polygon(40% 0, 60% 0, 100% 100%, 0 100%); }
+
+/* 글 */
+.halo { position: absolute; left: 0; top: 0; border-radius: 50%; background: radial-gradient(closest-side, var(--scr-a6), var(--scr-a3) 58%, transparent 100%); pointer-events: none; }
+.grp { position: absolute; left: 0; top: 0; display: flex; flex-direction: column; align-items: center; text-align: center; }
+.kick { width: 100%; box-sizing: border-box; font: 500 calc(var(--u) * 3.2)/1.3 "Geist Mono", var(--font-body); letter-spacing: .5em; padding-left: .5em; text-transform: uppercase; color: var(--mute); white-space: nowrap; }
+.tw, .sw { width: 100%; }
+.ttl { font-family: var(--font-heading); font-weight: var(--tweight, 700); line-height: 1.26; letter-spacing: var(--ttrack, -.02em); white-space: pre-line; word-break: keep-all;
+  color: var(--sink); text-shadow: 0 0 calc(var(--u) * 3) var(--scr-a5); }
+.ttl .hl, .sub .hl { color: var(--hl); }
+.chn { display: flex; align-items: baseline; justify-content: center; gap: calc(var(--u) * 1.6); white-space: nowrap; }
+.chn .cn { font: italic 400 calc(var(--u) * 7.6)/1 "Instrument Serif", var(--font-display); color: var(--sink); }
+.chn .ct { font: 400 calc(var(--u) * 2.7)/1 "Geist Mono", var(--font-body); letter-spacing: .32em; color: var(--mute); }
+.rule { width: calc(var(--u) * 15); height: max(2px, calc(var(--u) * .16)); background: var(--rule); margin: calc(var(--u) * 2) 0 calc(var(--u) * 2.6); transform-origin: 50% 50%; }
+.sub { font: 500 calc(var(--u) * 5.2)/1.4 var(--font-body); color: var(--sink); white-space: pre-line; word-break: keep-all;
+  text-shadow: 0 0 calc(var(--u) * 1.4) var(--scr-a6), 0 calc(var(--u) * .2) calc(var(--u) * .6) var(--scr-a5); }
+.npre { width: 100%; box-sizing: border-box; font: 500 calc(var(--u) * 3.4)/1.2 var(--font-body); letter-spacing: .24em; padding-left: .24em; color: var(--mute); margin-bottom: calc(var(--u) * .6); white-space: nowrap; }
+.nrow { display: flex; align-items: baseline; justify-content: center; white-space: nowrap; transform-origin: 50% 60%; }
+.num { font: 400 calc(var(--u) * 30)/1 "Instrument Serif", var(--font-display); color: var(--sink); letter-spacing: -.01em; font-variant-numeric: lining-nums; text-shadow: 0 0 calc(var(--u) * 5) var(--glow-a5); }
+.nsuf { font: 700 calc(var(--u) * 7)/1 var(--font-heading); color: var(--sink); margin-left: calc(var(--u) * 1.2); }
+.nlw { margin-top: calc(var(--u) * 1.6); }
+.src { width: 100%; font: 400 calc(var(--u) * 1.9)/1.45 "Geist Mono", var(--font-body); color: var(--mute); letter-spacing: .04em; word-break: keep-all; }
+.lg { display: flex; flex-direction: column; align-items: center; gap: calc(var(--u) * 1.8); }
+.lgb { position: relative; display: inline-block; }
+.lgb img { display: block; width: auto; }
+.lgb .shn { position: absolute; left: 0; top: 0; width: 100%; height: 100%; visibility: hidden; pointer-events: none;
+  background: linear-gradient(100deg, transparent 40%, var(--sheen) 50%, transparent 60%); background-size: 300% 100%; background-repeat: no-repeat; }
+.lgb.img .shn { -webkit-mask-size: 100% 100%; mask-size: 100% 100%; -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat; }
+.lgb .lt { display: block; font: 700 calc(var(--u) * 8)/1.08 var(--font-display); letter-spacing: .16em; padding-left: .16em; color: var(--sink); white-space: nowrap; }
+.lgb .lt.shn { color: transparent; -webkit-background-clip: text; background-clip: text; }
+.ls { box-sizing: border-box; font: 500 calc(var(--u) * 2)/1 "Geist Mono", var(--font-body); letter-spacing: .5em; padding-left: .5em; color: var(--mute); white-space: nowrap; }
+.hdw { margin-top: calc(var(--u) * 4.4); }
+.btn { position: relative; margin-top: calc(var(--u) * 4.2); padding: calc(var(--u) * 1.7) calc(var(--u) * 4.4); font: 500 calc(var(--u) * 2.8)/1.25 var(--font-body); letter-spacing: .16em; color: var(--sink); white-space: nowrap; }
+.btn span { display: block; padding-left: .16em; }
+.btn svg { position: absolute; left: 0; top: 0; overflow: visible; }
+.btn rect { fill: none; stroke: var(--sink); stroke-opacity: .85; }
+.cred { width: 100%; font: 500 calc(var(--u) * 2.1)/1.55 var(--font-body); letter-spacing: .14em; color: var(--mute); white-space: nowrap; }
+.cred.nt { font-size: calc(var(--u) * 1.7); letter-spacing: .08em; opacity: .8; margin-top: calc(var(--u) * .6); }
+
+/* 겹 층: 먼지 빛 · 빛 번짐 · 레터박스 · 비네트 · 그레인 */
+#dust { position: absolute; left: 0; top: 0; width: 100%; height: 100%; pointer-events: none; }
+#leak { position: absolute; inset: 0; pointer-events: none; visibility: hidden; overflow: hidden; mix-blend-mode: screen; }
+#leak i { position: absolute; left: 0; top: 0; }
+#leak .l1 { border-radius: 50%; background: radial-gradient(closest-side, var(--leak-c), var(--leak-b) 42%, transparent 100%); }
+#leak .l2 { border-radius: 50%; background: radial-gradient(closest-side, var(--hot), var(--hot2) 38%, transparent 100%); }
+#leak .fl { width: 100%; height: 100%; background: var(--leak-c); }
+#cin .lb { position: absolute; left: 0; width: 100%; background: var(--lb); }
+#lbT { top: 0; }
+#lbB { bottom: 0; }
+#vig { position: absolute; inset: 0; pointer-events: none; background: radial-gradient(ellipse at 50% 50%, transparent 56%, rgba(0, 0, 0, .7) 100%); opacity: .38; }
+#grn { position: absolute; left: -10%; top: -10%; width: 120%; height: 120%; pointer-events: none; mix-blend-mode: overlay; opacity: .07; }
+</style>
+
+<div id="viewport"><div id="stage"><div id="cam"></div></div></div>
+
+<script>/*@GSAP@*/</script>
+<script>/*@DATA@*/</script>
+<script>/*@ENGINE_JS@*/</script>
+<script>
+(function () {
+  const S = Studio, M = S.M, e = S.esc, tl = S.tl;
+  const st = S.story();
+  const preview = !window.__RENDER;   // 미리보기에서만 빈 사진 자리를 빗금으로 보여 줌 (MP4 에는 사진 없는 모양)
+  const shots = preview ? st.photoSlots.map(k => ({ key: k, src: S.img(k) })) : st.photos;
+  const np = shots.length, pts = st.points, n = pts.length, num = st.number, cta = st.cta, L = st.logo;
+  const sty = S.sty();
+  const DIRS = ['in', 'left', 'out', 'right', 'up'];   // 켄번스 방향 (장마다 바꿈)
+  const ABS = ['rings', 'stars', 'fog'];               // 사진이 없을 때 장마다 바뀌는 바탕
+  const pad2 = v => String(v).padStart(2, '0');
+
+  /* ---------- 장면 목록과 길이 (0.5초 박 격자) ----------
+     훅 5초(kicker 없으면 4) → 장마다 3초(5개면 2.5, 장이 3개 이하일 때 16자 넘는 장은 +0.5) → 숫자 4.5초 → 남은 사진마다 1.5초 → 엔딩 5초
+     25초를 넘으면 엔딩·숫자·훅을 차례로 0.5초씩 줄임 (가장 길 때 25.5초) */
+  const scenes = [{ kind: 'hook', photo: np ? 0 : -1, dir: 'in', len: st.kicker ? 5 : 4 }];
+  pts.forEach((p, i) => scenes.push({ kind: 'ch', i, text: p, photo: np ? (i + 1) % np : -1, abs: ABS[i % 3], dir: DIRS[(i + 1) % 5],
+    len: (n <= 4 ? 3 : 2.5) + (n <= 3 && [...p].length > 15 ? .5 : 0) }));
+  if (num) scenes.push({ kind: 'num', len: 4.5 });
+  for (let k = n + 1; k < np; k++) scenes.push({ kind: 'shot', photo: k, dir: DIRS[(k + 3) % 5], len: 1.5 });
+  scenes.push({ kind: 'cta', len: 5 });
+  if (scenes.length === 2) scenes[0].len += 1.5;   // 제목과 엔딩뿐이면 제목을 조금 더 오래
+  const total = () => scenes.reduce((a, sc) => a + sc.len, 0);
+  for (const kd of ['cta', 'num', 'hook']) { const sc = scenes.find(x => x.kind === kd); if (sc && total() > 25) sc.len -= .5; }
+  let acc = 0;
+  scenes.forEach(sc => { sc.s = acc; acc += sc.len; sc.e = acc; });
+  const END = acc;
+  // 장면 사이 이음: dip(짧은 블랙 컷) · leak(빛 번짐) · dissolve(사진끼리 겹침) · black(엔딩 앞 페이드 투 블랙)
+  const trans = scenes.slice(0, -1).map((a, k) => {
+    const b = scenes[k + 1];
+    if (b.kind === 'cta') return 'black';
+    if (a.kind === 'shot' && b.kind === 'shot') return 'dissolve';
+    if (a.kind === 'hook' || b.kind === 'num') return 'dip';
+    if (a.kind === 'ch' && b.kind === 'ch') return b.i % 2 ? 'leak' : 'dip';
+    return 'leak';
+  });
+
+  /* ---------- 화면 짜기 ---------- */
+  const photoBg = pi => {
+    const p = shots[pi];
+    return `<div class="bg ph"><div class="kb">${p.src ? `<img src="${p.src}" alt="">` : `<div class="ph-empty"><span>${e('사진 자리\n' + p.key)}</span></div>`}</div><i class="tone"></i><i class="scrim"></i></div>`;
+  };
+  const absBg = kind => `<div class="bg ab ${kind}">` + ({
+    sky: '<i class="sun"></i><div class="rays"><i></i><i></i><i></i><i></i><i></i></div>',
+    rings: '<i class="core"></i><svg>' + '<circle></circle>'.repeat(11) + '</svg>',
+    stars: '<canvas></canvas>',
+    fog: '<i></i><i></i><i></i>',
+    hyper: '<i class="core"></i><canvas></canvas>',
+    end: '<i class="pool"></i><i class="beam"><i></i></i>',
+  }[kind]) + '</div>';
+  const bgOf = sc => sc.photo >= 0 ? photoBg(sc.photo) : absBg(sc.kind === 'hook' ? 'sky' : sc.abs);
+  const logoHtml = L.img
+    ? `<div class="lgb img"><img src="${L.img}" alt=""><i class="shn"></i></div>`
+    : (L.text ? `<div class="lgb txt"><span class="lt">${e(L.text)}</span><span class="lt shn" aria-hidden="true">${e(L.text)}</span></div>` : '') + (L.sub ? `<div class="ls">${e(L.sub)}</div>` : '');
+  const secHtml = sc => {
+    if (sc.kind === 'hook') return `<section class="scn hook">${bgOf(sc)}<i class="halo"></i>
+      ${st.kicker ? `<div class="grp kgrp"><div class="kick">${e(st.kicker)}</div></div>` : ''}
+      ${st.title ? `<div class="grp tgrp"><div class="tw"><div class="ttl">${e(st.title)}</div></div></div>` : ''}</section>`;
+    if (sc.kind === 'ch') return `<section class="scn ch">${bgOf(sc)}<i class="halo"></i>
+      <div class="grp cgrp"><div class="chn"><span class="cn">${pad2(sc.i + 1)}</span><span class="ct">/ ${pad2(n)}</span></div><i class="rule"></i>
+      <div class="sw"><div class="sub">${e(sc.text)}</div></div></div></section>`;
+    if (sc.kind === 'num') return `<section class="scn nums">${absBg('hyper')}
+      <div class="grp ngrp">${num.prefix ? `<div class="npre">${e(num.prefix)}</div>` : ''}
+      <div class="nrow"><span class="num">${e(S.numText(num.value, num.decimals))}</span>${num.suffix ? `<span class="nsuf">${e(num.suffix)}</span>` : ''}</div>
+      ${num.label ? `<div class="sw nlw"><div class="sub nlab">${e(num.label)}</div></div>` : ''}</div>
+      ${num.source ? `<div class="grp sgrp"><div class="src">${e(num.source)}</div></div>` : ''}</section>`;
+    if (sc.kind === 'shot') return `<section class="scn shot">${bgOf(sc)}</section>`;
+    return `<section class="scn cta">${absBg('end')}
+      <div class="grp qgrp"><div class="lg">${logoHtml}</div>
+      ${cta.headline ? `<div class="sw hdw"><div class="sub hd">${e(cta.headline)}</div></div>` : ''}
+      ${cta.button ? `<div class="btn"><svg><rect></rect></svg><span>${e(cta.button)}</span></div>` : ''}</div>
+      ${cta.sub || st.note ? `<div class="grp crgrp">${cta.sub ? `<div class="cred">${e(cta.sub)}</div>` : ''}${st.note ? `<div class="cred nt">${e(st.note)}</div>` : ''}</div>` : ''}</section>`;
+  };
+  S.$('#cam').appendChild(S.h(`<div id="cin">${scenes.map(secHtml).join('')}
+    <canvas id="dust"></canvas><div id="leak"><i class="l1"></i><i class="l2"></i><i class="fl"></i></div>
+    <i class="lb" id="lbT"></i><i class="lb" id="lbB"></i><i id="vig"></i><i id="grn"></i></div>`));
+
+  S.start(S => {
+    const W = S.W, H = S.H, u = Math.min(W, H) / 100, sf = S.safe, K = S.key, WIDE = K === 'wide';
+    const root = S.$('#cin'), secs = S.$$('#cin > .scn');
+    scenes.forEach((sc, k) => { sc.el = secs[k]; });
+
+    /* ---------- 색: 화면은 늘 어둡게 ----------
+       브랜드 bg 가 어두우면 그대로, 밝으면 어두운 짝(paper 나 on-bg)을 따뜻한 회색 쪽으로 눌러 영화처럼. 글은 그 짝의 밝은 색 */
+    const P = c => {
+      c = String(c || '').trim();
+      let m = /^#([0-9a-f]{3}|[0-9a-f]{6})$/i.exec(c);
+      if (m) { let h = m[1]; if (h.length === 3) h = [...h].map(x => x + x).join(''); const v = parseInt(h, 16); return [v >> 16 & 255, v >> 8 & 255, v & 255, 1]; }
+      m = /^rgba?\(([^)]+)\)$/i.exec(c);
+      if (m) { const p = m[1].split(/[\s,/]+/).filter(Boolean).map(parseFloat); if (p.length >= 3) return [p[0], p[1], p[2], p[3] ?? 1]; }
+      return null;
+    };
+    const luma = p => (.299 * p[0] + .587 * p[1] + .114 * p[2]) / 255;
+    const rel = p => { const f = v => { v /= 255; return v <= .03928 ? v / 12.92 : ((v + .055) / 1.055) ** 2.4; }; return .2126 * f(p[0]) + .7152 * f(p[1]) + .0722 * f(p[2]); };
+    const contrast = (a, b) => { const x = rel(a), y = rel(b); return (Math.max(x, y) + .05) / (Math.min(x, y) + .05); };
+    const mix = (a, b, k) => [0, 1, 2].map(i => a[i] + (b[i] - a[i]) * k).concat(1);
+    const rgb = (p, a = 1) => `rgba(${Math.round(p[0])},${Math.round(p[1])},${Math.round(p[2])},${+a.toFixed(3)})`;
+    const cv = nm => P(S.cssVar(nm));
+    const cBg = cv('--bg') || [20, 20, 22], cOn = cv('--on-bg') || [240, 240, 240], cPa = cv('--paper'), cInk = cv('--ink');
+    const cAcc = cv('--accent') || [230, 160, 80], cGlow = cv('--glow') || cAcc;
+    let scr, ink;
+    if (luma(cBg) < .32) { scr = cBg; ink = cOn; }
+    else if (cPa && luma(cPa) < .32) { scr = cPa; ink = cInk || cBg; }
+    else if (luma(cOn) < .32) { scr = cOn; ink = cBg; }
+    else { scr = [24, 22, 20]; ink = [242, 238, 232]; }
+    if (luma(cBg) >= .32) scr = mix(scr, [44, 38, 33], .4);      // 밝은 브랜드: 따뜻한 회색 톤
+    if (luma(ink) < .62) ink = mix(ink, [250, 248, 244], .75);   // 어두운 화면 위 글은 늘 밝게
+    const deep = mix(scr, [0, 0, 0], .55), lb = mix(scr, [0, 0, 0], .86);
+    const hl = contrast(cAcc, scr) >= 2.6 ? cAcc : mix(cAcc, ink, .55);
+    const leak = mix(cAcc, [255, 150, 80], .68);                 // 필름 빛 번짐: 브랜드 강조색이 살짝 섞인 따뜻한 빛
+    const glow = cGlow;
+    const vars = {
+      '--scr': rgb(scr), '--deep': rgb(deep), '--lb': rgb(lb), '--sink': rgb(ink), '--mute': rgb(ink, .62), '--hl': rgb(hl),
+      '--scr-a3': rgb(scr, .3), '--scr-a5': rgb(scr, .5), '--scr-a6': rgb(scr, .62), '--sink-a1': rgb(ink, .07),
+      '--glow-a1': rgb(glow, .08), '--glow-a2': rgb(glow, .2), '--glow-a4': rgb(glow, .38), '--glow-a5': rgb(glow, .5),
+      '--acc-a': rgb(cAcc, .55), '--leak-a': rgb(leak, .6), '--hz': rgb(mix(scr, glow, .32)), '--ray': rgb(mix(ink, leak, .4), .2),
+      '--fogc': rgb(mix(glow, scr, .25), .42), '--rule': rgb(ink, .5), '--beam': rgb(mix(ink, leak, .25), .3), '--beam2': rgb(mix(ink, leak, .3), .08),
+      '--leak-c': rgb(leak, .95), '--leak-b': rgb(leak, .4), '--hot': 'rgba(255,244,228,.95)', '--hot2': 'rgba(255,214,170,.4)', '--sheen': 'rgba(255,255,255,.85)',
+    };
+    for (const [k, v] of Object.entries(vars)) root.style.setProperty(k, v);
+    // 스타일이 주는 제목 굵기·자간
+    if (sty.weight) root.style.setProperty('--tweight', sty.weight);
+    if (sty.tracking != null && isFinite(+sty.tracking)) root.style.setProperty('--ttrack', (+sty.tracking) + 'em');
+    const scl = M.clamp(+sty.scale || 1, .85, 1.25);
+
+    /* ---------- 틀: 레터박스와 글 자리 ---------- */
+    const barH = Math.round(WIDE ? (H - W / 2.39) / 2 : H * ({ tall: .045, portrait: .075, square: .085 }[K] || .08));
+    S.$('#lbT').style.height = S.$('#lbB').style.height = barH + 'px';
+    const R = { x: Math.max(sf.left, 3 * u), r: W - Math.max(sf.right, 3 * u), y: Math.max(sf.top, barH + 2.6 * u), b: H - Math.max(sf.bottom, barH + 2.6 * u) };
+    R.w = R.r - R.x; R.h = R.b - R.y; R.cx = (R.x + R.r) / 2; R.cy = (R.y + R.b) / 2;
+    const place = (el, cx, top, w) => { if (w != null) el.style.width = w + 'px'; el.style.left = (cx - el.offsetWidth / 2) + 'px'; el.style.top = top + 'px'; };
+    const box = (el, cx, cy, w, h) => { Object.assign(el.style, { left: (cx - w / 2) + 'px', top: (cy - h / 2) + 'px', width: w + 'px', height: h + 'px' }); };
+    const SUB = ({ tall: 5.6, portrait: 5.4, square: 5.1, wide: 4.6 }[K]) * u;
+
+    /* ---------- 등장 종류 (스타일 scenes.title 을 따름, 기본 fade) ---------- */
+    const tKind = sty.title || 'fade';
+    const pk = ['stamp', 'pop', 'slot'].includes(sty.title) ? 'blur' : undefined;   // 자막에는 쿵·톡 대신 흐림에서
+    const pKind = pk || sty.title || 'fade';
+    const KD = { fade: 1.4, blur: 1.3, rise: 1.3, mask: 1.3 };                       // 시네마틱이라 천천히
+    const easeIn = S.ease('sine.out');
+    const subEnter = (el, wrap, t) => {
+      S.fx.enter(el, t, { kind: pk, def: 'fade', d: KD[pKind] || 1 });
+      if (pKind === 'fade') tl.fromTo(wrap, { filter: `blur(${(.6 * u).toFixed(1)}px)` }, { filter: 'blur(0px)', duration: 1, ease: 'sine.out' }, t);
+    };
+
+    /* ---------- 장면별 배치와 시간표 ---------- */
+    const kbs = [];        // 켄번스: {el, sc, dir}
+    const absUp = [];      // 사진 없는 바탕의 움직임
+    scenes.forEach((sc, k) => {
+      const el = sc.el, kb = S.$('.kb', el);
+      if (kb) kbs.push({ el: kb, sc, dir: sc.dir });
+      const ab = S.$('.ab', el);
+      if (ab) setupAbs(ab, sc);
+      if (sc.kind === 'hook') setupHook(sc);
+      else if (sc.kind === 'ch') setupCh(sc);
+      else if (sc.kind === 'num') setupNum(sc);
+      else if (sc.kind === 'cta') setupCta(sc);
+    });
+
+    function setupHook(sc) {
+      const el = sc.el, kg = S.$('.kgrp', el), tg = S.$('.tgrp', el), halo = S.$('.halo', el);
+      if (kg) {
+        const kick = S.$('.kick', kg);
+        place(kg, R.cx, 0, R.w);
+        S.fit(kick, { max: 3.2 * u, min: 1.4 * u });
+        kg.style.top = (R.cy - kg.offsetHeight / 2) + 'px';
+        tl.fromTo(kick, { autoAlpha: 0, letterSpacing: '.95em', paddingLeft: '.95em' }, { autoAlpha: 1, letterSpacing: '.5em', paddingLeft: '.5em', duration: 1.1, ease: 'sine.out' }, .2);
+        tl.to(kg, { autoAlpha: 0, duration: .45, ease: 'sine.in' }, 1.35);
+      }
+      sc.bgT = st.kicker ? 1.1 : 0;   // 바탕이 어둠에서 떠오르는 시각
+      if (tg) {
+        const ttl = S.$('.ttl', tg), tw = S.$('.tw', tg);
+        const tW = R.w * (WIDE ? .74 : .96);
+        tg.style.width = tW + 'px';
+        S.fit(ttl, { max: ({ tall: 9, portrait: 8.6, square: 8.2, wide: 7.4 }[K]) * u * scl, maxLines: 3, maxHeight: R.h * .8 });
+        const cy = K === 'tall' ? R.y + R.h * .46 : R.cy;
+        place(tg, R.cx, cy - tg.offsetHeight / 2);
+        box(halo, R.cx, cy, Math.min(W * 1.15, tW * 1.25), tg.offsetHeight * 2 + 12 * u);
+        const tT = st.kicker ? 1.5 : .5;
+        tl.set(tg, { autoAlpha: 0 }, 0); tl.set(tg, { autoAlpha: 1 }, tT - .05);   // 타자 커서가 미리 깜빡이며 꼬리표와 겹치지 않게
+        S.fx.enter(ttl, tT, { highlight: st.highlight, def: 'fade', d: KD[tKind] || 1 });
+        tl.fromTo(tw, { scale: 1.045, filter: tKind === 'fade' ? `blur(${(1.2 * u).toFixed(1)}px)` : 'blur(0px)' }, { scale: 1, filter: 'blur(0px)', duration: 1.8, ease: 'sine.out' }, tT);
+        tl.to(tg, { autoAlpha: 0, scale: 1.03, filter: `blur(${(.8 * u).toFixed(1)}px)`, duration: .7, ease: 'sine.in' }, sc.e - .8);
+      } else halo.style.display = 'none';
+    }
+
+    function setupCh(sc) {
+      const el = sc.el, g = S.$('.cgrp', el), sub = S.$('.sub', g), sw = S.$('.sw', g), halo = S.$('.halo', el);
+      g.style.width = R.w * (WIDE ? .66 : .94) + 'px';
+      S.fit(sub, { max: SUB, maxLines: 2, keepMin: .8 });
+      const top = R.b - g.offsetHeight - (K === 'tall' ? 1 : 1.6) * u;
+      place(g, R.cx, top);
+      sc.textTop = top;
+      box(halo, R.cx, top + g.offsetHeight * .62, Math.min(W * 1.1, g.offsetWidth * 1.3), g.offsetHeight * 1.9 + 8 * u);
+      const s = sc.s;
+      tl.fromTo(S.$('.chn', g), { autoAlpha: 0, y: .9 * u }, { autoAlpha: 1, y: 0, duration: .7, ease: easeIn }, s + .1);
+      tl.fromTo(S.$('.rule', g), { scaleX: 0 }, { scaleX: 1, duration: .9, ease: 'sine.inOut' }, s + .2);
+      subEnter(sub, sw, s + .35);
+      tl.to(g, { autoAlpha: 0, duration: .4, ease: 'sine.in' }, sc.e - .6);
+    }
+
+    function setupNum(sc) {
+      const el = sc.el, g = S.$('.ngrp', el), row = S.$('.nrow', g), numEl = S.$('.num', g), suf = S.$('.nsuf', g);
+      const pre = S.$('.npre', g), lab = S.$('.nlab', g), lw = S.$('.nlw', g), sg = S.$('.sgrp', el);
+      const gw = R.w * (WIDE ? .7 : .94);
+      g.style.width = gw + 'px';
+      // 숫자 크기: 화면 폭에 맞춤
+      let ns = ({ tall: 30, portrait: 28, square: 26, wide: 30 }[K]) * u * scl;
+      numEl.style.fontSize = ns + 'px'; if (suf) suf.style.fontSize = ns * .24 + 'px';
+      if (row.offsetWidth > gw) { const k = gw / row.offsetWidth; ns *= k; numEl.style.fontSize = ns + 'px'; if (suf) suf.style.fontSize = Math.max(ns * .24, 4 * u * k) + 'px'; }
+      if (pre) S.fit(pre, { max: 3.4 * u, min: 2 * u });
+      if (lab) S.fit(lab, { max: SUB, maxLines: 2, keepMin: .8 });
+      let srcH = 0;
+      if (sg) {
+        sg.style.width = R.w * (WIDE ? .6 : .9) + 'px';
+        S.fit(S.$('.src', sg), { max: 1.9 * u, min: 1.3 * u, maxLines: 2, keepLines: false });
+        srcH = sg.offsetHeight;
+        place(sg, R.cx, R.b - srcH);
+        srcH += 2.4 * u;
+      }
+      // 큰 숫자 안쪽 여백(글꼴 위아래 빈 자리)이 커서 가운데를 조금 올림
+      const avail = R.h - srcH, top = R.y + Math.max(0, (avail - g.offsetHeight) / 2);
+      place(g, R.cx, top);
+      sc.cx = R.cx; sc.cy = top + g.offsetHeight * .5;
+      sc.hole = Math.max(Math.min(W, H) * .14, Math.hypot(Math.min(g.offsetWidth, row.offsetWidth * 1.3) / 2, g.offsetHeight / 2) * .62);
+      const t0 = sc.s + .3;
+      tl.fromTo(row, { scale: .5, autoAlpha: 0, filter: `blur(${(1.6 * u).toFixed(1)}px)` }, { scale: 1, autoAlpha: 1, filter: 'blur(0px)', duration: 2, ease: S.ease('power2.out') }, t0);
+      S.fx.num(numEl, t0 + .1, 1.6, num.value, { decimals: num.decimals });
+      if (pre) tl.fromTo(pre, { autoAlpha: 0, letterSpacing: '.6em', paddingLeft: '.6em' }, { autoAlpha: 1, letterSpacing: '.24em', paddingLeft: '.24em', duration: 1, ease: 'sine.out' }, t0);
+      if (lab) subEnter(lab, lw, t0 + .9);
+      if (sg) tl.fromTo(sg, { autoAlpha: 0 }, { autoAlpha: 1, duration: .8, ease: 'none' }, t0 + 1.3);
+      tl.to([g, sg].filter(Boolean), { autoAlpha: 0, duration: .5, ease: 'sine.in' }, sc.e - .75);
+    }
+
+    function setupCta(sc) {
+      const el = sc.el, g = S.$('.qgrp', el), cr = S.$('.crgrp', el), lgb = S.$('.lgb', g), ls = S.$('.ls', g);
+      const hd = S.$('.hd', g), hdw = S.$('.hdw', g), btn = S.$('.btn', g);
+      g.style.width = R.w * (WIDE ? .7 : .94) + 'px';
+      const img = lgb && S.$('img', lgb);
+      if (img) {
+        img.style.height = Math.min(18 * u, R.h * .24) + 'px';
+        img.style.maxWidth = R.w * .7 + 'px';
+        const shn = S.$('.shn', lgb);
+        shn.style.webkitMaskImage = shn.style.maskImage = `url("${L.img}")`;
+      } else if (lgb) {
+        // 로고 글자: 폭에 맞게 줄인 뒤 글 폭만큼만 차지하게
+        lgb.style.width = R.w * .9 + 'px';
+        const lts = S.$$('.lt', lgb);
+        const fs = S.fit(lts[0], { max: 8 * u, min: 3 * u });
+        lts.forEach(x => { x.style.fontSize = fs + 'px'; });
+        lgb.style.width = '';
+      }
+      if (ls) S.fit(ls, { max: 2 * u, min: 1.3 * u });
+      if (hd) S.fit(hd, { max: SUB * 1.04, maxLines: 3, keepMin: .8 });
+      if (btn && btn.offsetWidth > R.w * .9) { const k = R.w * .9 / btn.offsetWidth; btn.style.fontSize = 2.8 * u * k + 'px'; }
+      let crH = 0;
+      if (cr) {
+        cr.style.width = R.w + 'px';
+        S.$$('.cred', cr).forEach(c => S.fit(c, { max: parseFloat(getComputedStyle(c).fontSize), min: 1.2 * u }));
+        crH = cr.offsetHeight;
+        place(cr, R.cx, R.b - crH);
+        crH += 3 * u;
+      }
+      const avail = R.h - crH, top = R.y + Math.max(0, (avail - g.offsetHeight) / 2 - (K === 'tall' ? 2 * u : 0));
+      place(g, R.cx, top);
+      // 버튼 테두리 (얇은 상자, 한 붓으로 그어짐)
+      let rect = null;
+      if (btn) {
+        const svg = S.$('svg', btn); rect = S.$('rect', btn);
+        const bw = btn.offsetWidth, bh = btn.offsetHeight, sw = Math.max(1.5, .16 * u);
+        svg.setAttribute('width', bw); svg.setAttribute('height', bh);
+        Object.entries({ x: sw / 2, y: sw / 2, width: bw - sw, height: bh - sw, 'stroke-width': sw }).forEach(([k, v]) => rect.setAttribute(k, v));
+        tl.fromTo(S.$('span', btn), { autoAlpha: 0 }, { autoAlpha: 1, duration: .7, ease: 'none' }, sc.s + 2.4);
+      }
+      if (hd) subEnter(hd, hdw, sc.s + 1.3);
+      if (cr) tl.fromTo(S.$$('.cred', cr), { autoAlpha: 0, y: 1.2 * u }, { autoAlpha: 1, y: 0, duration: 1, ease: easeIn, stagger: S.stg(.25) }, sc.s + 2.8);
+      // 로고 위치 (빛줄기·조명 웅덩이가 겨눔)
+      const lgEl = lgb || ls;
+      const ly = lgEl ? top + lgEl.offsetTop + lgEl.offsetHeight / 2 : top;
+      const beam = S.$('.beam', el), pool = S.$('.pool', el);
+      const bw2 = Math.min(W * .9, Math.max(40 * u, (lgEl ? lgEl.offsetWidth : 30 * u) * 2.2));
+      Object.assign(beam.style, { left: (R.cx - bw2 / 2) + 'px', top: barH + 'px', width: bw2 + 'px', height: Math.max(10 * u, ly - barH + 14 * u) + 'px' });
+      box(pool, R.cx, ly, Math.min(W * 1.2, bw2 * 1.6), Math.min(H * .8, bw2 * 1.1));
+      sc.ui = { lgb, ls, rect, cr, beam, pool, shn: lgb && S.$('.shn', lgb), ly };
+      sc.beamX = R.cx; sc.beamW = bw2;
+    }
+
+    /* ---------- 사진 없는 바탕 ---------- */
+    function setupAbs(ab, sc) {
+      const kind = [...ab.classList].find(c => ['sky', 'rings', 'stars', 'fog', 'hyper', 'end'].includes(c));
+      const cx = R.cx, cy = sc.kind === 'ch' ? R.y + Math.max(R.h * .3, ((sc.textTop || R.b - 20 * u) - R.y) * .45) : R.cy;
+      if (kind === 'sky') {
+        const sun = S.$('.sun', ab), D = Math.max(W, H) * 1.3;
+        box(sun, W * .5, H * .98 + D * .2, D, D);
+        const rays = S.$$('.rays i', ab);
+        rays.forEach((r, j) => Object.assign(r.style, { left: (W * (.1 + j * .085)) + 'px', top: (-H * .12) + 'px', width: ((4 + (j % 3) * 2.5) * u) + 'px', height: (H * 1.5) + 'px' }));
+        absUp.push(t => {
+          const k = M.prog(t, sc.s, sc.len);
+          sun.style.opacity = (.55 + .45 * M.ease.outSine(k)).toFixed(3);
+          rays.forEach((r, j) => {
+            r.style.transform = `rotate(${(-32 + j * 5.5 + Math.sin(t * .35 + j * 1.7) * 2.2).toFixed(2)}deg)`;
+            r.style.opacity = ((.45 + .35 * Math.sin(t * .6 + j * 1.3)) * (.4 + .6 * k)).toFixed(3);
+          });
+        });
+      } else if (kind === 'rings') {
+        const svg = S.$('svg', ab), cs = S.$$('circle', ab), core = S.$('.core', ab), Rm = Math.hypot(W, H) * .62;
+        svg.setAttribute('width', W); svg.setAttribute('height', H);
+        // 사진 장이 끝난 뒤 위치가 정해지므로 다시 계산
+        const cyy = () => sc.kind === 'ch' && sc.textTop ? R.y + (sc.textTop - R.y) * .48 : cy;
+        absUp.push(t => {
+          const c = cyy(), tau = t - sc.s + 1;
+          box(core, cx, c, 70 * u, 70 * u);
+          cs.forEach((ci, j) => {
+            const ph = (((j + tau * .3) % cs.length) + cs.length) % cs.length / cs.length;
+            ci.setAttribute('cx', cx); ci.setAttribute('cy', c.toFixed(1));
+            ci.setAttribute('r', (Rm * (.04 + .96 * ph ** 1.25)).toFixed(1));
+            ci.setAttribute('stroke-width', ((.12 + ph * .18) * u).toFixed(2));
+            ci.style.opacity = (Math.sin(Math.PI * ph) * .42).toFixed(3);
+          });
+        });
+      } else if (kind === 'stars') {
+        const c = S.$('canvas', ab); drawStars(c, 31 + (sc.i || 0) * 17);
+        absUp.push(t => { const k = M.prog(t, sc.s - .5, sc.len + 1); c.style.transform = `scale(${(1.02 + .08 * k).toFixed(4)}) rotate(${(.8 * k).toFixed(3)}deg)`; });
+      } else if (kind === 'fog') {
+        const fs = S.$$('i', ab), r = M.rng(77 + (sc.i || 0));
+        const F = fs.map((f, j) => ({ f, x: W * (.2 + .3 * j), y: H * (.35 + r() * .35), w: W * (1 + r() * .4), h: H * (.45 + r() * .25), ph: r() * 6.28 }));
+        absUp.push(t => F.forEach((o, j) => {
+          const dx = Math.sin(t * .22 + o.ph) * 9 * u + (t - sc.s) * (j % 2 ? -1 : 1) * 1.6 * u;
+          box(o.f, o.x + dx, o.y, o.w, o.h);
+          o.f.style.opacity = (.55 + .3 * Math.sin(t * .4 + o.ph)).toFixed(3);
+        }));
+      } else if (kind === 'hyper') {
+        sc.hyper = S.$('canvas', ab); sc.core = S.$('.core', ab);
+      }
+    }
+    function drawStars(c, seed) {
+      c.width = W; c.height = H;
+      const g = c.getContext('2d'), r = M.rng(seed);
+      const band = g.createLinearGradient(0, H * .15, W, H * .85);
+      band.addColorStop(0, 'rgba(0,0,0,0)'); band.addColorStop(.5, rgb(glow, .16)); band.addColorStop(1, 'rgba(0,0,0,0)');
+      g.fillStyle = band; g.fillRect(0, 0, W, H);
+      const cnt = Math.round(W * H / 4200);
+      for (let i = 0; i < cnt; i++) {
+        const x = r() * W, y = r() * H, z = r() ** 3, rad = (.08 + z * .34) * u;
+        g.globalAlpha = .2 + .8 * r();
+        g.fillStyle = r() < .12 ? rgb(leak) : rgb(ink);
+        g.beginPath(); g.arc(x, y, rad, 0, 6.2832); g.fill();
+        if (z > .7) { g.globalAlpha = .18; g.beginPath(); g.arc(x, y, rad * 4, 0, 6.2832); g.fill(); }
+      }
+      g.globalAlpha = 1;
+    }
+
+    /* ---------- 먼지 빛 (훅·엔딩 빛줄기 안) ---------- */
+    const dust = S.$('#dust'); dust.width = W; dust.height = H;
+    const dctx = dust.getContext('2d');
+    const sprite = document.createElement('canvas'); sprite.width = sprite.height = 64;
+    { const g = sprite.getContext('2d'), gr = g.createRadialGradient(32, 32, 0, 32, 32, 32); gr.addColorStop(0, rgb(mix(ink, leak, .3))); gr.addColorStop(.35, rgb(mix(ink, leak, .4), .45)); gr.addColorStop(1, rgb(leak, 0)); g.fillStyle = gr; g.fillRect(0, 0, 64, 64); }
+    const DUST = Array.from({ length: 70 }, (_, i) => { const r = M.rng(101 + i * 13); return { x: r(), y: r(), vx: (r() - .5) * .014, vy: -(.004 + r() * .012), s: .5 + r() * 1.6, tw: .5 + r() * 1.5, ph: r() * 6.28, z: r() }; });
+    let dustOn = true;
+    function drawDust(t, a, beam) {
+      if (a <= .002) { if (dustOn) { dctx.clearRect(0, 0, W, H); dust.style.visibility = 'hidden'; dustOn = false; } return; }
+      dustOn = true; dust.style.visibility = 'inherit';
+      dctx.clearRect(0, 0, W, H);
+      for (const d of DUST) {
+        const x = (((d.x + d.vx * t) % 1 + 1) % 1) * W + Math.sin(t * .4 + d.ph) * 1.2 * u;
+        const y = (((d.y + d.vy * t) % 1 + 1) % 1) * H;
+        let al = a * (.3 + .7 * (.5 + .5 * Math.sin(t * d.tw + d.ph))) * (.35 + .65 * d.z);
+        if (beam) { const dx = (x - beam.x) / (beam.w * (.25 + .5 * M.clamp((y - barH) / Math.max(1, beam.y - barH)))); al *= Math.exp(-dx * dx) * (y < beam.y + 16 * u ? 1 : .25); }
+        if (al < .01) continue;
+        const sz = d.s * (.6 + d.z) * u * .9;
+        dctx.globalAlpha = Math.min(1, al);
+        dctx.drawImage(sprite, x - sz / 2, y - sz / 2, sz, sz);
+      }
+      dctx.globalAlpha = 1;
+    }
+
+    /* ---------- 초공간 빛줄기 (숫자 장면) ----------
+       선마다 각도·시작 위치·속도를 시드로 정하고, 반지름 진행 = 시간에 대해 닫힌 식(가속하는 속도의 적분)이라 아무 시각이나 똑같이 그려짐 */
+    const STK = Array.from({ length: 170 }, (_, i) => { const r = M.rng(7000 + i * 7); return { a: r() * Math.PI * 2, p: r(), v: .7 + r() * .6, w: .5 + r() * 1.1, c: r() < .3, l: .5 + r() }; });
+    const inkS = rgb(ink), accS = rgb(mix(cAcc, ink, .2));
+    function drawHyper(sc, t) {
+      const c = sc.hyper, tau = t - sc.s;
+      if (tau < -.6 || tau > sc.len + .1) { c.style.visibility = 'hidden'; return; }
+      c.style.visibility = 'inherit';
+      if (c.width !== W) { c.width = W; c.height = H; }
+      const g = c.getContext('2d');
+      g.clearRect(0, 0, W, H);
+      const T = 2.3, v0 = .06, v1 = .62, x = Math.max(0, tau), q = x / T;
+      const pos = v0 * x + (v1 - v0) * T * (q <= 1 ? q ** 3 - q ** 4 / 2 : .5 + (q - 1));   // ∫ (v0 + (v1-v0)·smoothstep)
+      const spd = v0 + (v1 - v0) * (q <= 1 ? 3 * q * q - 2 * q ** 3 : 1);
+      const fin = M.clamp((tau + .3) / .7);
+      const cx = sc.cx, cy = sc.cy, Rmax = Math.hypot(W, H) * .62, Rmin = sc.hole;
+      g.lineCap = 'round';
+      for (const s of STK) {
+        const rr = (s.p + pos * s.v) % 1;
+        const R0 = Rmin + (Rmax - Rmin) * rr * rr;
+        const len = Rmax * (.015 + .55 * spd * rr * rr) * s.l;
+        const al = fin * M.clamp(rr * 5) * (s.c ? .85 : .6);
+        if (al < .01) continue;
+        const ca = Math.cos(s.a), sa = Math.sin(s.a);
+        g.globalAlpha = al; g.strokeStyle = s.c ? accS : inkS;
+        g.lineWidth = s.w * u * (.06 + .22 * rr);
+        g.beginPath(); g.moveTo(cx + ca * R0, cy + sa * R0); g.lineTo(cx + ca * (R0 + len), cy + sa * (R0 + len)); g.stroke();
+      }
+      // 숫자 둘레는 어둡게 비움 (빛줄기는 가장자리에서 쏟아지고 가운데는 어둠)
+      const hole = g.createRadialGradient(cx, cy, 0, cx, cy, Rmin * 1.7);
+      hole.addColorStop(0, rgb(deep, .92)); hole.addColorStop(.55, rgb(deep, .6)); hole.addColorStop(1, rgb(deep, 0));
+      g.globalAlpha = 1; g.fillStyle = hole; g.fillRect(0, 0, W, H);
+      box(sc.core, cx, cy, 70 * u, 70 * u);
+      sc.core.style.opacity = (fin * (.25 + .3 * M.clamp(spd / v1))).toFixed(3);
+    }
+
+    /* ---------- 빛 번짐 (light leak) ---------- */
+    const leakEl = S.$('#leak'), l1 = S.$('#leak .l1'), l2 = S.$('#leak .l2'), lfl = S.$('#leak .fl');
+    const leaks = trans.map((tr, k) => tr === 'leak' ? scenes[k + 1].s : null).filter(x => x != null);
+    function drawLeak(t) {
+      const T = leaks.find(x => t > x - .6 && t < x + .6);
+      if (T == null) { leakEl.style.visibility = 'hidden'; return; }
+      const k = (t - (T - .6)) / 1.2, env = Math.sin(Math.PI * k) ** 1.4, j = leaks.indexOf(T);
+      const x = M.lerp(-.35, 1.25, M.ease.inOutSine(k)) * W, y = H * (j % 2 ? .62 : .38);
+      leakEl.style.visibility = 'inherit';
+      M.place(l1, x, y, { rot: j % 2 ? 22 : -18, o: env * .85 });
+      Object.assign(l1.style, { width: W * 1.3 + 'px', height: H * 1.15 + 'px' });
+      M.place(l2, x + W * .08, y + H * .04, { o: env * .9 });
+      Object.assign(l2.style, { width: W * .55 + 'px', height: H * .6 + 'px' });
+      lfl.style.opacity = (env ** 3 * .38).toFixed(3);
+    }
+
+    /* ---------- 그레인·비네트 (스타일 질감이 없을 때만 템플릿이 아주 약하게) ---------- */
+    const LK = S.look || {};
+    const grn = S.$('#grn'), vig = S.$('#vig');
+    if (LK.vignette) vig.remove();
+    if (LK.grain) grn.remove();
+    else {
+      const c = document.createElement('canvas'); c.width = c.height = 200;
+      const g = c.getContext('2d'), im = g.createImageData(200, 200), r = M.rng(5);
+      for (let i = 0; i < 40000; i++) { const v = 128 + (r() - .5) * 255; im.data[i * 4] = im.data[i * 4 + 1] = im.data[i * 4 + 2] = v; im.data[i * 4 + 3] = 255; }
+      g.putImageData(im, 0, 0);
+      Object.assign(grn.style, { backgroundImage: `url(${c.toDataURL('image/png')})`, backgroundSize: (2.2 * u * 10).toFixed(0) + 'px' });
+      S.ambient(t => { const r2 = M.rng(1 + Math.floor(t * 12)); grn.style.transform = `translate(${(r2() * 8 - 4).toFixed(2)}%, ${(r2() * 8 - 4).toFixed(2)}%)`; });
+    }
+
+    /* ---------- 장면 보이기 (시간의 순수 함수) ---------- */
+    const sm = k => k <= 0 ? 0 : k >= 1 ? 1 : M.ease.inOutSine(k);
+    function secAlpha(k, t) {
+      const sc = scenes[k], ti = k ? trans[k - 1] : null, to = trans[k];
+      let a = t >= sc.s ? 1 : 0;
+      if (ti === 'dip') a = sm((t - sc.s) / .5);
+      else if (ti === 'dissolve') a = sm((t - (sc.s - .45)) / .45);
+      if (to === 'dip') a *= 1 - sm((t - (sc.e - .4)) / .4);
+      else if (to === 'black') a *= 1 - sm((t - (sc.e - .75)) / .75);
+      else if (to) a *= t < sc.e ? 1 : 0;
+      return a;
+    }
+    function kenburns(o, t) {
+      const lin = M.prog(t, o.sc.s - .5, o.sc.len + 1), k = .65 * lin + .35 * M.ease.inOutSine(lin);
+      let s = 1.12, x = 0, y = 0;
+      if (o.dir === 'in') s = 1.03 + .12 * k;
+      else if (o.dir === 'out') s = 1.16 - .11 * k;
+      else if (o.dir === 'left') x = 3 - 6 * k;
+      else if (o.dir === 'right') x = -3 + 6 * k;
+      else if (o.dir === 'up') y = 2.4 - 4.8 * k;
+      o.el.style.transform = `translate(${x.toFixed(3)}%, ${y.toFixed(3)}%) scale(${s.toFixed(4)})`;
+    }
+
+    const hook = scenes[0], last = scenes[scenes.length - 1];
+    const hookBg = S.$('.bg', hook.el), hookHalo = S.$('.halo', hook.el);
+    S.ambient(t => {
+      const al = scenes.map((sc, k) => {
+        const a = secAlpha(k, t);
+        sc.el.style.opacity = a.toFixed(3);
+        sc.el.style.visibility = a > .001 ? 'inherit' : 'hidden';
+        return a;
+      });
+      // 훅: 바탕이 어둠에서 떠오름
+      const hb = sm((t - hook.bgT) / 1.6);
+      hookBg.style.opacity = hb.toFixed(3);
+      hookHalo.style.opacity = hb.toFixed(3);
+      kbs.forEach(o => { if (al[scenes.indexOf(o.sc)] > 0 || Math.abs(t - o.sc.s) < .6) kenburns(o, t); });
+      absUp.forEach(fn => fn(t));
+      scenes.forEach(sc => { if (sc.hyper) drawHyper(sc, t); });
+      drawLeak(t);
+      // 엔딩: 위에서 내려오는 빛, 빛을 받는 로고, 반짝 지나가는 빛, 버튼 테두리
+      const q = last, tau = t - q.s, ui = q.ui;
+      const bk = sm((tau + .3) / 1.3);
+      ui.beam.style.opacity = (bk * .9).toFixed(3);
+      ui.pool.style.opacity = (sm((tau - .4) / 1.6) * .85).toFixed(3);
+      const lk = sm(tau / 1.3);
+      if (ui.lgb) {
+        ui.lgb.style.opacity = M.clamp(lk * 1.5).toFixed(3);
+        ui.lgb.style.filter = lk < .999 ? `brightness(${(.12 + .88 * lk).toFixed(3)}) blur(${((1 - lk) * .9 * u).toFixed(2)}px)` : 'none';
+        const sk = M.prog(tau, 1.2, 1.3);
+        ui.shn.style.visibility = sk > 0 && sk < 1 ? 'inherit' : 'hidden';
+        ui.shn.style.backgroundPosition = `${(100 - 100 * M.ease.inOutSine(sk)).toFixed(2)}% 0`;
+      }
+      if (ui.ls) { const k2 = sm((tau - .9) / 1); ui.ls.style.opacity = k2.toFixed(3); ui.ls.style.letterSpacing = ui.ls.style.paddingLeft = (.5 + .3 * (1 - k2)).toFixed(3) + 'em'; }
+      if (ui.rect) M.draw(ui.rect, M.ease.inOutSine(M.prog(tau, 2, .9)));
+      if (ui.cr) ui.cr.style.transform = `translateY(${(-Math.max(0, tau - 2.8) * .35 * u).toFixed(2)}px)`;
+      // 먼지: 훅에서는 화면 가득 옅게, 엔딩에서는 빛줄기 안에서만
+      const da = al[0] * hb * .75 + al[al.length - 1] * bk;
+      drawDust(t, da, al[al.length - 1] > .01 && tau > 0 ? { x: q.beamX, w: q.beamW, y: ui.ly } : null);
+    });
+
+    S.setDuration(END);
+  });
+})();
+</script>

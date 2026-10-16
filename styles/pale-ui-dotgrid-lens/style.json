@@ -1,0 +1,137 @@
+{
+  "id": "pale-ui-dotgrid-lens",
+  "name": "회색 UI 원색 점판 돋보기",
+  "group": "제품 UI",
+  "template": "uidemo",
+  "summary": "아주 옅은 회색 뼈대 UI 위에 파란 번호 핀과 검은 팝업이 톡 떠요. 원색 점들이 쏟아져 반듯한 점판으로 쌓이면 굵은 테 돋보기가 그 위를 지나며 속의 코드를 비춰 주는 담백한 개발 도구 소개 필름이에요",
+  "tags": [
+    "제품 UI",
+    "개발 도구",
+    "점 격자",
+    "돋보기",
+    "원색",
+    "담백함"
+  ],
+  "hand": false,
+  "source": {
+    "site": "keyframe.gallery",
+    "ref": "mux:Q01Nht8v01Ap7tiSsB5wdW2GFrDSkJXjBG8oIiVo9Eg6g",
+    "at": "2–40.8초",
+    "note": "선과 회색 상자만 남긴 뼈대 UI에 파란 번호 핀이 꽂히고 검은 팝업이 열리는 장면, 원색 점이 왼쪽 위에서 쏟아져 10×4 점판으로 쌓이는 움직임, 굵은 테 돋보기가 점판 위를 지나며 렌즈 안에만 코드를 비추는 장면, 검은 알약 도구 막대, 색 곡선을 타고 가는 번호 핀, 크게 흐르는 코드 줄이 작은 한 줄로 오므라들며 마지막 낱말만 주황으로 물드는 흐름, 이름이 한 글자씩 쳐지는 엔딩"
+  },
+  "palette": [
+    "#EDEDED",
+    "#2A2A2A",
+    "#2F8BEA",
+    "#E8892E",
+    "#D9395F",
+    "#4CC764"
+  ],
+  "colors": {
+    "bg": "#EDEDED",
+    "onBg": "#2A2A2A",
+    "onBgMuted": "rgba(42,42,42,.6)",
+    "paper": "#F7F7F7",
+    "ink": "#2A2A2A",
+    "accent": "#1F6FD1",
+    "accentInk": "#FFFFFF",
+    "pattern": "rgba(42,42,42,.05)",
+    "glow": "rgba(47,139,234,.28)"
+  },
+  "type": {
+    "display": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "heading": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "body": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "mono": [
+      "Geist Mono",
+      "Noto Sans KR"
+    ]
+  },
+  "fonts": [
+    {
+      "family": "Geist",
+      "weight": "100 900",
+      "file": "fonts/Geist-Variable.woff2"
+    },
+    {
+      "family": "Geist Mono",
+      "weight": "100 900",
+      "file": "fonts/GeistMono-Variable.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 500,
+      "file": "fonts/NotoSansKR-Medium.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 700,
+      "file": "fonts/NotoSansKR-Bold.woff2"
+    }
+  ],
+  "shape": {
+    "radius": "calc(var(--u) * 1.4)"
+  },
+  "motion": {
+    "pace": "보통",
+    "bpm": 100,
+    "ease": "power3.out",
+    "stagger": 0.8,
+    "transitions": [
+      "fade",
+      "blur",
+      "cut"
+    ]
+  },
+  "scenes": {
+    "bg": "solid",
+    "align": "center",
+    "card": "flat",
+    "marker": "color",
+    "weight": 400,
+    "tracking": -0.01,
+    "case": "none",
+    "rough": false,
+    "title": "type",
+    "frame": "none",
+    "deco": [
+      "cursor",
+      "dots"
+    ],
+    "number": "count",
+    "scale": 0.8,
+    "schemes": [
+      "paper",
+      "paper",
+      "dark",
+      "paper"
+    ]
+  },
+  "signature": [
+    "원색 점(노랑·빨강·주황·청록·초록·보라·파랑)이 왼쪽 위에서 하나씩 튀어나와 포물선을 그리며 떨어지고, 줄마다 왼쪽부터 칸을 채워 10×4 점판으로 반듯하게 쌓임. 다 쌓이면 굵은 먹색 테 돋보기가 점판 위를 천천히 지나가고, 렌즈 안에서만 점이 지워지며 흐린 코드 몇 줄이 비쳐 보임",
+    "선과 회색 상자만 남긴 아주 옅은 뼈대 UI 위에 화살표 커서가 와서 누르면, 그 자리에 숫자가 든 파란 동그라미 핀이 톡 꽂히고 바로 옆에 검은 둥근 팝업(파란 테두리 입력칸 하나)이 0.3초 만에 커지며 열림. 짧은 한 줄 문장 뒤에는 검은 알약 도구 막대가 아이콘 다섯 개를 하나씩 띄우며 등장",
+    "화면보다 크게 키운 고정폭 코드 줄이 흐림을 끌고 비스듬히 흘러가다 빨간 문자열 한 토막만 또렷하게 남고, 곧 가운데 작은 한 줄 문장으로 오므라들며 마지막 낱말만 주황으로 물듦. 끝은 회색 바탕에 이름이 커서와 함께 한 글자씩 쳐짐"
+  ],
+  "fits": [
+    "개발 도구·확장 프로그램 소개",
+    "피드백·검수 기능 시연",
+    "AI 코딩 보조 기능 런칭",
+    "작은 팀의 담백한 제품 영상"
+  ],
+  "avoid": [
+    "짙은 그라디언트 바탕",
+    "그레인·종이 같은 질감",
+    "굵고 큰 제목",
+    "강조색을 한 화면에 여럿 쓰기(점판 장면만 예외)",
+    "빠른 컷 몰아치기"
+  ]
+}

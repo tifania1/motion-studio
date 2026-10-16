@@ -1,0 +1,52 @@
+{
+  "id": "year-stats",
+  "order": 12,
+  "name": "숫자로 보는 성과",
+  "summary": "대시보드 카드를 한 장씩 날아가 확대하고, 숫자가 주행거리계처럼 굴러 맞춰지며 막대·고리·선 그래프가 그려져요.",
+  "look": "대시보드 · 주행거리계 숫자 · 그래프",
+  "template": "stats",
+  "formats": [
+    "tall",
+    "portrait",
+    "square",
+    "wide"
+  ],
+  "seconds": 17,
+  "photos": {
+    "need": 0,
+    "hint": "사진 없이 돼요"
+  },
+  "ask": [
+    "기간 (올해, 이번 시즌)",
+    "숫자 네 개와 단위·이름",
+    "그래프용 월별 값 (있으면)",
+    "숫자의 출처",
+    "인사 두 줄"
+  ],
+  "brief": "예) 2026년 결산. 내려 드린 커피 12,480잔(월별 620→1,340), 새로 볶은 원두 37가지(목표 50), 처음 오신 손님 1,260명, 함께한 농장 4곳. 주문 기록 기준.",
+  "check": [
+    "모든 숫자의 출처와 기간"
+  ],
+  "music": {
+    "mood": "cinematic",
+    "bpm": 120,
+    "prompt": "hopeful cinematic electronic, pulsing synths, warm pads, steady build, reflective year in review",
+    "sections": [
+      [
+        0,
+        2.4,
+        "soft pulsing intro"
+      ],
+      [
+        2.4,
+        13.2,
+        "steady building groove"
+      ],
+      [
+        13.2,
+        17,
+        "warm uplifting resolution"
+      ]
+    ]
+  }
+}

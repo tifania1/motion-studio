@@ -1,0 +1,7 @@
+{
+  "name": "행사 안내 (티켓)",
+  "description": "커다란 날짜가 윤곽선으로 흐르고, 티켓이 날아와 일시·장소가 찍히고, 뒤집어 프로그램을 보여 준 뒤 디데이 도장, 절취선을 따라 반쪽이 찢겨 나가며 신청 안내. 17초.",
+  "fonts": [
+    { "family": "Archivo", "weight": "100 900", "stretch": "62% 125%", "file": "fonts/Archivo-Variable.woff2" }
+  ]
+}

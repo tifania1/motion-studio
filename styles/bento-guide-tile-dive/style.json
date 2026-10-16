@@ -1,0 +1,144 @@
+{
+  "id": "bento-guide-tile-dive",
+  "name": "가이드 타일 벤토",
+  "group": "그래픽·도형",
+  "template": "brandmark",
+  "summary": "브랜드 가이드 조각(색 견본, 글꼴 견본, 마크, 무늬, 아이콘 틀)을 둥근 타일로 짠 벤토 보드를 카메라가 비스듬히 훑다가 한 타일로 파고들고, 끝에는 타일 벽 전체가 보이도록 빠지는 아이덴티티 쇼케이스",
+  "tags": [
+    "벤토",
+    "브랜드 가이드",
+    "타일",
+    "카메라 이동",
+    "보라",
+    "아이덴티티"
+  ],
+  "hand": false,
+  "source": {
+    "site": "keyframe.gallery",
+    "ref": "mux:98ckCHBneJuljLlAfGpc3Bj9SRhKqkK88vJkT00sWtAw",
+    "at": "0–38.5초",
+    "note": "밝은 판과 어두운 판을 오가는 벤토 타일 보드, 타일 하나로 파고들어 다음 장면이 되는 카메라, 흐림에서 맺히는 어두운 타일, 점 다섯이 굴러와 겹친 원 마크가 되는 릴레이, 유리 독에 커서가 빈 아이콘 틀을 끌어다 끼우는 장면, 마지막에 타일 벽 전체로 빠지는 줌아웃"
+  },
+  "palette": [
+    "#EEEFF3",
+    "#1D1E22",
+    "#5B3DF5",
+    "#2A2BE0",
+    "#00C9CC",
+    "#E8344A"
+  ],
+  "colors": {
+    "bg": "#EEEFF3",
+    "onBg": "#16161C",
+    "onBgMuted": "rgba(22,22,28,.6)",
+    "paper": "#1D1E22",
+    "ink": "#F2F2F5",
+    "accent": "#5B3DF5",
+    "accentInk": "#FFFFFF",
+    "pattern": "rgba(22,22,28,.07)",
+    "glow": "rgba(91,61,245,.3)"
+  },
+  "type": {
+    "display": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "heading": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "body": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "mono": [
+      "Geist Mono",
+      "Noto Sans KR"
+    ]
+  },
+  "fonts": [
+    {
+      "family": "Geist",
+      "weight": "100 900",
+      "file": "fonts/Geist-Variable.woff2"
+    },
+    {
+      "family": "Geist Mono",
+      "weight": "100 900",
+      "file": "fonts/GeistMono-Variable.woff2"
+    },
+    {
+      "family": "Archivo",
+      "weight": "100 900",
+      "stretch": "62% 125%",
+      "file": "fonts/Archivo-Variable.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 500,
+      "file": "fonts/NotoSansKR-Medium.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 700,
+      "file": "fonts/NotoSansKR-Bold.woff2"
+    }
+  ],
+  "shape": {
+    "radius": "calc(var(--u) * 1.6)"
+  },
+  "motion": {
+    "pace": "보통",
+    "bpm": 100,
+    "ease": "power3.inOut",
+    "stagger": 0.8,
+    "transitions": [
+      "push",
+      "blur",
+      "cut"
+    ]
+  },
+  "scenes": {
+    "bg": "grid",
+    "align": "left",
+    "card": "shadow",
+    "marker": "color",
+    "weight": 600,
+    "tracking": -0.02,
+    "case": "none",
+    "rough": false,
+    "title": "blur",
+    "frame": "card",
+    "deco": [
+      "cursor",
+      "marks"
+    ],
+    "number": "scramble",
+    "scale": 1,
+    "schemes": [
+      "dark",
+      "paper",
+      "dark",
+      "accent"
+    ]
+  },
+  "signature": [
+    "타일 벽 카메라: 둥근 타일(색 견본 띠, 글꼴 견본, 마크, 무늬, 아이콘 틀)이 빈틈없이 짜인 보드 위를 카메라가 살짝 기운 채 2~3초에 걸쳐 미끄러지고, 한 타일로 파고들면 그 타일이 화면을 채워 다음 장면이 됨. 영상 끝에는 반대로 타일 벽 전체가 보이도록 크게 빠짐",
+    "점 릴레이: 밝은 회색 위로 검정·파랑·빨강 점이 한 줄로 굴러와 자리를 잡고, 앞 점부터 차례로 부풀며 원 두세 개가 어긋나게 겹친 마크로 합쳐짐",
+    "유리 독 클로즈업: 흐린 파랑 물결 바탕 위 유리 독에 큰 앱 아이콘들이 놓이고, 커서가 가이드선이 그려진 빈 아이콘 틀(고정폭 크기 꼬리표 '408 × 408' 같은)을 끌어와 사이에 끼우면 옆 아이콘들이 비켜 줌"
+  ],
+  "fits": [
+    "브랜드 리뉴얼·아이덴티티 공개",
+    "디자인 시스템·가이드 소개",
+    "디자인 도구·에셋 서비스 런칭",
+    "포트폴리오 쇼릴",
+    "앱 아이콘·기능 여러 개를 한 판에 보여 줄 때"
+  ],
+  "avoid": [
+    "손그림 선·종이 질감",
+    "타일 없이 글만 있는 장면",
+    "강조색 여러 개를 한 타일에 섞기",
+    "빠른 깜빡임 컷 연속",
+    "화면 전체를 덮는 빛 번짐"
+  ]
+}

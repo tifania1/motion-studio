@@ -1,0 +1,114 @@
+{
+  "id": "crayon-storybook",
+  "name": "크레용 동화",
+  "group": "손그림",
+  "template": "sketchbook",
+  "summary": "크림색 도화지에 크레용으로 그린 동화책. 굵고 거친 선이 크게 꿈틀대고, 원색 동그라미와 통통 튀는 등장",
+  "tags": [
+    "손그림",
+    "크레용",
+    "아이",
+    "밝음",
+    "가족"
+  ],
+  "hand": true,
+  "source": {
+    "site": "직접 정리",
+    "ref": "",
+    "at": "",
+    "note": "갤러리 영상에서 배운 게 아니고 손그림 모션에서 널리 쓰는 기법으로 정리했어요. 그림책·키즈 애니메이션의 크레용 질감, 굵은 선 떨림(초당 6번), 원색 팔레트, 통통 튀는 등장을 기준으로 잡았어요."
+  },
+  "palette": [
+    "#FFF6E3",
+    "#2A2238",
+    "#EF5B3F",
+    "#3E8EDE",
+    "#F7C843",
+    "#5DBB63"
+  ],
+  "colors": {
+    "bg": "#FFF6E3",
+    "onBg": "#2A2238",
+    "onBgMuted": "rgba(42,34,56,.68)",
+    "paper": "#FFFFFF",
+    "ink": "#2A2238",
+    "accent": "#E4502F",
+    "accentInk": "#FFFFFF",
+    "pattern": "rgba(42,34,56,.07)",
+    "glow": "rgba(239,91,63,.2)"
+  },
+  "type": {
+    "display": [
+      "Gaegu"
+    ],
+    "heading": [
+      "Gaegu"
+    ],
+    "body": [
+      "Gaegu"
+    ]
+  },
+  "fonts": [
+    {
+      "family": "Gaegu",
+      "weight": 700,
+      "file": "fonts/Gaegu-Bold.woff2"
+    }
+  ],
+  "look": {
+    "paper": "cream",
+    "paperTone": 0.45,
+    "fiber": 0.5,
+    "grain": 0.16,
+    "grainFps": 6,
+    "boil": {
+      "amount": 1.6,
+      "fps": 6,
+      "scale": 0.022
+    }
+  },
+  "shape": {
+    "radius": "calc(var(--u) * 2.4)",
+    "stroke": "hand"
+  },
+  "motion": {
+    "pace": "보통",
+    "bpm": 108,
+    "ease": "back.out(1.8)",
+    "stagger": 1.2,
+    "transitions": [
+      "push",
+      "iris",
+      "cut"
+    ],
+    "stepped": 6
+  },
+  "scenes": {
+    "bg": "dots",
+    "align": "center",
+    "card": "paper",
+    "marker": "circle",
+    "weight": 700,
+    "tracking": 0,
+    "case": "none",
+    "rough": true
+  },
+  "signature": [
+    "모든 선이 초당 6번 크게 꿈틀거리고(boil), 움직임도 초당 6장으로 끊겨 손으로 넘긴 그림책 같음",
+    "글자·카드가 아래에서 통통 튀며 들어오고(back.out 1.8) 살짝 기울어진 채 멈춤",
+    "강조할 말에 원색 크레용 동그라미, 막대·카드는 빗금으로 거칠게 칠함"
+  ],
+  "fits": [
+    "키즈 클래스·학원",
+    "가족 행사",
+    "동네 가게 이벤트",
+    "캠페인·봉사 모집",
+    "어린이날·방학 특강"
+  ],
+  "avoid": [
+    "어두운 바탕",
+    "가는 세리프",
+    "정교한 데이터 표",
+    "고급·럭셔리 무드"
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "id": "season-greeting",
+  "order": 4,
+  "name": "시즌 인사",
+  "summary": "계절 그림이 선으로 그려지고, 봉투에서 카드가 나와 인사말이 펜으로 써지고, 달력에 쉬는 날이 동그라미 쳐져요.",
+  "look": "계절 색 바탕 · 봉투와 카드 · 손그림 동그라미",
+  "template": "greeting",
+  "formats": [
+    "tall",
+    "portrait",
+    "square",
+    "wide"
+  ],
+  "seconds": 17.6,
+  "photos": {
+    "need": 0,
+    "hint": "사진 없이 돼요"
+  },
+  "ask": [
+    "명절·계절 (추석, 설, 연말, 봄, 여름)",
+    "인사말 세 줄",
+    "쉬는 날과 다시 여는 날",
+    "서명"
+  ],
+  "brief": "예) 추석 인사. 10월 5일–7일 휴무, 4일과 8일은 정상 영업. 올해도 찾아 주셔서 고맙다는 인사.",
+  "check": [
+    "휴무일·영업 재개일"
+  ],
+  "music": {
+    "mood": "custom",
+    "bpm": 90,
+    "prompt": "gentle warm piano, soft strings, small bell accents, calm heartfelt holiday greeting",
+    "sections": [
+      [
+        0,
+        3,
+        "single piano, very soft"
+      ],
+      [
+        3,
+        14,
+        "piano with soft strings"
+      ],
+      [
+        14,
+        17.6,
+        "warm resolving chord, fade"
+      ]
+    ]
+  }
+}

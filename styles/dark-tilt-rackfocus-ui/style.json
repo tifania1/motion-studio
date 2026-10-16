@@ -1,0 +1,137 @@
+{
+  "id": "dark-tilt-rackfocus-ui",
+  "name": "어둠 속 기운 화면 초점 훑기",
+  "group": "제품 UI",
+  "template": "uidemo",
+  "summary": "거의 검은 공간에 비스듬히 누운 UI 판을 카메라가 천천히 훑어요. 흐림 속에 있던 카드와 노드 선, 칩이 하나씩 초점에 맺히고, 끝은 회색 두 줄 문장으로 조용히 닫히는 제품 영상이에요",
+  "tags": [
+    "제품 UI",
+    "어두움",
+    "초점",
+    "노드",
+    "느림",
+    "AI 기능"
+  ],
+  "hand": false,
+  "source": {
+    "site": "keyframe.gallery",
+    "ref": "mux:nUngujJkOtF00mvvS5J1S2cRNVV2012T00nBP9stv014Qn00",
+    "at": "0–37.8초",
+    "note": "검은 바탕에서 원근으로 기운 글 판이 흐림에서 초점으로 맺히는 오프닝, 빛 받은 금속 마크가 비스듬히 돌다 정면에 서는 장면, 깊이가 다른 어두운 카드들을 가는 꺾임 선과 고정폭 대문자 꼬리표로 잇는 노드 지도를 대각선으로 훑는 카메라, 화면보다 크게 붙은 기운 칩 접사, 평평한 제안 패널과 설명 팝오버, 회색 두 줄 마무리 문장"
+  },
+  "palette": [
+    "#111113",
+    "#1C1C1F",
+    "#E6E6E8",
+    "#8B7FF0",
+    "#E0524A",
+    "#6E6E74"
+  ],
+  "colors": {
+    "bg": "#111113",
+    "onBg": "#E6E6E8",
+    "onBgMuted": "rgba(230,230,232,.55)",
+    "paper": "#1C1C1F",
+    "ink": "#EDEDEF",
+    "accent": "#8B7FF0",
+    "accentInk": "#0E0C1A",
+    "pattern": "rgba(255,255,255,.06)",
+    "glow": "rgba(139,127,240,.3)"
+  },
+  "type": {
+    "display": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "heading": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "body": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "mono": [
+      "Geist Mono",
+      "Noto Sans KR"
+    ]
+  },
+  "fonts": [
+    {
+      "family": "Geist",
+      "weight": "100 900",
+      "file": "fonts/Geist-Variable.woff2"
+    },
+    {
+      "family": "Geist Mono",
+      "weight": "100 900",
+      "file": "fonts/GeistMono-Variable.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 500,
+      "file": "fonts/NotoSansKR-Medium.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 700,
+      "file": "fonts/NotoSansKR-Bold.woff2"
+    }
+  ],
+  "look": {
+    "grain": 0.05,
+    "vignette": 0.45
+  },
+  "shape": {
+    "radius": "calc(var(--u) * 0.6)"
+  },
+  "motion": {
+    "pace": "느림",
+    "bpm": 80,
+    "ease": "power2.inOut",
+    "stagger": 1.1,
+    "transitions": [
+      "blur",
+      "fade",
+      "cut"
+    ]
+  },
+  "scenes": {
+    "bg": "solid",
+    "align": "center",
+    "card": "flat",
+    "marker": "color",
+    "weight": 500,
+    "tracking": -0.01,
+    "case": "upper",
+    "rough": false,
+    "title": "blur",
+    "frame": "none",
+    "deco": [
+      "cursor"
+    ],
+    "number": "count",
+    "scale": 1,
+    "schemes": [
+      "dark"
+    ]
+  },
+  "signature": [
+    "원근으로 15~25도 기울어진 글 판이 검은 공간에 떠 있고, 카메라가 4~5초 동안 아주 천천히 비스듬히 미끄러져요. 처음엔 화면 전체가 흐렸다가 초점 띠가 판을 가로질러 지나가며 한 줄씩 선명해지고, 지나간 자리는 다시 흐려져요",
+    "깊이가 제각각인 어두운 카드들을 가는 회색 꺾임 선이 잇고, 선 끝마다 고정폭 대문자 꼬리표와 테두리 칩이 붙은 노드 지도를 카메라가 대각선으로 훑어요. 가까운 카드와 먼 카드는 흐리고, 가운데 깊이만 맺혀요",
+    "칩 두세 개를 화면보다 크게 기울여 바짝 붙었다가(가장자리는 흐림) 뒤로 빠지며 평평한 패널로 정리되고, 마지막엔 가운데 회색 두 줄 문장이 흐림에서 맺힌 뒤 더 어둡게 가라앉아요"
+  ],
+  "fits": [
+    "AI 기능 소개",
+    "업무·개발 도구 런칭",
+    "기술 미리보기 공개",
+    "제품 철학을 담은 티저"
+  ],
+  "avoid": [
+    "밝은 바탕",
+    "강한 원색 여러 개",
+    "빠른 컷 몽타주",
+    "통통 튀는 스프링",
+    "굵고 큰 제목"
+  ]
+}

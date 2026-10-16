@@ -1,0 +1,132 @@
+{
+  "id": "halftone-yellow-tab-macro-mono",
+  "name": "노랑 망점 탭 접사",
+  "group": "제품 UI",
+  "template": "uidemo",
+  "summary": "형광 노랑 망점 바탕에 걸린 어두운 앱 창으로 카메라가 비스듬히 파고들어요. 얕은 초점 속에서 탭 하나만 선명하게 열리고 이름이 바뀌고, 끝은 빈 숯빛 화면의 고정폭 한 줄로 조용히 닫히는 기능 소개 필름",
+  "tags": [
+    "제품 UI",
+    "어두움",
+    "접사",
+    "얕은 초점",
+    "고정폭",
+    "개발 도구"
+  ],
+  "hand": false,
+  "source": {
+    "site": "keyframe.gallery",
+    "ref": "mux:brryHSExH2CMFTt1bo9ask1U2RqPounc1028dqP800700w",
+    "at": "0–24.3초",
+    "note": "형광 노랑 망점 바탕 모서리에 걸린 어두운 창으로 파고드는 오프닝, 비스듬히 누운 탭 막대에 바짝 붙어 흐림 속에서 초점이 탭 하나로 옮겨 가는 접사, + 를 누르면 뜨는 단축키 꼬리표와 새 탭, 탭 이름이 한 글자씩 바뀌는 입력, 창이 어둡게 사라진 뒤 빈 화면에 흰색·회색 두 톤으로 놓이는 고정폭 한 줄"
+  },
+  "palette": [
+    "#141414",
+    "#2B2B2B",
+    "#E8E8E6",
+    "#8C8C8A",
+    "#5B7CF5",
+    "#E4F01C"
+  ],
+  "colors": {
+    "bg": "#141414",
+    "onBg": "#E8E8E6",
+    "onBgMuted": "rgba(232,232,230,.52)",
+    "paper": "#2B2B2B",
+    "ink": "#EDEDEB",
+    "accent": "#5B7CF5",
+    "accentInk": "#141414",
+    "pattern": "rgba(228,240,28,.22)",
+    "glow": "rgba(91,124,245,.38)"
+  },
+  "type": {
+    "display": [
+      "Geist Mono",
+      "Noto Sans KR"
+    ],
+    "heading": [
+      "Geist Mono",
+      "Noto Sans KR"
+    ],
+    "body": [
+      "Geist",
+      "Noto Sans KR"
+    ]
+  },
+  "fonts": [
+    {
+      "family": "Geist Mono",
+      "weight": "100 900",
+      "file": "fonts/GeistMono-Variable.woff2"
+    },
+    {
+      "family": "Geist",
+      "weight": "100 900",
+      "file": "fonts/Geist-Variable.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 500,
+      "file": "fonts/NotoSansKR-Medium.woff2"
+    }
+  ],
+  "look": {
+    "grain": 0.05,
+    "vignette": 0.45
+  },
+  "shape": {
+    "radius": "calc(var(--u) * 1)"
+  },
+  "motion": {
+    "pace": "느림",
+    "bpm": 90,
+    "ease": "power3.inOut",
+    "stagger": 1,
+    "transitions": [
+      "blur",
+      "fade",
+      "cut"
+    ]
+  },
+  "scenes": {
+    "bg": "solid",
+    "align": "center",
+    "card": "flat",
+    "marker": "underline",
+    "weight": 400,
+    "tracking": 0,
+    "case": "none",
+    "rough": false,
+    "title": "blur",
+    "frame": "window",
+    "deco": [
+      "dots"
+    ],
+    "number": "count",
+    "scale": 0.72,
+    "schemes": [
+      "dark",
+      "dark",
+      "dark",
+      "dark"
+    ]
+  },
+  "signature": [
+    "카메라가 어두운 탭 막대에 비스듬히(약 -14도 기울여) 바짝 붙어 옆으로 천천히 미끄러져요. 얕은 초점이라 앞뒤는 흐리고 탭 알약 하나만 선명하며, 2초쯤 머문 뒤 초점이 옆 탭으로 옮겨 가요",
+    "+ 단추가 눌리면 아래에 단축키 꼬리표가 톡 뜨고, 새 탭 알약이 옆에서 밀려 나와 자리를 잡은 뒤 이름이 한 글자씩 지워졌다 새로 쳐져요. 탭 앞 파란 아이콘에만 은은한 빛이 번져요",
+    "오프닝은 형광 노랑 망점 바탕 모서리에 어두운 창 귀퉁이가 걸린 한 장면. 카메라가 창 안으로 파고들며 노랑을 화면 밖으로 밀어내고, 끝에는 창이 어둡게 가라앉은 빈 숯빛 화면에 고정폭 한 줄(앞말 흰색, 뒷말 회색)이 2초쯤 머물다 컷으로 바뀌어요"
+  ],
+  "fits": [
+    "데스크톱 앱 기능 소개",
+    "개발 도구 업데이트",
+    "작은 UI 변화 하나를 보여 줄 때",
+    "조용한 런칭 티저"
+  ],
+  "avoid": [
+    "화면 가득 찬 UI 여러 개",
+    "빠른 컷 몰아치기",
+    "강조색 여러 개",
+    "굵고 큰 제목",
+    "밝은 바탕으로 계속 머물기",
+    "노랑을 창 안 UI에 쓰기(오프닝 망점에만)"
+  ]
+}

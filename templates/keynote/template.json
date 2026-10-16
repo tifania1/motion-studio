@@ -1,0 +1,11 @@
+{
+  "name": "키노트 필름",
+  "description": "애플 키노트처럼 한 컷으로 이어지는 런칭·채널 필름(1:1). 워드마크가 마침표로 접히고, 조리개·사진 격자·리퀴드 글래스·폰과 맥·주문(업로드) 상태 모프·플러드를 지나 다시 워드마크로 돌아오는 루프. content.film 이 launch(54박) 또는 channel(40박).",
+  "formats": ["square"],
+  "fonts": [
+    { "family": "Archivo", "weight": "100 900", "stretch": "62% 125%", "file": "fonts/Archivo-Variable.woff2" },
+    { "family": "Geist", "weight": "100 900", "file": "fonts/Geist-Variable.woff2" },
+    { "family": "Geist Mono", "weight": "100 900", "file": "fonts/GeistMono-Variable.woff2" }
+  ],
+  "render": { "fps": 60, "blur": 4, "shutter": 0.5, "scale": 1.3333, "loop": true }
+}

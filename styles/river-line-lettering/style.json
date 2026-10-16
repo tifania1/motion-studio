@@ -1,0 +1,136 @@
+{
+  "id": "river-line-lettering",
+  "name": "한 줄 강물 글씨",
+  "group": "손그림",
+  "template": "sketchbook",
+  "summary": "위성 사진 속 굽은 강줄기를 크림색 굵은 선이 따라 그어 낱말이 되고, 곧은 선 하나가 고리를 지으며 필기체 낱말로 휘는 한 줄 글씨",
+  "tags": [
+    "손그림",
+    "한 줄 선",
+    "레터링",
+    "자연",
+    "지역"
+  ],
+  "hand": true,
+  "source": {
+    "site": "keyframe.gallery",
+    "ref": "mux:XkvmBq6aGtYwE01SBUZsGMWmpDuYJ622x2N02P2EtRltY",
+    "at": "0–6.6초, 18.4–27.4초",
+    "note": "위성 사진의 굽은 강을 따라 굵은 선이 한 획으로 그어지며 첫 글자가 되고 카메라가 물러나 사진 조각 띠와 지명 꼬리표로 이어지는 오프닝, 곧은 선이 휘어 필기체 낱말이 되는 모프, 같은 선 낱말을 두고 바탕색만 초록·빨강·황토로 컷하는 리듬, 선이 다음 지명으로 흘러가 모양을 바꾸는 이음"
+  },
+  "palette": [
+    "#2F4A2C",
+    "#EFE6C2",
+    "#3A2B1B",
+    "#D99A1E",
+    "#D8261C",
+    "#3F7BD0"
+  ],
+  "colors": {
+    "bg": "#2F4A2C",
+    "onBg": "#EFE6C2",
+    "onBgMuted": "rgba(239,230,194,.7)",
+    "paper": "#D99A1E",
+    "ink": "#2A1E10",
+    "accent": "#D8261C",
+    "accentInk": "#FFF4D8",
+    "pattern": "rgba(239,230,194,.1)",
+    "glow": "rgba(217,154,30,.3)"
+  },
+  "type": {
+    "display": [
+      "Caveat",
+      "Nanum Pen"
+    ],
+    "heading": [
+      "Archivo",
+      "Noto Sans KR"
+    ],
+    "body": [
+      "Archivo",
+      "Noto Sans KR"
+    ]
+  },
+  "fonts": [
+    {
+      "family": "Caveat",
+      "weight": "400 700",
+      "file": "fonts/Caveat-Variable.woff2"
+    },
+    {
+      "family": "Nanum Pen",
+      "weight": 400,
+      "file": "fonts/NanumPenScript-Regular.woff2"
+    },
+    {
+      "family": "Archivo",
+      "weight": "100 900",
+      "stretch": "62% 125%",
+      "file": "fonts/Archivo-Variable.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 700,
+      "file": "fonts/NotoSansKR-Bold.woff2"
+    }
+  ],
+  "look": {
+    "grain": 0.06
+  },
+  "shape": {
+    "radius": "calc(var(--u) * .6)",
+    "stroke": "hand"
+  },
+  "motion": {
+    "pace": "보통",
+    "bpm": 96,
+    "ease": "sine.inOut",
+    "stagger": 1.2,
+    "transitions": [
+      "zoom",
+      "cut",
+      "cut"
+    ]
+  },
+  "scenes": {
+    "bg": "solid",
+    "align": "center",
+    "card": "flat",
+    "marker": "underline",
+    "weight": 700,
+    "tracking": 0,
+    "case": "none",
+    "rough": false,
+    "title": "write",
+    "frame": "none",
+    "deco": [
+      "scribble"
+    ],
+    "number": "count",
+    "scale": 1.2,
+    "schemes": [
+      "dark",
+      "accent",
+      "paper",
+      "dark"
+    ]
+  },
+  "signature": [
+    "강을 따라 쓰기: 위성 사진 속 굽은 강 위로 크림색 굵은 선이 한 획으로 따라 그어져 첫 글자가 되고(1.2초), 카메라가 물러나면 사진 조각들이 가로 띠로 이어지며 낱말 전체가 한 줄로 이어짐. 띠 위아래로 가는 선 끝에 작은 지명 꼬리표",
+    "곧은 선이 낱말로: 화면을 가로지르는 곧은 선 하나가 가운데부터 고리를 지으며 휘어 1.2초 만에 한 줄 필기체 낱말이 됨. 낱말 양끝은 화면 밖까지 선으로 이어짐",
+    "바탕만 바꾸기: 같은 선 낱말을 두고 바탕이 초록 → 빨강 → 황토로 박마다 컷, 선 색도 크림 → 흰색 → 파랑으로 바뀌고, 선이 옆으로 흘러가 다음 낱말 모양으로 바뀜"
+  ],
+  "fits": [
+    "지역·관광 홍보",
+    "자연·친환경 브랜드",
+    "로고·레터링 공개",
+    "여행 하이라이트",
+    "축제"
+  ],
+  "avoid": [
+    "굵은 고딕 큰 제목만으로 채우기",
+    "유리 질감",
+    "글리치·빠른 깜빡임",
+    "선을 여러 획으로 끊기"
+  ]
+}

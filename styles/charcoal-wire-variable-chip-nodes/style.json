@@ -1,0 +1,122 @@
+{
+  "id": "charcoal-wire-variable-chip-nodes",
+  "name": "변수 칩 노드 배선",
+  "group": "제품 UI",
+  "template": "uidemo",
+  "summary": "무늬 없는 숯빛 캔버스에서 어두운 노드 카드에 문장이 쳐지면 낱말 하나가 자두색 칩이 돼요. 왼쪽에서 들어온 작은 카드가 연보라 곡선으로 이어지고 거기서 치는 글자가 칩에 그대로 따라 바뀌어요. 끝에는 결과 칸 속 그림이 화면 가득한 노을빛 실사로 커져요",
+  "tags": [
+    "제품 UI",
+    "노드",
+    "연결선",
+    "변수",
+    "어두움",
+    "생성 AI",
+    "타이핑"
+  ],
+  "hand": false,
+  "source": {
+    "site": "keyframe.gallery",
+    "ref": "mux:MFA00PDKIFF3THOLpmtDhcM7l01xbve02vJML5tpcVTWD4",
+    "at": "0–5초, 6–28초, 29.8–35초",
+    "note": "검은 화면 가운데 가벼운 산세리프 문장이 쳐지다가 어절 사이가 벌어지며 자두색 칩 낱말이 끼어드는 오프닝을 배웠어요. 노드 카드 입력 칸에서 @ 낱말이 칩으로 바뀌고, 왼쪽에서 들어온 변수 카드가 연보라 S자 선으로 이어진 뒤 거기서 치는 글자가 칩 안에서 실시간으로 바뀌는 흐름도 담았어요. 체크무늬 빈 결과 칸에서 실행 단추를 누르면 그림이 맺히고, 변수를 바꾸면 그림이 갈리며, 끝에는 카메라가 결과 칸으로 파고들어 화면 가득한 실사 위에 얇은 문장 한 줄이 놓여요"
+  },
+  "palette": [
+    "#131314",
+    "#2A2A2D",
+    "#C98AD9",
+    "#5B3F63",
+    "#D9E7A8",
+    "#D99A6A"
+  ],
+  "colors": {
+    "bg": "#131314",
+    "onBg": "#E6E4E0",
+    "onBgMuted": "rgba(230,228,224,.58)",
+    "paper": "#2A2A2D",
+    "ink": "#E8E6E2",
+    "accent": "#C98AD9",
+    "accentInk": "#1E1022",
+    "pattern": "rgba(255,255,255,.05)",
+    "glow": "rgba(201,138,217,.3)"
+  },
+  "type": {
+    "display": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "heading": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "body": [
+      "Geist",
+      "Noto Sans KR"
+    ]
+  },
+  "fonts": [
+    {
+      "family": "Geist",
+      "weight": "100 900",
+      "file": "fonts/Geist-Variable.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 500,
+      "file": "fonts/NotoSansKR-Medium.woff2"
+    }
+  ],
+  "shape": {
+    "radius": "calc(var(--u) * 1)"
+  },
+  "motion": {
+    "pace": "보통",
+    "bpm": 96,
+    "ease": "power3.inOut",
+    "stagger": 1,
+    "transitions": [
+      "cut",
+      "fade",
+      "blur"
+    ]
+  },
+  "scenes": {
+    "bg": "solid",
+    "align": "center",
+    "card": "flat",
+    "marker": "highlight",
+    "weight": 400,
+    "tracking": -0.01,
+    "case": "none",
+    "rough": false,
+    "title": "type",
+    "frame": "card",
+    "deco": [
+      "cursor"
+    ],
+    "number": "count",
+    "scale": 0.9,
+    "schemes": [
+      "dark",
+      "paper",
+      "dark"
+    ]
+  },
+  "signature": [
+    "검은 화면 가운데 가벼운 산세리프 문장이 얇은 커서와 함께 쳐져요. 어절 사이가 0.4초에 벌어지면 자두색 바탕에 연보라 글자인 칩 낱말이 끼어들고, 다음 문장은 끝말만 연한 라임으로 물들어요",
+    "노드 카드 입력 칸에서 @로 시작한 낱말이 작은 말풍선을 거쳐 칩으로 바뀌어요. 왼쪽에서 작은 변수 카드가 떠오르면 출력 단자에서 칩 카드 입력 단자로 연보라 S자 곡선이 0.5초에 그어지고, 왼쪽 칸에서 한 글자씩 칠 때마다 칩 안 낱말이 같은 박자로 바뀌어요",
+    "체크무늬로 빈 결과 칸 아래 실행 단추를 커서가 누르면 그림이 흐림에서 맺혀요. 변수를 바꾸면 그림도 갈리고, 마지막엔 카메라가 결과 칸으로 파고들어 노을빛 실사가 화면을 채워요. 그 위로 얇은 흰 문장 한 줄이 놓이고 끝말은 연보라에서 흰색으로 가라앉아요"
+  ],
+  "fits": [
+    "생성 AI 도구의 새 기능 소개",
+    "노드·워크플로 편집기 시연",
+    "템플릿·변수·자동화 기능 설명",
+    "입력 하나로 결과가 바뀌는 과정 보여 주기"
+  ],
+  "avoid": [
+    "밝은 바탕",
+    "굵고 큰 제목",
+    "빠른 컷 몽타주",
+    "연결선 색을 여러 개 쓰기",
+    "사진을 처음부터 깔기(결과 장면까지 아껴 두기)"
+  ]
+}

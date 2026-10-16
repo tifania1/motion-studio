@@ -1,0 +1,7 @@
+{
+  "name": "공지 (안내판)",
+  "description": "공항 출발 안내판처럼 글자판이 차르륵 넘어가며 제목과 공지 줄이 맞춰지고, 마지막엔 가게 이름으로 넘어가는 13초 안팎 공지 영상.",
+  "fonts": [
+    { "family": "Archivo", "weight": "100 900", "stretch": "62% 125%", "file": "fonts/Archivo-Variable.woff2" }
+  ]
+}

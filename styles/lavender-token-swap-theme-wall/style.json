@@ -1,0 +1,138 @@
+{
+  "id": "lavender-token-swap-theme-wall",
+  "name": "연보라 토큰 갈아 끼우기",
+  "group": "제품 UI",
+  "template": "uidemo",
+  "summary": "연보라 판 위에 놓인 밝은 회색 패널의 변수 목록에 바짝 붙어요. 행이 연두 알약으로 켜지고, 값 칩의 색과 이름이 한 줄씩 다시 쳐져요. 이어 빽빽한 컴포넌트 벽의 테마가 통째로 갈리고, 검은 화면에서 글자 견본과 색 칩이 모여 작은 도형 마크로 맺어요",
+  "tags": [
+    "제품 UI",
+    "디자인 시스템",
+    "변수",
+    "테마",
+    "색 견본",
+    "연보라"
+  ],
+  "hand": false,
+  "source": {
+    "site": "keyframe.gallery",
+    "ref": "mux:k6ZVFjI33UXmPGn2qOYXy01sFAlQjlHxaIwCuyZT2VqI",
+    "at": "0–26.8초",
+    "note": "연보라 바탕 위 밝은 회색 패널과 점선 칸으로 묶은 컴포넌트 변형 시트, 변수 목록 패널로 바짝 다가가 커서가 행을 누르면 연두 알약 강조가 켜지고 나무 가지 선이 이어지는 목록, 값 칩의 색 견본과 이름이 왼쪽부터 다시 쳐지는 표, 빽빽한 UI 벽이 제자리에서 테마 색만 통째로 바뀌는 장면, 검은 화면 위 어절이 붙는 두 줄 문장과 빨강 글자 견본·선택 상자·고정폭 색 번호 칩이 모였다 작은 마크로 접히는 엔딩"
+  },
+  "palette": [
+    "#B8ACE8",
+    "#EDEDEC",
+    "#1C1B22",
+    "#C6E79C",
+    "#6E56E8",
+    "#E0343F"
+  ],
+  "colors": {
+    "bg": "#B8ACE8",
+    "onBg": "#1C1B22",
+    "onBgMuted": "rgba(28,27,34,.74)",
+    "paper": "#EDEDEC",
+    "ink": "#1A1A1F",
+    "accent": "#C6E79C",
+    "accentInk": "#1C1B22",
+    "pattern": "rgba(28,27,34,.10)",
+    "glow": "#C6E79C"
+  },
+  "type": {
+    "display": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "heading": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "body": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "mono": [
+      "Geist Mono",
+      "Noto Sans KR"
+    ]
+  },
+  "fonts": [
+    {
+      "family": "Geist",
+      "weight": "100 900",
+      "file": "fonts/Geist-Variable.woff2"
+    },
+    {
+      "family": "Geist Mono",
+      "weight": "100 900",
+      "file": "fonts/GeistMono-Variable.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 500,
+      "file": "fonts/NotoSansKR-Medium.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 700,
+      "file": "fonts/NotoSansKR-Bold.woff2"
+    }
+  ],
+  "shape": {
+    "radius": "calc(var(--u) * 1.2)"
+  },
+  "motion": {
+    "pace": "보통",
+    "bpm": 104,
+    "ease": "power3.inOut",
+    "stagger": 0.9,
+    "transitions": [
+      "cut",
+      "push",
+      "fade"
+    ]
+  },
+  "scenes": {
+    "bg": "solid",
+    "align": "left",
+    "card": "shadow",
+    "marker": "color",
+    "weight": 500,
+    "tracking": -0.02,
+    "case": "none",
+    "rough": false,
+    "title": "rise",
+    "frame": "window",
+    "deco": [
+      "cursor",
+      "handles"
+    ],
+    "number": "count",
+    "scale": 1,
+    "schemes": [
+      "paper",
+      "paper",
+      "dark",
+      "accent"
+    ]
+  },
+  "signature": [
+    "연보라 판 위 밝은 회색 변수 목록 패널에 화면 높이 절반 크기로 바짝 붙은 채, 큰 검은 커서가 행 하나를 누르면 그 행 뒤로 연두 알약이 0.25초에 왼쪽부터 차오르고 왼쪽 나무 가지 선이 그 행까지 그어져요. 1박 뒤 목록이 한 칸 올라가며 다음 행이 같은 방식으로 켜져요",
+    "세 줄짜리 값 표는 회색 패널 위 제자리에 두고, 2박마다 표 이름만 바뀌어요(이름 속 한 낱말만 새 색). 그때 줄마다 0.1초씩 늦게 색 견본이 새 색으로 바뀌고, 칩 안 이름은 앞 글자부터 옅어졌다가 새 이름으로 왼쪽부터 다시 쳐져요. 선택된 칩은 연두로, 숫자 값은 보라로",
+    "빽빽한 컴포넌트 벽(카드, 슬라이더, 토글, 버튼, 사진 타일)은 그대로 두고 테마 색만 1초마다 통째로 갈려요(올리브 → 테라코타 → 연보라 → 어둠). 가운데 떠 있는 드롭다운 두 개의 글이 함께 바뀌어요. 끝은 검은 화면에 어절이 하나씩 붙는 두 줄 문장, 이어 빨강 글자 견본 타일과 점선 선택 상자, 고정폭 색 번호 칩이 박자마다 놓였다가 작은 도형 마크 하나로 접혀요"
+  ],
+  "fits": [
+    "디자인 시스템·토큰 도구 소개",
+    "여러 브랜드·테마를 한 곳에서 관리하는 기능",
+    "설정값이 화면에 바로 반영되는 기능 시연",
+    "디자인·개발 협업 도구 런칭"
+  ],
+  "avoid": [
+    "손그림 선과 종이 질감",
+    "그레인·비네트 같은 필름 질감",
+    "화면 전체를 넓게 보여 주기만 하는 구성(늘 패널 하나에 바짝 붙어요)",
+    "패널 안쪽까지 연보라로 칠하기(연보라는 판, 패널은 밝은 회색)",
+    "느리게 번지는 그라디언트 바탕",
+    "강조색을 한 화면에 셋 이상 쓰기(테마 벽 장면만 빼고). 행 강조는 연두, 보라는 숫자·그래프에만"
+  ]
+}

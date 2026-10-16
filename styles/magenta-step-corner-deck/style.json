@@ -1,0 +1,129 @@
+{
+  "id": "magenta-step-corner-deck",
+  "name": "마젠타 계단 모서리 덱",
+  "group": "제품 UI",
+  "template": "uidemo",
+  "summary": "아주 옅은 회색 판의 두 모서리로 빨강·자홍 계단 도형이 밀려 들어와 장면을 감싸요. 가운데에는 짙은 자두색 어절과 그라디언트 끝말이 흐림에서 맺히고, 자홍 핸들을 단 흰 카드가 밝은 앱 창으로 펼쳐지는 차분한 문서 도구 데모",
+  "tags": [
+    "제품 UI",
+    "그라디언트 글자",
+    "계단 도형",
+    "선택 핸들",
+    "프레젠테이션",
+    "AI 편집"
+  ],
+  "hand": false,
+  "source": {
+    "site": "keyframe.gallery",
+    "ref": "mux:oLbbOVGlw5QbQdW6BMXp5YfnvRs01vp4bOsgqMgWudS00",
+    "at": "0–64.1초 (1.3초, 6.4–9초, 11.5–19.2초, 21.8–24.3초, 33.3–43.5초, 46.1초, 53.8–54.5초, 61.5초)",
+    "note": "어절마다 크기·기준선·농도를 달리해 흐림에서 맺히는 자두색과 그라디언트 문장, 화면 모서리를 감싸는 둥근 계단 도형(빨강·자홍과 파랑이 장면마다 자리를 바꿈), 네 귀퉁이 자홍 핸들 카드, 입력창에 바짝 붙어 따라가는 타이핑, 뒤 앱 창은 흐리고 앞 입력 카드만 선명한 초점 전환, 슬라이드 귀퉁이의 체크무늬 픽셀 조각"
+  },
+  "palette": [
+    "#EDEDEC",
+    "#3A1432",
+    "#E3263F",
+    "#D62E9E",
+    "#8E2BB0",
+    "#2F7BE0"
+  ],
+  "colors": {
+    "bg": "#EDEDEC",
+    "onBg": "#3A1432",
+    "onBgMuted": "rgba(58,20,50,.62)",
+    "paper": "#FFFFFF",
+    "ink": "#1C1A1E",
+    "accent": "#C81E64",
+    "accentInk": "#FFFFFF",
+    "pattern": "rgba(58,20,50,.07)",
+    "glow": "rgba(214,46,158,.3)"
+  },
+  "type": {
+    "display": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "heading": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "body": [
+      "Geist",
+      "Noto Sans KR"
+    ]
+  },
+  "fonts": [
+    {
+      "family": "Geist",
+      "weight": "100 900",
+      "file": "fonts/Geist-Variable.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 500,
+      "file": "fonts/NotoSansKR-Medium.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 700,
+      "file": "fonts/NotoSansKR-Bold.woff2"
+    }
+  ],
+  "shape": {
+    "radius": "calc(var(--u) * 1.4)"
+  },
+  "motion": {
+    "pace": "보통",
+    "bpm": 100,
+    "ease": "power3.out",
+    "stagger": 1.1,
+    "transitions": [
+      "blur",
+      "blocks",
+      "cut",
+      "push"
+    ]
+  },
+  "scenes": {
+    "bg": "solid",
+    "align": "center",
+    "card": "shadow",
+    "marker": "color",
+    "weight": 600,
+    "tracking": -0.03,
+    "case": "none",
+    "rough": false,
+    "title": "blur",
+    "frame": "browser",
+    "deco": [
+      "handles",
+      "cursor"
+    ],
+    "number": "count",
+    "scale": 1.1,
+    "schemes": [
+      "dark",
+      "paper",
+      "dark"
+    ]
+  },
+  "signature": [
+    "둥근 계단 도형: 둥근 사각 3~4칸을 계단처럼 엇갈려 붙인 덩어리가 화면 대각선 두 모서리(오른쪽 위·왼쪽 아래)에서 0.6초에 밀려 들어와 장면을 감싸요. 빨강에서 자홍으로 번지는 그라디언트가 기본이고, 다음 장면에서는 파랑 묶음이 반대 모서리로 자리를 바꿔요",
+    "그라디언트 어절 문장: 한 문장을 어절마다 크기·기준선을 살짝 달리해 엇갈려 놓아요. 앞 어절은 짙은 자두색, 끝 어절은 빨강·자홍·보라 그라디언트예요. 어절은 0.12초 간격으로 흐림 6px, 옅은 농도에서 선명하게 맺히고, 마지막 어절은 한동안 연하게 머물다 차올라요",
+    "자홍 핸들 카드: 흰 카드 네 귀퉁이에 작은 자홍 정사각 핸들이 톡톡 붙고, 안의 한 줄 문구가 쳐진 뒤 끝말만 그라디언트로 물들어요(말줄임 점이 깜빡여요). 이어 카드가 밝은 앱 창으로 커지고, 카메라가 입력창에 바짝 붙어 커서를 따라 옆으로 흘러요"
+  ],
+  "fits": [
+    "문서·발표 자료 도구 소개",
+    "AI 생성·편집 기능 데모",
+    "SaaS 기능 런칭",
+    "브랜드 키트·템플릿 소개",
+    "1분 안팎의 제품 둘러보기"
+  ],
+  "avoid": [
+    "어두운 바탕을 길게 쓰기(슬라이드 속 화면에만)",
+    "질감·그레인",
+    "빠른 반 박 컷",
+    "강조색 여러 개를 동시에",
+    "글자 전체를 그라디언트로 칠하기"
+  ]
+}

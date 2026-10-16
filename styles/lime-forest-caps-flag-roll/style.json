@@ -1,0 +1,138 @@
+{
+  "id": "lime-forest-caps-flag-roll",
+  "name": "라임 숲 대문자 컷",
+  "group": "타이포",
+  "template": "typeslam",
+  "summary": "형광 라임과 버터 노랑 색면 위에 짙은 숲색의 꽉 찬 굵은 대문자가 컷으로 갈리고, 사이사이 국기 원이 줄지어 굴러가며 폰·카드 UI가 밝은 회색 판 가운데 떠서 숫자를 굴리는 송금 앱 런칭 필름",
+  "tags": [
+    "타이포",
+    "라임",
+    "핀테크",
+    "대문자",
+    "색면 컷",
+    "글로벌"
+  ],
+  "hand": false,
+  "source": {
+    "site": "keyframe.gallery",
+    "ref": "mux:JQd8mvfa3VKDZuvR02wWHgD3dFljIBkqv02QFaCKnlDCI",
+    "at": "0–91.4초 (1.8–9.1초, 11–16.4초, 20–42초, 47–62초, 77–87.6초)",
+    "note": "라임·노랑 색면 위 짙은 숲색 초굵은 대문자 두 줄이 한 문장을 여러 컷에 나눠 잇는 리듬, 파랑·노랑·초록 원 셋이 국기 원 행렬로 바뀌어 옆으로 굴러가는 장면, 밝은 회색·라임·옅은 청록 바탕 가운데 비스듬히 떠 도는 폰과 잔액 카드, 마지막 막대만 숲색으로 차오르는 막대그래프, 말풍선·점 타임라인 같은 작은 UI 조각, 숲색 판 위 라임 글자 반전"
+  },
+  "palette": [
+    "#9FE870",
+    "#163300",
+    "#EAE27A",
+    "#ECECEA",
+    "#A3D9D3",
+    "#7F96E0"
+  ],
+  "colors": {
+    "bg": "#9FE870",
+    "onBg": "#163300",
+    "onBgMuted": "rgba(22,51,0,.7)",
+    "paper": "#ECECEA",
+    "ink": "#163300",
+    "accent": "#163300",
+    "accentInk": "#9FE870",
+    "pattern": "rgba(22,51,0,.08)",
+    "glow": "rgba(159,232,112,.4)"
+  },
+  "type": {
+    "display": [
+      "Archivo",
+      "Noto Sans KR"
+    ],
+    "heading": [
+      "Archivo",
+      "Noto Sans KR"
+    ],
+    "body": [
+      "Geist",
+      "Noto Sans KR"
+    ]
+  },
+  "fonts": [
+    {
+      "family": "Archivo",
+      "weight": "100 900",
+      "stretch": "62% 125%",
+      "file": "fonts/Archivo-Variable.woff2"
+    },
+    {
+      "family": "Geist",
+      "weight": "100 900",
+      "file": "fonts/Geist-Variable.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 500,
+      "file": "fonts/NotoSansKR-Medium.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 700,
+      "file": "fonts/NotoSansKR-Bold.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 900,
+      "file": "fonts/NotoSansKR-Black.woff2"
+    }
+  ],
+  "shape": {
+    "radius": "calc(var(--u) * 1.6)"
+  },
+  "motion": {
+    "pace": "보통",
+    "bpm": 100,
+    "ease": "power3.out",
+    "stagger": 0.8,
+    "transitions": [
+      "cut",
+      "push",
+      "cut",
+      "wipe"
+    ]
+  },
+  "scenes": {
+    "bg": "solid",
+    "align": "center",
+    "card": "shadow",
+    "marker": "color",
+    "weight": 900,
+    "tracking": -0.03,
+    "case": "upper",
+    "rough": false,
+    "title": "mask",
+    "frame": "none",
+    "deco": [],
+    "number": "odometer",
+    "scale": 1.3,
+    "schemes": [
+      "dark",
+      "paper",
+      "dark",
+      "accent"
+    ]
+  },
+  "signature": [
+    "한 문장을 두세 낱말씩 끊어 색면마다 하나씩: 라임 → 라임 → 버터 노랑 바탕이 컷으로 갈리고, 짙은 숲색 초굵은 대문자 한두 줄이 줄마다 선 아래에서 0.4초에 올라와 2박쯤 머물다 다음 컷에 통째로 바뀜",
+    "밝은 회색 판에 파랑·노랑·초록 원 셋이 나란히 톡 놓였다가, 원 속이 국기 무늬로 채워지며 원 행렬이 옆으로 굴러감. 가운데 원이 멈추면 양옆 원은 화면 가장자리에서 반쯤 잘려 보임",
+    "밝은 회색·라임·옅은 청록 바탕 한가운데 폰이나 잔액 카드 한 장이 살짝 비스듬히 떠서 천천히 몸을 돌리고, 큰 금액이 자리마다 굴러 맞춰짐. 막대그래프에서는 마지막 막대만 숲색으로 차오르고 라임 화살표 동그라미가 톡 붙음"
+  ],
+  "fits": [
+    "송금·결제·핀테크 앱 런칭",
+    "해외 서비스·여러 나라 지원 소개",
+    "브랜드 미션·비전 영상",
+    "앱 기능 여러 개를 묶어 훑을 때",
+    "고객 지원·상담 기능 소개"
+  ],
+  "avoid": [
+    "종이·그레인 같은 거친 질감",
+    "세리프나 손글씨 글꼴",
+    "검정 바탕과 네온 빛 번짐",
+    "기울이거나 흩어 놓은 글자",
+    "한 화면에 문장 세 줄 이상"
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "name": "신메뉴 쇼케이스",
+  "description": "크림색 판 위 둥근 접시에 메뉴 사진이 담기고, 둘레 글자가 돌고, 스티커 태그와 매달린 가격표가 붙는 17초 한 컷 영상.",
+  "fonts": [
+    { "family": "Archivo", "weight": "100 900", "stretch": "62% 125%", "file": "fonts/Archivo-Variable.woff2" }
+  ]
+}

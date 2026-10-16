@@ -1,0 +1,191 @@
+<title>/*@TITLE@*/</title>
+<style>
+/*@FONTFACES@*/
+/*@BRAND_CSS@*/
+/*@ENGINE_CSS@*/
+
+/* ===== hiring 템플릿: 채용 (메신저 대화) =====
+   화면 전체가 메신저. 가게가 말을 걸고, 보는 사람의 답이 입력창에 타이핑돼 올라가고,
+   채용 카드가 말풍선으로 오고, 마지막엔 아래에서 지원 시트가 올라와 손가락이 버튼을 누름. */
+#hr { position: absolute; inset: 0; background: #ECEEF2; overflow: hidden; font-family: var(--font-body); }
+.abs { position: absolute; left: 0; top: 0; }
+#hbar { position: absolute; left: 0; right: 0; top: 0; background: rgba(255,255,255,.96); border-bottom: 1px solid rgba(0,0,0,.08); }
+#hbar .in { position: absolute; display: flex; align-items: center; gap: calc(var(--u) * 2.6); }
+#hbar .av { width: calc(var(--u) * 9); height: calc(var(--u) * 9); border-radius: 50%; background: var(--accent); color: var(--accent-ink); display: grid; place-items: center; font: 900 calc(var(--u) * 4.2)/1 var(--font-heading); overflow: hidden; flex: none; }
+#hbar .av img { width: 100%; height: 100%; object-fit: cover; }
+#hbar .nm { font: 900 calc(var(--u) * 4.4)/1.15 var(--font-heading); color: #16181d; white-space: nowrap; }
+#hbar .stt { font: 600 calc(var(--u) * 2.9)/1.2 var(--font-body); color: #2aa35a; margin-top: calc(var(--u) * .6); white-space: nowrap; }
+#hbar .stt::before { content: ""; display: inline-block; width: calc(var(--u) * 1.4); height: calc(var(--u) * 1.4); border-radius: 50%; background: #2aa35a; margin-right: calc(var(--u) * 1); vertical-align: middle; }
+#col { position: absolute; overflow: hidden; }
+#list { position: absolute; left: 0; top: 0; width: 100%; }
+.msg { position: absolute; max-width: 78%; box-sizing: border-box; }
+.msg .bb { padding: calc(var(--u) * 2.6) calc(var(--u) * 3.6) calc(var(--u) * 2.8); border-radius: calc(var(--u) * 3.6); font: 700 calc(var(--u) * 4.4)/1.38 var(--font-body); white-space: pre-line; word-break: keep-all; box-shadow: 0 1px 1px rgba(0,0,0,.06); }
+.msg.them { left: 0; transform-origin: 0 100%; }
+.msg.me { right: 0; transform-origin: 100% 100%; }
+.msg.them .bb { background: #fff; color: #16181d; border-bottom-left-radius: calc(var(--u) * 1); }
+.msg.me .bb { background: var(--accent); color: var(--accent-ink); border-bottom-right-radius: calc(var(--u) * 1); }
+.msg .tm { font: 600 calc(var(--u) * 2.2)/1 var(--font-body); color: #8a8f99; margin-top: calc(var(--u) * 1); }
+.msg.me .tm { text-align: right; }
+.job { width: calc(var(--u) * 66); background: #fff; border-radius: calc(var(--u) * 3.6); overflow: hidden; box-shadow: 0 1px 2px rgba(0,0,0,.08); color: #16181d; }
+.job .top { background: var(--bg); color: var(--on-bg); padding: calc(var(--u) * 3.4) calc(var(--u) * 4); }
+.job .top small { display: block; font: 800 calc(var(--u) * 2.6)/1 var(--font-body); color: var(--accent); letter-spacing: .08em; margin-bottom: calc(var(--u) * 1.4); }
+.job .top b { display: block; font: 900 calc(var(--u) * 6)/1.2 var(--font-heading); letter-spacing: -.03em; word-break: keep-all; }
+.job .rows { padding: calc(var(--u) * 2.6) calc(var(--u) * 4) calc(var(--u) * 1.4); }
+.job .row { display: flex; gap: calc(var(--u) * 3); padding: calc(var(--u) * 1.4) 0; border-bottom: 1px solid #eceef2; font: 700 calc(var(--u) * 4)/1.3 var(--font-body); }
+.job .row span { flex: none; width: calc(var(--u) * 11); color: #8a8f99; }
+.job .tags { display: flex; flex-wrap: wrap; gap: calc(var(--u) * 1.4); padding: calc(var(--u) * 1.4) calc(var(--u) * 4) calc(var(--u) * 3.6); }
+.job .tags i { font: 800 calc(var(--u) * 3.2)/1 var(--font-body); font-style: normal; background: #f1f2f5; color: #16181d; padding: calc(var(--u) * 1.4) calc(var(--u) * 2.2); border-radius: 999px; white-space: nowrap; }
+.job .tags i::before { content: "#"; color: var(--accent); margin-right: .1em; }
+.typing { position: absolute; left: 0; background: #fff; border-radius: calc(var(--u) * 3.6); border-bottom-left-radius: calc(var(--u) * 1); padding: calc(var(--u) * 3) calc(var(--u) * 3.6); display: flex; gap: calc(var(--u) * 1.2); }
+.typing i { width: calc(var(--u) * 1.8); height: calc(var(--u) * 1.8); border-radius: 50%; background: #b2b7c0; }
+#input { position: absolute; left: 0; right: 0; background: #fff; border-top: 1px solid rgba(0,0,0,.08); }
+#input .box { position: absolute; display: flex; align-items: center; gap: calc(var(--u) * 2); }
+#input .fld { flex: 1; min-width: 0; height: calc(var(--u) * 9); border-radius: 999px; background: #f1f2f5; display: flex; align-items: center; padding: 0 calc(var(--u) * 3.4); font: 600 calc(var(--u) * 4)/1 var(--font-body); color: #16181d; white-space: nowrap; overflow: hidden; }
+#input .fld .ph { color: #9aa0aa; }
+#input .fld .caret { display: inline-block; width: 2px; height: 1.1em; background: var(--accent); margin-left: 2px; }
+#input .send { flex: none; width: calc(var(--u) * 9); height: calc(var(--u) * 9); border-radius: 50%; background: var(--accent); display: grid; place-items: center; }
+#input .send svg { width: 46%; height: 46%; fill: var(--accent-ink); }
+#dim { position: absolute; inset: 0; background: rgba(10, 12, 16, .55); }
+#sheet { position: absolute; left: 0; right: 0; background: #fff; border-radius: calc(var(--u) * 5) calc(var(--u) * 5) 0 0; box-shadow: 0 calc(var(--u) * -1) calc(var(--u) * 4) rgba(0,0,0,.2); }
+#sheet .grab { position: absolute; left: 50%; top: calc(var(--u) * 2); width: calc(var(--u) * 12); height: calc(var(--u) * 1.2); margin-left: calc(var(--u) * -6); border-radius: 99px; background: #d6d9df; }
+#sheet .sc { position: absolute; display: flex; flex-direction: column; align-items: center; text-align: center; gap: calc(var(--u) * 3); }
+#sheet .h { font: 900 calc(var(--u) * 7.6)/1.18 var(--font-heading); color: #16181d; letter-spacing: -.035em; white-space: pre-line; word-break: keep-all; margin: 0; }
+#sheet .btn { width: 100%; box-sizing: border-box; display: flex; justify-content: center; align-items: center; gap: calc(var(--u) * 2); background: var(--accent); color: var(--accent-ink); font: 900 calc(var(--u) * 5)/1 var(--font-body); padding: calc(var(--u) * 3.6) calc(var(--u) * 4); border-radius: calc(var(--u) * 2.6); white-space: nowrap; }
+#sheet .btn svg { width: 1em; height: 1em; fill: currentColor; }
+#sheet .sub { font: 700 calc(var(--u) * 3.3)/1.3 var(--font-body); color: #6b717c; }
+</style>
+
+<div id="viewport"><div id="stage"><div id="cam"></div></div></div>
+
+<script>/*@GSAP@*/</script>
+<script>/*@DATA@*/</script>
+<script>/*@ENGINE_JS@*/</script>
+<script>
+(function () {
+  const S = Studio, M = S.M, C = S.content, B = S.brand, e = S.esc;
+  const cam = S.$('#cam');
+  const ARROW = '<svg viewBox="0 0 24 24"><path d="M5 11h10.2l-4.6-4.6L12 5l7 7-7 7-1.4-1.4 4.6-4.6H5z"/></svg>';
+  const SEND = '<svg viewBox="0 0 24 24"><path d="M3 20.5 21 12 3 3.5 3 10l12 2-12 2z"/></svg>';
+  const chat = (C.chat || []).slice(0, 10);
+  const job = C.job || {}, cta = C.cta || {};
+  const logoImg = B.logo && S.img(B.logo);
+  const avatar = C.avatar ? S.img(C.avatar) : logoImg;
+  const times = C.times || [];
+  const msgHtml = (m, i) => {
+    if (m[0] === 'card') return `<div class="msg them" data-i="${i}"><div class="job"><div class="top"><small>${e(job.label || '채용')}</small><b>${e(job.title || '')}</b></div>
+      <div class="rows">${(job.rows || []).map(r => `<div class="row"><span>${e(r[0])}</span><b>${e(r[1])}</b></div>`).join('')}</div>
+      ${(job.tags || []).length ? `<div class="tags">${job.tags.map(x => `<i>${e(x)}</i>`).join('')}</div>` : ''}</div></div>`;
+    return `<div class="msg ${m[0] === 'me' ? 'me' : 'them'}" data-i="${i}"><div class="bb">${e(m[1] || '')}</div></div>`;
+  };
+  cam.appendChild(S.h(`<div id="hr">
+    <div id="col"><div id="list">${chat.map(msgHtml).join('')}</div><div class="typing" id="typing"><i></i><i></i><i></i></div></div>
+    <div id="hbar"><div class="in"><div class="av">${avatar ? `<img src="${avatar}" alt="">` : e((B.logoText || B.name || ' ')[0])}</div><div><div class="nm">${e(C.chatName || B.name || '')}</div><div class="stt">${e(C.status || '지금 답장 가능')}</div></div></div></div>
+    <div id="input"><div class="box"><div class="fld"><span class="tx"></span><span class="caret"></span><span class="ph">${e(C.placeholder || '메시지 보내기')}</span></div><div class="send">${SEND}</div></div></div>
+    <div id="dim"></div>
+    <div id="sheet"><div class="grab"></div><div class="sc">
+      ${cta.headline ? `<h2 class="h">${e(cta.headline)}</h2>` : ''}
+      ${cta.button ? `<div class="btn"><span>${e(cta.button)}</span>${ARROW}</div>` : ''}
+      ${cta.sub ? `<div class="sub">${e(cta.sub)}</div>` : ''}
+    </div></div>
+  </div>`));
+
+  S.start(S => {
+    const W = S.W, H = S.H, u = Math.min(W, H) / 100, sf = S.safe;
+    const sx = sf.left, sy = sf.top, sw = W - sf.left - sf.right, sh = H - sf.top - sf.bottom;
+    const wide = S.is('wide');
+    const CW = Math.min(sw, (wide ? 96 : 92) * u), CX = sx + (sw - CW) / 2;
+    // 위 막대, 아래 입력창
+    const bar = S.$('#hbar'), barIn = S.$('.in', bar);
+    const barH = 15 * u;
+    bar.style.height = (sy + barH) + 'px';
+    barIn.style.left = CX + 'px'; barIn.style.top = (sy + barH / 2) + 'px'; barIn.style.transform = 'translateY(-50%)';
+    const inp = S.$('#input'), box = S.$('.box', inp);
+    const inH = 14 * u;
+    const inTop = sy + sh - inH;
+    inp.style.top = inTop + 'px'; inp.style.height = (H - inTop) + 'px';
+    box.style.left = CX + 'px'; box.style.width = CW + 'px'; box.style.top = ((inH - 9 * u) / 2) + 'px';
+    // 대화 칸
+    const col = S.$('#col'), list = S.$('#list');
+    const AT = sy + barH + 2 * u, AH = inTop - AT - 2 * u;
+    col.style.left = CX + 'px'; col.style.top = AT + 'px'; col.style.width = CW + 'px'; col.style.height = AH + 'px';
+    const msgs = S.$$('.msg', list);
+    const GAP = 2.2 * u;
+    let y = 0;
+    const pos = msgs.map((m, i) => { const top = y; m.style.top = top + 'px'; y += m.offsetHeight + GAP * (i < msgs.length - 1 && chat[i + 1] && chat[i + 1][0] === chat[i][0] ? .55 : 1.25); return { top, h: m.offsetHeight }; });
+    const typing = S.$('#typing'), typH = typing.offsetHeight, dots = S.$$('i', typing);
+    // 시간표: 가게 말 = 점 세 개 → 말풍선, 내 말 = 입력창에 타이핑 → 보냄
+    let t = .25;
+    const plan = chat.map((m, i) => {
+      const p = { kind: m[0] };
+      if (m[0] === 'me') { const dur = Math.min(1.0, Math.max(.45, (m[1] || '').length / 16)); p.typeStart = t; p.typeEnd = t + dur; p.show = t + dur + .18; t = p.show + (times[i] ?? .75); }
+      else { p.dots = t; p.show = t + (m[0] === 'card' ? .7 : .55); t = p.show + (times[i] ?? (m[0] === 'card' ? 2.2 : .95)); }
+      return p;
+    });
+    const T4 = t + .1, END = T4 + 3.6;
+    S.setDuration(END);
+    // 스크롤: 새 말풍선이 나올 때마다 맨 아래가 보이게
+    const scrollKeys = [[0, 0]];
+    plan.forEach((p, i) => {
+      const bottom = pos[i].top + pos[i].h;
+      if (p.dots != null) scrollKeys.push([p.dots - .01, Math.max(0, pos[i].top + typH - AH), { f: 2.4, z: .9 }]);
+      scrollKeys.push([p.show - .01, Math.max(0, bottom - AH), { f: 2.4, z: .9 }]);
+    });
+    for (let i = 1; i < scrollKeys.length; i++) scrollKeys[i][1] = Math.max(scrollKeys[i][1], scrollKeys[i - 1][1]);
+    const fld = S.$('.fld', inp), tx = S.$('.tx', fld), ph = S.$('.ph', fld), caret = S.$('.caret', fld), send = S.$('.send', inp);
+    // 마지막 시트
+    const dim = S.$('#dim'), sheet = S.$('#sheet'), sc = S.$('.sc', sheet);
+    sc.style.left = CX + u * 4 + 'px'; sc.style.width = (CW - u * 8) + 'px'; sc.style.top = 9 * u + 'px';
+    const hd = S.$('.h', sc); if (hd) S.fit(hd, { max: 7.6 * u, maxLines: 3 });
+    const sheetH = sc.offsetHeight + 16 * u + (H - (sy + sh));
+    sheet.style.height = sheetH + 'px';
+    const sheetTop = H - sheetH;
+    const btn = S.$('.btn', sc);
+    const cur = M.Cursor(S.$('#hr'), { size: 2.2 * u / 10 });
+    const bx = () => CX + CW / 2 + u * 6, byOf = () => sheetTop + 9 * u + btn.offsetTop + btn.offsetHeight / 2;
+
+    const root = S.$('#hr');
+    S.ambient(tt => {
+      M.drift(root, tt, .7);
+      list.style.transform = `translateY(${(-M.anim(scrollKeys, tt)).toFixed(2)}px)`;
+      // 말풍선
+      let typingOn = null;
+      msgs.forEach((m, i) => {
+        const p = plan[i];
+        const k = M.spring(tt - p.show, { f: 3.2, z: .72 });
+        m.style.visibility = tt >= p.show ? 'inherit' : 'hidden';
+        m.style.opacity = M.clamp(k * 2.5).toFixed(3);
+        m.style.transform = `scale(${(.55 + .45 * k).toFixed(4)})` + (p.kind === 'me' ? ` translateY(${((1 - Math.min(1, k)) * u * 8).toFixed(1)}px)` : '');
+        if (p.dots != null && tt >= p.dots && tt < p.show) typingOn = { top: pos[i].top, t0: p.dots };
+        const rows = S.$$('.row, .tags i', m);
+        rows.forEach((r, j) => { const rk = M.spring(tt - (p.show + .25 + j * .12), 'snappy'); r.style.opacity = M.clamp(rk * 2).toFixed(3); r.style.transform = `translateY(${((1 - Math.min(1, rk)) * u * 2).toFixed(1)}px)`; });
+      });
+      if (typingOn) {
+        typing.style.visibility = 'inherit';
+        const sc0 = M.anim(scrollKeys, tt);
+        typing.style.top = (typingOn.top - sc0) + 'px';
+        typing.style.transform = `scale(${M.spring(tt - typingOn.t0, 'pop').toFixed(4)})`; typing.style.transformOrigin = '0 100%';
+        dots.forEach((d, j) => { d.style.transform = `translateY(${(-Math.max(0, Math.sin((tt - typingOn.t0) * 9 - j * .9)) * u * 1.1).toFixed(2)}px)`; });
+      } else typing.style.visibility = 'hidden';
+      // 입력창 타이핑
+      let txt = '', sending = 0;
+      plan.forEach((p, i) => {
+        if (p.kind !== 'me') return;
+        if (tt >= p.typeStart && tt < p.show) { txt = (chat[i][1] || '').replace(/\n/g, ' ').slice(0, Math.ceil((chat[i][1] || '').length * M.prog(tt, p.typeStart, p.typeEnd - p.typeStart))); }
+        if (tt >= p.typeEnd && tt < p.show + .2) sending = Math.max(sending, 1 - Math.abs((tt - p.typeEnd - .1) / .12));
+      });
+      tx.textContent = txt; ph.style.display = txt ? 'none' : ''; caret.style.display = txt ? '' : 'none';
+      send.style.transform = `scale(${(1 - .15 * M.clamp(sending)).toFixed(4)})`;
+      // 마지막: 어두워지고 시트가 올라오고 손가락이 버튼을 누름
+      const dk = M.ease.outCubic(M.prog(tt, T4, .5));
+      dim.style.opacity = dk.toFixed(3); dim.style.visibility = dk > 0 ? 'inherit' : 'hidden';
+      const sk = M.spring(tt - T4, { f: 1.9, z: .86 });
+      sheet.style.transform = `translateY(${(sheetTop + (1 - sk) * sheetH).toFixed(1)}px)`; sheet.style.top = '0px';
+      sheet.style.visibility = tt >= T4 ? 'inherit' : 'hidden';
+      const c = M.cursorAt([[T4 + .6, W * .8, H * 1.02, .01], [T4 + 1.5, bx(), byOf() + u * 1, .8], [T4 + 3.2, bx() + u * 8, byOf() + u * 14, .5]], [[T4 + 1.75, .18]], tt);
+      cur.set(c.x, c.y, { down: c.down, ring: c.ring, hand: true, o: tt > T4 + .6 ? 1 : 0 });
+      if (btn) btn.style.transform = `scale(${(1 - .05 * c.down).toFixed(4)})`;
+      if (btn) btn.style.filter = c.down > .05 ? `brightness(${(1 - .12 * c.down).toFixed(3)})` : '';
+    });
+  });
+})();
+</script>

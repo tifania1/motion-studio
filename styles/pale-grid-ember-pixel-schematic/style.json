@@ -1,0 +1,135 @@
+{
+  "id": "pale-grid-ember-pixel-schematic",
+  "name": "격자 위 주황 픽셀 도식",
+  "group": "그래픽·도형",
+  "template": "brandmark",
+  "summary": "옅은 회색 격자 위에서 주황·숯빛·연회색 정사각형 블록이 칸을 옮겨 다니며 도식을 짜요. 블록은 데이터 카드, 철사 입체, 3×3 픽셀 판으로 이어지고, 끝에는 계단진 주황 픽셀 쐐기가 퍼져 나가는 차분한 개발 도구 소개 필름",
+  "tags": [
+    "도형",
+    "격자",
+    "픽셀",
+    "주황",
+    "데이터",
+    "개발 도구"
+  ],
+  "hand": false,
+  "source": {
+    "site": "keyframe.gallery",
+    "ref": "mux:q00HoLC7jSc801pIyVZSinecoPfpoOJ8Vgqs00uKFbUWFY",
+    "at": "0–61초",
+    "note": "옅은 회색 격자와 십자 안내선 위 주황·숯빛·연회색 정사각형 블록 사다리, 원근으로 쌓이는 짙은 카드 더미, 블록과 가격 꼬리표를 잇는 꺾은 선 노드, 면 몇 장만 칠한 철사 지구본과 휜 격자 판, 농도를 나눈 3×3 주황 픽셀 판이 점 하나로 오므라드는 이음, 망점 얹은 큰 주황 숫자, 원에서 오른쪽으로 계단처럼 퍼지는 주황 픽셀 쐐기"
+  },
+  "palette": [
+    "#EEEEEC",
+    "#262626",
+    "#E8521D",
+    "#3C3C3C",
+    "#B5B5B3",
+    "#FAFAF9"
+  ],
+  "colors": {
+    "bg": "#EEEEEC",
+    "onBg": "#262626",
+    "onBgMuted": "rgba(38,38,38,.62)",
+    "paper": "#FAFAF9",
+    "ink": "#262626",
+    "accent": "#E8521D",
+    "accentInk": "#141414",
+    "pattern": "rgba(38,38,38,.07)",
+    "glow": "rgba(232,82,29,.28)"
+  },
+  "type": {
+    "display": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "heading": [
+      "Geist",
+      "Noto Sans KR"
+    ],
+    "body": [
+      "Geist",
+      "Noto Sans KR"
+    ]
+  },
+  "fonts": [
+    {
+      "family": "Geist",
+      "weight": "100 900",
+      "file": "fonts/Geist-Variable.woff2"
+    },
+    {
+      "family": "Geist Mono",
+      "weight": "100 900",
+      "file": "fonts/GeistMono-Variable.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 500,
+      "file": "fonts/NotoSansKR-Medium.woff2"
+    },
+    {
+      "family": "Noto Sans KR",
+      "weight": 700,
+      "file": "fonts/NotoSansKR-Bold.woff2"
+    }
+  ],
+  "shape": {
+    "radius": "calc(var(--u) * 1.2)"
+  },
+  "motion": {
+    "pace": "보통",
+    "bpm": 100,
+    "ease": "power3.inOut",
+    "stagger": 0.8,
+    "transitions": [
+      "blocks",
+      "push",
+      "cut"
+    ]
+  },
+  "scenes": {
+    "bg": "grid",
+    "align": "center",
+    "card": "shadow",
+    "marker": "color",
+    "weight": 600,
+    "tracking": -0.02,
+    "case": "upper",
+    "rough": false,
+    "title": "rise",
+    "frame": "none",
+    "deco": [
+      "marks",
+      "dots"
+    ],
+    "number": "count",
+    "scale": 1,
+    "schemes": [
+      "dark",
+      "paper",
+      "dark",
+      "paper"
+    ]
+  },
+  "signature": [
+    "블록 사다리: 옅은 회색 격자 한가운데 주황 하나·연회색 몇 개·숯빛 하나의 정사각형이 대각선으로 늘어섰다가 power3.inOut 으로 칸에서 칸으로 미끄러져 세로 한 줄이 돼요. 가는 십자 안내선과 작은 주황 점이 블록 모서리를 짚고, 이 블록들이 다음 장면의 노드·카드 자리로 그대로 옮겨 가요",
+    "3×3 픽셀 판: 연회색 네모 아홉 개 가운데 하나만 주황으로 켜지고, 칸마다 0.05초 차이로 100·60·30% 농도의 주황이 번져 십자 무늬가 돼요. 그 무늬는 작은 주황 점 하나로 오므라들었다가 다음 장면의 블록으로 다시 커져요",
+    "마무리 픽셀 쐐기: 흰 원 아이콘 둘이 가는 선으로 이어진 뒤, 오른쪽 원에서 계단진 주황 정사각형 기둥이 한 줄씩 높아지며 화면 가장자리까지 부채처럼 쌓여 나가요"
+  ],
+  "fits": [
+    "개발자 도구·API 소개",
+    "데이터 수집·자동화 서비스",
+    "AI 에이전트 기능 설명",
+    "기능 여러 개를 차분히 훑는 1분 소개 영상",
+    "연동·통합 목록 보여 주기"
+  ],
+  "avoid": [
+    "진한 그라디언트·빛 번짐",
+    "손그림 선",
+    "주황 말고 다른 강조색",
+    "번쩍이는 빠른 컷",
+    "세리프 글꼴",
+    "화면 가득 빽빽한 글"
+  ]
+}
