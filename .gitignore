@@ -11,6 +11,9 @@
 !/templates/
 !/tools/
 !/vendor/
+!/brands/
+/brands/*
+!/brands/_template/
 !/.gitignore
 !/AGENTS.md
 !/CLAUDE.md

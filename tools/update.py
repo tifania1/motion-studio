@@ -72,6 +72,8 @@ def allowed(rel: str) -> bool:
         return p in FILES
     if top == "styles" and p.split("/")[1].startswith(("zz-", "_")):
         return False
+    if top == "brands":   # 내 광고 계정은 건드리지 않고, 새 계정의 틀만
+        return p.split("/")[1] == "_template"
     return top in DIRS
 
 

@@ -1,0 +1,53 @@
+{
+  "name": "브랜드 이름",
+  "slug": "brand-slug",
+  "description": "이 계정이 어떤 계정인지 한 줄",
+  "colors": {
+    "bg": "#111827",
+    "onBg": "#FFFFFF",
+    "onBgMuted": "rgba(255,255,255,.75)",
+    "paper": "#FFFFFF",
+    "ink": "#111827",
+    "accent": "#22C55E",
+    "accentInk": "#0B1F12",
+    "pattern": "rgba(255,255,255,.08)",
+    "glow": "rgba(34,197,94,.35)"
+  },
+  "fonts": [
+    {
+      "family": "BrandSans",
+      "weight": 500,
+      "file": "fonts/NotoSansKR-Medium.woff2"
+    },
+    {
+      "family": "BrandSans",
+      "weight": 700,
+      "file": "fonts/NotoSansKR-Bold.woff2"
+    },
+    {
+      "family": "BrandSans",
+      "weight": 900,
+      "file": "fonts/NotoSansKR-Black.woff2"
+    }
+  ],
+  "type": {
+    "display": "BrandSans",
+    "heading": "BrandSans",
+    "body": "BrandSans"
+  },
+  "pattern": "dots",
+  "logo": null,
+  "logoText": "BRAND",
+  "logoSub": "",
+  "mascot": null,
+  "assets": {},
+  "voice": {
+    "tone": "말투, 존댓말/반말, 자주 쓰는 표현"
+  },
+  "about": [
+    "브랜드 참고 정보: 대표 메뉴·상품, 매장 위치, 운영 시간 확인 링크, 타깃 고객 등"
+  ],
+  "notes": [
+    "금지 표현, 꼭 들어가야 하는 문구(법적 고지 등), 경쟁사 언급 금지 같은 규칙"
+  ]
+}

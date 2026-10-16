@@ -4,6 +4,7 @@
 여러 광고 계정의 짧은 광고 영상을 모션 그래픽으로 만드는 작업 폴더와 Claude Code(Opus 5.5)를 설치합니다.
 
 1. 이 압축 파일을 원하는 곳에 풉니다 (압축 안에서 바로 실행하면 안 돼요).
+   GitHub 에서 Code → Download ZIP 으로 받았다면, 풀린 폴더 안 installer 폴더에서 Install_MotionStudio.cmd 를 실행하면 돼요.
 2. 풀린 폴더에서 Install_MotionStudio.cmd 를 더블클릭합니다.
    - "Windows의 PC 보호" 창이 뜨면 [추가 정보] → [실행]을 누르세요.
 3. 질문이 나오면 Enter(=기본값)로 진행하면 됩니다. 처음 설치는 10~20분 정도 걸려요.

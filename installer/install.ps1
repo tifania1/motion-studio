@@ -24,6 +24,10 @@ $ShortcutName = '모션 스튜디오 (Claude Code).lnk'
 $AppShortcutName = '모션 스튜디오.lnk'
 $Here = if ($PSScriptRoot) { $PSScriptRoot } else { (Get-Location).Path }
 $Payload = Join-Path $Here $ProjectName
+# GitHub 에서 'Download ZIP' 으로 받은 경우: installer 폴더 바로 위가 프로그램 폴더
+if (-not (Test-Path (Join-Path $Payload 'tools\build.py')) -and (Test-Path (Join-Path (Split-Path $Here -Parent) 'tools\build.py'))) {
+    $Payload = Split-Path $Here -Parent
+}
 if (-not $Target) { $Target = Join-Path ([Environment]::GetFolderPath('MyDocuments')) $ProjectName }
 $Summary = New-Object System.Collections.Generic.List[string]
 
@@ -203,8 +207,9 @@ if (-not (Test-Path (Join-Path $Payload 'tools\build.py'))) {
             else { Warn '백업에 실패해서 업데이트를 멈췄습니다.'; exit 1 }
             # 브랜드·영상: 없는 파일(새 예시)만 추가
             $okA = Robo @($Payload, $Target, '/E', '/XD', (Join-Path $Payload 'brands'), (Join-Path $Payload 'videos'), (Join-Path $Payload 'out'))
-            $okB = Robo @((Join-Path $Payload 'brands'), (Join-Path $Target 'brands'), '/E', '/XC', '/XN', '/XO')
-            $okC = Robo @((Join-Path $Payload 'videos'), (Join-Path $Target 'videos'), '/E', '/XC', '/XN', '/XO')
+            $okB = $true; $okC = $true
+            if (Test-Path (Join-Path $Payload 'brands')) { $okB = Robo @((Join-Path $Payload 'brands'), (Join-Path $Target 'brands'), '/E', '/XC', '/XN', '/XO') }
+            if (Test-Path (Join-Path $Payload 'videos')) { $okC = Robo @((Join-Path $Payload 'videos'), (Join-Path $Target 'videos'), '/E', '/XC', '/XN', '/XO') }
             # 예시 필름의 화면 렌더(master.mp4): 없는 것만 넣어 둠 → 앱에서 '음악만 다시 합치기'가 바로 됨
             $okD = $true
             if (Test-Path (Join-Path $Payload 'out')) { $okD = Robo @((Join-Path $Payload 'out'), (Join-Path $Target 'out'), '/E', '/XC', '/XN', '/XO') }
