@@ -329,10 +329,16 @@ else {
 if ($DryRun) { Info '(점검 모드) 시험 빌드·렌더 생략' }
 elseif ($py) {
     Push-Location $Target
-    & $py tools\build.py haru-weekend-event tall | Out-Host
-    & $py tools\render.py haru-weekend-event tall shots 1.5 | Out-Host
-    $shot = Join-Path $Target 'out\haru-weekend-event\tall\shots\t001.50.png'
-    if (Test-Path $shot) { Good "시험 렌더 성공: $shot" } else { Warn '시험 렌더 결과가 없습니다. 위 오류 메시지를 확인해 주세요.'; Note '시험 렌더 실패' }
+    if (Test-Path (Join-Path $Target 'videos\haru-weekend-event\video.json')) {
+        & $py tools\build.py haru-weekend-event tall | Out-Host
+        & $py tools\render.py haru-weekend-event tall shots 1.5 | Out-Host
+        $shot = Join-Path $Target 'out\haru-weekend-event\tall\shots\t001.50.png'
+        if (Test-Path $shot) { Good "시험 렌더 성공: $shot" } else { Warn '시험 렌더 결과가 없습니다. 위 오류 메시지를 확인해 주세요.'; Note '시험 렌더 실패' }
+    } else {
+        # GitHub ZIP 으로 설치하면 예시 영상이 없어서, 렌더용 크로미움이 뜨는지만 봄
+        & $py -c "from playwright.sync_api import sync_playwright as s; p = s().start(); b = p.chromium.launch(); b.close(); p.stop(); print('chromium ok')" | Out-Host
+        if ($LASTEXITCODE -eq 0) { Good '렌더용 크로미움 준비 완료' } else { Warn '렌더용 크로미움을 띄우지 못했습니다. 위 오류 메시지를 확인해 주세요.'; Note '크로미움 점검 실패' }
+    }
     & $py -c "import sys; sys.path.insert(0, 'tools'); import app; print('app ok')" | Out-Host
     if ($LASTEXITCODE -eq 0) { Good '앱 준비 완료' } else { Warn '앱을 불러오지 못했습니다. 위 오류 메시지를 확인해 주세요.'; Note '앱 점검 실패' }
     Pop-Location
