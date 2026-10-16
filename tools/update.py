@@ -77,7 +77,8 @@ def allowed(rel: str) -> bool:
 
 def _git(*args, timeout=60, binary=False):
     env = dict(os.environ, GIT_TERMINAL_PROMPT="0", GCM_INTERACTIVE="never")
-    r = subprocess.run(["git", "--git-dir", str(REPO), *args], capture_output=True, timeout=timeout, env=env,
+    # Windows git 은 core.autocrlf 로 줄바꿈을 CRLF 로 바꿔 내보내서, 저장소 그대로(바이트 같게) 받도록 끔
+    r = subprocess.run(["git", "-c", "core.autocrlf=false", "-c", "core.eol=lf", "--git-dir", str(REPO), *args], capture_output=True, timeout=timeout, env=env,
                        creationflags=getattr(subprocess, "CREATE_NO_WINDOW", 0))
     if r.returncode != 0:
         raise RuntimeError(f"git {args[0]}: " + r.stderr.decode("utf-8", "replace").strip()[-400:])
